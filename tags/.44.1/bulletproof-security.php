@@ -2,7 +2,7 @@
 /*
 Plugin Name: BulletProof Security
 Plugin URI: http://www.ait-pro.com/bulletproof-security-wordpress-plugin/bulletproof-security-wordpress-htaccess-plugin/
-Description: One click switching between BulletProof Security modes and website under maintenance mode (http 503 Service Unavailable). BulletProof .htaccess file contains Filter and Query String Exploits code that protects your site against XSS & SQL Innjection hacking attempts.
+Description: One click switching between BulletProof Security modes and website under maintenance mode (http 503 Service Unavailable). BulletProof .htaccess file contains Filter and Query String Exploits code that protects your site against XSS & SQL Injection hacking attempts.
 Version: .44.1
 Author: Edward Alexander
 Author URI: http://www.ait-pro.com/
