@@ -3,7 +3,7 @@
 Plugin Name: BulletProof Security
 Plugin URI: http://www.ait-pro.com/bulletproof-security-wordpress-plugin/bulletproof-security-wordpress-htaccess-plugin/
 Description: One click switching between BulletProof Security modes and website under maintenance mode (http 503 Service Unavailable). BulletProof .htaccess file contains Filter and Query String Exploits code that protects your site against XSS & SQL Innjection hacking attempts.
-Version: .44
+Version: .44.1
 Author: Edward Alexander
 Author URI: http://www.ait-pro.com/
 */
@@ -25,7 +25,7 @@ Author URI: http://www.ait-pro.com/
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define('BULLETPROOF_VERSION', '.44');
+define('BULLETPROOF_VERSION', '.44.1');
 
 // Typically used for WP Pre2.6. Used here for DHTML and javascript Tool Tips - Hinky change later
 if ( ! defined( 'WP_CONTENT_URL' ) )
@@ -65,6 +65,47 @@ function bp_plugin_settings( $links, $file )
 	if ( $file == $this_plugin ) $links = array_merge( array( '<a href="' . attribute_escape( 'options-general.php?page=bulletproof-security.php' ) . '">Settings</a>' ), $links );
 	return $links;
 }
+
+// Form - Backup and rename users existing htaccess files
+$backup_htaccess = 'unchecked';
+$old_backroot = ABSPATH . '/.htaccess';
+$new_backroot = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/root.htaccess';
+$old_backwpadmin = ABSPATH . '/wp-admin/.htaccess';
+$new_backwpadmin = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/wpadmin.htaccess';
+
+if (isset($_POST['submit'])) {
+	$selected_radio = $_POST['selection'];
+		if ($selected_radio == 'backup_htaccess') {
+			$backup_htaccess = 'checked';
+		if (file_exists($old_backroot)) { 
+ 			copy($old_backroot, $new_backroot);
+		if (file_exists($old_backwpadmin)) { 	
+			copy($old_backwpadmin, $new_backwpadmin);
+		}
+		}
+	}
+}
+
+// Form - Restore users backed up htaccess files
+$restore_htaccess = 'unchecked';
+$old_restoreroot = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/root.htaccess';
+$new_restoreroot = ABSPATH . '/.htaccess';
+$old_restorewpadmin = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/wpadmin.htaccess';
+$new_restorewpadmin = ABSPATH . '/wp-admin/.htaccess';
+
+if (isset($_POST['submit'])) {
+	$selected_radio = $_POST['selection'];
+		if ($selected_radio == 'backup_htaccess') {
+			$backup_htaccess = 'checked';
+		if (file_exists($old_restoreroot)) { 
+ 			copy($old_restorewpadmin, $new_restoreroot);
+		if (file_exists($old_backwpadmin)) { 	
+			copy($old_backwpadmin, $new_restorewpadmin);
+		}
+		}
+	}
+}
+
 // Form copy and rename htaccess file for root
 $bpsecureroot = 'unchecked';
 $bpdefaultroot = 'unchecked';
@@ -103,6 +144,7 @@ if (isset($_POST['submit'])) {
 			copy($oldadmin, $newadmin) or die("Unable to copy $oldadmin to $newadmin.");
 		}
 }
+
 // Form copy and rename maintenance htaccess for root + copy bp-maintenance.php to root
 $bpmaintenance = 'unchecked';
 $oldmaint = ABSPATH . '/wp-content/plugins/bulletproof-security/htaccess/maintenance.htaccess';
@@ -128,13 +170,13 @@ function bp_main_page() { ?>
 
 <div class=wrap>
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/bulletproof-security/js/wz_tooltip.js"></script>
-<?php $bulletproof_ver = '.44'; ?>
+<?php $bulletproof_ver = '.44.1'; ?>
 <?php screen_icon(); ?>
 <h2><?php echo esc_html( $title ); ?></h2>
 <h2>BulletProof Security v<?php echo $bulletproof_ver; ?></h2>
-<h3><?php _e('IMPORTANT!: '); ?><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-plugin-support/" target="_blank" onmouseover="Tip('BEFORE activating any BulletProof Security modes look at your root path to your website WordPress installation shown below under BulletProof .htaccess Security Modes. If your WordPress installation is installed in your website domain root folder than you will see http://your-website-domain-name/.htaccess. If your WordPress installation is installed in a subfolder off of your website domain root than you will see something like this for example http://your-website-domain-name/a-folder-name/.htaccess. If your WordPress installation is in your website domain root then you DO NOT need to modify anything and can just activate any of the BulletProof Security modes you want now. If your WordPress installation is in a subfolder then DO NOT activate any of the BulletProof Security Modes until you have fully read the help files here and taken a look at my BulletProof Security .htaccess screenshots page on my website BEFORE activating any security modes.<br><br>IMPORTANT!!! Setting up BulletProof Security to work correctly for your website if you have WordPress installed in a subfolder off of your root website domain WILL require a one time manual editing of 4 files that are provided with the BulletProof plugin (3 .htaccess files & 1 maintenance PHP file). Those 4 files are located in the /plugins/bulletproof-security/htaccess/ folder. The files are named: default.htaccess, secure.htaccess, maintenance.htaccess and bp-maintenance.php. Download the 4 files to your computer to make the modifications to each file if necessary. If Wordpress is installed in your root folder on your website then you DO NOT need to make any modifications to any of the BulletProof .htaccess files. DO NOT EDIT OR REMOVE the 5th file named .htaccess - it is there to protect that folder from being visible or accessible to anyone except you.<br><br>Screenshot images of example .htaccess file modifications and detailed .htaccess setup instructions can be viewed by clicking the FAQ, Screenshots, Support, Questions, Comments and Wishlist link or by clicking any of the Read Me! hover ToolTips links.<br><br>The BulletProof secure.htaccess file contains filter and query string exploits code that should be more than secure enough to completely prevent all hackers from hacking your website using XSS or SQL Injection attacks, but if you would like to add your own additional code or mods to the provided .htaccess files then just make sure that any additional code or mods that you add to these provided .htaccess files DOES NOT negatively affect your site from being crawled and indexed by search engines.<br><br>The provided BulletProof secure.htaccess file has been thoroughly tested against hackers and also for search engine crawling and indexing. Hackers that have been able to penetrate BulletProof = 0. Search Engine crawling or indexing problems = 0. Enjoy!', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me First!</a></h3>
+<h3><?php _e('IMPORTANT!: '); ?><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-plugin-support/" target="_blank" onmouseover="Tip('Back up your existing .htaccess files FIRST with the One Time Backup button below. BEFORE activating any BulletProof Security modes look at your root path to your website WordPress installation shown below under BulletProof .htaccess Security Modes. If your WordPress installation is installed in your website domain root folder than you will see http://your-website-domain-name/.htaccess. If your WordPress installation is installed in a subfolder off of your website domain root than you will see something like this for example http://your-website-domain-name/a-folder-name/.htaccess. If your WordPress installation is in your website domain root then you DO NOT need to modify anything and can just activate any of the BulletProof Security modes you want now. After performing a One Time Backup first of course. If your WordPress installation is in a subfolder then DO NOT activate any of the BulletProof Security Modes until you have fully read the help files here and taken a look at my BulletProof Security .htaccess screenshots page on my website BEFORE activating any security modes.<br><br>IMPORTANT!!! Setting up BulletProof Security to work correctly for your website if you have WordPress installed in a subfolder off of your root website domain WILL require a one time manual editing of 3 files that are provided with the BulletProof plugin (3 .htaccess files). Those 3 files are located in the /plugins/bulletproof-security/htaccess/ folder. The files are named: default.htaccess, secure.htaccess and maintenance.htaccess. Download the 3 files to your computer to make the modifications to each file if necessary. If Wordpress is installed in your root folder on your website then you DO NOT need to make any modifications to any of the BulletProof .htaccess files. DO NOT EDIT OR REMOVE the 5th file named .htaccess - it is there to protect that folder from being visible or accessible to anyone except you.<br><br>Screenshot images of example .htaccess file modifications and detailed .htaccess setup instructions can be viewed by clicking the FAQ, Screenshots, Support, Questions, Comments and Wishlist link or by clicking any of the Read Me! hover ToolTips links.<br><br>The BulletProof secure.htaccess file contains filter and query string exploits code that should be more than secure enough to completely prevent all hackers from hacking your website using XSS or SQL Injection attacks, but if you would like to add your own additional code or mods to the provided .htaccess files then just make sure that any additional code or mods that you add to these provided .htaccess files DOES NOT negatively affect your site from being crawled and indexed by search engines.<br><br>The provided BulletProof secure.htaccess file has been thoroughly tested against hackers and also for search engine crawling and indexing. Hackers that have been able to penetrate BulletProof = 0. Search Engine crawling or indexing problems = 0. Enjoy!', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me First!</a></h3>
 
-<h3><?php _e('General Information About BulletProof '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('The BulletProof Security plugin performs a very simple function: It copies, renames and moves the provided .htaccess files in the BulletProof plugin folder to either your root folder or your wp-admin folder or both. Maintenance mode is very convenient for fast switching to Under Maintenance and regular website operation. And of course your website is protected from ALL XSS and SQL Injection hacking attacks when your website is in BulletProof Mode.<br><br>The BulletProof Security secure.htaccess file blocks XSS (Cross Site Scripting) & SQL Injection hacking attempts, it also blocks administrator level configuration of Widgets and activation and deactivation of a very few plugins. In order to perform Widget configuration changes or if a plugin will not activate or deactivate correctly, you will need to temporarily put your website into default.htaccess mode while performing these tasks. This plugin allows you to quickly switch between default level, secure level and maintenance .htaccess modes without having to manually rename, modify or move .htaccess files via FTP or a web host Control Panel.<br><br>BulletProof is designed to be a fast, convenient and simple one click way for you to switch between different levels of website security and maintenance modes. The maintenance .htaccess file allows website developers or website owners to access and work on a website while a Website Under Maintenance page is displayed to all other visitors to the website.<br><br>BulletProof was originally designed to change the .htaccess modes for both the root folder and /wp-admin folder simultaneously. At users requests the BulletProof plugin now allows you to control the root .htaccess file and /wp-admin .htaccess file separately. Simpler is usually better.<br><br>NO .htaccess file writing or other file writing occurs in this version of BulletProof - ONLY .htaccess file copying, renaming and moving. BulletProof Pro includes file writing and more advanced functions. (BulletProof Pro release date - TBA).', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>
+<h3><?php _e('General Information About BulletProof '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('Back up your existing .htaccess files FIRST with the One Time Backup button below before enabling any security modes. The BulletProof Security plugin performs a very simple function: It copies, renames and moves the provided .htaccess files in the BulletProof plugin folder to either your root folder or your wp-admin folder or both. Maintenance mode is very convenient for fast switching to Under Maintenance and regular website operation. And of course your website is protected from ALL XSS and SQL Injection hacking attacks when your website is in BulletProof Mode.<br><br>The BulletProof Security secure.htaccess file blocks XSS (Cross Site Scripting) & SQL Injection hacking attempts, it also unfortunately blocks some administrator level functions such as configuring Widgets, activation and deactivation of a few plugins and will break a couple of other plugins. In order to perform Widget configuration changes or if a plugin will not activate or deactivate correctly, you will need to temporarily put your website into default.htaccess mode while performing these tasks. This plugin allows you to quickly switch between default level, secure level and maintenance .htaccess modes without having to manually rename, modify or move .htaccess files via FTP or a web host Control Panel.<br><br>BulletProof is designed to be a fast, convenient and simple one click way for you to switch between different levels of website security and maintenance modes. The maintenance .htaccess file allows website developers or website owners to access and work on a website while a Website Under Maintenance page is displayed to all other visitors to the website.<br><br>BulletProof was originally designed to change the .htaccess modes for both the root folder and /wp-admin folder simultaneously. At users requests the BulletProof plugin now allows you to control the root .htaccess file and /wp-admin .htaccess file separately. Simpler is usually better.<br><br>NO .htaccess file writing or other file writing occurs in this version of BulletProof - ONLY .htaccess file copying, renaming and moving. BulletProof Pro includes file writing and more advanced functions. (BulletProof Pro release date - TBA).', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>
 <?php
 		echo '<a href="http://www.ait-pro.com/bulletproof-security-wordpress-plugin/bulletproof-security-wordpress-htaccess-plugin" target="_blank">';
 		_e('BulletProof Security Overview');
@@ -143,7 +185,7 @@ function bp_main_page() { ?>
 		_e('FAQ, Screenshots, Support, Questions, Comments, Wishlist');
 		echo '</a>';
 ?>
-<h3><?php _e('Current General .htaccess Status '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('If you already have an existing .htaccess file or files be sure to download them via FTP as a backup. If you have customized your current  .htaccess file(s) with your own code then just add your custom code to your BulletProof .htaccess files.<br><br>A Green font color message indicates a file IS present or INFORMATION.  A Red font color message indicates a file IS NOT present, an ERROR message or WARNING.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>
+<h3><?php _e('Current General .htaccess Status '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('Back up your existing .htaccess files FIRST with the One Time Backup button below before enabling any security modes. I recommend that you also download your original existing .htaccess files via FTP as an additional backup. If you have customized your current  .htaccess file(s) with your own code then just add your custom code to your BulletProof .htaccess files.<br><br>A Green font color message indicates a file IS present or INFORMATION.  A Red font color message indicates a file IS NOT present, an ERROR message or WARNING.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>
 
 <?php 
 		$dir='../';
@@ -166,6 +208,7 @@ function bp_main_page() { ?>
 		<br /><br />
         
 <h3><?php _e('Current Active BulletProof .htaccess Files '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('The String you see listed below, if you have an active BulletProof .htaccess file, is reading and displaying the actual contents of the existing .htaccess files here. This is not just a displayed message - this is the actual first 44 characters of the contents of your .htaccess files. To change the String that is displayed here you would change the actual contents of your .htaccess files.  To add or remove how many String characters are displayed here modify code line 164 & 174 in the bulletproof-security.php file.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>        
+
 <?php
 // Read first 44 characters of current root .htaccess file starting from the 3rd character
 $filename = '.htaccess';
@@ -187,6 +230,64 @@ if (file_exists(ABSPATH . $filename)) {
 		    _e('<font color="red">NO .htaccess file was found in /wp-admin folder</font>');
 		}
 ?> 
+
+<h3><?php _e('Current Backed Up .htaccess Files '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('YOU ONLY NEED TO BACK UP YOUR EXISTING ORIGINAL HTACCESS FILES ONCE. Back up your existing htaccess files FIRST in case you have a problem when enabling any BulletProof Security modes. Once you have backed up your orginal existing htaccess files you will see them listed here. IF YOU BACKUP THE BULLETPROOF HTACCESS FILES AFTER YOU HAVE BACKED UP YOUR ORIGINAL HTACCESS FILES THEN YOUR ORIGINAL HTACCESS FILES WILL BE OVERWRITTEN. There is no need to EVER back up the BulletProof Security htaccess files because they are copies of master htaccess files stored in your /plugins/bulletproof-security/htaccess folder.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h3>
+
+<?php 
+$bp_root_back = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/root.htaccess'; 
+if (file_exists($bp_root_back)) { 
+_e('<font color="green"><strong>Your original root .htaccess file is backed up.</strong></font>'); 
+} else { 
+_e('<font color="red"><strong>Your original root .htaccess file is NOT backed up either because it did not exist or because of an error.</strong></font>'); 
+} 
+?><br /> 
+<?php 
+$bp_wpadmin_back = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/wpadmin.htaccess'; 
+if (file_exists($bp_wpadmin_back)) { 
+_e('<font color="green"><strong>Your original /wp-admin .htaccess file is backed up.</strong></font>'); 
+} else { 
+_e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT backed up either because it did not exist or because of an error.</strong></font>'); 
+} 
+?>      
+
+<form name="BulletProof-Backup" action="options-general.php?page=bulletproof-security.php" method="post">
+<?php wp_nonce_field('update-options'); ?>
+<h4><?php _e('Backup Your Original Existing htaccess Files'); ?></h4>
+<?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('YOU ONLY NEED TO BACK UP YOUR EXISTING ORIGINAL HTACCESS FILES ONCE. Back up your existing htaccess files FIRST in case you have a problem when enabling any BulletProof Security modes. Once you have backed up your original existing htaccess files you will see them listed under Current Backed Up .htaccess Files. IF YOU BACKUP THE BULLETPROOF HTACCESS FILES AFTER YOU HAVE BACKED UP YOUR ORIGINAL HTACCESS FILES THEN YOUR ORIGINAL HTACCESS FILES WILL BE OVERWRITTEN. There is no need to EVER back up the BulletProof Security htaccess files because they are copies of master htaccess files stored in your /plugins/bulletproof-security/htaccess folder.', WIDTH, 550, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()"><strong>Read Me!</strong></a>
+
+<table class="form-table">
+<tr>
+<th><label><input name="selection" type="radio" value="backup_htaccess" class="tog" <?php checked('', $backup_htaccess); ?> />
+<?php _e('Backup Your Original htaccess Files'); ?></label></th>
+<td><?php _e('<font color="green">Backs up your existing original .htaccess files in your root and /wp-admin folders to the /plugins/bulletproof-security/backup folder.</font><br><font color="red"><strong>CAUTION: You only need to backup your original htaccess files ONCE. Read the CAUTION: Read Me! hover ToolTip.</strong></font>'); ?></td>
+<td></td>
+</tr>
+</table>
+<input type="hidden" name="action" value="bpplugin-update-htaccess" />
+<input type="hidden" name="action" value="bpplugin-noupdate-htaccess" />
+<p class="submit">
+  <input type="submit" name="submit2" class="button-primary" value="<?php esc_attr_e('One Time Backup') ?>" />
+</p>
+</form>
+
+<form name="BulletProof-Restore" action="options-general.php?page=bulletproof-security.php" method="post">
+<?php wp_nonce_field('update-options'); ?>
+<h4><?php _e('Restore Your Original htaccess Files From Backup '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('Restores your original htaccess files that were backed up by you by clicking the One Time Backup button. Your backed up htaccess files were renamed to root.htaccess and wpadmin.htaccess and copied to the /plugins/bulletproof-security/backup folder. Restoring your htaccess files will copy, move and rename root.htaccess and wpadmin.htaccess from the /plugins/bulletproof-security/backup folder back to your root and /wp-admin folders. If you did not have any original .htaccess files to begin with than you will NOT have any backed up .htaccess files.', WIDTH, 550, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()"><strong>Read Me!</strong></a></h4>
+
+<table class="form-table">
+<tr>
+<th><label><input name="selection" type="radio" value="restore_htaccess" class="tog" <?php checked('', $restore_htaccess); ?> />
+<?php _e('Restore Your Original htaccess Files'); ?></label></th>
+<td><?php _e('<font color="green">Restores your backed up original .htaccess files to your root and /wp-admin folders.</font>'); ?></td>
+<td></td>
+</tr>
+</table>
+<input type="hidden" name="action" value="bpplugin-update-htaccess" />
+<input type="hidden" name="action" value="bpplugin-noupdate-htaccess" />
+<p class="submit">
+  <input type="submit" name="submit2" class="button-primary" value="<?php esc_attr_e('Restore Files') ?>" />
+</p>
+</form>
 
 <h3><?php _e('BulletProof .htaccess Security Modes '); ?></h3>
 <h4><?php _e('Root folder .htaccess Security Mode '); ?><a href="javascript:void(0);" target="_blank" onmouseover="Tip('Copies, Renames and Moves either default.htaccess or secure.htaccess depending on what radio button option you choose from /plugins/bulletproof-security/htaccess/secure.htaccess or default.htaccess to your root folder. secure.htaccess or  default.htaccess is renamed to just .htaccess in the process so that either file will overwrite the existing .htaccess file in your root folder. Since this is a copy of your secure.htaccess or default.htaccess file the original master secure.htaccess or default.htaccess file stays intact in the /plugins/bulletproof-security/htaccess/ folder. If you want to make changes or add code to your secure.htaccess or default.htaccess files you would make those changes to the /plugins/bulletproof-security/htaccess/secure.htaccess master file or default.htaccess master file.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me!</a></h4>
