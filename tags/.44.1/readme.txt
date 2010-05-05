@@ -29,7 +29,7 @@ BulletProof Security plugin makes this very quick and simple and is a huge time 
   
 * IMPORTANT! When upgrading to new versions of BulletProof Security. Download the entire /plugins/bulletproof-security/htaccess/ folder before upgrading and then just upload the /htaccess folder back your website after you have installed the upgrade. The next release Version .44.2 will take care of this so that future version upgrades will not require this download step.
 * Backup and Restore your original existing .htaccess files - Added as of version .44.1
-* Use the provided BulletProof .htaccess files or create your own .htaccess files for BulletProof to manage for you 
+* Use the provided BulletProof .htaccess files or create your own .htaccess files for BulletProof Security to manage for you 
 * One-click security mode switching in less than 5 seconds from within the Dashboard
 * Secure .htaccess file blocks XSS and SQL Injection attacks
 * Website Developer Maintenance Mode (503 Site open to Developer / Site Owner ONLY)
