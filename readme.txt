@@ -27,7 +27,7 @@ WordPress is already very secure. If you only use the BulletProof Security plugi
 503 Website Under Maintenance and WordPress default .htaccess protection then you should find that the
 BulletProof Security plugin makes this very quick and simple and is a huge time saver. Enjoy! 
   
-* IMPORTANT! When upgrading to new versions of BulletProof Security. Download the entire /plugins/bulletproof-security/htaccess/ folder before upgrading and then just upload the /htaccess folder back your website after you have installed the upgrade. The next release Version .44.2 will take care of this so that future version upgrades will not require this download step.
+* IMPORTANT! If upgrading from version .44 to .44.1 Download the existing /htaccess and /backup folder first before upgrading. Once you have upgraded to .44.1 upload the /htaccess and /backup folder back to the BulletProof Security plugin folder. Version upgrade to .44.2 will NOT require this additional step.
 * Backup and Restore your original existing .htaccess files - Added as of version .44.1
 * Use the provided BulletProof .htaccess files or create your own .htaccess files for BulletProof Security to manage for you 
 * One-click security mode switching in less than 5 seconds from within the Dashboard
