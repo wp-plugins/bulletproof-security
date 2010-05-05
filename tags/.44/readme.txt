@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/bulletproof-security-plugin-supp
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503 
 Requires at least: 2.8
 Tested up to: 2.9.2
-Stable tag: .44.1
+Stable tag: .44
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
 
@@ -95,15 +95,6 @@ Security Pro (release date TBA) does perform file writing.
 4. File and Folder Permissions Checker
 
 == Changelog ==
-
-= .44.1 =
-* Added Backup form function - backs up users original existing htaccess files
-* Added Restore form function - restores users original existing htaccess files
-* Added more Read Me! help hover ToolTips
-* Backup folder added for backed up original htaccess files
-* Removed links from all ToolTips except for the top Read Me! hover ToolTip
-* Corrected broken link URL to AITpro support page (page was moved)
-* Top hover ToolTip corrected (had an invalid character)
 
 = .44 =
 * First version release of BulletProof Security
