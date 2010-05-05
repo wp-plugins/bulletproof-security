@@ -96,13 +96,13 @@ Security Pro (release date TBA) does perform file writing.
 == Changelog ==
 
 = .44.1 =
+* If you are upgrading from .44 to .44.1 download the /htaccess folder first
+* before upgrading and upload it back to the back to the BulletProof plugin folder
+* after you have upgraded to .44.1. Version upgrade to .44.2 will NOT require this extra step 
 * Added Backup form function - backs up users original existing htaccess files
 * Added Restore form function - restores users original existing htaccess files
-* Added more Read Me! help hover ToolTips
 * Backup folder added for backed up original htaccess files
 * Removed links from all ToolTips except for the top Read Me! hover ToolTip
-* Corrected broken link URL to AITpro support page (page was moved)
-* Top hover ToolTip corrected (had an invalid character)
 
 = .44 =
 * First version release of BulletProof Security
