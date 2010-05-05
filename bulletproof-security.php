@@ -95,12 +95,12 @@ $new_restorewpadmin = ABSPATH . '/wp-admin/.htaccess';
 
 if (isset($_POST['submit'])) {
 	$selected_radio = $_POST['selection'];
-		if ($selected_radio == 'backup_htaccess') {
-			$backup_htaccess = 'checked';
+		if ($selected_radio == 'restore_htaccess') {
+			$restore_htaccess = 'checked';
 		if (file_exists($old_restoreroot)) { 
- 			copy($old_restorewpadmin, $new_restoreroot);
-		if (file_exists($old_backwpadmin)) { 	
-			copy($old_backwpadmin, $new_restorewpadmin);
+ 			copy($old_restoreroot, $new_restoreroot);
+		if (file_exists($old_restorewpadmin)) { 	
+			copy($old_restorewpadmin, $new_restorewpadmin);
 		}
 		}
 	}
