@@ -63,10 +63,8 @@ access your site via FTP or your web host Control Panel to do anything more.
 
 = Are there any known conflicts with other WordPress Plugins? =
 
-BulletProof Security has been tested with over 100 WordPress plugins and no
-conflicts have been found. BulletProof is a backend form that uses a few core
-WordPress files to process the form selections you choose so there should be
-no reason for BulletProof to conflict with any other frontend or backend plugins. 
+Yes. There is a known conflict with Ozh'. The secure.htaccess BulletProof Security
+file contains filters that do not allow the Ozh' plugin to display correctly. 
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
