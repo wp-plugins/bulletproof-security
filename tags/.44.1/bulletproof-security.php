@@ -266,7 +266,7 @@ _e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT back
 <input type="hidden" name="action" value="bpplugin-update-htaccess" />
 <input type="hidden" name="action" value="bpplugin-noupdate-htaccess" />
 <p class="submit">
-  <input type="submit" name="submit2" class="button-primary" value="<?php esc_attr_e('One Time Backup') ?>" />
+  <input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('One Time Backup') ?>" />
 </p>
 </form>
 
@@ -285,7 +285,7 @@ _e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT back
 <input type="hidden" name="action" value="bpplugin-update-htaccess" />
 <input type="hidden" name="action" value="bpplugin-noupdate-htaccess" />
 <p class="submit">
-  <input type="submit" name="submit2" class="button-primary" value="<?php esc_attr_e('Restore Files') ?>" />
+  <input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Restore Files') ?>" />
 </p>
 </form>
 
