@@ -238,7 +238,7 @@ $bp_root_back = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/root.
 if (file_exists($bp_root_back)) { 
 _e('<font color="green"><strong>Your original root .htaccess file is backed up.</strong></font>'); 
 } else { 
-_e('<font color="red"><strong>Your original root .htaccess file is NOT backed up either because it did not exist or because of an error.</strong></font>'); 
+_e('<font color="red"><strong>Your original root .htaccess file is NOT backed up either because you have not done a One Time Backup yet, an .htaccess file did NOT already exist or because of a file copy error.</strong></font>'); 
 } 
 ?><br /> 
 <?php 
@@ -246,7 +246,7 @@ $bp_wpadmin_back = ABSPATH . '/wp-content/plugins/bulletproof-security/backup/wp
 if (file_exists($bp_wpadmin_back)) { 
 _e('<font color="green"><strong>Your original /wp-admin .htaccess file is backed up.</strong></font>'); 
 } else { 
-_e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT backed up either because it did not exist or because of an error.</strong></font>'); 
+_e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT backed up either because you have not done a One Time Backup yet, an .htaccess file did NOT already exist or because of a file copy error.</strong></font>'); 
 } 
 ?>      
 
