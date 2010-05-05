@@ -342,7 +342,7 @@ _e('<font color="red"><strong>Your original /wp-admin .htaccess file is NOT back
 <th><label><input name="selection" type="radio" value="bpmaintenance" class="tog" <?php checked('', $bpmaintenance); ?> />
 <?php _e('Maintenance Mode'); ?></label></th>
 <td><code><?php echo get_option('home'); ?>/.htaccess</code><?php _e('<font color="green"> (Copies & Renames maintenance.htaccess to your root folder)<br> * bp-maintenance.php is also copied to your root folder.</font>'); ?></td>
-<td><?php _e("<tr><td style=\"text-align: center\"><strong>" .$_SERVER['REMOTE_ADDR'] ."</strong></td><td>This is your CURRENT PUBLIC IP ADDRESS. This is the IP address you add to the maintenance.htacess master file. Your Public IP address changes from time to time so be sure to check that your IP address displayed here is the same as your IP address in the maintenance.htaccess file.</td></tr></div>"); ?></td>
+<td><?php _e("<tr><td style=\"text-align: center\"><strong>" .$_SERVER['REMOTE_ADDR'] ."</strong></td><td>This is your CURRENT PUBLIC IP ADDRESS. This is the IP address you add to the maintenance.htacess master file. Your Public IP address changes from time to time so be sure to check that your IP address displayed here is the same as your IP address in the maintenance.htaccess file if you plan on putting your website in maintenance mode. Read the CAUTION: Read Me! ToolTip for more specific information.</td></tr></div>"); ?></td>
 </tr>
 </table>
 <input type="hidden" name="action" value="bpplugin-update-htaccess" />
