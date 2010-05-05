@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/bulletproof-security-plugin-supp
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503 
 Requires at least: 2.8
 Tested up to: 2.9.2
-Stable tag: .44
+Stable tag: .44.1
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
 
@@ -27,6 +27,7 @@ WordPress is already very secure. If you only use the BulletProof Security plugi
 503 Website Under Maintenance and WordPress default .htaccess protection then you should find that the
 BulletProof Security plugin makes this very quick and simple and is a huge time saver. Enjoy! 
   
+* Backup and Restore your original existing .htaccess files - Added as of version .44.1
 * Use the provided BulletProof .htaccess files or create your own .htaccess files for BulletProof to manage for you 
 * One-click security mode switching in less than 5 seconds from within the Dashboard
 * Secure .htaccess file blocks XSS and SQL Injection attacks
@@ -43,9 +44,11 @@ BulletProof Security plugin makes this very quick and simple and is a huge time 
 3. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
 4. Activate the BulletProof Security plugin.
 5. Activating BulletProof Security DOES NOT enable any of the BulletProof Security modes.
-6. To enable any of the BulletProof Security modes you will need to go to your Settings Panel in your WordPress Dashboard and click on BulletProof Security to go to the BulletProof Security Options page.
-7. Before activating any of the BulletProof Security modes read the information below.
-8. You will need to add the path to your WordPress installation (folder name) to the 3 .htaccess files provided with BulletProof Security (located in the bulletproof-security/htaccess folder) ONLY if your WordPress installation is NOT installed in your website domain root folder (ie if WordPress is installed in a subfolder named something like /blog for example). If your WordPress installation is in your website domain root folder than you DO NOT need to edit anything to start using BulletProof Security. Enjoy!
+6. BulletProof .44.1 now includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+7. To enable any of the BulletProof Security modes you will need to go to your Settings Panel in your WordPress Dashboard and click on BulletProof Security to go to the BulletProof Security Options page.
+8. If your WordPress installation is in your website domain root folder you DO NOT need to configure anything. Enjoy!
+9. If your WordPress installation is in a sub folder (ie WordPress is installed in a subfolder named something like /blog for example) off of your website domain root you will need to add that folder path to the 3 .htaccess files provided with BulletProof Security.
+10. There are extensive hover ToolTip help files on the BulletProof Security Options page.
 
 == Frequently Asked Questions ==
 
@@ -93,6 +96,15 @@ Security Pro (release date TBA) does perform file writing.
 
 == Changelog ==
 
+= .44.1 =
+* Added Backup form function - backs up users original existing htaccess files
+* Added Restore form function - restores users original existing htaccess files
+* Added more Read Me! help hover ToolTips
+* Backup folder added for backed up original htaccess files
+* Removed links from all ToolTips except for the top Read Me! hover ToolTip
+* Corrected broken link URL to AITpro support page (page was moved)
+* Top hover ToolTip corrected (had an invalid character)
+
 = .44 =
 * First version release of BulletProof Security
 * Extensive Read Me! help hover ToolTips added to the BulletProof plugin page
@@ -101,4 +113,5 @@ Security Pro (release date TBA) does perform file writing.
 
 == Upgrade Notice ==
 
-New release of BulletProof Security. Next Release will contain a restore default settings option.
+Added Backup form function - backs up original existing htaccess files
+Added Restore form function - restores original existing htaccess files
