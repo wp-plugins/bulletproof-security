@@ -3,7 +3,7 @@ Contributors: Edward Alexander
 Donate link: http://www.ait-pro.com/aitpro-blog/bulletproof-security-plugin-support/bulletproof-security-master-sponsor-page-ebay-ipod-mp3-players/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503 
 Requires at least: 2.8
-Tested up to: 2.9.2
+Tested up to: 3.0
 Stable tag: .44.1
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
