@@ -57,6 +57,7 @@ do_action('bps_admin_menu');
 
 <div class=wrap>
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/bulletproof-security/admin/js/wz_tooltip.js"></script>
+<?php $bulletproof_ver = '.45'; ?>
 <?php screen_icon('options-general'); ?>
 <h2><?php esc_html_e('BulletProof Security Settings', 'bulletproof-security'); ?></h2>
     
