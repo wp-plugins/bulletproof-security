@@ -1,0 +1,8 @@
+
+# DO NOT do anything with this .htaccess file
+# it is here to protect this folder from access
+# to anyone else but you.
+<Files ~ ".*\..*">
+order allow,deny
+deny from all
+</Files>
