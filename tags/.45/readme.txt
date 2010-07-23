@@ -29,7 +29,7 @@ The maintenance mode - 503 "Website Under Maintenance" - was originally added as
 to be a huge time saver for me personally as a website developer.
 
 BulletProof Security .45 - BPS .45 has new additional security measures and features added, plus a new system
-information page. BPS .45 now looks like a complete security and system information command center wrapped up
+information page. BPS .45 now looks like a complete security and system information Command Center wrapped up
 in a nice looking package. Enjoy!
   
 * If you are upgrading from a previous version - download the existing BulletProof /htaccess folder and /backup
@@ -56,14 +56,16 @@ folder first before upgrading if you made customizations or modifications to any
 
 == Installation ==
 
-1. If you are downloading the zip file from the WordPress Plugin Directory.
-2. Download the bulletproof-security.zip file to your computer and unzip it.
-3. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
-4. Activate the BulletProof Security plugin.
-5. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
-6. BulletProof .45 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
-7. To enable BulletProof Security modes, click on the Settings link shown uder BulletProof Security in your Plugins Options page.
-8. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
+1. If you are upgrading BPS - download your backed up, customized or modified .htaccess files first before upgrading
+2. The new BPS .45 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
+3. For new installations - If you are downloading the zip file from the WordPress Plugin Directory.
+4. Download the bulletproof-security.zip file to your computer and unzip it.
+5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
+6. Activate the BulletProof Security plugin.
+7. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
+8. BulletProof .45 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+9. To enable BulletProof Security modes, click on the Settings link shown uder BulletProof Security in your Plugins Options page.
+10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
 == Frequently Asked Questions ==
 
@@ -136,6 +138,8 @@ the .htaccess files. BPS Pro does perform file writing from the Dashboard.
 
 == Upgrade Notice ==
 
+* Download your backed up, customized or modified .htaccess files first before upgrading
+* The new BPS .45 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
 * Completely recoded with WordPress 3.0 coding enhancements and improvements
 * Completely new sophisticated visual design and look
 * NEW jQuery UI Tabbed Menu with CSS Hover Menu Buttons - see screenshot

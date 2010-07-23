@@ -2,7 +2,7 @@
 /*
 Plugin Name: BulletProof Security
 Plugin URI: http://www.ait-pro.com/aitpro-blog/297/bulletproof-security-plugin-support/bulletproof-security-wordpress-plugin-support/
-Description: Protects your website from ALL XSS & SQL Injection hacking attempts. Protects wp-config.php with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version, turn off WordPress DB errors, remove WP Generator META tag from WordPress, check WordPress file and folder permissions, complete system info (PHP, MySQL, OS, Memory, IP, Max file size info, etc.). Security Status checking.  
+Description: Protects your website from ALL XSS & SQL Injection hacking attempts. Protects wp-config.php with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.  
 Version: .45
 Author: Edward Alexander
 Author URI: http://www.ait-pro.com/
