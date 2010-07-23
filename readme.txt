@@ -1,6 +1,6 @@
 === BulletProof Security ===
 Contributors: Edward Alexander
-Donate link: http://www.ait-pro.com/aitpro-blog/bulletproof-security-plugin-support/bulletproof-security-master-sponsor-page-ebay-ipod-mp3-players/
+Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503 
 Requires at least: 2.8
 Tested up to: 3.0
