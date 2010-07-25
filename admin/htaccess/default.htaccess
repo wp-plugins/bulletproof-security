@@ -1,0 +1,25 @@
+
+# BULLETPROOF .45.1 >> DEFAULT .HTACCESS FILE
+
+# If for some strange reason your host does not have +FollowSymlinks enabled by default at
+# the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
+# If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
+# everything else is set correctly then remove the # sign in front of Options +FollowSymlinks
+# below. If you are still getting 500 errors then immediately put the # sign back. All hosts
+# these days should have this enabled by default. Enabling this will actually cause 500 server
+# errors if your host has this enabled so you should probably never have to remove the # sign. 
+# Options +FollowSymlinks
+
+# BEGIN WordPress
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+# END WordPress
+
+# DENY PUBLIC ACCESS TO YOUR wp-config.php File
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
