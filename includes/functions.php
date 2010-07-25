@@ -79,9 +79,7 @@ if (isset($_POST['submit'])) {
 // Form copy and rename htaccess file for wp-admin
 $bpsecurewpadmin = 'unchecked';
 $bpdefaultwpadmin = 'unchecked';
-$oldadmin = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
-$newadmin = ABSPATH . '/wp-admin/.htaccess';
-$oldadmin1 = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+$oldadmin1 = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 $newadmin1 = ABSPATH . '/wp-admin/.htaccess';
 
 if (isset($_POST['submit'])) {
@@ -89,10 +87,6 @@ if (isset($_POST['submit'])) {
 	if ($selected_radio == 'bpsecurewpadmin') {
 	$bpsecurewpadmin = 'checked';
 		copy($oldadmin1, $newadmin1) or die("Unable to copy $oldadmin1 to $newadmin1.");
-	}
-	else if ($selected_radio == 'bpdefaultwpadmin') {
-	$bpdefaultwpadmin = 'checked';
-		copy($oldadmin, $newadmin) or die("Unable to copy $oldadmin to $newadmin.");
 	}
 }
 
@@ -112,7 +106,7 @@ if (isset($_POST['submit'])) {
 	}
 }
 
-// Get Root .htaccess content - get first 44 characters of current root .htaccess file starting from the 3rd character
+// Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
 // and display string dump - also checks for single character "5" in .45.1 in string position 15 to validate the version of BPS .htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
@@ -121,7 +115,7 @@ function root_htaccess_status() {
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
 	} else {
 	if (file_exists(ABSPATH . $filename)) {
-	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 44);
+	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
 	_e('<font color="green"><strong>The .htaccess file that is activated in your root folder is:</strong></font><br>');
 		var_dump($section);
 		$check_string = strpos($section, "5");
@@ -136,12 +130,12 @@ function root_htaccess_status() {
 	}
 }
 
-// Get wp-admin .htaccess content - get first 44 characters of current
+// Get wp-admin .htaccess content - get first 45 characters of current
 // wp-admin .htaccess file starting from the 3rd character
 function wpadmin_htaccess_status() {
 	$filename = 'wp-admin/.htaccess';
 	if (file_exists(ABSPATH . $filename)) {
-	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 44);
+	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
 	_e('<font color="green"><strong>The .htaccess file that is activated in your /wp-admin folder is:</strong></font><br>');
 		var_dump($section);
 	} else {
@@ -204,6 +198,13 @@ function general_bps_file_checks() {
     _e('<font color="green">&radic; A bp-maintenance.php file was found in the /htaccess folder</font><br>');
 	} else {
     _e('<font color="red">NO bp-maintenance.php file found in the /htaccess folder</font><br>');
+	}
+	
+	$filename = '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+	if (file_exists(ABSPATH . $filename)) {
+    _e('<font color="green">&radic; A wpadmin-secure.htaccess file was found in the /htaccess folder</font><br>');
+	} else {
+    _e('<font color="red">NO wpadmin-secure.htaccess file found in the /htaccess folder</font><br>');
 	}
 }
 
