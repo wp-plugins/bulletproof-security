@@ -1,7 +1,7 @@
 === BulletProof Security ===
 Contributors: Edward Alexander
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503 
+Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503,  
 Requires at least: 2.8
 Tested up to: 3.0
 Stable tag: .45.1
@@ -112,6 +112,20 @@ the .htaccess files. BPS Pro does perform file writing from the Dashboard.
 * Bug fix for wp-config.php check based on BPS .htaccess version
 * Fix - BPS plugin uninstall issue fixed
 * Fix - BPS Widget configuration issue fixed
+* Completely recoded with WordPress 3.0 coding enhancements and improvements
+* Completely new sophisticated visual design and look
+* jQuery UI Tabbed Menu with CSS Hover Menu Buttons - see screenshot
+* New Messaging Display System added
+* ,htaccess code added to master files to .htaccess protect wp-config.php
+* WordPress DB error on / off checking and verification status display
+* WordPress version is not displayed - remove_action('wp_head', 'wp_generator');
+* WP generator meta tag removed - remove_action('wp_head', 'wp_generator');
+* Administrator username “admin” check
+* System information page displays PHP, MySQL, Server Info, etc. - see screenshot
+* Security Status page added - see screenshot
+* Help & FAQ page added
+* BPS Pro Modules page added - BPS Pro Modules are installed separately
+* New BPS .45.1 Guide created @ AIT-pro.com
 
 = .45 =
 * Completely recoded with WordPress 3.0 coding enhancements and improvements
