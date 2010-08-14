@@ -1,5 +1,13 @@
 
-# BULLETPROOF .45.1 WP-ADMIN SECURE .HTACCESS
+# BULLETPROOF .45.2 WP-ADMIN SECURE .HTACCESS
+
+# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first
+# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
+# AddType x-mapp-php5 .php
+# Other common possibilities depending on your web host - check with your web host first
+# AddHandler application/x-httpd-php5 .php
+# AddHandler cgi-php5 .php
 
 # FILTER REQUEST METHODS
 RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]

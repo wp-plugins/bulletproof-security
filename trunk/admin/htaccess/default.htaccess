@@ -1,5 +1,5 @@
 
-# BULLETPROOF .45.1 >>>>>>> DEFAULT .HTACCESS
+# BULLETPROOF .45.2 >>>>>>> DEFAULT .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -9,6 +9,14 @@
 # these days should have this enabled by default. Enabling this will actually cause 500 server
 # errors if your host has this enabled so you should probably never have to remove the # sign. 
 # Options +FollowSymlinks
+
+# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first
+# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
+# AddType x-mapp-php5 .php
+# Other common possibilities depending on your web host - check with your web host first
+# AddHandler application/x-httpd-php5 .php
+# AddHandler cgi-php5 .php
 
 # BEGIN WordPress
 RewriteEngine On
