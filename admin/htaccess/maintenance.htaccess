@@ -1,5 +1,5 @@
 
-# BULLETPROOF .45.1 MAINTENANCE .HTACCESS FILE
+# BULLETPROOF .45.2 MAINTENANCE .HTACCESS FILE
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -10,6 +10,14 @@
 # errors if your host has this enabled so you should probably never have to remove the # sign. 
 # Options +FollowSymlinks
 
+# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first
+# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
+# AddType x-mapp-php5 .php
+# Other common possibilities depending on your web host - check with your web host first
+# AddHandler application/x-httpd-php5 .php
+# AddHandler cgi-php5 .php
+
 RewriteEngine On
 RewriteBase /
 
@@ -17,18 +25,17 @@ RewriteBase /
 # Add a pound sign to comment a condition out.
 # Adding your IP address to the line below will display the website
 # under maintenance page to ONLY you. For Testing purposes only.
-# RewriteCond %{REMOTE_ADDR} ^75\.66\.42\.33$
+# RewriteCond %{REMOTE_ADDR} ^75\.88\.99\.33$
 # Adding your IP address to the line below will display the website
 # under maintenance page to everyone else except you.
 # Add your Public IP address to the line directly below.
-RewriteCond %{REMOTE_ADDR} !^75\.66\.42\.33$
+RewriteCond %{REMOTE_ADDR} !^75\.88\.99\.33$
 
-# RewriteCond says if the request is NOT for /bp-maintenance.php,
-# send a visitor to /bp-maintenance.php instead. You MUST allow at least
-# one additional file to be served without rewriting it to prevent endless looping.
-# In this case I have added index.php, which will work fine for you as well.
+# RewriteCond sends all visitors to /bp-maintenance.php Website Under Maintenance page
+# and displays the abstract-blue.png background image.
+# If you added your IP address above your site will be online and accessible to only you.
 RewriteCond %{REQUEST_URI} !^/bp-maintenance\.php$
-RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteCond %{REQUEST_URI} !^/wp-content/plugins/bulletproof-security/abstract-blue-bg\.png$
 
 # No matter what file was requested, serve bp-maintenance.php ONLY.
 RewriteRule ^(.*)$ /bp-maintenance.php [L]

@@ -3,8 +3,8 @@ Contributors: Edward Alexander
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503,  
 Requires at least: 2.8
-Tested up to: 3.0
-Stable tag: .45.1
+Tested up to: 3.1-alpha
+Stable tag: .45.2
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
 
@@ -26,27 +26,22 @@ website owners to access and work on a website while a 503 Website Under Mainten
 all other visitors to the website.
 
 WordPress is already very secure, but every website, no matter what type of platform it is built on should
-be using a secure .htaccess file as a standard website security measure.
-The maintenance mode - 503 "Website Under Maintenance" - was originally added as an afterthought, but has proven 
-to be a huge time saver for me personally as a website developer.
+be using a secure .htaccess file as a standard website security measure. Additional website security measures
+and features added as of version .45.1, plus a new system information page.
 
-BulletProof Security .45.1 - BPS .45.1 has new additional security measures and features added, plus a new system
-information page. BPS .45.1 now looks like a complete security and system information Command Center wrapped up
-in a nice looking package. Enjoy!
-  
 * If you are upgrading from a previous version - download the existing BulletProof /htaccess folder and /backup
 folder first before upgrading if you made customizations or modifications to any of the BPS files. 
-* NEW jQuery UI Tabbed Menu with CSS Hover Menu Buttons - see screenshot
-* NEW Message Display System
-* NEW v wp-config.php is .htaccess protected by BPS .45.1 - new code in the .htaccess files
-* NEW v WordPress Database Errors Are Turned Off - Verification of DB errors off and function insurance
-* NEW v WordPress Version Is Not Displayed / Not Shown - WordPress version is removed
-* NEW v WP Generator Meta Tag Removed From The WordPress Core
-* NEW v The Administrator username “admin” is not being used - check for admin username
-* NEW System Information Page PHP, MySQL, Server Info, etc. - see screenshot
-* NEW Security Status Page - see screenshot
-* NEW Help & FAQ page
-* NEW BPS Pro Modules Page - BPS Pro Modules are installed separately
+* jQuery UI Tabbed Menu with CSS Hover Menu Buttons - see screenshot
+* Message Display System
+* wp-config.php is .htaccess protected by BPS .45.2 - new code added to the .htaccess files
+* WordPress Database Errors Are Turned Off - Verification of DB errors off and function insurance
+* WordPress Version Is Not Displayed / Not Shown - WordPress version is removed
+* WP Generator Meta Tag Removed From The WordPress Core
+* The Administrator username “admin” is not being used - check for admin username
+* System Information Page PHP, MySQL, Server Info, Memory Usage, etc. - see screenshot
+* Security Status Page - see screenshot
+* Help & FAQ page
+* BPS Pro Modules Page - BPS Pro Modules are installed separately
 * Backup and Restore your original existing .htaccess files
 * Use the provided BulletProof .htaccess files or create your own .htaccess files for BulletProof Security to manage for you 
 * One-click security mode switching in less than 5 seconds from within the Dashboard
@@ -59,13 +54,13 @@ folder first before upgrading if you made customizations or modifications to any
 == Installation ==
 
 1. If you are upgrading BPS - download your backed up, customized or modified .htaccess files first before upgrading
-2. The new BPS .45.1 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
+2. The new BPS .45.2 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
 3. For new installations - If you are downloading the zip file from the WordPress Plugin Directory.
 4. Download the bulletproof-security.zip file to your computer and unzip it.
 5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
 6. Activate the BulletProof Security plugin.
 7. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
-8. BulletProof .45.1 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+8. BulletProof .45.2 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
 9. To enable BulletProof Security modes, click on the Settings link shown uder BulletProof Security in your Plugins Options page.
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
@@ -94,10 +89,10 @@ files to make them even more BulletProof to hackers.
 
 = Does the BulletProof Plugin create or write the .htaccess files? =
 
-No. The .htaccess files have already been created so you can just add more code
+No. The .htaccess files have already been created for you so you can just add more code
 to them or create completely new .htaccess master files if you want and just use BulletProof
-to manage them for you. BulletProof is designed to handle copying, renaming and moving of
-the .htaccess files. BPS Pro does perform file writing from the Dashboard.
+Security to manage the files for you. BulletProof Security is designed to handle copying,
+renaming and moving of the .htaccess files.
 
 == Screenshots ==
 
@@ -106,6 +101,16 @@ the .htaccess files. BPS Pro does perform file writing from the Dashboard.
 3. BulletProof System Information page
 
 == Changelog ==
+
+= .45.2 =
+* New Apache Directives for PHP5 added to the .htaccess master files
+* Maintenance mode master .htaccess code modified - RewriteCond to load new background png
+* Maintenance Mode log in / log out issue fixed - Log in / out of your Dashboard in Maintenance Mode
+* Website Under Maintenance coding modifcations and visual design enhancements
+* Background Graphic for Website Under Maintenance page created and added in the installation
+* Minor cosmetic nicks nacks fixed here and there
+* Help files and hover tool tips help info updated
+* Tested on WordPress 3.1-alpha - no issues or problems
 
 = .45.1 =
 * Bug fix for version check of BPS .htaccess master file
@@ -160,21 +165,15 @@ the .htaccess files. BPS Pro does perform file writing from the Dashboard.
 
 == Upgrade Notice ==
 
-* Special Thanks to Dion Deville at JournalXtra.com for his .htaccess coding help
-* The plugin uninstallation and widget configuration issue is now resolved thanks to Dion ;)
-* Download your backed up, customized or modified .htaccess files first before upgrading
-* The new BPS .45.1 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
-* Completely recoded with WordPress 3.0 coding enhancements and improvements
-* Completely new sophisticated visual design and look
-* NEW jQuery UI Tabbed Menu with CSS Hover Menu Buttons - see screenshot
-* NEW Message Display System
-* NEW v wp-config.php is .htaccess protected by BPS .45.1 - new code in the .htaccess files
-* NEW v WordPress Database Errors Are Turned Off - Verification of DB errors off and function insurance
-* NEW v WordPress Version Is Not Displayed / Not Shown - WordPress version is removed
-* NEW v WP Generator Meta Tag Removed From The WordPress Core
-* NEW v The Administrator username “admin” is not being used - check for admin username
-* NEW System Information Page PHP, MySQL, Server Info, etc. - see screenshot
-* NEW Security Status Page - see screenshot
-* NEW Help & FAQ page
-* NEW BPS Pro Modules Page - BPS Pro Modules are installed separately
-* NEW BPS .45.1 Guide created @ AIT-pro.com
+* Download your backed up, customized or modified .htaccess master files first before upgrading to .45.2
+* The BPS .45.2 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
+* Activating the BPS .45.2 .htaccess files ensures that you have the latest stable .htaccess code
+* I will probably not be adding any more new coding to these master files in future versions of BPS
+* New Apache Directives for PHP5 added to the .htaccess master files
+* Maintenance mode master .htaccess code modified - RewriteCond to load new background png
+* Maintenance Mode log in / log out issue fixed - Log in / out of your Dashboard in Maintenance Mode
+* Website Under Maintenance page coding modifications and visual design enhancements
+* Background Graphic for Website Under Maintenance page created and added in the installation
+* Minor cosmetic nicks nacks fixed here and there
+* Help files and hover tool tips help info updated
+* Tested on WordPress 3.1-alpha - no issues or problems

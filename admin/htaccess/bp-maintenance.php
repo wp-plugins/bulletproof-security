@@ -1,40 +1,40 @@
 <?php
 header('HTTP/1.1 503 Service Temporarily Unavailable',true,503);
 header('Status: 503 Service Temporarily Unavailable');
-header('Retry-After: 43200'); // 3600=1hr 7200 43200=12hrs 86400-24hrs
-								// Enter the amount of time you expect your site to display under maintenance
-
-## BulletProof Pro includes an editable Flash Movie
-## that you can customize by adding your own images and messages.
-## You do not need the Flash software to edit the movie
-## to add your own custom images and message.
-## An interesting animated Flash movie will stick in visitors minds
-## and will increase the liklihood of visitor return.
+header('Retry-After: 43200'); // 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 172800-48hrs 259200-72hrs
+// Enter the amount of time you expect your site to display under maintenance
+// This is only to tell the Search Engines when to return not the countdown timer display
+// To change the countdown timer display go to code line 188 of this website maintenance page
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Language" content="en-us">
+<!-- <meta http-equiv="Content-Language" content="en-us"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <!-- <meta name="robots" content="noindex,nofollow"> ONLY use noindex with a 503
-If this is a brand new website that has not been indexed before --> 
-<title>503 - Temporarily Closed For Maintenance</title>
+If this is a brand new website that you are building that has not been indexed before --> 
+<title>Temporarily Offline For Maintenance</title>
+
 <style type="text/css">
 <!--
-p
-{
-    font-family: "Verdana", sans-serif;
+body { 
+	background-image:url(../wp-content/plugins/bulletproof-security/abstract-blue-bg.png);
+	background-repeat:repeat;
+	line-height: normal;
 }
+
+p {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
 .maintenance {
-	font-family: "Verdana", sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-weight:bold;
 	font-size:18px;
 }
 
 .maintenance_table {
-	border:#666666;
+	border-color:#999999;
 	position:absolute;
 	top:50px;
 	left:50px;
@@ -42,21 +42,17 @@ p
 	background-color: #E9E9E9;
 }
 
+.online_text {font-family:Verdana, Arial, Helvetica, sans-serif;}
+
 .lcdstyle{ /*Example CSS to create LCD countdown look*/
 	background-color:black;
-	color:yellow;
+	color: #00FF00;
 	font: bold 18px MS Sans Serif;
 	padding: 3px;
 }
 
 .lcdstyle sup{ /*Example CSS to create LCD countdown look*/
 	font-size: 80%
-}
-
-body {
-	background-color: #F9F9F9;
-	background-repeat: repeat;
-	line-height: normal;
 }
 -->
 </style>
@@ -136,18 +132,18 @@ setTimeout(function(){thisobj.showresults()}, 1000) //update results every secon
 //For example, if "baseunit" is set to "minutes", arguments[0] and arguments[1] become meaningless etc
 
 function formatresults(){
-if (this.timesup==false){//if target date/time not yet met
+if (this.timesup==false){//if target date/time not yet met - using date already met - see else below
 var displaystring=arguments[0]+" days "+arguments[1]+" hours "+arguments[2]+" minutes "+arguments[3]+" seconds left until April 22, 2010 04:25:00"
 }
-else{ //else if target date/time met - add whatever you want here
-var displaystring="Site will reopen in..."
+else{ //else if target date of April 22, 2010 is already met - add your custom message here and at code line 172 -->
+var displaystring="<span class='online_text'>Website Will Be Online In...</span>"
 }
 return displaystring
 }
 
 function formatresults2(){
-if (this.timesup==false){ //if target date/time not yet met
-var displaystring="<span class='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></span>  left until site reopens."
+if (this.timesup==false){ //if target date/time not yet met - disregard - using date already met var
+var displaystring="<span class='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></span>"
 }
 else{ //else if target date/time met
 var displaystring="" //Don't display any text
@@ -159,7 +155,7 @@ return displaystring
 </head>
 
 <body>
-<table width="500" border="2" align="center" cellpadding="0" cellspacing="0" class="maintenance_table" id="Maintenance-Table" name="Maintenance-Table">
+<table width="500" border="2" align="center" cellpadding="10" cellspacing="0" class="maintenance_table" id="Maintenance-Table" name="Maintenance-Table">
   <tr>
     <td>
 <?php
@@ -171,28 +167,27 @@ $hostname = str_replace('www.', '', $hostname); ?>
 <!-- CSS class "maintenance is in the head section on this page -->
 <span class="maintenance"><?php echo $hostname; ?></span>
 
-<p>Is temporarily closed for maintenance.</p>
-<p>Normal operation will resume as soon as possible.</p>
-<p>Please try again later.</p>
+<!-- Customize your diplayed message here and at code line 140 -->
+<p>Website Is Offline Under Maintenance.</p>
 
 <div id="countdowncontainer"></div>
 <br />
 <div id="countdowncontainer2"></div>
 
 <script type="text/javascript">
-// add the date and time that your website started maintenance below
+// disregard this var - using date already met var
 var futuredate=new cdtime("countdowncontainer", "April 22, 2010 04:25:00")
 futuredate.displaycountdown("days", formatresults)
 
 var currentyear=new Date().getFullYear()
 //dynamically get this Christmas' year value. If Christmas already passed, then year=current year+1
 var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? currentyear+1 : currentyear
-// add the date and time that your website maintenance will be done below
-// no need to add a year it is precalculated by +thischristmasyear+
-var christmas=new cdtime("countdowncontainer2", "November 28, "+thischristmasyear+" 20:0:00")
+// add the date and time that you expect your website to be online again below
+// no need to add a year it is precalculated by +thischristmasyear+ - just replace December 5
+var christmas=new cdtime("countdowncontainer2", "December 5, "+thischristmasyear+" 20:0:00")
 christmas.displaycountdown("days", formatresults2)
 </script>
 </td></tr>
 </table>
 </body>
-</html> 
+</html>
