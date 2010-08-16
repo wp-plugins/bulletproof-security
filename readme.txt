@@ -78,7 +78,11 @@ access your site via FTP or your web host Control Panel to do anything more.
 = Are there any known conflicts with other WordPress Plugins? =
 
 Yes. There is one known conflict with the Ozh' plugin. BulletProof has been
-tested with over 1000+ WordPress plugins. 
+tested with over 1000+ WordPress plugins. The solution to fix this is really simple and easy.
+FTP to your website, download the BPS default.htaccess file from the
+/wp-content/plugins/bulletproof-security/htaccess folder, then upload the
+default.htaccess master file to the /plugins/ozh-admin-drop-down-menu/ folder
+and rename default.htaccess to just .htaccess.
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
