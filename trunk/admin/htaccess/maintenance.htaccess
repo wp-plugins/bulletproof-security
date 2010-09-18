@@ -1,5 +1,5 @@
 
-# BULLETPROOF .45.2 MAINTENANCE .HTACCESS FILE
+# BULLETPROOF .45.3 MAINTENANCE .HTACCESS FILE
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -18,8 +18,31 @@
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
 
+Options -Indexes
+
 RewriteEngine On
 RewriteBase /
+
+# FILTER REQUEST METHODS
+RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# QUERY STRING EXPLOITS 
+RewriteCond %{QUERY_STRING} \.\.\/ [NC,OR] 
+RewriteCond %{QUERY_STRING} boot\.ini [NC,OR] 
+RewriteCond %{QUERY_STRING} tag\= [NC,OR] 
+RewriteCond %{QUERY_STRING} ftp\:  [NC,OR] 
+RewriteCond %{QUERY_STRING} http\:  [NC,OR] 
+RewriteCond %{QUERY_STRING} https\:  [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR] 
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|’|"|;|\?|\*).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(&#x22;|&#x27;|&#x3C;|&#x3E;|&#x5C;|&#x7B;|&#x7C;).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC] 
+RewriteRule ^(.*)$ - [F,L]
 
 # Remove the pound sign to make a condition active
 # Add a pound sign to comment a condition out.
@@ -39,3 +62,8 @@ RewriteCond %{REQUEST_URI} !^/wp-content/plugins/bulletproof-security/abstract-b
 
 # No matter what file was requested, serve bp-maintenance.php ONLY.
 RewriteRule ^(.*)$ /bp-maintenance.php [L]
+
+# If IP address is entered bypass / override bp-maintenance.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]

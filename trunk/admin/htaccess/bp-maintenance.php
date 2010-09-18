@@ -1,20 +1,26 @@
 <?php
 header('HTTP/1.1 503 Service Temporarily Unavailable',true,503);
 header('Status: 503 Service Temporarily Unavailable');
-header('Retry-After: 43200'); // 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 172800-48hrs 259200-72hrs
-// Enter the amount of time you expect your site to display under maintenance
-// This is only to tell the Search Engines when to return not the countdown timer display
-// To change the countdown timer display go to code line 188 of this website maintenance page
+header('Retry-After: 259200'); 	// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 172800-48hrs 259200-72hrs
+								// Enter the amount of time you expect your site to display under maintenance
+								// This is only to tell the Search Engines when to return not the timer display
+
+## BulletProof Pro includes an editable Flash Movie
+## that you can customize by adding your own images and messages.
+## You do not need the Flash software to edit the movie
+## to add your own custom images and message.
+## An interesting animated Flash movie will stick in visitors minds
+## and will increase the liklihood of visitor return.
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- <meta http-equiv="Content-Language" content="en-us"> -->
+<meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <!-- <meta name="robots" content="noindex,nofollow"> ONLY use noindex with a 503
-If this is a brand new website that you are building that has not been indexed before --> 
-<title>Temporarily Offline For Maintenance</title>
-
+If this is a brand new website that has not been indexed before --> 
+<title>Website Temporarily Closed For Maintenance</title>
 <style type="text/css">
 <!--
 body { 
@@ -54,6 +60,7 @@ p {
 .lcdstyle sup{ /*Example CSS to create LCD countdown look*/
 	font-size: 80%
 }
+
 -->
 </style>
 
@@ -132,22 +139,22 @@ setTimeout(function(){thisobj.showresults()}, 1000) //update results every secon
 //For example, if "baseunit" is set to "minutes", arguments[0] and arguments[1] become meaningless etc
 
 function formatresults(){
-if (this.timesup==false){//if target date/time not yet met - using date already met - see else below
+if (this.timesup==false){//if target date/time not yet met
 var displaystring=arguments[0]+" days "+arguments[1]+" hours "+arguments[2]+" minutes "+arguments[3]+" seconds left until April 22, 2010 04:25:00"
 }
-else{ //else if target date of April 22, 2010 is already met - add your custom message here and at code line 172 -->
-var displaystring="<span class='online_text'>Website Will Be Online In...</span>"
+else{ //else if target date/time met - add whatever you want here
+var displaystring="<span class='online_text'>The [add your website name here] Website<br>Will Be Online In...</span>"
 }
 return displaystring
 }
 
 function formatresults2(){
-if (this.timesup==false){ //if target date/time not yet met - disregard - using date already met var
+if (this.timesup==false){ //if target date/time not yet met
 var displaystring="<span class='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></span>"
 }
 else{ //else if target date/time met
 var displaystring="" //Don't display any text
-alert("Countdown completed! We will resume normal website operation shortly.") //Instead, perform a custom alert
+alert("Countdown completed! [add your website name here] will resume normal website operation shortly.") //Instead, perform a custom alert
 }
 return displaystring
 }
@@ -167,27 +174,27 @@ $hostname = str_replace('www.', '', $hostname); ?>
 <!-- CSS class "maintenance is in the head section on this page -->
 <span class="maintenance"><?php echo $hostname; ?></span>
 
-<!-- Customize your diplayed message here and at code line 140 -->
-<p>Website Is Offline Under Maintenance.</p>
+<p>[add your website name here] Website<br>Is Under Construction.</p>
 
 <div id="countdowncontainer"></div>
 <br />
 <div id="countdowncontainer2"></div>
+<p>Your IP Address is: <?php echo $_SERVER['REMOTE_ADDR']; ?></p>
 
 <script type="text/javascript">
-// disregard this var - using date already met var
+// add the date and time that your website started maintenance below
 var futuredate=new cdtime("countdowncontainer", "April 22, 2010 04:25:00")
 futuredate.displaycountdown("days", formatresults)
 
 var currentyear=new Date().getFullYear()
 //dynamically get this Christmas' year value. If Christmas already passed, then year=current year+1
 var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? currentyear+1 : currentyear
-// add the date and time that you expect your website to be online again below
-// no need to add a year it is precalculated by +thischristmasyear+ - just replace December 5
-var christmas=new cdtime("countdowncontainer2", "December 5, "+thischristmasyear+" 20:0:00")
+// add the date and time that your website maintenance will be done below
+// no need to add a year it is precalculated by +thischristmasyear+
+var christmas=new cdtime("countdowncontainer2", "December 30, "+thischristmasyear+" 20:0:00")
 christmas.displaycountdown("days", formatresults2)
 </script>
 </td></tr>
 </table>
 </body>
-</html>
+</html> 
