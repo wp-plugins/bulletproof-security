@@ -1,16 +1,16 @@
 === BulletProof Security ===
 Contributors: Edward Alexander
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503,  
+Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention 
 Requires at least: 2.8
 Tested up to: 3.1-alpha
-Stable tag: .45.2
+Stable tag: .45.3
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
 
 == Description ==
 
-Protects your website from ALL XSS & SQL Injection hacking attempts. Protects wp-config.php with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.
+Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. Protects wp-config.php with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.
 
 The BulletProof Security plugin is designed to be a fast, simple and convenient one click method for you to
 switch between different levels of .htaccess website security and .htaccess maintenance modes from within
@@ -54,14 +54,14 @@ folder first before upgrading if you made customizations or modifications to any
 == Installation ==
 
 1. If you are upgrading BPS - download your backed up, customized or modified .htaccess files first before upgrading
-2. The new BPS .45.2 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
+2. The location for .htaccess master files is /bulletproof-security/admin/htaccess/ as of version .45.2
 3. For new installations - If you are downloading the zip file from the WordPress Plugin Directory.
 4. Download the bulletproof-security.zip file to your computer and unzip it.
 5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
 6. Activate the BulletProof Security plugin.
 7. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
-8. BulletProof .45.2 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
-9. To enable BulletProof Security modes, click on the Settings link shown uder BulletProof Security in your Plugins Options page.
+8. BulletProof .45.3 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+9. To enable BulletProof Security modes, click on the Settings link under BulletProof Security on your Plugins page.
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
 == Frequently Asked Questions ==
@@ -77,17 +77,15 @@ access your site via FTP or your web host Control Panel to do anything more.
 
 = Are there any known conflicts with other WordPress Plugins? =
 
-Yes. There is one known conflict with the Ozh' plugin. BulletProof has been
-tested with over 1000+ WordPress plugins. The solution to fix this is really simple and easy.
-FTP to your website, download the BPS default.htaccess file from the
-/wp-content/plugins/bulletproof-security/htaccess folder, then upload the
-default.htaccess master file to the /plugins/ozh-admin-drop-down-menu/ folder
-and rename default.htaccess to just .htaccess.
+Yes. There are a couple of known conflicts with a few other WordPress plugins,
+ which are quickly and easily resolved. Check the Common Issues and Problems section
+of the BulletProof Security Guide on the AIT-pro.com website if you are using these
+ plugins: Ozh' Admin Drop Down Menu, ComicPress or Simple Facebook Connect.
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
-Yes.  Of course. The secure.htaccess BulletProof file contains .htaccess
-code that protects your website against ALL XSS (Cross Site Scripting) and SQL Injection
+Yes.  Of course. The secure.htaccess and wpadmin-secure.htaccess BulletProof files contain
+ .htaccess code that protects your website against ALL XSS (Cross Site Scripting) and SQL Injection
 hacking attacks. Add your own additional .htaccess code to the master .htaccess
 files to make them even more BulletProof to hackers.
 
@@ -96,7 +94,7 @@ files to make them even more BulletProof to hackers.
 No. The .htaccess files have already been created for you so you can just add more code
 to them or create completely new .htaccess master files if you want and just use BulletProof
 Security to manage the files for you. BulletProof Security is designed to handle copying,
-renaming and moving of the .htaccess files.
+renaming and moving of the master .htaccess files.
 
 == Screenshots ==
 
@@ -105,6 +103,12 @@ renaming and moving of the .htaccess files.
 3. BulletProof System Information page
 
 == Changelog ==
+
+= .45.3 =
+* More Query String Exploit Filters added to BPS Master .htaccess files
+* Options -Indexes added to BPS Master .htaccess files at user requests
+* Added IP address display to maintenance mode javascript countdown timer display
+* No need to click Update Permalinks anymore for Maintenance Mode - RewriteRule override added 
 
 = .45.2 =
 * New Apache Directives for PHP5 added to the .htaccess master files
@@ -169,15 +173,11 @@ renaming and moving of the .htaccess files.
 
 == Upgrade Notice ==
 
-* Download your backed up, customized or modified .htaccess master files first before upgrading to .45.2
-* The BPS .45.2 location for .htaccess files is /bulletproof-security/admin/htaccess/ 
-* Activating the BPS .45.2 .htaccess files ensures that you have the latest stable .htaccess code
-* I will probably not be adding any more new coding to these master files in future versions of BPS
-* New Apache Directives for PHP5 added to the .htaccess master files
-* Maintenance mode master .htaccess code modified - RewriteCond to load new background png
-* Maintenance Mode log in / log out issue fixed - Log in / out of your Dashboard in Maintenance Mode
-* Website Under Maintenance page coding modifications and visual design enhancements
-* Background Graphic for Website Under Maintenance page created and added in the installation
-* Minor cosmetic nicks nacks fixed here and there
+* IMPORTANT! Additional Query String Exploit Filters added to BPS .45.3 Master .htaccess files
+* Options -Indexes added to BPS Master .htaccess files at user requests
+* Added IP address display to maintenance mode javascript countdown timer display
+* No need to click Update Permalinks anymore for Maintenance Mode - RewriteRule override added 
+* Download your backed up, customized or modified .htaccess master files first before upgrading to .45.3
+* The location for .htaccess master files is /bulletproof-security/admin/htaccess/ as of version .45.2
+* Activating the BPS .45.3 .htaccess files ensures that you have the latest stable .htaccess code
 * Help files and hover tool tips help info updated
-* Tested on WordPress 3.1-alpha - no issues or problems
