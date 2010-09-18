@@ -478,7 +478,7 @@ do_action('bps_admin_menu');
   </tr>
   <tr>
     <td class="table_cell">
-<form id="BPS-PRO-Activation-ID" name="BPS-PRO-Activation" class="bps_pro_activation_form" action="http://www.ait-pro.com/aitpro-blog/website-metrics-posting-form/activation-key-verification/" method="post"><?php settings_fields( 'bulletproof_security_save_settings' ); ?>
+<form id="BPS-PRO-Activation-ID" name="BPS-PRO-Activation" class="bps_pro_activation_form" action="http://www.ait-pro.com/aitpro-blog/aitpro-posting-form/activation-key-verification/" method="post"><?php settings_fields( 'bulletproof_security_save_settings' ); ?>
       <label>
 	<input name="bps_pro_activation" type="text" class="bps_pro_activate_text_field" id="bps_pro_activation-ID" style="background-color:#A9F5A0; border:2px; border-style:inset; margin-left:17px;" value="bps-0004319" size="22" /> Enter Your BPS Pro Activation Key</label>
     <input type="hidden" name="key_validator" value="check_key_ID" />
