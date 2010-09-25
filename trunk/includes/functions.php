@@ -277,20 +277,20 @@ function bps_get_sql_mode() {
 		else $sql_mode = __('Off');
 } 
 
-// PHP ini get display errors 1 = ON or 0 = OFF - did the long way for fun ;)
-function bps_php_display_errors() {
-	echo '' . ini_get('display_errors');
-	}
-	$bps_php_display_errors_output = str_replace('1', 'On', '1');
+// PHP ini get display errors 1 = ON or 0 = OFF - not valid for php.ini - On or Off)
+//function bps_php_display_errors() {
+//	echo '' . ini_get('display_errors');
+//	}
+//	$bps_php_display_errors_output = str_replace('1', 'On', '1');
 
-function bps_php_display_errors_output($bps_php_display_errors_output = '') {
-	if ($bps_php_display_errors_output == '1') {
-	return $bps_php_display_errors_output($bps_php_display_errors_output = '');
-	}
-	else if ($bps_php_display_errors_output == '0') {
-	echo 'Off';
-	}
-}
+//function bps_php_display_errors_output($bps_php_display_errors_output = '') {
+//	if ($bps_php_display_errors_output == '1') {
+//	return $bps_php_display_errors_output($bps_php_display_errors_output = '');
+//	}
+//	else if ($bps_php_display_errors_output == '0') {
+//	echo 'Off';
+//	}
+//}
 
 // Show DB errors should already be set to false in /includes/wp-db.php
 // Extra insurance sho_errors = false function re-applied - this function will be expanded in the future to allow DB errors to be turned on and off from the Dashboard - DB errors will display in this window
