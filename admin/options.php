@@ -300,7 +300,8 @@ do_action('bps_admin_menu');
     <td class="table_cell">&nbsp;</td>
   </tr>
   <tr>
-    <td class="table_cell"><?php _e('PHP Display Errors'); ?>: <strong><?php echo $bps_php_display_errors_output; ?></strong></td>
+    <td class="table_cell"><?php _e('PHP Display Errors'); ?>: <?php if(ini_get('display_errors')) $display_errors = __('On');
+        else $display_errors = __('Off'); ?><strong><?php echo $display_errors; ?></strong></td>
     <td>&nbsp;</td>
     <td class="table_cell">&nbsp;</td>
   </tr>
