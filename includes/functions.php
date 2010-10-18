@@ -124,7 +124,7 @@ function root_htaccess_status() {
 		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
 	} else {
 	if ($check_string == "17") { // W3 Total Cache shift 2 positions to right check
-		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented.<br>You now need to empty all W3 caches and resave and redeploy W3.';
+		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented.<br>You may need to empty all W3 caches and redeploy W3.';
 		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
 	} else {
 	_e('<font color="red"><br><br>A BPS .htaccess file was NOT found in your root folder or the BPS .htaccess file that you are currently using does NOT include .htaccess protection for wp-config.php. Please read the Read Me hover Tooltip before activating a newer version of a BPS website root folder .htaccess file.</font><br><br>');
