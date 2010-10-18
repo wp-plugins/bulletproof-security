@@ -26,8 +26,9 @@ website owners to access and work on a website while a 503 Website Under Mainten
 all other visitors to the website.
 
 WordPress is already very secure, but every website, no matter what type of platform it is built on should
-be using a secure .htaccess file as a standard website security measure. Additional website security measures
-and features added as of version .45.1, plus a new system information page.
+be using a secure .htaccess file as a standard website security measure.
+* Additional website security measures and protection
+* Additional system information and status display
 
 * If you are upgrading from a previous version - download the existing BulletProof /htaccess folder and /backup
 folder first before upgrading if you made customizations or modifications to any of the BPS files. 
@@ -63,7 +64,7 @@ folder first before upgrading if you made customizations or modifications to any
 5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
 6. Activate the BulletProof Security plugin.
 7. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
-8. BulletProof .45.4 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+8. BulletProof .45.5 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
 9. To enable BulletProof Security modes, click on the Settings link under BulletProof Security on your Plugins page.
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
@@ -108,7 +109,17 @@ versions of BulletProof Security.
 
 == Changelog ==
 
+= .45.5 =
+* Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
+* Permanent coding fixes incorporated into master htaccess files to replace workarounds
+* Additional mission critical PHP Info checks added
+* Php.ini and php5.ini files are now protected by BulletProof Security
+* Updated BPS help files - AITpro.com site help files pending
+* nick nacks here and there
+
 = .45.4 =
+* SVN Corruption unable to use this version - will not download - will not install
+* Forced to try to tag and upload a new version - fingers crossed here
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent coding fixes incorporated into master htaccess files to replace workarounds
 * Additional mission critical PHP Info checks added
@@ -185,7 +196,7 @@ versions of BulletProof Security.
 
 == Upgrade Notice ==
 
-* The SVN problem appears to be fixed - The BPS .45.4 Upgrade will now install correctly
+* The .45.4 upgrade is corrupted by SVN beyond repair - Tagging and releasing .45.5
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent htaccess coding fixes added to master BPS htaccess files to replace workarounds
 * Php.ini and php5.ini files are now protected by BulletProof Security
