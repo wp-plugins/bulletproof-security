@@ -1,9 +1,5 @@
 
-# BULLETPROOF .45.4 >>>>>>> SECURE .HTACCESS
-
-# If you have the W3 Total Cache Plugin installed you will need to add 2 spaces after the
-# pound sign and BULLETPROOF above. Example: #   BULLETPROOF .45.4 etc, etc. This is a
-# temporary workaround until I can create a permanent solution.
+#   BULLETPROOF .45.4 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
