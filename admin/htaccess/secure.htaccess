@@ -1,9 +1,5 @@
 
-# BULLETPROOF .45.4 >>>>>>>> SECURE .HTACCESS
-
-# If you are using the W3 Total Cache Plugin add 2 blank spaces after the # sign and
-# before BULLETPROOF above - this is still a workaround until I can write some code
-# to counteract this wierd glitch. Example: #   BULLETPROOF .45.4 >>>>>>> etc, etc.
+#   BULLETPROOF .45.4 >>8888>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
