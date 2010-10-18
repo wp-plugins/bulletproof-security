@@ -1,5 +1,5 @@
 
-# BULLETPROOF .45.3 >>>>>>> DEFAULT .HTACCESS
+# BULLETPROOF .45.4 >>>>>>> DEFAULT .HTACCESS
 
 # WARNING THIS .htaccess FILE DOES NOT PROTECT YOUR WEBSITE FROM BEING HACKED
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
@@ -34,3 +34,15 @@ RewriteRule . /index.php [L]
 order allow,deny
 deny from all
 </files>
+
+# DENY PUBLIC ACCESS TO YOUR php.ini file. 
+<Files php.ini> 
+order allow,deny 
+deny from all 
+</Files> 
+
+# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
+<Files php5.ini> 
+order allow,deny 
+deny from all 
+</Files> 

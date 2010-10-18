@@ -1,5 +1,5 @@
 
-# BULLETPROOF .45.3 >>>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .45.4 >>>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -11,10 +11,10 @@
 # Options +FollowSymlinks
 
 # The Most Common Apache Directives to force PHP5 to be used instead of PHP4
-# Some web hosts have very specific directives - check with your web host first
+# Some web hosts have very specific directives - check with your web host first.
 # Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
 # AddType x-mapp-php5 .php
-# Other common possibilities depending on your web host - check with your web host first
+# Other common possibilities depending on your web host - check with your web host first.
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
 
@@ -27,6 +27,28 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 # END WordPress
+
+# Plugin conflicts will be handled case by case instead of removing filters
+# for the entire Plugins folder
+
+# SFC Simple Facebook Connect Redirect Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the Rewriterule /blog/wp-login.php?action=register [R=301,L]
+RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/simple-facebook-connect/ [NC]
+RewriteRule ^(.*)$ /wp-login.php?action=register [R=301,L]
+
+# Ozh' Admin Drop Down Menu Display Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/ozh-admin-drop-down-menu/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
+RewriteRule . - [S=15]
+
+# ComicPress Manager ComicPress Theme Image Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
+RewriteRule . - [S=15]
 
 # FILTER REQUEST METHODS
 RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
@@ -54,3 +76,15 @@ RewriteRule ^(.*)$ - [F,L]
 order allow,deny
 deny from all
 </files>
+
+# DENY PUBLIC ACCESS TO YOUR php.ini file. 
+<Files php.ini> 
+order allow,deny 
+deny from all 
+</Files> 
+
+# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
+<Files php5.ini> 
+order allow,deny 
+deny from all 
+</Files> 
