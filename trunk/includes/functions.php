@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
-// and display string dump - also checks for single character "5" in .45.1 in string position 15 to validate the version of BPS .htaccess file and the wp-config.php status
+// and display string dump - also checks for single character "5" in .45.4 in string position 15 to validate the version of BPS //.htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	if ( !file_exists(ABSPATH . $filename)) {
@@ -278,6 +278,7 @@ function bps_get_sql_mode() {
 } 
 
 // PHP ini get display errors 1 = ON or 0 = OFF - not valid for php.ini - On or Off)
+// Does not display accurate info in all cases
 //function bps_php_display_errors() {
 //	echo '' . ini_get('display_errors');
 //	}
