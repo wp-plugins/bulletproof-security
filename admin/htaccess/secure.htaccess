@@ -1,0 +1,90 @@
+
+#   BULLETPROOF .45.4 >>>>>>>> SECURE .HTACCESS
+
+# If for some strange reason your host does not have +FollowSymlinks enabled by default at
+# the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
+# If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
+# everything else is set correctly then remove the # sign in front of Options +FollowSymlinks
+# below. If you are still getting 500 errors then immediately put the # sign back. All hosts
+# these days should have this enabled by default. Enabling this will actually cause 500 server
+# errors if your host has this enabled so you should probably never have to remove the # sign. 
+# Options +FollowSymlinks
+
+# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first.
+# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
+# AddType x-mapp-php5 .php
+# Other common possibilities depending on your web host - check with your web host first.
+# AddHandler application/x-httpd-php5 .php
+# AddHandler cgi-php5 .php
+
+Options -Indexes
+
+# BEGIN WordPress
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+# END WordPress
+
+# Plugin conflicts will be handled case by case instead of removing filters
+# for the entire Plugins folder
+
+# SFC Simple Facebook Connect Redirect Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the Rewriterule /blog/wp-login.php?action=register [R=301,L]
+RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC,OR]
+RewriteCond %{REQUEST_URI} ^/simple-facebook-connect/ [NC]
+RewriteRule ^(.*)$ /wp-login.php?action=register [R=301,L]
+
+# Ozh' Admin Drop Down Menu Display Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/ozh-admin-drop-down-menu/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
+RewriteRule . - [S=15]
+
+# ComicPress Manager ComicPress Theme Image Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
+RewriteRule . - [S=15]
+
+# FILTER REQUEST METHODS
+RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# QUERY STRING EXPLOITS 
+RewriteCond %{QUERY_STRING} \.\.\/ [NC,OR] 
+RewriteCond %{QUERY_STRING} boot\.ini [NC,OR] 
+RewriteCond %{QUERY_STRING} tag\= [NC,OR] 
+RewriteCond %{QUERY_STRING} ftp\:  [NC,OR] 
+RewriteCond %{QUERY_STRING} http\:  [NC,OR] 
+RewriteCond %{QUERY_STRING} https\:  [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR] 
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|’|"|;|\?|\*).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(&#x22;|&#x27;|&#x3C;|&#x3E;|&#x5C;|&#x7B;|&#x7C;).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC] 
+RewriteRule ^(.*)$ - [F,L]
+
+# DENY PUBLIC ACCESS TO YOUR wp-config.php File
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
+
+# DENY PUBLIC ACCESS TO YOUR php.ini file. 
+<Files php.ini> 
+order allow,deny 
+deny from all 
+</Files> 
+
+# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
+<Files php5.ini> 
+order allow,deny 
+deny from all 
+</Files> 
