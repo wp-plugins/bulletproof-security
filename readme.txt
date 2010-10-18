@@ -185,6 +185,7 @@ versions of BulletProof Security.
 
 == Upgrade Notice ==
 
+* The SVN problem appears to be fixed - The BPS .45.4 Upgrade will now install correctly
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent htaccess coding fixes added to master BPS htaccess files to replace workarounds
 * Php.ini and php5.ini files are now protected by BulletProof Security
