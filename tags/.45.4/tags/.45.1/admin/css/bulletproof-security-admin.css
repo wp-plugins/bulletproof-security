@@ -1,0 +1,215 @@
+/* BulletProof Security Admin Settings Stylesheet */
+
+/* BPS container and various form elements */
+#bps-container { margin: 20px 0 5px 0; font-size: 12px; }
+
+#bps-container table th { width: 200px; background: #FFFFFF;}
+
+#bps-container table label { font-weight: 700; vertical-align:bottom;}
+
+#bps-container div div { font-size: 1em; }
+
+.tab-page {}
+
+.form-table {background: #EBEBEB; border:1px solid #addae6;}
+
+.tog {}
+
+.submit { padding:10px 0px 10px 15px;}
+
+.url-path { font-weight:700;}
+
+.public-ip { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; }
+
+/* BPS Menu */
+.bps-menu {}
+.bps-menu ul li { border:1px solid #EBEBEB; font-size: 1.25em; font-weight:700;}
+.bps-menu ul li a { color:#FFFFFF; background-image:url(../images/menu_btn.png); background-repeat:repeat-x;}
+.bps-menu ul li a:hover {color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:repeat-x;}
+.bps-menu ul li a:active {color:#FFFFFF; background-image:url(../images/menu_btn_over.png); background-repeat:repeat-x;}
+
+/* jQuery UI Tabs */
+#tabs-1, #tabs-2, #tabs-3, #tabs-4, #tabs-5, #tabs-6, #tabs-7 {
+	border:1px solid #999999;
+	padding:0px 10px 5px 10px;
+}
+
+#tabs .ui-tabs-nav li.ui-tabs-selected a:link,
+#tabs .ui-tabs-nav li.ui-tabs-selected a:visited,
+#tabs .ui-tabs-nav li.ui-tabs-selected a:hover,
+#tabs .ui-tabs-nav li.ui-tabs-selected a:active { color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:repeat-x; }
+
+#tabs .ui-tabs-nav li a:link,
+#tabs .ui-tabs-nav li a:visited,
+#tabs .ui-tabs-nav li a:hover,
+#tabs .ui-tabs-nav li a:active { font-size:14px; }
+
+/* Read Me Links on pages */
+.tab-page a {
+	color:#000000;
+	padding:4px 12px 6px 12px;
+	text-decoration:none;
+}
+
+.tab-page h1 a, .tab-page h2 a, .tab-page h3 a, .tab-page h4 a {
+	color:#000000;
+	background-image:url(../images/read_me_btn.png);
+	background-repeat:repeat-x;
+	padding:4px 12px 6px 12px;
+	text-decoration:none;
+	margin-left:10px;
+}
+
+.table_title a {
+	color: #000000;
+	font-size:12px;
+	background-image:url(../images/read_me_btn_table.png);
+	background-repeat:repeat-x;
+	padding:5px 10px 5px 10px;
+	text-decoration:none;
+	margin-left:10px;
+}
+
+/* Tables - System Info Page, Status Page, Backup and Restore Page */
+.system_info_table {}
+.status_table {}
+.backup_restore_table {}
+.help_faq_table {padding:0px 0px 10px 0px;}
+
+.table_title {
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:900;
+	padding:5px 0px 5px 5px;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-top:1px solid black;
+}
+
+.table_cell {
+	background:#FFFFFF;
+	vertical-align:text-top;
+	padding:0px 0px 0px 5px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.table_cell_bottom {
+	background-color:#FFFFFF;
+	padding:0px 0px 0px 5px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+}
+
+.table_cell_perms_head_left {
+	background-color:#FFFFFF;
+	padding:0px 0px 0px 5px;
+	border-left:1px solid black;
+	border-bottom:3px solid #000066;
+}
+
+.table_cell_perms_head_middle {
+	background-color:#FFFFFF;
+	padding:0px;
+	border-bottom:3px solid #000066;
+}
+
+.table_cell_perms_head_right {
+	background-color:#FFFFFF;
+	padding:0px;
+	border-right:1px solid black;
+	border-bottom:3px solid #000066;
+}
+
+.perms_table_div {}
+
+.perms_table {}
+
+.table_cell_perms_blank {
+	background-color:#FFFFFF;
+	vertical-align:text-top;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.table_cell_perms_bottom {
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+}
+
+.table_cell_file_checks {
+	background-color:#FFFFFF;
+	vertical-align:text-top;
+	padding:5px 0px 0px 5px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.file_checks_bottom_table {
+	width:101%;  /* i luv this one - closes the gap between tables ;) */
+	margin-left:-5px;
+	Padding:0px 0px 0px 0px;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+}
+
+.file_checks_bottom_table_cell {
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+}
+
+.table_cell_help {
+	background-color:#FFFFFF;
+	font-size:1em;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	padding:15px 0px 0px 10px;
+}
+
+.table_cell_help a {
+	font-size:1.13em;
+	font-weight:700;
+	text-decoration: underline;
+}
+
+.bps_pro_activation_table {
+	background-color:#FFFFFF;
+	border-left:1px solid black;
+	border-right:1px solid black;
+}
+
+.bps_pro_activation_form {
+	background-color:#FFFFFF;
+	padding:30px 0px 0px 0px;
+}
+
+.bps_pro_activate_text_field {
+	font-size:1em;
+	font-style:italic;
+	font-weight:700;
+	padding:5px 0px 0px 5px;
+}
+
+.table_cell_activation_details {
+	vertical-align:text-top;
+	padding:0px 0px 0px 5px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.bps_pro_modules_info {
+	background-color:#FFFFFF;
+	vertical-align:text-top;
+	padding:5px 0px 5px 5px;
+}
+
+#AITpro-link { padding:5px 0px 0px 10px;}

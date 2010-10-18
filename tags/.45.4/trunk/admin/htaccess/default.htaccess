@@ -1,0 +1,48 @@
+
+# BULLETPROOF .45.4 >>>>>>> DEFAULT .HTACCESS
+
+# WARNING THIS .htaccess FILE DOES NOT PROTECT YOUR WEBSITE FROM BEING HACKED
+# If for some strange reason your host does not have +FollowSymlinks enabled by default at
+# the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
+# If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
+# everything else is set correctly then remove the # sign in front of Options +FollowSymlinks
+# below. If you are still getting 500 errors then immediately put the # sign back. All hosts
+# these days should have this enabled by default. Enabling this will actually cause 500 server
+# errors if your host has this enabled so you should probably never have to remove the # sign. 
+# Options +FollowSymlinks
+
+# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first
+# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
+# AddType x-mapp-php5 .php
+# Other common possibilities depending on your web host - check with your web host first
+# AddHandler application/x-httpd-php5 .php
+# AddHandler cgi-php5 .php
+
+Options -Indexes
+
+# BEGIN WordPress
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+# END WordPress
+
+# DENY PUBLIC ACCESS TO YOUR wp-config.php File
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
+
+# DENY PUBLIC ACCESS TO YOUR php.ini file. 
+<Files php.ini> 
+order allow,deny 
+deny from all 
+</Files> 
+
+# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
+<Files php5.ini> 
+order allow,deny 
+deny from all 
+</Files> 
