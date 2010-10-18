@@ -1,6 +1,10 @@
 
 #   BULLETPROOF .45.4 >>>>>>>> SECURE .HTACCESS
 
+# If you are using the W3 Total Cache Plugin add 2 blank spaces after the # sign and
+# before BULLETPROOF above - this is still a workaround until I can write some code
+# to counteract this wierd glitch. Example: #   BULLETPROOF .45.4 >>>>>>> etc, etc.
+
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
 # If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
