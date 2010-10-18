@@ -455,7 +455,7 @@ do_action('bps_admin_menu');
 	<th><label><input name="selection" type="radio" value="bpmaintenance" class="tog" <?php checked('', $bpmaintenance); ?> />
 	<?php _e('Maintenance Mode'); ?></label></th>
 	<td class="url-path"><?php _e('<font color="green">Copies the file maintenance.htaccess to your root folder and renames the file name to just .htaccess<br>The file bp-maintenance.php is also copied to your root folder. This is the actual "Website Under Maintenance" page.</font>'); ?></td>
-	<td><?php _e("<tr><td class=\"public-ip\">" .$_SERVER['REMOTE_ADDR'] . "</td><td><strong>This is your CURRENT PUBLIC IP ADDRESS. If you plan on putting your website in website under maintenance mode, then this is your IP address that you will add to the maintenance.htacess master file. Read the CAUTION: Read Me ToolTip for more specific information.</strong></td></tr></div>"); ?></td>
+	<td><?php _e("<tr><td class=\"public-ip\">" .$_SERVER['REMOTE_ADDR'] . "</td><td><strong>This is your CURRENT PUBLIC IP ADDRESS. If you plan on putting your website in website under maintenance mode, then this is your IP address that you will add to the maintenance.htacess master file. Read the CAUTION: Read Me ToolTip for more specific information.</strong></td></tr>"); ?></td>
    </tr>
 </table>
 <p class="submit">
