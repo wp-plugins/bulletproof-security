@@ -1,5 +1,5 @@
 
-#   BULLETPROOF .45.4 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .45.5 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.

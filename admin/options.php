@@ -53,7 +53,7 @@ do_action('bps_admin_menu');
 
 <div class=wrap>
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/bulletproof-security/admin/js/wz_tooltip.js"></script>
-<?php $bulletproof_ver = '.45.4'; ?>
+<?php $bulletproof_ver = '.45.5'; ?>
 <?php screen_icon('options-general'); ?>
 <h2><?php esc_html_e('BulletProof Security Settings', 'bulletproof-security'); ?></h2>
     
@@ -479,19 +479,19 @@ do_action('bps_admin_menu');
     <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-backup-restore" target="_blank">Backup & Restore Help Info</a></td>
   </tr>
   <tr>
-    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank">BPS .45.4 Guide</a></td>
+    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank">BPS .45.5 Guide</a></td>
     <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#maintenance-mode-ip-instructions" target="_blank">Maintenance Mode Help Info</a></td>
   </tr>
   <tr>
-    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank">BPS .45.4 Features</a></td>
-    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank">BPS .45.4 Coding Modifications Help Info</a></td>
+    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank">BPS .45.5 Features</a></td>
+    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank">BPS .45.5 Coding Modifications Help Info</a></td>
   </tr>
   <tr>
     <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/319/bulletproof-security-plugin-support/bulletproof-security-comments-questions-problems-wishlist/" target="_blank">Post Questions and Comments for Assistance</a></td>
     <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#modifying-htaccess-files" target="_blank">Modifying BPS .htaccess Files for WordPress Subfolders</a></td>
   </tr>
   <tr>
-    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank">BPS .45.4 Screenshots</a></td>
+    <td class="table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank">BPS .45.5 Screenshots</a></td>
     <td class="table_cell_help">&nbsp;</td>
   </tr>
   <tr>

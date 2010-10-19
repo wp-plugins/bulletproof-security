@@ -1,6 +1,6 @@
 <?php
 
-// BPS Class File
+// BPS Class File - not in use in this version
 if ( !class_exists('Bulletproof_Security') ) :
 	class Bulletproof_Security {
 	var $options;

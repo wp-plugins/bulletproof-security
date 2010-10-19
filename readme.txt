@@ -10,7 +10,7 @@ Fast one click switching between secure .htaccess security modes and maintenance
 
 == Description ==
 
-Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. BPS protects wp-config.php and php.ini files with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.
+Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. BPS protects wp-config.php, php.ini and php5.ini files with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.
 
 The BulletProof Security plugin is designed to be a fast, simple and convenient one click method for you to
 switch between different levels of .htaccess website security and .htaccess maintenance modes from within

@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
-// and display string dump - also checks for single character "5" in .45.4 in string position 15 to validate the version of BPS //.htaccess file and the wp-config.php status
+// and display string dump - also checks for single character "5" in .45.5 in string position 15 to validate the version of BPS //.htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	if ( !file_exists(ABSPATH . $filename)) {
