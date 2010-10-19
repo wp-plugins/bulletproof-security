@@ -10,9 +10,6 @@ Fast one click switching between secure .htaccess security modes and maintenance
 
 == Description ==
 
-*** The BulletProof Security SVN Database is corrupted on WP ***
-*** Updates are currently only available directly from AITpro.com ***
-
 Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. BPS protects wp-config.php, php.ini and php5.ini files with .htaccess protection. One-click .htaccess security file activation. One-click website under maintenance mode activation (HTTP 503). Hide your WordPress version - WP Generator META tag removed, Check and ensure WP DB errors are off, Check WordPress file and folder permissions, Extensive system info (PHP, MySQL, OS, Memory Usage, IP, Max file size info, etc.). Security Status checking.
 
 The BulletProof Security plugin is designed to be a fast, simple and convenient one click method for you to
@@ -75,8 +72,9 @@ folder first before upgrading if you made customizations or modifications to any
 
 = BulletProof Security will not update or install directly from WordPress =
 
-*** The BulletProof Security SVN Database is corrupted on WP ***
-*** Updates are currently only available directly from AITpro.com ***
+There was a temporary problem with installing and downloading BPS between
+10-18-2010 and 10-19-2010. That problem was resolved by some awesome dude or dudess
+at WordPress.
 
 = How does the BulletProof Security Plugin work? =
 
@@ -118,8 +116,8 @@ versions of BulletProof Security.
 == Changelog ==
 
 = .45.5 =
-*** The BulletProof Security SVN Database is corrupted on WP ***
-*** Updates are currently only available directly from AITpro.com ***
+* The SVN DB problem for BPS was fixed by some awesome person at WP!
+* WP ROCKS!!! BPS .45.5 will install successfully now. ;)
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent coding fixes incorporated into master htaccess files to replace workarounds
 * Additional mission critical PHP Info checks added
@@ -128,8 +126,7 @@ versions of BulletProof Security.
 * nick nacks here and there
 
 = .45.4 =
-* SVN Corruption unable to use this version - will not download - will not install
-* Forced to try to tag and upload a new version - fingers crossed here
+* SVN DB Corruption - unable to use this version - will not download - will not install
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent coding fixes incorporated into master htaccess files to replace workarounds
 * Additional mission critical PHP Info checks added
@@ -206,9 +203,8 @@ versions of BulletProof Security.
 
 == Upgrade Notice ==
 
-*** The BulletProof Security SVN Database is corrupted on WP ***
-*** Updates are currently only available directly from AITpro.com ***
-* The .45.4 upgrade is corrupted by SVN beyond repair - Tagging and releasing .45.5
+* The SVN DB problem for BPS was fixed by some awesome person at WP!
+* WP ROCKS!!! BPS .45.5 will install successfully now. ;)
 * Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
 * Permanent htaccess coding fixes added to master BPS htaccess files to replace workarounds
 * Php.ini and php5.ini files are now protected by BulletProof Security
