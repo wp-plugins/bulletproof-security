@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
-// and display string dump - also checks for single character "5" in .45.1 in string position 15 to validate the version of BPS .htaccess file and the wp-config.php status
+// and display string dump - also checks for single character "5" in .45.4 in string position 15 to validate the version of BPS //.htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	if ( !file_exists(ABSPATH . $filename)) {
@@ -120,11 +120,16 @@ function root_htaccess_status() {
 		var_dump($section);
 		$check_string = strpos($section, "5");
 		if ($check_string == "15") { // if you modify BPS .htaccess files this str pos must match for valid status checks
-		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS';
+		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS';
+		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
+	} else {
+	if ($check_string == "17") { // W3 Total Cache shift 2 positions to right check
+		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented. Deactivate and Reactivate W3.<br>If you see error messages in W3 you will need to empty all W3 caches and redeploy W3.';
 		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
 	} else {
 	_e('<font color="red"><br><br>A BPS .htaccess file was NOT found in your root folder or the BPS .htaccess file that you are currently using does NOT include .htaccess protection for wp-config.php. Please read the Read Me hover Tooltip before activating a newer version of a BPS website root folder .htaccess file.</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
+	}
 	}
 	}
 	}
@@ -278,6 +283,7 @@ function bps_get_sql_mode() {
 } 
 
 // PHP ini get display errors 1 = ON or 0 = OFF - not valid for php.ini - On or Off)
+// Does not display accurate info in all cases
 //function bps_php_display_errors() {
 //	echo '' . ini_get('display_errors');
 //	}
