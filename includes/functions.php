@@ -110,6 +110,7 @@ if (isset($_POST['submit'])) {
 // and display string dump - also checks for single character "5" in .45.6 in string position 15 to validate the version of BPS //.htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
+	$w3 = ABSPATH . '/wp-content/plugins/w3-total-cache/w3-total-cache.php';
 	if ( !file_exists(ABSPATH . $filename)) {
 	_e('<font color="red">NO .htaccess was found in your root folder</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
@@ -123,9 +124,13 @@ function root_htaccess_status() {
 		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS';
 		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
 	} else {
-	if ($check_string == "17") { // W3 Total Cache shift 2 positions to right check
-		$wpconfig_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented. Deactivate and Reactivate W3.<br>If you see error messages in W3 you will need to empty all W3 caches and redeploy W3.';
-		_e('<p style="color:green;font-weight:bold;">' . $wpconfig_status . '</p>');
+		$w3 = ABSPATH . '/wp-content/plugins/w3-total-cache/w3-total-cache.php';
+	if ( !file_exists(ABSPATH . $w3)) {
+	_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
+	} else {
+		if ($check_string == "17") { // W3 Total Cache shift 2 positions to right check
+		$w3_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented. Deactivate and Reactivate W3.<br>If you see error messages in W3 you will need to empty all W3 caches and redeploy W3.';
+		_e('<p style="color:green;font-weight:bold;">' . $w3_status . '</p>');
 	} else {
 	_e('<font color="red"><br><br>A BPS .htaccess file was NOT found in your root folder or the BPS .htaccess file that you are currently using does NOT include .htaccess protection for wp-config.php. Please read the Read Me hover Tooltip before activating a newer version of a BPS website root folder .htaccess file.</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
@@ -133,6 +138,7 @@ function root_htaccess_status() {
 	}
 	}
 	}
+}
 }
 
 // Get wp-admin .htaccess content - get first 45 characters of current
