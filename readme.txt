@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention 
 Requires at least: 2.8
 Tested up to: 3.1-alpha
-Stable tag: .45.5
+Stable tag: .45.6
 
 Fast one click switching between secure .htaccess security modes and maintenance mode from within the Dashboard. 
 
@@ -64,7 +64,7 @@ folder first before upgrading if you made customizations or modifications to any
 5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
 6. Activate the BulletProof Security plugin.
 7. Activating BulletProof Security DOES NOT enable any of the BulletProof Security .htaccess modes.
-8. BulletProof .45.5 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
+8. BulletProof .45.6 includes Backup and Restore. Back up your existing .htaccess files first before enabling any BulletProof Security Modes.
 9. To enable BulletProof Security modes, click on the Settings link under BulletProof Security on your Plugins page.
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
@@ -114,6 +114,15 @@ versions of BulletProof Security.
 3. BulletProof System Information page
 
 == Changelog ==
+
+= .45.6 =
+* !!!CRITICAL UPDATE!!!
+* New SQL Injection hacking method blocked - New code added to master .htaccess files
+* BPS was finally successfully hacked after 7 months and thousands of hacking attempts
+* This update prevents this latest new SQL Injection hacking method
+* Installing BPS does not activate the new BPS .45.6 .htaccess files
+* After installation please activate the BPS .45.6 BulletProof modes
+* Please download your current htaccess files first before activating BPS .45.6 Security Modes
 
 = .45.5 =
 * The SVN DB problem for BPS was fixed by some awesome person at WP!
@@ -203,13 +212,10 @@ versions of BulletProof Security.
 
 == Upgrade Notice ==
 
-* The SVN DB problem for BPS was fixed by some awesome person at WP!
-* WP ROCKS!!! BPS .45.5 will install successfully now. ;)
-* Bug fixes: W3 Total Cache, Simple Facebook Connect, Ozh' Admin Drop Down Menu, ComicPress
-* Permanent htaccess coding fixes added to master BPS htaccess files to replace workarounds
-* Php.ini and php5.ini files are now protected by BulletProof Security
-* IMPORTANT! Additional Query String Exploit Filters added as of BPS .45.3 to master .htaccess files
-* Download your backed up, customized or modified .htaccess master files first before upgrading to .45.4
-* The location for .htaccess master files is /bulletproof-security/admin/htaccess/
-* Activating the BPS .45.4 .htaccess master files ensures that you have the latest stable .htaccess code
-* Help files and hover tool tips help info updated
+* !!!CRITICAL UPDATE!!!
+* New SQL Injection hacking method blocked - New code added to master .htaccess files
+* BPS was finally successfully hacked after 7 months and thousands of hacking attempts
+* This update prevents this latest new SQL Injection hacking method
+* Installing BPS does not activate the new BPS .45.6 .htaccess files
+* After installation please activate the BPS .45.6 BulletProof modes
+* Please download your current htaccess files first before activating BPS .45.6 Security Modes
