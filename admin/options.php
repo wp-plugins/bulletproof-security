@@ -58,7 +58,7 @@ do_action('bps_admin_menu');
 <p><?php _e('<strong>Important! </strong><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#root-or-subfolder-wordpress-installation" target="_blank">Read Me First</a> before activating any BulletProof Security Modes'); ?></p></div>
 
 <div class=wrap>
-<?php $bulletproof_ver = '.45.6'; ?>
+<?php $bulletproof_ver = '.45.7'; ?>
 <?php screen_icon('options-general'); ?>
 <h2><?php esc_html_e('BulletProof Security Settings', 'bulletproof-security'); ?></h2>
     
