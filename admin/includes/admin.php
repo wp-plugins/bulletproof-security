@@ -59,7 +59,7 @@ function bulletproof_security_install() {
 	global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.45.6', '<') )
+	if ( version_compare($previous_install['version'], '.45.7', '<') )
 	remove_role('denied');
 	}
 }
