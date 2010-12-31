@@ -1,5 +1,4 @@
-
-#   BULLETPROOF .45.6 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .45.7 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -10,11 +9,11 @@
 # errors if your host has this enabled so you should probably never have to remove the # sign. 
 # Options +FollowSymlinks
 
-# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
-# Some web hosts have very specific directives - check with your web host first.
+# These are some common Apache Directives to force PHP5 to be used instead of PHP4
+# Some web hosts have very specific directives - check with your web host first
 # Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
 # AddType x-mapp-php5 .php
-# Other common possibilities depending on your web host - check with your web host first.
+# Other common possibilities depending on your web host - check with your web host first
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
 
@@ -50,6 +49,11 @@ RewriteRule . - [S=15]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
 RewriteRule . - [S=15]
 
+# TimThumb Thumbnail Images not displaying - Red X instead of Images
+# If your theme uses TimThumb and the file is called something else like thumb.php then change the filename below
+RewriteCond %{REQUEST_FILENAME} !timthumb.php$
+RewriteRule . - [S=15]
+
 # FILTER REQUEST METHODS
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK) [NC]
 RewriteRule ^(.*)$ - [F,L]
@@ -61,22 +65,25 @@ RewriteCond %{QUERY_STRING} tag\= [NC,OR]
 RewriteCond %{QUERY_STRING} ftp\:  [NC,OR] 
 RewriteCond %{QUERY_STRING} http\:  [NC,OR] 
 RewriteCond %{QUERY_STRING} https\:  [NC,OR]
-RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR] 
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR] 
 RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [NC,OR]
 RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|’|"|;|\?|\*|=$).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(&#x22;|&#x27;|&#x3C;|&#x3E;|&#x5C;|&#x7B;|&#x7C;).* [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(%24&x).* [NC,OR]  
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR] 
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|"|;|\?|\*|=$).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC] 
+RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
 RewriteRule ^(.*)$ - [F,L]
 
 # DENY PUBLIC ACCESS TO YOUR wp-config.php File
-<files wp-config.php>
+<Files wp-config.php>
 order allow,deny
 deny from all
-</files>
+</Files>
 
 # DENY PUBLIC ACCESS TO YOUR php.ini file. 
 <Files php.ini> 
@@ -88,4 +95,4 @@ deny from all
 <Files php5.ini> 
 order allow,deny 
 deny from all 
-</Files> 
+</Files>

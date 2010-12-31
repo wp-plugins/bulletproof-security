@@ -1,6 +1,12 @@
 <?php
+// Direct calls to this file are Forbidden when core files are not present
+if (!function_exists ('add_action')) {
+		header('Status: 403 Forbidden');
+		header('HTTP/1.1 403 Forbidden');
+		exit();
+}
 
-// BPS Pro install transition
+// BPS Pro install transition - not used - placeholder
 function bulletproof_security_save_options() {
 	global $bulletproof_security;
 	return $bulletproof_security->save_options();
@@ -90,6 +96,32 @@ if (isset($_POST['submit'])) {
 	}
 }
 
+// Form rename Deny All htaccess file for the BPS Master htaccess folder
+$bps_rename_htaccess_files = 'unchecked';
+$bps_rename_htaccess = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/deny-all.htaccess';
+$bps_rename_htaccess_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/.htaccess';
+
+if (isset($_POST['submit'])) {
+	$selected_radio = $_POST['selection'];
+	if ($selected_radio == 'bps_rename_htaccess_files') {
+	$bps_rename_htaccess_files = 'checked';
+		copy($bps_rename_htaccess, $bps_rename_htaccess_renamed) or die("Unable to rename $bps_rename_htaccess to $bps_rename_htaccess_renamed.");
+	}
+}
+
+// Form rename Deny All htaccess file for the BPS htaccess backup folder
+$bps_rename_htaccess_files_backup = 'unchecked';
+$bps_rename_htaccess_backup = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/backup/deny-all.htaccess';
+$bps_rename_htaccess_backup_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/backup/.htaccess';
+
+if (isset($_POST['submit'])) {
+	$selected_radio = $_POST['selection'];
+	if ($selected_radio == 'bps_rename_htaccess_files_backup') {
+	$bps_rename_htaccess_files_backup = 'checked';
+		copy($bps_rename_htaccess_backup, $bps_rename_htaccess_backup_renamed) or die("Unable to rename $bps_rename_htaccess_backup to $bps_rename_htaccess_backup_renamed.");
+	}
+}
+
 // Form copy and rename maintenance htaccess for root + copy bp-maintenance.php to root
 $bpmaintenance = 'unchecked';
 $oldmaint = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
@@ -104,6 +136,119 @@ if (isset($_POST['submit'])) {
 		copy($oldmaint, $newmaint) or die("Unable to copy $oldmaint to $newmaint.");
 		copy($oldmaint1, $newmaint1) or die("Unable to copy $oldmaint1 to $newmaint1.");
 	}
+}
+
+// BPS Master htaccess File Editing - Bulky code but much more secure
+function get_secure_htaccess() {
+	$secure_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+	if (file_exists(ABSPATH . $secure_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $secure_htaccess_file);
+	} else {
+	_e('The secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the secure.htaccess file exists and is named secure.htaccess.');
+	}
+}
+
+function get_default_htaccess() {
+	$default_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+	if (file_exists(ABSPATH . $default_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $default_htaccess_file);
+	} else {
+	_e('The default.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the default.htaccess file exists and is named default.htaccess.');
+	}
+}
+
+function get_maintenance_htaccess() {
+	$maintenance_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+	if (file_exists(ABSPATH . $maintenance_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $maintenance_htaccess_file);
+	} else {
+	_e('The maintenance.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the maintenance.htaccess file exists and is named maintenance.htaccess.');
+	}
+}
+
+function get_wpadmin_htaccess() {
+	$wpadmin_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+	if (file_exists(ABSPATH . $wpadmin_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $wpadmin_htaccess_file);
+	} else {
+	_e('The wpadmin-secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the wpadmin-secure.htaccess file exists and is named wpadmin-secure.htaccess.');
+	}
+}
+
+// The current active root htaccess file
+function get_root_htaccess() {
+	$root_htaccess_file = '/.htaccess';
+	if (file_exists(ABSPATH . $root_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $root_htaccess_file);
+	} else {
+	_e('An .htaccess file was not found in your website root folder.');
+	}
+}
+
+// The current active wp-admin htaccess file
+function get_current_wpadmin_htaccess_file() {
+	$current_wpadmin_htaccess_file = '/wp-admin/.htaccess';
+	if (file_exists(ABSPATH . $current_wpadmin_htaccess_file)) {
+	echo file_get_contents(ABSPATH . $current_wpadmin_htaccess_file);
+	} else {
+	_e('An .htaccess file was not found in your wp-admin folder.');
+	}
+}
+
+// File write checks for editor
+function secure_htaccess_file_check() {
+$secure_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+	if (!is_writable($secure_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the secure.htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
+}
+
+// File write checks for editor
+function default_htaccess_file_check() {
+$default_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+	if (!is_writable($default_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the default.htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
+}
+// File write checks for editor
+function maintenance_htaccess_file_check() {
+$maintenance_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+	if (!is_writable($maintenance_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the maintenance.htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
+}
+// File write checks for editor
+function wpadmin_htaccess_file_check() {
+$wpadmin_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+	if (!is_writable($wpadmin_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the wpadmin-secure.htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
+}
+// File write checks for editor
+function root_htaccess_file_check() {
+$root_htaccess_file = ABSPATH . '/.htaccess';
+	if (!is_writable($root_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the root .htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
+}
+// File write checks for editor
+function current_wpadmin_htaccess_file_check() {
+$current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
+	if (!is_writable($current_wpadmin_htaccess_file)) {
+ 		_e('<font color="red"><strong>Cannot write to the wp-admin .htaccess file. Minimum file permission required is 600.</strong></font><br>');
+	    } else {
+	_e('');
+}
 }
 
 // Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
@@ -126,7 +271,7 @@ function root_htaccess_status() {
 	} else {
 		$w3 = ABSPATH . '/wp-content/plugins/w3-total-cache/w3-total-cache.php';
 	if ( !file_exists(ABSPATH . $w3)) {
-	_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
+	_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font>');
 	} else {
 		if ($check_string == "17") { // W3 Total Cache shift 2 positions to right check
 		$w3_status = '&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS<br>&radic; W3 Total Cache fix implemented. Deactivate and Reactivate W3.<br>If you see error messages in W3 you will need to empty all W3 caches and redeploy W3.';
@@ -151,6 +296,25 @@ function wpadmin_htaccess_status() {
 		var_dump($section);
 	} else {
 	_e('<font color="red">NO .htaccess file was found in your /wp-admin folder</font><br>');
+	}
+}
+
+// Check if BPS Deny ALL htaccess file is activated for the BPS Master htaccess folder
+function denyall_htaccess_status_master() {
+$filename = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/.htaccess';
+	if (file_exists($filename)) {
+    _e('<font color="green"><strong>&radic; Deny All protection activated for BPS Master /htaccess folder</strong></font><br>');
+	} else {
+    _e('<font color="red"><strong>Deny All protection NOT activated for BPS Master /htaccess folder</strong></font><br>');
+	}
+}
+// Check if BPS Deny ALL htaccess file is activated for the BPS htaccess backup folder
+function denyall_htaccess_status_backup() {
+$filename = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/backup/.htaccess';
+	if (file_exists($filename)) {
+    _e('<font color="green"><strong>&radic; Deny All protection activated for BPS htaccess /backup folder</strong></font><br><br>');
+	} else {
+    _e('<font color="red"><strong>Deny All protection NOT activated for BPS htaccess /backup folder</strong></font><br><br>');
 	}
 }
 
@@ -287,22 +451,6 @@ function bps_get_sql_mode() {
         if (empty($sql_mode)) $sql_mode = __('Not Set');
 		else $sql_mode = __('Off');
 } 
-
-// PHP ini get display errors 1 = ON or 0 = OFF - not valid for php.ini - On or Off)
-// Does not display accurate info in all cases
-//function bps_php_display_errors() {
-//	echo '' . ini_get('display_errors');
-//	}
-//	$bps_php_display_errors_output = str_replace('1', 'On', '1');
-
-//function bps_php_display_errors_output($bps_php_display_errors_output = '') {
-//	if ($bps_php_display_errors_output == '1') {
-//	return $bps_php_display_errors_output($bps_php_display_errors_output = '');
-//	}
-//	else if ($bps_php_display_errors_output == '0') {
-//	echo 'Off';
-//	}
-//}
 
 // Show DB errors should already be set to false in /includes/wp-db.php
 // Extra insurance sho_errors = false function re-applied - this function will be expanded in the future to allow DB errors to be turned on and off from the Dashboard - DB errors will display in this window

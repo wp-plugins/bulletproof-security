@@ -183,7 +183,7 @@ $hostname = str_replace('www.', '', $hostname); ?>
 
 <script type="text/javascript">
 // add the date and time that your website started maintenance below
-var futuredate=new cdtime("countdowncontainer", "April 22, 2010 04:25:00")
+var futuredate=new cdtime("countdowncontainer", "July 22, 2010 04:25:00")
 futuredate.displaycountdown("days", formatresults)
 
 var currentyear=new Date().getFullYear()
@@ -191,7 +191,7 @@ var currentyear=new Date().getFullYear()
 var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? currentyear+1 : currentyear
 // add the date and time that your website maintenance will be done below
 // no need to add a year it is precalculated by +thischristmasyear+
-var christmas=new cdtime("countdowncontainer2", "December 30, "+thischristmasyear+" 20:0:00")
+var christmas=new cdtime("countdowncontainer2", "March 30, "+thischristmasyear+" 20:0:00")
 christmas.displaycountdown("days", formatresults2)
 </script>
 </td></tr>

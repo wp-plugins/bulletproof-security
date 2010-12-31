@@ -1,7 +1,7 @@
+# BULLETPROOF .45.7 >>>>>>> DEFAULT .HTACCESS
 
-# BULLETPROOF .45.6 >>>>>>> DEFAULT .HTACCESS
-
-# WARNING THIS .htaccess FILE DOES NOT PROTECT YOUR WEBSITE FROM BEING HACKED
+# WARNING THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
+# This is a standard generic WP htaccess file
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
 # If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
@@ -11,7 +11,7 @@
 # errors if your host has this enabled so you should probably never have to remove the # sign. 
 # Options +FollowSymlinks
 
-# The Most Common Apache Directives to force PHP5 to be used instead of PHP4
+# These are some common Apache Directives to force PHP5 to be used instead of PHP4
 # Some web hosts have very specific directives - check with your web host first
 # Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
 # AddType x-mapp-php5 .php
@@ -30,10 +30,10 @@ RewriteRule . /index.php [L]
 # END WordPress
 
 # DENY PUBLIC ACCESS TO YOUR wp-config.php File
-<files wp-config.php>
+<Files wp-config.php>
 order allow,deny
 deny from all
-</files>
+</Files>
 
 # DENY PUBLIC ACCESS TO YOUR php.ini file. 
 <Files php.ini> 
