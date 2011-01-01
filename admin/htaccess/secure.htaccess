@@ -51,7 +51,7 @@ RewriteRule . - [S=15]
 
 # TimThumb Thumbnail Images not displaying - Red X instead of Images
 # If your theme uses TimThumb and the file is called something else like thumb.php then change the filename below
-RewriteCond %{REQUEST_FILENAME} !timthumb.php$
+RewriteCond %{REQUEST_FILENAME} ^timthumb.php$
 RewriteRule . - [S=15]
 
 # FILTER REQUEST METHODS
