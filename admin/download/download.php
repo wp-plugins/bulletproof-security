@@ -22,6 +22,8 @@ define('ALLOWED_REFERRER', '');
 // Add your website Document Root path in front of the path to the BPS admin folder like the example shown below
 // Your Document Root path can be found on the BPS System Info page. This set up will work fine in the majority of cases.
 // Example: define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/wp-content/plugins/bulletproof-security/admin/');
+// For a WordPress subfolder you would add your Document Root path and the subfolder name shown in the example below
+// Example: define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/your-wordpress-folder-name/wp-content/plugins/bulletproof-security/admin/');
 // If you have multiple domains under 1 web hosting account these domains are aliased domains. To add the correct path
 // to an aliased domain you need to add the EXACT FOLDER NAME (not www or http) where the domain (website) is located on
 // your web hosting server. See the example below.
