@@ -1,9 +1,9 @@
 === BulletProof Security ===
-Contributors: Edward Alexander
+Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention, XSS, SQL Injection 
-Requires at least: 2.8
-Tested up to: 3.1-alpha
+Requires at least: 3.0
+Tested up to: 3.1-RC2
 Stable tag: .45.7
 
 Fast one click website security protection. Protects your website from ALL XSS and SQL Injection hacking attempts. 
@@ -78,17 +78,9 @@ add (activate) .htaccess files to your website without having to use FTP. Bullet
  htaccess protection is one click website security. BPS has a built in File Editor, 
  File Uploader and File Downloader to make managing the BPS files and your website security fast and simple. 
 
-= Are there any known conflicts with other WordPress Plugins? =
+= Are there any known conflicts with other WordPress Plugins or Themes? =
 
-One possible conflict may exist with BuddyPress-Facebook Connect.
- Bug fixes completed as of BPS .45.5 for: Ozh' Admin Drop Down Menu, ComicPress, 
-Simple Facebook Connect and W3 Total Cache. If you know of a plugin that conflicts with 
-BulletProof Security please notify AITpro.com.
-
-= Are there any known conflicts with any WordPress Themes? =
-
-No. But there is a known issue with WordPress Themes that are using TimThumb. A fix has been
- implemented as of BPS .45.6.
+Please check the BPS compatibility testing page  http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
