@@ -80,7 +80,8 @@ add (activate) .htaccess files to your website without having to use FTP. Bullet
 
 = Are there any known conflicts with other WordPress Plugins or Themes? =
 
-Please check the BPS compatibility testing page  http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/
+Permanent fixes are created as conflicts are reported. New fixes will be included in the next version release
+of BPS. To add new fixes manually please see the AIT-pro.com Plugin Compatibility Testing and Fixes page.
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
