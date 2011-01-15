@@ -501,7 +501,7 @@ echo wpadmin_htaccess_file_check();
 $secure_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
 $write_test = "";
 	if (is_writable($secure_htaccess_file)) {
-    if (!$handle = fopen($secure_htaccess_file, 'rb')) {
+    if (!$handle = fopen($secure_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
@@ -522,7 +522,7 @@ $write_test = "";
 $default_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
 $write_test = "";
 	if (is_writable($default_htaccess_file)) {
-    if (!$handle = fopen($default_htaccess_file, 'rb')) {
+    if (!$handle = fopen($default_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
@@ -543,7 +543,7 @@ $write_test = "";
 $maintenance_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
 $write_test = "";
 	if (is_writable($maintenance_htaccess_file)) {
-    if (!$handle = fopen($maintenance_htaccess_file, 'rb')) {
+    if (!$handle = fopen($maintenance_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
@@ -564,7 +564,7 @@ $write_test = "";
 $wpadmin_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 $write_test = "";
 	if (is_writable($wpadmin_htaccess_file)) {
-    if (!$handle = fopen($wpadmin_htaccess_file, 'rb')) {
+    if (!$handle = fopen($wpadmin_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
@@ -585,7 +585,7 @@ $write_test = "";
 $root_htaccess_file = ABSPATH . '/.htaccess';
 $write_test = "";
 	if (is_writable($root_htaccess_file)) {
-    if (!$handle = fopen($root_htaccess_file, 'rb')) {
+    if (!$handle = fopen($root_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
@@ -607,7 +607,7 @@ $write_test = "";
 $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 $write_test = "";
 	if (is_writable($current_wpadmin_htaccess_file)) {
-    if (!$handle = fopen($current_wpadmin_htaccess_file, 'rb')) {
+    if (!$handle = fopen($current_wpadmin_htaccess_file, 'a+b')) {
     exit;
     }
     if (fwrite($handle, $write_test) === FALSE) {
