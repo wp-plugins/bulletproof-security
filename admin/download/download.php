@@ -1,5 +1,4 @@
 <?php
-
 ###############################################################
 # File Download 1.31
 ###############################################################
@@ -12,23 +11,48 @@
 #    download.php?f=phptutorial.zip&fc=php123tutorial.zip
 ###############################################################
 
-// Add your website domain name without www or http like the example shown below.
-// If your WordPress installation is in a subfolder you do NOT need to add the subfolder name.
-// Example: define('ALLOWED_REFERRER', 'ait-pro.com');
+/////////////////////////////////////////////////////////////////////////////////
+//            BulletProof Security Download Setup Instructions                 //
+/////////////////////////////////////////////////////////////////////////////////
+// Add your website domain name without www or http like the example shown     //
+// below. If your WordPress installation is in a subfolder you do NOT need to  //
+// add the subfolder name.                                                     //
+// Example: define('ALLOWED_REFERRER', 'ait-pro.com');                         //
+/////////////////////////////////////////////////////////////////////////////////
+
 define('ALLOWED_REFERRER', '');
 
-// Defines the Base directory where BPS downloadable files are located
-// MUST end with slash (i.e. "/" )
-// Add your website Document Root path in front of the path to the BPS admin folder like the example shown below
-// Your Document Root path can be found on the BPS System Info page. This set up will work fine in the majority of cases.
-// Example: define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/wp-content/plugins/bulletproof-security/admin/');
-// For a WordPress subfolder you would add your Document Root path and the subfolder name shown in the example below
-// Example: define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/your-wordpress-folder-name/wp-content/plugins/bulletproof-security/admin/');
-// If you have multiple domains under 1 web hosting account these domains are aliased domains. To add the correct path
-// to an aliased domain you need to add the EXACT FOLDER NAME (not www or http) where the domain (website) is located on
-// your web hosting server. See the example below.
-// Aliased Domain Example: /var/chroot/home/content/xx/xxxxxx/html/add-aliased-domain/wp-content/plugins/bulletproof-security/admin/
-define('BASE_DIR', '/wp-content/plugins/bulletproof-security/admin/');
+/////////////////////////////////////////////////////////////////////////////////
+//             BulletProof Security Download Setup Continued                   //
+/////////////////////////////////////////////////////////////////////////////////
+// Add the Base directory where BPS downloadable files are located             //
+// BASE_DIR path MUST end with a forward slash.                                //
+// Add your website Document Root path in front of the path to the BPS admin   //
+// folder like the example shown below. Your Document Root path can be found   //
+// on the BPS System Info page. The example directly below is for Wordpress    //
+// installations in the root folder.                                           //
+// define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/wp-content/');  //
+// For a WordPress installation in a subfolder you would add your Document     //
+// Root path and the subfolder name shown in the example directly below. The   //
+// example is using a folder named "my-blog" for this subfolder example.       //
+// define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/my-blog/wp-content/');
+// If you have multiple domains / websites under 1 web hosting account then    //
+// the additional domains are aliased domains. To add the correct path for     //
+// an aliased domain you need to add the EXACT FOLDER NAME (not www or http)   //
+// where the domain (website) folder is located on your web hosting server.    //
+// See the example directly below. The example is using a domain named         //
+// "my-aliased-domain" for the aliased domain's example folder name.           //
+// define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/my-aliased-domain/wp-content/');
+// And finally if you have WordPress installed in a subfolder for an aliased   //
+// domain you will add both the aliased domain folder name and the WordPress   //
+// subfolder name in the BASE_DIR path.                                        //
+/////////////////////////////////////////////////////////////////////////////////
+
+define('BASE_DIR', '/wp-content/');
+
+/////////////////////////////////////////////////////////////////////////////////
+//              BulletProof Security Download Setup Finished                   //
+/////////////////////////////////////////////////////////////////////////////////
 
 // log downloads?  true/false
 define('LOG_DOWNLOADS',false);
@@ -40,7 +64,9 @@ define('LOG_FILE','downloads.log');
 // If myme type is set to empty string then script will try to detect mime type 
 // itself, which would only work if you have Mimetype or Fileinfo extensions
 // installed on server.
-//********** The last item in an array does not have a comma *************
+// If you want to modify the array remember that the last item in an array 
+// should never have a comma after it.
+
 $allowed_ext = array (
 
   // archives

@@ -1,7 +1,8 @@
-# BULLETPROOF .45.7 >>>>>>> DEFAULT .HTACCESS
+# BULLETPROOF .45.8 >>>>>>> DEFAULT .HTACCESS
 
 # WARNING THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
-# This is a standard generic WP htaccess file
+# This is a standard generic htaccess file that does NOT provide any website security
+# The DEFAULT .HTACCESS file should only be used for testing purposes
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
 # If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
@@ -22,27 +23,13 @@
 Options -Indexes
 
 # BEGIN WordPress
+<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+</IfModule>
+
 # END WordPress
-
-# DENY PUBLIC ACCESS TO YOUR wp-config.php File
-<Files wp-config.php>
-order allow,deny
-deny from all
-</Files>
-
-# DENY PUBLIC ACCESS TO YOUR php.ini file. 
-<Files php.ini> 
-order allow,deny 
-deny from all 
-</Files> 
-
-# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
-<Files php5.ini> 
-order allow,deny 
-deny from all 
-</Files> 

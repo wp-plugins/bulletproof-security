@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.7 MAINTENANCE  .HTACCESS   
+#   BULLETPROOF .45.8 MAINTENANCE  .HTACCESS   
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -41,8 +41,7 @@ RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR] 
 RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|"|;|\?|\*|=$).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
 RewriteRule ^(.*)$ - [F,L]
@@ -63,10 +62,10 @@ RewriteCond %{REMOTE_ADDR} !^75\.40\.48\.207$
 RewriteCond %{REQUEST_URI} !^/bp-maintenance\.php$
 RewriteCond %{REQUEST_URI} !^/wp-content/plugins/bulletproof-security/abstract-blue-bg\.png$
 
-# No matter what file was requested, serve bp-maintenance.php ONLY.
+# No matter what file was requested serve bp-maintenance.php ONLY.
 RewriteRule ^(.*)$ /bp-maintenance.php [L]
 
-# If IP address was entered above it will bypass bp-maintenance.php
+# If your IP address was entered above bp-maintenance.php is bypassed
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]

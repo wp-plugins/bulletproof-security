@@ -5,12 +5,9 @@ header('Retry-After: 259200'); 	// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 17
 								// Enter the amount of time you expect your site to display under maintenance
 								// This is only to tell the Search Engines when to return not the timer display
 
-## BulletProof Pro includes an editable Flash Movie
-## that you can customize by adding your own images and messages.
-## You do not need the Flash software to edit the movie
-## to add your own custom images and message.
-## An interesting animated Flash movie will stick in visitors minds
-## and will increase the liklihood of visitor return.
+                                                  #################################
+// Areas that you should modify or customize have #### pounds signs above them ####
+                                                  #################################
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +16,10 @@ header('Retry-After: 259200'); 	// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 17
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <!-- <meta name="robots" content="noindex,nofollow"> ONLY use noindex with a 503
-If this is a brand new website that has not been indexed before --> 
+If this is a brand new website that has not been indexed before - I recommend that 
+you never use noindex even if this is a for a brand new website --> 
+<!-- ##########################################################################
+<!-- ################ Add whatever Title you want here ######################## -->
 <title>Website Temporarily Closed For Maintenance</title>
 <style type="text/css">
 <!--
@@ -141,8 +141,8 @@ setTimeout(function(){thisobj.showresults()}, 1000) //update results every secon
 function formatresults(){
 if (this.timesup==false){//if target date/time not yet met
 var displaystring=arguments[0]+" days "+arguments[1]+" hours "+arguments[2]+" minutes "+arguments[3]+" seconds left until April 22, 2010 04:25:00"
-}
-else{ //else if target date/time met - add whatever you want here
+}                                   // #############################################################################
+else{ //else if target date/time met - ##################### add whatever you want here ############################
 var displaystring="<span class='online_text'>The [add your website name here] Website<br>Will Be Online In...</span>"
 }
 return displaystring
@@ -153,7 +153,8 @@ if (this.timesup==false){ //if target date/time not yet met
 var displaystring="<span class='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></span>"
 }
 else{ //else if target date/time met
-var displaystring="" //Don't display any text
+// ##################################################################################################################
+var displaystring="" //Don't display any text ################ add whatever you want here ###########################
 alert("Countdown completed! [add your website name here] will resume normal website operation shortly.") //Instead, perform a custom alert
 }
 return displaystring
@@ -166,32 +167,41 @@ return displaystring
   <tr>
     <td>
 <?php
-
-// Display your website name with www by commenting out $hostname = str_replace... line of code below
+//#############################################################################################
+// #################### Display your website name with www ####################################
+// #################### by commenting out $hostname = str_replace... line of code below #######
 $hostname = $_SERVER['SERVER_NAME']; 
 $hostname = str_replace('www.', '', $hostname); ?>
 
-<!-- CSS class "maintenance is in the head section on this page -->
+<!-- ##########################################################################################
+     ############ CSS class "maintenance is in the head section on this page ################## -->
 <span class="maintenance"><?php echo $hostname; ?></span>
 
+<!-- ##########################################################################################
+     ############ Add your message below ###################################################### -->
 <p>[add your website name here] Website<br>Is Under Construction.</p>
 
 <div id="countdowncontainer"></div>
 <br />
 <div id="countdowncontainer2"></div>
+<!-- ############################################################
+     ############ Add whatever your want here ################### -->
 <p>Your IP Address is: <?php echo $_SERVER['REMOTE_ADDR']; ?></p>
 
 <script type="text/javascript">
-// add the date and time that your website started maintenance below
-var futuredate=new cdtime("countdowncontainer", "July 22, 2010 04:25:00")
+// ####################################################################################################
+// ############## add the date and time that your website started maintenance below ###################
+// ########################################### Time is entered in Military time #######################
+var futuredate=new cdtime("countdowncontainer", "January 25, 2011 16:25:00")
 futuredate.displaycountdown("days", formatresults)
 
 var currentyear=new Date().getFullYear()
 //dynamically get this Christmas' year value. If Christmas already passed, then year=current year+1
 var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? currentyear+1 : currentyear
-// add the date and time that your website maintenance will be done below
-// no need to add a year it is precalculated by +thischristmasyear+
-var christmas=new cdtime("countdowncontainer2", "March 30, "+thischristmasyear+" 20:0:00")
+// ####################################################################################################
+// ############## add the date and time that your website maintenance will be done below ##############
+// ############## no need to add a year it is precalculated by +thischristmasyear+ ####################
+var christmas=new cdtime("countdowncontainer2", "May 30, "+thischristmasyear+" 20:0:00")
 christmas.displaycountdown("days", formatresults2)
 </script>
 </td></tr>

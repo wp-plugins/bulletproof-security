@@ -19,12 +19,14 @@ function bulletproof_security_admin_init() {
 	wp_register_script( 'jquery-uploadify-142-min', WP_PLUGIN_URL . '/bulletproof-security/admin/uploadify/jquery-1.4.2.min.js' );
 	wp_register_script( 'jquery-uploadify-v214-min', WP_PLUGIN_URL . '/bulletproof-security/admin/uploadify/jquery.uploadify.v2.1.4.min.js' );
 	//wp_register_script( 'bps-admin-js', WP_PLUGIN_URL . '/bulletproof-security/admin/js/bulletproof-security-admin.js' );
-
+	
+	// Create BPS Backup Folder structure
+	if(!is_dir(WP_CONTENT_DIR.'/bps-backup/')) {
+		mkdir(WP_CONTENT_DIR.'/bps-backup/master-backups',0750,true);
+	}
+	
 	// Hook for main bps options settings page
 	add_action('load-bulletproof-security/admin/options.php', 'bulletproof_security_load_settings_page');
-			
-	// Hook for BulletProof Security Pro modules - used in BulletProof Security Pro only
-	// do_action('bps_pro_admin_init');
 }
 	
 function bulletproof_security_load_settings_page() {
@@ -59,7 +61,7 @@ function bulletproof_security_install() {
 	global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.45.7', '<') )
+	if ( version_compare($previous_install['version'], '.45.8', '<') )
 	remove_role('denied');
 	}
 }

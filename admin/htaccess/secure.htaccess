@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.7 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .45.8 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -20,39 +20,101 @@
 Options -Indexes
 
 # BEGIN WordPress
+<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+</IfModule>
+
 # END WordPress
 
-# Plugin conflicts will be handled case by case instead of removing filters
-# for the entire Plugins folder
+# If you want to add a custom 403 Forbidden page for your website uncomment the 
+# ErrorDocument line of code below and copy the ait-pro.com example forbidden 
+# HTML page to your correct website folder. See the BPS Help and FaQ page for 
+# detailed instructions on how to do this.
+# ErrorDocument 403 /forbidden.html
+
+# Plugin conflicts will be handled case by case
+# Leave the plugin fixes code intact just in case you install one of these plugins
+# at a later time. Thousands of lines of htaccess code can be read in milliseconds
+# so leaving the code intact does not slow down your website performance at all.
+# Thousands of plugins have been tested with BPS and the plugin conflict fixes 
+# contained in this BPS master file are permanent fixes for conflicts found with
+# these plugins.
+
+# BuddyPress Logout Redirect fix - skip BPS Filters on Logout link Redirect
+# WordPress 3.0.4 or higher must be installed for this fix to work
+RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
+RewriteRule . - [S=30]
 
 # SFC Simple Facebook Connect Redirect Fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the Rewriterule /blog/wp-login.php?action=register [R=301,L]
-RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC,OR]
-RewriteCond %{REQUEST_URI} ^/simple-facebook-connect/ [NC]
-RewriteRule ^(.*)$ /wp-login.php?action=register [R=301,L]
+# Also fixes any other plugins that use the redirect_to= string
+RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
+RewriteRule . - [S=30]
 
 # Ozh' Admin Drop Down Menu Display Fix
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/ozh-admin-drop-down-menu/ [NC]
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
-RewriteRule . - [S=15]
+RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
+RewriteRule . - [S=30]
 
 # ComicPress Manager ComicPress Theme Image Fix
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
-RewriteRule . - [S=15]
+RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/comicpress-manager/ [NC] 
+RewriteRule . - [S=30]
 
 # TimThumb Thumbnail Images not displaying - Red X instead of Images
 # If your theme uses TimThumb and the file is called something else like thumb.php then change the filename below
-RewriteCond %{REQUEST_FILENAME} ^timthumb.php$
-RewriteRule . - [S=15]
+RewriteCond %{REQUEST_FILENAME} timthumb(.*) [NC]
+RewriteRule . - [S=30]
+
+# YAPB 
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
+RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/yet-another-photoblog/ [NC] 
+RewriteRule . - [S=30]
+
+# WordPress.com Stats Flash SWF Graph Does Not Load Fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/stats/ [NC]
+RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/stats/ [NC]
+RewriteRule . - [S=30]
+
+# podPress rewrite ?feed=podcast as /feed/podcast
+# If you are using a custom slug then add the slug name to the rewriterule
+# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteRule (.*) /blog/feed/podcast/$1? [R=301]
+RewriteCond %{QUERY_STRING} feed=podcast [NC]
+RewriteRule (.*) /feed/podcast/$1? [R=301,L]
+
+# podPress rewrite ?feed=enhancedpodcast as /feed/enhancedpodcast
+# If you are using a custom slug then add the slug name to the rewriterule
+# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteRule (.*) /blog/feed/enhancedpodcast/$1? [R=301]
+RewriteCond %{QUERY_STRING} feed=enhancedpodcast [NC]
+RewriteRule (.*) /feed/enhancedpodcast/$1? [R=301,L]
+
+# podPress rewrite ?feed=torrent as /feed/torrent
+# If you are using a custom slug then add the slug name to the rewriterule
+# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteRule (.*) /blog/feed/torrent/$1? [R=301]
+RewriteCond %{QUERY_STRING} feed=torrent [NC]
+RewriteRule (.*) /feed/torrent/$1? [R=301,L]
+
+# podPress rewrite ?feed=premium as /feed/premium
+# If you are using a custom slug then add the slug name to the rewriterule
+# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteRule (.*) /blog/feed/premium/$1? [R=301]
+RewriteCond %{QUERY_STRING} feed=premimum [NC]
+RewriteRule (.*) /feed/premium/$1? [R=301,L]
 
 # FILTER REQUEST METHODS
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK) [NC]
@@ -73,26 +135,15 @@ RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR] 
 RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|"|;|\?|\*|=$).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
 RewriteRule ^(.*)$ - [F,L]
 
-# DENY PUBLIC ACCESS TO YOUR wp-config.php File
-<Files wp-config.php>
-order allow,deny
-deny from all
-</Files>
-
-# DENY PUBLIC ACCESS TO YOUR php.ini file. 
-<Files php.ini> 
-order allow,deny 
-deny from all 
-</Files> 
-
-# DENY PUBLIC ACCESS TO YOUR php5.ini file. 
-<Files php5.ini> 
-order allow,deny 
-deny from all 
-</Files>
+# Deny Access to wp-config.php, /wp-admin/install.php, all .htaccess files
+# php.ini, php5.ini and the WordPress readme.html installation file.
+# To allow only yourself access to these files add your IP address below
+<FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html)">
+ Deny from all
+# Allow from 69.40.120.88
+</FilesMatch>

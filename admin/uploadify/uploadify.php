@@ -24,19 +24,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-// For Aliased website domains you will need to comment out and uncomment some of the
-// lines of code below and add your aliased domain folder name (not a www or http URL). 
-// To uncomment a line of code remove the 2 forward slashes in front of the line of code. 
-// To comment a line of code out add 2 forward slashed in front of the line of code. After 
-// the lines of code below you will see instructions on which lines of code need to be uncommented 
-// and which need to be commented out. The commented out instructions do not need to be removed. 
-
+//////////////////////////////////////////////////////////////////////////////////////////
+//           BulletProof Security Aliased Domain Upload Setup Instructions              //
+//////////////////////////////////////////////////////////////////////////////////////////
+// For Aliased website domains you will need to comment out and uncomment some of the   //
+// lines of code below and add your aliased domain folder name (not a www or http URL). // 
+// To uncomment a line of code remove the 2 forward slashes in front of the line of     //
+// code. To comment a line of code out add 2 forward slashed in front of the line of    //
+// code. After the lines of code below you will see instructions on which lines of code //
+// need to be uncommented and which need to be commented out. The commented out         //
+// instructions do not need to be removed.                                              //
+//////////////////////////////////////////////////////////////////////////////////////////
 if (!empty($_FILES)) {
-	// $aliased_domain_folder_name = '/add-your-aliased-domain-folder-name-here'; // Uncomment this line
-	$tempFile = $_FILES['Filedata']['tmp_name'];
-	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $_REQUEST['folder'] . '/'; // Comment out this line
-	// $targetPath = $_SERVER['DOCUMENT_ROOT'] . $aliased_domain_folder_name . $_REQUEST['folder'] . '/'; // Uncomment this line
-	$targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
+$aliased_domain_folder_name = '/add-your-aliased-domain-folder-name-here';
+$tempFile = $_FILES['Filedata']['tmp_name'];
+$targetPath = $_SERVER['DOCUMENT_ROOT'] . $_REQUEST['folder'] . '/'; // Comment out this line
+// $targetPath = $_SERVER['DOCUMENT_ROOT'] . $aliased_domain_folder_name . $_REQUEST['folder'] . '/'; // Uncomment this line
+$targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
+//////////////////////////////////////////////////////////////////////////////////////////
+//                     BulletProof Security Upload Setup Finished                       //  
+//////////////////////////////////////////////////////////////////////////////////////////	
 	
 	// $_SERVER['DOCUMENT_ROOT'] . $_REQUEST['folder'] . 
 	// $fileTypes  = str_replace('*.','',$_REQUEST['fileext']);

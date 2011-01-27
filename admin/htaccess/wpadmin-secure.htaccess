@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.7 WP-ADMIN SECURE .HTACCESS
+#   BULLETPROOF .45.8 WP-ADMIN SECURE .HTACCESS
 
 # These are some common Apache Directives to force PHP5 to be used instead of PHP4
 # Some web hosts have very specific directives - check with your web host first
@@ -29,8 +29,7 @@ RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR] 
 RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|"|;|\?|\*|=$).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR] 
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
 RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
 RewriteRule ^(.*)$ - [F,L]
