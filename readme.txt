@@ -84,14 +84,16 @@ add (activate) .htaccess files to your website without having to use FTP. Bullet
 Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/" title="BPS Plugin Testing and Fixes" rel="nofollow" target="_blank">Plugin Compatibility Testing and Fixes</a> page for new fixes that are not
 yet included in the most current version of BPS.
 
-- Is BulletProof Security automatically setup already?
+= Is BulletProof Security automatically setup already? =
 
-Yes and No. BPS is designed to work automatically for the most common wordpress installation, 
-which is wordpress installed in the root website folder. If you have wordpress installed in a 
-subfolder then all you need to do is update your WordPress Custom Permalinks and that .htaccess
- code will be written to the active root BPS .htaccess file. There are also a couple of one time setups 
- that only need to be done once when first installing BulletProof Security. BPS Automagic Mode 
- is coming in the future, but for now a few one time setups are required.
+Yes and No. BPS is designed to work automatically for the most common WordPress installation, 
+which is WordPress installed in the root website folder. If you have WordPress installed in a 
+subfolder then updating your WordPress Custom Permalinks will automatically generate and write 
+the correct .htaccess code to you current root .htaccess file. This code can then just be copied
+and pasted to the BPS Master .htaccess files using the BPS built-in File Editor. There are also 
+a few one time setups that only need to be done once when installing BulletProof 
+Security. Those settings can then be backed up and restored using the BPS built-in Backup and Restore
+features. BPS Automagic Mode is coming in the future, but for now a few one time setups are required.
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
