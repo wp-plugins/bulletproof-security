@@ -58,13 +58,13 @@ RewriteRule . - [S=30]
 # Ozh' Admin Drop Down Menu Display Fix
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/ozh-admin-drop-down-menu/ [NC]
-RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
 RewriteRule . - [S=30]
 
 # ComicPress Manager ComicPress Theme Image Fix
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
-RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/comicpress-manager/ [NC] 
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
 RewriteRule . - [S=30]
 
 # TimThumb Thumbnail Images not displaying - Red X instead of Images
@@ -75,13 +75,13 @@ RewriteRule . - [S=30]
 # YAPB 
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
-RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/yet-another-photoblog/ [NC] 
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/yet-another-photoblog/ [NC] 
 RewriteRule . - [S=30]
 
 # WordPress.com Stats Flash SWF Graph Does Not Load Fix
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/stats/ [NC]
-RewriteCond %{REQUEST_URI} ^/wordpress-testing-website/wp-content/plugins/stats/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stats/ [NC]
 RewriteRule . - [S=30]
 
 # podPress rewrite ?feed=podcast as /feed/podcast
