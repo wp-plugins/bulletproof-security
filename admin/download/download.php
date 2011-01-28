@@ -27,7 +27,7 @@ define('ALLOWED_REFERRER', '');
 /////////////////////////////////////////////////////////////////////////////////
 // Add the Base directory where BPS downloadable files are located             //
 // BASE_DIR path MUST end with a forward slash.                                //
-// Add your website Document Root path in front of the path to the BPS admin   //
+// Add your website Document Root path in front of the /wp-content/            //
 // folder like the example shown below. Your Document Root path can be found   //
 // on the BPS System Info page. The example directly below is for Wordpress    //
 // installations in the root folder.                                           //
@@ -36,7 +36,7 @@ define('ALLOWED_REFERRER', '');
 // Root path and the subfolder name shown in the example directly below. The   //
 // example is using a folder named "my-blog" for this subfolder example.       //
 // define('BASE_DIR', '/var/chroot/home/content/xx/xxxxxx/html/my-blog/wp-content/');
-// If you have multiple domains / websites under 1 web hosting account then    //
+// If you have multiple domains / websites under one web hosting account then  //
 // the additional domains are aliased domains. To add the correct path for     //
 // an aliased domain you need to add the EXACT FOLDER NAME (not www or http)   //
 // where the domain (website) folder is located on your web hosting server.    //
