@@ -67,7 +67,7 @@ be using a secure .htaccess file as a standard website security measure. BPS pro
 6. Activate the BulletProof Security plugin.
 7. Activating the BulletProof Security Plugin DOES NOT activate any of the BulletProof Security .htaccess modes.
 8. BulletProof Security has built-in Backup and Restore. Back up your existing .htaccess files first before activating BulletProof Security Modes.
-9. Click on the Settings link under BulletProof Security on your Plugins page or click the WP Settings Panel, then BulletProof Security to access the BulletProof Security Settings page.
+9. Click on the Settings link under BulletProof Security on your Plugins page or click the WP Settings Panel, then BulletProof Security to go to the BulletProof Security Settings page.
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
 == Frequently Asked Questions ==
