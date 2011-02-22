@@ -205,14 +205,15 @@ $download_php_restore_renamed = ABSPATH . '/wp-content/plugins/bulletproof-secur
 $bps_security_js_restore = ABSPATH . '/wp-content/bps-backup/backup_bulletproof-security-admin.js';
 $bps_security_js_restore_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/js/bulletproof-security-admin.js';
 
+// Uploadify security vulnerability found in uploadify.php file - do not restore the file
 if (isset($_POST['up-down-restore-submit'])) {
-	if (file_exists($uploadify_php_restore)) { 
- 		copy($uploadify_php_restore, $uploadify_php_restore_renamed);
+	// if (file_exists($uploadify_php_restore)) { 
+ 	//	copy($uploadify_php_restore, $uploadify_php_restore_renamed);
 	if (file_exists($download_php_restore)) { 	
 		copy($download_php_restore, $download_php_restore_renamed);
 	if (file_exists($bps_security_js_restore)) { 	
 		copy($bps_security_js_restore, $bps_security_js_restore_renamed);
-	}
+	//}
 	}
 	}
 }
