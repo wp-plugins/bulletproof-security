@@ -198,8 +198,8 @@ if (isset($_POST['up-down-save-submit'])) {
 }
 
 // Form - Restore the Upload and Download config files
-$uploadify_php_restore = ABSPATH . '/wp-content/bps-backup/backup_uploadify.php';
-$uploadify_php_restore_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/uploadify/uploadify.php';
+//$uploadify_php_restore = ABSPATH . '/wp-content/bps-backup/backup_uploadify.php';
+//$uploadify_php_restore_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/uploadify/uploadify.php';
 $download_php_restore = ABSPATH . '/wp-content/bps-backup/backup_download.php';
 $download_php_restore_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/download/download.php';
 $bps_security_js_restore = ABSPATH . '/wp-content/bps-backup/backup_bulletproof-security-admin.js';
