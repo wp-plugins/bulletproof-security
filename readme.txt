@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention, XSS, SQL Injection 
 Requires at least: 3.0
 Tested up to: 3.1-RC2
-Stable tag: .45.8
+Stable tag: .45.9
 
 Fast one click website security protection. Protects your website from ALL XSS and SQL Injection hacking attempts. 
 
@@ -60,7 +60,7 @@ be using a secure .htaccess file as a standard website security measure. BPS pro
 == Installation ==
 
 1. For BPS upgrades - Backup your files before upgrading.
-2. BPS .45.8 includes permanent online backup options.
+2. BPS includes permanent online backup options.
 3. For new installations - If you are downloading the zip file from the WordPress Plugin Directory.
 4. Download the bulletproof-security.zip file to your computer and unzip it.
 5. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
@@ -122,6 +122,11 @@ automated file writing will be available in later versions of BulletProof Securi
 3. BulletProof File Editing, Uploading and Downloading
 
 == Changelog ==
+
+= .45.9 =
+* !!!Critical Update!!!
+* A very serious security vulnerability was found in the Uploadify file uploader
+* File Uploading has been disabled until a patch can be coded
 
 = .45.8 =
 * Permanent Backup and Restore options added - permanent online backup and restore
@@ -238,14 +243,6 @@ automated file writing will be available in later versions of BulletProof Securi
 
 == Upgrade Notice ==
 
-Download your current BPS .45.7 htaccess files first before installing and activating BPS .45.8
-BPS .45.8 now includes a permanent online backup solution. Downloading htaccess files for 
-future BPS upgrades will no longer be necessary as backups can be stored online permanently.
-* Permanent Backup and Restore options added - permanent online backup and restore
-* Permanent Backup and Restore for all .htaccess files
-* Permanent Backup and Restore for File Uploader and File Downloader setup settings
-* Additional new .htaccess coding and modifications added to the BPS master .htaccess files
-* New plugin conflict permanent fixes added to the secure.htaccess Master file
-* WordPress readme.html and /wp-admin/install.php are now protected by BulletProof Security
-* Improved Success / Error messaging - more detailed success / error messages displayed
-* New Help and FAQ links added - New detailed Help and Info pages created
+* !!!Critical Update!!!
+* A serious security vulnerability was found in the Uploadify file uploader
+* File Uploading has been disabled in BPS .45.9 until a patch can be coded

@@ -331,7 +331,7 @@ $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 }
 
 // Get Root .htaccess content - get first 45 characters of current root .htaccess file starting from the 3rd character
-// and display string dump - also checks for single character "5" in .45.8 in string position 15 or 17 to validate the version of BPS // .htaccess file and the wp-config.php status
+// and display string dump - also checks for single character "5" in .45.9 in string position 15 or 17 to validate the version of BPS // .htaccess file and the wp-config.php status
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	$w3 = ABSPATH . '/wp-content/plugins/w3-total-cache/w3-total-cache.php';
