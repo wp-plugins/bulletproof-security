@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.8 MAINTENANCE  .HTACCESS   
+#   BULLETPROOF .45.9 MAINTENANCE  .HTACCESS   
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.

@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.8 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .45.9 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -74,7 +74,7 @@ RewriteRule . - [S=30]
 
 # YAPB 
 # If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
+# subfolder name to the RewriteCond /blog/wp-content/plugins/yet-another-photoblog/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/yet-another-photoblog/ [NC] 
 RewriteRule . - [S=30]
 
