@@ -1,4 +1,3 @@
-
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
@@ -129,8 +128,8 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 = .46 =
 * New File Uploader code written - no longer using Uploadify code
 * New File Downloader code written - no longer using Zubrag code
-* File Uploder is AutoMagic - no setup required anymore
-* File Downloader is one-click - no setup required anymore
+* File Uploader is AutoMagic - no setup required
+* File Downloader is one-click - no setup required
 * Major overhaul of the core BPS coding
 * !!! Special Thanks to Jon Cave!!!
 * for finding a CSRF security vulnerability in BPS .45.9
@@ -270,3 +269,11 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 * And also excellent coding advice to improve BPS even more
 * and making the entire WordPress Community a safer and better place
 * New permanent plugin conflict fixes added to master .htaccess files
+
+== Help Info ==
+
+Extensive Help Info can be found on the AIT-pro.com website and within the BulletProof
+Security pages themselves. Hover over the blue Read Me links to get Help Info about
+the particular section or page of the BulletProof Security plugin that you are in. The
+Help and FAQ page contains links to Help pages that will load in a new browser tab so
+that you are not redirected away from your WordPress Dashboard. 
