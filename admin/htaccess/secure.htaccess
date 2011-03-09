@@ -164,10 +164,10 @@ RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR]
 RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
 RewriteRule ^(.*)$ - [F,L]
 
-# Deny Access to wp-config.php, /wp-admin/install.php, all .htaccess files
+# Deny Access to wp-config.php, bb-config.php, /wp-admin/install.php, all .htaccess files
 # php.ini, php5.ini and the WordPress readme.html installation file.
 # To allow only yourself access to these files add your IP address below
-<FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html)">
+<FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html|bb-config\.php)">
  Deny from all
 # Allow from 88.55.66.200
 </FilesMatch>
