@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention, XSS, SQL Injection 
 Requires at least: 3.0
-Tested up to: 3.1-RC2
-Stable tag: .45.9
+Tested up to: 3.1-RC3
+Stable tag: .46
 
 Fast one click website security protection. Protects your website from ALL XSS and SQL Injection hacking attempts. 
 
@@ -86,14 +86,15 @@ yet included in the most current version of BPS.
 
 = Is BulletProof Security automatically setup already? =
 
-Yes and No. BPS is designed to work automatically for the most common WordPress installation, 
-which is WordPress installed in the root website folder. If you have WordPress installed in a 
-subfolder then updating your WordPress Custom Permalinks will automatically generate and write 
-the correct .htaccess code to you current root .htaccess file. This code can then just be copied
-and pasted to the BPS Master .htaccess files using the BPS built-in File Editor. There are also 
-a few one time setups that only need to be done once when installing BulletProof 
-Security. Those settings can then be backed up and restored using the BPS built-in Backup and Restore
-features. BPS Automagic Mode is coming in the future, but for now a few one time setups are required.
+Yes and No. You must be set up your WordPress Custom Permlalink Structure for BPS to work correctly.
+ BPS is designed to work automatically for the most common WordPress installation, which is WordPress 
+ installed in the root website folder. If you have WordPress installed in a subfolder then updating your 
+ WordPress Custom Permalinks will automatically generate and write the correct .htaccess code to your 
+ current active root .htaccess file or generate a new .htaccess file if one does not already exist yet. 
+ This code can then just be copied and pasted from one file to another within the WordPress Dashboard 
+ using the BPS built-in File Editor. There may be a few one time setups that only need to be done once 
+ when installing BulletProof Security. Those settings can then be backed up and restored using the BPS 
+ built-in Backup and Restore features. BPS Full Automagic Mode is coming in the future.
 
 = Can I add my own .htaccess code to the BulletProof .htaccess files? =
 
@@ -104,16 +105,17 @@ files to make them even more BulletProof to hackers.
 
 = Does the BulletProof Plugin create or write the .htaccess files? =
 
-No. The .htaccess files have already been created for you. You can add additional code
-to the master .htaccess files, edit the .htaccess files or create completely new .htaccess 
-master files from within the WordPress Dashboard using the built-in BPS File Editor 
-- no FTP required. BPS could also just be used simply as an online .htaccess file manager. 
-The current version of BulletProof Security is primarily designed to perform file copying, 
-renaming and moving of the master .htaccess files and of course making your website 
-BulletProof to hackers. BPS does have file writing capability, but the file writing is 
-designed to be real time file editing that the website owner has complete control over 
-instead of an "auto-writing" approach. Automatic or "AutoMagic" mode with complete 
-automated file writing will be available in later versions of BulletProof Security.
+Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htaccess files have
+ already been created for you. You can add additional code to the master .htaccess files, edit 
+ the .htaccess files or create completely new .htaccess master files from within the WordPress 
+ Dashboard using the built-in BPS File Editor - no FTP required. BPS could also just be used 
+ simply as an online .htaccess file manager. The current version of BulletProof Security is 
+ primarily designed to perform file copying, renaming and moving of the master .htaccess files 
+ and of course making your website BulletProof to hackers. Most of the file writing capability in
+ BPS is designed to be real time file editing using the built-in File Editor that the website 
+ owner has complete control over instead of an "auto-writing" approach. Fully automatic or 
+ "AutoMagic" mode with complete automated file writing will be available in later versions of 
+ BulletProof Security.
 
 == Screenshots ==
 
@@ -122,6 +124,18 @@ automated file writing will be available in later versions of BulletProof Securi
 3. BulletProof File Editing, Uploading and Downloading
 
 == Changelog ==
+
+= .46 =
+* New File Uploader code written - no longer using Uploadify code
+* New File Downloader code written - no longer using Zubrag code
+* File Uploder is AutoMagic - no setup required anymore
+* File Downloader is one-click - no setup required anymore
+* Major overhaul of the core BPS coding
+* !!! Special Thanks to Jon Cave!!!
+* for finding a CSRF security vulnerability in BPS .45.9
+* that has now been eliminated in BPS .46 with new coding
+* And also excellent coding advice to improve BPS even more
+* and making the entire WordPress Community a safer and better place
 
 = .45.9 =
 * !!!Critical Update!!!
@@ -243,6 +257,13 @@ automated file writing will be available in later versions of BulletProof Securi
 
 == Upgrade Notice ==
 
-* !!!Critical Update!!!
-* A serious security vulnerability was found in the Uploadify file uploader
-* File Uploading has been disabled in BPS .45.9 until a patch can be coded
+* New File Uploader code written - no longer using Uploadify code
+* New File Downloader code written - no longer using Zubrag code
+* File Uploder is AutoMagic - no setup required anymore
+* File Downloader is one-click - no setup required anymore
+* Major overhaul of the core BPS coding
+* !!! Special Thanks to Jon Cave!!!
+* for finding a CSRF security vulnerability in BPS .45.9
+* that has now been eliminated in BPS .46 with new coding
+* And also excellent coding advice to improve BPS even more
+* and making the entire WordPress Community a safer and better place

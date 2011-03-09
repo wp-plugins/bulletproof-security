@@ -1,4 +1,3 @@
-<Files ~ ".*\..*">
-order allow,deny
+order deny,allow
 deny from all
-</Files>
+allow from 75.22.47.234

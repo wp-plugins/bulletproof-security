@@ -34,15 +34,15 @@
 	padding:0px 10px 5px 10px;
 }
 
-#tabs .ui-tabs-nav li.ui-tabs-selected a:link,
-#tabs .ui-tabs-nav li.ui-tabs-selected a:visited,
-#tabs .ui-tabs-nav li.ui-tabs-selected a:hover,
-#tabs .ui-tabs-nav li.ui-tabs-selected a:active { color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:none; }
+#bps-tabs .ui-tabs-nav li.ui-tabs-selected a:link,
+#bps-tabs .ui-tabs-nav li.ui-tabs-selected a:visited,
+#bps-tabs .ui-tabs-nav li.ui-tabs-selected a:hover,
+#bps-tabs .ui-tabs-nav li.ui-tabs-selected a:active { color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:none; }
 
-#tabs .ui-tabs-nav li a:link,
-#tabs .ui-tabs-nav li a:visited,
-#tabs .ui-tabs-nav li a:hover,
-#tabs .ui-tabs-nav li a:active { font-size:14px; }
+#bps-tabs .ui-tabs-nav li a:link,
+#bps-tabs .ui-tabs-nav li a:visited,
+#bps-tabs .ui-tabs-nav li a:hover,
+#bps-tabs .ui-tabs-nav li a:active { font-size:14px; }
 
 /* Read Me Links on pages */
 .tab-page a {

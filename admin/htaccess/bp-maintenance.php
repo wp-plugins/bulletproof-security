@@ -24,7 +24,7 @@ you never use noindex even if this is a for a brand new website -->
 <style type="text/css">
 <!--
 body { 
-	background-image:url(../wp-content/plugins/bulletproof-security/abstract-blue-bg.png);
+	background-image:url(../../wp-content/plugins/bulletproof-security/abstract-blue-bg.png);
 	background-repeat:repeat;
 	line-height: normal;
 }

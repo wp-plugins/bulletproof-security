@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.9 MAINTENANCE  .HTACCESS   
+#   BULLETPROOF .46 MAINTENANCE  .HTACCESS   
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -50,22 +50,22 @@ RewriteRule ^(.*)$ - [F,L]
 # Add a pound sign to comment a condition out.
 # Adding your IP address to the line below will display the website
 # under maintenance page to ONLY you. For Testing purposes only.
-# RewriteCond %{REMOTE_ADDR} ^75\.88\.99\.33$
+# RewriteCond %{REMOTE_ADDR} ^88\.55\.66\.200$
 # Adding your IP address to the line below will display the website
 # under maintenance page to everyone else except you.
 # Add your Public IP address to the line directly below.
-RewriteCond %{REMOTE_ADDR} !^75\.40\.48\.207$
+RewriteCond %{REMOTE_ADDR} !^88\.55\.66\.200$
 
 # RewriteCond sends all visitors to /bp-maintenance.php Website Under Maintenance page
 # and displays the abstract-blue.png background image except for you if you entered
-# your IP address above.
+# your IP address above. 
 RewriteCond %{REQUEST_URI} !^/bp-maintenance\.php$
 RewriteCond %{REQUEST_URI} !^/wp-content/plugins/bulletproof-security/abstract-blue-bg\.png$
 
 # No matter what file was requested serve bp-maintenance.php ONLY.
 RewriteRule ^(.*)$ /bp-maintenance.php [L]
 
-# If your IP address was entered above bp-maintenance.php is bypassed
+# If your IP address was entered above, bp-maintenance.php is bypassed
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]

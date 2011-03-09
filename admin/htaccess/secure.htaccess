@@ -1,4 +1,4 @@
-#   BULLETPROOF .45.9 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .46 >>>>>>> SECURE .HTACCESS
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -33,12 +33,12 @@ RewriteRule . /index.php [L]
 
 # If you want to add a custom 403 Forbidden page for your website uncomment the 
 # ErrorDocument line of code below and copy the ait-pro.com example forbidden 
-# HTML page to your correct website folder. See the BPS Help and FaQ page for 
+# HTML page to your correct website folder. See the BPS Help and FAQ page for 
 # detailed instructions on how to do this.
 # ErrorDocument 403 /forbidden.html
 
 # Plugin conflicts will be handled case by case
-# Leave the plugin fixes code intact just in case you install one of these plugins
+# You can leave the plugin fixes code intact just in case you install one of these plugins
 # at a later time. Thousands of lines of htaccess code can be read in milliseconds
 # so leaving the code intact does not slow down your website performance at all.
 # Thousands of plugins have been tested with BPS and the plugin conflict fixes 
@@ -50,7 +50,7 @@ RewriteRule . /index.php [L]
 RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
 RewriteRule . - [S=30]
 
-# SFC Simple Facebook Connect Redirect Fix
+# redirect_to= string fix - fixes SFC Simple Facebook Connect Redirect
 # Also fixes any other plugins that use the redirect_to= string
 RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
 RewriteRule . - [S=30]
@@ -84,13 +84,37 @@ RewriteRule . - [S=30]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stats/ [NC]
 RewriteRule . - [S=30]
 
+# Status Updater plugin fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/fb-status-updater/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/fb-status-updater/ [NC] 
+RewriteRule . - [S=30]
+
+# wp-extplorer login fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/wp-extplorer/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/wp-extplorer/ [NC] 
+RewriteRule . - [S=30]
+
+# Adminer MySQL management tool fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/adminer/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC] 
+RewriteRule . - [S=30]
+
+# Peters Custom Anti-Spam Image fix
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/peters-custom-anti-spam-image/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
+RewriteRule . - [S=30]
+
 # podPress rewrite ?feed=podcast as /feed/podcast
 # If you are using a custom slug then add the slug name to the rewriterule
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteRule (.*) /blog/feed/podcast/$1? [R=301]
-RewriteCond %{QUERY_STRING} feed=podcast [NC]
-RewriteRule (.*) /feed/podcast/$1? [R=301,L]
+# RewriteCond %{QUERY_STRING} feed=podcast [NC]
+# RewriteRule (.*) /feed/podcast/$1? [R=301,L]
 
 # podPress rewrite ?feed=enhancedpodcast as /feed/enhancedpodcast
 # If you are using a custom slug then add the slug name to the rewriterule
@@ -145,5 +169,5 @@ RewriteRule ^(.*)$ - [F,L]
 # To allow only yourself access to these files add your IP address below
 <FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html)">
  Deny from all
-# Allow from 69.40.120.88
+# Allow from 88.55.66.200
 </FilesMatch>
