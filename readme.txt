@@ -1,3 +1,4 @@
+
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
@@ -86,7 +87,7 @@ yet included in the most current version of BPS.
 
 = Is BulletProof Security automatically setup already? =
 
-Yes and No. You must be set up your WordPress Custom Permlalink Structure for BPS to work correctly.
+Yes and No. You must be using a WordPress Custom Permlalink Structure for BPS to work correctly.
  BPS is designed to work automatically for the most common WordPress installation, which is WordPress 
  installed in the root website folder. If you have WordPress installed in a subfolder then updating your 
  WordPress Custom Permalinks will automatically generate and write the correct .htaccess code to your 
