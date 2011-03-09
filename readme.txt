@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, blocked, prevention, XSS, SQL Injection 
 Requires at least: 3.0
 Tested up to: 3.1-RC3
-Stable tag: .46
+Stable tag: trunk
 
 Fast one click website security protection. Protects your website from ALL XSS and SQL Injection hacking attempts. 
 
