@@ -136,6 +136,7 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 * that has now been eliminated in BPS .46 with new coding
 * And also excellent coding advice to improve BPS even more
 * and making the entire WordPress Community a safer and better place
+* New permanent plugin conflict fixes added to master .htaccess files
 
 = .45.9 =
 * !!!Critical Update!!!
@@ -267,3 +268,4 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 * that has now been eliminated in BPS .46 with new coding
 * And also excellent coding advice to improve BPS even more
 * and making the entire WordPress Community a safer and better place
+* New permanent plugin conflict fixes added to master .htaccess files
