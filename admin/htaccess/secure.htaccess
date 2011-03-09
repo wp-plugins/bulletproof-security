@@ -113,8 +113,8 @@ RewriteRule . - [S=30]
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteRule (.*) /blog/feed/podcast/$1? [R=301]
-# RewriteCond %{QUERY_STRING} feed=podcast [NC]
-# RewriteRule (.*) /feed/podcast/$1? [R=301,L]
+RewriteCond %{QUERY_STRING} feed=podcast [NC]
+RewriteRule (.*) /feed/podcast/$1? [R=301,L]
 
 # podPress rewrite ?feed=enhancedpodcast as /feed/enhancedpodcast
 # If you are using a custom slug then add the slug name to the rewriterule
