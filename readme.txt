@@ -10,7 +10,7 @@ Fast one click website security protection. Protects your website from ALL XSS a
 
 == Description ==
 
-*** BulletProof Security .46 was released on 3-9-2011 ***
+BulletProof Security .46 was released and Last Updated on 3-9-2011
 
 Website Security Protection: Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. One-click .htaccess security file protection. Protects wp-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click website under maintenance (HTTP 503). WP META Generator tag removed, WP version hidden, ensure WordPress DB errors are off, file and folder permissions check, system info display (PHP, MySQL, OS, Memory Usage, IP, Max file sizes, etc.). File editing, file uploading and file downloading from within the WP Dashboard.
 
@@ -73,7 +73,6 @@ be using a secure .htaccess file as a standard website security measure. BPS pro
 10. Click on the Read Me First link at the top of the BulletProof Security Settings page. Enjoy!
 
 == Frequently Asked Questions ==
-
 
 = BulletProof Security .46 was released on 3-9-2011 =
 
@@ -280,8 +279,8 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 
 == Help Info ==
 
-BulletProof Security .46 was released on 3-9-2011. Extensive Help Info can be found on the
- AIT-pro.com website and within the BulletProof 
+BulletProof Security .46 was released and Last Updated on 3-9-2011.
+Extensive Help Info can be found on the AIT-pro.com website and within the BulletProof 
  Security pages themselves. Hover over the blue Read Me links to get Help Info about
 the particular section or page of the BulletProof Security plugin that you are in. The
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
