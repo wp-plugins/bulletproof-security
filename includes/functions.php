@@ -381,15 +381,53 @@ function bps_master_file_backups() {
 	}
 }
 
+// Check for Apache or IIS Server OS - not necessary
+//$bps_check_server_os_string = $_SERVER['SERVER_SOFTWARE'];
+//$bps_check_server_os_pattern = "/apache/i";
+//function bps_check_server_os() {
+//	if( preg_match($bps_check_server_os_pattern, $bps_check_server_os_string))
+//	_e("Apache Server");
+//	} else {
+//    _e("This is not an Apache Server");
+//}
+
+// Check if Permalinks are enabled
+$permalink_structure = get_option('permalink_structure');
+function bps_check_permalinks() {
+	if ( get_option('permalink_structure') != '' ) { 
+	_e('Permalinks Enabled: <font color="green"><strong>&radic; Permalinks are Enabled</strong></font>'); 
+	} else {
+	_e('Permalinks Enabled: <font color="red"><strong>WARNING! Permalinks are NOT Enabled<br>Permalinks MUST be enabled for BPS to function correctly</strong></font>'); 
+	}
+}
+
+// Check PHP version
+function bps_check_php_version() {
+	if (version_compare(PHP_VERSION, '5.0.0', '>=')) {
+    _e('PHP Version Check: <font color="green"><strong>&radic; Running PHP5</strong></font><br>');
+}
+	if (version_compare(PHP_VERSION, '5.0.0', '<')) {
+    _e('<font color="red"><strong>WARNING! BPS requires PHP5 to function correctly. You are currently running PHP4. Your PHP version is: ' . PHP_VERSION . '</strong></font><br>');
+	}
+}
+
+// Check for Multisite
+function bps_multsite_check() {  
+	if ( is_multisite() ) { 
+	_e('Multisite: <strong>Multisite is enabled</strong><br>');
+	} else {
+	_e('Multisite: <strong>Multisite is not enabled</strong><br>');
+	}
+}
+
 // Check if username Admin exists
 function check_admin_username() {
 	global $wpdb;
 	$name = $wpdb->get_var("SELECT user_login FROM $wpdb->users WHERE user_login='admin'");
 	if ($name=="admin"){
-	echo '<font color="red"><strong>Recommended Security Changes: Username "admin" is being used. It is recommended that you change the administrator username to a new unique username.</strong></font><br><br></a>';
-	}
-	else{
-	echo '<font color="green"><strong>&radic; The Administrator username "admin" is not being used</strong></font><br>';
+	_e('<font color="red"><strong>Recommended Security Changes: Username "admin" is being used. It is recommended that you change the default administrator username "admin" to a new unique username.</strong></font><br><br></a>');
+	} else {
+	_e('<font color="green"><strong>&radic; The Administrator username "admin" is not being used</strong></font><br>');
 	}
 }
 
@@ -441,20 +479,23 @@ function bps_get_sql_mode() {
 } 
 
 // Show DB errors should already be set to false in /includes/wp-db.php
-// Extra insurance sho_errors = false function re-applied - this function will be expanded in the future to allow DB errors to be turned on and off from the Dashboard - DB errors will display in this window
+// Extra function insurance show_errors = false
 function bps_wpdb_errors_off() {
 	global $wpdb;
 	$wpdb->show_errors = false;
-	echo '<font color="green"><strong>&radic; WordPress DB Show Errors Function Is Set To: </strong></font>';
-	echo $show_errors ? '<font color="red"><strong>true</strong></font>': '<font color="black"><strong>false</strong></font><br>';
-	echo '<font color="green"><strong>&radic; WordPress Database Errors Are Turned Off</strong></font><br>';
-	
+	if ($wpdb->show_errors != false) {
+	_e('<font color="red"><strong>WARNING! WordPress DB Show Errors Is Set To: true! DB errors will be displayed</strong></font><br>');
+	} else {
+	_e('<font color="green"><strong>&radic; WordPress DB Show Errors Function Is Set To: </strong></font>');
+	_e('<font color="black"><strong>false</strong></font><br>');
+	_e('<font color="green"><strong>&radic; WordPress Database Errors Are Turned Off</strong></font><br>');
+	}	
 }
 
 // Hide / Remove WordPress Version Meta Generator Tag - echo only for remove_action('wp_head', 'wp_generator');
 function bps_wp_remove_version() {
 	global $wp_version;
-	echo '<font color="green"><strong>&radic; WordPress Meta Generator Tag Removed<br>&radic; WordPress Version Is Not Displayed / Not Shown</strong></font><br>';
+	_e('<font color="green"><strong>&radic; WordPress Meta Generator Tag Removed<br>&radic; WordPress Version Is Not Displayed / Not Shown</strong></font><br>');
 }
 
 // Return Nothing For WP Version Callback
