@@ -544,11 +544,26 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
 	else $sql_mode = __('Off'); ?><strong><?php echo $sql_mode; ?></strong></td>
   </tr>
   <tr>
-    <td class="table_cell"><?php _e('Browser Compression Supported'); ?> : <strong><?php echo $_SERVER['HTTP_ACCEPT_ENCODING']; ?></strong></td>
+    <td class="table_cell"><?php echo bps_multsite_check(); ?></strong></td>
     <td>&nbsp;</td>
     <td class="table_cell">&nbsp;</td>
   </tr>
   <tr>
+    <td class="table_cell"><?php _e('Browser Compression Supported'); ?> : <strong><?php echo $_SERVER['HTTP_ACCEPT_ENCODING']; ?></td>
+    <td>&nbsp;</td>
+    <td class="table_cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="table_cell"><?php echo bps_check_permalinks(); ?></td>
+    <td>&nbsp;</td>
+    <td class="table_cell">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table_cell"><?php echo bps_check_php_version (); ?></td>
+    <td>&nbsp;</td>
+    <td class="table_cell">&nbsp;</td>
+  </tr>
+   <tr>
     <td class="table_cell">&nbsp;</td>
     <td>&nbsp;</td>
     <td class="table_cell">&nbsp;</td>
@@ -775,7 +790,7 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
     <td width="36%"><h2><?php _e('BulletProof Security File Editing'); ?></h2></td>
     <td width="18%"><h3><a href="http://www.ait-pro.com/aitpro-blog/2185/bulletproof-security-plugin-support/bulletproof-security-file-editing-editing-files-within-the-wordpress-dashboard/" target="_blank" onmouseover="Tip('<strong>WordPress will automatically write the correct RewriteBase and RewriteRule to <strong>Your Current Root htaccess File</strong> for you if you are using a Custom Permalink Structure. For more help info Go to the BPS Help & FAQ page and click on the WP Permalinks link.</strong><br><br>Click this Read Me button link to view the BPS File Editing Help Page. The help and info page will load a new browser window and will not leave your WordPress Dashboard. The BPS File Editing Help page contains info on the File Editors full capabilities, limitations, best usages and error solutions.', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3></td>
     <td width="19%" align="right">
-    <h3 style="margin-right:25px;"><a href="http://www.ait-pro.com/aitpro-blog/2190/bulletproof-security-plugin-support/bulletproof-security-file-uploading-and-file-downloading-uploading-and-downloading-files-within-the-wordpress-dashboard/" target="_blank" onmouseover="Tip('<strong>File Uploading</strong><br>The file upload location is preset to the /wp-content/plugins/bulletproof-security/admin/htaccess folder and the intended use is just for uploading the BPS Master files: secure.htaccess, default.htaccess, wpadmin-secure.htaccess, maintenance.htaccess and bp-maintenance.php from your computer to the BPS Master htaccess folder. <br><br><strong>File Downloading</strong><br>Click the Enable Master File Downloading button to enable file downloading. This will write your current IP address to the deny all htaccess file and allow ONLY you access to the /plugins/bulletproof-security/admin/htaccess folder to open and download files. To open and download your Backed up files click the Enable Backed Up File Downloading button. After clicking the Enable File Downloading buttons you can click the download buttons below to open or download files. If your IP address changes which it will do frequently then click the Enable File Downloading buttons again to write a new IP address to the deny all htaccess files.<br><br><strong>Current Active Htaccess File Downloading</strong><br>You will need to add your current IP address to Your Current Root htaccess file in order to download active htaccess files. Click on the Your Current Root htaccess File tab menu in the BPS File Editor and scroll to the very bottom of that htaccess file. You will see Allow from 69.40.120.88. You need to add your current IP address in order to allow ONLY yourself access to your current active htaccess files. Your current IP address can be found under the System Info tab menu. Your Computer IP Address is the IP address you will add to the htaccess file.<br><br>For more detailed instructions click this Read Me button link. The File Downloading help and info page will load a new browser window and will not leave your WordPress Dashboard.<br><br><strong>Folder permissions must be set to 755 in order to open and download files.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+    <h3 style="margin-right:25px;"><a href="http://www.ait-pro.com/aitpro-blog/2190/bulletproof-security-plugin-support/bulletproof-security-file-uploading-and-file-downloading-uploading-and-downloading-files-within-the-wordpress-dashboard/" target="_blank" onmouseover="Tip('<strong>File Uploading</strong><br>The file upload location is preset to the /wp-content/plugins/bulletproof-security/admin/htaccess folder and the intended use is just for uploading the BPS Master files: secure.htaccess, default.htaccess, wpadmin-secure.htaccess, maintenance.htaccess and bp-maintenance.php from your computer to the BPS Master htaccess folder.<br><br><strong>File Downloading</strong><br><strong>Folder permissions must be set to a minimum of 705 for the /htaccess and /bps-backup folders in order to open and download files.</strong><br>Click the Enable Master File Downloading button to enable file downloading. This will write your current IP address to the deny all htaccess file and allow ONLY you access to the /plugins/bulletproof-security/admin/htaccess folder to open and download files. To open and download your Backed up files click the Enable Backed Up File Downloading button. After clicking the Enable File Downloading buttons you can click the download buttons below to open or download files. If your IP address changes which it will do frequently then click the Enable File Downloading buttons again to write a new IP address to the deny all htaccess files.<br><br><strong>Current Active Htaccess File Downloading</strong><br>You will need to add your current IP address to Your Current Root htaccess file in order to download active htaccess files. Click on the Your Current Root htaccess File tab menu in the BPS File Editor and scroll to the very bottom of that htaccess file. You will see Allow from 69.40.120.88. You need to add your current IP address in order to allow ONLY yourself access to your current active htaccess files. Your current IP address can be found under the System Info tab menu. Your Computer IP Address is the IP address you will add to the htaccess file.<br><br>For more detailed instructions click this Read Me button link. The File Downloading help and info page will load a new browser window and will not leave your WordPress Dashboard.', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
     </td>
     <td width="27%" align="center"><h2><?php _e('Uploads - Downloads'); ?></h2></td>
   </tr>

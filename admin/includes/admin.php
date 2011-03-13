@@ -16,13 +16,13 @@ function bulletproof_security_admin_init() {
 	register_setting('bulletproof_security', 'bulletproof_security', 'bulletproof_security_save_settings');
 	
 	// Register BPS additional scripts
-	wp_register_script( 'jquery-uploadify-142-min', WP_PLUGIN_URL . '/bulletproof-security/admin/uploadify/jquery-1.4.2.min.js' );
-	wp_register_script( 'jquery-uploadify-v214-min', WP_PLUGIN_URL . '/bulletproof-security/admin/uploadify/jquery.uploadify.v2.1.4.min.js' );
 	//wp_register_script( 'bps-admin-js', WP_PLUGIN_URL . '/bulletproof-security/admin/js/bulletproof-security-admin.js' );
 	
 	// Create BPS Backup Folder structure
-	if(!is_dir(WP_CONTENT_DIR.'/bps-backup/')) {
-		mkdir(WP_CONTENT_DIR.'/bps-backup/master-backups',0750,true);
+	if( !is_dir(WP_CONTENT_DIR.'/bps-backup/')) {
+		mkdir(WP_CONTENT_DIR.'/bps-backup/master-backups', 0755, true);
+		chmod(WP_CONTENT_DIR.'/bps-backup/', 0755);
+		chmod(WP_CONTENT_DIR.'/bps-backup/master-backups', 0755);
 	}
 	
 	// Hook for main bps options settings page
@@ -37,8 +37,6 @@ function bulletproof_security_load_settings_page() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-tabs');
 	wp_enqueue_script('jquery-form');
-	wp_enqueue_script('jquery-uploadify-142-min');
-	wp_enqueue_script('jquery-uploadify-v214-min');
 	wp_enqueue_script('swfobject');
 	//wp_enqueue_script('bps-admin-js');
     
