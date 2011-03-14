@@ -10,8 +10,6 @@ Fast one click website security protection. Protects your website from ALL XSS a
 
 == Description ==
 
-BulletProof Security .46 was released and Last Updated on 3-9-2011
-
 Website Security Protection: Protects your website from ALL XSS & SQL Injection hacking attempts. Base64_encode code injection blocked. One-click .htaccess security file protection. Protects wp-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click website under maintenance (HTTP 503). WP META Generator tag removed, WP version hidden, ensure WordPress DB errors are off, file and folder permissions check, system info display (PHP, MySQL, OS, Memory Usage, IP, Max file sizes, etc.). File editing, file uploading and file downloading from within the WP Dashboard.
 
 The BulletProof Security plugin is designed to be a fast, simple and convenient one click method for you to
@@ -74,10 +72,6 @@ be using a secure .htaccess file as a standard website security measure. BPS pro
 
 == Frequently Asked Questions ==
 
-= BulletProof Security .46 was released on 3-9-2011 =
-
-There is currently an issue going on with the Last Updated date not showing the correct last update date.
-
 = How does the BulletProof Security Plugin work? =
 
 The BulletProof Security Plugin is a secure radio button form that allows you to 
@@ -132,7 +126,6 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 == Changelog ==
 
 = .46 =
-* BulletProof Security .46 was released on 3-9-2011
 * New File Uploader code written - no longer using Uploadify code
 * New File Downloader code written - no longer using Zubrag code
 * File Uploader is AutoMagic - no setup required
@@ -279,7 +272,6 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 
 == Help Info ==
 
-BulletProof Security .46 was released and Last Updated on 3-9-2011.
 Extensive Help Info can be found on the AIT-pro.com website and within the BulletProof 
  Security pages themselves. Hover over the blue Read Me links to get Help Info about
 the particular section or page of the BulletProof Security plugin that you are in. The
