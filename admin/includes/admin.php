@@ -44,7 +44,7 @@ function bulletproof_security_load_settings_page() {
 	wp_enqueue_script('bulletproof-security-admin', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin.js'));
    	wp_enqueue_style('bulletproof-security-admin', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin.css'));
 
-// User based scheme style settings
+// INCOMPLETE >>> User based scheme style settings
 	if ( function_exists('get_user_meta') )
 	$admin_color = get_user_meta($user_ID, 'admin_color');
 	else
