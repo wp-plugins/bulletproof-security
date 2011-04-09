@@ -1,4 +1,10 @@
-#   BULLETPROOF .46 WP-ADMIN SECURE .HTACCESS
+#   BULLETPROOF .46.1 WP-ADMIN SECURE .HTACCESS
+
+# If you edit the line of code above you will see error messages on the BPS status page
+# BPS is reading the version number in the htaccess file to validate checks
+# If you would like to change what is displayed above you
+# will need to edit the BPS functions.php file to match your changes
+# For more info see the BPS Guide at AIT-pro.com
 
 # These are some common Apache Directives to force PHP5 to be used instead of PHP4
 # Some web hosts have very specific directives - check with your web host first
@@ -7,8 +13,6 @@
 # Other common possibilities depending on your web host - check with your web host first
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
-
-Options -Indexes
 
 # FILTER REQUEST METHODS
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK) [NC]

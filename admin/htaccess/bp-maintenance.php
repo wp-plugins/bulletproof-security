@@ -1,13 +1,12 @@
 <?php
+// The bps-maintenance-values.php file contains the actual data that is echoed here
+include 'bps-maintenance-values.php';
 header('HTTP/1.1 503 Service Temporarily Unavailable',true,503);
 header('Status: 503 Service Temporarily Unavailable');
-header('Retry-After: 259200'); 	// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 172800-48hrs 259200-72hrs
-								// Enter the amount of time you expect your site to display under maintenance
-								// This is only to tell the Search Engines when to return not the timer display
-
-                                                  #################################
-// Areas that you should modify or customize have #### pounds signs above them ####
-                                                  #################################
+header('Retry-After:' . "$bps_retry_after" .''); 	
+// header Retry After conversion times in seconds/hrs/days
+// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 172800-48hrs 259200-72hrs 604800-168hrs-7days 2419200-672hrs-28days
+// Retry After time is for telling the Search Engines when to return not to set the countdown timer display
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -18,54 +17,95 @@ header('Retry-After: 259200'); 	// 3600=1hr 7200-2hrs 43200=12hrs 86400-24hrs 17
 <!-- <meta name="robots" content="noindex,nofollow"> ONLY use noindex with a 503
 If this is a brand new website that has not been indexed before - I recommend that 
 you never use noindex even if this is a for a brand new website --> 
-<!-- ##########################################################################
-<!-- ################ Add whatever Title you want here ######################## -->
-<title>Website Temporarily Closed For Maintenance</title>
+<!-- ########################################################################## -->
+<!-- ################ Adds Title to top browser window ######################## -->
+<title><?php echo $bps_site_title; ?></title>
+<!-- the CSS style must remain inline - an external stylesheet rel link will not work -->
+<!-- using divs with positioning to allow each object to be positioned independently -->
 <style type="text/css">
 <!--
 body { 
-	background-image:url(../../wp-content/plugins/bulletproof-security/abstract-blue-bg.png);
-	background-repeat:repeat;
-	line-height: normal;
-}
-
-p {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-
-.maintenance {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: normal;
+	background-color:#FFF;
+}
+
+p { font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+#countdowncontainer {
+	position:relative; top:0px; left:0px;
+}
+
+#countdowncontainer2 {
+	position:relative; top:0px; left:0px;
+}
+
+#website_domain_name {
 	font-weight:bold;
 	font-size:18px;
+	position:relative; top:0px; left:0px;
+}
+
+/* if you want the table to be positioned in absolute center uncomment this CSS style */
+/* be sure to comment out the duplicated .maintenance_table CSS class and #bps_mtable_div styles below */
+/* .maintenance_table {
+	width:500px;
+	height:300px;
+	border: solid #999999 2px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-150px;
+	margin-left:-250px;
+	padding:10px;
+	background-color: #E9E9E9;
+}
+*/
+
+/* move the entire maintenance table to the static position you want */
+/* by adding pixels to top: and left: Example top:100px left:100px   */
+#bps_mtable_div {
+	position:relative; top:0px; left:0px;
+	margin:0 auto;
+	width:100%;
 }
 
 .maintenance_table {
-	border-color:#999999;
+	width:500px;
+	height:300px;
+	border: solid #999999 2px;
 	position:absolute;
 	top:50px;
 	left:50px;
+	margin:0 auto;
 	padding:10px;
 	background-color: #E9E9E9;
 }
 
-.online_text {font-family:Verdana, Arial, Helvetica, sans-serif;}
+#online_text1 {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	position:relative; top:0px; left:0px;
+}
+#online_text2 {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	position:relative; top:0px; left:0px;
+}
 
-.lcdstyle{ /*Example CSS to create LCD countdown look*/
+#lcdstyle{ /*Example CSS to create LCD countdown look*/
 	background-color:black;
 	color: #00FF00;
 	font: bold 18px MS Sans Serif;
 	padding: 3px;
+	position:relative; top:0px; left:0px;
 }
 
-.lcdstyle sup{ /*Example CSS to create LCD countdown look*/
+#lcdstyle sup{ /*Example CSS to create LCD countdown look*/
 	font-size: 80%
 }
-
 -->
 </style>
 
 <script type="text/javascript">
-
 /***********************************************
 * Dynamic Countdown script- © Dynamic Drive (http://www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
@@ -95,7 +135,6 @@ this.showresults()
 
 cdtime.prototype.showresults=function(){
 var thisobj=this
-
 
 var timediff=(this.targetdate-this.currentTime)/1000 //difference btw target date and current date, in seconds
 if (timediff<0){ //if time is up
@@ -141,70 +180,72 @@ setTimeout(function(){thisobj.showresults()}, 1000) //update results every secon
 function formatresults(){
 if (this.timesup==false){//if target date/time not yet met
 var displaystring=arguments[0]+" days "+arguments[1]+" hours "+arguments[2]+" minutes "+arguments[3]+" seconds left until April 22, 2010 04:25:00"
-}                                   // #############################################################################
-else{ //else if target date/time met - ##################### add whatever you want here ############################
-var displaystring="<span class='online_text'>The [add your website name here] Website<br>Will Be Online In...</span>"
+} // else if target date/time met
+else{ // ##################### Message 2 - ...will be online in... #########################
+var displaystring="<div id='online_text2'><?php echo "$bps_message2"; ?></div>"
 }
 return displaystring
 }
 
 function formatresults2(){
 if (this.timesup==false){ //if target date/time not yet met
-var displaystring="<span class='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></span>"
+var displaystring="<div id='lcdstyle'>"+arguments[0]+" <sup>days</sup> "+arguments[1]+" <sup>hours</sup> "+arguments[2]+" <sup>minutes</sup> "+arguments[3]+" <sup>seconds</sup></div>"
 }
-else{ //else if target date/time met
-// ##################################################################################################################
-var displaystring="" //Don't display any text ################ add whatever you want here ###########################
-alert("Countdown completed! [add your website name here] will resume normal website operation shortly.") //Instead, perform a custom alert
+else{ // else if target date/time met
+// #########################################################################################
+var displaystring=""// Don't display any text #############################################
+alert("<?php echo "$bps_countdown_completed_popup"; ?>")// Instead, perform a custom pop up message alert
 }
 return displaystring
 }
 </script>
 </head>
 
-<body>
-<table width="500" border="2" align="center" cellpadding="10" cellspacing="0" class="maintenance_table" id="Maintenance-Table" name="Maintenance-Table">
+<body background="<?php echo "$bps_body_background_image"; ?>">
+<div id="bps_mtable_div">
+<table border="2" cellpadding="10" cellspacing="0" class="maintenance_table">
   <tr>
     <td>
 <?php
-//#############################################################################################
-// #################### Display your website name with www ####################################
-// #################### by commenting out $hostname = str_replace... line of code below #######
-$hostname = $_SERVER['SERVER_NAME']; 
-$hostname = str_replace('www.', '', $hostname); ?>
+// #################### The www prefix of your domain name is not displayed #################
+// #################### to Display www comment out $bps-hostname = str_replace ##############
+$bps_hostname = $_SERVER['SERVER_NAME']; 
+$bps_hostname = str_replace('www.', '', $bps_hostname); ?>
+<div id="website_domain_name"><?php echo $bps_hostname; ?></div>
 
-<!-- ##########################################################################################
-     ############ CSS class "maintenance is in the head section on this page ################## -->
-<span class="maintenance"><?php echo $hostname; ?></span>
-
-<!-- ##########################################################################################
-     ############ Add your message below ###################################################### -->
-<p>[add your website name here] Website<br>Is Under Construction.</p>
+<!-- ########################################################################################
+     ############ Message 1 - ...is performing maintenance... ############################### -->
+<p><?php echo "<div id=\"online_text1\">" . "$bps_message1" . "</div><br>"; ?></p>
 
 <div id="countdowncontainer"></div>
 <br />
 <div id="countdowncontainer2"></div>
-<!-- ############################################################
-     ############ Add whatever your want here ################### -->
+<!-- ########################################################################################
+     ############ Echos your current public IP address ###################################### -->
 <p>Your IP Address is: <?php echo $_SERVER['REMOTE_ADDR']; ?></p>
 
 <script type="text/javascript">
-// ####################################################################################################
-// ############## add the date and time that your website started maintenance below ###################
-// ########################################### Time is entered in Military time #######################
-var futuredate=new cdtime("countdowncontainer", "January 25, 2011 16:25:00")
+// ##########################################################################################
+// ############## the date and time that your website started maintenance ###################
+// ############## Time is entered in Military time ##########################################
+var futuredate=new cdtime("countdowncontainer", "<?php echo "$bps_start_maintenance_date".' '."$bps_start_maintenance_time"; ?>")
+//var futuredate=new cdtime("countdowncontainer", "January 25, 2011 16:25:00")
 futuredate.displaycountdown("days", formatresults)
 
 var currentyear=new Date().getFullYear()
 //dynamically get this Christmas' year value. If Christmas already passed, then year=current year+1
 var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? currentyear+1 : currentyear
-// ####################################################################################################
-// ############## add the date and time that your website maintenance will be done below ##############
-// ############## no need to add a year it is precalculated by +thischristmasyear+ ####################
-var christmas=new cdtime("countdowncontainer2", "May 30, "+thischristmasyear+" 20:0:00")
+// ###########################################################################################
+// ############## the date and time that your website maintenance will end maintenance #######
+// ############## year is precalculated by +thischristmasyear+ ###############################
+var christmas=new cdtime("countdowncontainer2", "<?php echo "$bps_end_maintenance_date".', '; ?>"+thischristmasyear+"<?php echo ' '."$bps_end_maintenance_time"; ?>")
+//var christmas=new cdtime("countdowncontainer2", "May 30, "+thischristmasyear+" 20:0:00")
+// var christmas=new cdtime("countdowncontainer2", "<?php echo "$bps_end_maintenance"; ?>")
 christmas.displaycountdown("days", formatresults2)
 </script>
-</td></tr>
+</td>
+</tr>
 </table>
+</div>
 </body>
-</html> 
+</html>

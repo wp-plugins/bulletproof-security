@@ -1,4 +1,10 @@
-#   BULLETPROOF .46 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .46.1 >>>>>>> SECURE .HTACCESS
+
+# If you edit the line of code above you will see error messages on the BPS status page
+# BPS is reading the version number in the htaccess file to validate checks
+# If you would like to change what is displayed above you
+# will need to edit the BPS functions.php file to match your changes
+# For more info see the BPS Guide at AIT-pro.com
 
 # If for some strange reason your host does not have +FollowSymlinks enabled by default at
 # the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
@@ -16,8 +22,6 @@
 # Other common possibilities depending on your web host - check with your web host first
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
-
-Options -Indexes
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -45,14 +49,21 @@ RewriteRule . /index.php [L]
 # contained in this BPS master file are permanent fixes for conflicts found with
 # these plugins.
 
+# redirect_to= string fix - fixes issues with plugins that use the redirect_to= string
+RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
+RewriteRule . - [S=30]
+
+# Login Plugins Password Reset And Redirect Conflicts Fix 1
+RewriteCond %{QUERY_STRING} action=resetpass&key=(.*) [NC]
+RewriteRule . - [S=30]
+
+# Login Plugins Password Reset And Redirect Conflicts Fix 2
+RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
+RewriteRule . - [S=30]
+
 # BuddyPress Logout Redirect fix - skip BPS Filters on Logout link Redirect
 # WordPress 3.0.4 or higher must be installed for this fix to work
 RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
-RewriteRule . - [S=30]
-
-# redirect_to= string fix - fixes SFC Simple Facebook Connect Redirect
-# Also fixes any other plugins that use the redirect_to= string
-RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
 RewriteRule . - [S=30]
 
 # Ozh' Admin Drop Down Menu Display Fix
@@ -68,7 +79,8 @@ RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC]
 RewriteRule . - [S=30]
 
 # TimThumb Thumbnail Images not displaying - Red X instead of Images
-# If your theme uses TimThumb and the file is called something else like thumb.php then change the filename below
+# If your theme uses TimThumb or your image thumbnailer script file is named something else
+# like thumb.php or phpthumb.php then replace timthumb with your thumbnailer file name
 RewriteCond %{REQUEST_FILENAME} timthumb(.*) [NC]
 RewriteRule . - [S=30]
 
@@ -106,6 +118,16 @@ RewriteRule . - [S=30]
 # If you have WordPress installed in a subfolder you will need to add the
 # subfolder name to the RewriteCond /blog/wp-content/plugins/peters-custom-anti-spam-image/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
+RewriteRule . - [S=30]
+
+# Stream Video Player - Adding FLV Videos is Blocked By BPS
+# If you have WordPress installed in a subfolder you will need to add the
+# subfolder name to the RewriteCond /blog/wp-content/plugins/stream-video-player/ [NC]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stream-video-player/ [NC]
+RewriteRule . - [S=30]
+
+# FeedWordPress - ?update_feedwordpress= String Blocked
+RewriteCond %{QUERY_STRING} update_feedwordpress=(.*) [NC]
 RewriteRule . - [S=30]
 
 # podPress rewrite ?feed=podcast as /feed/podcast
@@ -166,7 +188,8 @@ RewriteRule ^(.*)$ - [F,L]
 
 # Deny Access to wp-config.php, bb-config.php, /wp-admin/install.php, all .htaccess files
 # php.ini, php5.ini and the WordPress readme.html installation file.
-# To allow only yourself access to these files add your IP address below
+# To allow ONLY yourself access to these files add your current IP address below to the 
+# Allow from line of code and remove the # sign in front of Allow from to uncomment it
 <FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html|bb-config\.php)">
  Deny from all
 # Allow from 88.55.66.200

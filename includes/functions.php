@@ -6,7 +6,7 @@ if (!function_exists ('add_action')) {
 		exit();
 }
 
-// BPS - not used - placeholder
+// BPS - future
 function bulletproof_security_save_options() {
 	global $bulletproof_security;
 	return $bulletproof_security->save_options();
@@ -136,43 +136,53 @@ $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 }
 
 // Dump the actual Root .htaccess files contents - dump the first 45 characters of the current existing root .htaccess file
-// starting from the 3rd character - strpos checks for the single character "6" (the #6 in version .46) in string position
-// 15 to validate the version of the BPS htaccess file in use
+// starting from the 3rd character - strpos checks for the single character "1" (the #1 in version .46.1) in string position
+// 17 to validate the version of the BPS htaccess file in use
 // if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "6");
+	$check_string = strpos($section, "1");
 	if ( !file_exists(ABSPATH . $filename)) {
-	_e('<font color="red">NO .htaccess was found in your root folder</font><br><br>');
+	_e('<font color="red">An .htaccess file was NOT found in your root folder</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
 	} else {
 	if (file_exists(ABSPATH . $filename)) {
 	_e('<font color="green"><strong>The .htaccess file that is activated in your root folder is:</strong></font><br>');
 		var_dump($section);
-	if ($check_string == "15") { 
+	if ($check_string == "17") { 
 		_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
 	} else {
-	_e('<font color="red"><br><br>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Security for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46. Please read the Read Me hover Tooltip above.</font><br><br>');
-	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
+	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46.1. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
+	_e('<font color="red"><strong>wp-config.php is NOT .htaccess protected by BPS</strong></font><br><br>');
 	}
 	}
 	}
 }
 
-// Dump the actual /wp-admin/.htaccess files contents if file exists - dump the first 45 characters of the current existing
-// wp-admin .htaccess file starting from the 3rd character
+// Dump the actual /wp-admin/.htaccess file contents if file exists - dump the first 45 characters 
+// of the current existing wp-admin .htaccess file starting from the 3rd character - strpos checks 
+// for the single character "1" (the #1 in version .46.1) in string position 17 to validate the version 
+// of the BPS htaccess file in use.
+// if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function wpadmin_htaccess_status() {
 	$filename = 'wp-admin/.htaccess';
-	if (file_exists(ABSPATH . $filename)) {
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	_e('<font color="green"><strong>The .htaccess file that is activated in your /wp-admin folder is:</strong></font><br>');
-		var_dump($section);
+	$check_string = strpos($section, "1");
+	if ( !file_exists(ABSPATH . $filename)) {
+	_e('<font color="red"><strong>An .htaccess file was NOT found in your wp-admin folder.<br>BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.</strong></font><br>');
 	} else {
-	_e('<font color="red">NO .htaccess file was found in your /wp-admin folder</font><br>');
+	if (file_exists(ABSPATH . $filename)) {
+	_e('<font color="green"><strong>The .htaccess file that is activated in your wp-admin folder is:</strong></font><br>');
+		var_dump($section);
+	if ($check_string == "17") { 
+	} else {
+	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.1. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
+	}
+	}
 	}
 }
-
+	
 // Check if BPS Deny ALL htaccess file is activated for the BPS Master htaccess folder
 function denyall_htaccess_status_master() {
 $filename = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/.htaccess';
@@ -381,16 +391,6 @@ function bps_master_file_backups() {
 	}
 }
 
-// Check for Apache or IIS Server OS - not necessary
-//$bps_check_server_os_string = $_SERVER['SERVER_SOFTWARE'];
-//$bps_check_server_os_pattern = "/apache/i";
-//function bps_check_server_os() {
-//	if( preg_match($bps_check_server_os_pattern, $bps_check_server_os_string))
-//	_e("Apache Server");
-//	} else {
-//    _e("This is not an Apache Server");
-//}
-
 // Check if Permalinks are enabled
 $permalink_structure = get_option('permalink_structure');
 function bps_check_permalinks() {
@@ -407,9 +407,95 @@ function bps_check_php_version() {
     _e('PHP Version Check: <font color="green"><strong>&radic; Running PHP5</strong></font><br>');
 }
 	if (version_compare(PHP_VERSION, '5.0.0', '<')) {
-    _e('<font color="red"><strong>WARNING! BPS requires PHP5 to function correctly. You are currently running PHP4. Your PHP version is: ' . PHP_VERSION . '</strong></font><br>');
+    _e('<font color="red"><strong>WARNING! BPS requires PHP5 to function correctly. Your PHP version is: ' . PHP_VERSION . '</strong></font><br>');
 	}
 }
+
+// Heads Up Display - Check PHP version - top error message new activations / installations
+function bps_check_php_version_error() {
+	if (version_compare(PHP_VERSION, '5.0.0', '>=')) {
+    _e('');
+	}
+	if (version_compare(PHP_VERSION, '5.0.0', '<')) {
+    _e('<font color="red"><strong>WARNING! BPS requires at least PHP5 to function correctly. Your PHP version is: ' . PHP_VERSION . '</font></strong><br><strong><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bulletproof-security-issues-problems" target="_blank">BPS Guide - PHP5 Solution</a></strong><br><strong>The BPS Guide will open in a new browser window. You will not be directed away from your WordPress Dashboard.</strong><br>');
+	}
+}
+
+// Heads Up Display - Check if Permalinks are enabled - top error message new activations / installations
+$permalink_structure = get_option('permalink_structure');
+function bps_check_permalinks_error() {
+	if ( get_option('permalink_structure') != '' ) { 
+	_e(''); 
+	} else {
+	_e('<br><font color="red"><strong>WARNING! Permalinks are NOT Enabled. Permalinks MUST be enabled for BPS to function correctly</strong></font><br><strong><a href="http://www.ait-pro.com/aitpro-blog/2304/wordpress-tips-tricks-fixes/permalinks-wordpress-custom-permalinks-wordpress-best-wordpress-permalinks-structure/" target="_blank">BPS Guide - Enabling Permalinks</a></strong><br><strong>The BPS Guide will open in a new browser window. You will not be directed away from your WordPress Dashboard.</strong><br>'); 
+	}
+}
+
+// Heads Up Display - Check if this is a Windows IIS server and if IIS7 supports permalink rewriting
+function bps_check_iis_supports_permalinks() {
+global $wp_rewrite, $is_IIS, $is_iis7;
+	if ( $is_IIS && !iis7_supports_permalinks() ) {
+	_e('<br><font color="red"><strong>WARNING! BPS has detected that your Server is a Windows IIS Server that does not support .htaccess rewriting. Do NOT activate BulletProof Security Modes unless you are absolutely sure you know what you are doing. Your Server Type is: ' . $_SERVER['SERVER_SOFTWARE'] . '</strong></font><br><strong><a href="http://codex.wordpress.org/Using_Permalinks" target="_blank">WordPress Codex - Using Permalinks - see IIS section</a></strong><br><strong>This link will open in a new browser window. You will not be directed away from your WordPress Dashboard.</strong><br>To remove this message permanently click <strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here.</a></strong><br>');
+	} else {
+	_e('');
+	}
+}
+
+// Heads Up Display - mkdir and chmod errors are suppressed on activation - check if /bps-backup folder exists
+function bps_hud_check_bpsbackup() {
+	if( !is_dir (WP_CONTENT_DIR . '/bps-backup')) {
+	_e('<br><font color="red"><strong>WARNING! BPS was unable to automatically create the /wp-content/bps-backup folder.</strong></font><br><strong>You will need to create the /wp-content/bps-backup folder manually via FTP.  The folder permissions for the bps-backup folder need to be set to 755 in order to successfully perform permanent online backups.</strong><br>To remove this message permanently click <strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here.</a></strong><br>');
+	} else {
+	_e('');
+	}
+	if( !is_dir (WP_CONTENT_DIR . '/bps-backup/master-backups')) {
+	_e('<br><font color="red"><strong>WARNING! BPS was unable to automatically create the /wp-content/bps-backup/master-backups folder.</strong></font><br><strong>You will need to create the /wp-content/bps-backup/master-backups folder manually via FTP.  The folder permissions for the master-backups folder need to be set to 755 in order to successfully perform permanent online backups.</strong><br>To remove this message permanently click <strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here.</a></strong><br>');
+	} else {
+	_e('');
+	}
+}
+
+// Heads Up Display - Check if PHP Safe Mode is On - 1 is On - 0 is Off
+function bps_check_safemode() {
+	if (ini_get('safe_mode') == '1') {
+	_e('<br><font color="red"><strong>WARNING! BPS has detected that Safe Mode is set to On in your php.ini file.</strong></font><br><strong>If you see errors that BPS was unable to automatically create the backup folders this is probably the reason why.</strong><br>To remove this message permanently click <strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here.</a></strong><br>');
+	} else {
+	_e('');
+	}
+	}
+
+// Get WordPress Root Installation Folder - Borrowed from WP Core 
+function bps_wp_get_root_folder() {
+$site_root = parse_url(get_option('siteurl'));
+	if ( isset( $site_root['path'] ) )
+	$site_root = trailingslashit($site_root['path']);
+	$home_root = parse_url(home_url());
+	if ( isset( $home_root['path'] ) )
+	$home_root = trailingslashit($home_root['path']);
+	else
+	$home_root = '/';
+	return $home_root;
+}
+
+// Display Root or Subfolder Installation Type
+function bps_wp_get_root_folder_display_type() {
+$site_root = parse_url(get_option('siteurl'));
+	if ( isset( $site_root['path'] ) )
+	$site_root = trailingslashit($site_root['path']);
+	$home_root = parse_url(home_url());
+	if ( isset( $home_root['path'] ) )
+	$home_root = trailingslashit($home_root['path']);
+	else
+	$home_root = '/';
+	if (preg_match('/[a-zA-Z0-9]/', $home_root)) {
+	echo "Subfolder Installation";
+	} else {
+	echo "Root Folder Installation";
+	}
+}
+
+//preg_match('/^([a-zA-Z0-9_]+)$/', $str); 
+
 
 // Check for Multisite
 function bps_multsite_check() {  
@@ -425,36 +511,51 @@ function check_admin_username() {
 	global $wpdb;
 	$name = $wpdb->get_var("SELECT user_login FROM $wpdb->users WHERE user_login='admin'");
 	if ($name=="admin"){
-	_e('<font color="red"><strong>Recommended Security Changes: Username "admin" is being used. It is recommended that you change the default administrator username "admin" to a new unique username.</strong></font><br><br></a>');
+	_e('<font color="red"><strong>Recommended Security Changes: Username "admin" is being used. It is recommended that you change the default administrator username "admin" to a new unique username.</strong></font><br><br>');
 	} else {
 	_e('<font color="green"><strong>&radic; The Administrator username "admin" is not being used</strong></font><br>');
 	}
 }
 
-// Check for WP readme.html and /wp-admin/install.php files
-// echo success only if valid BPS htaccess file is activated
-function bps_filesmatch_check() {
+// Check for WP readme.html file and if valid BPS .htaccess file is activated
+function bps_filesmatch_check_readmehtml() {
 	$htaccess_filename = '.htaccess';
 	$filename = ABSPATH . 'readme.html';
 	if (file_exists(ABSPATH . $htaccess_filename)) {
 	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "6");
-		if ($check_string == "15"||"17") { 
+		$check_string = strpos($section, "1");
+		if ($check_string == "17") { 
 		_e('');
-		if (file_exists($filename)&&($check_string == "15"||"17")) {
-		_e('<font color="green"><strong>&radic; The WP /readme.html file is .htaccess protected</strong></font><br>');
+		}
+		if ( !file_exists($filename)) {
+		_e('<font color="green"><strong>&radic; The WP readme.html file does not exist</strong></font><br>');
 		} else {
-		_e('<font color="green"><strong>&radic; The WP /readme.html file does not exist</strong></font><br>');
+		if (file_exists($filename)&&($check_string == "17")) {
+		_e('<font color="green"><strong>&radic; The WP readme.html file is .htaccess protected</strong></font><br>');
+		} else {
+		_e('<font color="red"><strong>The WP readme.html file is not .htaccess protected</strong></font><br>');
 		}
-		}
-		}
+}}}
+
+// Check for WP /wp-admin/install.php file and if valid BPS .htaccess file is activated
+function bps_filesmatch_check_installphp() {
+	$htaccess_filename = '.htaccess';
 	$filename = ABSPATH . 'wp-admin/install.php';
-	if (file_exists($filename)&&($check_string == "15"||"17")) {
-    _e('<font color="green"><strong>&radic; The /wp-admin/install.php file is .htaccess protected</strong></font><br><br>');
-	} else {
-    _e('<font color="green"><strong>&radic; The /wp-admin/install.php file does not exist</strong></font><br><br>');
-	}
-}
+	if (file_exists(ABSPATH . $htaccess_filename)) {
+	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
+		$check_string = strpos($section, "1");
+		if ($check_string == "17") { 
+		_e('');
+		}
+		if ( !file_exists($filename)) {
+		_e('<font color="green"><strong>&radic; The WP /wp-admin/install.php file does not exist</strong></font><br>');
+		} else {
+		if (file_exists($filename)&&($check_string == "17")) {
+		_e('<font color="green"><strong>&radic; The WP /wp-admin/install.php file is .htaccess protected</strong></font><br>');
+		} else {
+		_e('<font color="red"><strong>The WP /wp-admin/install.php file is not .htaccess protected</strong></font><br>');
+		}
+}}}
 
 // Check BPS Pro Modules Status
 function check_bps_pro_mod () {

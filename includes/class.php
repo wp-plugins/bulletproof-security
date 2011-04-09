@@ -6,7 +6,7 @@ if (!function_exists ('add_action')) {
 		exit();
 }
 
-// BPS Class vars - not used - pending
+// BPS Class vars 
 if ( !class_exists('Bulletproof_Security') ) :
 	class Bulletproof_Security {
 	var $hook 		= 'bulletproof-security';

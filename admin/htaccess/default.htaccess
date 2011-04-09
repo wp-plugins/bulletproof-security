@@ -1,4 +1,10 @@
-# BULLETPROOF .46 >>>>>>> DEFAULT .HTACCESS
+#   BULLETPROOF .46.1 >>>>>>> DEFAULT .HTACCESS
+
+# If you edit the line of code above you will see error messages on the BPS status page
+# BPS is reading the version number in the htaccess file to validate checks
+# If you would like to change what is displayed above you
+# will need to edit the BPS functions.php file to match your changes
+# For more info see the BPS Guide at AIT-pro.com
 
 # WARNING THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
 # This is a standard generic htaccess file that does NOT provide any website security
@@ -19,8 +25,6 @@
 # Other common possibilities depending on your web host - check with your web host first
 # AddHandler application/x-httpd-php5 .php
 # AddHandler cgi-php5 .php
-
-Options -Indexes
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
