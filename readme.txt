@@ -144,7 +144,7 @@ Yes and No. As of BPS .46 one-click file writing has begun. The BPS master .htac
 * Major Core code improvements
 * nick nack core code fixes and improvements
 * New Help and FAQ links - new help pages created on AIT-pro
-* 
+* BPS .46.1 Release date 4-9-2011
 
 = .46 =
 * New File Uploader code written - no longer using Uploadify code

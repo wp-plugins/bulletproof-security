@@ -30,7 +30,8 @@ function bulletproof_security_admin_init() {
 	// Hook for main bps options settings page
 	add_action('load-bulletproof-security/admin/options.php', 'bulletproof_security_load_settings_page');
 }
-	
+
+// Enqueue scripts	
 function bulletproof_security_load_settings_page() {
 	global $bulletproof_security, $user_ID;
 	do_action('bps_settings_page');
