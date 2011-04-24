@@ -136,6 +136,8 @@ to your .htaccess files. You can add additional code to the master .htaccess fil
 * Additional new .htaccess security coding and modifications added to the BPS master .htaccess files
 * New plugin conflict permanent fixes added to the secure.htaccess Master file
 * BulletProof Security is now fully AutoMagic and still offers full manual control
+* Nick Nack - code tweaks
+* Included new bps-maintenance-values.php maintenance mode file in backups
 
 = .46.1 =
 * Additional new .htaccess coding and modifications added to the BPS master .htaccess files
