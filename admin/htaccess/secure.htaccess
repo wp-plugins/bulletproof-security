@@ -1,27 +1,10 @@
-#   BULLETPROOF .46.1 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .46.2 >>>>>>> SECURE .HTACCESS
 
 # If you edit the line of code above you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
 # will need to edit the BPS functions.php file to match your changes
 # For more info see the BPS Guide at AIT-pro.com
-
-# If for some strange reason your host does not have +FollowSymlinks enabled by default at
-# the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
-# If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
-# everything else is set correctly then remove the # sign in front of Options +FollowSymlinks
-# below. If you are still getting 500 errors then immediately put the # sign back. All hosts
-# these days should have this enabled by default. Enabling this will actually cause 500 server
-# errors if your host has this enabled so you should probably never have to remove the # sign. 
-# Options +FollowSymlinks
-
-# These are some common Apache Directives to force PHP5 to be used instead of PHP4
-# Some web hosts have very specific directives - check with your web host first
-# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
-# AddType x-mapp-php5 .php
-# Other common possibilities depending on your web host - check with your web host first
-# AddHandler application/x-httpd-php5 .php
-# AddHandler cgi-php5 .php
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -32,7 +15,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
-
 # END WordPress
 
 # If you want to add a custom 403 Forbidden page for your website uncomment the 
@@ -47,7 +29,12 @@ RewriteRule . /index.php [L]
 # so leaving the code intact does not slow down your website performance at all.
 # Thousands of plugins have been tested with BPS and the plugin conflict fixes 
 # contained in this BPS master file are permanent fixes for conflicts found with
-# these plugins.
+# these plugins. If you use AutoMagic to create this file then your correct WordPress installation
+# folder name will be automatically added to the plugin fixes that need a WP folder name.
+# If you choose to manually edit this file instead of using AutoMagic be sure to add your 
+# WordPress installation folder name to the fixes that require your WordPress folder name.
+# Your WordPress installation folder name can be found on the System Info page. If you only see
+# a forward slash then you have a root folder installation and do not need to add a folder name.
 
 # redirect_to= string fix - fixes issues with plugins that use the redirect_to= string
 RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
@@ -67,62 +54,44 @@ RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
 RewriteRule . - [S=30]
 
 # Ozh' Admin Drop Down Menu Display Fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/ozh-admin-drop-down-menu/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
 RewriteRule . - [S=30]
 
 # ComicPress Manager ComicPress Theme Image Fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/comicpress-manager/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
 RewriteRule . - [S=30]
 
-# TimThumb Thumbnail Images not displaying - Red X instead of Images
-# If your theme uses TimThumb or your image thumbnailer script file is named something else
-# like thumb.php or phpthumb.php then replace timthumb with your thumbnailer file name
-RewriteCond %{REQUEST_FILENAME} timthumb(.*) [NC]
-RewriteRule . - [S=30]
+# TimThumb and all other Thumbnailer Images not displaying - Red X instead of Images
+# If your theme uses an image thumbnailer script file this fix will work to display images correctly
+# as long as thumb is part of the file name like timthumb.php, thumb.php, thumbs.php or phpthumb.php
+RewriteCond %{REQUEST_FILENAME} ^(.*)thumb(.*)$ [NC]
+RewriteRule ^(.*)$ - [S=30]
 
-# YAPB 
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/yet-another-photoblog/ [NC]
+# YAPB Image Display fix
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/yet-another-photoblog/ [NC] 
 RewriteRule . - [S=30]
 
 # WordPress.com Stats Flash SWF Graph Does Not Load Fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/stats/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stats/ [NC]
 RewriteRule . - [S=30]
 
 # Status Updater plugin fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/fb-status-updater/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/fb-status-updater/ [NC] 
 RewriteRule . - [S=30]
 
 # wp-extplorer login fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/wp-extplorer/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/wp-extplorer/ [NC] 
 RewriteRule . - [S=30]
 
 # Adminer MySQL management tool fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/adminer/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC] 
 RewriteRule . - [S=30]
 
 # Peters Custom Anti-Spam Image fix
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/peters-custom-anti-spam-image/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
 RewriteRule . - [S=30]
 
 # Stream Video Player - Adding FLV Videos is Blocked By BPS
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteCond /blog/wp-content/plugins/stream-video-player/ [NC]
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stream-video-player/ [NC]
 RewriteRule . - [S=30]
 
@@ -130,35 +99,31 @@ RewriteRule . - [S=30]
 RewriteCond %{QUERY_STRING} update_feedwordpress=(.*) [NC]
 RewriteRule . - [S=30]
 
+# XCloner 404 or 403 error when updating settings
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/xcloner-backup-and-restore/ [NC]
+RewriteRule . - [S=30]
+
 # podPress rewrite ?feed=podcast as /feed/podcast
 # If you are using a custom slug then add the slug name to the rewriterule
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteRule (.*) /blog/feed/podcast/$1? [R=301]
 RewriteCond %{QUERY_STRING} feed=podcast [NC]
 RewriteRule (.*) /feed/podcast/$1? [R=301,L]
 
 # podPress rewrite ?feed=enhancedpodcast as /feed/enhancedpodcast
 # If you are using a custom slug then add the slug name to the rewriterule
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteRule (.*) /blog/feed/enhancedpodcast/$1? [R=301]
 RewriteCond %{QUERY_STRING} feed=enhancedpodcast [NC]
 RewriteRule (.*) /feed/enhancedpodcast/$1? [R=301,L]
 
 # podPress rewrite ?feed=torrent as /feed/torrent
 # If you are using a custom slug then add the slug name to the rewriterule
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteRule (.*) /blog/feed/torrent/$1? [R=301]
 RewriteCond %{QUERY_STRING} feed=torrent [NC]
 RewriteRule (.*) /feed/torrent/$1? [R=301,L]
 
 # podPress rewrite ?feed=premium as /feed/premium
 # If you are using a custom slug then add the slug name to the rewriterule
 # RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-# If you have WordPress installed in a subfolder you will need to add the
-# subfolder name to the RewriteRule (.*) /blog/feed/premium/$1? [R=301]
 RewriteCond %{QUERY_STRING} feed=premimum [NC]
 RewriteRule (.*) /feed/premium/$1? [R=301,L]
 

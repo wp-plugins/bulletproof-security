@@ -136,13 +136,13 @@ $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 }
 
 // Dump the actual Root .htaccess files contents - dump the first 45 characters of the current existing root .htaccess file
-// starting from the 3rd character - strpos checks for the single character "1" (the #1 in version .46.1) in string position
+// starting from the 3rd character - strpos checks for the single character "2" (the #2 in version .46.2) in string position
 // 17 to validate the version of the BPS htaccess file in use
 // if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "1");
+	$check_string = strpos($section, "2");
 	if ( !file_exists(ABSPATH . $filename)) {
 	_e('<font color="red">An .htaccess file was NOT found in your root folder</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
@@ -153,7 +153,7 @@ function root_htaccess_status() {
 	if ($check_string == "17") { 
 		_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
 	} else {
-	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46.1. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
+	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46.2. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
 	_e('<font color="red"><strong>wp-config.php is NOT .htaccess protected by BPS</strong></font><br><br>');
 	}
 	}
@@ -162,13 +162,13 @@ function root_htaccess_status() {
 
 // Dump the actual /wp-admin/.htaccess file contents if file exists - dump the first 45 characters 
 // of the current existing wp-admin .htaccess file starting from the 3rd character - strpos checks 
-// for the single character "1" (the #1 in version .46.1) in string position 17 to validate the version 
+// for the single character "2" (the #2 in version .46.2) in string position 17 to validate the version 
 // of the BPS htaccess file in use.
 // if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function wpadmin_htaccess_status() {
 	$filename = 'wp-admin/.htaccess';
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "1");
+	$check_string = strpos($section, "2");
 	if ( !file_exists(ABSPATH . $filename)) {
 	_e('<font color="red"><strong>An .htaccess file was NOT found in your wp-admin folder.<br>BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.</strong></font><br>');
 	} else {
@@ -177,7 +177,7 @@ function wpadmin_htaccess_status() {
 		var_dump($section);
 	if ($check_string == "17") { 
 	} else {
-	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.1. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
+	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.2. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
 	}
 	}
 	}
@@ -261,6 +261,13 @@ function general_bps_file_checks() {
     _e('<font color="red">NO bp-maintenance.php file found in the /htaccess folder</font><br>');
 	}
 	
+	$filename = '/wp-content/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
+	if (file_exists(ABSPATH . $filename)) {
+    _e('<font color="green">&radic; A bps-maintenance-values.php file was found in the /htaccess folder</font><br>');
+	} else {
+    _e('<font color="red">NO bps-maintenance-values.php file found in the /htaccess folder</font><br>');
+	}
+	
 	$filename = '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 	if (file_exists(ABSPATH . $filename)) {
     _e('<font color="green">&radic; A wpadmin-secure.htaccess file was found in the /htaccess folder</font><br>');
@@ -315,6 +322,13 @@ function general_bps_file_checks() {
     _e('<font color="green">&radic; Your BPS Master bp-maintenance.php file is backed up</font><br>');
 	} else {
     _e('<font color="red">Your BPS Master bp-maintenance.php file is NOT backed up yet</font><br>');
+	}
+	
+	$filename = '/wp-content/bps-backup/master-backups/backup_bps-maintenance-values.php';
+	if (file_exists(ABSPATH . $filename)) {
+    _e('<font color="green">&radic; Your BPS Master bps-maintenance-values.php file is backed up</font><br>');
+	} else {
+    _e('<font color="red">Your BPS Master bps-maintenance-values.php file is NOT backed up yet</font><br>');
 	}
 }
 
@@ -388,6 +402,13 @@ function bps_master_file_backups() {
     _e('<font color="green"><strong>&radic; The bp-maintenance.php Master file is backed up.</strong></font><br>');
 	} else {
     _e('<font color="red"><strong>Your bp-maintenance.php Master file has NOT been backed up yet!</strong></font><br>');
+	}
+	
+	$bps_bp_maintenance_values = ABSPATH . '/wp-content/bps-backup/master-backups/backup_bps-maintenance-values.php'; 
+	if (file_exists($bps_bp_maintenance_values)) {
+    _e('<font color="green"><strong>&radic; The bps-maintenance-values.php Master file is backed up.</strong></font><br>');
+	} else {
+    _e('<font color="red"><strong>Your bps-maintenance-values.php Master file has NOT been backed up yet!</strong></font><br>');
 	}
 }
 
@@ -523,7 +544,7 @@ function bps_filesmatch_check_readmehtml() {
 	$filename = ABSPATH . 'readme.html';
 	if (file_exists(ABSPATH . $htaccess_filename)) {
 	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "1");
+		$check_string = strpos($section, "2");
 		if ($check_string == "17") { 
 		_e('');
 		}
@@ -543,7 +564,7 @@ function bps_filesmatch_check_installphp() {
 	$filename = ABSPATH . 'wp-admin/install.php';
 	if (file_exists(ABSPATH . $htaccess_filename)) {
 	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "1");
+		$check_string = strpos($section, "2");
 		if ($check_string == "17") { 
 		_e('');
 		}

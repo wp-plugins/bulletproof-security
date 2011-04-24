@@ -1,30 +1,9 @@
-#   BULLETPROOF .46.1 >>>>>>> DEFAULT .HTACCESS
+#   BULLETPROOF .46.D >>>>>>> DEFAULT .HTACCESS
 
 # If you edit the line of code above you will see error messages on the BPS status page
-# BPS is reading the version number in the htaccess file to validate checks
-# If you would like to change what is displayed above you
-# will need to edit the BPS functions.php file to match your changes
-# For more info see the BPS Guide at AIT-pro.com
-
-# WARNING THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
+# WARNING!!! THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
 # This is a standard generic htaccess file that does NOT provide any website security
-# The DEFAULT .HTACCESS file should only be used for testing purposes
-# If for some strange reason your host does not have +FollowSymlinks enabled by default at
-# the root level then you will need to enable Options +FollowSymlinks for mod_rewrite to work.
-# If you are getting HTTP Error 500 Internal server errors and you have checked to make sure
-# everything else is set correctly then remove the # sign in front of Options +FollowSymlinks
-# below. If you are still getting 500 errors then immediately put the # sign back. All hosts
-# these days should have this enabled by default. Enabling this will actually cause 500 server
-# errors if your host has this enabled so you should probably never have to remove the # sign. 
-# Options +FollowSymlinks
-
-# These are some common Apache Directives to force PHP5 to be used instead of PHP4
-# Some web hosts have very specific directives - check with your web host first
-# Remove the pound sign in front of AddType x-mapp-php5 .php for 1&1 web hosting
-# AddType x-mapp-php5 .php
-# Other common possibilities depending on your web host - check with your web host first
-# AddHandler application/x-httpd-php5 .php
-# AddHandler cgi-php5 .php
+# The DEFAULT .HTACCESS file should be used for testing and troubleshooting purposes only
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
