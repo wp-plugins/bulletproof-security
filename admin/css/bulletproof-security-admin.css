@@ -11,6 +11,9 @@
 
 .bps-tab-page {}
 
+#messageinner {}
+.updatedinner {border:1px solid #999999; background-color: #ffffe0; width:80%; padding:2px 2px 2px 4px; margin:0px 0px 10px 0px;}
+/* #FFFFCC; /*
 /********* WordPress Default CSS **************/
 .form-table {background: #EBEBEB; border:1px solid #addae6;}
 
@@ -19,6 +22,9 @@
 .submit { padding:10px 0px 10px 15px;}
 
 .url-path { font-weight:700;}
+
+#setting-error-settings_updated {margin-left:70px;} 
+
 /**********************************************/
 
 /************** BPS Menu *********************/
@@ -29,7 +35,7 @@
 .bps-menu ul li a:active {color:#FFFFFF; background-image:url(../images/menu_btn_over.png); background-repeat:none;}
 
 /*********** jQuery UI Tabs *****************/
-#bps-tabs-1, #bps-tabs-2, #bps-tabs-3, #bps-tabs-4, #bps-tabs-5, #bps-tabs-6, #bps-tabs-7 {
+#bps-tabs-1, #bps-tabs-2, #bps-tabs-3, #bps-tabs-4, #bps-tabs-5, #bps-tabs-6, #bps-tabs-7, #bps-tabs-8, #bps-tabs-9, #bps-tabs-10 {
 	border:1px solid #999999;
 	padding:0px 10px 5px 10px;
 }
@@ -95,6 +101,7 @@
 .bps-status_table {}
 .bps-backup_restore_table {}
 .bps-help_faq_table {padding:0px 0px 10px 0px;}
+.bps-whats_new_table {padding:0px 0px 0px 0px; border:1px solid black; margin-bottom:10px;}
 .bps-public-ip { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; }
 
 .bps-table_title {
@@ -109,6 +116,15 @@
 	border-top:1px solid black;
 }
 
+.bps-table_title_no_border {
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:900;
+	padding:5px 0px 5px 5px;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+}
+
 .bps-table_cell {
 	background:#FFFFFF;
 	vertical-align:text-top;
@@ -117,12 +133,25 @@
 	border-left:1px solid black;
 }
 
+.bps-table_cell_no_border {
+	background:#FFFFFF;
+	vertical-align:text-top;
+	padding:0px 5px 0px 5px;
+}
+
 .bps-table_cell_bottom {
 	background-color:#FFFFFF;
 	padding:0px 0px 0px 5px;
 	border-right:1px solid black;
 	border-left:1px solid black;
 	border-bottom:1px solid black;
+	background-image:url(../images/table_title_bg.png);
+	background-repeat: repeat-x;
+}
+
+.bps-table_cell_bottom_no_border {
+	background-color:#FFFFFF;
+	padding:0px 0px 0px 5px;
 	background-image:url(../images/table_title_bg.png);
 	background-repeat: repeat-x;
 }
@@ -217,6 +246,7 @@
 	background-color:#FFFFFF;
 	border-left:1px solid black;
 	border-right:1px solid black;
+	margin-bottom:10px;
 }
 
 .bps_pro_activation_form {
@@ -267,6 +297,17 @@
 
 #bps-maintenance_form_table table .description {margin-left:5px;}
 
+/*********** PHP ini pages *****************/
+#iniselector {float:left; margin:0px 0px 20px 0px; }
+.regular-text-wide {width:100%}
+.regular-text-label {width:100%;}
+.iniFinderStyle { background-color:#FFFFFF; padding:2px 2px 2px 4px;
+	border-right:2px solid black;
+	border-left:2px solid black;
+	border-top:1px solid #999999;
+	border-bottom:1px solid #999999; 
+	}
+.regular-text-save-path {width:80%}
 /*********** PayPal and AITpro Link ********/
 #bpspaypal {float:right; position:relative; top:5px; right:15px;}
 #AITpro-link { padding:5px 0px 0px 10px;}

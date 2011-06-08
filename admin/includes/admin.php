@@ -6,14 +6,11 @@ if (!function_exists ('add_action')) {
 		exit();
 }
 
-// WordPress "Settings" Panel menu link
-function bulletproof_security_admin_link() {
-	add_options_page(__('BulletProof Security', 'bulletproof-security'), __('BulletProof Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php');
-}
-
 function bulletproof_security_admin_init() {
-	// Global 'whitelist_settings' register
-	register_setting('bulletproof_security', 'bulletproof_security', 'bulletproof_security_save_settings');
+	// whitelist BPS DB options 
+	register_setting('bulletproof_security_options', 'bulletproof_security_options', 'bulletproof_security_options_validate');
+	register_setting('bulletproof_security_options_maint', 'bulletproof_security_options_maint', 'bulletproof_security_options_validate_maint');
+	register_setting('bulletproof_security_options_mynotes', 'bulletproof_security_options_mynotes', 'bulletproof_security_options_validate_mynotes');
 	
 	// Register BPS js
 	wp_register_script( 'bps-js', WP_PLUGIN_URL . '/bulletproof-security/admin/js/bulletproof-security-admin.js');
@@ -31,11 +28,15 @@ function bulletproof_security_admin_init() {
 	add_action('load-bulletproof-security/admin/options.php', 'bulletproof_security_load_settings_page');
 }
 	
-function bulletproof_security_load_settings_page() {
-	global $bulletproof_security, $user_ID;
-	do_action('bps_settings_page');
+// WordPress "Settings" Panel menu link
+function bulletproof_security_admin_link() {
+	add_options_page(__('BulletProof Security ~ .htaccess Core', 'bulletproof-security'), __('BulletProof Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php');
+}
 
-	// Enqueue BPS scripts and styles
+// Enqueue BPS scripts and styles only on BPS Options page
+function bulletproof_security_load_settings_page() {
+	global $bulletproof_security;
+	
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-tabs');
 	wp_enqueue_script('jquery-form');
@@ -56,7 +57,42 @@ function bulletproof_security_install() {
 }
 
 function bulletproof_security_uninstall() {
-	$options = get_option('bulletproof_security');
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php');
+	$options = get_option('bulletproof_security');
+	delete_option('bulletproof_security_options');
+	delete_option('bulletproof_security_options_maint');
+	delete_option('bulletproof_security_options_mynotes');
+}
+
+// Validate BPS options
+function bulletproof_security_options_validate($input) {  
+	$options = get_option('bulletproof_security_options');  
+		
+	return $options;  
+}
+
+// Validate BPS options - Maintenance Mode Form 
+function bulletproof_security_options_validate_maint($input) {  
+	$options = get_option('bulletproof_security_options_maint');  
+	$options['bps-site-title'] = wp_filter_nohtml_kses($input['bps-site-title']);
+	$options['bps-message-1'] = wp_filter_nohtml_kses($input['bps-message-1']);
+	$options['bps-message-2'] = wp_filter_nohtml_kses($input['bps-message-2']);
+	$options['bps-start-date'] = wp_filter_nohtml_kses($input['bps-start-date']);
+	$options['bps-start-time'] = wp_filter_nohtml_kses($input['bps-start-time']);
+	$options['bps-end-date'] = wp_filter_nohtml_kses($input['bps-end-date']);
+	$options['bps-end-time'] = wp_filter_nohtml_kses($input['bps-end-time']);
+	$options['bps-popup-message'] = wp_filter_nohtml_kses($input['bps-popup-message']);
+	$options['bps-retry-after'] = wp_filter_nohtml_kses($input['bps-retry-after']);
+	$options['bps-background-image'] = wp_filter_nohtml_kses($input['bps-background-image']);
+		
+	return $options;  
+}
+
+// Validate BPS options - BPS "My Notes" settings 
+function bulletproof_security_options_validate_mynotes($input) {  
+	$options = get_option('bulletproof_security_options_mynotes');  
+	$options['bps_my_notes'] = htmlspecialchars($input['bps_my_notes']);
+		
+	return $options;  
 }
 ?>
