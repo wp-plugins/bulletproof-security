@@ -61,7 +61,7 @@ function bps_plugin_actlinks( $links, $file ){
 	static $this_plugin;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
 	if ( $file == $this_plugin ){
-	$settings_link = '<a href="admin.php?page=bulletproof-security/admin/options.php">' . __('Settings') . '</a>';
+	$settings_link = '<a href="options-general.php?page=bulletproof-security/admin/options.php">' . __('Settings') . '</a>';
 		array_unshift( $links, $settings_link );
 	}
 	return $links;
