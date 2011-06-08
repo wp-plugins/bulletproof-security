@@ -6,17 +6,27 @@ if (!function_exists ('add_action')) {
 		exit();
 }
 
-// Get BPS Version - Just for display purposes
-function bpsWhatVersion() {
-echo " ~ .46.3";
+// BPS - future
+function bulletproof_security_save_options() {
+	global $bulletproof_security;
+	return $bulletproof_security->save_options();
 }
 
-// BPS Master htaccess File Editing - file checks and get contents for editor
+function bulletproof_security_set_error($code = '', $error = '', $data = '') {
+	global $bulletproof_security;
+	return $bulletproof_security->set_error($code, $error, $data);
+}
+
+function bulletproof_security_get_error($code = '') {
+	global $bulletproof_security;
+	return $bulletproof_security->get_error($code);
+}
+
+// BPS Master htaccess File Editing - file checks
 function get_secure_htaccess() {
 	$secure_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
 	if (file_exists(ABSPATH . $secure_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $secure_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $secure_htaccess_file);
 	} else {
 	_e('The secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the secure.htaccess file exists and is named secure.htaccess.');
 	}
@@ -25,8 +35,7 @@ function get_secure_htaccess() {
 function get_default_htaccess() {
 	$default_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
 	if (file_exists(ABSPATH . $default_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $default_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $default_htaccess_file);
 	} else {
 	_e('The default.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the default.htaccess file exists and is named default.htaccess.');
 	}
@@ -35,8 +44,7 @@ function get_default_htaccess() {
 function get_maintenance_htaccess() {
 	$maintenance_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
 	if (file_exists(ABSPATH . $maintenance_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $maintenance_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $maintenance_htaccess_file);
 	} else {
 	_e('The maintenance.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the maintenance.htaccess file exists and is named maintenance.htaccess.');
 	}
@@ -45,8 +53,7 @@ function get_maintenance_htaccess() {
 function get_wpadmin_htaccess() {
 	$wpadmin_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 	if (file_exists(ABSPATH . $wpadmin_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $wpadmin_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $wpadmin_htaccess_file);
 	} else {
 	_e('The wpadmin-secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the wpadmin-secure.htaccess file exists and is named wpadmin-secure.htaccess.');
 	}
@@ -56,8 +63,7 @@ function get_wpadmin_htaccess() {
 function get_root_htaccess() {
 	$root_htaccess_file = '/.htaccess';
 	if (file_exists(ABSPATH . $root_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $root_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $root_htaccess_file);
 	} else {
 	_e('An .htaccess file was not found in your website root folder.');
 	}
@@ -67,8 +73,7 @@ function get_root_htaccess() {
 function get_current_wpadmin_htaccess_file() {
 	$current_wpadmin_htaccess_file = '/wp-admin/.htaccess';
 	if (file_exists(ABSPATH . $current_wpadmin_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $current_wpadmin_htaccess_file);
-	echo $bpsString;
+	echo file_get_contents(ABSPATH . $current_wpadmin_htaccess_file);
 	} else {
 	_e('An .htaccess file was not found in your wp-admin folder.');
 	}
@@ -131,13 +136,13 @@ $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 }
 
 // Dump the actual Root .htaccess files contents - dump the first 45 characters of the current existing root .htaccess file
-// starting from the 3rd character - strpos checks for the single character "3" (the #3 in version .46.3) in string position
+// starting from the 3rd character - strpos checks for the single character "2" (the #2 in version .46.2) in string position
 // 17 to validate the version of the BPS htaccess file in use
 // if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function root_htaccess_status() {
 	$filename = '.htaccess';
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "3");
+	$check_string = strpos($section, "2");
 	if ( !file_exists(ABSPATH . $filename)) {
 	_e('<font color="red">An .htaccess file was NOT found in your root folder</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
@@ -148,7 +153,7 @@ function root_htaccess_status() {
 	if ($check_string == "17") { 
 		_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
 	} else {
-	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46.3. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
+	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated or the version of the BPS htaccess file that you are using is not .46.2. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
 	_e('<font color="red"><strong>wp-config.php is NOT .htaccess protected by BPS</strong></font><br><br>');
 	}
 	}
@@ -157,13 +162,13 @@ function root_htaccess_status() {
 
 // Dump the actual /wp-admin/.htaccess file contents if file exists - dump the first 45 characters 
 // of the current existing wp-admin .htaccess file starting from the 3rd character - strpos checks 
-// for the single character "3" (the #3 in version .46.3) in string position 17 to validate the version 
+// for the single character "2" (the #2 in version .46.2) in string position 17 to validate the version 
 // of the BPS htaccess file in use.
 // if you modify the first 45 characters of the BPS .htaccess file the strpos must match or errors will be displayed
 function wpadmin_htaccess_status() {
 	$filename = 'wp-admin/.htaccess';
 	$section = file_get_contents(ABSPATH . $filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "3");
+	$check_string = strpos($section, "2");
 	if ( !file_exists(ABSPATH . $filename)) {
 	_e('<font color="red"><strong>An .htaccess file was NOT found in your wp-admin folder.<br>BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.</strong></font><br>');
 	} else {
@@ -172,7 +177,7 @@ function wpadmin_htaccess_status() {
 		var_dump($section);
 	if ($check_string == "17") { 
 	} else {
-	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.3. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
+	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.2. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
 	}
 	}
 	}
@@ -480,42 +485,6 @@ function bps_check_safemode() {
 	}
 	}
 
-// Heads Up Display - Check if W3TC is active or not and check root htaccess file for W3TC htaccess code 
-function bps_w3tc_htaccess_check($plugin_var) {
-	$filename = ABSPATH . '.htaccess';
-	$string = file_get_contents($filename);
-	$plugin_var = 'w3-total-cache';
-    $return_var = in_array( $plugin_var. '/' .$plugin_var. '.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
-    if ($return_var == 1) { // return $return_var; ---- 1 equals active
-	if (!strpos($string, "W3TC")) {
-	_e('<font color="red"><strong>W3 Total Cache is activated, but W3TC .htaccess code was NOT found in your root .htaccess file.</strong></font><br><strong>W3TC needs to be redeployed by clicking either the auto-install or deploy buttons. Click to <a href="admin.php?page=w3tc_general" >Redeploy W3TC.</a></strong><br><br>');
-	} 
-	}
-	elseif ($return_var != 1) {
-	if (strpos($string, "W3TC")) {
-	_e('<font color="red"><strong>W3 Total Cache is deactivated and W3TC .htaccess code was found in your root .htaccess file.</strong></font><br><strong>If this is just temporary then this warning message will go away when you reactivate W3TC. If you are planning on uninstalling W3TC the W3TC .htaccess code will be automatically removed from your root .htaccess file when you uninstall W3TC. If you manually edit your root htaccess file then refresh your browser to perform a new HUD htaccess file check.</strong><br><br>');
-	}
-	} 
-}
-
-// Heads Up Display - Check if WPSC is active or not and check root htaccess file for WPSC htaccess code 
-function bps_wpsc_htaccess_check($plugin_var) {
-	$filename = ABSPATH . '.htaccess';
-	$string = file_get_contents($filename);
-	$plugin_var = 'wp-super-cache';
-    $return_var = in_array( $plugin_var. '/' .'wp-cache.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
-    if ($return_var == 1) { // return $return_var; ---- 1 equals active
-	if (!strpos($string, "WPSuperCache")) { 
-	_e('<font color="red"><strong>WP Super Cache is activated, but either you are not using WPSC mod_rewrite to serve cache files or the WPSC .htaccess code was NOT found in your root .htaccess file.</strong></font><br><strong>If you are not using WPSC mod_rewrite then just add this commented out line of code in anywhere in your root htaccess file - # WPSuperCache. If you are using WPSC mod_rewrite and the WPSC htaccess code is not in your root htaccess file then click this <a href="options-general.php?page=wpsupercache&tab=settings" >Update WPSC link</a> to go to the WPSC Settings page and click the Update Mod_Rewrite Rules button. It appears that the BPS filters are working correctly with the WPSC htaccess code being written to the bottom of the root htaccess file, but I recommend that you manually cut and paste the WPSC htaccess code and the section of Wordpress htaccess code that starts with # BEGIN WordPress and ends with # END WordPress to the top area of your root htaccess file right after Options -Indexes in your root htaccess file. Refresh your browser to perform a new HUD htaccess file check.</strong><br><br>');
-	} 
-	}
-	elseif ($return_var != 1) {
-	if (strpos($string, "WPSuperCache") ) {
-	_e('<font color="red"><strong>WP Super Cache is deactivated and WPSC .htaccess code - # BEGIN WPSuperCache # END WPSuperCache - was found in your root .htaccess file.</strong></font><br><strong>If this is just temporary then this warning message will go away when you reactivate WPSC. You will need to set up and reconfigure WPSC again when you reactivate WPSC. If you are planning on uninstalling WPSC the WPSC .htaccess code will be automatically removed from your root .htaccess file when you uninstall WPSC. If you added commented out line of code in anywhere in your root htaccess file - # WPSuperCache - then delete it and refresh your browser. It appears that the BPS filters are working correctly with the WPSC htaccess code being written to the bottom of the root htaccess file, but I recommend that you manually cut and paste the WPSC htaccess code and the section of Wordpress htaccess code that starts with # BEGIN WordPress and ends with # END WordPress to the top area of your root htaccess file right after Options -Indexes in your root htaccess file.</strong><br><br>');
-	}
-	} 
-}
-
 // Get WordPress Root Installation Folder - Borrowed from WP Core 
 function bps_wp_get_root_folder() {
 $site_root = parse_url(get_option('siteurl'));
@@ -546,6 +515,9 @@ $site_root = parse_url(get_option('siteurl'));
 	}
 }
 
+//preg_match('/^([a-zA-Z0-9_]+)$/', $str); 
+
+
 // Check for Multisite
 function bps_multsite_check() {  
 	if ( is_multisite() ) { 
@@ -572,7 +544,7 @@ function bps_filesmatch_check_readmehtml() {
 	$filename = ABSPATH . 'readme.html';
 	if (file_exists(ABSPATH . $htaccess_filename)) {
 	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "3");
+		$check_string = strpos($section, "2");
 		if ($check_string == "17") { 
 		_e('');
 		}
@@ -592,7 +564,7 @@ function bps_filesmatch_check_installphp() {
 	$filename = ABSPATH . 'wp-admin/install.php';
 	if (file_exists(ABSPATH . $htaccess_filename)) {
 	$section = file_get_contents(ABSPATH . $htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "3");
+		$check_string = strpos($section, "2");
 		if ($check_string == "17") { 
 		_e('');
 		}
