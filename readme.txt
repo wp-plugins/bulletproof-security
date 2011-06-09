@@ -139,7 +139,8 @@ to your .htaccess files. You can add additional code to the master .htaccess fil
 * Maintenance Mode page changes - Form settings saved to the WP DB
 * HUD, W3TC and WPSC - Heads Up Display checks / messages changes / additions
 * wp-admin htaccess file removal added
-* My Notes page was added 
+* My Notes page was added
+* 
 
 = .46.2 =
 * Additional new .htaccess security coding and modifications added to the BPS master .htaccess files
