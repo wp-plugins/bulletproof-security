@@ -225,6 +225,7 @@ $bps_hostname = str_replace('www.', '', $bps_hostname); ?>
 <p>Your IP Address is: <?php echo $_SERVER['REMOTE_ADDR']; ?></p>
 
 <script type="text/javascript">
+/* <![CDATA[ */
 // ##########################################################################################
 // ############## the date and time that your website started maintenance ###################
 // ############## Time is entered in Military time ##########################################
@@ -239,9 +240,8 @@ var thischristmasyear=(new Date().getMonth()>=11 && new Date().getDate()>25)? cu
 // ############## the date and time that your website maintenance will end maintenance #######
 // ############## year is precalculated by +thischristmasyear+ ###############################
 var christmas=new cdtime("countdowncontainer2", "<?php echo "$bps_end_maintenance_date".', '; ?>"+thischristmasyear+"<?php echo ' '."$bps_end_maintenance_time"; ?>")
-//var christmas=new cdtime("countdowncontainer2", "May 30, "+thischristmasyear+" 20:0:00")
-// var christmas=new cdtime("countdowncontainer2", "<?php echo "$bps_end_maintenance"; ?>")
 christmas.displaycountdown("days", formatresults2)
+/* ]]> */
 </script>
 </td>
 </tr>
