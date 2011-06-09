@@ -1,10 +1,13 @@
-#   BULLETPROOF .46.2 >>>>>>> SECURE .HTACCESS
+#   BULLETPROOF .46.3 >>>>>>> SECURE .HTACCESS
 
 # If you edit the line of code above you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
 # will need to edit the BPS functions.php file to match your changes
 # For more info see the BPS Guide at AIT-pro.com
+
+# If you are getting 500 Errors when activating BPS then comment out Options -Indexes
+Options -Indexes
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -20,8 +23,12 @@ RewriteRule . /index.php [L]
 # If you want to add a custom 403 Forbidden page for your website uncomment the 
 # ErrorDocument line of code below and copy the ait-pro.com example forbidden 
 # HTML page to your correct website folder. See the BPS Help and FAQ page for 
-# detailed instructions on how to do this.
+# detailed instructions on how to do this. If your Theme 404 template is named
+# 404.php then you can uncomment the 404 line below now. If your 404 template is
+# named some other file name then change 404.php to the name of your 404 template
+# name and uncomment the 404 line of code below.
 # ErrorDocument 403 /forbidden.html
+# ErrorDocument 404 /404.php
 
 # Plugin conflicts will be handled case by case
 # You can leave the plugin fixes code intact just in case you install one of these plugins
