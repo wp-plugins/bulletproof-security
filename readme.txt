@@ -3,14 +3,14 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, XSS, CSRF, SQL Injection, vulnerability
 Requires at least: 3.0 
-Tested up to: 3.2-bleeding 
-Stable tag: .46.3 
+Tested up to: 3.3 
+Stable tag: .46.4 
 
 WordPress website security protection. BulletProof Security protects your website from XSS, CSRF, Base64 and SQL Injection hacking attempts. 
 
 == Description ==
 
-Website Security Protection: BulletProof Security protects your website from XSS, CSRF, Base64_encode and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click Website Maintenance Mode(HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Memory Usage, IP, Max file sizes... Built-in .htaccess file editing, uploading and downloading.
+Website Security Protection: BulletProof Security protects your website from XSS, CSRF, Base64_encode and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Memory Usage, IP, Max file sizes... Built-in .htaccess file editing, uploading and downloading.
 
 The BulletProof Security WordPress Security plugin is designed to be a fast, simple and one click security plugin to 
 add .htaccess website security protection for your WordPress website. Activate .htaccess website security and .htaccess
@@ -131,6 +131,17 @@ to your .htaccess files. You can add additional code to the master .htaccess fil
 3. BulletProof File Editing, Uploading and Downloading
 
 == Changelog ==
+
+= .46.4 =
+* Network / MU detect with additional help info
+* chmod 0644 added to copy function for default, secure and wp-admin htaccess files
+* Fixed CSS display issues for WP versions 3.2+
+* Replaced PP donate link with BPS Pro Upgrade link
+* Replaced BPS Pro Modules page with BPS Pro Features page
+* Security Status print output instead of var_dump
+* Help info updated
+* Other CSS changes
+* Updated Whats New
 
 = .46.3 =
 * BPS Security Top Level Menu added
@@ -303,18 +314,18 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .46.3
-* BPS Security Top Level Menu added
-The BulletProof Security link is no longer located under Settings. BPS was added as a Top Level Menu.   
-* Whats New page was added
-Shows you what changes have been made in each new version of BPS. If you want to save notes about BPS for upgrades or whatever else you can save your notes to your WordPress database using the new My Notes feature. 
-* My Notes page was added
-Save notes about BPS upgrades, save htaccess code that you want to keep between BPS upgrades or save notes about anything else you want to keep permanently. When you save your notes they are saved to your WordPress Database so they will be available to you until you delete them. 
-* BPS Master htaccess file changes
-No new Exploit filters were added. No Exploit filters were modified. No new plugin fixes were added. Options -Indexes has been added back again as a regular feature of the root htaccess file. If your host does not allow the Options directive to be used in htaccess files then comment out that line of htaccess code. If you activate BulletProof Mode for your Root folder and you see a 500 Internal Server Error then you will need to FTP to your website download the root .htaccess file or use your host Control Panel and comment out the Options -Indexes line of htaccess code. This text was modified in the secure.htaccess BPS Master htaccess file: If you want to add a custom 403 Forbidden page for your website uncomment the ErrorDocument line of code below and copy the ait-pro.com example forbidden HTML page to your correct website folder. See the BPS Help and FAQ page for detailed instructions on how to do this. If your Theme 404 template is named 404.php then you can uncomment the 404 line below now. If your 404 template is named some other file name then change 404.php to the name of your 404 template name and uncomment the 404 line of code below. ErrorDocument 403 /forbidden.html ErrorDocument 404 /404.php. 
-* Maintenance Mode page changes
-The Maintenance Mode form data is now saved to your WordPress database so that it will be permanently available to you until you change it. 
-* HUD, W3TC and WPSC - Heads Up Display checks / messages
-There have been some minor htaccess issues with the W3TC and WPSC plugins. Both of these caching plugins write to your root htaccess file. BPS now checks your root htaccess file and will display a HUD message if there are any htaccess issues with the W3 Total Cache and WP Super Cache plugins. This is a permanent ON checking feature and you will be alerted immediately if a problem is detected with the root .htaccess file. HUD checks are performed when you first access BPS or if you refresh your browser. Before exiting BPS refresh your browser to perform a check to make sure there are not any problems. The HUD alerts will tell you what needs to be done in order to fix any issues or problems. 
-* wp-admin htaccess file removal added
-A new option to delete the wp-admin htaccess file has been added on the Security Modes page. Deleting the wp-admin htaccess file should only be used for testing or removal of the BPS htaccess files before uninstalling BPS. If you are testing plugin compatibility issues then you would delete the wp-admin htaccess file and also put your site in Default Mode. Be sure to activate both your Root BulletProof and wp-admin BulletProof Modes after testing is finished.
+What's New in .46.4
+* Network / MU detect with additional help info
+If you have a Network / MU WordPress installation a pop up message will inform you of a couple of additional steps involved in setting up BPS. The pop up only displays if you have a Network site installation.  
+* chmod 0644 added to copy function for default, secure and wp-admin htaccess files
+The .htaccess master files are chmod 644 when copied to the root and wp-admin folders to avoid problems with some web hosts using suPHP.
+* Fixed CSS display issues for WP versions 3.2+
+CSS was looking a little off in several places with WP 3.2.1. Fixed any CSS issues.
+* Replaced PP donate link with BPS Pro Upgrade link
+Ditched the obnoxious PayPal Donate link and added a little less obnoxious BPS Pro Upgrade link.
+* Replaced BPS Pro Modules page with BPS Pro Features page
+The BPS Pro Modules page has been replaced a BPS Pro Feature Highlights page.
+* Security Status print output instead of var_dump
+The Security Status Active BPS .htaccess files are displayed / outputted with print instead of a var_dump.
+* BPS Pro 5.0 Officially Released
+Yeah!  Finally...  BPS Pro has some important, cool and very handy tools and features. Check out the BPS Pro Features page for more info.
