@@ -156,7 +156,7 @@ function root_htaccess_status() {
 function wpadmin_htaccess_status() {
 	$filename = ABSPATH . 'wp-admin/.htaccess';
 	$section = @file_get_contents($filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "4", 15);
+	$check_string = @strpos($section, "4", 15);
 	if ( !file_exists($filename)) {
 	_e('<font color="red"><strong>An .htaccess file was NOT found in your wp-admin folder.<br>BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.</strong></font><br>');
 	} else {
