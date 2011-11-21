@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 3.3 
 Stable tag: .46.5 
 
-WordPress website security protection. BulletProof Security protects your website from XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hacking attempts. 
+WordPress website security protection. BulletProof Security protects your website from XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hack... 
 
 == Description ==
 
@@ -122,8 +122,7 @@ to your .htaccess files. You can add additional code to the master .htaccess fil
 = Does BulletProof Security Work on Windows IIS Hosting? =
 
 Yes and No. .htaccess files are only used on Linux based hosting. You can install BulletProof Security if you have a Windows IIS
-hosted website to use the additional features in BPS, but you cannot Activate BulletProof Modes. At some point in the future  
-additional coding will be added for Windows IIS websites.
+hosted website to use the additional features in BPS, but you cannot Activate BulletProof Modes. At some point in the future additional coding will be added for Windows IIS websites.
 
 = Is BulletProof Security Network / MU / Multisite Compatible? =
 
@@ -153,6 +152,7 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 * Help info updated
 * Updated Whats New
 * Lots of other stuff
+* Enjoy!
 
 = .46.4 =
 * Network / MU detect with additional help info
