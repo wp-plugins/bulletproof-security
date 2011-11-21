@@ -1,168 +1,222 @@
-#   BULLETPROOF .46.4 >>>>>>> SECURE .HTACCESS     
+#   BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS       
 
-# If you edit the line of code above you will see error messages on the BPS status page
+# If you edit the BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS text above
+# you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
-# will need to edit the BPS functions.php file to match your changes
-# For more info see the BPS Guide at AIT-pro.com
-
-# If you are getting 500 Errors when activating BPS then comment out Options -Indexes
-Options -Indexes
+# will need to edit the BPS /includes/functions.php file to match your changes
+# If you update your WordPress Permalinks the code between BEGIN WordPress and
+# END WordPress is replaced by WP htaccess code.
+# This removes all of the BPS security code and replaces it with just the default WP htaccess code
+# To restore this file use BPS Restore or activate BulletProof Mode for your Root folder again.
 
 # BEGIN WordPress
-<IfModule mod_rewrite.c>
+# IMPORTANT!!! DO NOT DELETE!!! - BEGIN Wordpress above or END WordPress - text in this file
+# They are reference points for WP, BPS and other plugins to write to this htaccess file.
+# IMPORTANT!!! DO NOT DELETE!!! - BPSQSE BPS QUERY STRING EXPLOITS - text
+# BPS needs to find the - BPSQSE - text string in this file to validate that your security filters exist
+
+# TURN OFF YOUR SERVER SIGNATURE
+ServerSignature Off
+
+# ADD A PHP HANDLER - Add your hosts php Handler below if you are using a php handler
+# Example GoDaddy PHP 5.2.x php handler is shown commented out below
+#AddHandler x-httpd-php5 .php
+
+# CUSTOM PHP.INI FILES - handlers and mod_suphp htaccess code for Web Hosts
+# If you are using either a BPS Pro custom php.ini file or one that you created yourself
+# If your host is GoDaddy and you have a custom php.ini file
+# uncomment the 1 line of code directly below
+#AddHandler x-httpd-php5 .php 
+# If your host is BlueHost, HostMonster FastDomain and you have a custom php.ini file
+# uncomment the 1 line of code directly below 
+#AddHandler application/x-httpd-php5s .php
+# If your host is HostGator and you have a custom php.ini file
+# uncomment the 3 lines of code below and replace xxxxx with your account/username 
+#<IfModule mod_suphp.c>
+#suPHP_ConfigPath /home/xxxxx/public_html/php.ini
+#</IfModule>  
+
+# DO NOT SHOW DIRECTORY LISTING
+# If you are getting 500 Errors when activating BPS then comment out Options -Indexes 
+# by adding a # sign in front of it. If there is a typo anywhere in this file you will also see 500 errors.
+Options -Indexes
+
+# DIRECTORY INDEX FORCE INDEX.PHP
+# Use index.php as default directory index file
+# index.html will be ignored will not load.
+DirectoryIndex index.php index.html /index.php
+
+# BPS PRO ERROR LOGGING AND TRACKING - Available in BPS Pro only
+# BPS Pro has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
+# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to
+# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or
+# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.
+# BPS Pro Log files are added to the P-Security All Purpose File Manager to view them.
+# All BPS Pro log files are htaccess protected so that only you can view them. 
+# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/
+# The 400 and 403 Error logging files are already set up and will automatically start logging errors
+# after you install BPS Pro and have activated BulletProof Mode for your Root folder.
+# If you would like to log 404 errors you will need to copy the logging code in the BPS Pro 404.php file
+# to your Theme's 404.php template file. Simple instructions are included in the BPS Pro 404.php file.
+# You can open the BPS Pro 404.php file using the WP Plugins Editor or by using the BPS Pro File Manager.
+# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.
+
+ErrorDocument 400 /wp-content/plugins/bulletproof-security/400.php
+ErrorDocument 403 /wp-content/plugins/bulletproof-security/403.php
+ErrorDocument 404 /404.php
+
+# DENY ACCESS TO PROTECTED SERVER FILES - .htaccess, .htpasswd and all file names starting with dot
+RedirectMatch 403 /\..*$
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
+
+# REQUEST METHODS FILTERED
+# This filter is for blocking junk bots and spam bots from making a HEAD request, but may also block some
+# HEAD requests from bots that you want to allow in certain cases. This is not a security filter and is just
+# a nuisance filter. This filter will not block any important bots like the google bot. If you want to allow
+# all bots to make a HEAD request then remove HEAD from the Request Method filter.
+# The TRACE, DELETE, TRACK and DEBUG request methods should never be allowed against your website.
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# PLUGINS AND VARIOUS EXPLOIT FILTER SKIP RULES
+# IMPORTANT!!! If you add or remove a skip rule you must change S= to the new skip number
+# Example: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
+# Adminer MySQL management tool data populate
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC] 
+RewriteRule . - [S=11]
+# Comment Spam Pack MU Plugin - CAPTCHA images not displaying 
+RewriteCond %{REQUEST_URI} ^/wp-content/mu-plugins/custom-anti-spam/ [NC]
+RewriteRule . - [S=10]
+# Peters Custom Anti-Spam display CAPTCHA Image
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
+RewriteRule . - [S=9]
+# Status Updater plugin fb connect
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/fb-status-updater/ [NC] 
+RewriteRule . - [S=8]
+# Stream Video Player - Adding FLV Videos Blocked
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stream-video-player/ [NC]
+RewriteRule . - [S=7]
+# XCloner 404 or 403 error when updating settings
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/xcloner-backup-and-restore/ [NC]
+RewriteRule . - [S=6]
+# BuddyPress Logout Redirect
+RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
+RewriteRule . - [S=5]
+# redirect_to=
+RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
+RewriteRule . - [S=4]
+# Login Plugins Password Reset And Redirect 1
+RewriteCond %{QUERY_STRING} action=resetpass&key=(.*) [NC]
+RewriteRule . - [S=3]
+# Login Plugins Password Reset And Redirect 2
+RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
+RewriteRule . - [S=2]
+
+# ALLOW THUMBNAILER SCRIPTS TO DISPLAY IMAGES
+# By default BPS is forbidding allowing these thumbnailer scripts filename requests
+# This will Log lots of hacking attempts on your website in your BPS Pro Error Log
+# If you are using one of these thumbnailer scripts on your website and you want to allow
+# your thumbnailer script images to display then change [F,L] to [S=1]
+# Make sure that you have a security patched version or recent versions of these scripts
+# before changing [F,L] to [S=1] and allowing these files to be requested on your website
+# If you delete or remove the RewriteRule below you will need to change the above skip rules
+# Example: RewriteRule S=2 above will need to be changed to S=1, change S=3 to S=2, etc.
+RewriteCond %{REQUEST_FILENAME} thumb.php [NC,OR]
+RewriteCond %{REQUEST_FILENAME} thumbs.php [NC,OR]
+RewriteCond %{REQUEST_FILENAME} timthumb.php [NC,OR]
+RewriteCond %{REQUEST_FILENAME} phpthumb.php [NC]
+RewriteRule . - [F,L]
+
+# BPSQSE BPS QUERY STRING EXPLOITS
+# The libwww-perl User Agent is forbidden - Many bad bots use libwww-perl modules, but some good bots use it too.
+# Good sites such as W3C use it for their W3C-LinkChecker. 
+# Add or remove user agents temporarily or permanently from the first User Agent filter below.
+# If you want a list of bad bots / User Agents to block then scroll to the end of this file.
+RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
+RewriteCond %{HTTP_COOKIE} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
+RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
+RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
+RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
+RewriteCond %{THE_REQUEST} (\\r|\\n|%0A|%0D) [NC,OR]
+RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
+RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
+RewriteCond %{HTTP_REFERER} users\.skynet\.be.* [NC,OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
+RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
+RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
+RewriteCond %{QUERY_STRING} http\: [NC,OR] 
+RewriteCond %{QUERY_STRING} https\: [NC,OR]
+RewriteCond %{QUERY_STRING} \=\|w\| [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^i]*i)+frame.*(>|%3E) [NC,OR] 
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]
+RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
+RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
+RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
+RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
+RewriteCond %{QUERY_STRING} (execute|exec|sp_executesql) [NC]
+RewriteRule ^(.*)$ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-</IfModule>
+
+# DENY BROWSER ACCESS TO THESE FILES 
+# wp-config.php, bb-config.php, php.ini, php5.ini, readme.html
+# Replace Allow from 88.77.66.55 with your current IP address and remove the  
+# pound sign # from in front of the Allow from line of code below to access these
+# files directly from your browser.
+
+<FilesMatch "^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)">
+Order allow,deny
+Deny from all
+#Allow from 88.77.66.55
+</FilesMatch>
+
+# IMPORTANT!!! DO NOT DELETE!!! the END WordPress text below
 # END WordPress
 
-# If you want to add a custom 403 Forbidden page for your website uncomment the 
-# ErrorDocument line of code below and copy the ait-pro.com example forbidden 
-# HTML page to your correct website folder. See the BPS Help and FAQ page for 
-# detailed instructions on how to do this. If your Theme 404 template is named
-# 404.php then you can uncomment the 404 line below now. If your 404 template is
-# named some other file name then change 404.php to the name of your 404 template
-# name and uncomment the 404 line of code below.
-# ErrorDocument 403 /forbidden.html
-# ErrorDocument 404 /404.php
+# BLOCK HOTLINKING TO IMAGES
+# To Test that your Hotlinking protection is working visit http://altlab.com/htaccess_tutorial.html
+#RewriteEngine On
+#RewriteCond %{HTTP_REFERER} !^https?://(www\.)?add-your-domain-here\.com [NC]
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteRule .*\.(jpeg|jpg|gif|bmp|png)$ - [F]
 
-# Plugin conflicts will be handled case by case
-# You can leave the plugin fixes code intact just in case you install one of these plugins
-# at a later time. Thousands of lines of htaccess code can be read in milliseconds
-# so leaving the code intact does not slow down your website performance at all.
-# Thousands of plugins have been tested with BPS and the plugin conflict fixes 
-# contained in this BPS master file are permanent fixes for conflicts found with
-# these plugins. If you use AutoMagic to create this file then your correct WordPress installation
-# folder name will be automatically added to the plugin fixes that need a WP folder name.
-# If you choose to manually edit this file instead of using AutoMagic be sure to add your 
-# WordPress installation folder name to the fixes that require your WordPress folder name.
-# Your WordPress installation folder name can be found on the System Info page. If you only see
-# a forward slash then you have a root folder installation and do not need to add a folder name.
-
-# redirect_to= string fix - fixes issues with plugins that use the redirect_to= string
-RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
-RewriteRule . - [S=30]
-
-# Login Plugins Password Reset And Redirect Conflicts Fix 1
-RewriteCond %{QUERY_STRING} action=resetpass&key=(.*) [NC]
-RewriteRule . - [S=30]
-
-# Login Plugins Password Reset And Redirect Conflicts Fix 2
-RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
-RewriteRule . - [S=30]
-
-# BuddyPress Logout Redirect fix - skip BPS Filters on Logout link Redirect
-# WordPress 3.0.4 or higher must be installed for this fix to work
-RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
-RewriteRule . - [S=30]
-
-# Ozh' Admin Drop Down Menu Display Fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/ozh-admin-drop-down-menu/ [NC] 
-RewriteRule . - [S=30]
-
-# ComicPress Manager ComicPress Theme Image Fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/comicpress-manager/ [NC] 
-RewriteRule . - [S=30]
-
-# TimThumb and all other Thumbnailer Images not displaying - Red X instead of Images
-# If your theme uses an image thumbnailer script file this fix will work to display images correctly
-# as long as thumb is part of the file name like timthumb.php, thumb.php, thumbs.php or phpthumb.php
-RewriteCond %{REQUEST_FILENAME} ^(.*)thumb(.*)$ [NC]
-RewriteRule ^(.*)$ - [S=30]
-
-# YAPB Image Display fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/yet-another-photoblog/ [NC] 
-RewriteRule . - [S=30]
-
-# WordPress.com Stats Flash SWF Graph Does Not Load Fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stats/ [NC]
-RewriteRule . - [S=30]
-
-# Status Updater plugin fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/fb-status-updater/ [NC] 
-RewriteRule . - [S=30]
-
-# wp-extplorer login fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/wp-extplorer/ [NC] 
-RewriteRule . - [S=30]
-
-# Adminer MySQL management tool fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC] 
-RewriteRule . - [S=30]
-
-# Peters Custom Anti-Spam Image fix
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
-RewriteRule . - [S=30]
-
-# Stream Video Player - Adding FLV Videos is Blocked By BPS
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stream-video-player/ [NC]
-RewriteRule . - [S=30]
-
-# FeedWordPress - ?update_feedwordpress= String Blocked
-RewriteCond %{QUERY_STRING} update_feedwordpress=(.*) [NC]
-RewriteRule . - [S=30]
-
-# XCloner 404 or 403 error when updating settings
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/xcloner-backup-and-restore/ [NC]
-RewriteRule . - [S=30]
-
-# podPress rewrite ?feed=podcast as /feed/podcast
-# If you are using a custom slug then add the slug name to the rewriterule
-# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-RewriteCond %{QUERY_STRING} feed=podcast [NC]
-RewriteRule (.*) /feed/podcast/$1? [R=301,L]
-
-# podPress rewrite ?feed=enhancedpodcast as /feed/enhancedpodcast
-# If you are using a custom slug then add the slug name to the rewriterule
-# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-RewriteCond %{QUERY_STRING} feed=enhancedpodcast [NC]
-RewriteRule (.*) /feed/enhancedpodcast/$1? [R=301,L]
-
-# podPress rewrite ?feed=torrent as /feed/torrent
-# If you are using a custom slug then add the slug name to the rewriterule
-# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-RewriteCond %{QUERY_STRING} feed=torrent [NC]
-RewriteRule (.*) /feed/torrent/$1? [R=301,L]
-
-# podPress rewrite ?feed=premium as /feed/premium
-# If you are using a custom slug then add the slug name to the rewriterule
-# RewriteRule (.*) /feed/custom-slug-name/$1? [R=301,L]
-RewriteCond %{QUERY_STRING} feed=premimum [NC]
-RewriteRule (.*) /feed/premium/$1? [R=301,L]
-
-# FILTER REQUEST METHODS
-RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK) [NC]
-RewriteRule ^(.*)$ - [F,L]
-
-# QUERY STRING EXPLOITS 
-RewriteCond %{QUERY_STRING} \.\.\/ [NC,OR] 
-RewriteCond %{QUERY_STRING} boot\.ini [NC,OR] 
-RewriteCond %{QUERY_STRING} tag\= [NC,OR] 
-RewriteCond %{QUERY_STRING} ftp\:  [NC,OR] 
-RewriteCond %{QUERY_STRING} http\:  [NC,OR] 
-RewriteCond %{QUERY_STRING} https\:  [NC,OR]
-RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
-RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR] 
-RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [NC,OR]
-RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
-RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
-RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR] 
-RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR] 
-RewriteCond %{QUERY_STRING} ^.*(execute|exec|sp_executesql|request|select|insert|union|declare|drop|delete|create|alter|update|order|char|set|cast|convert|meta|script|truncate).* [NC] 
-RewriteRule ^(.*)$ - [F,L]
-
-# Deny Access to wp-config.php, bb-config.php, /wp-admin/install.php, all .htaccess files
-# php.ini, php5.ini and the WordPress readme.html installation file.
-# To allow ONLY yourself access to these files add your current IP address below to the 
-# Allow from line of code and remove the # sign in front of Allow from to uncomment it
-<FilesMatch "^(wp-config\.php|install\.php|\.htaccess|php\.ini|php5\.ini|readme\.html|bb-config\.php)">
- Deny from all
-# Allow from 88.55.66.200
-</FilesMatch>
+# BLOCK MORE BAD BOTS RIPPERS AND OFFLINE BROWSERS
+# If you would like to block more bad bots you can get a blacklist from
+# http://perishablepress.com/press/2007/06/28/ultimate-htaccess-blacklist/
+# You should monitor your site very closely for at least a week if you add a bad bots list
+# to see if any website traffic problems or other problems occur.
+# Copy and paste your bad bots user agent code list directly below.

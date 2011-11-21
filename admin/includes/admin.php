@@ -33,10 +33,13 @@ function bulletproof_security_admin_init() {
 
 // BPS Menu
 function bulletproof_security_admin_menu() {
+	if (is_multisite() && !is_super_admin()) {
+		echo 'Only Super Admins can access BPS Pro';
+		} else {
 	//if (function_exists('add_menu_page')){
 	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
 	add_submenu_page('bulletproof-security/admin/options.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Settings', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php' );
-}
+}}
 
 // Loads Settings for H-Core and P-Security
 // Enqueue BPS scripts and styles
@@ -57,7 +60,7 @@ function bulletproof_security_install() {
 	global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.46.4', '<') )
+	if ( version_compare($previous_install['version'], '.46.5', '<') )
 	remove_role('denied');
 	}
 }

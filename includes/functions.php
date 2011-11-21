@@ -8,14 +8,14 @@ if (!function_exists ('add_action')) {
 
 // Get BPS Version - Just for display purposes
 function bpsWhatVersion() {
-echo " ~ .46.4";
+echo " ~ .46.5";
 }
 
 // BPS Master htaccess File Editing - file checks and get contents for editor
 function get_secure_htaccess() {
-	$secure_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
-	if (file_exists(ABSPATH . $secure_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $secure_htaccess_file);
+	$secure_htaccess_file = ABSPATH .'wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+	if (file_exists($secure_htaccess_file)) {
+	$bpsString = file_get_contents($secure_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('The secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the secure.htaccess file exists and is named secure.htaccess.');
@@ -23,9 +23,9 @@ function get_secure_htaccess() {
 }
 
 function get_default_htaccess() {
-	$default_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
-	if (file_exists(ABSPATH . $default_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $default_htaccess_file);
+	$default_htaccess_file = ABSPATH .'wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+	if (file_exists($default_htaccess_file)) {
+	$bpsString = file_get_contents($default_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('The default.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the default.htaccess file exists and is named default.htaccess.');
@@ -33,9 +33,9 @@ function get_default_htaccess() {
 }
 
 function get_maintenance_htaccess() {
-	$maintenance_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-	if (file_exists(ABSPATH . $maintenance_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $maintenance_htaccess_file);
+	$maintenance_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+	if (file_exists($maintenance_htaccess_file)) {
+	$bpsString = file_get_contents($maintenance_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('The maintenance.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the maintenance.htaccess file exists and is named maintenance.htaccess.');
@@ -43,9 +43,9 @@ function get_maintenance_htaccess() {
 }
 
 function get_wpadmin_htaccess() {
-	$wpadmin_htaccess_file = '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
-	if (file_exists(ABSPATH . $wpadmin_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $wpadmin_htaccess_file);
+	$wpadmin_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+	if (file_exists($wpadmin_htaccess_file)) {
+	$bpsString = file_get_contents($wpadmin_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('The wpadmin-secure.htaccess file either does not exist or is not named correctly. Check the /wp-content/plugins/bulletproof-security/admin/htaccess/ folder to make sure the wpadmin-secure.htaccess file exists and is named wpadmin-secure.htaccess.');
@@ -54,9 +54,9 @@ function get_wpadmin_htaccess() {
 
 // The current active root htaccess file - file check
 function get_root_htaccess() {
-	$root_htaccess_file = '/.htaccess';
-	if (file_exists(ABSPATH . $root_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $root_htaccess_file);
+	$root_htaccess_file = ABSPATH . '.htaccess';
+	if (file_exists($root_htaccess_file)) {
+	$bpsString = file_get_contents($root_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('An .htaccess file was not found in your website root folder.');
@@ -65,9 +65,9 @@ function get_root_htaccess() {
 
 // The current active wp-admin htaccess file - file check
 function get_current_wpadmin_htaccess_file() {
-	$current_wpadmin_htaccess_file = '/wp-admin/.htaccess';
-	if (file_exists(ABSPATH . $current_wpadmin_htaccess_file)) {
-	$bpsString = file_get_contents(ABSPATH . $current_wpadmin_htaccess_file);
+	$current_wpadmin_htaccess_file = ABSPATH . 'wp-admin/.htaccess';
+	if (file_exists($current_wpadmin_htaccess_file)) {
+	$bpsString = file_get_contents($current_wpadmin_htaccess_file);
 	echo $bpsString;
 	} else {
 	_e('An .htaccess file was not found in your wp-admin folder.');
@@ -130,11 +130,13 @@ $current_wpadmin_htaccess_file = ABSPATH . '/wp-admin/.htaccess';
 }
 }
 
-// Get contents of Root .htaccess file from 3-45 - if second "4" found w/offset "15" in string position 17 - good - else bad
+// Get contents of Root .htaccess file from 3-45 - if "5" found in string position 17 - good - else bad
+// Check for string BPSQSE
 function root_htaccess_status() {
 	$filename = ABSPATH . '.htaccess';
-	$section = file_get_contents($filename, NULL, NULL, 3, 45);
-	$check_string = strpos($section, "4", 15);
+	$section = @file_get_contents($filename, NULL, NULL, 3, 45);
+	$check_stringBPSQSE = @file_get_contents($filename);
+	$check_string = @strpos($section, "5");
 	if ( !file_exists($filename)) {
 	_e('<font color="red">An .htaccess file was NOT found in your root folder</font><br><br>');
 	_e('<font color="red">wp-config.php is NOT .htaccess protected by BPS</font><br><br>');
@@ -142,33 +144,27 @@ function root_htaccess_status() {
 	if (file_exists($filename)) {
 	_e('<font color="green"><strong>The .htaccess file that is activated in your root folder is:</strong></font><br>');
 		print($section);
-	if ($check_string == "17") { 
+		if ($check_string == "17" && strpos($check_stringBPSQSE, "BPSQSE")) {
 		_e('<font color="green"><strong><br><br>&radic; wp-config.php is .htaccess protected by BPS<br>&radic; php.ini and php5.ini are .htaccess protected by BPS</strong></font><br><br>');
 	} else {
-	_e('<font color="red"><br><br><strong>A BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS htaccess file that you are using is not .46.4. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
+	_e('<font color="red"><br><br><strong>Either a BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS Pro htaccess file that you are using is not .46.5 or the BPS QUERY STRING EXPLOITS code does not exist in your root .htaccess file. Please read the Read Me hover Tooltip above.</strong></font><br><br>');
 	_e('<font color="red"><strong>wp-config.php is NOT .htaccess protected by BPS</strong></font><br><br>');
-	}
-	}
-	}
-}
+}}}}
 
-// Get contents of wp-admin .htaccess file from 3-45 - if second "4" found w/offset "15" in string position 17 - good - else bad
+// Get contents of wp-admin .htaccess file from 3-45 - if "5" found in string position 17 - good - else bad
 function wpadmin_htaccess_status() {
 	$filename = ABSPATH . 'wp-admin/.htaccess';
 	$section = @file_get_contents($filename, NULL, NULL, 3, 45);
-	$check_string = @strpos($section, "4", 15);
+	$check_stringBPSQSE = @file_get_contents($filename);
+	$check_string = @strpos($section, "5");
 	if ( !file_exists($filename)) {
 	_e('<font color="red"><strong>An .htaccess file was NOT found in your wp-admin folder.<br>BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.</strong></font><br>');
 	} else {
-	if (file_exists($filename)) {
-	//if (file_exists($filename)&&($check_string == "17")) {
+		if ($check_string == "17" && strpos($check_stringBPSQSE, "BPSQSE")) {
 	_e('<font color="green"><strong>The .htaccess file that is activated in your wp-admin folder is:</strong></font><br>');
 		print($section);
-	if ($check_string == "17") { 
-	_e('');
 	} else {
-	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.4. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
-	}
+	_e('<font color="red"><strong><br><br>A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .46.5. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me hover Tooltip above.</strong></font><br>');
 	}
 	}
 }
@@ -516,12 +512,9 @@ function bps_wp_get_root_folder() {
 $site_root = parse_url(get_option('siteurl'));
 	if ( isset( $site_root['path'] ) )
 	$site_root = trailingslashit($site_root['path']);
-	$home_root = parse_url(home_url());
-	if ( isset( $home_root['path'] ) )
-	$home_root = trailingslashit($home_root['path']);
 	else
-	$home_root = '/';
-	return $home_root;
+	$site_root = '/';
+	return $site_root;
 }
 
 // Display Root or Subfolder Installation Type
@@ -529,12 +522,9 @@ function bps_wp_get_root_folder_display_type() {
 $site_root = parse_url(get_option('siteurl'));
 	if ( isset( $site_root['path'] ) )
 	$site_root = trailingslashit($site_root['path']);
-	$home_root = parse_url(home_url());
-	if ( isset( $home_root['path'] ) )
-	$home_root = trailingslashit($home_root['path']);
 	else
-	$home_root = '/';
-	if (preg_match('/[a-zA-Z0-9]/', $home_root)) {
+	$site_root = '/';
+	if (preg_match('/[a-zA-Z0-9]/', $site_root)) {
 	echo "Subfolder Installation";
 	} else {
 	echo "Root Folder Installation";
@@ -550,6 +540,38 @@ function bps_multsite_check() {
 	}
 }
 
+// Security Modes Page - AutoMagic Single site message
+function bps_multsite_check_smode_single() {  
+global $wpdb;
+	if ( !is_multisite() ) { 
+	_e('<font color="green"><strong>Use These AutoMagic Buttons For Your Website<br>For Standard WP Installations</strong></font>');
+	} else {
+	_e('<strong>Do Not Use These AutoMagic Buttons</strong><br>For Standard WP Single Sites Only');
+	}
+}
+
+// Security Modes Page - AutoMagic Multisite sub-directory message
+function bps_multsite_check_smode_MUSDir() {  
+global $wpdb;
+	if ( is_multisite() && !is_subdomain_install() ) { 
+	_e('<font color="green"><strong>Use These AutoMagic Buttons For Your Website<br>For WP Network / MU sub-directory Installations</strong></font>');
+	} else {
+	_e('<strong>Do Not Use These AutoMagic Buttons</strong><br>For Network / MU Sub-directory Webites Only');
+	}
+}
+
+// Security Modes Page - AutoMagic Multisite sub-domain message
+function bps_multsite_check_smode_MUSDom() {  
+global $wpdb;
+	if ( is_multisite() && is_subdomain_install() ) { 
+	//if ( is_subdomain_install() ) {
+	_e('<font color="green"><strong>Use These AutoMagic Buttons For Your Website<br>For WP Network / MU sub-domain Installations</strong></font>');
+	} else {
+	_e('<strong>Do Not Use These AutoMagic Buttons</strong><br>For Network / MU Sub-domain Websites Only');
+	}
+}
+
+/*
 // Security Modes Page - htaccess warning for Multisite
 function bps_multsite_check_smode() {  
 	if ( is_multisite() ) { 
@@ -558,6 +580,7 @@ function bps_multsite_check_smode() {
 	_e('');
 	}
 }
+*/
 
 // Check if username Admin exists
 function check_admin_username() {
@@ -571,20 +594,22 @@ function check_admin_username() {
 }
 
 // Check for WP readme.html file and if valid BPS .htaccess file is activated
-// Get contents of Root .htaccess file from 3-45 - if second "4" found w/offset "15" in string position 17 - good - else bad
+// Get contents of Root .htaccess file from 3-45 - if "5" found in string position 17 - good - else bad
+// Check for WP readme.html file and if valid BPS .htaccess file is activated
 function bps_filesmatch_check_readmehtml() {
 	$htaccess_filename = ABSPATH . '.htaccess';
 	$filename = ABSPATH . 'readme.html';
+	$section = @file_get_contents($htaccess_filename, NULL, NULL, 3, 45);
+	$check_string = @strpos($section, "5");
+	$check_stringBPSQSE = file_get_contents($htaccess_filename);
 	if (file_exists($htaccess_filename)) {
-	$section = file_get_contents($htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "4", 15);
-		if ($check_string == "17") { 
+	if ($check_string == "17") { 
 		_e('');
 		}
 		if ( !file_exists($filename)) {
 		_e('<font color="green"><strong>&radic; The WP readme.html file does not exist</strong></font><br>');
 		} else {
-		if (file_exists($filename)&&($check_string == "17")) {
+		if ($check_string == "17" && strpos($check_stringBPSQSE, "BPSQSE")) {
 		_e('<font color="green"><strong>&radic; The WP readme.html file is .htaccess protected</strong></font><br>');
 		} else {
 		_e('<font color="red"><strong>The WP readme.html file is not .htaccess protected</strong></font><br>');
@@ -592,20 +617,22 @@ function bps_filesmatch_check_readmehtml() {
 }}}
 
 // Check for WP /wp-admin/install.php file and if valid BPS .htaccess file is activated
-// Get contents of Root .htaccess file from 3-45 - if second "4" found w/offset "15" in string position 17 - good - else bad
+// Get contents of Root .htaccess file from 3-45 - if "5" found in string position 17 - good - else bad
 function bps_filesmatch_check_installphp() {
-	$htaccess_filename = ABSPATH . '.htaccess';
+	$htaccess_filename = ABSPATH . 'wp-admin/.htaccess';
 	$filename = ABSPATH . 'wp-admin/install.php';
+	$check_stringBPSQSE = file_get_contents($htaccess_filename);
+	$section = @file_get_contents($htaccess_filename, NULL, NULL, 3, 45);
+	//$check_string = @strpos($section, "5", 15); // offset example for down the road
+	$check_string = @strpos($section, "5");	
 	if (file_exists($htaccess_filename)) {
-	$section = file_get_contents($htaccess_filename, NULL, NULL, 3, 45);
-		$check_string = strpos($section, "4", 15);
-		if ($check_string == "17") { 
+	if ($check_string == "17") { 
 		_e('');
 		}
 		if ( !file_exists($filename)) {
 		_e('<font color="green"><strong>&radic; The WP /wp-admin/install.php file does not exist</strong></font><br>');
 		} else {
-		if (file_exists($filename)&&($check_string == "17")) {
+		if ($check_string == "17" && strpos($check_stringBPSQSE, "BPSQSE")) {
 		_e('<font color="green"><strong>&radic; The WP /wp-admin/install.php file is .htaccess protected</strong></font><br>');
 		} else {
 		_e('<font color="red"><strong>The WP /wp-admin/install.php file is not .htaccess protected</strong></font><br>');
