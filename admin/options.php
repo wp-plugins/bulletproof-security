@@ -284,7 +284,7 @@ $newmaint_values = ABSPATH . '/bps-maintenance-values.php';
 		copy($oldmaint1, $newmaint1);
 		copy($oldmaint_values, $newmaint_values);
 		if (!copy($oldmaint, $newmaint)) {
-	_e('<font color="red"><strong>Failed to Activate Maintenance Mode! Your Website is NOT in Maintenance Mode!</strong></font><br>');
+	_e('<p><font color="red"><strong>Failed to Activate Maintenance Mode! Your Website is NOT in Maintenance Mode!<br>If your Root .htaccess file is locked you must unlock it first before activating Maintenance Mode.</strong></font></p>');
    	} else {
 	_e('<font color="red"><strong>Warning: </strong></font>Maintenance Mode Is Activated. Your website is now displaying the Website Under Maintenance page to everyone except you. To switch out of Maintenance mode activate BulletProof Security Mode. You can log in and out of your Dashboard / WordPress website in Maintenance Mode as long as your current IP address does not change. If your current IP address changes you will have to FTP to your website and delete the .htaccess file in your website root folder (or download the .htaccess file and add your new IP address and upload it back to your root website folder) to be able to log back into your WordPress Dashboard. Your ISP provides your current Public IP address. If you reboot your computer or disconnect from the Internet there is a good chance that you will get a new Public IP address from your ISP.');
 	}
@@ -299,7 +299,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_content = "#   BULLETPROOF .46.5 MAINTENANCE  .HTACCESS     \n    
+$bps_maint_content = "#   BULLETPROOF .46.6 MAINTENANCE  .HTACCESS     \n    
 RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
@@ -314,7 +314,6 @@ RewriteRule . - [F,L]\n
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|".'"'."|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
-RewriteCond %{HTTP_COOKIE} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
@@ -352,7 +351,7 @@ RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
 RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} (;|<|>|'|".'"'."|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
-RewriteCond %{QUERY_STRING} (execute|exec|sp_executesql) [NC]
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 RewriteRule ^(.*)$ - [F,L]\n
 RewriteCond %{REMOTE_ADDR} !^$bps_get_IP_maint
 RewriteCond %{REQUEST_URI} !^$bps_get_wp_root_maint"."bp-maintenance\.php$
@@ -496,8 +495,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>Success! Your BulletProof S
 
 $bpsFailMessageSec = '<font color="red"><strong>The file ' . "$bps_auto_write_secure_file" . ' is not writable or does not exist.</strong></font><br><strong>Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click <a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here</a> for more help info.</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -631,7 +630,6 @@ RewriteRule . - [F,L]\n
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|".'"'."|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
-RewriteCond %{HTTP_COOKIE} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
@@ -669,7 +667,7 @@ RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
 RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} (;|<|>|'|".'"'."|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
-RewriteCond %{QUERY_STRING} (execute|exec|sp_executesql) [NC]
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 RewriteRule ^(.*)$ - [F,L]\n";
 
 $bps_secure_content_mid_bottom = "RewriteCond %{REQUEST_FILENAME} !-f
@@ -770,11 +768,6 @@ if (isset($_POST['bps-maintenance-create-values_submit']) && current_user_can('m
 	$bps_site_title_write = $options['bps-site-title'];
 	$bps_message1_write = $options['bps-message-1'];
 	$bps_message2_write = $options['bps-message-2'];
-	$bps_start_date_maintenance_write = $options['bps-start-date'];
-	$bps_start_time_maintenance_write = $options['bps-start-time'];
-	$bps_end_date_maintenance_write = $options['bps-end-date'];
-	$bps_end_time_maintenance_write = $options['bps-end-time'];
-	$bps_countdown_completed_popup_write = $options['bps-popup-message'];
 	$bps_body_background_image_write = $options['bps-background-image'];
 	$bps_auto_write_maint_file_form = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
 $bps_maint_content_form = "<?php".'
@@ -782,11 +775,6 @@ $bps_retry_after'." = '$bps_retry_after_write';\n"
 .'$bps_site_title'." = '$bps_site_title_write';\n"
 .'$bps_message1'." = '$bps_message1_write';\n"
 .'$bps_message2'." = '$bps_message2_write';\n"
-.'$bps_start_maintenance_date'." = '$bps_start_date_maintenance_write';\n"
-.'$bps_start_maintenance_time'." = '$bps_start_time_maintenance_write';\n"
-.'$bps_end_maintenance_date'." = '$bps_end_date_maintenance_write';\n"
-.'$bps_end_maintenance_time'." = '$bps_end_time_maintenance_write';\n"
-.'$bps_countdown_completed_popup'." = '$bps_countdown_completed_popup_write';\n"
 .'$bps_body_background_image'." = '$bps_body_background_image_write';
 ?>";
 	if (is_writable($bps_auto_write_maint_file_form)) {
@@ -868,6 +856,13 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
     _e('<font color="red"><strong>The file ' . "$denyall_htaccess_file_backup" . ' is not writable or does not exist yet.</strong></font><br><strong>Check the BPS Status page to see if Deny All protection has been activated. Activate Deny All htaccess Folder Protection For The BPS Backup Folder on the BPS Security Modes page. If this is not the problem click <a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here</a> for more help info.</strong><br>');
 	}
 }
+
+// General all purpose "Settings Saved." message for forms
+if (current_user_can('manage_options')) {
+if (@$_GET['settings-updated'] == true) {
+_e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
+}
+}
 ?>
 </div>
 
@@ -876,7 +871,7 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
 </div>
 
 <div class="wrap">
-<?php $bulletproof_ver = '.46.5'; ?>
+<?php $bulletproof_ver = '.46.6'; ?>
 <h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ htaccess Core'); ?></h2>
 
 <!-- jQuery UI Tab Menu -->
@@ -1536,7 +1531,7 @@ $write_test = "";
 	if ( is_writable($secure_htaccess_file) ) {
 		$handle = fopen($secure_htaccess_file, 'w+b');
 		fwrite($handle, $newcontent1);
-	_e('<font color="green"><strong>Success! The secure.htaccess file has been updated.</strong></font><br>');	
+	_e('<font color="green"><strong>Success! The secure.htaccess file has been updated.</strong></font><br>');
     fclose($handle);
 	}
 }
@@ -1659,6 +1654,9 @@ $write_test = "";
 	if (isset($_POST['submit5']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_save_settings_5' );
 	$newcontent5 = stripslashes($_POST['newcontent5']);
+	if ( !is_writable($root_htaccess_file) ) {
+	_e('<font color="red"><strong>Error: Unable to write to the Root .htaccess file. If your Root .htaccess file is locked you must unlock first.</strong></font><br>');
+	}	
 	if ( is_writable($root_htaccess_file) ) {
 		$handle = fopen($root_htaccess_file, 'w+b');
 		fwrite($handle, $newcontent5);
@@ -2033,7 +2031,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
     <td class="bps-table_cell_help">
     <div id="bps-maintenance_form_table">
 <h3><?php _e('Website Maintenance Mode Settings'); ?></h3>
-<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?> <a href="#" onmouseover="Tip('<strong>Your Maintenance Mode Form data is saved to the WordPress Database and will remain permanently until you delete it. When you upgrade BPS your form data will still be saved in your database.</strong><br><br><strong>Maintenance Mode Activation Steps</strong><br><br><strong>Filling In The Maintenance Mode Settings Form</strong><br><strong>1. Fill out the Website Maintenance Mode Form</strong><br> -- There are 4 important text fields that must be entered in the exact format shown in the example AIT-pro descriptions to the right of the text form fields in order for the countdown timer to display correctly. They are - Start Date -  Start Time - End Date - End Time. Military time must be used, spaces must be used and commas must be used - the format should be identical to the example description. All other text fields do not require following a specific format.<br> -- For the Retry-After text field I recommend using 259200. 259200 is 72 hours in seconds. 3600 = 1hr 43200 = 12hrs 86400 = 24hrs<br> -- You can copy and paste the example Background Image URL into the Background Image text field if you want to use the background image file that comes with BPS. If you have another background image file that you want to use then just name it with the same name as the example image file and copy it to the /bulletproof-security folder. If you do not want a background image then leave this text field blank. The background color will be white. If you want to customize the Website Under Maintenance template then download this file located in this folder /bulletproof-security/admin/htaccess/bp-maintenance.php.<br><strong>2. Click the Save Form Settings button to save your form data to your database.</strong><br><strong>3. Click the Create Form button to create your Website Under Maintenance form.</strong><br><strong>4. Click the Preview Form button to preview your Website Under Maintenance page.</strong><br> -- If you see a 404 or 403 Forbidden message in the popup preview window refresh the popup preview window or just close the popup window and click the Preview button again.<br> -- You can use the Preview button at any time to preview how your site will be displayed to everyone else except you when your website is in Maintenance Mode.<br><br><strong>Create Your Maintenance Mode .htaccess File</strong><br>After you have finished previewing your Website Under Maintenance page, click the Create htaccess File button. This creates your Maintenance Mode .htaccess file for your website. Your current Public IP address and correct RewriteBase and RewriteRule are included when this new Maintenance Mode .htaccess file is created.<br><br><strong>Activate Website Under Maintenance Mode</strong><br>Select the Maintenance Mode radio button and click the Activate Maintenance Mode button. Your website is now in Maintenance Mode. Everyone else will see your Website Under Maintenance page while you can still view and work on your site as you normally would.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?> <a href="#" onmouseover="Tip('<strong>Your Maintenance Mode Form data is saved to the WordPress Database and will remain permanently until you delete it. When you upgrade BPS your form data will still be saved in your database.</strong><br><br><strong>Maintenance Mode Activation Steps</strong><br><br><strong>Filling In The Maintenance Mode Settings Form</strong><br><strong>1. Fill out the Website Maintenance Mode Form</strong><br> -- For the Retry-After text field I recommend using 259200. 259200 is 72 hours in seconds. 3600 = 1hr 43200 = 12hrs 86400 = 24hrs<br> -- You can copy and paste the example Background Image URL into the Background Image text field if you want to use the background image file that comes with BPS. If you have another background image file that you want to use then just name it with the same name as the example image file and copy it to the /bulletproof-security folder. If you do not want a background image then leave this text field blank. The background color will be white. If you want to customize the Website Under Maintenance template then download this file located in this folder /bulletproof-security/admin/htaccess/bp-maintenance.php.<br> -- The javascript countdown timer has been removed. It was a silly and useless feature.<br><strong>2. Click the Save Form Settings button to save your form data to your database.</strong><br><strong>3. Click the Create Form button to create your Website Under Maintenance form.</strong><br><strong>4. Click the Preview Form button to preview your Website Under Maintenance page.</strong><br> -- If you see a 404 or 403 Forbidden message in the popup preview window refresh the popup preview window or just close the popup window and click the Preview button again.<br> -- You can use the Preview button at any time to preview how your site will be displayed to everyone else except you when your website is in Maintenance Mode.<br><br><strong>Create Your Maintenance Mode .htaccess File</strong><br>After you have finished previewing your Website Under Maintenance page, click the Create htaccess File button. This creates your Maintenance Mode .htaccess file for your website. Your current Public IP address and correct RewriteBase and RewriteRule are included when this new Maintenance Mode .htaccess file is created.<br><br><strong>Activate Website Under Maintenance Mode</strong><br>Select the Maintenance Mode radio button and click the Activate Maintenance Mode button. Your website is now in Maintenance Mode. Everyone else will see your Website Under Maintenance page while you can still view and work on your site as you normally would.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
 
 <form name="bps-maintenance-values" action="options.php" method="post">
 <?php settings_fields('bulletproof_security_options_maint'); ?>
@@ -2041,35 +2039,15 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
 <table class="form-table">
 <tr valign="top">
 <th scope="row"><label for="bps-site-title"><?php _e('Site Title:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-site-title]" type="text" value="<?php echo $options['bps-site-title']; ?>" class="regular-text" /><span class="description"><?php _e('AIT-pro is Temporarily Closed for Maintenance') ?></span></td>
+<td><input name="bulletproof_security_options_maint[bps-site-title]" type="text" value="<?php echo $options['bps-site-title']; ?>" class="regular-text" /><span class="description"><?php _e('Add Your Page Title') ?></span></td>
 </tr>
 <tr valign="top">
 <th scope="row"><label for="bps-message-1"><?php _e('Message 1:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-message-1]" type="text" value="<?php echo $options['bps-message-1']; ?>" class="regular-text" /><span class="description"><?php _e('The AIT-pro Website Is Performing Maintenance') ?></span></td>
+<td><input name="bulletproof_security_options_maint[bps-message-1]" type="text" value="<?php echo $options['bps-message-1']; ?>" class="regular-text" /><span class="description"><?php _e('Add Your Message') ?></span></td>
 </tr>
 <tr valign="top">
 <th scope="row"><label for="bps-message-2"><?php _e('Message 2:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-message-2]" type="text" value="<?php echo $options['bps-message-2']; ?>" class="regular-text" /><span class="description"><?php _e('The AIT-pro Website Will Be Online In...') ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="bps-start-date"><?php _e('Start Date:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-start-date]" type="text" value="<?php echo $options['bps-start-date']; ?>" class="regular-text" /><span class="description"><?php _e('April 05, 2011') ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="bps-start-time"><?php _e('Start Time:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-start-time]" type="text" value="<?php echo $options['bps-start-time']; ?>" class="regular-text" /><span class="description"><?php _e('16:25:00') ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="bps-end-date"><?php _e('End Date:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-end-date]" type="text" value="<?php echo $options['bps-end-date']; ?>" class="regular-text" /><span class="description"><?php _e('June 06') ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="bps-end-time"><?php _e('End Time:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-end-time]" type="text" value="<?php echo $options['bps-end-time']; ?>" class="regular-text" /><span class="description"><?php _e('12:00:00') ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="bps-popup-message"><?php _e('Popup Message:') ?></label></th>
-<td><input name="bulletproof_security_options_maint[bps-popup-message]" type="text" value="<?php echo $options['bps-popup-message']; ?>" class="regular-text" /><span class="description"><?php _e('Countdown completed! AIT-pro will resume normal website operation shortly.') ?></span></td>
+<td><input name="bulletproof_security_options_maint[bps-message-2]" type="text" value="<?php echo $options['bps-message-2']; ?>" class="regular-text" /><span class="description"><?php _e('Add Another Message or Not') ?></span></td>
 </tr>
 <tr valign="top">
 <th scope="row"><label for="bps-retry-after"><?php _e('Retry-After:') ?></label></th>
@@ -2200,7 +2178,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('<font color="red">Heads Up Security Warning!!!</font>'); ?></strong><br /><?php _e('BPS .46.5 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('<font color="red">Heads Up Security Warning!!!</font>'); ?></strong><br /><?php _e('BPS .46.6 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2208,7 +2186,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Network / MU AutoMagic Buttons have been added'); ?></strong><br /><?php _e('BPS detects what type of installation you have and tells you which AutoMagic buttons to use.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Cookie filter removed from BPS QUERY STRING EXPLOITS'); ?></strong><br /><?php _e('The Cookie String Exploit filter is problematic with plugins that are using PHP SESSION. This filter has been removed.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2216,7 +2194,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Major Code Changes and Massive new .htaccess Security Filters'); ?></strong><br /><?php _e('The root and other .htaccess files contains a massive amount of new security filters as well as other new .htaccess code.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Explicit "exec" and "execute" filter removed from BPS QUERY STRING EXPLOITS'); ?></strong><br /><?php _e('The filtered words "exec" and "execute" have been removed as they are not necessary.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2224,7 +2202,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Lots of other stuff'); ?></strong><br /><?php _e('Coding improvements and other stuff.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('non-GPL Javascript Countdown Timer removed'); ?></strong><br /><?php _e('The Javascript Countdown Timer has been removed due to not being GPL compliant. This was a silly useless feature so no big loss.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>

@@ -1,6 +1,6 @@
-#   BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS       
+#   BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS       
 
-# If you edit the BULLETPROOF .46.5 >>>>>>> SECURE .HTACCESS text above
+# If you edit the BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -62,8 +62,8 @@ DirectoryIndex index.php index.html /index.php
 # You can open the BPS Pro 404.php file using the WP Plugins Editor or by using the BPS Pro File Manager.
 # NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.
 
-ErrorDocument 400 /wp-content/plugins/bulletproof-security/400.php
-ErrorDocument 403 /wp-content/plugins/bulletproof-security/403.php
+#ErrorDocument 400 /wp-content/plugins/bulletproof-security/400.php
+#ErrorDocument 403 /wp-content/plugins/bulletproof-security/403.php
 ErrorDocument 404 /404.php
 
 # DENY ACCESS TO PROTECTED SERVER FILES - .htaccess, .htpasswd and all file names starting with dot
@@ -148,7 +148,6 @@ RewriteRule . - [F,L]
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
-RewriteCond %{HTTP_COOKIE} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
@@ -186,7 +185,7 @@ RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
 RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
-RewriteCond %{QUERY_STRING} (execute|exec|sp_executesql) [NC]
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 RewriteRule ^(.*)$ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

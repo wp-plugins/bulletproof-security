@@ -1,6 +1,6 @@
-#   BULLETPROOF .46.5 WP-ADMIN SECURE .HTACCESS      
+#   BULLETPROOF .46.6 WP-ADMIN SECURE .HTACCESS     
 
-# If you edit the BULLETPROOF .46.5 WP-ADMIN SECURE .HTACCESS text above 
+# If you edit the BULLETPROOF .46.6 WP-ADMIN SECURE .HTACCESS text above 
 # you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # BPS is also checking that the string BPSQSE exists in this file - do not delete it
@@ -8,14 +8,8 @@
 # will need to edit the BPS functions.php file to match your changes
 # For more info see the BPS Guide at AIT-pro.com
 
-# THIS HTACCESS FILE IS REQUIRED OR WORDPRESS WILL BREAK
-# THE SECURITY FILTERS ARE REQUIRED OR WORDPRESS WILL BREAK
-# DO NOT ADD URL REWRITING IN THIS FILE OR WORDPRESS WILL BREAK
 # RewriteRule ^(.*)$ - [F,L] - works in /wp-admin without breaking WordPress
 # RewriteRule . /index.php [L] - will break WordPress
-# BULLETPROOF MODES FOR BOTH YOUR ROOT FOLDER AND WP-ADMIN FOLDER MUST
-# BE ACTIVATED OR WORDPRESS WILL BREAK
-# THIS HTACCESS FILE ALSO OFFERS SOME ADDITIONAL OPTIONAL SECURITY MEASURES
 
 # ADD WP-ADMIN FILE NAMES TO FILESMATCH MAKING THEM 403 FORBIDDEN
 # DENY BROWSER ACCESS TO WP-ADMIN INSTALL.PHP 
@@ -79,7 +73,7 @@ Deny from all
 # EXAMPLE:
 #AuthUserFile /dev/null
 #AuthGroupFile /dev/null
-#AuthName �Password Protected Area�
+#AuthName “Password Protected Area”
 #AuthType Basic
 #order deny,allow
 #deny from all
@@ -103,7 +97,6 @@ RewriteRule ^(.*)$ - [F,L]
 
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
-RewriteCond %{HTTP_COOKIE} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
@@ -141,5 +134,5 @@ RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
 RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
 RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
-RewriteCond %{QUERY_STRING} (execute|exec|sp_executesql) [NC]
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 RewriteRule ^(.*)$ - [F,L]

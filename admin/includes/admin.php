@@ -34,7 +34,7 @@ function bulletproof_security_admin_init() {
 // BPS Menu
 function bulletproof_security_admin_menu() {
 	if (is_multisite() && !is_super_admin()) {
-		echo 'Only Super Admins can access BPS Pro';
+		echo 'Only Super Admins can access BPS';
 		} else {
 	//if (function_exists('add_menu_page')){
 	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
@@ -60,7 +60,7 @@ function bulletproof_security_install() {
 	global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.46.5', '<') )
+	if ( version_compare($previous_install['version'], '.46.6', '<') )
 	remove_role('denied');
 	}
 }
@@ -87,11 +87,6 @@ function bulletproof_security_options_validate_maint($input) {
 	$options['bps-site-title'] = wp_filter_nohtml_kses($input['bps-site-title']);
 	$options['bps-message-1'] = wp_filter_nohtml_kses($input['bps-message-1']);
 	$options['bps-message-2'] = wp_filter_nohtml_kses($input['bps-message-2']);
-	$options['bps-start-date'] = wp_filter_nohtml_kses($input['bps-start-date']);
-	$options['bps-start-time'] = wp_filter_nohtml_kses($input['bps-start-time']);
-	$options['bps-end-date'] = wp_filter_nohtml_kses($input['bps-end-date']);
-	$options['bps-end-time'] = wp_filter_nohtml_kses($input['bps-end-time']);
-	$options['bps-popup-message'] = wp_filter_nohtml_kses($input['bps-popup-message']);
 	$options['bps-retry-after'] = wp_filter_nohtml_kses($input['bps-retry-after']);
 	$options['bps-background-image'] = wp_filter_nohtml_kses($input['bps-background-image']);
 		

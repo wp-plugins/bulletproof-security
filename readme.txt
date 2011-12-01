@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CSRF, SQL Injection, vulnerability
 Requires at least: 3.0 
 Tested up to: 3.3 
-Stable tag: .46.5 
+Stable tag: .46.6 
 
 WordPress website security protection. BulletProof Security protects your website from XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hack... 
 
@@ -88,7 +88,7 @@ add (activate) .htaccess files to your website without having to use FTP or your
 
 Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/" title="BPS Plugin Testing and Fixes" rel="nofollow" target="_blank">Plugin Compatibility Testing and Fixes</a> page
  for new fixes that are not yet included in the most current version of BPS. Typically a simple .htaccess skip rule is all 
- that is required to fix any plugin issues.
+ that is required to fix any plugin issues. BPS is automatically Forbidding Thumbnailer scripts in the root .htaccess file. To enable Thumbnailer scripts please see the root .htaccess file for instructions. Before allowing Thumbnailer scripts on your website make sure that they are recently security patched or new versions of the TimThumb.php script.
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
@@ -140,6 +140,14 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 
 
 == Changelog ==
+
+= .46.6 =
+* Cookie filter removed from BPS QUERY STRING EXPLOITS
+* Explicit "exec" and "execute" filter removed from BPS QUERY STRING EXPLOITS
+* non-GPL Javascript Countdown Timer removed
+* BPS is Forbidding Thumbnailer Scripts by Default
+* To enable Thumbnailer Scritps see root .htaccess file
+* Enjoy!
 
 = .46.5 =
 * Massive amount of new security filters
@@ -343,8 +351,8 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .46.5
-* BPS .46.5 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.
-* Network / MU AutoMagic Buttons have been added. BPS detects what type of installation you have and tells you which AutoMagic buttons to use.
-* Major Code Changes and Massive new .htaccess Security Filters - The root and other .htaccess files contains a massive amount of new security filters as well as other new .htaccess code.
-* Lots of other stuff
+What's New in .46.6
+* BPS .46.6 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.
+* Cookie filter removed from BPS QUERY STRING EXPLOITS
+* Explicit "exec" and "execute" filter removed from BPS QUERY STRING EXPLOITS
+* non-GPL Javascript Countdown Timer removed
