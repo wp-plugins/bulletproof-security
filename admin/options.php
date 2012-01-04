@@ -13,7 +13,13 @@ if ( !current_user_can('manage_options') ){
 }
 ?>
 
-<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;">
+<div class="wrap">
+<?php $bulletproof_ver = '.46.7'; ?>
+<div id="bpsUprade"><strong>
+<a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" target="_blank" title="Link opens in new browser window">Why Upgrade to BulletProof Security Pro?</a></strong></div>
+<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ htaccess Core'); ?></h2>
+<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;">
+
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
 echo bps_check_php_version_error();
@@ -31,9 +37,9 @@ $bpdefaultroot = 'unchecked';
 if (isset($_POST['submit12']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_root_copy' );
 	
-	$old = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+	$old = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/default.htaccess';
 	$new = ABSPATH . '/.htaccess';
-	$old1 = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+	$old1 = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
 	$new1 = ABSPATH . '/.htaccess';
 	
 	$selected_radio = $_POST['selection12'];
@@ -66,7 +72,7 @@ $Removebpsecurewpadmin = 'unchecked';
 if (isset($_POST['submit13']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_wpadmin_copy' );
 	
-	$oldadmin1 = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+	$oldadmin1 = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 	$newadmin1 = ABSPATH . 'wp-admin/.htaccess';
 	$deleteWpadminHtaccess = ABSPATH . 'wp-admin/.htaccess';
 	
@@ -100,9 +106,9 @@ $bps_rename_htaccess_files = 'unchecked';
 if (isset($_POST['submit8']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_denyall_master' );
 	
-	$bps_rename_htaccess = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/deny-all.htaccess';
-	$bps_rename_htaccess_renamed = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/.htaccess';
-	
+	$bps_rename_htaccess = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/deny-all.htaccess';
+	$bps_rename_htaccess_renamed = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/.htaccess';
+		
 	$selected_radio = $_POST['selection8'];
 	if ($selected_radio == 'bps_rename_htaccess_files') {
 	$bps_rename_htaccess_files = 'checked';
@@ -116,13 +122,12 @@ if (isset($_POST['submit8']) && current_user_can('manage_options')) {
 }
 
 // Form copy and rename the Deny All htaccess file to the BPS backup folder
-// /wp-content/bps-backup
 $bps_rename_htaccess_files_backup = 'unchecked';
 if (isset($_POST['submit14']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_denyall_bpsbackup' );
 	
-	$bps_rename_htaccess_backup = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/deny-all.htaccess';
-	$bps_rename_htaccess_backup_online = ABSPATH . '/wp-content/bps-backup/.htaccess';
+	$bps_rename_htaccess_backup = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/deny-all.htaccess';
+	$bps_rename_htaccess_backup_online = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 	
 	$selected_radio = $_POST['selection14'];
 	if ($selected_radio == 'bps_rename_htaccess_files_backup') {
@@ -143,9 +148,9 @@ if (isset($_POST['submit9']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_backup_active_htaccess_files' );
 	
 	$old_backroot = ABSPATH . '/.htaccess';
-	$new_backroot = ABSPATH . '/wp-content/bps-backup/root.htaccess';
+	$new_backroot = WP_CONTENT_DIR . '/bps-backup/root.htaccess';
 	$old_backwpadmin = ABSPATH . '/wp-admin/.htaccess';
-	$new_backwpadmin = ABSPATH . '/wp-content/bps-backup/wpadmin.htaccess';
+	$new_backwpadmin = WP_CONTENT_DIR . '/bps-backup/wpadmin.htaccess';
 	
 	$selected_radio = $_POST['selection9'];
 	if ($selected_radio == 'backup_htaccess') {
@@ -177,9 +182,9 @@ $restore_htaccess = 'unchecked';
 if (isset($_POST['submit10']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_restore_active_htaccess_files' );
 	
-	$old_restoreroot = ABSPATH . '/wp-content/bps-backup/root.htaccess';
+	$old_restoreroot = WP_CONTENT_DIR . '/bps-backup/root.htaccess';
 	$new_restoreroot = ABSPATH . '/.htaccess';
-	$old_restorewpadmin = ABSPATH . '/wp-content/bps-backup/wpadmin.htaccess';
+	$old_restorewpadmin = WP_CONTENT_DIR . '/bps-backup/wpadmin.htaccess';
 	$new_restorewpadmin = ABSPATH . '/wp-admin/.htaccess';
 	
 	$selected_radio = $_POST['selection10'];
@@ -204,19 +209,19 @@ if (isset($_POST['submit10']) && current_user_can('manage_options')) {
 $backup_master_htaccess_files = 'unchecked';
 if (isset($_POST['submit11']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_backup_master_htaccess_files' );
-	
-$default_master = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
-$default_master_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_default.htaccess';
-$secure_master = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
-$secure_master_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_secure.htaccess';
-$wpadmin_master = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
-$wpadmin_master_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_wpadmin-secure.htaccess';
-$maintenance_master = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$maintenance_master_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_maintenance.htaccess';
-$bp_maintenance_master = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/bp-maintenance.php';
-$bp_maintenance_master_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_bp-maintenance.php';
-$bps_maintenance_values = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
-$bps_maintenance_values_backup = ABSPATH . '/wp-content/bps-backup/master-backups/backup_bps-maintenance-values.php';
+
+$default_master = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+$default_master_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_default.htaccess';
+$secure_master = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+$secure_master_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_secure.htaccess';
+$wpadmin_master = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+$wpadmin_master_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_wpadmin-secure.htaccess';
+$maintenance_master = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+$maintenance_master_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_maintenance.htaccess';
+$bp_maintenance_master = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/bp-maintenance.php';
+$bp_maintenance_master_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_bp-maintenance.php';
+$bps_maintenance_values = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
+$bps_maintenance_values_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_bps-maintenance-values.php';
 
 	$selected_radio = $_POST['selection11'];
 	if ($selected_radio == 'backup_master_htaccess_files') {
@@ -270,11 +275,11 @@ $bpmaintenance = 'unchecked';
 if (isset($_POST['submit15']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_maintenance_copy' );
 
-$oldmaint = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+$oldmaint = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
 $newmaint = ABSPATH . '/.htaccess';
-$oldmaint1 = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/bp-maintenance.php';
+$oldmaint1 = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/bp-maintenance.php';
 $newmaint1 = ABSPATH . '/bp-maintenance.php';
-$oldmaint_values = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
+$oldmaint_values = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
 $newmaint_values = ABSPATH . '/bps-maintenance-values.php';
 
 	$selected_radio = $_POST['selection15'];
@@ -298,8 +303,8 @@ if (isset($_POST['bps-auto-write-maint']) && current_user_can('manage_options'))
 $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
-$bps_auto_write_maint_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_content = "#   BULLETPROOF .46.6 MAINTENANCE  .HTACCESS     \n    
+$bps_auto_write_maint_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+$bps_maint_content = "#   BULLETPROOF .46.7 MAINTENANCE  .HTACCESS     \n    
 RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
@@ -318,7 +323,7 @@ RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
-RewriteCond %{THE_REQUEST} (\\r|\\n|%0A|%0D) [NC,OR]
+RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
 RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
 RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
@@ -327,7 +332,7 @@ RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
-RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
 RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
 RewriteCond %{QUERY_STRING} http\: [NC,OR] 
 RewriteCond %{QUERY_STRING} https\: [NC,OR]
@@ -378,17 +383,17 @@ RewriteRule . $bps_get_wp_root_maint"."index.php [L]";
 
 // default.htaccess and secure.htaccess fwrite content for all WP site types
 $bps_get_wp_root_default = bps_wp_get_root_folder();
-$bps_auto_write_default_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+$bps_auto_write_default_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/default.htaccess';
 
 $bpsSuccessMessageDef = '<font color="green"><strong>Success! Your Default Mode Master htaccess file was created successfully!</strong></font><br><font color="red"><strong>CAUTION: Default Mode should only be activated for testing or troubleshooting purposes. Default Mode does not protect your website with any security protection.</strong></font><br><font color="black"><strong>To activate Default Mode select the Default Mode radio button and click Activate to put your website in Default Mode.</strong></font>';
 
 $bpsFailMessageDef = '<font color="red"><strong>The file ' . "$bps_auto_write_default_file" . ' is not writable or does not exist.</strong></font><br><strong>Check that the file is named default.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click <a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here</a> for more help info.</strong><br>';
 
-$bpsTopMU = "\nRewriteEngine On
+$bpsBeginWP = "\nRewriteEngine On
 RewriteBase $bps_get_wp_root_default
 RewriteRule ^index\.php$ - [L]\n\n";
 
-$bps_default_content_top = "#   BULLETPROOF .46.D >>>>>>> DEFAULT .HTACCESS     \n
+$bps_default_content_top = "#   BULLETPROOF PRO 5.D DEFAULT .HTACCESS      \n
 # If you edit the line of code above you will see error messages on the BPS status page
 # WARNING!!! THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
 # This is a standard generic htaccess file that does NOT provide any website security
@@ -456,7 +461,7 @@ if (isset($_POST['bps-auto-write-default-MUSDir']) && current_user_can('manage_o
          _e('<font color="red"><strong>Cannot open file' . "$bps_auto_write_default_file" . '</strong></font>');
          exit;
     }
-    if (fwrite($handle, $bps_default_content_top.$bpsTopMU.$bpsMUSDirTop.$bpsMUSDirBottom.$bpsMUEndWP) === FALSE) {
+    if (fwrite($handle, $bps_default_content_top.$bpsBeginWP.$bpsMUSDirTop.$bpsMUSDirBottom.$bpsMUEndWP) === FALSE) {
     	_e('<font color="red"><strong>Cannot write to file' . "$bps_auto_write_default_file" . '</strong></font>');
         exit;
     }
@@ -476,7 +481,7 @@ if (isset($_POST['bps-auto-write-default-MUSDom']) && current_user_can('manage_o
          _e('<font color="red"><strong>Cannot open file' . "$bps_auto_write_default_file" . '</strong></font>');
          exit;
     }
-    if (fwrite($handle, $bps_default_content_top.$bpsTopMU.$bpsMUSDomTop.$bpsMUSDomBottom.$bpsMUEndWP) === FALSE) {
+    if (fwrite($handle, $bps_default_content_top.$bpsBeginWP.$bpsMUSDomTop.$bpsMUSDomBottom.$bpsMUEndWP) === FALSE) {
     	_e('<font color="red"><strong>Cannot write to file' . "$bps_auto_write_default_file" . '</strong></font>');
         exit;
     }
@@ -489,14 +494,14 @@ if (isset($_POST['bps-auto-write-default-MUSDom']) && current_user_can('manage_o
 
 // secure.htaccess fwrite content for all WP site types
 $bps_get_wp_root_secure = bps_wp_get_root_folder();
-$bps_auto_write_secure_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+$bps_auto_write_secure_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
 
 $bpsSuccessMessageSec = '<font color="green"><strong>Success! Your BulletProof Security Root Master htaccess file was created successfully!</strong></font><br><font color="black"><strong>You can now Activate BulletProof Mode for your Root folder. Select the BulletProof Mode radio button and click Activate to put your website in BulletProof Mode.</strong></font>';
 
 $bpsFailMessageSec = '<font color="red"><strong>The file ' . "$bps_auto_write_secure_file" . ' is not writable or does not exist.</strong></font><br><strong>Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click <a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">here</a> for more help info.</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -554,17 +559,15 @@ DirectoryIndex index.php index.html /index.php\n
 #ErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php
 ErrorDocument 404 $bps_get_wp_root_secure"."404.php\n
 # DENY ACCESS TO PROTECTED SERVER FILES - .htaccess, .htpasswd and all file names starting with dot
-RedirectMatch 403 /\..*$\n
-RewriteEngine On
+RedirectMatch 403 /\..*$\n\n";
+
+$bps_secure_content_wpadmin = "RewriteEngine On
 RewriteBase $bps_get_wp_root_secure
 RewriteRule ^wp-admin/includes/ - [F,L]
 RewriteRule !^wp-includes/ - [S=3]
 RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
 RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
-RewriteRule ^wp-includes/theme-compat/ - [F,L]\n
-RewriteEngine On
-RewriteBase $bps_get_wp_root_secure
-RewriteRule ^index\.php$ - [L]\n\n";
+RewriteRule ^wp-includes/theme-compat/ - [F,L]\n";
 
 $bps_secure_content_mid_top = "# REQUEST METHODS FILTERED
 # This filter is for blocking junk bots and spam bots from making a HEAD request, but may also block some
@@ -634,7 +637,7 @@ RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
-RewriteCond %{THE_REQUEST} (\\r|\\n|%0A|%0D) [NC,OR]
+RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
 RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
 RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
@@ -643,7 +646,7 @@ RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
-RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
 RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
 RewriteCond %{QUERY_STRING} http\: [NC,OR] 
 RewriteCond %{QUERY_STRING} https\: [NC,OR]
@@ -708,7 +711,7 @@ if (isset($_POST['bps-auto-write-secure-root']) && current_user_can('manage_opti
          _e('<font color="red"><strong>Cannot open file' . "$bps_auto_write_secure_file" . '</strong></font>');
          exit;
     }
-    if (fwrite($handle, $bps_secure_content_top.$bps_secure_content_mid_top.$bps_secure_content_mid_bottom.$bps_secure_content_bottom) === FALSE) {
+    if (fwrite($handle, $bps_secure_content_top.$bps_secure_content_wpadmin.$bpsBeginWP.$bps_secure_content_mid_top.$bps_secure_content_mid_bottom.$bps_secure_content_bottom) === FALSE) {
         _e('<font color="red"><strong>Cannot write to file' . "$bps_auto_write_secure_file" . '</strong></font>');
         exit;
     }
@@ -728,7 +731,7 @@ if (isset($_POST['bps-auto-write-secure-root-MUSDir']) && current_user_can('mana
          _e('<font color="red"><strong>Cannot open file' . "$bps_auto_write_secure_file" . '</strong></font>');
          exit;
     }
-    if (fwrite($handle, $bps_secure_content_top.$bpsMUSDirTop.$bps_secure_content_mid_top.$bpsMUSDirBottom.$bps_secure_content_bottom) === FALSE) {
+    if (fwrite($handle, $bps_secure_content_top.$bps_secure_content_wpadmin.$bpsBeginWP.$bpsMUSDirTop.$bps_secure_content_mid_top.$bpsMUSDirBottom.$bps_secure_content_bottom) === FALSE) {
         _e('<font color="red"><strong>Cannot write to file' . "$bps_auto_write_secure_file" . '</strong></font>');
         exit;
     }
@@ -748,7 +751,7 @@ if (isset($_POST['bps-auto-write-secure-root-MUSDom']) && current_user_can('mana
          _e('<font color="red"><strong>Cannot open file' . "$bps_auto_write_secure_file" . '</strong></font>');
          exit;
     }
-    if (fwrite($handle, $bps_secure_content_top.$bpsMUSDomTop.$bps_secure_content_mid_top.$bpsMUSDomBottom.$bps_secure_content_bottom) === FALSE) {
+    if (fwrite($handle, $bps_secure_content_top.$bpsBeginWP.$bpsMUSDomTop.$bps_secure_content_mid_top.$bpsMUSDomBottom.$bps_secure_content_bottom) === FALSE) {
         _e('<font color="red"><strong>Cannot write to file' . "$bps_auto_write_secure_file" . '</strong></font>');
         exit;
     }
@@ -769,7 +772,8 @@ if (isset($_POST['bps-maintenance-create-values_submit']) && current_user_can('m
 	$bps_message1_write = $options['bps-message-1'];
 	$bps_message2_write = $options['bps-message-2'];
 	$bps_body_background_image_write = $options['bps-background-image'];
-	$bps_auto_write_maint_file_form = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
+
+	$bps_auto_write_maint_file_form = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/bps-maintenance-values.php';
 $bps_maint_content_form = "<?php".'
 $bps_retry_after'." = '$bps_retry_after_write';\n"
 .'$bps_site_title'." = '$bps_site_title_write';\n"
@@ -798,11 +802,11 @@ if (isset($_POST['submit-bps-upload']) && current_user_can('manage_options')) {
 	check_admin_referer( 'bulletproof_security_upload' );
 	
 	$tmp_file = $_FILES['bps_file_upload']['tmp_name'];
-	$folder_path = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/';
+	$folder_path = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/';
 	$bps_uploaded_file =  str_replace('//','/',$folder_path) . $_FILES['bps_file_upload']['name'];
 	if (!empty($_FILES)) {
 	move_uploaded_file($tmp_file,$bps_uploaded_file);
-		_e('<font color="black"><strong>File Upload Path and File Name: </strong></font><br>');
+		_e('<font color="green"><strong>File Uploaded Successfully To: </strong></font><br>');
 		echo "$bps_uploaded_file";
 	} else {
 		_e('<font color="red"><strong>File upload error. File was not successfully uploaded.</strong></font><br>');
@@ -814,7 +818,7 @@ if (isset($_POST['bps-enable-download']) && current_user_can('manage_options')) 
 	check_admin_referer( 'bulletproof_security_enable_download' );
 	
 	$bps_get_IP = $_SERVER['REMOTE_ADDR'];
-	$denyall_htaccess_file = ABSPATH . '/wp-content/plugins/bulletproof-security/admin/htaccess/.htaccess';
+	$denyall_htaccess_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/.htaccess';
 	$bps_denyall_content = "order deny,allow\ndeny from all\nallow from $bps_get_IP";
 	
 	if (is_writable($denyall_htaccess_file)) {
@@ -838,7 +842,7 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
 	check_admin_referer( 'bulletproof_security_enable_download-backup' );
 	
 	$bps_get_IP2 = $_SERVER['REMOTE_ADDR'];
-	$denyall_htaccess_file_backup = ABSPATH . '/wp-content/bps-backup/.htaccess';
+	$denyall_htaccess_file_backup = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 	$bps_denyall_content_backup = "order deny,allow\ndeny from all\nallow from $bps_get_IP2";
 	
 	if (is_writable($denyall_htaccess_file_backup)) {
@@ -866,14 +870,6 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 ?>
 </div>
 
-<div id="bpspaypal">
-<a href="http://www.ait-pro.com/po/" target="_blank" title="Link opens in new browser window">Why Upgrade to BulletProof Security Pro?</a>
-</div>
-
-<div class="wrap">
-<?php $bulletproof_ver = '.46.6'; ?>
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ htaccess Core'); ?></h2>
-
 <!-- jQuery UI Tab Menu -->
 <div id="bps-container">
 	<div id="bps-tabs" class="bps-menu">
@@ -889,6 +885,7 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 			<li><a href="#bps-tabs-8">Whats New</a></li>
             <li><a href="#bps-tabs-9">My Notes</a></li>
             <li><a href="#bps-tabs-10">BPS Pro Features</a></li>
+            <li><a href="#bps-tabs-11">Website Scanner</a></li>
 		</ul>
             
 <div id="bps-tabs-1" class="bps-tab-page">
@@ -896,7 +893,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 
 <div id="bpsMonitoringAlerting" style="border-top:1px solid #999999;">
 
-<h3><?php _e('AutoMagic - Create Your htaccess Master Files'); ?> <a href="#" onmouseover="Tip('<strong>Backup your existing htaccess files if you have any first by clicking on the Backup & Restore menu tab - click on the Backup htaccess files radio button to select it and click on the Backup Files button to back up your existing htaccess files.</strong><br><br><strong>AutoMagic - BPS will create Your Master .htaccess Files For You Automatically</strong><br>BPS detects what type of WordPress installation you have and will tell you which AutoMagic buttons to use for your website.<br><br> -- Click the <strong>Create default.htaccess File</strong> button and click the <strong>Create secure.htaccess File</strong> button<br> -- Click on the Edit/Upload/Download menu tab, click on the secure.htaccess menu tab to view you new master .htaccess file, make any changes, edit it or add any additional .htaccess code to it before you activate it.<br> -- Activate BulletProof Mode for your Root folder<br> -- Activate BulletProof Mode for your wp-admin folder<br> -- Activate BulletProof Mode for the BPS Master htaccess folder and the BPS Backup folder<br><br><strong>IMPORTANT!!! YOU MUST HAVE BOTH THE ROOT BULLETPROOF MODE AND THE WP-ADMIN BULLETPROOF MODE ACTIVATED</strong><br>If you do not activate both BulletProof Mode for your root folder and BulletProof Mode for your wp-admin folder then BPS and WP will not work correctly.<br><br><strong>Explanation Of The Steps Above:</strong><br>If you see error messages when performing a first time backup do not worry about it. BPS will backup whatever files should be or are available to backup for your website.<br>Clicking the <strong>Create default.htaccess File</strong> button and the <strong>Create secure.htaccess File</strong> button will create these two master htaccess files for you. The correct RewriteBase and RewriteRule for your website will be automatically added to these files. The default.htaccess file is the master .htaccess file that is copied to your root folder when you activate Default Mode. Default Mode should only be activated for testing and troubleshooting purposes - it does not provide any website security. The secure.htaccess file is the master .htaccess file that is copied to your root folder when you activate BulletProof Mode for your Root folder. The plugin conflict fixes in the secure.htaccess master file will also have your correct WordPress installation folder name automatically added to it. The htaccess file for your wp-admin folder does not require any editing nor do the Deny All htaccess files. This means that once you have created the default.htaccess file and the secure.htaccess file you can go ahead and activate all BulletProof Modes.<br><br><strong>Manual Control of htaccess Files Instead of Using AutoMagic</strong><br>If you want manual control and want to edit your htacess files using the built-in BPS File Editor instead of having them automatically created for you then there is no need to click on the AutoMagic create files buttons.<br><br><strong>AutoMagic Instruction for WordPress Network (Multisite) Sites</strong><br>BPS will automatically detect whether you have a subdomain or subdirectory Network (Multisite) installation and tell you which AutoMagic buttons to use. BPS menus will only be displayed to Super Admins. BPS only needs to be activated and set up on your Primary site to automatically add protection to all your subsites so DO NOT Network Activate BPS. BPS will not work correctly if you choose Network Activate. There is also no need to activate and set up BPS on any of your other sites. Once BPS is set up on your Primary site it protects all of your sites.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 800, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('AutoMagic - Create Your htaccess Master Files'); ?>  <button id="bps-open-modal1" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content1" title="<?php _e('AutoMagic'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Backup your existing htaccess files if you have any first by clicking on the Backup & Restore menu tab - click on the Backup htaccess files radio button to select it and click on the Backup Files button to back up your existing htaccess files.</strong><br><br><strong>AutoMagic - BPS Creates Customized .htaccess Master Files For Your Website Automatically</strong><br>BPS detects what type of WordPress installation you have and will tell you which AutoMagic buttons to use for your website.<br><br><strong>BPS Pro AutoMagic: </strong>BPS Pro AutoMagic detects your Web Host and if your Web Host requires custom php.ini handler code, BPS Pro will automatically create this code in your Root .htaccess file - <strong>IF YOUR WEB HOST HAS BEEN ADDED TO THE BPS WEB HOST LIST.</strong> To see the complete BPS Pro Web Host list go to the Help &amp; FAQ page and click on the <strong>AutoMagic php.ini Handler Web Hosts List</strong> link.<br><br> -- Click the <strong>Create default.htaccess File</strong> button.<br> -- Click the <strong>Create secure.htaccess File</strong> button.<br> -- If you would like to view, edit or add any additional .htaccess code to your new secure.htaccess Master file. Click on the Edit/Upload/Download menu tab, click on the secure.htaccess menu tab and make your changes before you Activate BulletProof Mode for your Root folder.<br> -- Activate BulletProof Mode for your Root folder.<br> -- Activate BulletProof Mode for your wp-admin folder.<br> -- Activate BulletProof Mode for the BPS Master htaccess folder.<br> -- Activate BulletProof Mode for the BPS Backup folder.<br><br><strong>WordPress Network (Multisite) Sites Info</strong><br>BPS will automatically detect whether you have a subdomain or subdirectory Network (Multisite) installation and tell you which AutoMagic buttons to use. DO NOT Network Activate BPS. BPS will not work correctly if you choose Network Activate. BPS only needs to be activated and set up on your Primary site to automatically add security protection to all of your sub sites. Network / MU sub sites are virtual and do not really exist in separate website folders. BPS menus will only be displayed to Super Admins.<br><br><strong> Explanation Of The Steps Above and Additional Info:</strong><br>If you see error messages when performing a first time backup do not worry about it. BPS will backup whatever files should be or are available to backup for your website.<br><br>Clicking the <strong>Create default.htaccess File</strong> button and the <strong>Create secure.htaccess File</strong> button will create these two new customized master .htaccess files for your website. The correct RewriteBase and RewriteRule for your website will be automatically added to these files. The default.htaccess file is the master .htaccess file that is copied to your root folder when you Activate Default Mode. Default Mode should only be activated for testing and troubleshooting purposes - it does not provide any website security. The secure.htaccess file is the master .htaccess file that is copied to your Root folder when you Activate BulletProof Mode for your Root folder.<br><br><strong>When you Activate BulletProof Mode for your Root folder it will overwrite the existing Root .htaccess file.</strong> If you have added any custom .htaccess code in your Root .htaccess file you should save that custom code to My Notes. My Notes allows you to permanently save custom .htaccess code or any other notes.<br><br>The plugin conflict fixes in the secure.htaccess master file will also have your correct WordPress installation folder name automatically added to it. The .htaccess file for your wp-admin folder does not require any editing nor do the Deny All htaccess files.<br><br><strong>Editing .htaccess Files - BPS Built-in File Editor</strong><br>BPS has a built-in .htaccess File Editor if you want to edit your .htaccess files manually. Go to the Edit/Upload/Download menu tab.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <?php if (!current_user_can('manage_options')) { echo 'Permission Denied'; } else { ?>
 <table width="100%" border="0">
@@ -969,7 +969,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
   <tr>
     <td class="bps-table_cell_help">
     <h2><?php _e('Activate Security Modes'); ?></h2>
-    <h3><?php _e('Activate Website Root Folder .htaccess Security Mode'); ?> <a href="#" onmouseover="Tip('<strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your Root folder you must also activate BulletProof Mode for your wp-admin folder.</strong><br>Perform a backup first before activating any BulletProof Security modes (backs up both currently active root and wp-admin htaccess files at the same time).<br><br><strong>What Is Going On here?</strong><br>When you use the AutoMagic buttons you are creating master .htaccess files for your website. Activating Default Mode or BulletProof Mode copies, renames and moves those master .htaccess files default.htaccess or secure.htaccess, depending on what radio button option you choose, from /plugins/bulletproof-security/admin/htaccess/ to your root folder. Default Mode does not have any security protection - it is just a standard generic WordPress .htaccess file that you should only use for testing purposes.<br><br><strong>If you are installing BPS for the first time - Help and FAQ links are available on the BPS Help and FAQ page</strong><br><br><strong>Info for people who are upgrading BPS</strong><br>Before upgrading or any time you add some additional custom code to your .htaccess files you can save that custom .htaccess code on the My Notes page. This code is saved permanently to your WP database until you edit or delete it. When you upgrade BPS your currently active root and wp-admin .htaccess files are not affected. BPS master .htaccess files are replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up using Backup and Restore first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files this is an online backup so the files will be available to you to restore from if you run into any problems at any point. You should always be using the newest BPS master htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing htaccess code that you want to keep from your current active htaccess files to the new BPS master htaccess files and save your changes before activating your new BPS htaccess files. You can copy from one .htaccess file editing window to any other window and then save your changes. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS version number at the top of your currently active htaccess files or you will see BPS error messages. And the My Notes page allows you to save any code you want to save permanently for later use or reminders.<br><br><strong>Troubleshooting Error Messages</strong><br>Check the Edit/Upload/Download page to view your .htaccess files. Click on Your Current Root htaccess File menu tab to view your actual root .htaccess file. The top of the file tells you which BPS .htaccess file is activated and the BPS version. Check that BPS QUERY STRING EXPLOITS code does exist in your root .htaccess file. When you update your WordPress Permalinks the BPSQSE BPS QUERY STRING EXPLOITS code is overwritten with the WordPress standard default .htaccess code. You will either need to use Backup and Restore to restore you backed up .htaccess files or activate BulletProof Mode again for your Root Folder. To check your wp-admin .htaccess file click on the Your Current wp-admin htaccess File menu tab.<br><br><strong>Testing or Removing / Uninstalling BPS</strong><br>If you are testing BPS to determine if there is a plugin conflict or other conflict then Activate Default Mode and select the Delete wp-admin htaccess File radio button and click the Activate button or you can now just go to the WordPress Permalinks page and update / resave your permalinks. This overwrites all BPS security code with the standard default WP .htaccess code. This puts your site in a standard WordPress state with a default or generic Root .htaccess file and no .htaccess file in your wp-admin folder if you selected Delete wp-admin htaccess file. After testing or troubleshooting is completed reactivate BulletProof Modes for both the Root and wp-admin folders. If you are removing / uninstalling BPS then follow the same steps and then select Deactivate from the Wordpress Plugins page and then click Delete to uninstall the BPS plugin.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 800, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+    <h3><?php _e('Activate Website Root Folder .htaccess Security Mode'); ?>  <button id="bps-open-modal2" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+    <div id="bps-modal-content2" title="<?php _e('Activate Root Folder BulletProof Mode'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your Root folder you must also activate BulletProof Mode for your wp-admin folder.</strong><br>Perform a backup first before activating any BulletProof Security modes (backs up both currently active root and wp-admin htaccess files at the same time).<br><br><strong>What Is Going On Here?</strong><br> Clicking the AutoMagic  buttons creates your customized Master .htaccess files for your website. Activating  BulletProof Modes copies and renames  those Master .htaccess files  from /plugins/bulletproof-security/admin/htaccess/ to your website root folder. Default Mode does not have any security protection - it is just a standard generic WordPress .htaccess file that you should only Activate  for testing or troubleshooting purposes.<br><br><strong>Help and FAQ links are available on the BPS Help and FAQ page</strong><br><br><strong>Additional Info</strong><br>Before upgrading or any time you add some additional custom code to your .htaccess files you can save that custom .htaccess code to the My Notes page. This code or notes are saved permanently to your WP database until you edit or delete it.<br><br>When you upgrade BPS your currently active root and wp-admin .htaccess files are not changed or overwritten. BPS master .htaccess files ARE replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up using Backup and Restore first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files this is an online backup so the files will be available to you to restore from if you run into any problems at any point.<br><br>You should always be using the newest BPS master .htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing custom .htaccess code that you want to keep from your current active .htaccess files to the new BPS master .htaccess files and save your changes before activating your new BPS master .htaccess files. You can copy from one .htaccess file editing window to any other window and then save your changes. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS version number at the top of your currently active htaccess files or you will see BPS error messages. And the My Notes page allows you to save any code you want to save permanently for later use or reminders.<br><br><strong>Troubleshooting Error Messages</strong><br>Check the Security Status menu tab to see potential problems and explanations of what might be causing the error message. Check the Edit/Upload/Download page to view all of your .htaccess files. Click on Your Current Root htaccess File menu tab to view your actual root .htaccess file. At the top of this .htaccess file you will see the BPS version and which .htaccess file is activated. Check that the BPS QUERY STRING EXPLOITS code does actually exist in your root .htaccess file. When you update your WordPress Permalinks the BPSQSE BPS QUERY STRING EXPLOITS code is overwritten with the WordPress standard default .htaccess code. You will either need to use Backup and Restore to restore you backed up .htaccess files or activate BulletProof Mode again for your Root Folder. To check your wp-admin .htaccess file click on the Your Current wp-admin htaccess File menu tab.<br><br><strong>Testing or Removing / Uninstalling BPS</strong><br>If you are testing BPS to determine if there is a plugin conflict or other conflict then Activate Default Mode and select the Delete wp-admin htaccess File radio button and click the Activate button or you can now just go to the WordPress Permalinks page and update / resave your permalinks. This overwrites all BPS security code with the standard default WP .htaccess code. This puts your site in a standard WordPress state with a default or generic Root .htaccess file and no .htaccess file in your wp-admin folder if you selected Delete wp-admin htaccess file. After testing or troubleshooting is completed reactivate BulletProof Modes for both the Root and wp-admin folders. If you are removing / uninstalling BPS then follow the same steps and then select Deactivate from the Wordpress Plugins page and then click Delete to uninstall the BPS plugin.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BulletProof-Root" action="admin.php?page=bulletproof-security/admin/options.php" method="post">
 <?php wp_nonce_field('bulletproof_security_root_copy'); ?>
@@ -984,10 +987,12 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
    </tr>
 </table>
 <p class="submit">
-<input type="submit" name="submit12" class="button" value="<?php esc_attr_e('Activate') ?>" />
-</p></form>
+<input type="submit" name="submit12" value="<?php esc_attr_e('Activate') ?>" class="button" onClick="return confirm('<?php _e('Did you create your Master .htaccess files using the AutoMagic buttons?\n\nDid you backup your existing .htaccess files?\n\nDo you have any custom .htaccess code in your Root .htaccess file that you want to save before Activating BulletProof Mode?\n\nClicking OK will overwrite your existing Root .htaccess file.\n\nClick OK to Activate BulletProof Mode for your Root folder or click Cancel.'); ?>')" /></p></form>
 
-<h3><?php _e('Activate Website wp-admin Folder .htaccess Security Mode'); ?> <a href="#" onmouseover="Tip('<strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your wp-admin folder you must also activate BulletProof Mode for your Root folder.</strong><br>Activating BulletProof Mode copies, renames and moves the master .htaccess file wpadmin-secure.htaccess from /plugins/bulletproof-security/admin/htaccess/ to your /wp-admin folder. If you customize or modify the master .htaccess files then be sure to make an online backup and also download backups of these master .htaccess files to your computer using the BPS File Downloader.<br><br>For more information click this Read Me button link to view the <strong>BulletProof Security Guide.</strong><br><br><strong>Testing or Removing / Uninstalling BPS</strong><br>If you are testing BPS to determine if there is a plugin conflict or other conflict then Activate Default Mode and select the Delete wp-admin htaccess File radio button and click the Activate button. This puts your site in a standard WordPress state with a default or generic Root .htaccess file and no .htaccess file in your wp-admin folder. After testing or troubleshooting is completed reactivate BulletProof Modes for both the Root and wp-admin folders. If you are removing / uninstalling BPS then follow the same steps and then select Deactivate from the Wordpress Plugins page and then click Delete to uninstall the BPS plugin.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('Activate Website wp-admin Folder .htaccess Security Mode'); ?>  <button id="bps-open-modal3" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content3" title="<?php _e('Activate wp-admin BulletProof Mode'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your wp-admin folder you must also activate BulletProof Mode for your Root folder.</strong><br>Activating BulletProof Mode copies, renames and moves the master .htaccess file wpadmin-secure.htaccess from /plugins/bulletproof-security/admin/htaccess/ to your /wp-admin folder. If you customize or modify the master .htaccess files then be sure to make an online backup and also download backups of these master .htaccess files to your computer using the BPS File Downloader.<br><br>For more information click this Read Me button link to view the <strong>BulletProof Security Guide.</strong><br><br><strong>Testing or Removing / Uninstalling BPS</strong><br>If you are testing BPS to determine if there is a plugin conflict or other conflict then Activate Default Mode and select the Delete wp-admin htaccess File radio button and click the Activate button. This puts your site in a standard WordPress state with a default or generic Root .htaccess file and no .htaccess file in your wp-admin folder. After testing or troubleshooting is completed reactivate BulletProof Modes for both the Root and wp-admin folders. If you are removing / uninstalling BPS then follow the same steps and then select Deactivate from the Wordpress Plugins page and then click Delete to uninstall the BPS plugin.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BulletProof-WPadmin" action="admin.php?page=bulletproof-security/admin/options.php" method="post">
 <?php wp_nonce_field('bulletproof_security_wpadmin_copy'); ?>
@@ -1004,7 +1009,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <p class="submit"><input type="submit" name="submit13" class="button" value="<?php esc_attr_e('Activate') ?>" />
 </p></form>
 
-<h3><?php _e('Activate Deny All htaccess Folder Protection For The BPS Master htaccess Folder'); ?> <a href="#" onmouseover="Tip('<strong>Your BPS Master htaccess folder should already be automatically protected by BPS Pro, but if it is not then activate BulletProof Mode for your BPS Master htaccess folder</strong><br><br>Activating BulletProof Mode for Deny All htaccess Folder Protection copies and renames the deny-all.htaccess file located in the /plugins/bulletproof-security/admin/htaccess/ folder and renames it to just .htaccess. The Deny All htaccess file blocks everyone, except for you, from accessing and viewing the BPS Master htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('Activate Deny All htaccess Folder Protection For The BPS Master htaccess Folder'); ?>  <button id="bps-open-modal4" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content4" title="<?php _e('BPS Master htaccess Folder'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Your BPS Master htaccess folder should already be automatically protected by BPS Pro, but if it is not then activate BulletProof Mode for your BPS Master htaccess folder</strong><br><br>Activating BulletProof Mode for Deny All htaccess Folder Protection copies and renames the deny-all.htaccess file located in the /plugins/bulletproof-security/admin/htaccess/ folder and renames it to just .htaccess. The Deny All htaccess file blocks everyone, except for you, from accessing and viewing the BPS Master htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BulletProof-deny-all-htaccess" action="admin.php?page=bulletproof-security/admin/options.php" method="post">
 <?php wp_nonce_field('bulletproof_security_denyall_master'); ?>
@@ -1017,7 +1025,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <p class="submit"><input type="submit" name="submit8" class="button" value="<?php esc_attr_e('Activate') ?>" />
 </p></form>
 
-<h3><?php _e('Activate Deny All htaccess Folder Protection For The BPS Backup Folder'); ?> <a href="#" onmouseover="Tip('<strong>Your BPS Backup Folder is NOT already automatically protected by BPS Pro and requires that you activate BulletProof Mode to htaccess protect it</strong><br><br>Activating BulletProof Mode for Deny All BPS Backup Folder Protection copies and renames the deny-all.htaccess file located in the /bulletproof-security/admin/htaccess/ folder to the BPS Backup folder /wp-content/bps-backup and renames it to just .htaccess. The Deny All htaccess file blocks everyone, except for you, from accessing and viewing your backed up htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('Activate Deny All htaccess Folder Protection For The BPS Backup Folder'); ?>  <button id="bps-open-modal5" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content5" title="<?php _e('BPS Backup Folder'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Your BPS Backup Folder is NOT already automatically protected by BPS Pro and requires that you activate BulletProof Mode to htaccess protect it</strong><br><br>Activating BulletProof Mode for Deny All BPS Backup Folder Protection copies and renames the deny-all.htaccess file located in the /bulletproof-security/admin/htaccess/ folder to the BPS Backup folder /wp-content/bps-backup and renames it to just .htaccess. The Deny All htaccess file blocks everyone, except for you, from accessing and viewing your backed up htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BulletProof-deny-all-backup" action="admin.php?page=bulletproof-security/admin/options.php" method="post">
 <?php wp_nonce_field('bulletproof_security_denyall_bpsbackup'); ?>
@@ -1046,7 +1057,11 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <?php if (!current_user_can('manage_options')) { echo 'Permission Denied'; } else { ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-status_table">
   <tr>
-    <td width="49%" class="bps-table_title"><?php _e('Activated BulletProof Security .htaccess Files'); ?> <a href="#" onmouseover="Tip('<strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your Root folder you must also activate BulletProof Mode for your wp-admin folder.</strong><br>Perform a backup first before activating any BulletProof Security modes (backs up both currently active root and wp-admin htaccess files at the same time).<br><br><strong>If you are installing BPS for the first time - Help and FAQ links are available on the BPS Help and FAQ page</strong><br><br><strong>Info for people who are upgrading BPS</strong><br>Before upgrading or any time you add some additional custom code to your .htaccess files you can save that custom .htaccess code on the My Notes page. This code is saved permanently to your WP database until you edit or delete it. When you upgrade BPS your currently active root and wp-admin .htaccess files are not affected. BPS master .htaccess files are replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up using Backup and Restore first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files this is an online backup so the files will be available to you to restore from if you run into any problems at any point. You should always be using the newest BPS master htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing htaccess code that you want to keep from your current active htaccess files to the new BPS master htaccess files and save your changes before activating your new BPS htaccess files. You can copy from one .htaccess file editing window to any other window and then save your changes. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS version number at the top of your currently active htaccess files or you will see BPS error messages. And the My Notes page allows you to save any code you want to save permanently for later use or reminders.<br><br><strong>Troubleshooting Error Messages</strong><br>Check the Edit/Upload/Download page to view your .htaccess files. Click on Your Current Root htaccess File menu tab to view your actual root .htaccess file. The top of the file tells you which BPS .htaccess file is activated and the BPS version. Check that BPS QUERY STRING EXPLOITS code does exist in your root .htaccess file. When you update your WordPress Permalinks the BPSQSE BPS QUERY STRING EXPLOITS code is overwritten with the WordPress standard default .htaccess code. You will either need to use Backup and Restore to restore you backed up .htaccess files or activate BulletProof Mode again for your Root Folder. To check your wp-admin .htaccess file click on the Your Current wp-admin htaccess File menu tab.<br><br><strong>Additional Info - Activated BulletProof Security Status window</strong><br>The Text Strings you see listed in the Activated BulletProof Security Status window if you have an active BulletProof .htaccess file (or an existing .htaccess file) is reading and displaying the actual contents of any existing .htaccess files here. <strong>This is not just a displayed message - this is the actual first 46 string characters (text) of the contents of your .htaccess files.</strong>The BPSQSE BPS QUERY STRING EXPLOITS code check is done by searching the root .htaccess file to verify that the string/text/word BPSQSE is in the file.<br><br>To change or modify the Text String that you see displayed here you would use the BPS built in Text Editor to change the actual text content of the BulletProof Security master .htaccess files. If the change the BULLETPROOF SECURITY title shown here then you must also change the coding contained in the /wp-content/plugins/bulletproof-security/includes/functions.php file to match your changes or you will get some error messages. The rest of the text content in the .htaccess files can be modified just like a normal post. Just this top line ot text in the .htaccess files contains version information that BPS checks to do verifications and other file checking. For detailed instructions on modifying what text is displayed here click this Read Me button link.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 800, PADDING, 8, ABOVE, true, FADEIN, 500, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></td>
+    <td width="49%" class="bps-table_title_SS"><?php _e('Activated BulletProof Security .htaccess Files'); ?>  <button id="bps-open-modal6" class="bps-modal-button"><?php _e('Read Me'); ?></button>
+    <div id="bps-modal-content6" title="<?php _e('Activated .htaccess Files'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Installing the BulletProof Security plugin does not activate any security modes.<br>If you activate BulletProof Mode for your Root folder you must also activate BulletProof Mode for your wp-admin folder.</strong><br>Perform a backup first before activating any BulletProof Security modes (backs up both currently active root and wp-admin htaccess files at the same time).<br><br><strong>Help and FAQ links are available on the BPS Help and FAQ page</strong><br><br><strong>Additional Info</strong><br>Before upgrading or any time you add some additional custom code to your .htaccess files you can save that custom .htaccess code to the My Notes page. This code or notes are saved permanently to your WP database until you edit or delete it.<br><br>When you upgrade BPS your currently active root and wp-admin .htaccess files are not changed or overwritten. BPS master .htaccess files ARE replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up using Backup and Restore first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files this is an online backup so the files will be available to you to restore from if you run into any problems at any point.<br><br>You should always be using the newest BPS master .htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing custom .htaccess code that you want to keep from your current active .htaccess files to the new BPS master .htaccess files and save your changes before activating your new BPS master .htaccess files. You can copy from one .htaccess file editing window to any other window and then save your changes. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS version number at the top of your currently active htaccess files or you will see BPS error messages. And the My Notes page allows you to save any code you want to save permanently for later use or reminders.<br><br>The Text Strings you see listed in the Activated BulletProof Security Status window if you have an active BulletProof .htaccess file (or an existing .htaccess file) is reading and displaying the actual contents of any existing .htaccess files here. <strong>This is not just a displayed message - this is the actual first 46 string characters (text) of the contents of your .htaccess files.</strong>The BPSQSE BPS QUERY STRING EXPLOITS code check is done by searching the root .htaccess file to verify that the string/text/word BPSQSE is in the file.<br><br><strong>Troubleshooting Error Messages</strong><br>Check the Edit/Upload/Download page to view all of your .htaccess files. Click on Your Current Root htaccess File menu tab to view your actual root .htaccess file. At the top of this .htaccess file you will see the BPS version and which .htaccess file is activated. Check that the BPS QUERY STRING EXPLOITS code does actually exist in your root .htaccess file. When you update your WordPress Permalinks the BPSQSE BPS QUERY STRING EXPLOITS code is overwritten with the WordPress standard default .htaccess code. You will either need to use Backup and Restore to restore you backed up .htaccess files or activate BulletProof Mode again for your Root Folder. To check your wp-admin .htaccess file click on the Your Current wp-admin htaccess File menu tab.<br><br><strong>Miscellaneous Info</strong><br>To change or modify the Text String that you see displayed here you would use the BPS built in Text Editor to change the actual text content of the BulletProof Security master .htaccess files. If the change the BULLETPROOF SECURITY title shown here then you must also change the coding contained in the /wp-content/plugins/bulletproof-security/includes/functions.php file to match your changes or you will get some error messages. The rest of the text content in the .htaccess files can be modified just like a normal post. Just this top line ot text in the .htaccess files contains version information that BPS checks to do verifications and other file checking. For detailed instructions on modifying what text is displayed here click this Read Me button link.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+</td>
     <td width="2%">&nbsp;</td>
     <td width="49%" class="bps-table_title"><?php _e('Additional Website Security Measures'); ?></td>
   </tr>
@@ -1084,9 +1099,17 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <?php if (!current_user_can('manage_options')) { echo 'Permission Denied'; } else { ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-perms_table">
   <tr>
-    <td colspan="4" class="bps-table_title"><?php _e('File and Folder Permissions - CGI or DSO'); ?> <a href="#" onmouseover="Tip('<strong>CGI And DSO File And Folder Permission Recommendations</strong><br>If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO / Apache mod_php you will see a table listing file and folder permission recommendations for DSO. If you Host is using CGI, but they do not allow you to set your folder permissions more restricive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.<br><br><strong>If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.</strong><br><br><strong>The wp-content/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all .htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.</strong><br><br>Your current file and folder permissions are shown below with suggested file and folder permission settings that you should use for the best website security and functionality.<br><br>I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></td>
+    <td colspan="4" class="bps-table_title_SS"><?php _e('File and Folder Permissions - CGI or DSO'); ?>  <button id="bps-open-modal7" class="bps-modal-button"><?php _e('Read Me'); ?></button>
+    <div id="bps-modal-content7" title="<?php _e('File and Folder Permissions'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>CGI And DSO File And Folder Permission Recommendations</strong><br>If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO / Apache mod_php you will see a table listing file and folder permission recommendations for DSO. If you Host is using CGI, but they do not allow you to set your folder permissions more restricive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.<br><br><strong>If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.</strong><br><br><strong>The wp-content/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all .htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.</strong><br><br>Your current file and folder permissions are shown below with suggested / recommended file and folder permissions. <strong>Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.</strong> If you see 500 errors after changing your folder permissions than change them back to what they were.<br><br>I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+</td>
     <td width="2%">&nbsp;</td>
-    <td width="49%" class="bps-table_title"><?php _e('General BulletProof Security File Checks'); ?> <a href="#" onmouseover="Tip('This is a quick visual check to verify that you have active .htaccess files in your root and /wp-admin folders and that all the required BPS files are in your BulletProof Security plugin folder. The BulletProof Security .htaccess master files (default.htaccess, secure.htaccess, wpadmin-secure.htaccess, maintenance.htaccess and bp-maintenance.php) are located in this folder /wp-content/plugins/bulletproof-security/admin/htaccess/<br><br>For new installations and upgrades of BulletProof Security you will see red warning messages. This is completely normal. These warnings are there to remind you to perform backups if they have not been performed yet. Also you may see warning messages if files do not exist yet.<br><br>You can also download backups of any existing .htaccess files using the BPS File Downloader.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></td>
+    <td width="49%" class="bps-table_title_SS"><?php _e('General BulletProof Security File Checks'); ?>  <button id="bps-open-modal8" class="bps-modal-button"><?php _e('Read Me'); ?></button>
+    <div id="bps-modal-content8" title="<?php _e('General File Checks'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br>This is a quick visual check to verify that you have active .htaccess files in your root and /wp-admin folders and that all the required BPS files are in your BulletProof Security plugin folder. The BulletProof Security .htaccess master files (default.htaccess, secure.htaccess, wpadmin-secure.htaccess, maintenance.htaccess and bp-maintenance.php) are located in this folder /wp-content/plugins/bulletproof-security/admin/htaccess/<br><br>For new installations and upgrades of BulletProof Security you will see red warning messages. This is completely normal. These warnings are there to remind you to perform backups if they have not been performed yet. Also you may see warning messages if files do not exist yet.<br><br>You can also download backups of any existing .htaccess files using the BPS File Downloader.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+</td>
   </tr>
   <tr>
     <td width="16%" class="bps-table_cell_perms_head_left"><?php _e('File Name -<br>Folder Name'); ?></td>
@@ -1107,7 +1130,7 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
     <td height="100%" colspan="4" class="bps-table_cell_perms_blank">
 	<?php 
 	$sapi_type = php_sapi_name();
-	if (substr($sapi_type, 0, 3) == 'cgi') { 
+	if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') {
 	_e('<div style=\'padding:5px 0px 5px 5px;border-bottom:1px solid black;\'><strong>CGI File and Folder Permissions / Recommendations</strong></div>');
 	bps_check_perms(".htaccess","../.htaccess","404");
 	bps_check_perms("wp-config.php","../wp-config.php","400");
@@ -1231,7 +1254,7 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
     </tr>
   <tr>
     <td class="bps-table_cell"><?php _e('Server API'); ?>: <strong><?php $sapi_type = php_sapi_name();
-	if (substr($sapi_type, 0, 3) == 'cgi') {
+	if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') {
     _e($sapi_type.' - Your Host Server is using CGI.');
 	} else {
     _e($sapi_type.' - Your Host Server is using DSO or another SAPI type.');
@@ -1383,7 +1406,11 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
   <tr>
     <td class="bps-table_cell_help">
 <h3><?php _e('Backup Your Currently Active .htaccess Files'); ?></h3>
-<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?><a href="#" onmouseover="Tip('Back up your existing .htaccess files first before activating any BulletProof Security Modes in case of a problem when you first install and activate any BulletProof Security Modes. Once you have backed up your original existing .htaccess files you will see the status listed in the <strong>Current Backed Up .htaccess Files Status</strong> window below. <br><br><strong>Backup files are stored in this folder /wp-content/bps-backup.</strong><br><br>In cases where you install a plugin that writes to your htaccess files you will want to perform another backup of your htaccess files. Each time you perform a backup you are overwriting older backed up htaccess files. Backed up files are stored in the /wp-content/bps-folder.<br><br>You could also use the BPS File Downloader to download any existing .htaccess files, customized .htaccess files or other BPS files that you have personally customized or modified just for an additional local backup.<br><br><strong>The BPS Master .htaccess files are stored in your /plugins/bulletproof-security/admin/htaccess folder and can also be backed up to the /wp-content/bps-backup/master-backups folder.</strong><br>Backed up files are stored online so they will be available to you after upgrading to a newer version of BPS if you run into a problem. There is no Restore feature for the BPS Master files because you should be using the latest versions of the BPS master .htaccess files after you upgrade BPS. You can manually download the files from this folder /wp-content/bps-backup/master-backups using FTP or your web host file downloader.<br><br>When you upgrade BPS your current root and wp-admin htaccess files are not affected. BPS master htaccess files are replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files it is an online backup so the files will be available to you to restore from if you run into any problems at any point. You should always be using the newest BPS master htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing htaccess code that you want to keep from your current active htaccess files to the new BPS master htaccess files and save your changes before activating the new BPS htaccess files. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS  version number in your currently active htaccess files or you will get error messages.<br><br><strong>If something goes wrong in the .htaccess file editing process or at any point you can restore your good .htaccess files with one click as long as you already backed them up.</strong><br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 550, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()"><strong>Read Me</strong></a></h3>
+<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?>  <button id="bps-open-modal9" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content9" title="<?php _e('.htaccess File Backup'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br>Back up your existing .htaccess files first before activating any BulletProof Security Modes in case of a problem when you first install and activate any BulletProof Security Modes. Once you have backed up your original existing .htaccess files you will see the status listed in the <strong>Current Backed Up .htaccess Files Status</strong> window below. <br><br><strong>Backup files are stored in this folder /wp-content/bps-backup.</strong><br><br>In cases where you install a plugin that writes to your htaccess files you will want to perform another backup of your htaccess files. Each time you perform a backup you are overwriting older backed up htaccess files. Backed up files are stored in the /wp-content/bps-folder.<br><br>You could also use the BPS File Downloader to download any existing .htaccess files, customized .htaccess files or other BPS files that you have personally customized or modified just for an additional local backup.<br><br><strong>The BPS Master .htaccess files are stored in your /plugins/bulletproof-security/admin/htaccess folder and can also be backed up to the /wp-content/bps-backup/master-backups folder.</strong><br>Backed up files are stored online so they will be available to you after upgrading to a newer version of BPS if you run into a problem. There is no Restore feature for the BPS Master files because you should be using the latest versions of the BPS master .htaccess files after you upgrade BPS. You can manually download the files from this folder /wp-content/bps-backup/master-backups using FTP or your web host file downloader.<br><br>When you upgrade BPS your current root and wp-admin htaccess files are not affected. BPS master htaccess files are replaced when you upgrade BPS so if you have made changes to your BPS master files that you want to keep make sure they are backed up first before upgrading. You can also download copies of the BPS master files to your computer using the BPS File Downloader if you want. When you backup your BPS files it is an online backup so the files will be available to you to restore from if you run into any problems at any point. You should always be using the newest BPS master htaccess files for the latest security protection updates and plugin conflict fixes. Before activating new BPS master files you can use the BPS File Editor to copy and paste any existing htaccess code that you want to keep from your current active htaccess files to the new BPS master htaccess files and save your changes before activating the new BPS htaccess files. Or you can copy any new htaccess code from the new BPS master files to your existing currently active htaccess files. If you do this be sure to edit the BPS  version number in your currently active htaccess files or you will get error messages.<br><br><strong>If something goes wrong in the .htaccess file editing process or at any point you can restore your good .htaccess files with one click as long as you already backed them up.</strong><br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+
 
 <form name="BulletProof-Backup" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-4" method="post">
 <?php wp_nonce_field('bulletproof_security_backup_active_htaccess_files'); ?>
@@ -1400,7 +1427,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <input type="submit" name="submit9" class="button" value="<?php esc_attr_e('Backup Files') ?>" />
 </p></form>
 
-<h3><?php _e('Restore Your .htaccess Files From Backup'); ?><a href="#" onmouseover="Tip('Restores your backed up .htaccess files that you backed up. Your backed up .htaccess files were renamed to root.htaccess and wpadmin.htaccess and copied to the /wp-content/bps-backup folder. Restoring your backed up .htaccess files will rename them back to .htaccess and copy them back to your root and /wp-admin folders respectively.<br><br><strong>If you did not have any original .htaccess files to begin with and / or you did not back up any files then you will not have any backed up .htaccess files.</strong><br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 550, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()"><strong>Read Me</strong></a></h3>
+<h3><?php _e('Restore Your .htaccess Files From Backup'); ?>  <button id="bps-open-modal10" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content10" title="<?php _e('.htaccess File Restore'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br>Restores your backed up .htaccess files that you backed up. Your backed up .htaccess files were renamed to root.htaccess and wpadmin.htaccess and copied to the /wp-content/bps-backup folder. Restoring your backed up .htaccess files will rename them back to .htaccess and copy them back to your root and /wp-admin folders respectively.<br><br><strong>If you did not have any original .htaccess files to begin with and / or you did not back up any files then you will not have any backed up .htaccess files.</strong><br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BulletProof-Restore" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-4" method="post">
 <?php wp_nonce_field('bulletproof_security_restore_active_htaccess_files'); ?>
@@ -1417,7 +1447,10 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <input type="submit" name="submit10" class="button" value="<?php esc_attr_e('Restore Files') ?>" />
 </p></form>
 
-<h3><?php _e('Backup Your BPS Master .htaccess Files'); ?><a href="#" onmouseover="Tip('The BPS Master .htaccess files are stored in your /plugins/bulletproof-security/admin/htaccess folder and can also be backed up using this Master Backup feature. The backed up BPS Master .htaccess files are copied to this folder /wp-content/bps-backup/master-backups folder. This way they will be available to you online after upgrading to a newer version of BPS. There is no Restore feature for the BPS Master files because you should be using the latest versions of the BPS master .htaccess files after you upgrade BPS. You can manually download the files from this folder /wp-content/bps-backup/master-backups using FTP or your web host file downloader.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()"><strong>Read Me</strong></a></h3>
+<h3><?php _e('Backup Your BPS Master .htaccess Files'); ?>  <button id="bps-open-modal11" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content11" title="<?php _e('Master .htaccess File Backup'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br>The BPS Master .htaccess files are stored in your /plugins/bulletproof-security/admin/htaccess folder and can also be backed up using this Master Backup feature. The backed up BPS Master .htaccess files are copied to this folder /wp-content/bps-backup/master-backups folder. This way they will be available to you online after upgrading to a newer version of BPS. There is no Restore feature for the BPS Master files because you should be using the latest versions of the BPS master .htaccess files after you upgrade BPS. You can manually download the files from this folder /wp-content/bps-backup/master-backups using FTP or your web host file downloader.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="BPS-Master-Htaccess-Backup" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-4" method="post">
 <?php wp_nonce_field('bulletproof_security_backup_master_htaccess_files'); ?>
@@ -1443,7 +1476,11 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-backup_restore_table">
   <tr>
-    <td class="bps-table_title"><?php _e('Current Backed Up .htaccess Files Status'); ?> <a href="#" onmouseover="Tip('General file checks to check which files have been backed up or not.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 400, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></td>
+    <td class="bps-table_title_SS"><?php _e('Current Backed Up .htaccess Files Status'); ?>  <button id="bps-open-modal12" class="bps-modal-button"><?php _e('Read Me'); ?></button>
+    <div id="bps-modal-content12" title="<?php _e('Backup Up .htaccesss File'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br>General file checks to check which files have been backed up or not.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+</td>
   </tr>
   <tr>
     <td class="bps-table_cell">&nbsp;</td>
@@ -1477,9 +1514,16 @@ _e('<font color="green"><strong><p>Settings Saved.</p></strong></font>');
 <table width="100%" border="0">
   <tr>
     <td width="33%"><h2><?php _e('BulletProof Security File Editing'); ?></h2></td>
-    <td width="21%"><h3><a href="#" onmouseover="Tip('<strong>Lock / Unlock .htaccess Files</strong><br>If your Server API is using CGI then you will see Lock and Unlock buttons to lock your Root .htaccess file with 404 Permissions and unlock your root .htaccess file with 644 Permissions. If your Server API is using CLI - DSO / Apache / mod_php then you will not see lock and unlock buttons. 644 Permissions are required to write to / edit the root .htaccess file. Once you are done editing your root .htaccess file use the lock button to lock it with 404 Permissions. 644 Permissions for DSO are considered secure for DSO because of the different way that file security is handled with DSO.<br><br>A help link is provided in the Help & FAQ page <strong>File Editing Within The Dashboard Help Info.</strong> File Editing is also demonstrated and explained in the B-Core htaccess Video Tutorial.<strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3></td>
+    <td width="21%"><button id="bps-open-modal13" class="bps-modal-button"><?php _e('Read Me'); ?></button>
+    <div id="bps-modal-content13" title="<?php _e('File Editing'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Lock / Unlock .htaccess Files</strong><br>If your Server API is using CGI then you will see Lock and Unlock buttons to lock your Root .htaccess file with 404 Permissions and unlock your root .htaccess file with 644 Permissions. If your Server API is using CLI - DSO / Apache / mod_php then you will not see lock and unlock buttons. 644 Permissions are required to write to / edit the root .htaccess file. Once you are done editing your root .htaccess file use the lock button to lock it with 404 Permissions. 644 Permissions for DSO are considered secure for DSO because of the different way that file security is handled with DSO.<br><br>If your Root .htaccess file is locked and you try to save your editing changes you will see a pop message that your Root .htaccess file is locked. You will need to unlock your Root .htaccess file before you can save your changes.<br><br><strong>The File Editor is designed to open all of your .htaccess files simultaneously and allow you to copy and paste from one window (file) to another window (file), BUT you can ONLY save your edits for one file at a time. Whichever file you currently have opened (the tab that you are currently viewing) when you click the Update File button is the file that will be updated / saved. This is done for 2 reasons - reduces the chances of making an editing mistake and for better security.</strong><br><br>A help link is provided in the Help & FAQ page <strong>File Editing Within The Dashboard Help Info.</strong> File Editing is also demonstrated and explained in the B-Core htaccess Video Tutorial.<strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
+</td>
     <td width="19%" align="right">
-    <h3 style="margin-right:0px;"><a href="#" onmouseover="Tip('<strong>File Uploading</strong><br>The file upload location is preset to the /wp-content/plugins/bulletproof-security/admin/htaccess folder and the intended use is just for uploading the BPS Master files: secure.htaccess, default.htaccess, wpadmin-secure.htaccess, maintenance.htaccess, bp-maintenance.php, bps-maintenance-values.php, http_error_log.txt (BPS Pro only) or other files from your computer to the BPS Master htaccess folder.<br><br><strong>File Downloading</strong><br><strong>File Downloading is automatically not allowed. Folder permissions must be set to a minimum of 705 for the /htaccess and /bps-backup folders in order to open and download files.</strong><br>Click the Enable Master File Downloading button to enable file downloading. This will write your current IP address to the deny all htaccess file and allow ONLY you access to the /plugins/bulletproof-security/admin/htaccess folder to open and download files. To open and download your Backed up files click the Enable Backed Up File Downloading button. After clicking the Enable File Downloading buttons you can click the download buttons below to open or download files. If your IP address changes which it will do frequently then click the Enable File Downloading buttons again to write a new IP address to the deny all htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+    <h3 style="margin-right:0px;"><button id="bps-open-modal14" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+    <div id="bps-modal-content14" title="<?php _e('File Uploading / Downloading'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>File Uploading</strong><br>The file upload location is preset to the /wp-content/plugins/bulletproof-security/admin/htaccess folder and the intended use is just for uploading the BPS Master files: secure.htaccess, default.htaccess, wpadmin-secure.htaccess, maintenance.htaccess, bp-maintenance.php, bps-maintenance-values.php, http_error_log.txt (BPS Pro only) or other files from your computer to the BPS Master htaccess folder.<br><br><strong>File Downloading</strong><br><strong>File Downloading is automatically not allowed. Folder permissions must be set to a minimum of 705 for the /htaccess and /bps-backup folders in order to open and download files.</strong><br>Click the Enable Master File Downloading button to enable file downloading. This will write your current IP address to the deny all htaccess file and allow ONLY you access to the /plugins/bulletproof-security/admin/htaccess folder to open and download files. To open and download your Backed up files click the Enable Backed Up File Downloading button. After clicking the Enable File Downloading buttons you can click the download buttons below to open or download files. If your IP address changes which it will do frequently then click the Enable File Downloading buttons again to write a new IP address to the deny all htaccess files.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
     </td>
     <td width="27%" align="center"><h2><?php _e('Uploads - Downloads'); ?></h2></td>
   </tr>
@@ -1496,17 +1540,11 @@ echo default_htaccess_file_check();
 echo maintenance_htaccess_file_check();
 echo wpadmin_htaccess_file_check();
 
-/*
-$options = get_option('bulletproof_security_options_flock');
-if ($options['bps_lock_root_htaccess'] == 'yes') { 
-_e('The ');
-}
- */   
 // Perform File Open and Write test first by appending a literal blank space
 // or nothing at all to end of the htaccess files.
 // If append write test is successful file is writable on submit
 if (current_user_can('manage_options')) {
-$secure_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
+$secure_htaccess_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/secure.htaccess';
 $write_test = "";
 	if (is_writable($secure_htaccess_file)) {
     if (!$handle = fopen($secure_htaccess_file, 'a+b')) {
@@ -1537,7 +1575,7 @@ $write_test = "";
 }
 
 if (current_user_can('manage_options')) {
-$default_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/default.htaccess';
+$default_htaccess_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/default.htaccess';
 $write_test = "";
 	if (is_writable($default_htaccess_file)) {
     if (!$handle = fopen($default_htaccess_file, 'a+b')) {
@@ -1568,7 +1606,7 @@ $write_test = "";
 }
 
 if (current_user_can('manage_options')) {
-$maintenance_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
+$maintenance_htaccess_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
 $write_test = "";
 	if (is_writable($maintenance_htaccess_file)) {
     if (!$handle = fopen($maintenance_htaccess_file, 'a+b')) {
@@ -1599,7 +1637,7 @@ $write_test = "";
 }
 
 if (current_user_can('manage_options')) {
-$wpadmin_htaccess_file = ABSPATH . 'wp-content/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+$wpadmin_htaccess_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 $write_test = "";
 	if (is_writable($wpadmin_htaccess_file)) {
     if (!$handle = fopen($wpadmin_htaccess_file, 'a+b')) {
@@ -1740,7 +1778,7 @@ if (isset($_POST['submit-ProFlockUnLock']) && current_user_can('manage_options')
     <td width="22%">
 <?php // Detect the SAPI - display form submit button only if sapi is cgi
 	$sapi_type = php_sapi_name();
-	if (substr($sapi_type, 0, 3) == 'cgi') { ?>    
+	if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') { ?>    
     
     <form name="bpsFlockLockForm" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-5" method="post">
 <?php wp_nonce_field('bulletproof_security_flock_lock'); ?>
@@ -1752,7 +1790,7 @@ if (isset($_POST['submit-ProFlockUnLock']) && current_user_can('manage_options')
     <td width="45%">
 <?php // Detect the SAPI - display form submit button only if sapi is cgi
 	$sapi_type = php_sapi_name();
-	if (substr($sapi_type, 0, 3) == 'cgi') { ?>        
+	if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') { ?>        
     
     <form name="bpsFlockUnLockForm" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-5" method="post">
 <?php wp_nonce_field('bulletproof_security_flock_unlock'); ?>
@@ -1874,6 +1912,22 @@ jQuery(document).ready(function($){
 </script>     
 </div>
 
+<?php
+// File Editor Root .htaccess file Lock check with pop up Confirm message
+function bpsStatusRHE() {
+	clearstatcache();
+	$file = ABSPATH . '.htaccess';
+	$perms = @substr(sprintf(".%o.", fileperms($file)), -4);
+	$sapi_type = php_sapi_name();
+	if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') {
+	if (file_exists($file)) {
+	$perms = str_replace('.', '', $perms);
+	return $perms;
+	}
+	}
+}
+?>
+
 <div id="bps-edittabs-5" class="bps-edittabs-page-class">
 <form name="template5" id="template5" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-5" method="post">
 <?php wp_nonce_field('bulletproof_security_save_settings_5'); ?>
@@ -1883,7 +1937,11 @@ jQuery(document).ready(function($){
     <input type="hidden" name="filename" value="<?php echo esc_attr($root_htaccess_file) ?>" />
 	<input type="hidden" name="scrollto5" id="scrollto5" value="<?php echo $scrollto5; ?>" />
     <p class="submit">
+    <?php if (bpsStatusRHE($perms) == '404') { ?>
+	<input type="submit" name="submit5" value="<?php esc_attr_e('Update File') ?>" class="button" onClick="return confirm('<?php _e('YOUR ROOT HTACCESS FILE IS LOCKED.\n\nYOUR FILE EDITS / CHANGES CANNOT BE SAVED.\n\nClick Cancel, copy the file editing changes you made to save them and then click the Unlock .htaccess File button to unlock your Root .htaccess file. After your Root .htaccess file is unlocked paste your file editing changes back into your Root .htaccess file and click this Update File button again to save your file edits / changes.'); ?>')" />
+	<?php } else { ?>
 	<input type="submit" name="submit5" class="button" value="<?php esc_attr_e('Update File') ?>" /></p>
+<?php } ?>
 </div>
 </form>
 <script type="text/javascript">
@@ -2031,7 +2089,10 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
     <td class="bps-table_cell_help">
     <div id="bps-maintenance_form_table">
 <h3><?php _e('Website Maintenance Mode Settings'); ?></h3>
-<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?> <a href="#" onmouseover="Tip('<strong>Your Maintenance Mode Form data is saved to the WordPress Database and will remain permanently until you delete it. When you upgrade BPS your form data will still be saved in your database.</strong><br><br><strong>Maintenance Mode Activation Steps</strong><br><br><strong>Filling In The Maintenance Mode Settings Form</strong><br><strong>1. Fill out the Website Maintenance Mode Form</strong><br> -- For the Retry-After text field I recommend using 259200. 259200 is 72 hours in seconds. 3600 = 1hr 43200 = 12hrs 86400 = 24hrs<br> -- You can copy and paste the example Background Image URL into the Background Image text field if you want to use the background image file that comes with BPS. If you have another background image file that you want to use then just name it with the same name as the example image file and copy it to the /bulletproof-security folder. If you do not want a background image then leave this text field blank. The background color will be white. If you want to customize the Website Under Maintenance template then download this file located in this folder /bulletproof-security/admin/htaccess/bp-maintenance.php.<br> -- The javascript countdown timer has been removed. It was a silly and useless feature.<br><strong>2. Click the Save Form Settings button to save your form data to your database.</strong><br><strong>3. Click the Create Form button to create your Website Under Maintenance form.</strong><br><strong>4. Click the Preview Form button to preview your Website Under Maintenance page.</strong><br> -- If you see a 404 or 403 Forbidden message in the popup preview window refresh the popup preview window or just close the popup window and click the Preview button again.<br> -- You can use the Preview button at any time to preview how your site will be displayed to everyone else except you when your website is in Maintenance Mode.<br><br><strong>Create Your Maintenance Mode .htaccess File</strong><br>After you have finished previewing your Website Under Maintenance page, click the Create htaccess File button. This creates your Maintenance Mode .htaccess file for your website. Your current Public IP address and correct RewriteBase and RewriteRule are included when this new Maintenance Mode .htaccess file is created.<br><br><strong>Activate Website Under Maintenance Mode</strong><br>Select the Maintenance Mode radio button and click the Activate Maintenance Mode button. Your website is now in Maintenance Mode. Everyone else will see your Website Under Maintenance page while you can still view and work on your site as you normally would.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?>  <button id="bps-open-modal15" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content15" title="<?php _e('Website Maintenance Mode'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>Your Maintenance Mode Form data is saved to the WordPress Database and will remain permanently until you delete it. When you upgrade BPS your form data will still be saved in your database.</strong><br><br><strong>Maintenance Mode Activation Steps</strong><br><br><strong>Filling In The Maintenance Mode Settings Form</strong><br><strong>1. Fill out the Website Maintenance Mode Form</strong><br> -- You can copy and paste the example Background Image URL into the Background Image text field if you want to use the background image file that comes with BPS. If you have another background image file that you want to use then just name it with the same name as the example image file and copy it to the /bulletproof-security folder. If you do not want a background image then leave this text field blank. The background color will be white. If you want to customize the Website Under Maintenance template then download this file located in this folder /bulletproof-security/admin/htaccess/bp-maintenance.php.<br><strong>2. Click the Save Form Settings button to save your form data to your database.</strong><br><strong>3. Click the Create Form button to create your Website Under Maintenance form.</strong><br><strong>4. Click the Preview Form button to preview your Website Under Maintenance page.</strong><br> -- If you see a 404 or 403 Forbidden message in the popup preview window refresh the popup preview window or just close the popup window and click the Preview button again.<br> -- You can use the Preview button at any time to preview how your site will be displayed to everyone else except you when your website is in Maintenance Mode.<br><br><strong>Create Your Maintenance Mode .htaccess File</strong><br>After you have finished previewing your Website Under Maintenance page, click the Create htaccess File button. This creates your Maintenance Mode .htaccess file for your website. Your current Public IP address and correct RewriteBase and RewriteRule are included when this new Maintenance Mode .htaccess file is created.<br><br><strong>Activate Website Under Maintenance Mode</strong><br>Select the Maintenance Mode radio button and click the Activate Maintenance Mode button. Your website is now in Maintenance Mode. Everyone else will see your Website Under Maintenance page while you can still view and work on your site as you normally would.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="bps-maintenance-values" action="options.php" method="post">
 <?php settings_fields('bulletproof_security_options_maint'); ?>
@@ -2081,7 +2142,10 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
 </div>
 
 <h3><?php _e('Activate Website Under Maintenance Mode'); ?></h3>
-<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?> <a href="#" onmouseover="Tip('<strong>You must click the Create htaccess File button FIRST to create your Maintenance Mode htaccess file before activating Maintenance Mode if you want to be able to continue working on your website while everyone else sees the Website Under Maintenance page</strong><br>After you have created your Maintenance Mode .htaccess file - Select the Maintenance Mode radio button and click Activate.<br><br><strong>To switch out of or exit Maintenance Mode just activate BulletProof Security Mode for your Root folder on the Security Modes page.</strong> You can see what everyone is seeing except for you by clicking on the Preview Form button at any time.<br><br>When you activate Maintenance Mode your website will be put in HTTP 503 Service Temporarily Unavailable status and display a Website Under Maintenance page to everyone except you. Your current Public IP address was automatically added to the Maintenance Mode file as well as the correct .htaccess RewriteRule and RewriteBase for your website when you clicked the Create File button.<br><br>To manually add additional IP addresses that are allowed to view your website normally use the BPS File Editor to add them. To view your current Public IP address click on the System Info tab menu.<br><br><strong>Your current Public IP address is also displayed on the Website Under Maintenance page itself.</strong><br><br>Your SERPs (website or web page ranking) will not be affected by putting your website in Maintenance Mode for several days for existing websites. To manually add additional IP addresses that can view your website you would add them using the BPS File Editor.<br><br>If you are unable to log back into your WordPress Dashboard and are also seeing the Website Under Maintenance page then you will need to FTP to your website and either delete the .htaccess file in your website root folder or download the .htaccess file - add your correct current Public IP address and upload it back to your website.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>', WIDTH, 600, PADDING, 8, ABOVE, true, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Read Me</a></h3>
+<h3><?php _e('<font color="red"><strong>CAUTION: </strong></font>'); ?>  <button id="bps-open-modal16" class="bps-modal-button"><?php _e('Read Me'); ?></button></h3>
+<div id="bps-modal-content16" title="<?php _e('Activate Maintenance Mode'); ?>">
+	<p><?php _e('<strong>This Read Me Help window is draggable and resizable</strong><br><br><strong>You must click the Create htaccess File button FIRST to create your Maintenance Mode htaccess file before activating Maintenance Mode if you want to be able to continue working on your website while everyone else sees the Website Under Maintenance page</strong><br>After you have created your Maintenance Mode .htaccess file - Select the Maintenance Mode radio button and click Activate.<br><br><strong>To switch out of or exit Maintenance Mode just activate BulletProof Security Mode for your Root folder on the Security Modes page.</strong> You can see what everyone is seeing except for you by clicking on the Preview Form button at any time.<br><br>When you activate Maintenance Mode your website will be put in HTTP 503 Service Temporarily Unavailable status and display a Website Under Maintenance page to everyone except you. Your current Public IP address was automatically added to the Maintenance Mode file as well as the correct .htaccess RewriteRule and RewriteBase for your website when you clicked the Create File button.<br><br>To manually add additional IP addresses that are allowed to view your website normally use the BPS File Editor to add them. To view your current Public IP address click on the System Info tab menu.<br><br><strong>Your current Public IP address is also displayed on the Website Under Maintenance page itself.</strong><br><br>Your SERPs (website or web page ranking) will not be affected by putting your website in Maintenance Mode for several days for existing websites. To manually add additional IP addresses that can view your website you would add them using the BPS File Editor.<br><br>If you are unable to log back into your WordPress Dashboard and are also seeing the Website Under Maintenance page then you will need to FTP to your website and either delete the .htaccess file in your website root folder or download the .htaccess file - add your correct current Public IP address and upload it back to your website.<br><br><strong>BPS Pro Video Tutorial links can be found in the Help & FAQ pages.</strong>'); ?></p>
+</div>
 
 <form name="bps-auto-write-maint" action="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-6" method="post">
 <?php wp_nonce_field('bulletproof_security_auto_write_maint'); ?>
@@ -2127,19 +2191,19 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-backup-restore" target="_blank"><?php _e('Backup & Restore Help Info'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .46.4 Guide'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .46.7 Guide'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2585/bulletproof-security-plugin-support/wordpress-website-maintenance-wordpress-maintenance-mode" target="_blank"><?php _e('Maintenance Mode Help Info'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .46.4 Features'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .46.4 Coding Modifications Help Info'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .46.7 Features'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .46.7 Coding Modifications Help Info'); ?></a></td>
   </tr>
   <tr>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/319/bulletproof-security-plugin-support/bulletproof-security-comments-questions-problems-wishlist/" target="_blank"><?php _e('Post Questions and Comments for Assistance'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#modifying-htaccess-files" target="_blank"><?php _e('Modifying BPS .htaccess Files for WordPress Subfolders'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .46.4 Screenshots'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .46.7 Screenshots'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2185/bulletproof-security-plugin-support/bulletproof-security-file-editing-editing-files-within-the-wordpress-dashboard/" target="_blank"><?php _e('File Editing Within The Dashboard Help Info'); ?></a></td>
   </tr>
   <tr>
@@ -2178,7 +2242,23 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('<font color="red">Heads Up Security Warning!!!</font>'); ?></strong><br /><?php _e('BPS .46.6 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('<font color="red">Heads Up Security Warning!!!</font>'); ?></strong><br /><?php _e('BPS .46.7 is forbidding thumbnailer scripts by default. If images are not displaying on your website then this is most likely because they are thumbnailer images / scripts that BPS is forbidding. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.'); ?></td>
+  </tr>
+    <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('jQuery Dialog Read Me Help buttons'); ?></strong><br /><?php _e('New jQuery Dialog Read Me Help buttons have been created to replace the old Hover ToolTips. The Read Me Help windows are draggable, resizable, scrollable and you can copy and paste the text from the Help window.'); ?></td>
+  </tr>
+    <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('WP_CONTENT_DIR replaces ABSPATH path'); ?></strong><br /><?php _e('Some folks who have their wp-content folder in another location other than the default folder location were having issues with this. ABSPATH has been replaced with WP_CONTENT_DIR where necessary to resolve this.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2186,7 +2266,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Cookie filter removed from BPS QUERY STRING EXPLOITS'); ?></strong><br /><?php _e('The Cookie String Exploit filter is problematic with plugins that are using PHP SESSION. This filter has been removed.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('.htaccess Return Carriage filter Modified'); ?></strong><br /><?php _e('This filter was problematic for some web hosts and has been modified to work on all web hosts.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2194,7 +2274,39 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Explicit "exec" and "execute" filter removed from BPS QUERY STRING EXPLOITS'); ?></strong><br /><?php _e('The filtered words "exec" and "execute" have been removed as they are not necessary.'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Slash-Jack filter modified'); ?></strong><br /><?php _e('This filter was problematic for some web hosts and has been modified to work on all web hosts.'); ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Pop Up Confirm Messages:'); ?></strong><br /><?php _e('Several new pop up confirm messages have been added throughout BPS for forms that perform critical operations.'); ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Additional SAPIs Added:'); ?></strong><br /><?php _e('Several new Server API types have been added to CGI and DSO checking to more accurately determine whether your Server is using CGI or DSO.'); ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Network / MU Sub Domain AutoMagic Change:'); ?></strong><br /><?php _e('AutoMagic for Network / MU sub domain sites is no longer writing the wp-admin forbid coding. This code has been problematic for MU Subdomain sites displaying images. All other sites still have this code as no conflicts exist on any other WP site type.'); ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Sucuri Malware Website Scanner'); ?></strong><br /><?php _e('Added a link to the Sucuri Malware Website Scanner. This is a great tool. Scan your website for malicious scripts.'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2202,15 +2314,7 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('non-GPL Javascript Countdown Timer removed'); ?></strong><br /><?php _e('The Javascript Countdown Timer has been removed due to not being GPL compliant. This was a silly useless feature so no big loss.'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('BPS Pro 5.1 Officially Released'); ?></strong><br /><?php _e('At this point in the evolution of BPS Pro it is safe to say that BPS Pro 5.1 is by far the most comprehensive, effective and complete Website Security Solution for WordPress websites. The BPS Pro 5.1 .htaccess files contain a massive amount of new Security Exploits Filters to block browser based hacking attempts, the php.ini files contain optimum Security and Performance settings for maximum security and performance boosts for WordPress websites, file locking on the fly for WordPress Mission Critical files to protect against Mass Code Injection attacks on Web Hosts, PHP Error logging, automatic HTTP 400, 403 and 404 Error Logging to log and track hacking attempts against your website, built-in Monitoring and Alerting, extensive System Info and lots more.  We are not stopping here – Lots More To Come!'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('BPS Pro 5.1'); ?></strong><br /><?php _e('At this point in the evolution of BPS Pro it is safe to say that BPS Pro 5.1 is by far the most comprehensive, effective and complete Website Security Solution for WordPress websites. The BPS Pro 5.1 .htaccess files contain a massive amount of new Security Exploits Filters to block browser based hacking attempts, the php.ini files contain optimum Security and Performance settings for maximum security and performance boosts for WordPress websites, file locking on the fly for ALL WordPress Mission Critical files to protect against Mass Code Injection attacks on Web Hosts, PHP Error logging, automatic HTTP 400, 403 and 404 Error Logging to log and track hacking attempts against your website, built-in Monitoring and Alerting, extensive System Info and lots more.  We are not stopping here – Lots More To Come!'); ?></td>
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2274,32 +2378,40 @@ jQuery(document).ready(function($){
   </tr>
   <tr>
     <td width="62%" class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2835/bulletproof-security-pro/bulletproof-security-pro-features/" target="_blank" title="Link Opens in New Browser Window"><?php _e('BPS Pro Features'); ?></a></td>
-    <td width="38%" class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2841/bulletproof-security-pro/bulletproof-security-pro-overview-video-tutorial/" target="_blank" title="Link Opens in New Browser Window"><?php _e('BPS Pro Overview Video Tutorial'); ?></a></td>
+    <td width="38%" rowspan="7" valign="top" class="bps-table_cell_help">
+    <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" target="_blank" title="Link Opens in New Browser Window"><?php _e('BPS Pro Vs BPS Free Feature Comparison'); ?></a><br />
+    <br />
+    <a href="http://www.ait-pro.com/aitpro-blog/2835/bulletproof-security-pro/bulletproof-security-pro-features/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 5.0'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/3510/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-5-1-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 5.1'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/3510/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-5-1-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 5.1.1'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/3529/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-5-1-2/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 5.1.2'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/3605/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-5-1-3" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 5.1.3'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/2837/bulletproof-security-pro/bulletproof-security-pro-screenshots/" target="_blank" title="Link Opens in New Browser Window"><?php _e('BPS Pro Screenshots'); ?>
+    </a>
+    </td>
   </tr>
  <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('Custom php.ini File Creator, php.ini File Manager, php.ini Editor, Protected PHP Error Log, Secure phpinfo Viewer'); ?></strong></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2849/bulletproof-security-pro/bulletproof-security-pro-b-core-htaccess-video-tutorial/" target="_blank" title="Link Opens in New Browser Window"><?php _e('B-Core htaccess Video Tutorial'); ?></a></td>
-  </tr>
+    <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('Hacker Logging / HTTP Error Logging / 400, 403 and 404 Error Logging - Log hacking attempts against your website. When a hacker attempts to hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or requested resource, the user agent of the hacker and the query string used in the hack attempt are logged. And if you feel like collecting hackers scripts then go to the hackers website link that was logged and download their hacking scripts and decode them with the Base64 Decoder.'); ?></td>
+    </tr>
   <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('Monitoring &amp; Alerting Options: WP Dashboard, BPS Pro pages only, Turned off, PHP Error Email Alerts'); ?></strong></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2851/bulletproof-security-pro/bulletproof-security-pro-p-security-php-ini-video-tutorial/" target="_blank" title="Link Opens in New Browser Window"><?php _e('P-Security Video Tutorial'); ?></a></td>
-  </tr>
+     <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('F-Lock: Lock ALL WordPress Mission Critical files on the fly, lock index.php, lock wp-config.php, lock wp-blog-header.php, lock .htaccess files...'); ?></td>
+    </tr>  
+  <tr>
+     <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('Custom php.ini File Creator, php.ini File Manager, php.ini Editor, Protected PHP Error Log, PHP Error Alerts, Secure phpinfo Viewer...'); ?></td>
+    </tr>
     <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('Base64 Decoder/Encoder, Mcrypt Decrypt/Encrypt, Crypt Encryption'); ?></strong></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2847/bulletproof-security-pro/bulletproof-security-pro-s-monitor-video-tutorial/" target="_blank" title="Link Opens in New Browser Window"><?php _e('S-Monitor Video Tutorial'); ?></a></td>
-  </tr>
+    <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('Monitoring &amp; Alerting Options: WP Dashboard, BPS Pro pages only, Turned off, Email Alerts...'); ?></td>
+    </tr>
   <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('File String Finder, Replacer, Remover: Search all files for text, code, etc.'); ?></strong></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2855/bulletproof-security-pro/bulletproof-security-pro-pro-tools-video-tutorial/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Pro-Tools Video Tutorial'); ?></a></td>
-  </tr>
+    <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('Decode Hackers Code: Base64 Decoder / Encoder, Mcrypt Decrypt / Encrypt, Crypt Encryption...'); ?></td>
+    </tr>
   <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('Database String Finder: Search entire Database for text, code, etc.'); ?></strong></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2837/bulletproof-security-pro/bulletproof-security-pro-screenshots/" target="_blank" title="Link Opens in New Browser Window"><?php _e('BPS Pro Screenshots'); ?></a> </td>
-  </tr>
+   <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('File String Finder, Replacer, Remover: Search all files for text, code, etc....'); ?></td>
+   </tr>
   <tr>
-    <td class="bps-table_cell_help"><strong><?php _e('HTTP Error Logging / 400, 403 and 404 Error Logging - Log hacking attempts against your website. When a hacker attempts to hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or requested resource, the user agent of the hacker and the query string used in the hack attempt are logged. And if you feel like collecting hackers scripts then just follow the hackers links back to their personal sites or their Botnet sites.'); ?></strong></td>
+     <td class="bps-table_cell_help" style="font-size:14px;"><?php _e('Database String Finder: Search entire Database for text, code, etc....'); ?></td>
     <td class="bps-table_cell_help">&nbsp;</td>
-  </tr>
+    </tr>
   <tr>
     <td class="bps-table_cell_help">&nbsp;</td>
     <td class="bps-table_cell_help">&nbsp;</td>
@@ -2308,11 +2420,32 @@ jQuery(document).ready(function($){
     <td colspan="2" class="bps-table_cell_bottom">&nbsp;</td>
   </tr>
 </table>
+
+</div>
+
+<div id="bps-tabs-11">
+<h2><?php _e('Sucuri SiteCheck - Free website malware & blacklist scan'); ?></h2>
+<h3><?php _e('BPS is designed to protect your website from being hacked. If your website was already hacked prior to installing BPS then BPS will not automatically clean it up. Sucuri offers hacked website cleanup services.'); ?></h3>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
+  <tr>
+    <td class="bps-table_title">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_help">
+    <div id="SucuriLogo" style="position:relative; top:0px; left:0px;"><img src="<?php echo get_site_url(); ?>/wp-content/plugins/bulletproof-security/admin/images/sucuri-logo.png" style="float:left; padding:0px 10px 0px 0px; margin:0px;" /><h3><?php _e('<em>'.'"'.'...the sheer nature of malware makes it very challenging to give you 100% certainty you will not get infected. The good news though is that we are doing everything in our power to ensure that 1 - you do not get infected, but 2 - if you do, we have the best solution to get you back on your feet.'.'"'.'</em><br> -- Tony Perez, CFO Sucuri, LLC'); ?></h3><a href="http://sitecheck.sucuri.net/" target="_blank" title="Link opens in new browser window">Sucuri SiteCheck Scanner</a></div>    
+    </td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_help">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_bottom">&nbsp;</td>
+  </tr>
+</table>
 </div>
         
 <div id="AITpro-link">BulletProof Security Plugin by <a href="http://www.ait-pro.com/" target="_blank" title="AITpro Website Design">AITpro Website Design</a>
 </div>
 </div>
-<!-- this script needs to be on the options.php page - will not register or enqueue correctly due to tt_aElt.0.style issue -->
-<script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/bulletproof-security/admin/js/wz_tooltip.js"></script>
 </div>

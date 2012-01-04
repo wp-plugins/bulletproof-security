@@ -1,16 +1,16 @@
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CSRF, SQL Injection, vulnerability
+Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability
 Requires at least: 3.0 
 Tested up to: 3.3 
-Stable tag: .46.6 
+Stable tag: .46.7 
 
-WordPress website security protection. BulletProof Security protects your website from XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hack... 
+WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts 
 
 == Description ==
 
-Website Security Protection: BulletProof Security protects your website from XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Memory Usage, IP, Max file sizes... Built-in .htaccess file editing, uploading and downloading.
+WordPress Website Security Protection: BulletProof Security protects your WordPress website from XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Memory Usage, IP, Max file sizes... Built-in .htaccess file editing, uploading and downloading.
 
 The BulletProof Security WordPress Security plugin is designed to be a fast, simple and one click security plugin to 
 add .htaccess website security protection for your WordPress website. Activate .htaccess website security and .htaccess
@@ -51,7 +51,7 @@ be using a secure .htaccess file as a standard website security measure. BulletP
 * Security Status Page - Displays all website security status information
 * File and Folder Permission Checking
 * Help & FAQ page - links to BPS Guide and other detailed Help & Info pages
-* Extensive Read Me! help hover ToolTips throughout the BulletProof Security plugin pages
+* Extensive Read Me! jQuery Dialog Help Windows throughout the BulletProof Security plugin pages
 * Backup and Restore your original existing .htaccess files
 * Backup and Restore customized / modified .htaccess files
 * Use, modify, edit add too the provided BulletProof Security .htaccess Master files
@@ -92,7 +92,7 @@ Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blo
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
-BulletProof Security free provides .htaccess protection against browser based hacking attempts: XSS, RFI, CSRF, Base64, Code Injection and SQL Injection hacking attempts. It is recommended that you additionally add a secure custom php.ini, log PHP errors, lock ALL WordPress Mission Critical files and add HTTP error logging for your website. BulletProof Security Pro contains the same secure .htaccess files as the free version and includes secure custom php.ini files, logs PHP errors, locks ALL WordPress Mission Critical files on the fly and has built-in HTTP error logging to log 400, 403 and 404 errors that occur on your website.
+BulletProof Security free provides .htaccess protection against browser based hacking attempts: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. It is recommended that you additionally add a secure custom php.ini, log PHP errors, lock ALL WordPress Mission Critical files and add HTTP error logging for your website. BulletProof Security Pro contains the same secure .htaccess files as the free version and includes secure custom php.ini files, logs PHP errors, locks ALL WordPress Mission Critical files on the fly and has built-in HTTP error logging to log 400, 403 and 404 errors that occur on your website.
 
 = Is BulletProof Security automatically setup already? =
 
@@ -140,6 +140,19 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 
 
 == Changelog ==
+
+= .46.7 =
+* New jQuery Dialog Read Me Help buttons have been created to replace the old Hover ToolTips
+* WP_CONTENT_DIR replaces ABSPATH path for sites that have moved wp-content to another location
+* .htaccess Return Carriage filter modified
+* .htaccess Slash-Jack filter modified
+* Several new pop up confirm messages have been added throughout BPS for forms that perform critical operations
+* Several new SAPI types have been added to CGI and DSO checking
+* AutoMagic for Network / MU sub domain sites is no longer writing the wp-admin forbid coding
+* Link to Sucuri Malware Website Scanner added
+* BPS is Forbidding Thumbnailer Scripts by Default
+* To enable Thumbnailer Scritps see root .htaccess file
+* Enjoy!
 
 = .46.6 =
 * Cookie filter removed from BPS QUERY STRING EXPLOITS
@@ -351,8 +364,30 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .46.6
-* BPS .46.6 is forbidding thumbnailer scripts by default. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable. Thumbnailer scripts are automatically seen by BPS as a threat, exploit or vulnerability because of the general nature of these scripts.
-* Cookie filter removed from BPS QUERY STRING EXPLOITS
-* Explicit "exec" and "execute" filter removed from BPS QUERY STRING EXPLOITS
-* non-GPL Javascript Countdown Timer removed
+What's New in .46.7
+*	jQuery Dialog Read Me Help buttons
+New jQuery Dialog Read Me Help buttons have been created to replace the old Hover ToolTips. The Read Me Help windows are draggable, resizable, scrollable and you can copy and paste the text from the Help window.
+
+*	WP_CONTENT_DIR replaces ABSPATH path
+WP_CONTENT_DIR replaces ABSPATH path for sites that have moved wp-content to another location.
+ 	 
+*	.htaccess Return Carriage filter Modified
+This filter was problematic for some web hosts and has been modified to work on all web hosts.
+ 	 
+*	Slash-Jack filter modified
+This filter was problematic for some web hosts and has been modified to work on all web hosts.
+ 	 
+*	Pop Up Confirm Messages:
+Several new pop up confirm messages have been added throughout BPS for forms that perform critical operations.
+ 	 
+*	Additional SAPIs Added:
+Several new Server API types have been added to CGI and DSO checking to more accurately determine whether your Server is using CGI or DSO.
+ 	 
+*	Network / MU Sub Domain AutoMagic Change:
+AutoMagic for Network / MU sub domain sites is no longer writing the wp-admin forbid coding. This code has been problematic for MU Subdomain sites displaying images. All other sites still have this code as no conflicts exist on any other WP site type.
+ 	 
+*	Sucuri Malware Website Scanner
+Added a link to the Sucuri Malware Website Scanner. This is a great tool. Scan your website for malicious scripts.
+
+*	Heads Up Security Warning!!!
+BPS .46.7 is forbidding thumbnailer scripts by default. If images are not displaying on your website then this is most likely because they are thumbnailer images / scripts that BPS is forbidding. To allow thumbnailer scripts on your website see the root .htaccess file for instructions on allowing thumbnailer scripts on your website. If your Theme or any of your Plugins are using a Thumbnailer script such as TimThumb, phpThumb, Thumb or variations of these thumbnailer scripts then you should check (ask the author, creator or Google it) and make sure that you have a recently patched version of the thumbnailer script that you are using. A Zero Day Vulnerability exists in older versions of these thumbnailer scripts and your website might be vulnerable.

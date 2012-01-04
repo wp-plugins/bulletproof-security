@@ -1,6 +1,6 @@
-#   BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS       
+#   BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS       
 
-# If you edit the BULLETPROOF .46.6 >>>>>>> SECURE .HTACCESS text above
+# If you edit the BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -152,7 +152,7 @@ RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
-RewriteCond %{THE_REQUEST} (\\r|\\n|%0A|%0D) [NC,OR]
+RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
 RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
 RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
@@ -161,7 +161,7 @@ RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
-RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
 RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
 RewriteCond %{QUERY_STRING} http\: [NC,OR] 
 RewriteCond %{QUERY_STRING} https\: [NC,OR]
