@@ -381,7 +381,7 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 == Help Info ==
 
 Extensive Help Info can be found on the AIT-pro.com website and within the BulletProof 
- Security pages themselves. Hover over the blue Read Me Hover Tooltips to get Help Info about
+ Security pages themselves. Click on the blue Read Me Help buttons to get Help Info about
 the particular section or page of the BulletProof Security plugin that you are in. The
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
