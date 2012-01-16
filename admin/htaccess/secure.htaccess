@@ -1,7 +1,7 @@
-#   BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS       
+#   BULLETPROOF .46.8 >>>>>>> SECURE .HTACCESS       
 
-# If you edit the BULLETPROOF .46.7 >>>>>>> SECURE .HTACCESS text above
-# you will see error messages on the BPS status page
+# If you edit the BULLETPROOF .46.8 >>>>>>> SECURE .HTACCESS text above
+# you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
 # will need to edit the BPS /includes/functions.php file to match your changes
@@ -19,12 +19,14 @@
 # TURN OFF YOUR SERVER SIGNATURE
 ServerSignature Off
 
-# ADD A PHP HANDLER - Add your hosts php Handler below if you are using a php handler
-# Example GoDaddy PHP 5.2.x php handler is shown commented out below
-#AddHandler x-httpd-php5 .php
+# ADD A PHP HANDLER
+# If you are using a PHP Handler add your web hosts PHP Handler below
 
-# CUSTOM PHP.INI FILES - handlers and mod_suphp htaccess code for Web Hosts
-# If you are using either a BPS Pro custom php.ini file or one that you created yourself
+# CUSTOM PHP.INI FILES - php.ini handler .htaccess code for Web Hosts
+# BPS Pro detects your Web Host and automatically adds your custom php.ini handler
+# code when you click the AutoMagic buttons to create this .htaccess file
+# If you have created your own custom php.ini file then these are some common
+# custom php.ini handlers for several different web hosts below.
 # If your host is GoDaddy and you have a custom php.ini file
 # uncomment the 1 line of code directly below
 #AddHandler x-httpd-php5 .php 
@@ -92,53 +94,46 @@ RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]
 
 # PLUGINS AND VARIOUS EXPLOIT FILTER SKIP RULES
-# IMPORTANT!!! If you add or remove a skip rule you must change S= to the new skip number
-# Example: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
+# IMPORTANT!!! If you add or remove a skip rule you must change the S= number to the new skip number
+# Examples: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
+# If you add a new skip rule above S=12 it will be skip rule S=13
 # Adminer MySQL management tool data populate
-RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC] 
-RewriteRule . - [S=11]
+RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC]
+RewriteRule . - [S=12]
 # Comment Spam Pack MU Plugin - CAPTCHA images not displaying 
 RewriteCond %{REQUEST_URI} ^/wp-content/mu-plugins/custom-anti-spam/ [NC]
-RewriteRule . - [S=10]
+RewriteRule . - [S=11]
 # Peters Custom Anti-Spam display CAPTCHA Image
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/peters-custom-anti-spam-image/ [NC] 
-RewriteRule . - [S=9]
+RewriteRule . - [S=10]
 # Status Updater plugin fb connect
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/fb-status-updater/ [NC] 
-RewriteRule . - [S=8]
+RewriteRule . - [S=9]
 # Stream Video Player - Adding FLV Videos Blocked
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/stream-video-player/ [NC]
-RewriteRule . - [S=7]
+RewriteRule . - [S=8]
 # XCloner 404 or 403 error when updating settings
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/xcloner-backup-and-restore/ [NC]
-RewriteRule . - [S=6]
+RewriteRule . - [S=7]
 # BuddyPress Logout Redirect
 RewriteCond %{QUERY_STRING} action=logout&redirect_to=http%3A%2F%2F(.*) [NC]
-RewriteRule . - [S=5]
+RewriteRule . - [S=6]
 # redirect_to=
 RewriteCond %{QUERY_STRING} redirect_to=(.*) [NC]
-RewriteRule . - [S=4]
+RewriteRule . - [S=5]
 # Login Plugins Password Reset And Redirect 1
 RewriteCond %{QUERY_STRING} action=resetpass&key=(.*) [NC]
-RewriteRule . - [S=3]
+RewriteRule . - [S=4]
 # Login Plugins Password Reset And Redirect 2
 RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
-RewriteRule . - [S=2]
+RewriteRule . - [S=3]
 
-# ALLOW THUMBNAILER SCRIPTS TO DISPLAY IMAGES
-# By default BPS is forbidding allowing these thumbnailer scripts filename requests
-# This will Log lots of hacking attempts on your website in your BPS Pro Error Log
-# If you are using one of these thumbnailer scripts on your website and you want to allow
-# your thumbnailer script images to display then change [F,L] to [S=1]
-# Make sure that you have a security patched version or recent versions of these scripts
-# before changing [F,L] to [S=1] and allowing these files to be requested on your website
-# If you delete or remove the RewriteRule below you will need to change the above skip rules
-# Example: RewriteRule S=2 above will need to be changed to S=1, change S=3 to S=2, etc.
-RewriteCond %{REQUEST_FILENAME} thumb.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} thumbs.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} timthumb.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} phpthumb.php [NC]
-RewriteRule . - [F,L]
+# TIMTHUMB FORBID RFI BY HOST NAME BUT ALLOW INTERNAL REQUESTS
+RewriteCond %{QUERY_STRING} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC,OR]
+RewriteCond %{THE_REQUEST} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC]
+RewriteRule .* index.php [F,L]
+RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) [NC]
+RewriteRule . - [S=1]
 
 # BPSQSE BPS QUERY STRING EXPLOITS
 # The libwww-perl User Agent is forbidden - Many bad bots use libwww-perl modules, but some good bots use it too.

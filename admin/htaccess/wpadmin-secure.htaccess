@@ -1,13 +1,14 @@
-#   BULLETPROOF .46.7 WP-ADMIN SECURE .HTACCESS     
+#   BULLETPROOF .46.8 WP-ADMIN SECURE .HTACCESS     
 
-# If you edit the BULLETPROOF .46.7 WP-ADMIN SECURE .HTACCESS text above 
-# you will see error messages on the BPS status page
+# If you edit the BULLETPROOF .46.8 WP-ADMIN SECURE .HTACCESS text above 
+# you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # BPS is also checking that the string BPSQSE exists in this file - do not delete it
 # If you would like to change what is displayed above you
 # will need to edit the BPS functions.php file to match your changes
 # For more info see the BPS Guide at AIT-pro.com
 
+# DO NOT ADD URL REWRITING IN THIS FILE OR WORDPRESS WILL BREAK
 # RewriteRule ^(.*)$ - [F,L] - works in /wp-admin without breaking WordPress
 # RewriteRule . /index.php [L] - will break WordPress
 

@@ -1,4 +1,4 @@
-#   BULLETPROOF .46.7 MAINTENANCE  .HTACCESS
+#   BULLETPROOF .46.8 MAINTENANCE  .HTACCESS
    
 RewriteEngine On
 RewriteBase /
@@ -8,12 +8,12 @@ RewriteEngine On
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]
 
-# ALLOW THUMBNAILER SCRIPTS TO DISPLAY IMAGES
-RewriteCond %{REQUEST_FILENAME} thumb.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} thumbs.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} timthumb.php [NC,OR]
-RewriteCond %{REQUEST_FILENAME} phpthumb.php [NC]
-RewriteRule . - [F,L]
+# TIMTHUMB FORBID RFI BY HOST NAME BUT ALLOW INTERNAL REQUESTS
+RewriteCond %{QUERY_STRING} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC,OR]
+RewriteCond %{THE_REQUEST} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC]
+RewriteRule .* index.php [F,L]
+RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) [NC]
+RewriteRule . - [S=1]
 
 # BPSQSE BPS QUERY STRING EXPLOITS
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
