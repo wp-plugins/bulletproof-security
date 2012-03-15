@@ -95,7 +95,7 @@ Code Injection and SQL Injection hacking attempts. It is recommended that you ad
 PHP errors, lock ALL WordPress Mission Critical files and add HTTP error logging for your website. BulletProof Security Pro 
 contains the same secure .htaccess files as the free version and includes secure custom php.ini files, logs PHP errors, locks 
 ALL WordPress Mission Critical files on the fly and has built-in HTTP error logging to log 400, 403 and 404 errors that occur 
-on your website.
+on your website. BPS Pro 5.1.5 has the first generation of AutoRestore Countermeasure security for automatic file restoring.
 
 = Is BulletProof Security automatically setup already? =
 
