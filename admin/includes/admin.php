@@ -9,6 +9,8 @@ if (!function_exists ('add_action')) {
 function bulletproof_security_admin_init() {
 	// whitelist BPS DB options 
 	register_setting('bulletproof_security_options', 'bulletproof_security_options', 'bulletproof_security_options_validate');
+	register_setting('bulletproof_security_options_customcode', 'bulletproof_security_options_customcode', 'bulletproof_security_options_validate_customcode');
+	register_setting('bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_validate_customcode_WPA');
 	register_setting('bulletproof_security_options_maint', 'bulletproof_security_options_maint', 'bulletproof_security_options_validate_maint');
 	register_setting('bulletproof_security_options_mynotes', 'bulletproof_security_options_mynotes', 'bulletproof_security_options_validate_mynotes');
 		
@@ -33,7 +35,8 @@ function bulletproof_security_admin_init() {
 // BPS Menu
 function bulletproof_security_admin_menu() {
 	if (is_multisite() && !is_super_admin()) {
-		echo 'Only Super Admins can access BPS';
+		$bpsSuperAdminsError = 'Only Super Admins can access BPS';
+  		return $bpsSuperAdminsError;
 		} else {
 	//if (function_exists('add_menu_page')){
 	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
@@ -59,7 +62,7 @@ function bulletproof_security_install() {
 	global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.46.8', '<') )
+	if ( version_compare($previous_install['version'], '.46.9', '<') )
 	remove_role('denied');
 	}
 }
@@ -92,10 +95,29 @@ function bulletproof_security_options_validate_maint($input) {
 	return $options;  
 }
 
+// Validate BPS options - BPS Custom Code - Root .htaccess
+function bulletproof_security_options_validate_customcode($input) {  
+	$options = get_option('bulletproof_security_options_customcode');  
+	$options['bps_customcode_one'] = esc_html($input['bps_customcode_one']);
+	$options['bps_customcode_two'] = esc_html($input['bps_customcode_two']);
+	$options['bps_customcode_three'] = esc_html($input['bps_customcode_three']);
+		
+	return $options;  
+}
+
+// Validate BPS options - BPS Custom Code - WP-admin .htaccess
+function bulletproof_security_options_validate_customcode_WPA($input) {  
+	$options = get_option('bulletproof_security_options_customcode_WPA');  
+	$options['bps_customcode_one_wpa'] = esc_html($input['bps_customcode_one_wpa']);
+	$options['bps_customcode_two_wpa'] = esc_html($input['bps_customcode_two_wpa']);
+		
+	return $options;  
+}
+
 // Validate BPS options - BPS "My Notes" settings 
 function bulletproof_security_options_validate_mynotes($input) {  
 	$options = get_option('bulletproof_security_options_mynotes');  
-	$options['bps_my_notes'] = htmlspecialchars($input['bps_my_notes']);
+	$options['bps_my_notes'] = esc_html($input['bps_my_notes']);
 		
 	return $options;  
 }

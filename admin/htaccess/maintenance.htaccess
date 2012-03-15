@@ -1,4 +1,4 @@
-#   BULLETPROOF .46.8 MAINTENANCE  .HTACCESS
+#   BULLETPROOF .46.9 MAINTENANCE  .HTACCESS
    
 RewriteEngine On
 RewriteBase /
@@ -16,7 +16,7 @@ RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) 
 RewriteRule . - [S=1]
 
 # BPSQSE BPS QUERY STRING EXPLOITS
-RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
@@ -24,7 +24,7 @@ RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
 RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
 RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
-RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_REFERER} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
 RewriteCond %{HTTP_REFERER} users\.skynet\.be.* [NC,OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]

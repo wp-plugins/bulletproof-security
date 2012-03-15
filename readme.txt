@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability
 Requires at least: 3.0 
-Tested up to: 3.3.4 
-Stable tag: .46.8 
+Tested up to: 3.4 
+Stable tag: .46.9 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -40,6 +40,7 @@ be using a secure .htaccess file as a standard website security measure. BulletP
 * Secure .htaccess protection blocks XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts
 * Permanent online .htaccess file backup and restore
 * Built-in File Editing, File Downloading and File Uploading
+* Custom Code feature that permanently saves and writes your personal custom .htaccess code
 * WordPress readme.html and /wp-admin/install.php protected with .htaccess security protection
 * wp-config.php and bb-config.php files protected with .htaccess security protection
 * php.ini and php5.ini files protected with .htaccess security protection
@@ -115,7 +116,9 @@ Yes. Of course. The secure.htaccess and wpadmin-secure.htaccess Master .htaccess
  .htaccess security code that protects your website against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. 
  Add any additional security filters or other .htaccess code to your Master .htaccess files or your currently active .htaccess files using 
  the built-in .htaccess File Editor. The BulletProof Security Master .htaccess files contain help info and additional options within the 
- the .htaccess files themselves. htaccess files can do a lot of neat things besides just providing website security protection.
+ the .htaccess files themselves. htaccess files can do a lot of neat things besides just providing website security protection. As of 
+ version .46.9 you can now also add any custom code to the Custom Code feature. Your custom .htaccess code will be saved to your WP DB
+ permanently until you delete it. Please view the Read Me Help button in Custom Code for specific details.
 
 = Does the BulletProof Security Plugin create or write the .htaccess files? =
 
@@ -153,6 +156,13 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 
 
 == Changelog ==
+
+= .46.9 =
+* Significant changes to both the Root and wp-admin .htaccess files
+Create new Master .htaccess files with AutoMagic and activate all BulletProof Modes.
+* NEW Custom Code feature added to BPS
+* Coding improvements / enhancements
+* Enjoy!
 
 = .46.8 =
 * New TimThumb .htaccess code allows internal image requests but Forbids RFI hacking attempts
@@ -367,16 +377,11 @@ Yes. BulletProof Security works on all types of WordPress installations includin
 
 == Upgrade Notice ==
 
-* Massive amount of new security filters
-* Complete restructuring of how .htaccess Rewriting is processed to work with WP
-* Network / MU AutoMagic buttons added
-* Network / MU code added for Super Admins - display BPS menus to Super Admins only
-* New System Info information added
-* File permission checking and recommendations for CGI or DSO - SAPI detection
-* File Lock / Unlock buttons - Read Only root .htaccess - CGI / DSO SAPI detection
-* Help info updated
-* Updated Whats New
-* Lots of other stuff
+* Significant changes to both the Root and wp-admin .htaccess files
+Create new Master .htaccess files with AutoMagic and activate all BulletProof Modes.
+* NEW Custom Code feature added to BPS
+* Coding improvements / enhancements
+* Enjoy!
 
 == Help Info ==
 
@@ -386,22 +391,16 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .46.8
+What's New in .46.9
 
-* BPS is no longer blocking TimThumb thumbnailer scripts by default
-A new section of .htaccess security filters has been added that now allows internal image file requests by TimThumb thumbnailer scripts and Forbids RFI hacking attempts. This has been thoroughly tested on all versions of TimThumb scripts and is 100% effective at both allowing image files to display normally without having to make an .htaccess file edit and more importantly blocks all hacking attempts to exploit TimThumb scripts using RFI hacking methods.
+* Significant changes to both the Root and wp-admin .htaccess files
+Create new Master .htaccess files with AutoMagic and activate all BulletProof Modes.
 
-* DNS Name Server check on System Info page
-A new System Info addition has been added to the System Info page that will display your DNS Name Server.
+* NEW Custom Code feature added
+Root .htaccess File Custom Code and AutoMagic: Any custom .htaccess code that you save here will be saved to your WP Database permanently and automatically be created in your Root .htaccess file when you click the Create secure.htaccess File AutoMagic button. wp-admin .htaccess File Custom Code: The wp-admin .htaccess File Custom Code feature works differently then the Root .htaccess Custom Code feature. The wp-admin .htaccess file does not use AutoMagic and your Custom Code is written directly to your wp-admin .htaccess file when you Activate BulletProof Mode for your wp-admin folder.
 
 * Coding improvements / enhancements
 Coding enhancements and improvements made throughout BPS Free.
 
-* WP Rating and Download Stats added to BPS
-BPS now displays WP Rating and Download Stats. To Rate BPS click on the Rate link. The Rating link opens a new browser window to the BulletProof Security plugin page on the WordPress.org site.
-
-* CSS nick nacks
-The Security Status page File and Folder Permissions table was in serious need of CSS improvements. The table now displays accurately at all resolution sizes.
-
-* BPS Pro 5.1.3
-At this point in the evolution of BPS Pro it is safe to say that BPS Pro is by far the most comprehensive, effective and complete Website Security Solution for WordPress websites. BPS Pro provides a complete website security protection solution. .htaccess website security protection, php.ini website security protection & performance boosting, PHP Error logging, HTTP Error logging (http errors and hacking attempts), file locking on the fly for WordPress Mission Critical files to protect against Mass Code Injection attacks on Web Hosts, built-in Monitoring and Alerting, versatile set of Pro-Tools and much more. Lots More To Come!
+* BPS Pro 5.1.5
+The first generation of AutoRestore released in BPS Pro 5.1.5. BPS Pro 5.1.7 will have full site AutoRestore.

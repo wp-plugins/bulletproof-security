@@ -345,4 +345,46 @@ jQuery(document).ready(function($){
 		event.preventDefault();         
 		$info16.dialog('open');     
 	});
-});     
+	var $info17 = $("#bps-modal-content17");     
+		$info17.dialog({                            
+		 'dialogClass'   : 'wp-dialog',                    
+		 'modal'         : false,         
+		 'autoOpen'      : false,          
+		 'closeOnEscape' : true,
+		 'width'		 : 400,
+		 'height'	 	 : 500,
+		 'show'			 : 'blind',
+		 'hide'			 : 'blind',
+		 'position'		 : 'center',
+		 'buttons'       : {             
+		 "Close": function() {                 
+		 $(this).dialog('close');             
+		 }         
+	}     
+	});
+	$("#bps-open-modal17").click(function(event) {         
+		event.preventDefault();         
+		$info17.dialog('open');     
+	});
+	var $info18 = $("#bps-modal-content18");     
+		$info18.dialog({                            
+		 'dialogClass'   : 'wp-dialog',                    
+		 'modal'         : false,         
+		 'autoOpen'      : false,          
+		 'closeOnEscape' : true,
+		 'width'		 : 400,
+		 'height'	 	 : 500,
+		 'show'			 : 'blind',
+		 'hide'			 : 'blind',
+		 'position'		 : 'center',
+		 'buttons'       : {             
+		 "Close": function() {                 
+		 $(this).dialog('close');             
+		 }         
+	}     
+	});
+	$("#bps-open-modal18").click(function(event) {         
+		event.preventDefault();         
+		$info18.dialog('open');     
+	});
+});

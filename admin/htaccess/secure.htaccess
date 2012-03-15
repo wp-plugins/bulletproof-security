@@ -1,6 +1,6 @@
-#   BULLETPROOF .46.8 >>>>>>> SECURE .HTACCESS       
+#   BULLETPROOF .46.9 >>>>>>> SECURE .HTACCESS       
 
-# If you edit the BULLETPROOF .46.8 >>>>>>> SECURE .HTACCESS text above
+# If you edit the BULLETPROOF .46.9 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -22,22 +22,7 @@ ServerSignature Off
 # ADD A PHP HANDLER
 # If you are using a PHP Handler add your web hosts PHP Handler below
 
-# CUSTOM PHP.INI FILES - php.ini handler .htaccess code for Web Hosts
-# BPS Pro detects your Web Host and automatically adds your custom php.ini handler
-# code when you click the AutoMagic buttons to create this .htaccess file
-# If you have created your own custom php.ini file then these are some common
-# custom php.ini handlers for several different web hosts below.
-# If your host is GoDaddy and you have a custom php.ini file
-# uncomment the 1 line of code directly below
-#AddHandler x-httpd-php5 .php 
-# If your host is BlueHost, HostMonster FastDomain and you have a custom php.ini file
-# uncomment the 1 line of code directly below 
-#AddHandler application/x-httpd-php5s .php
-# If your host is HostGator and you have a custom php.ini file
-# uncomment the 3 lines of code below and replace xxxxx with your account/username 
-#<IfModule mod_suphp.c>
-#suPHP_ConfigPath /home/xxxxx/public_html/php.ini
-#</IfModule>  
+# CUSTOM CODE TOP - Your Custom .htaccess code will be created here with AutoMagic
 
 # DO NOT SHOW DIRECTORY LISTING
 # If you are getting 500 Errors when activating BPS then comment out Options -Indexes 
@@ -94,9 +79,11 @@ RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]
 
 # PLUGINS AND VARIOUS EXPLOIT FILTER SKIP RULES
-# IMPORTANT!!! If you add or remove a skip rule you must change the S= number to the new skip number
-# Examples: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
-# If you add a new skip rule above S=12 it will be skip rule S=13
+# IMPORTANT!!! If you add or remove a skip rule you must change S= to the new skip number
+# Example: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
+
+# CUSTOM CODE PLUGIN FIXES - Your plugin fixes .htaccess code will be created here with AutoMagic
+
 # Adminer MySQL management tool data populate
 RewriteCond %{REQUEST_URI} ^/wp-content/plugins/adminer/ [NC]
 RewriteRule . - [S=12]
@@ -141,15 +128,15 @@ RewriteRule . - [S=1]
 # Add or remove user agents temporarily or permanently from the first User Agent filter below.
 # If you want a list of bad bots / User Agents to block then scroll to the end of this file.
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
-RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
-RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
+RewriteCond %{THE_REQUEST} (%0A|%0D|\\r|\\n) [NC,OR]
 RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
-RewriteCond %{HTTP_REFERER} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_REFERER} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
 RewriteCond %{HTTP_REFERER} users\.skynet\.be.* [NC,OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
@@ -165,13 +152,18 @@ RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
 RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*embed.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^e]*e)+mbed.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*object.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^o]*o)+bject.*(>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} (<|%3C)([^i]*i)+frame.*(>|%3E) [NC,OR] 
 RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
 RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|%3c|%3e|%5b|%5d).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\x00|\x04|\x08|\x0d|\x1b|\x20|\x3c|\x3e|\x5b|\x5d|\x7f).* [NC,OR]
 RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
 RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
 RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
@@ -200,6 +192,8 @@ Deny from all
 
 # IMPORTANT!!! DO NOT DELETE!!! the END WordPress text below
 # END WordPress
+
+# CUSTOM CODE BOTTOM - Your Custom .htaccess code will be created here with AutoMagic
 
 # BLOCK HOTLINKING TO IMAGES
 # To Test that your Hotlinking protection is working visit http://altlab.com/htaccess_tutorial.html
