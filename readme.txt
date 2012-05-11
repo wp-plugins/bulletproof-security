@@ -208,6 +208,7 @@ BulletProof Security a very versatile website security protection tool.
 * Security Patch - This is a patch version of BPS
 * An XSS vulnerability was found in BPS by SiNA Rabbani at packetstormsecurity.org
 * Sincere thanks to SiNA Rabbani for discovering this XSS vulnerability
+* Sincere thanks to Jon and Mark from WordPress.org as well for assistance
 
 = .47 =
 * View the Whats New page in BPS for the latest changes to BPS
