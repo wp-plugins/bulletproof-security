@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability
 Requires at least: 3.0 
 Tested up to: 3.4 
-Stable tag: .47 
+Stable tag: .47.1 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -203,6 +203,11 @@ BulletProof Security a very versatile website security protection tool.
 3. BulletProof File Editing, Uploading and Downloading
 
 == Changelog ==
+
+= .47.1 =
+* Security Patch - This is a patch version of BPS
+* An XSS vulnerability was found in BPS by SiNA Rabbani at packetstormsecurity.org
+* Sincere thanks to SiNA Rabbani for discovering this XSS vulnerability
 
 = .47 =
 * View the Whats New page in BPS for the latest changes to BPS
@@ -447,13 +452,6 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .47
+What's New in .47.1
 
-* No new .htaccess code was added to either the Root or wp-admin .htaccess files
-You can either manually change the version of your .htaccess file from .46.9 to .47 using the BPS File Editor or create new Master .htaccess files with AutoMagic and activate BulletProof Modes.
-
-* i18n Language Translation Coded Added to BPS
-If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>). Please include a link to your website so that we can add it on the main / front BPS plugin page. Thank you.
-
-* Coding improvements / enhancements
-Coding enhancements and improvements made throughout BPS.
+* BPS Security Patch version

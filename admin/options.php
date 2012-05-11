@@ -14,7 +14,7 @@ if ( !current_user_can('manage_options') ){
 ?>
 
 <div class="wrap">
-<?php $bulletproof_ver = '.47'; ?>
+<?php $bulletproof_ver = '.47.1'; ?>
 <div id="bpsUprade"><strong>
 <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" target="_blank" title="Link opens in new browser window">Why Upgrade to BulletProof Security Pro?</a></strong></div>
 
@@ -531,8 +531,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security')."$bps_auto_write_secure_file" . __(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here', 'bulletproof-security').'</a>'.__(' for more help info.', 'bulletproof-security').'</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .47 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .47 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .47.1 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .47.1 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -757,7 +757,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .47 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_top = "#   BULLETPROOF .47.1 MAINTENANCE  .HTACCESS     \n\n";    
 $bps_maint_content = "RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
@@ -1017,7 +1017,7 @@ if (isset($_POST['bps-enable-download-backup']) && current_user_can('manage_opti
 
 // Get DNS Name Server from [target] - only using $bpsTargetNS and $bpsTarget variables for BPS Free
 // additional BPS Pro variables not used in BPS Free
-$bpsHostName = $_SERVER['SERVER_NAME'];
+$bpsHostName = esc_html($_SERVER['SERVER_NAME']);
 $bpsTargetNS = '';
 $bpsTarget = '';
 $bpsNSHostSubject = '';
@@ -1435,7 +1435,7 @@ if (@$_GET['settings-updated'] == true) {
       </td>
   </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Document Root Path', 'bulletproof-security'); ?>: <strong><?php echo $_SERVER['DOCUMENT_ROOT']; ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Document Root Path', 'bulletproof-security'); ?>: <strong><?php echo esc_html($_SERVER['DOCUMENT_ROOT']); ?></strong></td>
     <td>&nbsp;</td>
     </tr>
   <tr>
@@ -1447,11 +1447,11 @@ if (@$_GET['settings-updated'] == true) {
     <td>&nbsp;</td>
     </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Server / Website IP Address', 'bulletproof-security'); ?>: <strong><?php echo $_SERVER['SERVER_ADDR']; ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Server / Website IP Address', 'bulletproof-security'); ?>: <strong><?php echo esc_html($_SERVER['SERVER_ADDR']); ?></strong></td>
     <td>&nbsp;</td>
     </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Host by Address', 'bulletproof-security'); ?>: <strong><?php echo gethostbyaddr($_SERVER['SERVER_ADDR']); ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Host by Address', 'bulletproof-security'); ?>: <strong><?php echo esc_html(gethostbyaddr($_SERVER['SERVER_ADDR'])); ?></strong></td>
     <td>&nbsp;</td>
     </tr>
   <tr>
@@ -1459,11 +1459,11 @@ if (@$_GET['settings-updated'] == true) {
     <td>&nbsp;</td>
     </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Public IP / Your Computer IP Address', 'bulletproof-security'); ?>: <strong><?php echo $_SERVER['REMOTE_ADDR']; ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Public IP / Your Computer IP Address', 'bulletproof-security'); ?>: <strong><?php echo esc_html($_SERVER['REMOTE_ADDR']); ?></strong></td>
     <td>&nbsp;</td>
     </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Server Type', 'bulletproof-security'); ?>: <strong><?php echo $_SERVER['SERVER_SOFTWARE']; ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Server Type', 'bulletproof-security'); ?>: <strong><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></strong></td>
     <td>&nbsp;</td>
     </tr>
   <tr>
@@ -1485,7 +1485,7 @@ if (@$_GET['settings-updated'] == true) {
     <td>&nbsp;</td>
     </tr>
   <tr>
-    <td class="bps-table_cell"><?php _e('Browser Compression Supported', 'bulletproof-security'); ?>: <strong><?php echo $_SERVER['HTTP_ACCEPT_ENCODING']; ?></strong></td>
+    <td class="bps-table_cell"><?php _e('Browser Compression Supported', 'bulletproof-security'); ?>: <strong><?php echo esc_html($_SERVER['HTTP_ACCEPT_ENCODING']); ?></strong></td>
     <td>&nbsp;</td>
     <td class="bps-table_cell">&nbsp;</td>
     </tr>
@@ -2556,19 +2556,19 @@ jQuery(document).ready(function($){
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-backup-restore" target="_blank"><?php _e('Backup & Restore Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .47 Guide', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .47.1 Guide', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2585/bulletproof-security-plugin-support/wordpress-website-maintenance-wordpress-maintenance-mode" target="_blank"><?php _e('Maintenance Mode Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .47 Features', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .47 Coding Modifications Help Info', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .47.1 Features', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .47.1 Coding Modifications Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/319/bulletproof-security-plugin-support/bulletproof-security-comments-questions-problems-wishlist/" target="_blank"><?php _e('Post Questions and Comments for Assistance', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#modifying-htaccess-files" target="_blank"><?php _e('Modifying BPS .htaccess Files for WordPress Subfolders', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .47 Screenshots', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .47.1 Screenshots', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2185/bulletproof-security-plugin-support/bulletproof-security-file-editing-editing-files-within-the-wordpress-dashboard/" target="_blank"><?php _e('File Editing Within The Dashboard Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
@@ -2607,7 +2607,7 @@ jQuery(document).ready(function($){
   </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('No new .htaccess code was added to either the Root or wp-admin .htaccess files', 'bulletproof-security'); ?></strong><br /><?php _e('You can either manually change the version of your .htaccess file from .46.9 to .47 using the BPS File Editor or create new Master .htaccess files with AutoMagic and activate BulletProof Modes.', 'bulletproof-security'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('No new .htaccess code was added to either the Root or wp-admin .htaccess files', 'bulletproof-security'); ?></strong><br /><?php _e('You can either manually change the version of your .htaccess file from .46.9 to .47.1 using the BPS File Editor or create new Master .htaccess files with AutoMagic and activate BulletProof Modes.', 'bulletproof-security'); ?></td>
   </tr>
     <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>

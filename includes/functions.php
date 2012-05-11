@@ -8,7 +8,7 @@ if (!function_exists ('add_action')) {
 
 // Get BPS Version - Just for display purposes
 function bpsWhatVersion() {
-echo " ~ .47";
+echo " ~ .47.1";
 }
 
 // BPS Master htaccess File Editing - file checks and get contents for editor
@@ -156,7 +156,7 @@ function root_htaccess_status() {
 		$text = '<font color="green"><strong><br><br>&radic; '.__('wp-config.php is .htaccess protected by BPS', 'bulletproof-security').'<br>&radic; '.__('php.ini and php5.ini are .htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
 	echo $text;
 	} else {
-	$text = '<font color="red"><br><br><strong>'.__('Either a BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS Pro htaccess file that you are using is not .47 or the BPS QUERY STRING EXPLOITS code does not exist in your root .htaccess file. Please read the Read Me button above.', 'bulletproof-security').'</strong><br><br><strong>'.__('wp-config.php is NOT .htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
+	$text = '<font color="red"><br><br><strong>'.__('Either a BPS .htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS Pro htaccess file that you are using is not .47.1 or the BPS QUERY STRING EXPLOITS code does not exist in your root .htaccess file. Please read the Read Me button above.', 'bulletproof-security').'</strong><br><br><strong>'.__('wp-config.php is NOT .htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
 	echo $text;
 }}}}
 
@@ -177,7 +177,7 @@ function wpadmin_htaccess_status() {
 	echo $text;
 		print($section);
 	} else {
-	$text = '<font color="red"><strong><br><br>'.__('A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .47. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me button above.', 'bulletproof-security').'</strong></font><br>';
+	$text = '<font color="red"><strong><br><br>'.__('A valid BPS .htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not .47.1. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please read the Read Me button above.', 'bulletproof-security').'</strong></font><br>';
 	echo $text;
 	}
 	}
