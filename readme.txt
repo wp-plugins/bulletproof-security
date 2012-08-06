@@ -44,8 +44,8 @@ have additional website security measures in place as a standard. BulletProof Se
  security protection that every website should have.
  
 = Translations =
-Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a>
-If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
+* Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a> 
+* If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
 
 * One-click .htaccess website security protection from within the WP Dashboard
 * .htaccess security protection against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts
