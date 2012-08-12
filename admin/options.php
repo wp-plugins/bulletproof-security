@@ -14,7 +14,7 @@ if ( !current_user_can('manage_options') ){
 ?>
 
 <div class="wrap">
-<?php $bulletproof_ver = '.47.2'; ?>
+<?php $bulletproof_ver = '.47.3'; ?>
 <div id="bpsUprade"><strong>
 <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" target="_blank" title="Link opens in new browser window">Why Upgrade to BulletProof Security Pro?</a></strong></div>
 
@@ -531,8 +531,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security')."$bps_auto_write_secure_file" . __(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here', 'bulletproof-security').'</a>'.__(' for more help info.', 'bulletproof-security').'</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .47.2 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .47.2 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .47.3 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .47.3 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -664,7 +664,7 @@ RewriteRule . - [S=1]\n
 # Good sites such as W3C use it for their W3C-LinkChecker. 
 # Add or remove user agents temporarily or permanently from the first User Agent filter below.
 # If you want a list of bad bots / User Agents to block then scroll to the end of this file.
-RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (havij|libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|".'"'."|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
 RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
@@ -758,7 +758,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_CONTENT_DIR . '/plugins/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .47.2 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_top = "#   BULLETPROOF .47.3 MAINTENANCE  .HTACCESS     \n\n";    
 $bps_maint_content = "RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
@@ -2557,19 +2557,19 @@ jQuery(document).ready(function($){
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-backup-restore" target="_blank"><?php _e('Backup & Restore Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .47.2 Guide', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/" target="_blank"><?php _e('BPS .47.3 Guide', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2585/bulletproof-security-plugin-support/wordpress-website-maintenance-wordpress-maintenance-mode" target="_blank"><?php _e('Maintenance Mode Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .47.2 Features', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .47.2 Coding Modifications Help Info', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-45-new-features" target="_blank"><?php _e('BPS .47.3 Features', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#bps-advanced-coding-modfications" target="_blank"><?php _e('BPS .47.3 Coding Modifications Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/319/bulletproof-security-plugin-support/bulletproof-security-comments-questions-problems-wishlist/" target="_blank"><?php _e('Post Questions and Comments for Assistance', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45/#modifying-htaccess-files" target="_blank"><?php _e('Modifying BPS .htaccess Files for WordPress Subfolders', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .47.2 Screenshots', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/1183/bulletproof-security-plugin-support/bulletproof-security-plugin-bps-version-45-screenshots/" target="_blank"><?php _e('BPS .47.3 Screenshots', 'bulletproof-security'); ?></a></td>
     <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/2185/bulletproof-security-plugin-support/bulletproof-security-file-editing-editing-files-within-the-wordpress-dashboard/" target="_blank"><?php _e('File Editing Within The Dashboard Help Info', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
@@ -2608,7 +2608,7 @@ jQuery(document).ready(function($){
   </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Automatic htaccess file updating on upgrade installation', 'bulletproof-security'); ?></strong><br /><?php _e('When upgrading/updating the BulletProof Security plugin you will see this WP Dashboard Alert. <strong>BPS Alert! Your site does not appear to be protected by BulletProof Security.</strong> As of BulletProof Security .47.2 WP Dashboard Alerts have been added to check your Root and wp-admin htaccess files to ensure that your website is protected. During the upgrade your htaccess files will be automatically updated and any new htaccess security filters will be automatically added to your htaccess files. In order for BPS to automatically update your htaccess files you will need to stay current with BPS plugin updates and install the latest BPS plugin updates when they are available. Any custom htaccess code or modifications that you have made to your htaccess files will not be altered, modified or changed. Activating BulletProof Modes again after upgrading BPS is no longer necessary.', 'bulletproof-security'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Automatic htaccess file updating on upgrade installation', 'bulletproof-security'); ?></strong><br /><?php _e('When upgrading/updating the BulletProof Security plugin you will see this WP Dashboard Alert. <strong>BPS Alert! Your site does not appear to be protected by BulletProof Security.</strong> As of BulletProof Security .47.3 WP Dashboard Alerts have been added to check your Root and wp-admin htaccess files to ensure that your website is protected. During the upgrade your htaccess files will be automatically updated and any new htaccess security filters will be automatically added to your htaccess files. In order for BPS to automatically update your htaccess files you will need to stay current with BPS plugin updates and install the latest BPS plugin updates when they are available. Any custom htaccess code or modifications that you have made to your htaccess files will not be altered, modified or changed. Activating BulletProof Modes again after upgrading BPS is no longer necessary.', 'bulletproof-security'); ?></td>
   </tr>
 <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
@@ -2616,7 +2616,7 @@ jQuery(document).ready(function($){
   </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('New htaccess security filter added automatically during upgrade', 'bulletproof-security'); ?></strong><br /><?php _e('One new very important htaccess security filter has been automatically added to your Root htaccess file when you upgraded BPS.', 'bulletproof-security'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('New htaccess security filter added automatically during upgrade', 'bulletproof-security'); ?></strong><br /><?php _e('1 new security filter added in .47.2 and 1 new security filter added in .47.3. Upgrades are cumulative for 2 BPS version upgrades only. If you have a BPS version installed that is 2 versions older than the most current BPS version you will need to use AutoMagic and activate BulletProof Modes to get all the newest security filters. Example: upgrading from version .47.1 to .47.3 will include all the newest security filters.', 'bulletproof-security'); ?></td>
   </tr>    
     <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>

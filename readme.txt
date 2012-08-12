@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security
 Requires at least: 3.0 
 Tested up to: 3.5 
-Stable tag: .47.2 
+Stable tag: .47.3 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -16,8 +16,10 @@ bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess sec
 (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, 
 Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading.
 
-BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers.
-Please read the FAQ page for Server compatibility questions. 
+BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. <strong>Why is .htaccess website 
+security so much better than any other type of website security? The answer is very simple - .htaccess files are processed first 
+before any other code on your website.</strong> In other words, hackers malicious scripts are stopped by BulletProof Security .htaccess 
+files before those scripts even have a chance to reach the php coding in WordPress. Please read the FAQ page for Server compatibility questions. 
 
 The BulletProof Security WordPress Security plugin is designed to be a fast, simple and one click security plugin to 
 add .htaccess website security protection for your WordPress website. Activate .htaccess website security and .htaccess 
@@ -44,12 +46,16 @@ have additional website security measures in place as a standard. BulletProof Se
  security protection that every website should have.
  
 = Translations =
-* Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a> 
+
+* Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a>
 * If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
+
+= BulletProof Security Features =
 
 * One-click .htaccess website security protection from within the WP Dashboard
 * .htaccess security protection against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts
 * Automatic .htaccess file updating on upgrade installation
+* New .htaccess security filters automatically added during upgrade
 * No need to reactivate BulletProof Modes when upgrading
 * WP Dashboard Alerts - Root and wp-admin .htaccess file checks
 * .htaccess file backup and restore
@@ -155,27 +161,29 @@ Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blo
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
-BulletProof Security
-* .htaccess Website Security Protection
+= BulletProof Security =
 
-BulletProof Security Pro 
-* File Monitor - All WordPress and non-WordPress files
-* AutoRestore - Automatic File Restore
-* Quarantine - Automatic File Quarantine
-* .htaccess Website Security Protection
-* Custom php.ini Website Security Protection
-* F-Lock - Read Only File Locking
-* Security Logging
-* HTTP Error Logging
-* PHP Error Logging
-* Email Alerts
-* Versatile Set of Pro-Tools
-* Base64 Decoder / Encoder 
-<a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
+1. .htaccess Website Security Protection
+
+= BulletProof Security Pro =
+
+1. File Monitor - All WordPress and non-WordPress Files
+2. AutoRestore - Automatic File Restore
+3. Quarantine - Automatic File Quarantine
+4. .htaccess Website Security Protection
+5. Custom php.ini Website Security Protection
+6. F-Lock - Read Only File Locking
+7. Security Logging
+8. HTTP Error Logging
+9. PHP Error Logging
+10. Email Alerts
+11. Versatile Set of Pro-Tools
+12. Base64 Decoder / Encoder
+13. <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
 = Is BulletProof Security Network / MU / Multisite Compatible? =
 
-Yes. BulletProof Security contains AutoMagic buttons for Network /  MU / Multisite websites. Both sub-directory and sub-domain Master .htaccess 
+Yes. BulletProof Security contains AutoMagic buttons for Network / MU / Multisite websites. Both sub-directory and sub-domain Master .htaccess 
 code is written / created for your specific Network / MU site. BulletProof Modes should only be Activated on the Primary site. All sub sites 
 are virtual and there is no need to Activate BulletProof Modes on sub sites. This will actually screw up your Primary site. BPS allows only 
 Super Admins to see the BPS menus in sub sites. BPS also works with Network / MU Domain Mapping.
@@ -230,6 +238,15 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 3. BulletProof File Editing, Uploading and Downloading
 
 == Changelog ==
+
+= .47.3 =
+* .47.2 Automatic .htaccess file updating on upgrade installation added
+* No need to reactivate BulletProof Modes when upgrading
+* .47.2 New htaccess security filter added automatically during upgrade
+* .47.3 New htaccess security filter added automatically during upgrade
+* .47.3 Deny All protection automatically activated for BPS Master /htaccess folder 
+* WP Dashboard Alerts - Root and wp-admin htaccess file checks
+* Enjoy!
 
 = .47.2 =
 * Automatic .htaccess file updating on upgrade installation
@@ -473,12 +490,12 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
-* Automatic htaccess file updating on upgrade installation
+* .47.2 Automatic .htaccess file updating on upgrade installation added
 * No need to reactivate BulletProof Modes when upgrading
-* New .htaccess security filter added automatically during upgrade
+* .47.2 New htaccess security filter added automatically during upgrade
+* .47.3 New htaccess security filter added automatically during upgrade
+* .47.3 Deny All protection automatically activated for BPS Master /htaccess folder 
 * WP Dashboard Alerts - Root and wp-admin htaccess file checks
-* Lithuanian Language Translation by Vincent G from Host1Free.com
-* View the Whats New page in BPS for the latest changes to BPS
 * Enjoy!
 
 == Help Info ==
@@ -491,9 +508,10 @@ that you are not redirected away from your WordPress Dashboard.
 
 What's New in .47.2
 
-* Automatic htaccess file updating on upgrade installation
+* .47.2 Automatic .htaccess file updating on upgrade installation added
 * No need to reactivate BulletProof Modes when upgrading
-* New .htaccess security filter added automatically during upgrade
+* .47.2 New htaccess security filter added automatically during upgrade
+* .47.3 New htaccess security filter added automatically during upgrade
+* .47.3 Deny All protection automatically activated for BPS Master /htaccess folder 
 * WP Dashboard Alerts - Root and wp-admin htaccess file checks
-* Lithuanian Language Translation by Vincent G from Host1Free.com
 * Enjoy!
