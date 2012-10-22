@@ -1488,7 +1488,7 @@ if (@$_GET['settings-updated'] == true) {
 	if (extension_loaded('suhosin')) {
 		_e('Suhosin-Extension is Loaded', 'bulletproof-security');	
 	} else {
-	if (!isset($bpsconstants['SUHOSIN_PATCH']) && $bpsconstants['SUHOSIN_PATCH'] != 1 && !extension_loaded('suhosin')) {
+	if (!isset($bpsconstants['SUHOSIN_PATCH']) && @$bpsconstants['SUHOSIN_PATCH'] != 1 && !extension_loaded('suhosin')) {
 		_e('Suhosin is Not Installed/Loaded', 'bulletproof-security');			
 	}
 	}
