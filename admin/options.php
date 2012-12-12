@@ -14,7 +14,7 @@ if ( !current_user_can('manage_options') ){
 ?>
 
 <div class="wrap">
-<?php $bulletproof_ver = '.47.6'; ?>
+<?php $bulletproof_ver = '.47.7'; ?>
 <div id="bpsUprade"><strong>
 <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" target="_blank" title="Link opens in new browser window">Why Upgrade to BulletProof Security Pro?</a></strong></div>
 
@@ -539,8 +539,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security')."$bps_auto_write_secure_file" . __(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here', 'bulletproof-security').'</a>'.__(' for more help info.', 'bulletproof-security').'</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .47.6 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .47.6 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .47.7 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .47.7 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -708,8 +708,8 @@ RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
 RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|%3c|%3e|%5b|%5d).* [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(\\x00|\\x04|\\x08|\\x0d|\\x1b|\\x20|\\x3c|\\x3e|\\x5b|\\x5d|\\x7f).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\(|\)|<|>|%3c|%3e).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\\x00|\\x04|\\x08|\\x0d|\\x1b|\\x20|\\x3c|\\x3e|\\x7f).* [NC,OR]
 RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
 RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
 RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
@@ -788,8 +788,9 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .47.6 MAINTENANCE  .HTACCESS     \n\n";    
-$bps_maint_content = "RewriteEngine On
+$bps_maint_top = "#   BULLETPROOF .47.7 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_content = "# BEGIN WordPress\n\n
+RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]\n
@@ -830,7 +831,7 @@ RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
 RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\(|\)|<|>).* [NC,OR]
 RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
 RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
 RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
@@ -1101,6 +1102,7 @@ if (@$_GET['settings-updated'] == true) {
 	}
 }
 $bpsSpacePop = '-------------------------------------------------------------';
+
 ?>
 </div>
 

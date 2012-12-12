@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security
 Requires at least: 3.0 
 Tested up to: 3.5 
-Stable tag: .47.6 
+Stable tag: .47.7 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -257,6 +257,13 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 4. BulletProof Security - Edit/Upload/Download page
 
 == Changelog ==
+
+= .47.7 =
+* IMPORTANT UPDATE: .htaccess FILE UPDATE FOR WordPress 3.5
+* 3.5 BUG FIX: visual and text editor display blank boxes
+* Problem: Square Bracket filters are blocking the visual and text editor
+* Solution: Square Brackets are automatically removed from .htaccess files/filters on upgrade to .47.7
+* Enjoy!
 
 = .47.6 =
 * BPS Master htaccess Folder Deny All .htaccess security protection automated
@@ -538,6 +545,13 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .47.7 =
+* IMPORTANT UPDATE: .htaccess FILE UPDATE FOR WordPress 3.5
+* 3.5 BUG FIX: visual and text editor display blank boxes
+* Problem: Square Bracket filters are blocking the visual and text editor
+* Solution: Square Brackets are automatically removed from .htaccess files/filters on upgrade to .47.7
+* Enjoy!
+
 = .47.6 =
 * BPS Master htaccess Folder Deny All .htaccess security protection automated
 * BPS Backup Folder Deny All .htaccess security protection automated
@@ -565,11 +579,11 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .47.6
+What's New in .47.7
 
-* BPS Master htaccess Folder Deny All .htaccess security protection automated: The BPS Master htaccess Folder Deny All .htaccess security file is now automatically created if it does not already exist. Manual controls are still available on the Security Modes page to manually Activate Deny All htaccess Folder Protection For The BPS Master htaccess Folder.
-* BPS Backup Folder Deny All .htaccess security protection automated: The BPS Backup Folder Deny All .htaccess security file is now automatically created if it does not already exist. Manual controls are still available on the Security Modes page to manually Activate Deny All htaccess Folder Protection For The BPS Backup Folder.
-* Turn On AutoLock / Turn Off AutoLock options/buttons added: AutoLock is designed to automatically lock your root .htaccess file to save you an additional step of locking your root .htaccess file when performing certain actions, tasks or functions and AutoLock also automatically locks your root .htaccess during BPS Pro upgrades. This can be a problem for some folks whose Web Hosts do not allow locking the root .htaccess file with 404 file permissions and can cause 403 errors and/or cause a website to crash. For 99.99% of folks leaving AutoLock turned On will work fine. If your Web Host ONLY allows 644 file permissions for your root .htaccess file then click the Turn Off AutoLock button. This turns Off AutoLocking for all BPS actions, tasks, functions and also for BPS upgrades.
-* General Coding Improvements & Enhancements: Of course, but why not mention it anyway.
-* Visual Improvements & Enhancements: The buttons throughout BPS are now a shiny blue gel on hover and other visual improvements and enhancements.
+= .47.7 =
+* IMPORTANT UPDATE: .htaccess FILE UPDATE FOR WordPress 3.5
+* 3.5 BUG FIX: visual and text editor display blank boxes
+* Problem: Square Bracket filters are blocking the visual and text editor
+* Solution: Square Brackets are automatically removed from .htaccess files/filters on upgrade to .47.7
 * Enjoy!
