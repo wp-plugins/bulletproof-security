@@ -57,7 +57,7 @@ have additional website security measures in place as a standard. BulletProof Se
 
 * Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a>
 * Filipino/Tagalog by <a href="http://pointen.dk/" title="Filipino/Tagalog Language Translation by pointen.dk" target="_blank">pointen.dk</a>
-* Russian (??????? ????) by EyeFinity
+* Russian by EyeFinity
 * If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
 * Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
 
@@ -283,7 +283,7 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 = .47.9 =
 * Security Logging / HTTP Error Logging On / Off buttons added
 * Turn Security Logging / HTTP Error Logging On or Off on the Security Log page
-* Russian (??????? ????) Translation by EyeFinity
+* Russian Translation by EyeFinity
 * General Coding Improvements & Enhancements
 * Enjoy!
 
@@ -585,7 +585,7 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 = .47.9 =
 * Security Logging / HTTP Error Logging On / Off buttons added
 * Turn Security Logging / HTTP Error Logging On or Off on the Security Log page
-* Russian (??????? ????) Translation by EyeFinity
+* Russian Translation by EyeFinity
 * General Coding Improvements & Enhancements
 * Enjoy!
 
@@ -634,16 +634,11 @@ that you are not redirected away from your WordPress Dashboard.
 What's New in .47.9
 
 = .47.9 =
-* Security Logging / HTTP Error Logging On / Off buttons added
-* Turn Security Logging / HTTP Error Logging On or Off on the Security Log page
-* Russian (??????? ????) Translation by EyeFinity
-* General Coding Improvements & Enhancements
-* Enjoy!
 
 * Security Logging / HTTP Error Logging On / Off buttons added:
 You can turn Security Logging / HTTP Error Logging On or Off on the Security Log page.
  	 
-* Russian (??????? ????) Translation by EyeFinity
+* Russian Translation by EyeFinity
 Thank you!
  	 
 * Coding Improvements & Enhancements:
