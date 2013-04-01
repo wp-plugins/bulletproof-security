@@ -1,21 +1,4 @@
-<?php
-#  ________         ____________      _____ ________                       ________      
-#  ___  __ )____  _____  /___  /_____ __  /____  __ \______________ ______ ___  __/      
-#  __  __  |_  / / /__  / __  / _  _ \_  __/__  /_/ /__  ___/_  __ \_  __ \__  /_        
-#  _  /_/ / / /_/ / _  /  _  /  /  __// /_  _  ____/ _  /    / /_/ // /_/ /_  __/        
-#  /_____/  \__,_/  /_/   /_/   \___/ \__/  /_/      /_/     \____/ \____/ /_/           
-#  ________                             _____ _____              ________                
-#  __  ___/_____ ___________  _____________(_)__  /______  __    ___  __ \______________ 
-#  _____ \ _  _ \_  ___/_  / / /__  ___/__  / _  __/__  / / /    __  /_/ /__  ___/_  __ \
-#  ____/ / /  __// /__  / /_/ / _  /    _  /  / /_  _  /_/ /     _  ____/ _  /    / /_/ /
-#  /____/  \___/ \___/  \__,_/  /_/     /_/   \__/  _\__, /      /_/      /_/     \____/ 
-#                                                   /____/                               
-# 42756C6C657450726F6F66 5365637572697479 50726F 
-#
-?>
-
 <!-- BEGIN COPY CODE - BPS 404 Error logging code -->
-
 <?php 
 // Copy this logging code from BEGIN COPY CODE above to END COPY CODE below and paste it right after <?php get_header(); > in
 // your Theme's 404.php template file located in your themes folder /wp-content/themes/your-theme-folder-name/404.php.
@@ -26,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$hostname = @gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
 	$fh = fopen($bpsProLog, 'a');
- 	@fwrite($fh, "\r\n>>>>>>>>>>> 404 Error Logged - $timestamp <<<<<<<<<<<\r\n");
+ 	@fwrite($fh, "\r\n>>>>>>>>>>> 404 POST Request Error Logged - $timestamp <<<<<<<<<<<\r\n");
 	@fwrite($fh, 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n");
 	@fwrite($fh, 'Host Name: '."$hostname\r\n");
 	@fwrite($fh, 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n");
@@ -39,12 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  	@fwrite($fh, 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n");
 	@fwrite($fh, 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n");
  	fclose($fh);
-}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+	} else {
+	// log anything else that triggered a 404 Error
 	$fh = fopen($bpsProLog, 'a');
- 	@fwrite($fh, "\r\n>>>>>>>>>>> 404 Error Logged - $timestamp <<<<<<<<<<<\r\n");
+ 	@fwrite($fh, "\r\n>>>>>>>>>>> 404 GET or Other Request Error Logged - $timestamp <<<<<<<<<<<\r\n");
 	@fwrite($fh, 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n");
 	@fwrite($fh, 'Host Name: '."$hostname\r\n");
 	@fwrite($fh, 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n");

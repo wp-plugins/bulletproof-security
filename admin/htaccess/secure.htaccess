@@ -1,6 +1,6 @@
-#   BULLETPROOF .48 >>>>>>> SECURE .HTACCESS     
+#   BULLETPROOF .48.1 >>>>>>> SECURE .HTACCESS     
 
-# If you edit the  BULLETPROOF .48 >>>>>>> SECURE .HTACCESS text above
+# If you edit the  BULLETPROOF .48.1 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -47,6 +47,7 @@ DirectoryIndex index.php index.html /index.php
 # NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.
 
 ErrorDocument 400 /wp-content/plugins/bulletproof-security/400.php
+ErrorDocument 401 default
 ErrorDocument 403 /wp-content/plugins/bulletproof-security/403.php
 ErrorDocument 404 /404.php
 

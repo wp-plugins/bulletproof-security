@@ -240,6 +240,7 @@ $options = get_option('bulletproof_security_options_autolock');
 	$bps_denyall_htaccess_renamed = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
 	$bps_get_domain_root = bpsGetDomainRoot();
 	$bps_get_wp_root_secure = bps_wp_get_root_folder();
+	$patterna = '/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument\s401\sdefault\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s';	
 	$pattern0 = '/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$pattern1 = '/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s';	
 	$pattern2 = '/TIMTHUMB FORBID RFI and MISC FILE SKIP\/BYPASS RULE/s';
@@ -248,6 +249,7 @@ $options = get_option('bulletproof_security_options_autolock');
 	$pattern5 = '/FORBID COMMENT SPAMMERS ACCESS TO YOUR wp-comments-post.php FILE/s';
 	$pattern6 = '/(\[|\]|\(|\)|<|>|%3c|%3e|%5b|%5d)/s';
 	$pattern7 = '/RewriteCond %{QUERY_STRING} \^\.\*(.*)[3](.*)[5](.*)[5](.*)[7](.*)\)/';
+	$pattern8 = '/\[NC\]\s*RewriteCond\s%{HTTP_REFERER}\s\^\.\*(.*)\.\*\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*RewriteRule\s\.\s\-\s\[S=1\]/';
 	$ExcludedHosts = array('webmasters.com', 'rzone.de', 'softcomca.com');
 
 	if ( !file_exists($filename)) {
@@ -259,32 +261,34 @@ $options = get_option('bulletproof_security_options_autolock');
 	if (file_exists($filename)) {
 
 switch ($bps_version) {
-    case ".47.9": // for testing
-		if (strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE")) {
+    case ".48": // for testing
+		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {
 			print($section.'...Testing...');
 		break;
 		}
-    case ".48":
-		if (!strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {
+    case ".48.1":
+		if (!strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE")) {
 			chmod($filename, 0644);
 			$stringReplace = @file_get_contents($filename);
-			$stringReplace = str_replace("BULLETPROOF .46.9", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.1", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.2", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.3", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.4", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.5", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.6", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.7", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.8", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.9", "BULLETPROOF .48", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .46.9", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.1", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.2", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.3", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.4", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.5", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.6", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.7", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.8", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.9", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .48", "BULLETPROOF .48.1", $stringReplace);
 			$stringReplace = str_replace("RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]", "RewriteCond %{HTTP_USER_AGENT} (havij|libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]", $stringReplace);
 			
 		if ( preg_match($pattern0, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace('/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "# BPS ERROR LOGGING AND TRACKING\n# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used\n# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to\n# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or\n# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.\n# All BPS log files are htaccess protected so that only you can view them.\n# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/\n# The 400 and 403 Error logging files are already set up and will automatically start logging errors\n# after you install BPS and have activated BulletProof Mode for your Root folder.\n# If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file\n# to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.\n# You can open the BPS 404.php file using the WP Plugins Editor.\n# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.\n
-ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php
-ErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php
-ErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+			$stringReplace = preg_replace('/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "# BPS ERROR LOGGING AND TRACKING\n# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used\n# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to\n# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or\n# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.\n# All BPS log files are htaccess protected so that only you can view them.\n# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/\n# The 400 and 403 Error logging files are already set up and will automatically start logging errors\n# after you install BPS and have activated BulletProof Mode for your Root folder.\n# If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file\n# to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.\n# You can open the BPS 404.php file using the WP Plugins Editor.\n# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.\nErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		}
+
+		if ( !preg_match($patterna, $stringReplace, $matches) ) {
+			$stringReplace = preg_replace('/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
 		}
 
 		if ( preg_match($pattern1, $stringReplace, $matches) ) {
@@ -325,16 +329,24 @@ $stringReplace = preg_replace('/RewriteCond %{QUERY_STRING} \^\.\*(.*)[5](.*)[5]
 		if ( preg_match('/(\n\n\n|\n\n\n\n)/', $stringReplace, $matches) ) {			
 			$stringReplace = preg_replace("/(\n\n\n|\n\n\n\n)/", "\n", $stringReplace);
 		}
+		// remove duplicate referer lines
+		if ( preg_match($pattern8, $stringReplace, $matches) ) {
+$stringReplace = preg_replace("/\[NC\]\s*RewriteCond\s%{HTTP_REFERER}\s\^\.\*(.*)\.\*\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*RewriteRule\s\.\s\-\s\[S=1\]/", "[NC]\nRewriteCond %{HTTP_REFERER} ^.*$bps_get_domain_root.*\nRewriteRule . - [S=1]", $stringReplace);
+		}
+
 			file_put_contents($filename, $stringReplace);
 		
 		if (@$permsHtaccess == '644.' && !in_array(bps_DNS_NS(), $ExcludedHosts) && $options['bps_root_htaccess_autolock'] != 'Off') {
 		if (substr($sapi_type, 0, 3) == 'cgi' || substr($sapi_type, 0, 9) == 'litespeed' || substr($sapi_type, 0, 7) == 'caudium' || substr($sapi_type, 0, 8) == 'webjames' || substr($sapi_type, 0, 3) == 'tux' || substr($sapi_type, 0, 5) == 'roxen' || substr($sapi_type, 0, 6) == 'thttpd' || substr($sapi_type, 0, 6) == 'phttpd' || substr($sapi_type, 0, 10) == 'continuity' || substr($sapi_type, 0, 6) == 'pi3web' || substr($sapi_type, 0, 6) == 'milter') {
 		chmod($filename, 0404);
 		}}
-		print("................BPS Automatic htaccess File Update in Progress. Refresh Your Browser To Clear The BPS Alert.");	
+		
+		$updateText = '<font color="blue"><strong>'.__("................BPS Automatic htaccess File Update Completed. Refresh Your Browser To Clear This BPS Alert.", 'bulletproof-security').'</strong></font>';
+		print($updateText);	
 			copy($bps_denyall_htaccess, $bps_denyall_htaccess_renamed);		
 		}
-		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {		
+		
+		if (strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE")) {		
 			//print($section);
 		break;
 		}
@@ -364,26 +376,27 @@ global $bps_version;
 	if (file_exists($filename)) {
 
 switch ($bps_version) {
-    case ".47.9": // for Testing
-		if (strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE-check")) {
+    case ".48": // for Testing
+		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {
 			echo '';
 		break;
 		}
-    case ".48":
-		if (!strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {
+    case ".48.1":
+		if (!strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE-check")) {
 			chmod($filename, 0644);
 			$stringReplace = @file_get_contents($filename);
-			$stringReplace = str_replace("BULLETPROOF .46.9", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.1", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.2", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.3", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.4", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.5", "BULLETPROOF .48", $stringReplace);
-			$stringReplace = str_replace("BULLETPROOF .47.6", "BULLETPROOF .48", $stringReplace);		
-			$stringReplace = str_replace("BULLETPROOF .47.7", "BULLETPROOF .48", $stringReplace);				
-			$stringReplace = str_replace("BULLETPROOF .47.8", "BULLETPROOF .48", $stringReplace);		
-			$stringReplace = str_replace("BULLETPROOF .47.9", "BULLETPROOF .48", $stringReplace);			
-
+			$stringReplace = str_replace("BULLETPROOF .46.9", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.1", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.2", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.3", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.4", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.5", "BULLETPROOF .48.1", $stringReplace);
+			$stringReplace = str_replace("BULLETPROOF .47.6", "BULLETPROOF .48.1", $stringReplace);		
+			$stringReplace = str_replace("BULLETPROOF .47.7", "BULLETPROOF .48.1", $stringReplace);				
+			$stringReplace = str_replace("BULLETPROOF .47.8", "BULLETPROOF .48.1", $stringReplace);		
+			$stringReplace = str_replace("BULLETPROOF .47.9", "BULLETPROOF .48.1", $stringReplace);			
+			$stringReplace = str_replace("BULLETPROOF .48", "BULLETPROOF .48.1", $stringReplace);	
+		
 		if ( preg_match($pattern1, $stringReplace, $matches) ) {
 			$stringReplace = str_replace("RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]", "RewriteCond %{QUERY_STRING} ^.*(\(|\)|<|>).* [NC,OR]", $stringReplace);		
 		}
@@ -391,7 +404,7 @@ switch ($bps_version) {
 			file_put_contents($filename, $stringReplace);
 			echo '';
 		}
-		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {		
+		if (strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE-check")) {		
 			echo '';
 		break;
 		}
@@ -421,22 +434,22 @@ global $bps_version;
 	print($section);
 
 switch ($bps_version) {
-    case ".47.9": // for Testing
-		if (!strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE")) {
-		$text = '<font color="red"><br><br><strong>'.__('BPS may be in the process of updating the version number in your root htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your root htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to click the AutoMagic buttons and activate all BulletProof Modes again.', 'bulletproof-security').'<br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
-		echo $text;
-		}
-		if (strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE")) {
-		$text = '<font color="green"><strong><br><br>&radic; '.__('wp-config.php is htaccess protected by BPS', 'bulletproof-security').'<br>&radic; '.__('php.ini and php5.ini are htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
-		echo $text;
-		break;
-		}
-    case ".48":
+    case ".48": // for Testing
 		if (!strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {
 		$text = '<font color="red"><br><br><strong>'.__('BPS may be in the process of updating the version number in your root htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your root htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to click the AutoMagic buttons and activate all BulletProof Modes again.', 'bulletproof-security').'<br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
 		echo $text;
 		}
-		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {		
+		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE")) {
+		$text = '<font color="green"><strong><br><br>&radic; '.__('wp-config.php is htaccess protected by BPS', 'bulletproof-security').'<br>&radic; '.__('php.ini and php5.ini are htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
+		echo $text;
+		break;
+		}
+    case ".48.1":
+		if (!strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE")) {
+		$text = '<font color="red"><br><br><strong>'.__('BPS may be in the process of updating the version number in your root htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your root htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to click the AutoMagic buttons and activate all BulletProof Modes again.', 'bulletproof-security').'<br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
+		echo $text;
+		}
+		if (strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE")) {		
 		$text = '<font color="green"><strong><br><br>&radic; '.__('wp-config.php is htaccess protected by BPS', 'bulletproof-security').'<br>&radic; '.__('php.ini and php5.ini are htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
 		echo $text;
 		break;
@@ -462,23 +475,23 @@ global $bps_version;
 	if (file_exists($filename)) {
 
 switch ($bps_version) {
-    case ".47.9":
-		if (!strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE-check")) {
-		$text = '<font color="red"><strong><br><br>'.__('BPS may be in the process of updating the version number in your wp-admin htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your wp-admin htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to activate BulletProof Mode for your wp-admin folder again.', 'bulletproof-security').'</strong></font><br>';
-		echo $text;
-		}
-		if (strpos($check_string, "BULLETPROOF .47.9") && strpos($check_string, "BPSQSE-check")) {
-		$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your wp-admin folder is:', 'bulletproof-security').'</strong></font><br>';
-		echo $text;
-		print($section);
-		break;
-		}
     case ".48":
 		if (!strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {
 		$text = '<font color="red"><strong><br><br>'.__('BPS may be in the process of updating the version number in your wp-admin htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your wp-admin htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to activate BulletProof Mode for your wp-admin folder again.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 		}
-		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {		
+		if (strpos($check_string, "BULLETPROOF .48") && strpos($check_string, "BPSQSE-check")) {
+		$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your wp-admin folder is:', 'bulletproof-security').'</strong></font><br>';
+		echo $text;
+		print($section);
+		break;
+		}
+    case ".48.1":
+		if (!strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE-check")) {
+		$text = '<font color="red"><strong><br><br>'.__('BPS may be in the process of updating the version number in your wp-admin htaccess file. Refresh your browser to display your current security status and this message should go away. If the BPS QUERY STRING EXPLOITS code does not exist in your wp-admin htaccess file then the version number update will fail and this message will still be displayed after you have refreshed your Browser. You will need to activate BulletProof Mode for your wp-admin folder again.', 'bulletproof-security').'</strong></font><br>';
+		echo $text;
+		}
+		if (strpos($check_string, "BULLETPROOF .48.1") && strpos($check_string, "BPSQSE-check")) {		
 		$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your wp-admin folder is:', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 		print($section);
@@ -847,7 +860,7 @@ function bps_hud_check_bpsbackup() {
 
 // Heads Up Display - Check if PHP Safe Mode is On - 1 is On - 0 is Off
 function bps_check_safemode() {
-	if (ini_get('safe_mode') == '1') {
+	if (ini_get('safe_mode') == 1) {
 	$text = '<br><font color="red"><strong>'.__('WARNING! BPS has detected that Safe Mode is set to On in your php.ini file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If you see errors that BPS was unable to automatically create the backup folders this is probably the reason why.', 'bulletproof-security').'</strong><br>'.__('To remove this message permanently click ', 'bulletproof-security').'<strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></strong><br>';
 	echo $text;
 	} else {
@@ -863,7 +876,7 @@ function bps_w3tc_htaccess_check($plugin_var) {
 	$bpsHomeUrl = get_option('home');
 	$plugin_var = 'w3-total-cache';
     $return_var = in_array( $plugin_var. '/' .$plugin_var. '.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
-    if ($return_var == 1) { // return $return_var; ---- 1 equals active
+	if ($return_var == 1 || is_plugin_active_for_network( 'w3-total-cache/w3-total-cache.php' )) { // checks if W3TC is active for Single site or Network
 	if ($bpsSiteUrl == $bpsHomeUrl) {
 	if (!strpos($string, "W3TC")) {
 	$text = '<font color="red"><strong>'.__('W3 Total Cache is activated, but W3TC .htaccess code was NOT found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('W3TC needs to be redeployed by clicking either the auto-install or deploy buttons. If your root .htaccess file is locked then you need to unlock it to allow W3TC to write its htaccess code to your root htaccess file. Click to ', 'bulletproof-security').'<a href="admin.php?page=w3tc_general" >'.__('Redeploy W3TC.', 'bulletproof-security').'</a></strong><br><br>';
@@ -871,7 +884,7 @@ function bps_w3tc_htaccess_check($plugin_var) {
 	} 
 	}
 	}
-	elseif ($return_var != 1) {
+	elseif ($return_var != 1 || !is_plugin_active_for_network( 'w3-total-cache/w3-total-cache.php' )) { // checks if W3TC is active for Single site or Network
 	if ($bpsSiteUrl == $bpsHomeUrl) {
 	if (strpos($string, "W3TC")) {
 	$text = '<font color="red"><strong>'.__('W3 Total Cache is deactivated and W3TC .htaccess code was found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If this is just temporary then this warning message will go away when you reactivate W3TC. If you are planning on uninstalling W3TC the W3TC .htaccess code will be automatically removed from your root .htaccess file when you uninstall W3TC. If you manually edit your root htaccess file then refresh your browser to perform a new HUD htaccess file check.', 'bulletproof-security').'</strong><br><br>';
@@ -959,10 +972,10 @@ global $wpdb;
 function bps_multsite_check_smode_MUSDir() {  
 global $wpdb;
 	if ( is_multisite() && !is_subdomain_install() ) { 
-	$text = '<font color="green"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / MU sub-directory Installations', 'bulletproof-security').'</strong></font>';
+	$text = '<font color="green"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-directory Installations', 'bulletproof-security').'</strong></font>';
 	echo $text;
 	} else {
-	$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Network / MU Sub-directory Websites Only', 'bulletproof-security');
+	$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Network / Multisite Sub-directory Websites Only', 'bulletproof-security');
 	echo $text;
 	}
 }
@@ -972,10 +985,10 @@ function bps_multsite_check_smode_MUSDom() {
 global $wpdb;
 	if ( is_multisite() && is_subdomain_install() ) { 
 	//if ( is_subdomain_install() ) {
-	$text = '<font color="green"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / MU sub-domain Installations', 'bulletproof-security').'</strong></font>';
+	$text = '<font color="green"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-domain Installations', 'bulletproof-security').'</strong></font>';
 	echo $text;
 	} else {
-	$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Network / MU Sub-domain Websites Only', 'bulletproof-security');
+	$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Network / Multisite Sub-domain Websites Only', 'bulletproof-security');
 	echo $text;
 	}
 }
@@ -1095,4 +1108,5 @@ function bps_wp_generator_meta_removed() {
 	$wp_version = '';
 	}
 }
+
 ?>

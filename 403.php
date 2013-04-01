@@ -3,21 +3,7 @@
 <?php session_start(); ?>
 <?php error_reporting(0); ?>
 <?php session_destroy(); ?>
-<?php
-#  ________         ____________      _____ ________                       ________      
-#  ___  __ )____  _____  /___  /_____ __  /____  __ \______________ ______ ___  __/      
-#  __  __  |_  / / /__  / __  / _  _ \_  __/__  /_/ /__  ___/_  __ \_  __ \__  /_        
-#  _  /_/ / / /_/ / _  /  _  /  /  __// /_  _  ____/ _  /    / /_/ // /_/ /_  __/        
-#  /_____/  \__,_/  /_/   /_/   \___/ \__/  /_/      /_/     \____/ \____/ /_/           
-#  ________                             _____ _____              ________                
-#  __  ___/_____ ___________  _____________(_)__  /______  __    ___  __ \______________ 
-#  _____ \ _  _ \_  ___/_  / / /__  ___/__  / _  __/__  / / /    __  /_/ /__  ___/_  __ \
-#  ____/ / /  __// /__  / /_/ / _  /    _  /  / /_  _  /_/ /     _  ____/ _  /    / /_/ /
-#  /____/  \___/ \___/  \__,_/  /_/     /_/   \__/  _\__, /      /_/      /_/     \____/ 
-#                                                   /____/                               
-# 42756C6C657450726F6F66 5365637572697479 50726F 
-#
-?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,10 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  	@fwrite($fh, 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n");
 	@fwrite($fh, 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n");
  	@fclose($fh);
-	
 }
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST' && !preg_match('/facebookexternalhit(.*)/s', $_SERVER['HTTP_USER_AGENT'], $matches) ) {
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+# BEGIN USERAGENT FILTER
+if ( !preg_match('/BPSUserAgentPlaceHolder/', $_SERVER['HTTP_USER_AGENT']) ) {
+# END USERAGENT FILTER
 
 	$fh = @fopen($bpsProLog, 'a');
  	@fwrite($fh, "\r\n>>>>>>>>>>> 403 GET or Other Request Error Logged - $timestamp <<<<<<<<<<<\r\n");
@@ -98,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' && !preg_match('/facebookexternalhit(.*
  	@fwrite($fh, 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n");
 	@fwrite($fh, 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n");
  	@fclose($fh);
+}
 }
 ?>
 </body>

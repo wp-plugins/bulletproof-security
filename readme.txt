@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48 
+Stable tag: .48.1 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -68,7 +68,9 @@ have additional website security measures in place as a standard. BulletProof Se
 * .htaccess file backup and restore
 * .htaccess Lock / Unlock (404 Read-Only)
 * .htaccess AutoLock On or Off
-* Security Logging / HTTP Error Logging - Log 400, 403 and 404 Errors
+* Security / HTTP Error Logging - Log 400, 403 and 404 Errors
+* Security Log: Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
+* Security Log: Turn On / Turn Off / Delete Log
 * Automatic .htaccess file updating on upgrade installation
 * New .htaccess security filters automatically added during upgrade
 * No need to reactivate BulletProof Modes when upgrading
@@ -124,7 +126,7 @@ an .htaccess File Editor for full manual editing control as well. BulletProof We
 
 No, The .htaccess file creation is automated in BulletProof Security. Everything is automatically done for you.
 You do not need to know or understand anything about .htaccess website security files in order to use the 
-BulletProof Security plugin.
+BulletProof Security plugin. Extensive help information can be found in the Blue Read Me help buttons in BPS.
 
 = What do I do if I cannot log back into my website? =
 
@@ -159,10 +161,10 @@ Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-securi
 = Does BulletProof Security work on every type of Server? =
 
 Compatible With:
-Apache CGI configured Servers
-Apache DSO configured Servers (May require file permission and/or Ownership changes)
-Nginx frontend Server with Apache backend Server
-LiteSpeed Servers
+1. Apache CGI configured Servers
+2. Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
+3. Nginx frontend Server with Apache backend Server
+4. LiteSpeed Servers
 
 BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. BPS is compatible with Apache Linux Servers, 
 LiteSpeed Servers, Nginx Servers (if the Nginx Server is the frontend Server and Apache Linux Server is the backend Server). If you do not know what type of Server 
@@ -200,11 +202,11 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file.
 
 HTTP Response Status Codes
-400 Bad Request - The request could not be understood by the server due to malformed syntax.
+1. 400 Bad Request - The request could not be understood by the server due to malformed syntax.
 
-403 Forbidden - The Server understood the request, but is refusing to fulfill it.
+2. 403 Forbidden - The Server understood the request, but is refusing to fulfill it.
 
-404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given of whether the condition is temporary or permanent.
+3. 404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given of whether the condition is temporary or permanent.
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
@@ -288,6 +290,12 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 4. BulletProof Security - Edit/Upload/Download page
 
 == Changelog ==
+
+= .48.1 =
+* Security Log - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
+* New htaccess code - ErrorDocument 401 default
+* General Coding Improvements & Enhancements
+* Enjoy!
 
 = .48 =
 * facebook externalhit_uatext.php script/error log fix
@@ -597,6 +605,12 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.1 =
+* Security Log - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
+* New htaccess code - ErrorDocument 401 default
+* General Coding Improvements & Enhancements
+* Enjoy!
+
 = .48 =
 * facebook externalhit_uatext.php script/error log fix
 * 400, 403 and 404 Error Logging templates modified
@@ -652,13 +666,15 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48
+What's New in .48.1
 
-= .48 =
+= .48.1 =
 
-* facebook externalhit_uatext.php script/error log fix:
-Modifications were made to the 400, 403 and 404 error logging templates. facebook externalhit_uatext.php script 
-403 errors will no longer be logged.
+* Security Log page - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log:
+If a particular User Agent/Bot is generating excessive log entries you can add it to Add User Agents/Bots to Ignore/Not Log tool and that User Agent/Bot will no longer be logged. See the Blue Read Me help button on the Security Log page for additional help info. Adding or Removing User Agents/Bots adds or removes User Agents/Bots to your Database and also writes new code to the 403.php Security Logging template. The 403.php Security Logging file is where the check occurs whether or not to log or not log a User Agent/Bot. It would be foolish and costly to website performance to have your WordPress database handle the task/function/burden of checking which User Agents/Bots to log or not log. WordPress database queries are the most resource draining function of a WordPress website. The more database queries that are happening at the same time on your website the slower your website will perform and load. For this reason the Security Logging check is done from code in the 403.php Security Logging file.
+
+* New htaccess code:
+ErrorDocument 401 default htaccess code is automatically added to the root .htaccess file on BPS upgrade (if your root .htaccess file is writeable). This htaccess code fixes issues with password protected directories generating 404 Error not found errors. If your root .htaccess file is not writeable then you will need to change the root .htaccess file permissions temporarily to allow BPS to automatically update your root .htaccess file and then change the root .htaccess file permissions back to what they were.
  	 
 * Coding Improvements & Enhancements:
 Of course, but why not mention it anyway.
