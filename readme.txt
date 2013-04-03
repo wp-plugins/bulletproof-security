@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.1 
+Stable tag: .48.2 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -161,17 +161,17 @@ Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-securi
 = Does BulletProof Security work on every type of Server? =
 
 Compatible With:
-1. Apache CGI configured Servers
-2. Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
-3. Nginx frontend Server with Apache backend Server
-4. LiteSpeed Servers
+* Apache CGI configured Servers
+* Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
+* Nginx frontend Server with Apache backend Server
+* LiteSpeed Servers
 
 BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. BPS is compatible with Apache Linux Servers, 
 LiteSpeed Servers, Nginx Servers (if the Nginx Server is the frontend Server and Apache Linux Server is the backend Server). If you do not know what type of Server 
 you have you can check your Server Type and Operating System on the BPS System Info page.
 
 NOT Compatible With:
-Windows IIS Servers
+* Windows IIS Servers
 
 = Does BulletProof Security Work on Windows IIS Servers? =
 
@@ -201,36 +201,37 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS Pro 
 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file.
 
-HTTP Response Status Codes
-1. 400 Bad Request - The request could not be understood by the server due to malformed syntax.
+= HTTP Response Status Codes =
 
-2. 403 Forbidden - The Server understood the request, but is refusing to fulfill it.
-
-3. 404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given of whether the condition is temporary or permanent.
+* 400 Bad Request - The request could not be understood by the server due to malformed syntax.
+* 403 Forbidden - The Server understood the request, but is refusing to fulfill it.
+* 404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given of whether the condition is temporary or permanent.
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
 = BulletProof Security =
 
-1. .htaccess Website Security Protection
+* .htaccess Website Security Protection
+* Security Logging
+* HTTP Error Logging
 
 = BulletProof Security Pro Feature Highlights =
 
-1. AutoRestore - Automatic File Restore
-2. Quarantine - Automatic File Quarantine
-3. Plugins Folder Firewall
-4. Uploads Folder Anti-Exploit Guard
-5. Real-time File Monitor - All WordPress and non-WordPress Files
-6. .htaccess Website Security Protection
-7. Custom php.ini Website Security Protection
-8. F-Lock - Read Only File Locking
-9. Security Logging
-10. HTTP Error Logging
-11. PHP Error Logging
-12. Email Alerts / Log Files Automatically Emailed
-13. Versatile Set of Pro-Tools
-14. Base64 Decoder / Encoder
-15. <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
+* AutoRestore - Automatic File Restore
+* Quarantine - Automatic File Quarantine
+* Real-time File Monitor (ARQ Infinity)
+* Plugin Firewall (true IP Based Firewall)
+* Uploads Folder Anti-Exploit Guard
+* .htaccess Website Security
+* Custom php.ini Website Security
+* F-Lock - Read Only File Locking
+* Security Logging
+* HTTP Error Logging
+* PHP Error Logging
+* Email Alerts
+* Versatile Set of Pro-Tools...
+* Base64 Decoder / Encoder...
+* <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
 = Is BulletProof Security Network / MU / Multisite Compatible? =
 
@@ -290,6 +291,11 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 4. BulletProof Security - Edit/Upload/Download page
 
 == Changelog ==
+
+= .48.2 =
+* Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
+* Bug fix: ErrorDocument 401 default added/removed on Turn Error Logging On/Off
+* Enjoy!
 
 = .48.1 =
 * Security Log - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
@@ -605,6 +611,11 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.2 =
+* Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
+* Bug fix: ErrorDocument 401 default added/removed on Turn Error Logging On/Off
+* Enjoy!
+
 = .48.1 =
 * Security Log - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
 * New htaccess code - ErrorDocument 401 default
@@ -666,10 +677,13 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.1
+What's New in .48.2
+
+= .48.2 =
+* Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
+* Bug fix: ErrorDocument 401 default added/removed on Turn Error Logging On/Off
 
 = .48.1 =
-
 * Security Log page - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log:
 If a particular User Agent/Bot is generating excessive log entries you can add it to Add User Agents/Bots to Ignore/Not Log tool and that User Agent/Bot will no longer be logged. See the Blue Read Me help button on the Security Log page for additional help info. Adding or Removing User Agents/Bots adds or removes User Agents/Bots to your Database and also writes new code to the 403.php Security Logging template. The 403.php Security Logging file is where the check occurs whether or not to log or not log a User Agent/Bot. It would be foolish and costly to website performance to have your WordPress database handle the task/function/burden of checking which User Agents/Bots to log or not log. WordPress database queries are the most resource draining function of a WordPress website. The more database queries that are happening at the same time on your website the slower your website will perform and load. For this reason the Security Logging check is done from code in the 403.php Security Logging file.
 

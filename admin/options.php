@@ -532,8 +532,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security')."$bps_auto_write_secure_file" . __(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here', 'bulletproof-security').'</a>'.__(' for more help info.', 'bulletproof-security').'</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .48.1 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .48.1 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .48.2 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .48.2 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -781,7 +781,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .48.1 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_top = "#   BULLETPROOF .48.2 MAINTENANCE  .HTACCESS     \n\n";    
 $bps_maint_content = "# BEGIN WordPress\n\n
 RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
@@ -1101,22 +1101,37 @@ if (isset($_POST['Submit-Error-Log-Off']) && current_user_can('manage_options'))
 
 	$filename = ABSPATH . '.htaccess';
 	$stringReplace = file_get_contents($filename);
-	$pattern = '/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
+	$pattern1 = '/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
+	$pattern2 = '/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$bps_get_wp_root_secure = bps_wp_get_root_folder();		
 	
-	if ( file_exists($filename) && preg_match($pattern, $stringReplace, $matches) ) {
+	if ( file_exists($filename) && preg_match($pattern1, $stringReplace, $matches) ) {
 		chmod($filename, 0644);
 		
-		$stringReplace = preg_replace('/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "#ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\n#ErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\n#ErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		$stringReplace = preg_replace('/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\n#ErrorDocument 401 default\n#ErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\n#ErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
 		
-		file_put_contents($filename, $stringReplace);
-		$text = '<p><font color="green"><strong>'.__('Error Logging has been turned Off', 'bulletproof-security').'</strong></font></p>';
-		echo $text;
+		if ( !file_put_contents($filename, $stringReplace) ) {
+			$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging Off. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
+			echo $text;
 	
-	} else {
+		} else {
+			// no need to echo success message here
+		}
+	}
+
+	if ( file_exists($filename) && preg_match($pattern2, $stringReplace, $matches) ) {
+		chmod($filename, 0644);
 		
-		$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging Off. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
-		echo $text;
+		$stringReplace = preg_replace('/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "#ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\n#ErrorDocument 401 default\n#ErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\n#ErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		
+		if ( !file_put_contents($filename, $stringReplace) ) {
+			$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging Off. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
+			echo $text;
+	
+		} else {
+			$text = '<p><font color="green"><strong>'.__('Error Logging has been turned Off', 'bulletproof-security').'</strong></font></p>';
+			echo $text;		
+		}
 	}
 }
 
@@ -1126,22 +1141,40 @@ if (isset($_POST['Submit-Error-Log-On']) && current_user_can('manage_options')) 
 
 	$filename = ABSPATH . '.htaccess';
 	$stringReplace = file_get_contents($filename);
-	$pattern = '/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
+	$pattern1 = '/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';	
+	$pattern2 = '/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$bps_get_wp_root_secure = bps_wp_get_root_folder();	
 	
-	if ( file_exists($filename) && preg_match($pattern, $stringReplace, $matches) ) {
+	// This factors in the scenario of #ErrorDocument 403 being commented out if other ErrorDocument directives are NOT commented out
+	// Create a new ErrorDocument .htaccess block of code with all ErrorDocument directives uncommented
+	if ( file_exists($filename) && preg_match($pattern1, $stringReplace, $matches) ) {
 		chmod($filename, 0644);
 		
-		$stringReplace = preg_replace('/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\nErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		$stringReplace = preg_replace('/ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);		
 		
-		file_put_contents($filename, $stringReplace);
-		$text = '<p><font color="green"><strong>'.__('Error Logging has been turned On', 'bulletproof-security').'</strong></font></p>';
-		echo $text;
+		if ( !file_put_contents($filename, $stringReplace) ) {		
+			$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging On. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
+			echo $text;
+	
+		} else {
+		
+			$text = '<p><font color="green"><strong>'.__('Error Logging has been turned On', 'bulletproof-security').'</strong></font></p>';
+			echo $text;	
+		}
+	}
+	
+	if ( file_exists($filename) && preg_match($pattern2, $stringReplace, $matches) ) {
+		chmod($filename, 0644);
+		
+		$stringReplace = preg_replace('/#ErrorDocument\s400(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."wp-content/plugins/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		
+		if ( !file_put_contents($filename, $stringReplace) ) {
+			$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging On. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
+			echo $text;
 
-	} else {
-		
-		$text = '<p><font color="red"><strong>'.__('Error: Unable to turn Error Logging On. Either the root .htaccess file is not writable, it does not exist or the ErrorDocument .htaccess code does not exist in your Root .htaccess file. Check that the root .htaccess file exists, the code exists and that file permissions allow writing.', 'bulletproof-security').'</strong></font></p>';
-		echo $text;
+		} else {
+			// no need to echo success message here		
+		}
 	}
 }
 
@@ -1549,7 +1582,7 @@ $search = '';
 	// characters that are not allowed: / and |
 	if ($userAgent != '' && !preg_match ('#/#', $userAgent) || !preg_match ('#|#', $userAgent) ) {
 		
-		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 		$rows_affected = $wpdb->insert( $table_name, array( 'time' => current_time('mysql'), 'user_agent_bot' => $userAgent ) );
 		$text = '<font color="green">'.__('Success! ', 'bulletproof-security').$userAgent.__(' User Agent/Bot has been added to your DB. ', 'bulletproof-security').'</font>';
 		echo $text;
@@ -1557,7 +1590,7 @@ $search = '';
 		
 	} else {
 		
-		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 		$text = '<font color="red"><strong>'.__('Error: ', 'bulletproof-security').$userAgent.__(' User Agent/Bot was not successfully added. Click the Blue Read Help button for examples of valid User Agent/Bot names.', 'bulletproof-security').'</strong></font>';
 		echo $text;
 		echo '</p></div>';		
@@ -1586,13 +1619,13 @@ $search = '';
 			$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( !preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
 		
 		if ( !file_put_contents($bps403File, $stringReplace) ) {
-			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 			$text = '<font color="red"><strong>'.__('Error: Unable to write to file ', 'bulletproof-security').$bps403File.__('. Check that file permissions allow writing to this file. If you have a DSO Server check file and folder Ownership.', 'bulletproof-security').'</strong></font>';
 			echo $text;	
 			echo '</p></div>';
 		} else {
 			//copy($bps403File, $bps403FileARQ);
-			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 			$text = '<font color="green">'.__('Success! The BPS 403.php Security Logging template file has been updated. This User Agent/Bot will be no longer be logged in your Security Log.', 'bulletproof-security').'</font>';
 			echo $text;	
 			echo '</p></div>';
@@ -1731,7 +1764,7 @@ $searchALLD = '';
 			$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( !preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
 
 		if ( !file_put_contents($bps403File, $stringReplace) ) {
-			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 			$text = '<font color="red"><strong>'.__('Error: Unable to write to file ', 'bulletproof-security').$bps403File.__('. Check that file permissions allow writing to this file. If you have a DSO Server check file and folder Ownership.', 'bulletproof-security').'</strong></font>';
 			echo $text;	
 			echo '</p></div>';
@@ -1745,7 +1778,7 @@ $searchALLD = '';
 			file_put_contents($bps403File, $stringReplace);		
 		}
 			//copy($bps403File, $bps403FileARQ);
-			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 			$text = '<font color="green">'.__('Success! The BPS 403.php Security Logging template file has been updated. This User Agent/Bot will be logged again in your Security Log.', 'bulletproof-security').'</font>';
 			echo $text;	
 			echo '</p></div>';
@@ -1761,7 +1794,7 @@ $searchALLD = '';
 }
 
 if ( !empty($textSecLogRemove) ) { 
-echo '<!-- Last Action --><div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>'.$textSecLogRemove.'</p></div>'; 
+echo '<!-- Last Action --><div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>'.$textSecLogRemove.'</p></div>'; 
 }
 ?>
 
@@ -1801,11 +1834,11 @@ wp_nonce_field('bulletproof_security_seclog_db_remove'); ?>
 		echo '</tbody>';
 		echo '</table>';	
 		if ($wpdb->num_rows != 0) {		
-		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 		$text = '<font color="green">'.__('Your DB Search Results For User Agents/Bots To Remove are displayed below the Remove / Allow Search tool.', 'bulletproof-security').'</font><br>';
 		echo $text;
 		} else {
-		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px; margin-top:9px;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>';
 		$text = '<font color="blue">'.__('You do not have any User Agents/Bots in your DB To Remove. An empty/blank dynamic radio button form is displayed below the Remove / Allow Search tool since you do not have any User Agents/Bot to remove.', 'bulletproof-security').'</font><br>';
 		echo $text;
 		}
