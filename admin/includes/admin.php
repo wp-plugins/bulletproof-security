@@ -32,10 +32,10 @@ $Stable_name = $wpdb->prefix . "bpspro_seclog_ignore";
 	register_setting('bulletproof_security_options_maint', 'bulletproof_security_options_maint', 'bulletproof_security_options_validate_maint');
 			
 	// Register BPS js
-	wp_register_script( 'bps-js', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin.js'));
+	wp_register_script( 'bps-js', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin-3.js'));
 				
 	// Register BPS stylesheet
-	wp_register_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue.css'));
+	wp_register_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-3.css'));
 
 	// Create BPS Backup Folder structure - suppressing errors on activation - errors displayed in HUD
 	if( !is_dir (WP_CONTENT_DIR . '/bps-backup')) {
@@ -86,19 +86,25 @@ function bulletproof_security_admin_menu() {
 // Remember to add the global
 $plugin_var1 = 'smart-slideshow-widget/smart-slideshow-widget.php';
 $plugin_var2 = 'facebook-members/facebook-members.php';
-$return_var = in_array( $plugin_var1 || $plugin_var2, apply_filters('active_plugins', get_option('active_plugins')));
+$plugin_var3 = 'easyrotator-for-wordpress/easyrotator.php';
+$return_var = in_array( $plugin_var1 || $plugin_var2 || $plugin_var3, apply_filters('active_plugins', get_option('active_plugins')));
+
 
 // Loads Settings for H-Core and P-Security
 // Enqueue BPS scripts and styles
 function bulletproof_security_load_settings_page() {
-global $bulletproof_security, $plugin_var1, $plugin_var2, $return_var;
+global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_var;
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-tabs');
 	wp_enqueue_script('jquery-ui-dialog');
 	wp_enqueue_script('jquery-form');
+	//wp_enqueue_script('jquery-ui-accordion');
+	wp_enqueue_script('jquery-effects-core');
+	wp_enqueue_script('jquery-effects-blind');
+	wp_enqueue_script('jquery-effects-explode');
 	wp_enqueue_script('bps-js');
 	// Engueue BPS stylesheet
-	wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue.css'));
+	wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-3.css'));
 	
 	if ( $return_var == 1) { // 1 equals active	
 	// Block SSW from loading its scripts in BPS Pro pages and breaking BPS Pro scripts/menus/etc
@@ -111,6 +117,10 @@ global $bulletproof_security, $plugin_var1, $plugin_var2, $return_var;
 	wp_dequeue_style( 'facebook-plugin-css', plugins_url('/facebook-members/css/jquery-ui.css') );
 	wp_dequeue_style( 'facebook-tip-plugin-css', plugins_url('/facebook-members/css/jquery.powertip.css') );	
 	wp_dequeue_style( 'facebook-member-plugin-css', plugins_url('/facebook-members/css/facebook-members.css') );
+
+	// Block EasyRotator for WordPress plugin from loading its scripts in BPS Pro pages and breaking BPS Pro scripts/menus/etc
+	wp_dequeue_style( 'easyrotator-plugin-admin-css', plugins_url('/easyrotator-for-wordpress/css/easyrotator_admin.css') );	
+	wp_dequeue_style( 'jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
 	}
 }
 
@@ -118,7 +128,7 @@ function bulletproof_security_install() {
 global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.48.2', '<') )
+	if ( version_compare($previous_install['version'], '.48.3', '<') )
 	remove_role('denied');
 	}
 }

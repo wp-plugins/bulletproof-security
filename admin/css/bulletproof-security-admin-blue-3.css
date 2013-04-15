@@ -160,8 +160,6 @@
 	padding:0px 10px 5px 10px;
 }
 
-/* #bps-edittabs-1, #bps-edittabs-2, #bps-edittabs-3, #bps-edittabs-4, #bps-edittabs-5, #bps-edittabs-6 {z-index:500;} */
-
 /* controlled by Interaction States Defunct CSS - delete
 #bps-tabs .ui-tabs-nav li.ui-tabs-selected a:link,
 #bps-tabs .ui-tabs-nav li.ui-tabs-selected a:visited,
@@ -182,6 +180,40 @@
 .ui-tabs .ui-tabs-panel, .ui-tabs .ui-tabs-panel .ui-tabs-panel { padding: 0 0 1em 0; display: block; border: none; }
 .ui-tabs .ui-tabs-panel .ui-tabs-panel { padding: 0; }
 .ui-tabs .ui-tabs-hide, .ui-tabs .ui-tabs-panel .ui-tabs-hide { display: none !important; }
+
+/*********** jQuery Accordian *****************/
+.bps-accordian-main { border:1px solid #999; background-color:#fff; }
+.bps-accordian-main h3 { color:#fff; width:183px; border:1px solid #999; background-image:url(../images/menu_btn.png); background-repeat: none; }
+.bps-accordian-main-inner { border:1px solid #999; }
+
+.ui-accordion .ui-accordion-header {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	margin-top: 2px;
+	padding: .5em .5em .5em .7em;
+	min-height: 0; /* support: IE7 */
+}
+.ui-accordion .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-noicons {
+	padding-left: .7em;
+}
+.ui-accordion .ui-accordion-icons .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	position: absolute;
+	left: .5em;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content {
+	padding: 1em 2.2em;
+	border-top: 0;
+	overflow: auto;
+}
 
 /* Read Me Links on pages */
 /* .bps-tab-page a {
@@ -438,6 +470,7 @@
 .regular-text-label {width:100%;}
 .regular-text-save-path {width:80%}
 .regular-text-short-fixed {width:175px;}
+.regular-text-long-fixed {width:275px;}
 
 .iniFinderStyle { background-color:#FFFFFF; padding:2px 2px 2px 4px;
 	border-right:2px solid black;
@@ -448,8 +481,11 @@
 
 /******* BPS Pro Tools pages *************/
 .regular-text-mycrypt {width:60%}
-.StringFinder { background-color:#FFFFFF; padding:2px 2px 2px 4px;
-font-family:Arial, Helvetica, sans-serif;
+
+.StringFinder { 
+	background-color:#FFFFFF;
+	padding:2px 2px 2px 4px;
+	font-family:Arial, Helvetica, sans-serif;
 	font-size:10px;
 	font-weight:100;
 	border-right:2px solid black;
@@ -457,6 +493,7 @@ font-family:Arial, Helvetica, sans-serif;
 	border-top:1px solid #999999;
 	border-bottom:1px solid #999999;
 	}
+.StringFinder ul { background-image:none;}
 
 #bpsStringReplacerText input {background-color: #f2fdfd;}
 
@@ -510,7 +547,7 @@ font-family:Arial, Helvetica, sans-serif;
 	margin:1px;
 	}
 
-.wp-dialog .ui-dialog-content{
+.wp-dialog .ui-dialog-content {
 	position:relative;
 	border:0;
 	padding:0px 10px 0px 10px;;
@@ -519,7 +556,8 @@ font-family:Arial, Helvetica, sans-serif;
 	zoom:1;
 	}
 
-.wp-dialog .ui-dialog-buttonpane{
+/* bottom pane */
+.wp-dialog .ui-dialog-buttonpane {
 	text-align:left;
 	border-width:1px 0 0 0;
 	background:url('../images/table_title_bg.png') repeat;
@@ -534,18 +572,19 @@ font-family:Arial, Helvetica, sans-serif;
 .wp-dialog .ui-resizable-se{width:20px;height:20px;right:0px;bottom:0px;}
 .ui-draggable .ui-dialog-titlebar{cursor:move;}
 .wp-dialog{border:1px solid #999;-moz-box-shadow:0 0 16px rgba(0,0,0,0.3);-webkit-box-shadow:0 0 16px rgba(0,0,0,0.3);box-shadow:0 0 16px rgba(0,0,0,0.3);}
+.wp-dialog .ui-dialog-titlebar-close .ui-button-text { visibility:hidden; } /* important - this hides the duplicate close button */
 .wp-dialog .ui-button-text {font-size:11px; font-weight:bold;}
-/* .wp-dialog .ui-button { background-image:none;} */
 .wp-dialog .ui-button { background:url('../images/close-button.png') no-repeat -3px -3px;}
 
-.wp-dialog .ui-dialog-title{
+/* this is the top pane */
+.wp-dialog .ui-dialog-title {
 	display:block;
-	margin-top:14px;
+	margin-top:0px;
 	text-align:center;
 	padding:7px 0px 0px 0px;
 	}
 
-.wp-dialog .ui-dialog-titlebar{
+.wp-dialog .ui-dialog-titlebar {
 	padding:0 1em;
 	/* background-color:#444; */
 	background:url('../images/table_title_bg.png') repeat;
@@ -558,15 +597,15 @@ font-family:Arial, Helvetica, sans-serif;
 
 .wp-dialog{-moz-border-radius-topleft:4px;-webkit-border-top-left-radius:4px;-khtml-border-top-left-radius:4px;border-top-left-radius:4px;-moz-border-radius-topright:4px;-webkit-border-top-right-radius:4px;-khtml-border-top-right-radius:4px;border-top-right-radius:4px;}.wp-dialog .ui-dialog-titlebar{-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;}
 
-/* this is the top right corner X button */
-.wp-dialog .ui-dialog-titlebar-close{
+/* this is the top right corner X button , .wp-dialog .ui-dialog-titlebar-close .ui-button-text */
+.wp-dialog .ui-dialog-titlebar-close {
 	position:absolute;
 	width:29px;
 	height:16px;
 	top:6px;
 	right:6px;
-	background:url('../images/buttons.gif') no-repeat -87px -16px;
+	background:url('../images/buttons.gif') no-repeat -88px -18px;
 	padding:0;
 	}
 
-.wp-dialog .ui-dialog-titlebar-close:hover,.wp-dialog .ui-dialog-titlebar-close:focus{background-position:-86px -32px;}.ui-widget-overlay{background-color:#000;opacity:.6;filter:alpha(opacity=60);}
+.wp-dialog .ui-dialog-titlebar-close:hover,.wp-dialog .ui-dialog-titlebar-close:focus{background-position:-88px -34px;}.ui-widget-overlay{background-color:#000;opacity:.6;filter:alpha(opacity=60);}

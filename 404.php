@@ -2,11 +2,11 @@
 <?php 
 // Copy this logging code from BEGIN COPY CODE above to END COPY CODE below and paste it right after <?php get_header(); > in
 // your Theme's 404.php template file located in your themes folder /wp-content/themes/your-theme-folder-name/404.php.
+$bpsProLog = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
+$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), strtotime($date)); 	
+$hostname = @gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$bpsProLog = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
-	$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), strtotime($date)); 	
-	$hostname = @gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
 	$fh = fopen($bpsProLog, 'a');
  	@fwrite($fh, "\r\n>>>>>>>>>>> 404 POST Request Error Logged - $timestamp <<<<<<<<<<<\r\n");

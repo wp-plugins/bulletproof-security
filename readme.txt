@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.2 
+Stable tag: .48.3 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -158,22 +158,19 @@ be altered, modified or changed. Activating BulletProof Modes again after upgrad
 
 Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-security-free/" title="BulletProof Security Forum" rel="nofollow" target="_blank">BulletProof Security Forum.</a>
 
-= Does BulletProof Security work on every type of Server? =
+= BulletProof Security Server Compatibilty - Linux Hosting =
 
-Compatible With:
-* Apache CGI configured Servers
-* Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
-* Nginx frontend Server with Apache backend Server
-* LiteSpeed Servers
+* Compatible with Apache CGI configured Servers
+* Compatible with Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
+* Compatible with Nginx frontend Server with Apache backend Server
+* Compatible with LiteSpeed Servers
+* NOT Compatible with Windows IIS Servers - Windows Hosting
 
 BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. BPS is compatible with Apache Linux Servers, 
 LiteSpeed Servers, Nginx Servers (if the Nginx Server is the frontend Server and Apache Linux Server is the backend Server). If you do not know what type of Server 
 you have you can check your Server Type and Operating System on the BPS System Info page.
 
-NOT Compatible With:
-* Windows IIS Servers
-
-= Does BulletProof Security Work on Windows IIS Servers? =
+= Will BulletProof Security Work at all on Windows IIS Servers/Windows Hosting? =
 
 Yes and No. .htaccess files are only used on Linux based hosting. You can install BulletProof Security if you have a Windows IIS
 hosted website to use the additional features in BPS, but you cannot Activate BulletProof Modes and use .htaccess files on Windows Hosting.
@@ -185,18 +182,18 @@ If you are using both Apache and Nginx together and Nginx is the frontend webser
 used to process PHP then BulletProof Security will work on this type of combined Server Configuration. If you are only
 using Nginx then an .htaccess file will not work. Nginx has its own rewrite module - HttpRewriteModule and the mod_rewrite equivalent
 of an .htaccess file has similar, but different coding and is added to an Nginx Server config file.
-Note: If you are not familiar with Nginx, then it should be noted that Nginx does not have a PHP module like apache’s mod_php, 
+Note: If you are not familiar with Nginx, then it should be noted that Nginx does not have a PHP module like Apache's mod_php, 
 instead you either need to build PHP with FPM (ie: php-fpm/fastcgi), or you need to pass the request to something that can handle PHP.
 
 = Are there any known issues or conflicts with other WordPress Plugins or Themes? =
 
-Occaisonally issues or conflicts do occur with other plugins, but they are always quickly resolved. BPS is compatible with all
-other Plugins and Themes. An .htaccess bypass / skip rule is all that is required to allow a plugin to do something that is blocked by BPS.
+Occasionally issues or conflicts do occur with other plugins, but they are always quickly resolved. BPS is compatible with all
+other Plugins and Themes. An .htaccess bypass / skip rule is all that is required to allow a plugin or theme to do something that is blocked by BPS.
 Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/" title="BPS Plugin Testing and Fixes" rel="nofollow" target="_blank">Plugin Compatibility Testing and Fixes</a> page for the latest plugin bypass / skip rules.
 
 = I am seeing Security Log entries in my BulletProof Security Log. What do they mean? =
 
-Your Security Log will log 400, 403 and 404 (requires copying the 404 logging code to your Theme\'s 404.php Template) Errors. 
+Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. 
 The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 
 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS Pro 
 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file.
@@ -205,7 +202,7 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 
 * 400 Bad Request - The request could not be understood by the server due to malformed syntax.
 * 403 Forbidden - The Server understood the request, but is refusing to fulfill it.
-* 404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given of whether the condition is temporary or permanent.
+* 404 Not Found - The server has not found anything matching the Request-URI / URL. No indication is given to whether the condition is temporary or permanent.
 
 = What is the difference between BulletProof Security free and BulletProof Security Pro? =
 
@@ -233,12 +230,16 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 * Base64 Decoder / Encoder...
 * <a href="http://www.ait-pro.com/aitpro-blog/3395/bulletproof-security-pro/bps-free-vs-bps-pro-feature-comparison/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
-= Is BulletProof Security Network / MU / Multisite Compatible? =
+= Is BulletProof Security Network / Multisite Compatible? =
 
-Yes. BulletProof Security contains AutoMagic buttons for Network / MU / Multisite websites. Both sub-directory and sub-domain Master .htaccess 
-code is written / created for your specific Network / MU site. BulletProof Modes should only be Activated on the Primary site. All sub sites 
-are virtual and there is no need to Activate BulletProof Modes on sub sites. This will actually screw up your Primary site. BPS allows only 
-Super Admins to see the BPS menus in sub sites. BPS also works with Network / MU Domain Mapping.
+Yes. BulletProof Security contains AutoMagic buttons for Network / Multisite websites. Both sub-directory and sub-domain Master .htaccess 
+code is written / created for your specific Network / Multisite site. BulletProof Modes should ONLY be Activated on the Primary site to automatically 
+protect all sub sites. Sub sites are virtual. DO NOT Activate BulletProof Modes on sub sites. BPS allows only Super Admins to see the BPS menus 
+in sub sites. BulletProof Security also works with Network / Multisite Domain Mapping.
+
+= Is BulletProof Security BuddyPress Compatible? =
+
+Yes. BulletProof Security works with all BuddyPress site types.
 
 = Is BulletProof Security Compatible with subdomain websites and subdirectory websites? =
 
@@ -253,7 +254,7 @@ required to automatically create your Master .htaccess security files for your w
 BulletProof Security also offers full manual control of editing the .htaccess files using the built-in File Editor. BulletProof Security is 
 designed with everyone in mind: regular folks, Designers, Developers and Coders. BulletProof Security is designed to work with every type 
 of WordPress installation: Single websites, subfolder websites, subdomain websites, "Giving WordPress its Own Directory" websites, 
-Network / MU subdirectory websites and Network / MU subdomain websites. BulletProof Security will automatically create the correct Master 
+Network / Multisite subdirectory websites and Network / Multisite subdomain websites. BulletProof Security will automatically create the correct Master 
 .htaccess files for your website when you click the AutoMagic buttons. If you prefer to do everything manually then you would edit your 
 .htaccess using the built-in .htaccess File Editor instead of using Automagic to automatically create your .htaccess files.
 
@@ -291,6 +292,10 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 4. BulletProof Security - Edit/Upload/Download page
 
 == Changelog ==
+
+= .48.3 =
+* jQuery Code changes for the new jQuery version in WordPress 3.6
+* Enjoy!
 
 = .48.2 =
 * Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
@@ -414,7 +419,7 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 * .htaccess Slash-Jack filter modified
 * Several new pop up confirm messages have been added throughout BPS for forms that perform critical operations
 * Several new SAPI types have been added to CGI and DSO checking
-* AutoMagic for Network / MU sub domain sites is no longer writing the wp-admin forbid coding
+* AutoMagic for Network / Multisite sub domain sites is no longer writing the wp-admin forbid coding
 * Link to Sucuri Malware Website Scanner added
 * BPS is Forbidding Thumbnailer Scripts by Default
 * To enable Thumbnailer Scritps see root .htaccess file
@@ -431,8 +436,8 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 = .46.5 =
 * Massive amount of new security filters
 * Complete restructuring of how .htaccess Rewriting is processed to work with WP
-* Network / MU AutoMagic buttons added
-* Network / MU code added for Super Admins - display BPS menus to Super Admins only
+* Network / Multisite AutoMagic buttons added
+* Network / Multisite code added for Super Admins - display BPS menus to Super Admins only
 * New System Info information added
 * File permission checking and recommendations for CGI or DSO - SAPI detection
 * File Lock / Unlock buttons - Read Only root .htaccess - CGI / DSO SAPI detection
@@ -442,7 +447,7 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 * Enjoy!
 
 = .46.4 =
-* Network / MU detect with additional help info
+* Network / Multisite detect with additional help info
 * chmod 0644 added to copy function for default, secure and wp-admin htaccess files
 * Fixed CSS display issues for WP versions 3.2+
 * Replaced PP donate link with BPS Pro Upgrade link
@@ -611,6 +616,10 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.3 =
+* jQuery Code changes for the new jQuery version in WordPress 3.6
+* Enjoy!
+
 = .48.2 =
 * Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
 * Bug fix: ErrorDocument 401 default added/removed on Turn Error Logging On/Off
@@ -677,7 +686,11 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.2
+What's New in .48.3
+
+= .48.3 =
+* jQuery Code changes for the new jQuery version in WordPress 3.6
+* Enjoy!
 
 = .48.2 =
 * Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
