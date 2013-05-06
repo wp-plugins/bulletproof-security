@@ -1,20 +1,29 @@
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log
+Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.3 
+Stable tag: .48.4 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
 == Description ==
+
+= htaccess Core Website Security =
 
 WordPress Website Security Protection: BulletProof Security protects your WordPress website against XSS, RFI, CRLF, CSRF, Base64, 
 Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, 
 bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. Security Logging. HTTP Error Logging.
 One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... 
 System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading.
+
+= Login Security & Monitoring Website Security =
+
+Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Email alerting options allow you to choose 
+5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator 
+Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or Do Not Send Email Alerts.
+See BulletProof Security Login Security & Monitoring Features for additional features and options.
 
 = Why is .htaccess Website Security So Much Better Than Any Other Type of Website Security? =
 
@@ -61,7 +70,7 @@ have additional website security measures in place as a standard. BulletProof Se
 * If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
 * Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
 
-= BulletProof Security Features =
+= BulletProof Security htaccess Core Features =
 
 * One-click .htaccess website security protection from within the WP Dashboard
 * .htaccess security protection against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts
@@ -102,18 +111,29 @@ have additional website security measures in place as a standard. BulletProof Se
 * HUD Success / Error message display
 * i18n Language Translation coding
 
+= BulletProof Security Login Security & Monitoring Features =
+
+* Log All User Account Logins or Log Only User Account Lockouts
+* Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
+* Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
+* Login Security Additional Options: Max Login Attempts, Automatic Lockout Time, Manual Lockout Time, Max DB Rows To Show, Turn On/Turn Off
+* Dynamic DB Form: Lock, Unlock, Delete
+* Enhanced Search: Allows you to search all of the Login Security database rows/Fields
+* Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
+* Please click the Login Security Blue Read Me help button for full descriptions of all features and options.
+
 == Installation ==
 
-1. Install, activate plugin, click AutoMagic buttons and Activate BulletProof Modes.
+1. Install, activate plugin, click AutoMagic buttons, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
 2. Download Installation:
 3. Download the bulletproof-security.zip file to your computer and unzip it.
 4. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
-5. Activate plugin, click AutoMagic buttons and Activate BulletProof Modes.
+5. Activate plugin, click AutoMagic buttons, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
 6. Enjoy!
 
 == Frequently Asked Questions ==
 
-= How does the BulletProof Security Plugin work? =
+= How does the BulletProof Security Plugin htaccess Core work? =
 
 The BulletProof Security Plugin allows you to instantly create and activate .htaccess website security with 
 one click (ok maybe a few clicks) for your website without having to know anything about .htaccess files. The Master 
@@ -122,13 +142,32 @@ or to configure. Click the AutoMagic buttons (creates customized Master .htacces
 the customized Master .htaccess files to your root and wp-admin folders). BPS has built-in Backup and Restore and 
 an .htaccess File Editor for full manual editing control as well. BulletProof Website Security fast and simple. Enjoy!
 
-= Do I need to understand .htaccess code in order to use the BulletProof Security Plugin? =
+= How does the BulletProof Security Plugin Login Security & Monitoring work? =
+
+BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or 
+Log Only User Account Lockouts. The Dynamic DB Logging For has 3 options: Lock, Unlock or Delete database rows. 
+The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate 
+database tables. If you lock a User Account then BPS Pro will enforce that lock on that User Account and the User will not 
+be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security 
+database table does NOT delete the User Account from the WordPress Users database table. When you delete a User Account it is 
+pretty much the same thing as unlocking a User Account. To delete actual User Accounts you would go to the WordPress Users page 
+and delete that User Account.
+
+= What do I do if my User Account is locked out? =
+
+A stand alone Login Security Unlock User Account Form has been created that allows you to Unlock locked User Accounts outside 
+of your WordPress Dashboard. To use this stand alone script download it from this BulletProof Security Pro plugin 
+folder - /wp-content/plugins/bulletproof-security/admin/htaccess/bpsunlock.php and then upload it to your website root folder. 
+Then type in the path to the bpsunlock.php file in your Browser. Example: http://www.example.com/bpsunlock.php. The stand alone 
+script displays step by step instructions on how to use it.
+
+= Do I need to understand .htaccess code in order to use the BulletProof Security Plugin htaccess Core? =
 
 No, The .htaccess file creation is automated in BulletProof Security. Everything is automatically done for you.
 You do not need to know or understand anything about .htaccess website security files in order to use the 
 BulletProof Security plugin. Extensive help information can be found in the Blue Read Me help buttons in BPS.
 
-= What do I do if I cannot log back into my website? =
+= What do I do if I cannot log back into my website due to an htaccess file problem? =
 
 If you accidentally activated BulletProof Modes without first clicking the AutoMagic buttons or if you put your 
 website in Maintenance Mode and your IP address has been changed by your ISP and you cannot log back into 
@@ -211,6 +250,7 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 * .htaccess Website Security Protection
 * Security Logging
 * HTTP Error Logging
+* Login Security & Monitoring
 
 = BulletProof Security Pro Feature Highlights =
 
@@ -221,6 +261,7 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 * Uploads Folder Anti-Exploit Guard
 * .htaccess Website Security
 * Custom php.ini Website Security
+* Login Security & Monitoring w/Dashboard Alerting and Status Display
 * F-Lock - Read Only File Locking
 * Security Logging
 * HTTP Error Logging
@@ -290,8 +331,21 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 2. BulletProof Security - Security Status page
 3. BulletProof Security - System Info page
 4. BulletProof Security - Edit/Upload/Download page
+5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .48.4 =
+* Login Security & Monitoring
+* Log All User Account Logins or Log Only User Account Lockouts
+* Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
+* Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
+* Login Security Additional Options: Max Login Attempts, Automatic Lockout Time, Manual Lockout Time, Max DB Rows To Show, Turn On/Turn Off
+* Dynamic DB Form: Lock, Unlock, Delete
+* Enhanced Search: Allows you to search all of the Login Security database rows/Fields
+* Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
+* Please click the Login Security Blue Read Me help button for full descriptions of all features and options.
+* Enjoy!
 
 = .48.3 =
 * jQuery Code changes for the new jQuery version in WordPress 3.6
@@ -616,6 +670,18 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.4 =
+* Login Security & Monitoring
+* Log All User Account Logins or Log Only User Account Lockouts
+* Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
+* Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
+* Login Security Additional Options: Max Login Attempts, Automatic Lockout Time, Manual Lockout Time, Max DB Rows To Show, Turn On/Turn Off
+* Dynamic DB Form: Lock, Unlock, Delete
+* Enhanced Search: Allows you to search all of the Login Security database rows/Fields
+* Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
+* Please click the Login Security Blue Read Me help button for full descriptions of all features and options.
+* Enjoy!
+
 = .48.3 =
 * jQuery Code changes for the new jQuery version in WordPress 3.6
 * Enjoy!
@@ -686,24 +752,16 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.3
+What's New in .48.4
 
-= .48.3 =
-* jQuery Code changes for the new jQuery version in WordPress 3.6
-* Enjoy!
-
-= .48.2 =
-* Bug fix: Turn On/Off Error logging pattern match correction to include all possible scenarios
-* Bug fix: ErrorDocument 401 default added/removed on Turn Error Logging On/Off
-
-= .48.1 =
-* Security Log page - Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log:
-If a particular User Agent/Bot is generating excessive log entries you can add it to Add User Agents/Bots to Ignore/Not Log tool and that User Agent/Bot will no longer be logged. See the Blue Read Me help button on the Security Log page for additional help info. Adding or Removing User Agents/Bots adds or removes User Agents/Bots to your Database and also writes new code to the 403.php Security Logging template. The 403.php Security Logging file is where the check occurs whether or not to log or not log a User Agent/Bot. It would be foolish and costly to website performance to have your WordPress database handle the task/function/burden of checking which User Agents/Bots to log or not log. WordPress database queries are the most resource draining function of a WordPress website. The more database queries that are happening at the same time on your website the slower your website will perform and load. For this reason the Security Logging check is done from code in the 403.php Security Logging file.
-
-* New htaccess code:
-ErrorDocument 401 default htaccess code is automatically added to the root .htaccess file on BPS upgrade (if your root .htaccess file is writeable). This htaccess code fixes issues with password protected directories generating 404 Error not found errors. If your root .htaccess file is not writeable then you will need to change the root .htaccess file permissions temporarily to allow BPS to automatically update your root .htaccess file and then change the root .htaccess file permissions back to what they were.
- 	 
-* Coding Improvements & Enhancements:
-Of course, but why not mention it anyway.
-
+= .48.4 =
+* Login Security & Monitoring
+* Log All User Account Logins or Log Only User Account Lockouts
+* Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
+* Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
+* Login Security Additional Options: Max Login Attempts, Automatic Lockout Time, Manual Lockout Time, Max DB Rows To Show, Turn On/Turn Off
+* Dynamic DB Form: Lock, Unlock, Delete
+* Enhanced Search: Allows you to search all of the Login Security database rows/Fields
+* Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
+* Please click the Login Security Blue Read Me help button for full descriptions of all features and options.
 * Enjoy!

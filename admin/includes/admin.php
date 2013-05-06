@@ -9,6 +9,7 @@ if (!function_exists ('add_action')) {
 function bulletproof_security_admin_init() {
 global $wpdb;
 $Stable_name = $wpdb->prefix . "bpspro_seclog_ignore";
+$Ltable_name = $wpdb->prefix . "bpspro_login_security";
 
 	if ($wpdb->get_var("SHOW TABLES LIKE '$Stable_name'") != $Stable_name) {
 
@@ -23,14 +24,40 @@ $Stable_name = $wpdb->prefix . "bpspro_seclog_ignore";
 	dbDelta($sql);
 	}
 
+	if ($wpdb->get_var("SHOW TABLES LIKE '$Ltable_name'") != $Ltable_name) {
+
+	$sql = "CREATE TABLE $Ltable_name (
+  id mediumint(9) NOT NULL AUTO_INCREMENT,
+  status VARCHAR(60) DEFAULT '' NOT NULL,
+  user_id VARCHAR(60) DEFAULT '' NOT NULL,
+  username VARCHAR(60) DEFAULT '' NOT NULL,
+  public_name VARCHAR(250) DEFAULT '' NOT NULL,
+  email VARCHAR(100) DEFAULT '' NOT NULL,
+  role VARCHAR(15) DEFAULT '' NOT NULL,
+  human_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  login_time VARCHAR(10) DEFAULT '' NOT NULL,
+  lockout_time VARCHAR(10) DEFAULT '' NOT NULL,
+  failed_logins VARCHAR(2) DEFAULT '' NOT NULL,
+  ip_address VARCHAR(45) DEFAULT '' NOT NULL,
+  hostname VARCHAR(60) DEFAULT '' NOT NULL,
+  request_uri VARCHAR(255) DEFAULT '' NOT NULL,
+  UNIQUE KEY id (id)
+    );";
+
+	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	dbDelta($sql);
+	}
+
 	// whitelist BPS DB options 
 	register_setting('bulletproof_security_options', 'bulletproof_security_options', 'bulletproof_security_options_validate');
 	register_setting('bulletproof_security_options_autolock', 'bulletproof_security_options_autolock', 'bulletproof_security_options_validate_autolock');
 	register_setting('bulletproof_security_options_customcode', 'bulletproof_security_options_customcode', 'bulletproof_security_options_validate_customcode');
 	register_setting('bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_validate_customcode_WPA');
+	register_setting('bulletproof_security_options_login_security', 'bulletproof_security_options_login_security', 'bulletproof_security_options_validate_login_security');
 	register_setting('bulletproof_security_options_mynotes', 'bulletproof_security_options_mynotes', 'bulletproof_security_options_validate_mynotes');
 	register_setting('bulletproof_security_options_maint', 'bulletproof_security_options_maint', 'bulletproof_security_options_validate_maint');
-			
+	register_setting('bulletproof_security_options_email', 'bulletproof_security_options_email', 'bulletproof_security_options_validate_email');			
+
 	// Register BPS js
 	wp_register_script( 'bps-js', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin-3.js'));
 				
@@ -67,7 +94,7 @@ $Stable_name = $wpdb->prefix . "bpspro_seclog_ignore";
 
 	// Load scripts and styles only on BPS specified pages
 	add_action('load-bulletproof-security/admin/options.php', 'bulletproof_security_load_settings_page');
-
+	add_action('load-bulletproof-security/admin/login/login.php', 'bulletproof_security_load_settings_page_login');
 }
 
 // BPS Menu
@@ -78,7 +105,8 @@ function bulletproof_security_admin_menu() {
 		} else {
 	//if (function_exists('add_menu_page')){
 	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
-	add_submenu_page('bulletproof-security/admin/options.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Settings', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php' );
+	add_submenu_page('bulletproof-security/admin/options.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('htaccess Core', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php' );
+	add_submenu_page('bulletproof-security/admin/options.php', __('Login Security ~ BPS Pro Login Security', 'bulletproof-security'), __('Login Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php' );
 }}
 
 // Add Plugins here that load their js and css scripts throughout other plugins pages and the WP Dashboard
@@ -88,7 +116,6 @@ $plugin_var1 = 'smart-slideshow-widget/smart-slideshow-widget.php';
 $plugin_var2 = 'facebook-members/facebook-members.php';
 $plugin_var3 = 'easyrotator-for-wordpress/easyrotator.php';
 $return_var = in_array( $plugin_var1 || $plugin_var2 || $plugin_var3, apply_filters('active_plugins', get_option('active_plugins')));
-
 
 // Loads Settings for H-Core and P-Security
 // Enqueue BPS scripts and styles
@@ -124,11 +151,44 @@ global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_
 	}
 }
 
+// Loads Settings for BPS Pro Login Security - Enqueue BPS scripts and styles
+function bulletproof_security_load_settings_page_login() {
+global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_var;
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-ui-tabs');
+	wp_enqueue_script('jquery-ui-dialog');
+	wp_enqueue_script('jquery-form');
+	wp_enqueue_script('jquery-ui-accordion');
+	wp_enqueue_script('jquery-effects-core');
+	wp_enqueue_script('jquery-effects-blind');
+	wp_enqueue_script('jquery-effects-explode');
+	wp_enqueue_script('bps-js');
+	// Enqueue BPS stylesheet
+	wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-3.css'));	
+	
+	if ( $return_var == 1) { // 1 equals active	
+	// Block SSW from loading its scripts in BPS Pro pages and breaking BPS Pro scripts/menus/etc
+	wp_dequeue_script( 'jQuery-UI-Effects', plugins_url('/smart-slideshow-widget/js/jquery-ui.min.js') );
+	wp_dequeue_script( 'SSW', plugins_url('/smart-slideshow-widget/js/smart-slideshow-widget.js') );
+
+	// Block Facebook Members plugin from loading its scripts in BPS Pro pages and breaking BPS Pro scripts/menus/etc
+	wp_dequeue_script( 'facebook-plugin-script4', plugins_url('/facebook-members/js/jquery.powertip.js') );
+	wp_dequeue_script( 'facebook-plugin-script3', plugins_url('/facebook-members/js/myscript.js') );  	
+	wp_dequeue_style( 'facebook-plugin-css', plugins_url('/facebook-members/css/jquery-ui.css') );
+	wp_dequeue_style( 'facebook-tip-plugin-css', plugins_url('/facebook-members/css/jquery.powertip.css') );	
+	wp_dequeue_style( 'facebook-member-plugin-css', plugins_url('/facebook-members/css/facebook-members.css') );
+
+	// Block EasyRotator for WordPress plugin from load scripts in BPS Pro pages and breaking BPS Pro scripts/menus/etc
+	wp_dequeue_style( 'easyrotator-plugin-admin-css', plugins_url('/easyrotator-for-wordpress/css/easyrotator_admin.css') );	
+	wp_dequeue_style( 'jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+	}
+}
+
 function bulletproof_security_install() {
 global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.48.3', '<') )
+	if ( version_compare($previous_install['version'], '.48.4', '<') )
 	remove_role('denied');
 	}
 }
@@ -139,6 +199,7 @@ function bulletproof_security_deactivation() {
 }
 
 // Uninstall - do not unlink .htaccess files on uninstall to prevent catastrophic user errors
+// add a new option at some point - Delete everything or do not delete anything for BPS Pro Upgrades
 function bulletproof_security_uninstall() {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 	$options = get_option('bulletproof_security_options');
@@ -148,6 +209,7 @@ function bulletproof_security_uninstall() {
 	delete_option('bulletproof_security_options_maint');
 	delete_option('bulletproof_security_options_mynotes');
 	delete_option('bulletproof_security_options_autolock');
+	// delete_option('bulletproof_security_options_login_security'); // do not delete on uninstall for Pro Upgrade Users
 }
 
 // Validate BPS options 
@@ -205,4 +267,28 @@ function bulletproof_security_options_validate_mynotes($input) {
 	return $options;  
 }
 
+// Validate BPS options - Login Security & Monitoring
+function bulletproof_security_options_validate_login_security($input) {  
+	$BPSoptions = get_option('bulletproof_security_options_login_security');  
+	$BPSoptions['bps_max_logins'] = trim(wp_filter_nohtml_kses($input['bps_max_logins']));
+	$BPSoptions['bps_lockout_duration'] = trim(wp_filter_nohtml_kses($input['bps_lockout_duration']));
+	$BPSoptions['bps_manual_lockout_duration'] = trim(wp_filter_nohtml_kses($input['bps_manual_lockout_duration']));
+	$BPSoptions['bps_max_db_rows_display'] = trim(wp_filter_nohtml_kses($input['bps_max_db_rows_display']));
+	$BPSoptions['bps_login_security_OnOff'] = wp_filter_nohtml_kses($input['bps_login_security_OnOff']);
+	$BPSoptions['bps_login_security_logging'] = wp_filter_nohtml_kses($input['bps_login_security_logging']);
+		
+	return $BPSoptions;  
+}
+
+// Validate BPS options - BPS Free Email Alerts
+function bulletproof_security_options_validate_email($input) {  
+	$options = get_option('bulletproof_security_options_email');  
+	$options['bps_send_email_to'] = trim(wp_filter_nohtml_kses($input['bps_send_email_to']));
+	$options['bps_send_email_from'] = trim(wp_filter_nohtml_kses($input['bps_send_email_from']));
+	$options['bps_send_email_cc'] = trim(wp_filter_nohtml_kses($input['bps_send_email_cc']));
+	$options['bps_send_email_bcc'] = trim(wp_filter_nohtml_kses($input['bps_send_email_bcc']));
+	$options['bps_login_security_email'] = wp_filter_nohtml_kses($input['bps_login_security_email']);
+		
+	return $options;  
+}
 ?>
