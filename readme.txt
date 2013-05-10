@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.4 
+Stable tag: .48.5 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -334,6 +334,10 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .48.5 =
+* Bug fix: Conditional wrap added to /includes/login-security.php
+* Enjoy!
 
 = .48.4 =
 * Login Security & Monitoring
@@ -670,6 +674,10 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.5 =
+* Bug fix: Conditional wrap added to /includes/login-security.php
+* Enjoy!
+
 = .48.4 =
 * Login Security & Monitoring
 * Log All User Account Logins or Log Only User Account Lockouts
@@ -752,7 +760,11 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.4
+What's New in .48.5
+
+= .48.5 =
+* Bug fix: Conditional wrap added to /includes/login-security.php
+* Enjoy!
 
 = .48.4 =
 * Login Security & Monitoring

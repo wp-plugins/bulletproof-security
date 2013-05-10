@@ -1,6 +1,8 @@
 <?php
-
-add_filter('authenticate', 'bpspro_wp_authenticate_username_password', 20, 3);
+$BPSoptions = get_option('bulletproof_security_options_login_security');
+	if ( $BPSoptions['bps_login_security_OnOff'] == 'On') {
+		add_filter('authenticate', 'bpspro_wp_authenticate_username_password', 20, 3);
+	}
 
 function bpspro_wp_authenticate_username_password( $user, $username, $password ) {
 global $wpdb;
@@ -20,7 +22,6 @@ $bps_email_cc = $options['bps_send_email_cc'];
 $bps_email_bcc = $options['bps_send_email_bcc'];
 $justUrl = get_site_url();
 $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), strtotime($date));
-$LSA_Reset_file = WP_CONTENT_DIR . '/bps-backup/master-backups/Login-Security-Alert-Reset.txt';
 
 	$headers = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
@@ -56,10 +57,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			$failed_logins ='0';
 		
 			if ( $insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) ) ) {
-			
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}			
 			
 			if ( $options['bps_login_security_email'] == 'anyUserLoginLock') {
 				$message = '<p><font color="blue"><strong>A User Has Logged in</strong></font></p>';
@@ -102,10 +99,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			
 			if ( $insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) ) ) {
 			
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}
-
 			if ( $options['bps_login_security_email'] == 'anyUserLoginLock') {
 				$message = '<p><font color="blue"><strong>A User Has Logged in</strong></font></p>';
 				$message .=  '<p>To take further action go to the BPS Pro Login Security page. If you do not want to receive further email alerts go to S-Monitor and change or turn off Login Security Email Alerts.</p>';
@@ -169,9 +162,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 			if ( $insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) ) ) {	
 
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}			
 			} // end $insert_rows = $wpdb->insert...
 		} // end if ( $wpdb->num_rows == 0...	
 
@@ -182,10 +172,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				$failed_logins = '0';
 
 			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
-			
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}
 			
 			if ( $options['bps_login_security_email'] == 'anyUserLoginLock') {
 				$message = '<p><font color="blue"><strong>A User Has Logged in</strong></font></p>';
@@ -301,9 +287,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
 		
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}
 			} // end if ( $update_rows = $wpdb->update...
 		} // end if ( $wpdb->num_rows != 0...
 } // end $BPSoptions['bps_login_security_logging'] == 'logAll') {...
@@ -359,9 +342,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 			if ( $insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) ) ) {	
 
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}
 			} // end if ( $insert_rows = $wpdb->insert...
 		} // end if ( $wpdb->num_rows == 0...	
 
@@ -373,10 +353,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
 
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}
-			
 			if ( $options['bps_login_security_email'] == 'anyUserLoginLock') {
 				$message = '<p><font color="blue"><strong>A User Has Logged in</strong></font></p>';
 				$message .=  '<p>To take further action go to the BPS Pro Login Security page. If you do not want to receive further email alerts go to S-Monitor and change or turn off Login Security Email Alerts.</p>';
@@ -491,9 +467,6 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			
 			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
 		
-			if ( file_exists($LSA_Reset_file) ) {			
-				file_put_contents($LSA_Reset_file, "Login Security Alerts");
-			}		
 			} // end if ( $update_rows = $wpdb->update...
 		} // end if ( $wpdb->num_rows != 0...
 } // end $BPSoptions['bps_login_security_logging'] == 'logLockouts') {...
@@ -502,7 +475,10 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 ****************************************************
 // WordPress Standard Authentication Processing Code
 ****************************************************
+// Custom options for error message display will be added here in a later version of BPS
 */
+if ( $BPSoptions['bps_login_security_OnOff'] == 'On') {
+
 	if ( !$user )
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid username. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 
@@ -517,5 +493,5 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 	return $user;
 }
-
+}
 ?>

@@ -532,8 +532,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security')."$bps_auto_write_secure_file" . __(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here', 'bulletproof-security').'</a>'.__(' for more help info.', 'bulletproof-security').'</strong><br>';
 
-$bps_secure_content_top = "#   BULLETPROOF .48.4 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .48.4 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .48.5 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .48.5 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -781,7 +781,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .48.4 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_top = "#   BULLETPROOF .48.5 MAINTENANCE  .HTACCESS     \n\n";    
 $bps_maint_content = "# BEGIN WordPress\n\n
 RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
