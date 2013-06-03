@@ -1,6 +1,6 @@
-#   BULLETPROOF .48.5 >>>>>>> SECURE .HTACCESS     
+#   BULLETPROOF .48.6 >>>>>>> SECURE .HTACCESS     
 
-# If you edit the  BULLETPROOF .48.5 >>>>>>> SECURE .HTACCESS text above
+# If you edit the  BULLETPROOF .48.6 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -54,6 +54,7 @@ ErrorDocument 404 /404.php
 # DENY ACCESS TO PROTECTED SERVER FILES - .htaccess, .htpasswd and all file names starting with dot
 RedirectMatch 403 /\..*$
 
+# WP-ADMIN/INCLUDES
 RewriteEngine On
 RewriteBase /
 RewriteRule ^wp-admin/includes/ - [F,L]
@@ -62,6 +63,7 @@ RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
 RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
 RewriteRule ^wp-includes/theme-compat/ - [F,L]
 
+# WP REWRITE LOOP START
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
@@ -111,7 +113,11 @@ RewriteRule . - [S=4]
 RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
 RewriteRule . - [S=3]
 
-# TimThumb Forbid RFI By Host Name But Allow Internal Requests
+# TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE
+# Only Allow Internal File Requests From Your Website
+# To Allow Additional Websites Access to a File Use [OR] as shown below.
+# RewriteCond %{HTTP_REFERER} ^.*YourWebsite.com.* [OR]
+# RewriteCond %{HTTP_REFERER} ^.*AnotherWebsite.com.*
 RewriteCond %{QUERY_STRING} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC,OR]
 RewriteCond %{THE_REQUEST} ^.*(http|https|ftp)(%3A|:)(%2F|/)(%2F|/)(w){0,3}.?(blogger|picasa|blogspot|tsunami|petapolitik|photobucket|imgur|imageshack|wordpress\.com|img\.youtube|tinypic\.com|upload\.wikimedia|kkc|start-thegame).*$ [NC]
 RewriteRule .* index.php [F,L]

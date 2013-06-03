@@ -25,17 +25,25 @@ jQuery(document).ready(function($){
 */
 });
 
-/*
-// BPS Pro jQuery Accordian
+// BPS jQuery Accordian
 jQuery(document).ready(function($){
-    $( "#bps-accordion" ).accordion({
+    $( "#bps-accordion-1" ).accordion({
 		collapsible: true,
 		autoHeight: false,
 		clearStyle: true,
 		heightStyle: "content"
     });
+    // not displayed open by default - slower/smoother animation
+	$( "#bps-accordion-2" ).accordion({
+		active: false,
+		animate: 1500,
+		collapsible: true,
+		autoHeight: false,
+		clearStyle: true,
+		heightStyle: "content"
+    });
+
 });
-*/
 
 /**** Example bits of code to play with later ****
 *****************************************************

@@ -184,6 +184,7 @@
 /*********** jQuery Accordian *****************/
 .bps-accordian-main { border:1px solid #999; background-color:#fff; }
 .bps-accordian-main h3 { color:#fff; width:183px; border:1px solid #999; background-image:url(../images/menu_btn.png); background-repeat: none; }
+.bps-accordian-main-2 h3 { color:#fff; width:280px; border:1px solid #999; background-image:url(../images/menu_btn.png); background-repeat: none; }
 .bps-accordian-main-inner { border:1px solid #999; }
 
 .ui-accordion .ui-accordion-header {
