@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.6 
+Stable tag: .48.7 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -184,17 +184,15 @@ and uses very little/low website resources and very little Server memory. If you
 how much website resource and Server memory each of your plugins is using install the P3 (Plugin Performance Profiler) plugin.
 Both W3 Total Cache and WP Super Cache use .htaccess code to speed up your website.
 
-= When I upgraded/updated BulletProof Security I saw an Alert. What does the Alert mean? =
+= BPS Alert! Your site does not appear to be protected by BulletProof Security. What does the Alert mean? =
 
-When upgrading/updating the BulletProof Security plugin you will see this WP Dashboard Alert. <strong>BPS Alert! Your site does not 
-appear to be protected by BulletProof Security.</strong> As of BulletProof Security .47.2 WP Dashboard Alerts have been added to check 
-your Root and wp-admin .htaccess files to ensure that your website is protected. During the upgrade your .htaccess files will 
-be automatically updated and any new .htaccess security filters will be automatically added to your .htaccess files. In order 
-for BPS to automatically update your htaccess files you will need to stay current with BPS plugin updates and install the latest BPS 
-plugin updates when they are available. Any custom htaccess code or modifications that you have made to your htaccess files will not 
-be altered, modified or changed. Activating BulletProof Modes again after upgrading BPS is no longer necessary.
+When upgrading/updating the BulletProof Security plugin you may see this WP Dashboard Alert. <strong>BPS Alert! Your site does not 
+appear to be protected by BulletProof Security.</strong> There are 2 very common issues/problems that can cause this. The cPanel 
+HotLink Protection Tool issue or the WordPress flush_rewrite_rules function issue. Click this link <a href="http://wordpress.org/support/topic/bps-setup-steps-removal-steps-requirements-and-compatibility/" title="BulletProof Security Forum">Common BPS Issues</a> 
+Note: Any custom htaccess code or modifications that you have made to your htaccess files will not be altered, modified or changed 
+during the auto-update. Activating BulletProof Modes again after upgrading BPS is no longer necessary.
 
-= Where can I find BulletProof Security troubleshooting steps & support? =
+= Where can I find BulletProof Security additional troubleshooting steps & support? =
 
 Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-security-free/" title="BulletProof Security Forum" rel="nofollow" target="_blank">BulletProof Security Forum.</a>
 
@@ -339,6 +337,11 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .48.7 =
+* Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
+* The old Dashboard Alert has caused a lot of confusion so it is now history
+* Enjoy!
 
 = .48.6 =
 * Custom Code Additions: Custom Code now includes additional Text Areas/Text Boxes for every possible section of code in the Root and wp-admin .htaccess files
@@ -687,6 +690,11 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.7 =
+* Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
+* The old Dashboard Alert has caused a lot of confusion so it is now history
+* Enjoy!
+
 = .48.6 =
 * Custom Code Additions: Custom Code now includes additional Text Areas/Text Boxes for every possible section of code in the Root and wp-admin .htaccess files
 * A jQuery Accordian has been added to Custom Code to ensure that the correct Custom Code Text Areas/Text Boxes are being used, better functionality and visual enhancement.
@@ -781,7 +789,12 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.6
+What's New in .48.7
+
+= .48.7 =
+* Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
+* The old Dashboard Alert has caused a lot of confusion so it is now history
+* Enjoy!
 
 = .48.6 =
 * Custom Code Additions: Custom Code now includes additional Text Areas/Text Boxes for every possible section of code in the Root and wp-admin .htaccess files
