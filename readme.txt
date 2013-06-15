@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.7 
+Stable tag: .48.8 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -337,6 +337,11 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .48.8 =
+* Code / Help Text Corrections
+* Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue
+* Enjoy!
 
 = .48.7 =
 * Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
@@ -690,6 +695,11 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.8 =
+* Code / Help Text Corrections
+* Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue
+* Enjoy!
+
 = .48.7 =
 * Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
 * The old Dashboard Alert has caused a lot of confusion so it is now history
@@ -789,7 +799,12 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.7
+What's New in .48.8
+
+= .48.8 =
+* Code / Help Text Corrections
+* Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue
+* Enjoy!
 
 = .48.7 =
 * Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!

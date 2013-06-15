@@ -500,8 +500,8 @@ $bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletP
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security').$bps_auto_write_secure_file.__(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click', 'bulletproof-security').' <a href="http://forum.ait-pro.com/" target="_blank">'.__('HERE', 'bulletproof-security').'</a>'.__(' to go the the BulletProof Security Forum.', 'bulletproof-security').'</strong><br>';
 
 
-$bps_secure_content_top = "#   BULLETPROOF .48.7 >>>>>>> SECURE .HTACCESS     \n
-# If you edit the  BULLETPROOF .48.7 >>>>>>> SECURE .HTACCESS text above
+$bps_secure_content_top = "#   BULLETPROOF .48.8 >>>>>>> SECURE .HTACCESS     \n
+# If you edit the  BULLETPROOF .48.8 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -784,7 +784,7 @@ $bps_string_replace_maint = array(".");
 $bps_get_IP_maint = str_replace($bps_string_replace_maint, "\.", $_SERVER['REMOTE_ADDR']) . "$";
 $bps_get_wp_root_maint = bps_wp_get_root_folder();
 $bps_auto_write_maint_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenance.htaccess';
-$bps_maint_top = "#   BULLETPROOF .48.7 MAINTENANCE  .HTACCESS     \n\n";    
+$bps_maint_top = "#   BULLETPROOF .48.8 MAINTENANCE  .HTACCESS     \n\n";    
 $bps_maint_content = "# BEGIN WordPress
 RewriteEngine On
 RewriteBase $bps_get_wp_root_maint\n
@@ -3096,32 +3096,32 @@ if (isset($_POST['bps-master-wpadmin-backup-htaccess-download']) && current_user
 	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE: Add php.ini handler and/or plugin cache code here', 'bulletproof-security'); ?> </label></strong><br />
 <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('ONLY add valid htaccess code below or text commented out with a pound sign #', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_one]" tabindex="1"><?php echo $options['bps_customcode_one']; ?></textarea><br /><br />
-	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE DIRECTORY LISTING/DIRECTORY INDEX:', 'bulletproof-security'); ?> </label></strong><br />
-<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Show Directory Listing and Directory Index section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
+	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE DO NOT SHOW DIRECTORY LISTING/DIRECTORY INDEX:', 'bulletproof-security'); ?> </label></strong><br />
+<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire DO NOT SHOW DIRECTORY LISTING and DIRECTORY INDEX sections of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_directory_index]" tabindex="1"><?php echo $options['bps_customcode_directory_index']; ?></textarea><br /><br />
 	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE ERROR LOGGING AND TRACKING: Add/Modify Error logging code here', 'bulletproof-security'); ?> </label></strong><br />
-<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Error Logging section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
+<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire ERROR LOGGING AND TRACKING section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_error_logging]" tabindex="1"><?php echo $options['bps_customcode_error_logging']; ?></textarea><br /><br />
 	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE WP-ADMIN/INCLUDES: DO NOT add wp-admin .htaccess code here', 'bulletproof-security'); ?> </label></strong><br />
 <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('Add one pound sign # below to remove the WP-ADMIN/INCLUDES section of code from your root .htaccess file', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_admin_includes]" tabindex="1"><?php echo $options['bps_customcode_admin_includes']; ?></textarea><br /><br />
 	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE WP REWRITE LOOP START: Add www to non-www/non-www to www code here', 'bulletproof-security'); ?> </label></strong><br />
-<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Timthumb section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
+<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire WP REWRITE LOOP START section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_wp_rewrite_start]" tabindex="1"><?php echo $options['bps_customcode_wp_rewrite_start']; ?></textarea><br /><br />
 	<strong><label for="bps-CCode"><?php _e('CUSTOM CODE REQUEST METHODS FILTERED: Whitelist User Agents or remove HEAD here', 'bulletproof-security'); ?> </label></strong><br />
-<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Request Methods Filtered section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
+<strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire REQUEST METHODS FILTERED section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_request_methods]" tabindex="1"><?php echo $options['bps_customcode_request_methods']; ?></textarea><br /><br />
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE PLUGIN SKIP/BYPASS RULES: Add ONLY personal plugin skip/bypass rules here', 'bulletproof-security'); ?> </label></strong><br />
  <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('ONLY add valid htaccess code below or text commented out with a pound sign #', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_two]" tabindex="2"><?php echo $options['bps_customcode_two']; ?></textarea><br /><br />
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE: Add additional Referers and/or misc file names', 'bulletproof-security'); ?> </label></strong><br />
- <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Timthumb section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
+ <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire TIMTHUMB FORBID RFI section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_timthumb_misc]" tabindex="2"><?php echo $options['bps_customcode_timthumb_misc']; ?></textarea><br /><br />
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS: Modify Query String Exploit code here', 'bulletproof-security'); ?> </label></strong><br />
- <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire BPSQSE section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
+ <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire BPSQSE QUERY STRING EXPLOITS section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_bpsqse]" tabindex="2"><?php echo $options['bps_customcode_bpsqse']; ?></textarea><br /><br />
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES: Add or remove files that you want to block or allow access to here', 'bulletproof-security'); ?> </label></strong><br />
- <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire Deny Browser Access section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
+ <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('You MUST copy and paste the entire DENY BROWSER ACCESS section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
     <textarea cols="100" rows="15" name="bulletproof_security_options_customcode[bps_customcode_deny_files]" tabindex="2"><?php echo $options['bps_customcode_deny_files']; ?></textarea><br /><br />
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE BOTTOM HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/BLOCK IP/REDIRECT CODE: Add miscellaneous code here', 'bulletproof-security'); ?> </label></strong><br />
  <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('ONLY add valid htaccess code below or text commented out with a pound sign #', 'bulletproof-security').'</font>'; echo $text; ?> </label></strong><br />
@@ -3141,7 +3141,7 @@ jQuery(document).ready(function($){
 </script>
 </td>
     <td width="50%" valign="top" class="bps-table_cell_help" style="padding:0px 0px 0px 10px;">
-    <div style="margin:60px 0px 0px 0px;"># TURN OFF YOUR SERVER SIGNATURE<br />ServerSignature Off<br /><br /># ADD A PHP HANDLER<br /># If you are using a PHP Handler add your web hosts PHP Handler below<br /><br /><div style="background-color:#FFFF00;padding:3px;"># CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE - Your Custom htaccess code will be created here with AutoMagic</div><br /># DO NOT SHOW DIRECTORY LISTING<br /># If you are getting 500 Errors when activating BPS then comment out Options -Indexes<br /># by adding a # sign in front of it. If there is a typo anywhere in this file you will also see 500 errors.<br />Options -Indexes</div>
+    <div style="margin:50px 0px 0px 0px;"># TURN OFF YOUR SERVER SIGNATURE<br />ServerSignature Off<br /><br /># ADD A PHP HANDLER<br /># If you are using a PHP Handler add your web hosts PHP Handler below<br /><br /><div style="background-color:#FFFF00;padding:3px;"># CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE - Your Custom htaccess code will be created here with AutoMagic</div><br /># DO NOT SHOW DIRECTORY LISTING<br /># If you are getting 500 Errors when activating BPS then comment out Options -Indexes<br /># by adding a # sign in front of it. If there is a typo anywhere in this file you will also see 500 errors.<br />Options -Indexes</div>
 
 <div style="background-color:#FFFF00;margin:135px 0px 0px 0px;padding:3px;"># CUSTOM CODE DIRECTORY LISTING/DIRECTORY INDEX - Your Custom htaccess code will be created here with AutoMagic<br /># DO NOT SHOW DIRECTORY LISTING<br /># If you are getting 500 Errors when activating BPS then comment out Options -Indexes<br /># by adding a # sign in front of it. If there is a typo anywhere in this file you will also see 500 errors.<br />Options -Indexes<br /><br /># DIRECTORY INDEX FORCE INDEX.PHP<br /># Use index.php as default directory index file<br /># index.html will be ignored will not load.<br />DirectoryIndex index.php index.html /index.php</div>
 
@@ -3218,7 +3218,7 @@ jQuery(document).ready(function($){
 
     <div style="margin:195px 0px 0px 0px;"># BEGIN OPTIONAL WP-ADMIN ADDITIONAL SECURITY MEASURES:<br /><br /># BEGIN CUSTOM CODE WPADMIN TOP: Add miscellaneous custom code here<br /><div style="background-color:#FFFF00;padding:3px;"># CCWTOP - Your custom code will be created here when you activate wp-admin BulletProof Mode</div># END CUSTOM CODE WPADMIN TOP<br /><br /># WP-ADMIN DIRECTORY PASSWORD PROTECTION - .htpasswd<br /># The BPS root .htaccess file already has a security rule that blocks access to all</div>
     
-<div style="margin:160px 0px 0px 0px;"># REQUEST METHODS FILTERED<br />RewriteEngine On<br />RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]<br />RewriteRule ^(.*)$ - [F,L]<br /><br /># BEGIN CUSTOM CODE WPADMIN PLUGIN FIXES: Add ONLY WPADMIN personal plugin fixes code here<br /><div style="background-color:#FFFF00;padding:3px;"># CCWPF - Your custom code will be created here when you activate wp-admin BulletProof Mode</div># END CUSTOM CODE WPADMIN PLUGIN FIXES<br /><br /># Allow wp-admin files that are called by plugins<br /># Fix for WP Press This</div>   
+<div style="margin:150px 0px 0px 0px;"># REQUEST METHODS FILTERED<br />RewriteEngine On<br />RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]<br />RewriteRule ^(.*)$ - [F,L]<br /><br /># BEGIN CUSTOM CODE WPADMIN PLUGIN FIXES: Add ONLY WPADMIN personal plugin fixes code here<br /><div style="background-color:#FFFF00;padding:3px;"># CCWPF - Your custom code will be created here when you activate wp-admin BulletProof Mode</div># END CUSTOM CODE WPADMIN PLUGIN FIXES<br /><br /># Allow wp-admin files that are called by plugins<br /># Fix for WP Press This</div>   
 
     <div style="background-color:#FFFF00;margin:130px 0px 0px 0px;padding:3px;"># BEGIN BPSQSE-check BPS QUERY STRING EXPLOITS AND FILTERS<br /># WORDPRESS WILL BREAK IF ALL THE BPSQSE FILTERS ARE DELETED<br />RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]<br />.....<br />.....<br />.....<br />RewriteCond %{QUERY_STRING} (sp_executesql) [NC]<br />RewriteRule ^(.*)$ - [F,L]<br /># END BPSQSE-check BPS QUERY STRING EXPLOITS AND FILTERS</div>
 
@@ -3377,6 +3377,18 @@ jQuery(document).ready(function($){
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr>
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Code / Help Text Corrections: ', 'bulletproof-security'); ?></strong><br /><?php _e('Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue.', 'bulletproof-security'); ?></td>
+  </tr>
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('BPS .48.7', 'bulletproof-security'); ?></strong></td>
+  </tr> 
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><strong><?php _e('Auto-Update Dashboard Alert: ', 'bulletproof-security'); ?></strong><br /><?php _e('The Auto-update Dashboard Alert now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!. The old Dashboard Alert has caused a lot of confusion in the past so it is now history.', 'bulletproof-security'); ?></td>

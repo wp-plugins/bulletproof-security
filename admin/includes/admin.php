@@ -97,13 +97,20 @@ $Ltable_name = $wpdb->prefix . "bpspro_login_security";
 	add_action('load-bulletproof-security/admin/login/login.php', 'bulletproof_security_load_settings_page_login');
 }
 
+function bps_network_remove_menu_pages() {
+	remove_menu_page('bulletproof-security/admin/options.php');
+	remove_submenu_page('bulletproof-security/admin/options.php', 'bulletproof-security/admin/options.php' );
+	remove_submenu_page('bulletproof-security/admin/options.php', 'bulletproof-security/admin/login/login.php' );
+}
+
 // BPS Menu
 function bulletproof_security_admin_menu() {
-	if (is_multisite() && !is_super_admin()) {
-		$bpsSuperAdminsError = 'Only Super Admins can access BPS';
-  		return $bpsSuperAdminsError;
-		} else {
-	//if (function_exists('add_menu_page')){
+	if ( is_multisite() && !is_super_admin() ) {
+
+	add_action( 'admin_menu', 'bps_network_remove_menu_pages' );
+
+	} else {
+
 	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
 	add_submenu_page('bulletproof-security/admin/options.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('htaccess Core', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/options.php' );
 	add_submenu_page('bulletproof-security/admin/options.php', __('Login Security ~ BPS Pro Login Security', 'bulletproof-security'), __('Login Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php' );
@@ -150,7 +157,7 @@ global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_
 	}
 }
 
-// Loads Settings for BPS Pro Login Security
+// Loads Settings for BPS Login Security
 function bulletproof_security_load_settings_page_login() {
 global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_var;
 	wp_enqueue_script('jquery');
@@ -187,7 +194,7 @@ function bulletproof_security_install() {
 global $bulletproof_security;
 	$previous_install = get_option('bulletproof_security_options');
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.48.7', '<') )
+	if ( version_compare($previous_install['version'], '.48.8', '<') )
 	remove_role('denied');
 	}
 }
