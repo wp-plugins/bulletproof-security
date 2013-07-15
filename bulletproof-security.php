@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: BulletProof Security
-Plugin URI: http://www.ait-pro.com/aitpro-blog/297/bulletproof-security-plugin-support/bulletproof-security-wordpress-plugin-support/
+Plugin URI: http://forum.ait-pro.com/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: Website Security Protection: BulletProof Security protects your website against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection.  Security Logging. HTTP Error Logging. One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts.
-Version: .48.8
+Version: .48.9
 Author: AITpro | Edward Alexander
 Author URI: http://www.ait-pro.com/
 */
@@ -27,11 +27,14 @@ Author URI: http://www.ait-pro.com/
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define( 'BULLETPROOF_VERSION', '.48.8' );
-$bps_version = '.48.8';
+// BPS variables
+define( 'BULLETPROOF_VERSION', '.48.9' );
+$bps_last_version = '.48.8';
+$bps_version = '.48.9';
+$bps_readme_install_ver = '8';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free
-require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/class.php' );
+//require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/class.php' );
 
 add_action( 'init', 'bulletproof_security_load_plugin_textdomain' );
 
@@ -60,11 +63,11 @@ if ( is_admin() ) {
 }
 
 // "Settings" link on Plugins Options Page 
-function bps_plugin_actlinks( $links, $file ){
-	static $this_plugin;
+function bps_plugin_actlinks( $links, $file ) {
+static $this_plugin;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
-	if ( $file == $this_plugin ){
-	$settings_link = '<a href="admin.php?page=bulletproof-security/admin/options.php">' . __('Settings', 'bulletproof-security') . '</a>';
+	if ( $file == $this_plugin ) {
+		$settings_link = '<a href="admin.php?page=bulletproof-security/admin/options.php">'.__('Settings', 'bulletproof-security').'</a>';
 		array_unshift( $links, $settings_link );
 	}
 	return $links;
@@ -73,14 +76,14 @@ function bps_plugin_actlinks( $links, $file ){
 
 // Add links on plugins page
 function bps_plugin_extra_links($links, $file) {
-	static $this_plugin;
-	if (!current_user_can('install_plugins'))
+static $this_plugin;
+	if ( !current_user_can('install_plugins') )
 		return $links;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
-	if ( $file == $this_plugin ){
-		$links[] = '<a href="http://forum.ait-pro.com/" target="_blank">' . __('Forum - Support', 'bulleproof-security').'</a>';
-		$links[] = '<a href="http://affiliates.ait-pro.com/po/" target="_blank">' . __('Upgrade', 'bulleproof-security').'</a>';
-		$links[] = '<a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" target="_blank">' . __('Flash Movie', 'bulleproof-security').'</a>';
+	if ( $file == $this_plugin ) {
+		$links[] = '<a href="http://forum.ait-pro.com/" target="_blank">'.__('Forum - Support', 'bulleproof-security').'</a>';
+		$links[] = '<a href="http://affiliates.ait-pro.com/po/" target="_blank">'.__('Upgrade', 'bulleproof-security').'</a>';
+		$links[] = '<a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" target="_blank">'.__('Flash Movie', 'bulleproof-security').'</a>';
 	}
 	return $links;
 }

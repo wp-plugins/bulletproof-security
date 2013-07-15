@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
 Tested up to: 3.5.1 
-Stable tag: .48.8 
+Stable tag: .48.9 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -22,7 +22,8 @@ System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... 
 
 Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Email alerting options allow you to choose 
 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator 
-Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or Do Not Send Email Alerts.
+Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or Do Not Send Email Alerts. Choose Standard WP Error Messages or 
+Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable Login Password Reset capability for Login Security Stealth Mode. 
 See BulletProof Security Login Security & Monitoring Features for additional features and options.
 
 = Why is .htaccess Website Security So Much Better Than Any Other Type of Website Security? =
@@ -117,6 +118,8 @@ have additional website security measures in place as a standard. BulletProof Se
 * Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
 * Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
 * Login Security Additional Options: Max Login Attempts, Automatic Lockout Time, Manual Lockout Time, Max DB Rows To Show, Turn On/Turn Off
+* Login Security Stealth Mode: Standard WP Error Messages or Generic Error Messages. 
+* Login Security Stealth Mode: Enable or Disable Login Password Reset capability and links.
 * Dynamic DB Form: Lock, Unlock, Delete
 * Enhanced Search: Allows you to search all of the Login Security database rows/Fields
 * Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
@@ -142,10 +145,10 @@ or to configure. Click the AutoMagic buttons (creates customized Master .htacces
 the customized Master .htaccess files to your root and wp-admin folders). BPS has built-in Backup and Restore and 
 an .htaccess File Editor for full manual editing control as well. BulletProof Website Security fast and simple. Enjoy!
 
-= How does the BulletProof Security Plugin Login Security & Monitoring work? =
+= How does BulletProof Security Plugin Login Security & Monitoring work? =
 
 BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or 
-Log Only User Account Lockouts. The Dynamic DB Logging For has 3 options: Lock, Unlock or Delete database rows. 
+Log Only User Account Lockouts. The Dynamic DB Logging Form has 3 checkbox options: Lock, Unlock or Delete database rows. 
 The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate 
 database tables. If you lock a User Account then BPS Pro will enforce that lock on that User Account and the User will not 
 be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security 
@@ -257,11 +260,12 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 
 = BulletProof Security Pro Feature Highlights =
 
+* 1 Click Setup Wizard - Setup takes less than 1 minute
 * AutoRestore - Automatic File Restore
 * Quarantine - Automatic File Quarantine
-* Real-time File Monitor (ARQ Infinity)
+* Real-time IDPS File Monitor (ARQ IDPS)
 * Plugin Firewall (true IP Based Firewall)
-* Uploads Folder Anti-Exploit Guard
+* Uploads Folder Anti-Exploit Guard (UAEG)
 * .htaccess Website Security
 * Custom php.ini Website Security
 * Login Security & Monitoring w/Dashboard Alerting / Status Display & additional options/features
@@ -337,6 +341,15 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .48.9 =
+* 2 New Login Security Options Added:
+* Error Messages: Choose to display Standard WP Login Error Messages or Generic Error Messages.
+* Password Reset: Enable or Disable Login Password Reset capability. This option also includes additionl Stealth Mode capabilities. Please read the Blue Read Me help button on the BPS Login Security page for a full description and additional help information.
+* Login Security Bug Fix/Code Correction: Using the /wp-login.php URL no longer generates an initial login error.
+* New Dismiss Notice - Brute Force Login Protection Code: At some point the Brute Force Login Protection code will be standard in BPS .htaccess files. For now a dismiss notice has been added with a link to the Brute Force Login Protection code.
+* Additional error checking & Overall Code Improvements: Really too many things to list so in general BPS .48.9 is more streamlined, has better/additional error checking and overall code improvements throughout BPS.
+* Enjoy!
 
 = .48.8 =
 * Code / Help Text Corrections
@@ -695,6 +708,15 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .48.9 =
+* 2 New Login Security Options Added:
+* Error Messages: Choose to display Standard WP Login Error Messages or Generic Error Messages.
+* Password Reset: Enable or Disable Login Password Reset capability. This option also includes additionl Stealth Mode capabilities. Please read the Blue Read Me help button on the BPS Login Security page for a full description and additional help information.
+* Login Security Bug Fix/Code Correction: Using the /wp-login.php URL no longer generates an initial login error.
+* New Dismiss Notice - Brute Force Login Protection Code: At some point the Brute Force Login Protection code will be standard in BPS .htaccess files. For now a dismiss notice has been added with a link to the Brute Force Login Protection code.
+* Additional error checking & Overall Code Improvements: Really too many things to list so in general BPS .48.9 is more streamlined, has better/additional error checking and overall code improvements throughout BPS.
+* Enjoy!
+
 = .48.8 =
 * Code / Help Text Corrections
 * Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue
@@ -799,22 +821,13 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.8
+What's New in .48.9
 
-= .48.8 =
-* Code / Help Text Corrections
-* Corrected Help Text typos in Custom Code. Code Correction for the Network/Multisite menus / pluggable.php issue
-* Enjoy!
-
-= .48.7 =
-* Auto-update now displays ONLY - The BPS Automatic htaccess File Update Completed Successfully!
-* The old Dashboard Alert has caused a lot of confusion so it is now history
-* Enjoy!
-
-= .48.6 =
-* Custom Code Additions: Custom Code now includes additional Text Areas/Text Boxes for every possible section of code in the Root and wp-admin .htaccess files
-* A jQuery Accordian has been added to Custom Code to ensure that the correct Custom Code Text Areas/Text Boxes are being used, better functionality and visual enhancement.
-* Windows IIS check/dismiss notice. Displays a dismissable alert for folks who have Windows IIS Servers that allow .htaccess rewriting or have ISAPI_Rewrite installed which allows/converts .htaccess rewriting.
-* Reset / Recheck Dismiss Notices added to Security Status page
-* Lots of other improvements
+= .48.9 =
+* 2 New Login Security Options Added:
+* Error Messages: Choose to display Standard WP Login Error Messages or Generic Error Messages.
+* Password Reset: Enable or Disable Login Password Reset capability. This option also includes additionl Stealth Mode capabilities. Please read the Blue Read Me help button on the BPS Login Security page for a full description and additional help information.
+* Login Security Bug Fix/Code Correction: Using the /wp-login.php URL no longer generates an initial login error.
+* New Dismiss Notice - Brute Force Login Protection Code: At some point the Brute Force Login Protection code will be standard in BPS .htaccess files. For now a dismiss notice has been added with a link to the Brute Force Login Protection code.
+* Additional error checking & Overall Code Improvements: Really too many things to list so in general BPS .48.9 is more streamlined, has better/additional error checking and overall code improvements throughout BPS.
 * Enjoy!

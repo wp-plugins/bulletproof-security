@@ -1,6 +1,49 @@
 <?php
+#  ________         ____________      _____ ________                       ________      
+#  ___  __ )____  _____  /___  /_____ __  /____  __ \______________ ______ ___  __/      
+#  __  __  |_  / / /__  / __  / _  _ \_  __/__  /_/ /__  ___/_  __ \_  __ \__  /_        
+#  _  /_/ / / /_/ / _  /  _  /  /  __// /_  _  ____/ _  /    / /_/ // /_/ /_  __/        
+#  /_____/  \__,_/  /_/   /_/   \___/ \__/  /_/      /_/     \____/ \____/ /_/           
+#  ________                             _____ _____              ________                
+#  __  ___/_____ ___________  _____________(_)__  /______  __    ___  __ \______________ 
+#  _____ \ _  _ \_  ___/_  / / /__  ___/__  / _  __/__  / / /    __  /_/ /__  ___/_  __ \
+#  ____/ / /  __// /__  / /_/ / _  /    _  /  / /_  _  /_/ /     _  ____/ _  /    / /_/ /
+#  /____/  \___/ \___/  \__,_/  /_/     /_/   \__/  _\__, /      /_/      /_/     \____/ 
+#                                                   /____/                               
+# 42756C6C657450726F6F66 5365637572697479 50726F 
+#
+
+/*	The Copyright, AITpro Software Products License Information and Credit Where Credit Is Due information below must remain
+	intact or all BulletProof Security Pro warranties, guarantees, liabilities are void.
+	
+	Copyright (C) 2011-2013 Edward Alexander, AIT-pro.com. All rights reserved.
+
+	AITpro Software Products License Information:
+	BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, OR USING BulletProof Security Pro YOU AGREE TO THE TERMS OF THIS AGREEMENT. 
+	IF YOU 	ARE ACCEPTING THESE TERMS ON BEHALF OF ANOTHER PERSON OR A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT AND WARRANT
+	THAT YOU HAVE FULL AUTHORITY TO BIND THAT PERSON, COMPANY, OR LEGAL ENTITY TO THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS,
+	* DO NOT DOWNLOAD, INSTALL, COPY, ACCESS, OR USE BulletProof Security Pro; AND
+	* PROMPTLY RETURN BulletProof Security Pro TO THE PARTY FROM WHOM YOU ACQUIRED IT. IF YOU DOWNLOADED BulletProof Security Pro
+	FROM THE AITPRO WEBSITE, CONTACT AITPRO FOR A REFUND IF APPLICABLE.
+	
+	AITpro Software Products License Information continued:
+	You agree to keep the AITpro Software Products License for BulletProof Security Pro, unmodified or altered in any way,
+	with the original copy of BulletProof Security Pro that you have and any and all copies or partial copies of BulletProof
+	Security Pro that You make. 
+
+	Credit Where Credit Is Due:
+	Bonus Code:
+	The following bonus code scripts, snippets or example code do not make up the core coding of BulletProof Security Pro 
+	and are not included in the price of BulletProof Security Pro as they are free code scripts, snippets or example code 
+	and are added as Bonus Code features to BulletProof Security Pro. Bonus Code has been adapted, modified and recoded 
+	to work for WordPress and BPS Pro where necessary.
+	Maintenance Mode countdown timer code - Dynamic Countdown script - © Dynamic Drive
+	DB String Finder code - AnyWhereInDB - author Nafis Ahmad
+	DB Table Cleaner/Remover code - Copyright (c) 2009 Lester "GaMerZ" Chan
+*/
+
 $BPSoptions = get_option('bulletproof_security_options_login_security');
-	if ( $BPSoptions['bps_login_security_OnOff'] == 'On') {
+	if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && isset( $_POST['wp-submit'] ) ) {
 		add_filter('authenticate', 'bpspro_wp_authenticate_username_password', 20, 3);
 	}
 
@@ -28,7 +71,7 @@ $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' -
 	$headers .= "From: $bps_email_from" . "\r\n";
 	$headers .= "Cc: $bps_email_cc" . "\r\n";
 	$headers .= "Bcc: $bps_email_bcc" . "\r\n";	
-	$subject = " BPS Login Security Alert - $timestamp ";
+	$subject = " BPS Pro Login Security Alert - $timestamp ";
 
 /*
 ***************************************************************
@@ -42,11 +85,15 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 		foreach ( $LoginSecurityRows as $row ) {
 	
-			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] ) { // greater > for testing
+			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] && $BPSoptions['bps_login_security_errors'] != 'genericAll') { 
 				$error = new WP_Error();
 				$error->add('locked_account', __('<strong>ERROR</strong>: This user account has been locked until <strong>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->lockout_time + $gmt_offset).'</strong> due to too many failed login attempts. You can login again after the Lockout Time above has expired.'));
 		
 				return $error;
+			}
+			
+			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] && $BPSoptions['bps_login_security_errors'] == 'genericAll') { 
+				return new WP_Error('incorrect_password', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 			}
 		}
 
@@ -304,14 +351,18 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 
 		foreach ( $LoginSecurityRows as $row ) {
 	
-			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] ) { // greater > for testing
+			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] && $BPSoptions['bps_login_security_errors'] != 'genericAll') { 
 				$error = new WP_Error();
 				$error->add('locked_account', __('<strong>ERROR</strong>: This user account has been locked until <strong>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->lockout_time + $gmt_offset).'</strong> due to too many failed login attempts. You can login again after the Lockout Time above has expired.'));
-			
+		
 				return $error;
 			}
+			
+			if ( $row->status == 'Locked' && $timeNow < $row->lockout_time && $row->failed_logins >= $BPSoptions['bps_max_logins'] && $BPSoptions['bps_login_security_errors'] == 'genericAll') { 
+				return new WP_Error('incorrect_password', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
+			}
 		}
-		
+
 		// Bad Login - DB Row does NOT Exist - First bad login attempt = $failed_logins = '1';
 		if ( $wpdb->num_rows == 0 && $user->ID != 0 && !wp_check_password($password, $user->user_pass, $user->ID) ) {
 			$failed_logins = '1';
@@ -474,24 +525,95 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 /*
 ****************************************************
 // WordPress Standard Authentication Processing Code
+// with Generic Error Message display options
 ****************************************************
-// Custom options for error message display will be added here in a later version of BPS
 */
-if ( $BPSoptions['bps_login_security_OnOff'] == 'On') {
+if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && isset( $_POST['wp-submit'] ) ) {
 
-	if ( !$user )
+	// if a user does not set/save this option then default to WP Errors
+	if ( !$user && !$BPSoptions['bps_login_security_errors'] ) {
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid username. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
+	}
+
+	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'wpErrors') {
+		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid username. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
+	}
+	
+	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'generic') {
+		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
+	}
+	
+	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'genericAll') {
+		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
+	}
 
 	$user = apply_filters('wp_authenticate_user', $user, $password);
-	if ( is_wp_error($user) )
+	if ( is_wp_error($user) ) 
 		return $user;
 
-	if ( !wp_check_password($password, $user->user_pass, $user->ID) )
+	// if a user does not set/save this option then default to WP Errors
+	if ( !wp_check_password($password, $user->user_pass, $user->ID) && !$BPSoptions['bps_login_security_errors'] ) {
+		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );		
+	}
 
-		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ),
+	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'wpErrors') {
+		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );		
+	}
+	
+	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'generic') {	
+		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ),
 		$username, wp_lostpassword_url() ) );
+	}
+	
+	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'genericAll') {	
+		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ),
+		$username, wp_lostpassword_url() ) );
+	}
 
 	return $user;
 }
+}
+
+/******************************************
+// Disable/Enable Password Reset
+// Removes a lot of Cool WP features, but
+// if Stealth Mode is desired then oh well
+*******************************************
+*/
+if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_security_pw_reset'] == 'disable') {
+
+function bpspro_disable_password_reset() { 
+	return false; 
+}
+add_filter( 'allow_password_reset', 'bpspro_disable_password_reset' );
+
+function bpspro_show_password_fields() { 
+	return false; 
+}
+add_filter( 'show_password_fields', 'bpspro_show_password_fields' );
+
+function bpspro_remove_pw_text($text) {
+	return str_replace( array('Lost your password?', 'Lost your password'), '', trim($text, '?') ); 
+}
+add_filter( 'gettext', 'bpspro_remove_pw_text' ); 
+
+// Replace invalidcombo error - valid user account / invalid user account same exact result 
+function bpspro_login_error_invalidcombo($text) { 
+	return str_replace( '<strong>ERROR</strong>: Invalid username or e-mail.', 'Password reset is not allowed for this user', $text ); 
+}
+add_filter ( 'login_errors', 'bpspro_login_error_invalidcombo');
+
+// Replace invalid_email error - valid email / invalid email same exact result
+function bpspro_login_error_invalid_email($text) { 
+	return str_replace( '<strong>ERROR</strong>: There is no user registered with that email address.', 'Password reset is not allowed for this user', $text );
+}
+add_filter ( 'login_errors', 'bpspro_login_error_invalid_email');
+
+// Removes WP Shake It so that no indication is given of good/bad value/entry
+function bspro_remove_shake() {
+	remove_action( 'login_head', 'wp_shake_js', 12 );	
+}
+add_filter ( 'shake_error_codes', 'bspro_remove_shake');
+
 }
 ?>

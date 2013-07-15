@@ -75,8 +75,8 @@ $Ltable_name = $wpdb->prefix . "bpspro_login_security";
 	$bps_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
 	$bps_ARHtaccess = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 	
-	if (!file_exists($bps_ARHtaccess)) {
-	@copy($bps_denyall_htaccess, $bps_ARHtaccess);
+	if ( !file_exists($bps_ARHtaccess) ) {
+		@copy($bps_denyall_htaccess, $bps_ARHtaccess);
 	}
 
 	// Create logs folder
@@ -88,8 +88,9 @@ $Ltable_name = $wpdb->prefix . "bpspro_login_security";
 	// Create the Security / HTTP error log in /logs
 	$bpsProLog = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/http_error_log.txt';
 	$bpsProLogARQ = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
+	
 	if (!file_exists($bpsProLogARQ)) {
-	@copy($bpsProLog, $bpsProLogARQ);
+		@copy($bpsProLog, $bpsProLogARQ);
 	}	
 
 	// Load scripts and styles only on BPS specified pages
@@ -191,10 +192,11 @@ global $bulletproof_security, $plugin_var1, $plugin_var2, $plugin_var3, $return_
 }
 
 function bulletproof_security_install() {
-global $bulletproof_security;
-	$previous_install = get_option('bulletproof_security_options');
+global $bulletproof_security, $bps_version;
+$previous_install = get_option('bulletproof_security_options');
+	
 	if ( $previous_install ) {
-	if ( version_compare($previous_install['version'], '.48.8', '<') )
+	if ( version_compare($previous_install['version'], $bps_version, '<') )
 	remove_role('denied');
 	}
 }
@@ -204,18 +206,18 @@ function bulletproof_security_deactivation() {
 // nothing needs to removed on deactivation for now
 }
 
-// Uninstall - do not unlink .htaccess files on uninstall to prevent catastrophic user errors
-// add a new option at some point - Delete everything or do not delete anything for BPS Pro Upgrades
+// Uninstall - BPS .48.9 will have the option of complete removal in addition to a BPS Pro upgrade uninstall
+// Currently options and files are not deleted on uninstall as a courtesy to BPS Pro customers
 function bulletproof_security_uninstall() {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 	$options = get_option('bulletproof_security_options');
 	delete_option('bulletproof_security_options');
-	//delete_option('bulletproof_security_options_customcode'); // do not delete on uninstall for Pro Upgrade Users
-	//delete_option('bulletproof_security_options_customcode_WPA'); // do not delete on uninstall for Pro Upgrade Users
-	delete_option('bulletproof_security_options_maint');
-	delete_option('bulletproof_security_options_mynotes');
-	delete_option('bulletproof_security_options_autolock');
-	// delete_option('bulletproof_security_options_login_security'); // do not delete on uninstall for Pro Upgrade Users
+	//delete_option('bulletproof_security_options_customcode'); // do not delete on uninstall for Pro Upgrade customers
+	//delete_option('bulletproof_security_options_customcode_WPA'); // do not delete on uninstall for Pro Upgrade customers
+	//delete_option('bulletproof_security_options_maint'); // do not delete on uninstall for Pro Upgrade customers
+	//delete_option('bulletproof_security_options_mynotes'); // do not delete on uninstall for Pro Upgrade customers
+	//delete_option('bulletproof_security_options_autolock'); // do not delete on uninstall for Pro Upgrade customers
+	//delete_option('bulletproof_security_options_login_security'); // do not delete on uninstall for Pro Upgrade customers
 }
 
 // Validate BPS options 
@@ -292,7 +294,9 @@ function bulletproof_security_options_validate_login_security($input) {
 	$BPSoptions['bps_max_db_rows_display'] = trim(wp_filter_nohtml_kses($input['bps_max_db_rows_display']));
 	$BPSoptions['bps_login_security_OnOff'] = wp_filter_nohtml_kses($input['bps_login_security_OnOff']);
 	$BPSoptions['bps_login_security_logging'] = wp_filter_nohtml_kses($input['bps_login_security_logging']);
-		
+	$BPSoptions['bps_login_security_errors'] = wp_filter_nohtml_kses($input['bps_login_security_errors']);
+	$BPSoptions['bps_login_security_pw_reset'] = wp_filter_nohtml_kses($input['bps_login_security_pw_reset']);		
+	
 	return $BPSoptions;  
 }
 
