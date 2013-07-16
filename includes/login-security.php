@@ -1,47 +1,4 @@
 <?php
-#  ________         ____________      _____ ________                       ________      
-#  ___  __ )____  _____  /___  /_____ __  /____  __ \______________ ______ ___  __/      
-#  __  __  |_  / / /__  / __  / _  _ \_  __/__  /_/ /__  ___/_  __ \_  __ \__  /_        
-#  _  /_/ / / /_/ / _  /  _  /  /  __// /_  _  ____/ _  /    / /_/ // /_/ /_  __/        
-#  /_____/  \__,_/  /_/   /_/   \___/ \__/  /_/      /_/     \____/ \____/ /_/           
-#  ________                             _____ _____              ________                
-#  __  ___/_____ ___________  _____________(_)__  /______  __    ___  __ \______________ 
-#  _____ \ _  _ \_  ___/_  / / /__  ___/__  / _  __/__  / / /    __  /_/ /__  ___/_  __ \
-#  ____/ / /  __// /__  / /_/ / _  /    _  /  / /_  _  /_/ /     _  ____/ _  /    / /_/ /
-#  /____/  \___/ \___/  \__,_/  /_/     /_/   \__/  _\__, /      /_/      /_/     \____/ 
-#                                                   /____/                               
-# 42756C6C657450726F6F66 5365637572697479 50726F 
-#
-
-/*	The Copyright, AITpro Software Products License Information and Credit Where Credit Is Due information below must remain
-	intact or all BulletProof Security Pro warranties, guarantees, liabilities are void.
-	
-	Copyright (C) 2011-2013 Edward Alexander, AIT-pro.com. All rights reserved.
-
-	AITpro Software Products License Information:
-	BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, OR USING BulletProof Security Pro YOU AGREE TO THE TERMS OF THIS AGREEMENT. 
-	IF YOU 	ARE ACCEPTING THESE TERMS ON BEHALF OF ANOTHER PERSON OR A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT AND WARRANT
-	THAT YOU HAVE FULL AUTHORITY TO BIND THAT PERSON, COMPANY, OR LEGAL ENTITY TO THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS,
-	* DO NOT DOWNLOAD, INSTALL, COPY, ACCESS, OR USE BulletProof Security Pro; AND
-	* PROMPTLY RETURN BulletProof Security Pro TO THE PARTY FROM WHOM YOU ACQUIRED IT. IF YOU DOWNLOADED BulletProof Security Pro
-	FROM THE AITPRO WEBSITE, CONTACT AITPRO FOR A REFUND IF APPLICABLE.
-	
-	AITpro Software Products License Information continued:
-	You agree to keep the AITpro Software Products License for BulletProof Security Pro, unmodified or altered in any way,
-	with the original copy of BulletProof Security Pro that you have and any and all copies or partial copies of BulletProof
-	Security Pro that You make. 
-
-	Credit Where Credit Is Due:
-	Bonus Code:
-	The following bonus code scripts, snippets or example code do not make up the core coding of BulletProof Security Pro 
-	and are not included in the price of BulletProof Security Pro as they are free code scripts, snippets or example code 
-	and are added as Bonus Code features to BulletProof Security Pro. Bonus Code has been adapted, modified and recoded 
-	to work for WordPress and BPS Pro where necessary.
-	Maintenance Mode countdown timer code - Dynamic Countdown script - © Dynamic Drive
-	DB String Finder code - AnyWhereInDB - author Nafis Ahmad
-	DB Table Cleaner/Remover code - Copyright (c) 2009 Lester "GaMerZ" Chan
-*/
-
 $BPSoptions = get_option('bulletproof_security_options_login_security');
 	if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && isset( $_POST['wp-submit'] ) ) {
 		add_filter('authenticate', 'bpspro_wp_authenticate_username_password', 20, 3);
@@ -71,7 +28,7 @@ $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' -
 	$headers .= "From: $bps_email_from" . "\r\n";
 	$headers .= "Cc: $bps_email_cc" . "\r\n";
 	$headers .= "Bcc: $bps_email_bcc" . "\r\n";	
-	$subject = " BPS Pro Login Security Alert - $timestamp ";
+	$subject = " BPS Login Security Alert - $timestamp ";
 
 /*
 ***************************************************************
