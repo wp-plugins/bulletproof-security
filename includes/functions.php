@@ -979,7 +979,7 @@ $name = $wpdb->get_var("SELECT user_login FROM $wpdb->users WHERE user_login='ad
 }
 
 // Check for WP readme.html file and if valid BPS .htaccess file is activated
-// .48 check - will only check the 8 in position 15 - offset 14
+// .49 check - will only check the 9 in position 15 - offset 14
 function bps_filesmatch_check_readmehtml() {
 global $bps_readme_install_ver;
 $htaccess_filename = ABSPATH . '.htaccess';
@@ -1010,7 +1010,7 @@ $check_stringBPSQSE = @file_get_contents($htaccess_filename);
 }
 
 // Check for WP /wp-admin/install.php file and if valid BPS .htaccess file is activated
-// .48 check - will only check the 8 in position 15 - offset 14
+// .49 check - will only check the 9 in position 15 - offset 14
 function bps_filesmatch_check_installphp() {
 global $bps_readme_install_ver;
 $htaccess_filename = ABSPATH . 'wp-admin/.htaccess';

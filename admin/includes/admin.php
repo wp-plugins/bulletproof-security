@@ -206,7 +206,7 @@ function bulletproof_security_deactivation() {
 // nothing needs to removed on deactivation for now
 }
 
-// Uninstall - BPS .48.9 will have the option of complete removal in addition to a BPS Pro upgrade uninstall
+// Uninstall - BPS later version will have the option of complete removal in addition to a BPS Pro upgrade uninstall
 // Currently options and files are not deleted on uninstall as a courtesy to BPS Pro customers
 function bulletproof_security_uninstall() {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php');

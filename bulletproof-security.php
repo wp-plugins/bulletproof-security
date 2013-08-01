@@ -4,8 +4,8 @@ Plugin Name: BulletProof Security
 Plugin URI: http://forum.ait-pro.com/
 Text Domain: bulletproof-security
 Domain Path: /languages/
-Description: Website Security Protection: BulletProof Security protects your website against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection.  Security Logging. HTTP Error Logging. One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts.
-Version: .48.9
+Description: Website Security Protection: BulletProof Security protects your website against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection.  Security Logging. HTTP Error Logging. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts. Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading.
+Version: .49
 Author: AITpro | Edward Alexander
 Author URI: http://www.ait-pro.com/
 */
@@ -28,10 +28,10 @@ Author URI: http://www.ait-pro.com/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.48.9' );
-$bps_last_version = '.48.8';
-$bps_version = '.48.9';
-$bps_readme_install_ver = '8';
+define( 'BULLETPROOF_VERSION', '.49' );
+$bps_last_version = '.48.9';
+$bps_version = '.49';
+$bps_readme_install_ver = '9';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free
 //require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/class.php' );

@@ -2089,7 +2089,7 @@ $bps_sec_log = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
 	
 	if (file_exists($bps_sec_log)) {
 		$bps_sec_log = file_get_contents($bps_sec_log);
-	return $bps_sec_log;
+	return esc_html($bps_sec_log);
 	
 	} else {
 		_e('The Security Log File Was Not Found! Check that the file really exists here - /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/logs/http_error_log.txt and is named correctly.', 'bulletproof-security');
@@ -2134,7 +2134,7 @@ $scrolltoSecLog = isset($_REQUEST['scrolltoSecLog']) ? (int) $_REQUEST['scrollto
 <?php wp_nonce_field('bulletproof_security_save_security_log'); ?>
 <div id="bpsSecLog">
     <textarea cols="130" rows="27" name="newcontentSecLog" id="newcontentSecLog" tabindex="1" style="width:675px;"><?php echo bps_get_security_log(); ?></textarea>
-	<input type="hidden" name="scrolltoSecLog" id="scrolltoSecLog" value="<?php echo $scrolltoSecLog; ?>" />
+	<input type="hidden" name="scrolltoSecLog" id="scrolltoSecLog" value="<?php echo esc_html($scrolltoSecLog); ?>" />
     <p class="submit">
 	<input type="submit" name="submit-security-log" class="bps-blue-button" value="<?php esc_attr_e('Update File', 'bulletproof-security') ?>" /></p>
 </div>
@@ -3593,6 +3593,18 @@ jQuery(document).ready(function($){
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr>
+<tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Security Vulnerability/Bug Fix/Patch: ', 'bulletproof-security'); ?></strong><br /><?php $text = __('HTML rendered in Security Log file via Logged Header Fields.', 'bulletproof-security').'<br>'.__('Special Thanks go to Jacek Sowinski via Secunia SVCRP for discovering this vulnerability.', 'bulletproof-security').'<br>'.__('Solution/Fix: Security Log logged Header Fields are now HTML escaped.', 'bulletproof-security'); echo $text; ?></td>
+  </tr>
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><h3><strong><?php _e('48.9', 'bulletproof-security'); ?></strong></h3></td>
+  </tr> 
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><strong><?php _e('2 New Login Security Options Added: ', 'bulletproof-security'); ?></strong><br /><?php _e('Error Messages: Choose to display Standard WP Login Error Messages or Generic Error Messages. Password Reset: Enable or Disable Login Password Reset capability. This option also includes additionl Stealth Mode capabilities. Please read the Blue Read Me help button on the BPS Login Security page for a full description and additional help information.', 'bulletproof-security'); ?></td>

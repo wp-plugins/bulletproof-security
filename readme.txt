@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock
 Requires at least: 3.0 
-Tested up to: 3.5.1 
-Stable tag: .48.9 
+Tested up to: 3.6 
+Stable tag: .49 
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -15,16 +15,17 @@ WordPress Website Security Protection. Website security protection against: XSS,
 WordPress Website Security Protection: BulletProof Security protects your WordPress website against XSS, RFI, CRLF, CSRF, Base64, 
 Code Injection and SQL Injection hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, 
 bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection. Security Logging. HTTP Error Logging.
-One-click Website Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... 
-System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading.
+Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts. Website Maintenance Mode (HTTP 503). 
+Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Server, Memory 
+Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file editing, uploading and downloading.
 
 = Login Security & Monitoring Website Security =
 
-Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Email alerting options allow you to choose 
-5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator 
-Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or Do Not Send Email Alerts. Choose Standard WP Error Messages or 
-Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable Login Password Reset capability for Login Security Stealth Mode. 
-See BulletProof Security Login Security & Monitoring Features for additional features and options.
+Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Brute Force Login Security Protection. 
+Email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, 
+An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or 
+Do Not Send Email Alerts. Choose Standard WP Error Messages or Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable 
+Login Password Reset capability for Login Security Stealth Mode. See BulletProof Security Login Security & Monitoring Features for additional features and options.
 
 = Why is .htaccess Website Security So Much Better Than Any Other Type of Website Security? =
 
@@ -114,6 +115,7 @@ have additional website security measures in place as a standard. BulletProof Se
 
 = BulletProof Security Login Security & Monitoring Features =
 
+* Brute Force Login Security Protection
 * Log All User Account Logins or Log Only User Account Lockouts
 * Logged DB Fields: User ID, Username, Display Name, Email, Role, Login Time, Lockout Expires, IP Address, Hostname, Request URI
 * Email Alerting Options: User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out, Do Not Send Email Alerts
@@ -202,7 +204,8 @@ Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-securi
 = BulletProof Security Server Compatibilty =
 
 * Compatible with Apache CGI configured Servers
-* Compatible with Apache DSO configured Servers (May require file/folder permission and/or Ownership changes)
+* Compatible with Apache DSO configured Servers (May require CHOWN Ownership change or file/folder permission changes)
+* <a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-compatibility-check-upgrading-from-bps-free-to-bps-pro/" title="DSO Help Info" rel="nofollow" target="_blank">DSO Help Info</a>
 * Compatible with Nginx frontend Server with Apache backend Server
 * Compatible with LiteSpeed Servers
 * Compatible with Windows IIS Servers - Windows Hosting - See IMPORTANT NOTES below.
@@ -341,6 +344,12 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring
 
 == Changelog ==
+
+= .49 =
+* Security Vulnerability/Bug Fix/Patch: HTML rendered in Security Log file via Logged Header Fields 
+* Special Thanks go to <a href="http://secunia.com/" title="Jacek Sowinski via Secunia SVCRP">Jacek Sowinski via Secunia SVCRP</a> for discovering this vulnerability. 
+* Solution/Fix: Security Log logged Header Fields are now HTML escaped
+* Enjoy!
 
 = .48.9 =
 * 2 New Login Security Options Added:
@@ -708,6 +717,12 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .49 =
+* Security Vulnerability/Bug Fix/Patch: HTML rendered in Security Log file via Logged Header Fields 
+* Special Thanks go to Jacek Sowinski via Secunia SVCRP for discovering this vulnerability. 
+* Solution/Fix: Security Log logged Header Fields are now HTML escaped
+* Enjoy!
+
 = .48.9 =
 * 2 New Login Security Options Added:
 * Error Messages: Choose to display Standard WP Login Error Messages or Generic Error Messages.
@@ -821,7 +836,13 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .48.9
+What's New in .49
+
+= .49 =
+* Security Vulnerability/Bug Fix/Patch: HTML rendered in Security Log file via Logged Header Fields 
+* Special Thanks go to <a href="http://secunia.com/" title="Jacek Sowinski via Secunia SVCRP">Jacek Sowinski via Secunia SVCRP</a> for discovering this vulnerability. 
+* Solution/Fix: Security Log logged Header Fields are now HTML escaped
+* Enjoy!
 
 = .48.9 =
 * 2 New Login Security Options Added:
