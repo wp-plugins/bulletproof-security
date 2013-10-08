@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock, brute force, authenticate, authentication, firewall
 Requires at least: 3.0 
 Tested up to: 3.6.1 
-Stable tag: .49.2
+Stable tag: .49.3
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -33,6 +33,13 @@ The answer is very simple - .htaccess files (distributed configuration files) ar
 hackers malicious scripts are stopped by BulletProof Security .htaccess files/Firewalls before those scripts even have a chance to 
 reach the php coding in WordPress. BulletProof Security uses .htaccess website security files, which are specific to 
 Apache Linux Servers. Please read the FAQ page for Server compatibility questions. 
+
+= Security Log File Automation - Automatically Zipped, Emailed and Replaced =
+
+Security Log files are automatically zipped, emailed and replaced with a new blank Security Log file when the log
+file reaches the maximum file size setting that you choose. By Default BulletProof Security sets this DB option to
+zip, email and replace the Security Log file when it reaches 500KB. The Security Log file is checked once per hour
+with a WordPress Cron. The optimum recommended file size setting is 500KB.
 
 = BulletProof Security Fast and Simple with No Manual Configuration Required =
 
@@ -92,6 +99,7 @@ have additional website security measures in place as a standard. BulletProof Se
 * Security / HTTP Error Logging - Log 400, 403 and 404 Errors
 * Security Log: Add / Remove User Agents/Bots to Ignore/Not Log or Allow/Log
 * Security Log: Turn On / Turn Off / Delete Log
+* Security Log Automation: Automatically zipped, emailed and replaced based on file size
 * Automatic .htaccess file updating on BPS upgrade installation
 * New .htaccess security filters automatically added during upgrade
 * WP Dashboard Alerts / WP Dashboard Dismiss Notices
@@ -271,6 +279,7 @@ The Security Log logs 400 and 403 HTTP Response Status Codes by default. You can
 * Quarantine - Automatic File Quarantine
 * Real-time IDPS File Monitor (ARQ IDPS)
 * Plugin Firewall (true IP Based Firewall)
+* JTC Anti-Spam / Anti-Hacker
 * Uploads Folder Anti-Exploit Guard (UAEG)
 * .htaccess Website Security (Firewalls)
 * Custom php.ini Website Security
@@ -341,12 +350,29 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 == Screenshots ==
 
 1. BulletProof Security - Security Modes page
-2. BulletProof Security - Security Status page
+2. BulletProof Security - Security Log page
 3. BulletProof Security - System Info page
 4. BulletProof Security - htaccess File Editor page
 5. BulletProof Security - Login Security and Monitoring page
 
 == Changelog ==
+
+= .49.3 =
+* New Feature - Security Log zip, email and delete/replace option:
+Security Log files are automatically zipped, emailed and replaced with a new blank security log file when they reach the maximum file size setting on the Security Log page. During the BPS upgrade this is automatically set to zip and email log files when they reach 500KB in size.
+* Structural/Menu Changes:
+The Security Log & System Info tab pages have been moved out of htaccess Core and now have their own separate pages/menu links. 
+* New standard root .htaccess code added:
+Server Protocol HTTP/1.0 and blank User Agent htaccess BRUTE FORCE LOGIN PAGE PROTECTION code is now standard .htaccess code in the BPS root .htaccess file.
+* New BPS Custom Code Text box added:
+A new Custom Code Text box has been added: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION.
+* Check Headers Tool added to the System Info page:
+This tool Allows you to check your website Headers or another website's Headers remotely.
+* New System Info page check - Public IP/X-Forwarded-For check:
+If you are using CloudFlare on your website then you will see Proxy X-Forwarded-For IP Address: instead of Public ISP IP / Your Computer IP Address: displayed to you. This additional check is for troubleshooting issues with CloudFlare, CDN, Proxy or VPN.
+* PHP mysqli_get_client_info function additional check
+Additional function checking code has been added in cases where the mysqli_get_client_info function is not available on a Host Server.
+* Enjoy!
 
 = .49.2 =
 * Dismiss Notice text corrections: S-Monitor page text changed to Security Status page
@@ -742,6 +768,23 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .49.3 =
+* New Feature - Security Log zip, email and delete/replace option:
+Security Log files are automatically zipped, emailed and replaced with a new blank security log file when they reach the maximum file size setting on the Security Log page. During the BPS upgrade this is automatically set to zip and email log files when they reach 500KB in size.
+* Structural/Menu Changes:
+The Security Log & System Info tab pages have been moved out of htaccess Core and now have their own separate pages/menu links. 
+* New standard root .htaccess code added:
+Server Protocol HTTP/1.0 and blank User Agent htaccess BRUTE FORCE LOGIN PAGE PROTECTION code is now standard .htaccess code in the BPS root .htaccess file.
+* New BPS Custom Code Text box added:
+A new Custom Code Text box has been added: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION.
+* Check Headers Tool added to the System Info page:
+This tool Allows you to check your website Headers or another website's Headers remotely.
+* New System Info page check - Public IP/X-Forwarded-For check:
+If you are using CloudFlare on your website then you will see Proxy X-Forwarded-For IP Address: instead of Public ISP IP / Your Computer IP Address: displayed to you. This additional check is for troubleshooting issues with CloudFlare, CDN, Proxy or VPN.
+* PHP mysqli_get_client_info function additional check
+Additional function checking code has been added in cases where the mysqli_get_client_info function is not available on a Host Server.
+* Enjoy!
+
 = .49.2 =
 * Dismiss Notice text corrections: S-Monitor page text changed to Security Status page
 * W3TC & WPSC Alerts text corrections: Edit/Upload/Download page text changed to htaccess File Editor page
@@ -883,26 +926,21 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .49.2
+What's New in .49.3
 
-= .49.2 =
-* Dismiss Notice text corrections: S-Monitor page text changed to Security Status page
-* W3TC & WPSC Alerts text corrections: Edit/Upload/Download page text changed to htaccess File Editor page
-* Several BPS functions renamed for uniqueness/no-conflict assurance
-* PHP 5.5.x Deprecated function replacement file options.php: mysql_get_client_info replaced with mysqli_get_client_info
-* PHP 5.5.x Deprecated function replacements file bpsunlock.php: New code using MySQLi instead of MySQL
-* Enjoy!
-
-= .49.1 =
-* Backup folder path correction on Backup & Restore page
-* WP Filesystem API Method will display the WordPress Filesystem Method in use. For DSO Server troubleshooting additional fields will be displayed if the Script Owner and File Owner ID's do not match.
-* Custom Code help text changes
-* Custom Code additional error checking
-* htaccess auto-writing additions
-* Additional root htaccess file placeholders/markers added
-* New Dashboard Dismiss Notices: Sucuri 1-click Hardening, Broken Link Checker, phpini handler, Speed Boost Custom Code, Custom Permalinks check
-* Dashboard Alerts are now only displayed to Administrators. Editors, Authors, etc will no longer see Alerts
-* The htaccess Core Edit/Upload/Download tab page has been renamed to htaccess File Editor.
-* The File Upload & Download features have been removed from the new htaccess File Editor page since these features/options are obsolete.
-* Visual Enhancements: AutoMagic font size increased, etc.
+= .49.3 =
+* New Feature - Security Log zip, email and delete/replace option:
+Security Log files are automatically zipped, emailed and replaced with a new blank security log file when they reach the maximum file size setting on the Security Log page. During the BPS upgrade this is automatically set to zip and email log files when they reach 500KB in size.
+* Structural/Menu Changes:
+The Security Log & System Info tab pages have been moved out of htaccess Core and now have their own separate pages/menu links. 
+* New standard root .htaccess code added:
+Server Protocol HTTP/1.0 and blank User Agent htaccess BRUTE FORCE LOGIN PAGE PROTECTION code is now standard .htaccess code in the BPS root .htaccess file.
+* New BPS Custom Code Text box added:
+A new Custom Code Text box has been added: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION.
+* Check Headers Tool added to the System Info page:
+This tool Allows you to check your website Headers or another website's Headers remotely.
+* New System Info page check - Public IP/X-Forwarded-For check:
+If you are using CloudFlare on your website then you will see Proxy X-Forwarded-For IP Address: instead of Public ISP IP / Your Computer IP Address: displayed to you. This additional check is for troubleshooting issues with CloudFlare, CDN, Proxy or VPN.
+* PHP mysqli_get_client_info function additional check
+Additional function checking code has been added in cases where the mysqli_get_client_info function is not available on a Host Server.
 * Enjoy!

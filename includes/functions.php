@@ -27,24 +27,6 @@ $bpsBackupHtaccess = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 }
 add_action('admin_notices', 'bps_Master_htaccess_folder_bpsbackup_denyall');
 
-// Get File Size of the Security Log File - 500KB = 512000 bytes - Display Dashboard Alert when log file exceeds 500KB
-function bps_getSecurityLogSize_wp() {
-$filename = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
-$bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
-
-	if ( file_exists($filename) && current_user_can('manage_options') ) {
-		$logSize = filesize($filename);
-	
-	if ( $logSize >= 512000 ) {
- 		$text = '<div class="update-nag"><strong><font color="red">'. __('Security Log File Size is: ', 'bulletproof-security') . round($logSize / 1024, 2) .' KB</font><br>'.__('Your Security Log file is very large which will cause the BPS Options page to load much slower.', 'bulletproof-security').'<br>'.__('To Fix this issue ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-3">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the Security Log page and copy and paste the Security Log file contents into a Notepad text file on your computer and save it.', 'bulletproof-security').'<br>'.__('Then click the Delete Log button to delete the contents of this Log file.', 'bulletproof-security').'<br>'.__('If you are unable to view the Security Log page, then FTP to your website and download the Security Log file from /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/logs/http_error_log.txt to your computer and delete it from your website.', 'bulletproof-security').'<br>'.__('If you have BPS Pro your Log files are zipped, emailed and deleted automatically.', 'bulletproof-security').'</strong></div>';		
-		echo $text;
-	} else {
- 		return;
-	}
-	}
-}
-add_action('admin_notices', 'bps_getSecurityLogSize_wp');
-
 // BPS Master htaccess File Editing - file checks and get contents for editor
 function bps_get_secure_htaccess() {
 $secure_htaccess_file = WP_PLUGIN_DIR .'/bulletproof-security/admin/htaccess/secure.htaccess';
@@ -293,12 +275,15 @@ $check_string = @file_get_contents($filename);
 $section = @file_get_contents($filename, NULL, NULL, 3, 46);	
 $bps_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
 $bps_denyall_htaccess_renamed = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
+$security_log_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/security-log/.htaccess';
+$system_info_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/system-info/.htaccess';
+$login_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/login/.htaccess';
 $bps_get_domain_root = bpsGetDomainRoot();
 $bps_get_wp_root_secure = bps_wp_get_root_folder();
 $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
-//$bpsLastModPlusOneMinute = getBPSRootHtaccessLasModTime_minutes(). time() + 60;
 
 	$patterna = '/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument\s401\sdefault\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s';	
+	$patternb = '/#\sBRUTE\sFORCE\sLOGIN\sPAGE\sPROTECTION\s*(.*)\s*(.*)\s*(RewriteCond(.*)\s*){4}\s*RewriteRule\s\^\(\.\*\)\$\s-\s\[F,L\]/';
 	$pattern0 = '/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$pattern1 = '/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s';	
 	$pattern2 = '/TIMTHUMB FORBID RFI and MISC FILE SKIP\/BYPASS RULE/s';
@@ -344,6 +329,10 @@ switch ($bps_version) {
 			
 		if ( preg_match($pattern0, $stringReplace, $matches) ) {
 			$stringReplace = preg_replace('/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "# BPS ERROR LOGGING AND TRACKING\n# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used\n# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to\n# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or\n# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.\n# All BPS log files are htaccess protected so that only you can view them.\n# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/\n# The 400 and 403 Error logging files are already set up and will automatically start logging errors\n# after you install BPS and have activated BulletProof Mode for your Root folder.\n# If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file\n# to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.\n# You can open the BPS 404.php file using the WP Plugins Editor.\n# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.\nErrorDocument 400 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		}
+
+		if ( !preg_match($patternb, $stringReplace, $matches) ) {
+			$stringReplace = preg_replace('/# BPS ERROR LOGGING AND TRACKING/', "# BRUTE FORCE LOGIN PAGE PROTECTION\n# Protects the Login page from SpamBots & Proxies\n# that use Server Protocol HTTP/1.0 or a blank User Agent\nRewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$\nRewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR]\nRewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]\nRewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$\nRewriteRule ^(.*)$ - [F,L]\n\n# BPS ERROR LOGGING AND TRACKING", $stringReplace);		
 		}
 
 		if ( !preg_match($patterna, $stringReplace, $matches) ) {
@@ -405,6 +394,10 @@ switch ($bps_version) {
 		if ( getBPSInstallTime() == getBPSRootHtaccessLasModTime_minutes() || getBPSInstallTime_plusone() == getBPSRootHtaccessLasModTime_minutes() ) {
 			$updateText = '<div class="update-nag"><font color="blue"><strong>'.__("The BPS Automatic htaccess File Update Completed Successfully!", 'bulletproof-security').'</strong></font></div>';
 			copy($bps_denyall_htaccess, $bps_denyall_htaccess_renamed);	
+			copy($bps_denyall_htaccess, $security_log_denyall_htaccess);	
+			copy($bps_denyall_htaccess, $system_info_denyall_htaccess);
+			copy($bps_denyall_htaccess, $login_denyall_htaccess);
+				
 		print($updateText);	
 		}
 		}
@@ -1313,8 +1306,200 @@ $user_id = $current_user->ID;
 	}
 }
 
+/***********************************************/
+// BPS Free - Zip, Email, Delete Log File Cron //
+/***********************************************/
+// 262144 bytes = 256KB = .25MB
+// 524288 bytes = 512KB = .5MB
+// 1048576 bytes = 1024KB = 1MB
+// 2097152 bytes = 2048KB = 2MB
+// FailSafe - if log file is larger than 2MB zip, email and delete or just delete
+
+// Pre-save Email Alerting & Log file zip, email and delete DB options
+// or pre-save DB options for BPS upgraders
+function bps_email_alerts_log_file_options() {
+$SecurityLogEmailOptions = get_option('bulletproof_security_options_email');
+$admin_email = get_option('admin_email');
+
+	$bps_option_name = 'bulletproof_security_options_email';
+	$bps_new_value_1 = $admin_email;
+	$bps_new_value_2 = $admin_email;	
+	$bps_new_value_3 = '';
+	$bps_new_value_4 = '';
+	$bps_new_value_5 = 'lockoutOnly';
+	$bps_new_value_6 = '500KB';
+	$bps_new_value_7 = 'email';
+
+	$BPS_Options = array(
+	'bps_send_email_to' => $bps_new_value_1, 
+	'bps_send_email_from' => $bps_new_value_2, 
+	'bps_send_email_cc' => $bps_new_value_3, 
+	'bps_send_email_bcc' => $bps_new_value_4, 
+	'bps_login_security_email' => $bps_new_value_5, 
+	'bps_security_log_size' => $bps_new_value_6, 
+	'bps_security_log_emailL' => $bps_new_value_7, 
+	);
+
+	if ( !get_option( $bps_option_name ) ) {	
+		
+		foreach( $BPS_Options as $key => $value ) {
+			update_option('bulletproof_security_options_email', $BPS_Options);
+		}
+	
+	} else {
+
+		if ( !$SecurityLogEmailOptions['bps_security_log_size'] && !$SecurityLogEmailOptions['bps_security_log_emailL'] ) {
+
+			$BPS_Options = array(
+			'bps_send_email_to' => $SecurityLogEmailOptions['bps_send_email_to'], 
+			'bps_send_email_from' => $SecurityLogEmailOptions['bps_send_email_from'], 
+			'bps_send_email_cc' => $SecurityLogEmailOptions['bps_send_email_cc'], 
+			'bps_send_email_bcc' => $SecurityLogEmailOptions['bps_send_email_bcc'], 
+			'bps_login_security_email' => $SecurityLogEmailOptions['bps_login_security_email'], 
+			'bps_security_log_size' => '500KB', 
+			'bps_security_log_emailL' => 'email'
+			);
+
+			foreach( $BPS_Options as $key => $value ) {
+				update_option('bulletproof_security_options_email', $BPS_Options);
+			}
+		}		
+	}
+}
+add_action('admin_notices', 'bps_email_alerts_log_file_options');
+
+add_action('bpsPro_email_log_files', 'bps_Log_File_Processing');
+
+function bpsPro_schedule_Email_Log_Files() {
+	if ( !wp_next_scheduled( 'bpsPro_email_log_files' ) ) {
+		wp_schedule_event(time(), 'hourly', 'bpsPro_email_log_files');
+	}
+}
+add_action('init', 'bpsPro_schedule_Email_Log_Files');
+
+function bpsPro_add_hourly_email_log_cron( $schedules ) {
+	$schedules['hourly'] = array('interval' => 3600, 'display' => __('Once Hourly'));
+	return $schedules;
+}
+add_filter('cron_schedules', 'bpsPro_add_hourly_email_log_cron');
+
+function bps_Log_File_Processing() {
+$options = get_option('bulletproof_security_options_email');
+$SecurityLog = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
+$SecurityLogMaster = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/http_error_log.txt';
+
+switch ($options['bps_security_log_size']) {
+    case "256KB":
+		if ( filesize($SecurityLog) >= 262144 && filesize($SecurityLog) < 524288 || filesize($SecurityLog) > 2097152) {
+		if ( $options['bps_security_log_emailL'] == 'email') {
+			if ( bps_Zip_Security_Log_File()==TRUE ) {
+				bps_Email_Security_Log_File();
+			}
+		} elseif ( $options['bps_security_log_emailL'] == 'delete') {
+			copy($SecurityLogMaster, $SecurityLog);	
+		}
+		break;
+		}
+    case "500KB":
+		if ( filesize($SecurityLog) >= 524288 && filesize($SecurityLog) < 1048576 || filesize($SecurityLog) > 2097152) {
+		if ( $options['bps_security_log_emailL'] == 'email') {
+			if ( bps_Zip_Security_Log_File()==TRUE ) {
+				bps_Email_Security_Log_File();
+			}
+		} elseif ( $options['bps_security_log_emailL'] == 'delete') {
+			copy($SecurityLogMaster, $SecurityLog);	
+		}		
+		break;
+		}
+    case "1MB":
+		if ( filesize($SecurityLog) >= 1048576 && filesize($SecurityLog) < 2097152 || filesize($SecurityLog) > 2097152) {
+		if ( $options['bps_security_log_emailL'] == 'email') {
+			if ( bps_Zip_Security_Log_File()==TRUE ) {
+				bps_Email_Security_Log_File();
+			}
+		} elseif ( $options['bps_security_log_emailL'] == 'delete') {
+			copy($SecurityLogMaster, $SecurityLog);	
+		}		
+		break;
+		}
+}
+}
+
+// EMAIL NOTES: You cannot fake a zip file by renaming a file extension 
+// The zip file must be a real zip archive or it will not be successfully attached to an email.
+// A plain txt file cannot be attached to an email.
+// Email Security Log File
+function bps_Email_Security_Log_File() {
+$options = get_option('bulletproof_security_options_email');
+$bps_email_to = $options['bps_send_email_to'];
+$bps_email_from = $options['bps_send_email_from'];
+$bps_email_cc = $options['bps_send_email_cc'];
+$bps_email_bcc = $options['bps_send_email_bcc'];
+$justUrl = get_site_url();
+$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), strtotime($date));
+$SecurityLog = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
+$SecurityLogMaster = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/http_error_log.txt';
+$SecurityLogZip = WP_CONTENT_DIR . '/bps-backup/logs/security-log.zip';
+	
+	$attachments = array( $SecurityLogZip );
+	$headers = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+	$headers .= "From: $bps_email_from" . "\r\n";
+	$headers .= "Cc: $bps_email_cc" . "\r\n";
+	$headers .= "Bcc: $bps_email_bcc" . "\r\n";	
+	$subject = " BPS Security Log - $timestamp ";
+	$message = '<p><font color="blue"><strong>Security Log File For:</strong></font></p>';
+	$message .= '<p>Site: '."$justUrl".'</p>'; 
+		
+	$mailed = wp_mail($bps_email_to, $subject, $message, $headers, $attachments);
+
+	if ( $mailed && file_exists($SecurityLogZip) ) {
+		unlink($SecurityLogZip);
+		copy($SecurityLogMaster, $SecurityLog);
+	}
+}
+
+// Zip Security Log File - If ZipArchive Class is not available use PCLZip
+function bps_Zip_Security_Log_File() {
+	// Use ZipArchive
+	if ( class_exists('ZipArchive') ) {
+
+	$zip = new ZipArchive();
+	$filename = WP_CONTENT_DIR . '/bps-backup/logs/security-log.zip';
+	
+	if ($zip->open($filename, ZIPARCHIVE::CREATE)!==TRUE) {
+    	exit("Error: Cannot Open $filename\n");
+	}
+
+	$zip->addFile(WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt', "http_error_log.txt");
+	$zip->close();
+
+	return true;
+
+	} else {
+
+// Use PCLZip
+define( 'PCLZIP_TEMPORARY_DIR', WP_CONTENT_DIR . '/bps-backup/logs/' );
+require_once( ABSPATH . 'wp-admin/includes/class-pclzip.php');
+	
+	if ( ini_get( 'mbstring.func_overload' ) && function_exists( 'mb_internal_encoding' ) ) {
+		$previous_encoding = mb_internal_encoding();
+		mb_internal_encoding( 'ISO-8859-1' );
+	}
+  		$archive = new PclZip(WP_CONTENT_DIR . '/bps-backup/logs/security-log.zip');
+  		$v_list = $archive->create(WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt', PCLZIP_OPT_REMOVE_PATH, WP_CONTENT_DIR . '/bps-backup/logs/');
+  	
+	return true;
+
+	if ( $v_list == 0) {
+		die("Error : ".$archive->errorInfo(true) );
+		return false;	
+	}
+	}
+}
+
 /**
-add to version .49.2 once the issue is fixed
+add to a later BPS version once the issue is fixed
 possible issue: function_exists needs be to called outside of the function
 either way this code needs more work before publicly releasing it - clunky/junky
 

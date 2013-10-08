@@ -1,6 +1,6 @@
-#   BULLETPROOF .49.2 >>>>>>> SECURE .HTACCESS     
+#   BULLETPROOF .49.3 >>>>>>> SECURE .HTACCESS     
 
-# If you edit the BULLETPROOF .49.2 >>>>>>> SECURE .HTACCESS text above
+# If you edit the BULLETPROOF .49.3 >>>>>>> SECURE .HTACCESS text above
 # you will see error messages on the BPS Security Status page
 # BPS is reading the version number in the htaccess file to validate checks
 # If you would like to change what is displayed above you
@@ -31,6 +31,15 @@ Options -Indexes
 # Use index.php as default directory index file
 # index.html will be ignored will not load.
 DirectoryIndex index.php index.html /index.php
+
+# BRUTE FORCE LOGIN PAGE PROTECTION
+# Protects the Login page from SpamBots & Proxies
+# that use Server Protocol HTTP/1.0 or a blank User Agent
+RewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$
+RewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR]
+RewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]
+RewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$
+RewriteRule ^(.*)$ - [F,L]
 
 # BPS ERROR LOGGING AND TRACKING
 # BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
@@ -78,7 +87,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 RewriteRule ^(.*)$ - [F,L]
 
-# PLUGINS AND VARIOUS EXPLOIT FILTER SKIP RULES
+# PLUGINS/THEMES AND VARIOUS EXPLOIT FILTER SKIP RULES
 # IMPORTANT!!! If you add or remove a skip rule you must change S= to the new skip number
 # Example: If RewriteRule S=5 is deleted than change S=6 to S=5, S=7 to S=6, etc.
 
