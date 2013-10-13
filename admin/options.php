@@ -576,7 +576,7 @@ $bps_secure_server_protocol = "# BRUTE FORCE LOGIN PAGE PROTECTION
 # Protects the Login page from SpamBots & Proxies
 # that use Server Protocol HTTP/1.0 or a blank User Agent
 RewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$
-RewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
 RewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]
 RewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$
 RewriteRule ^(.*)$ - [F,L]\n\n";
@@ -2539,8 +2539,20 @@ if (isset($_POST['maintenance-mode-preview-submit']) && current_user_can('manage
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr> 
-<tr>
+ <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Code Mod to Brute Force Login Protection code: ', 'bulletproof-security'); ?></strong><br /><?php _e('Code Mod to Brute Force Login Protection code to allow for the widest possible range of compatibility. MOD: RewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR] to RewriteCond %{HTTP_USER_AGENT} ^$ [OR]', 'bulletproof-security'); ?></td>
+  </tr>
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('.49.3', 'bulletproof-security'); ?></strong></td>
+  </tr> 
+<tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border"><strong><?php _e('New Feature - Security Log zip, email and delete/replace option: ', 'bulletproof-security'); ?></strong><br /><?php $text = __('Security Log files are automatically zipped, emailed and replaced with a new blank security log file when they reach the maximum file size setting on the Security Log page. During the BPS upgrade this is automatically set to zip and email log files when they reach 500KB in size.', 'bulletproof-security'); echo $text; ?></td>
   </tr>
    <tr>
