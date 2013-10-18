@@ -283,7 +283,8 @@ $bps_get_wp_root_secure = bps_wp_get_root_folder();
 $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 
 	$patterna = '/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument\s401\sdefault\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s';	
-	$patternb = '/#\sBRUTE\sFORCE\sLOGIN\sPAGE\sPROTECTION\s*(.*)\s*(.*)\s*(RewriteCond(.*)\s*){4}\s*RewriteRule\s\^\(\.\*\)\$\s-\s\[F,L\]/';
+	// 95%/5% success/fail ratio - this code cannot be used as standard BPS htaccess code - pending deletion
+	//$patternb = '/#\sBRUTE\sFORCE\sLOGIN\sPAGE\sPROTECTION\s*(.*)\s*(.*)\s*(RewriteCond(.*)\s*){4}\s*RewriteRule\s\^\(\.\*\)\$\s-\s\[F,L\]/';
 	$pattern0 = '/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$pattern1 = '/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s';	
 	$pattern2 = '/TIMTHUMB FORBID RFI and MISC FILE SKIP\/BYPASS RULE/s';
@@ -331,10 +332,11 @@ switch ($bps_version) {
 			$stringReplace = preg_replace('/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "# BPS ERROR LOGGING AND TRACKING\n# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used\n# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to\n# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or\n# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.\n# All BPS log files are htaccess protected so that only you can view them.\n# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/\n# The 400 and 403 Error logging files are already set up and will automatically start logging errors\n# after you install BPS and have activated BulletProof Mode for your Root folder.\n# If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file\n# to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.\n# You can open the BPS 404.php file using the WP Plugins Editor.\n# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.\nErrorDocument 400 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
 		}
 
+/* 95%/5% success/fail ratio - this code cannot be used as standard BPS htaccess code - pending deletion
 		if ( !preg_match($patternb, $stringReplace, $matches) ) {
 			$stringReplace = preg_replace('/# BPS ERROR LOGGING AND TRACKING/', "# BRUTE FORCE LOGIN PAGE PROTECTION\n# Protects the Login page from SpamBots & Proxies\n# that use Server Protocol HTTP/1.0 or a blank User Agent\nRewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$\nRewriteCond %{HTTP_USER_AGENT} ^$ [OR]\nRewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]\nRewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$\nRewriteRule ^(.*)$ - [F,L]\n\n# BPS ERROR LOGGING AND TRACKING", $stringReplace);		
 		}
-
+*/
 		if ( !preg_match($patterna, $stringReplace, $matches) ) {
 			$stringReplace = preg_replace('/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
 		}
@@ -482,7 +484,7 @@ $section = @file_get_contents($filename, NULL, NULL, 3, 46);
 $check_string = @file_get_contents($filename);	
 	
 	if ( !file_exists($filename) ) {
-		$text = '<font color="red">'.__('An htaccess file was NOT found in your root folder', 'bulletproof-security').'</font><br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</font><br><br>';
+		$text = '<font color="red">'.__('ERROR: An htaccess file was NOT found in your root folder', 'bulletproof-security').'</font><br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</font><br><br>';
 		echo $text;
 	
 	} else {
@@ -514,7 +516,7 @@ switch ($bps_version) {
 		break;
 		}
 	default:
-		$text = '<font color="red"><br><br><strong>'.__('Either a BPS htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS Pro htaccess file that you are using is not the most current version or the BPS QUERY STRING EXPLOITS code does not exist in your root htaccess file. Please view the Read Me Help button above.', 'bulletproof-security').'<br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
+		$text = '<font color="red"><br><br><strong>'.__('ERROR: Either a BPS htaccess file was NOT found in your root folder or you have not activated BulletProof Mode for your Root folder yet, Default Mode is activated, Maintenance Mode is activated or the version of the BPS Pro htaccess file that you are using is not the most current version or the BPS QUERY STRING EXPLOITS code does not exist in your root htaccess file. Please view the Read Me Help button above.', 'bulletproof-security').'<br><br>'.__('wp-config.php is NOT htaccess protected by BPS', 'bulletproof-security').'</strong></font><br><br>';
 		echo $text;
 }}}}
 
@@ -526,7 +528,7 @@ $section = @file_get_contents($filename, NULL, NULL, 3, 50);
 $check_string = @file_get_contents($filename);	
 	
 	if ( !file_exists($filename) ) {
-		$text = '<font color="red"><strong>'.__('An htaccess file was NOT found in your wp-admin folder.', 'bulletproof-security').'<br>'.__('BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'</strong></font><br>';
+		$text = '<font color="red"><strong>'.__('ERROR: An htaccess file was NOT found in your wp-admin folder.', 'bulletproof-security').'<br>'.__('BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 	
 	} else {
@@ -557,7 +559,7 @@ switch ($bps_version) {
 		break;
 		}
 	default:
-		$text = '<font color="red"><strong><br><br>'.__('A valid BPS htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not the most current version. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please view the Read Me Help button above.', 'bulletproof-security').'</strong></font><br>';
+		$text = '<font color="red"><strong><br><br>'.__('ERROR: A valid BPS htaccess file was NOT found in your wp-admin folder. Either you have not activated BulletProof Mode for your wp-admin folder yet or the version of the wp-admin htaccess file that you are using is not the most current version. BulletProof Mode for the wp-admin folder MUST also be activated when you have BulletProof Mode activated for the Root folder. Please view the Read Me Help button above.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 }}}}
 
@@ -569,7 +571,7 @@ $filename = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
     	$text = '<font color="green"><strong>&radic; '.__('Deny All protection activated for BPS Master /htaccess folder', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 	} else {
-    	$text = '<font color="red"><strong>'.__('Deny All protection NOT activated for BPS Master /htaccess folder', 'bulletproof-security').'</strong></font><br>';
+    	$text = '<font color="red"><strong>'.__('ERROR: Deny All protection NOT activated for BPS Master /htaccess folder', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 	}
 }
@@ -582,7 +584,7 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
     	$text = '<font color="green"><strong>&radic; '.__('Deny All protection activated for /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder', 'bulletproof-security').'</strong></font><br><br>';
 		echo $text;
 	} else {
-    	$text = '<font color="red"><strong>'.__('Deny All protection NOT activated for /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder', 'bulletproof-security').'</strong></font><br><br>';
+    	$text = '<font color="red"><strong>'.__('ERROR: Deny All protection NOT activated for /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder', 'bulletproof-security').'</strong></font><br><br>';
 		echo $text;
 	}
 }
@@ -734,7 +736,7 @@ $bps_bp_maintenance_values = WP_CONTENT_DIR . '/bps-backup/master-backups/backup
 	}
 }
 
-// Check if Permalinks are enabled
+// System Info page only - Check if Permalinks are enabled
 function bps_check_permalinks() {
 $permalink_structure = get_option('permalink_structure');	
 	

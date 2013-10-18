@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: bulletproof, security, secure, htaccess, chmod, maintenance, plugin, private, privacy, protection, permissions, 503, base64, injection, code, encode, script, attack, hack, hackers, block, blocked, prevent, prevention, RFI, XSS, CRLF, CSRF, SQL Injection, vulnerability, website security, WordPress security, security log, logging, HTTP log, error log, login security, login, log, users, login alerts, lock, brute force, authenticate, authentication, firewall
 Requires at least: 3.0 
 Tested up to: 3.6.1 
-Stable tag: .49.4
+Stable tag: .49.5
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -356,6 +356,13 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 5. BulletProof Security - Login Security and Monitoring page
 
 == Changelog ==
+
+= .49.5 =
+* Reverting: Brute Force Login Protection code is now optional/Bonus Code again
+* BPS will not automatically add this code as standard code in the root .htaccess file
+* The Brute Force Login Protection Custom Code text box will remain for folks who can use this code on their websites.
+* See the BPS Whats New page for more details
+* Enjoy!
 
 = .49.4 =
 * Code Mod to Brute Force Login Protection code to allow for the widest possible range of compatibility
@@ -774,6 +781,13 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
+= .49.5 =
+* Reverting: Brute Force Login Protection code is now optional/Bonus Code again
+* BPS will not automatically add this code as standard code in the root .htaccess file
+* The Brute Force Login Protection Custom Code text box will remain for folks who can use this code on their websites.
+* See the BPS Whats New page for more details
+* Enjoy!
+
 = .49.4 =
 * Code Mod to Brute Force Login Protection code to allow for the widest possible range of compatibility
 * MOD: RewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR] to RewriteCond %{HTTP_USER_AGENT} ^$ [OR] 
@@ -937,7 +951,21 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .49.4
+What's New in .49.5
+
+= .49.5 =
+* The success/fail ratio for the Brute Force Login page protection code was 95%/5% success/fail. We have decided not to make this code standard BPS root .htaccess file code and are reverting back to using the Bonus Code Dismiss Notice so that this code is optional and not standard code. If you are already using this code and it is working fine on your site then copy and paste the code to this BPS Custom Code text box: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION to save it permanently. BPS will no longer automatically add this code to the root .htaccess file as standard BPS code.
+
+* If you are seeing a 403 error when logging in or logging out of your website delete the code shown below from your root .htaccess file.
+ 	
+<pre><code># BRUTE FORCE LOGIN PAGE PROTECTION
+# Protects the Login page from SpamBots & Proxies
+# that use Server Protocol HTTP/1.0 or a blank User Agent
+RewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]
+RewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$
+RewriteRule ^(.*)$ - [F,L]</code></pre>
 
 = .49.4 =
 * Code Mod to Brute Force Login Protection code to allow for the widest possible range of compatibility
