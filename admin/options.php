@@ -604,8 +604,9 @@ ErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security
 ErrorDocument 404 $bps_get_wp_root_secure"."404.php\n\n";
 }
 
-$bps_secure_dot_server_files = "# DENY ACCESS TO PROTECTED SERVER FILES - .htaccess, .htpasswd and all file names starting with dot
-RedirectMatch 403 /\..*$\n\n";
+$bps_secure_dot_server_files = "# DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS
+# Files and folders starting with a dot: .htaccess, .htpasswd, .errordocs, .logs
+RedirectMatch 403 \.(htaccess|htpasswd|errordocs|logs)$\n\n";
 
 if ( $BPSCustomCodeOptions['bps_customcode_admin_includes'] != '') {        
 $bps_secure_content_wpadmin = "# CUSTOM CODE WP-ADMIN/INCLUDES - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_admin_includes'])."\n\n";
@@ -711,11 +712,11 @@ RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
 RewriteCond %{HTTP_REFERER} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
 RewriteCond %{HTTP_REFERER} users\.skynet\.be.* [NC,OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [NC,OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
-RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
+RewriteCond %{QUERY_STRING} (\.\./|%2e%2e%2f|%2e%2e/|\.\.%2f|%2e\.%2f|%2e\./|\.%2e%2f|\.%2e/) [NC,OR]
 RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
 RewriteCond %{QUERY_STRING} http\: [NC,OR] 
 RewriteCond %{QUERY_STRING} https\: [NC,OR]
@@ -737,7 +738,7 @@ RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} ^.*(\(|\)|<|>|%3c|%3e).* [NC,OR]
 RewriteCond %{QUERY_STRING} ^.*(\\x00|\\x04|\\x08|\\x0d|\\x1b|\\x20|\\x3c|\\x3e|\\x7f).* [NC,OR]
 RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
-RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
+RewriteCond %{QUERY_STRING} (\.{1,}/)+(motd|etc|bin) [NC,OR]
 RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
 RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
@@ -846,11 +847,11 @@ RewriteCond %{REQUEST_URI} owssvr\.dll [NC,OR]
 RewriteCond %{HTTP_REFERER} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_REFERER} \.opendirviewer\. [NC,OR]
 RewriteCond %{HTTP_REFERER} users\.skynet\.be.* [NC,OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [NC,OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
 RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
-RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
+RewriteCond %{QUERY_STRING} (\.\./|%2e%2e%2f|%2e%2e/|\.\.%2f|%2e\.%2f|%2e\./|\.%2e%2f|\.%2e/) [NC,OR]
 RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
 RewriteCond %{QUERY_STRING} http\: [NC,OR] 
 RewriteCond %{QUERY_STRING} https\: [NC,OR]
@@ -868,7 +869,7 @@ RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} ^.*(\(|\)|<|>|%3c|%3e).* [NC,OR]
 RewriteCond %{QUERY_STRING} ^.*(\\x00|\\x04|\\x08|\\x0d|\\x1b|\\x20|\\x3c|\\x3e|\\x7f).* [NC,OR]
 RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
-RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
+RewriteCond %{QUERY_STRING} (\.{1,}/)+(motd|etc|bin) [NC,OR]
 RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
 RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
@@ -1348,6 +1349,14 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	} else {
 		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>'.__('Success! The Bonus Custom Code: Speed Boost Cache Code Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The Speed Boost Cache Code Notice will ONLY be displayed after you dismiss the Brute Force Login Protection Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		echo $text;
+	}
+
+	if ( !delete_user_meta($user_id, 'bps_author_enumeration_notice') ) {
+		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>'.__('The Bonus Custom Code: Author Enumeration BOT Probe Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
+		echo $text;
+	} else {
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px; margin-top:9px;"><p>'.__('Success! The Bonus Custom Code: Author Enumeration BOT Probe Code Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The Author Enumeration BOT Probe Code Notice will ONLY be displayed after you dismiss the Speed Boost Cache Code Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 
@@ -2541,88 +2550,36 @@ if (isset($_POST['maintenance-mode-preview-submit']) && current_user_can('manage
   </tr> 
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Brute Force Login Protection code: ', 'bulletproof-security'); ?></strong><br /><?php _e('The success/fail ratio for the Brute Force Login page protection code was 95%/5% success/fail. We have decided not to make this code standard BPS root .htaccess file code and are reverting back to using the Bonus Code Dismiss Notice so that this code is optional and not standard code. If you are already using this code and it is working fine on your site then copy and paste the code to this BPS Custom Code text box: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION to save it permanently. BPS will no longer automatically add this code to the root .htaccess file as standard BPS code.', 'bulletproof-security'); ?><br /><br /><?php _e('If you are seeing a 403 error when logging in or logging out of your website delete the code shown below from your root .htaccess file.', 'bulletproof-security'); ?></td>
+    <td class="bps-table_cell_no_border"><strong><?php _e('Bonus Code Dismiss Notice Added:  Author Enumeration BOT Probe Code: ', 'bulletproof-security'); ?></strong><br /><?php _e('This WordPress Author Enumeration Bot Probe Protection Bonus Code protects against hacker Bot Probes looking for WordPress author enumeration (a numbered list of Author ID\'s / User ID\'s) to exploit. Generates a standard WordPress 404 Error instead of displaying Author ID\'s / User ID\'s / Usernames. What is especially nice about this code is that to the hacker bot it appears that this Author ID / User ID does not exist on your website without giving any clues that the Author ID / User ID / Username does actually exist on your website.', 'bulletproof-security'); ?></td>
   </tr>
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border"><br /># BRUTE FORCE LOGIN PAGE PROTECTION<br /># Protects the Login page from SpamBots & Proxies<br /># that use Server Protocol HTTP/1.0 or a blank User Agent<br />RewriteCond %{REQUEST_URI} ^(/wp-login\.php|.*wp-login\.php.*)$<br />RewriteCond %{HTTP_USER_AGENT} ^$ [OR]<br />RewriteCond %{THE_REQUEST} HTTP/1\.0$ [OR]<br />RewriteCond %{SERVER_PROTOCOL} HTTP/1\.0$<br />RewriteRule ^(.*)$ - [F,L]</td>
-  </tr> 
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr> 
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('.49.4', 'bulletproof-security'); ?></strong></td>
-  </tr> 
- <tr>
+  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Code Mod to Brute Force Login Protection code: ', 'bulletproof-security'); ?></strong><br /><?php _e('Code Mod to Brute Force Login Protection code to allow for the widest possible range of compatibility. MOD: RewriteCond %{HTTP_USER_AGENT} ^(|-?)$ [NC,OR] to RewriteCond %{HTTP_USER_AGENT} ^$ [OR]', 'bulletproof-security'); ?></td>
-  </tr>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Root .htaccess File code modifications/changes:', 'bulletproof-security').'</strong></h3>'.__('The new .htaccess code modifications/changes are done automatically during the BPS upgrade. No further action is required by you, unless you have previously copied the BPS Query String Exploits code to BPS Custom Code then you will see a Dashboard Notice with instructions on copying the new Root .htaccess Query String Exploits code to the BPS Custom Code Query String Exploits text box.', 'bulletproof-security').'</a></strong>'; echo $text; ?>
+<br /><br />
+
+<div style="background-color: #f4f9ff; padding:10px;">
+OLD: RedirectMatch 403 /\..*$<br />
+NEW: RedirectMatch 403 \.(htaccess|htpasswd|errordocs|logs)$<br /><br />
+<strong>BPS Query String Exploits Code Changes</strong><br />
+OLD: RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]<br />
+NEW: RewriteCond %{QUERY_STRING} (\.\./|%2e%2e%2f|%2e%2e/|\.\.%2f|%2e\.%2f|%2e\./|\.%2e%2f|\.%2e/) [NC,OR]<br /><br />
+OLD: RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]<br />
+NEW: RewriteCond %{QUERY_STRING} (\.{1,}/)+(motd|etc|bin) [NC,OR]<br /><br />
+OLD: RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]<br />
+NEW: RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [NC,OR]<br /><br />
+OLD: RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]<br />
+NEW: RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [NC,OR]
+</div>       
+    </td>
+  </tr>  
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr> 
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('.49.3', 'bulletproof-security'); ?></strong></td>
-  </tr> 
-<tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('New Feature - Security Log zip, email and delete/replace option: ', 'bulletproof-security'); ?></strong><br /><?php $text = __('Security Log files are automatically zipped, emailed and replaced with a new blank security log file when they reach the maximum file size setting on the Security Log page. During the BPS upgrade this is automatically set to zip and email log files when they reach 500KB in size.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr> 
- <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Structural/Menu Changes: ', 'bulletproof-security'); ?></strong><br /><?php _e('The Security Log & System Info tab pages have been moved out of htaccess Core and now have their own separate pages/menu links.', 'bulletproof-security'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr> 
- <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('New standard root .htaccess code added: ', 'bulletproof-security'); ?></strong><br /><?php _e('Server Protocol HTTP/1.0 and blank User Agent htaccess BRUTE FORCE LOGIN PAGE PROTECTION code is now standard .htaccess code in the BPS root .htaccess file.', 'bulletproof-security'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr> 
- <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('New BPS Pro Custom Code Text box added: ', 'bulletproof-security'); ?></strong><br /><?php _e('A new Custom Code Text box has been added: CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION.', 'bulletproof-security'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr> 
-<tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('Check Headers Tool added to the System Info page: ', 'bulletproof-security'); ?></strong><br /><?php $text = __('This tool Allows you to check your website Headers or another website\'s Headers remotely.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr> 
- <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('New System Info page check - Public IP/X-Forwarded-For check: ', 'bulletproof-security'); ?></strong><br /><?php _e('If you are using CloudFlare on your website then you will see Proxy X-Forwarded-For IP Address: instead of Public ISP IP / Your Computer IP Address: displayed to you. This additional check is for troubleshooting issues with CloudFlare, CDN, Proxy or VPN.', 'bulletproof-security'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr>
- <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><strong><?php _e('PHP mysqli_get_client_info function additional check: ', 'bulletproof-security'); ?></strong><br /><?php _e('Additional function checking code has been added in cases where the mysqli_get_client_info function is not available on a Host Server.', 'bulletproof-security'); ?></td>
-  </tr>
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr>
   <tr>
     <td class="bps-table_cell_bottom_no_border">&nbsp;</td>
     <td class="bps-table_cell_bottom_no_border">&nbsp;</td>
@@ -2704,13 +2661,13 @@ jQuery(document).ready(function($){
 
 <?php echo '<strong>'; _e('1 Click Upgrades: ', 'bulletproof-security'); echo '</strong>'; _e('BPS Pro Plugin upgrade notifications are displayed in your WordPress Dashboard exactly the same way as all other WordPress plugins. All BPS Pro files are automatically updated during the upgrade process and no additional setup steps are required when upgrading. When new features and options are added to new BPS Pro versions those new features and options are automatically setup during BPS Pro upgrades and do not require any additional setup or configuration by you.', 'bulletproof-security'); ?><br /><br />
 
-<?php echo '<strong>'; _e('AutoRestore / Quarantine Intrusion Detection and Prevention Systems (IDPS): ', 'bulletproof-security'); echo '</strong>'; _e('ARQ is a real-time file monitor that automatically AutoRestores and/or Quarantines files. ARQ utilizes countermeasure website security that has the capability to protect all of your website files, both WordPress and non-WordPress files, even if your Web Host Server is hacked or if your FTP password is cracked or stolen. Quarantine Options: Restore File, Delete File and View File. AutoRestore/Quarantine includes Displayed Alerts, Email Alerts and Logging.', 'bulletproof-security'); ?><br /><br />
+<?php echo '<strong>'; _e('AutoRestore / Quarantine Intrusion Detection and Prevention Systems (IDPS): ', 'bulletproof-security'); echo '</strong>'; _e('ARQ is a real-time file monitor that automatically AutoRestores and/or Quarantines files. ARQ utilizes countermeasure website security that has the capability to protect all of your website files, both WordPress and non-WordPress files, even if your Web Host Server is hacked or if your FTP password is cracked or stolen. Quarantine Options: Restore File, Delete File and View File. AutoRestore/Quarantine includes Displayed Alerts, Email Alerts and Logging. AutoRestore/Quarantine works seamlessly with WordPress Automatic Updates. The BPS Pro Security Log logs all WP files that were installed and backed up automatically during WordPress Automatic Update installations.', 'bulletproof-security'); ?><br /><br />
 
 <?php echo '<strong>'; _e('Plugin Firewall: ', 'bulletproof-security'); echo '</strong>'; _e('The Plugin Firewall / Plugins BulletProof Mode prevents/blocks/forbids Remote Access to the plugins folder from external sources (remote script execution, hacker recon, remote scanning, remote accessibility, etc.) and only allows internal access to the plugins folder based on this criteria: Domain name, Server IP Address and Public IP / Your Computer IP Address.', 'bulletproof-security'); ?><br /><br />
 
 <?php echo '<strong>'; _e('Uploads Folder Anti-Exploit Guard: ', 'bulletproof-security'); echo '</strong>'; _e('The Uploads Folder Anti-Exploit Guard / Uploads BulletProof Mode allows ONLY safe image files with valid image file extensions such as jpg, gif, png, etc. to be accessed, opened or viewed from the uploads folder. The Uploads Anti-Exploit Guard prevents/blocks/forbids files by file extension names in the uploads folder from being accessed, opened, viewed, processed or executed.', 'bulletproof-security'); ?><br /><br />
 
-<?php echo '<strong>'; _e('Login Security & Monitoring: ', 'bulletproof-security'); echo '</strong>'; _e('Login Security & Monitoring allows you to choose whether or not to log all user account logins or only log user account lockouts. You can choose to have S-Monitor alerts displayed in your WP Dashboard, BPS Pages only or turn them off based on the Login Security options that you choose. S-Monitor Login Security email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in when a User Account is locked out or Do Not Send Email Alerts. Disable Password Reset. Generic error messages.', 'bulletproof-security'); ?><br /><br />
+<?php echo '<strong>'; _e('Login Security & Monitoring: ', 'bulletproof-security'); echo '</strong>'; _e('Login Security & Monitoring allows you to choose whether or not to log all user account logins or only log user account lockouts. You can choose to have S-Monitor alerts displayed in your WP Dashboard, BPS Pages only or turn them off based on the Login Security options that you choose. S-Monitor Login Security email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in and when a User Account is locked out or Do Not Send Email Alerts. Disable Password Reset option. Generic error messages displayed option.', 'bulletproof-security'); ?><br /><br />
 
 <?php echo '<strong>'; _e('JTC Anti-Spam / Anti-Hacker: ', 'bulletproof-security'); echo '</strong>'; _e('Hacker Protection ~ Spammer Protection ~ DoS/DDoS Attack Protection ~ Brute Force Login Attack Protection ~ SpamBot Trap. JTC Anti-Spam provides website security protection as well as website Anti-Spam protection. JTC Anti-Spam is user friendly Anti-Spam / Anti-Hacker Protection. You can customize and personalize your JTC ToolTip message and CAPTCHA to match your website concept. JTC Anti-Spam / Anti-Hacker protects these website pages/Forms: Login page/Form, Registration page/Form, Lost Password page/Form, Comment page/Form, BuddyPress Register page/Form and the BuddyPress Sidebar Login Form with a user friendly & customizable jQuery ToolTip CAPTCHA.', 'bulletproof-security'); ?><br /><br />
 
@@ -2724,14 +2681,18 @@ jQuery(document).ready(function($){
 
 <?php echo '<strong>'; _e('Advanced Real-Time Alerting: ', 'bulletproof-security'); echo '</strong>';  _e('BPS Pro checks and displays error, warning, notifications and alert messages in real time. You can choose how you want these messages displayed to you with S-Monitor Monitoring &amp; Alerting Options - Display in your WP Dashboard, BPS Pro pages only, Turned off, Email Alerts, Logging...', 'bulletproof-security'); ?><br /><br />
 
-<?php echo '<strong>'; _e('Pro-Tools: ', 'bulletproof-security'); echo '</strong>'; _e('Pro-Tools is a set of versatile website tools: Online Base64 Decoder, Offline Base64 Decode/Encode, Mcrypt ~ Decrypt / Encrypt, Crypt Encryption, Scheduled Crons, String Finder, String Replacer / Remover, DB String Finder, DNS Finder, Ping Website, cURL Multi Page Scanner...', 'bulletproof-security'); ?><br /><br />
+<?php echo '<strong>'; _e('Pro-Tools: ', 'bulletproof-security'); echo '</strong>'; _e('Pro-Tools is a set of versatile website tools: Online Base64 Decoder, Offline Base64 Decode/Encode, Mcrypt ~ Decrypt / Encrypt, Crypt Encryption, Scheduled Crons, String Finder, String Replacer / Remover, DB String Finder, DNS Finder, Ping Website, cURL Multi Page Scanner, Website Headers, WP Automatic Update...', 'bulletproof-security'); ?><br /><br />
 </div>	
 
     </td>
     <td width="38%" valign="top" class="bps-table_cell_help">
 
 <div id="bpsProVersions">
-<a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a><br /><br />    
+<a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Releases', 'bulletproof-security'); ?></a><br /><br />    
+    <a href="http://www.ait-pro.com/aitpro-blog/4916/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-9/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.9', 'bulletproof-security'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/4905/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-8/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.8', 'bulletproof-security'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/4900/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-7/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.7', 'bulletproof-security'); ?></a><br /><br />
+    <a href="http://www.ait-pro.com/aitpro-blog/4895/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-6/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.6', 'bulletproof-security'); ?></a><br /><br />
     <a href="http://www.ait-pro.com/aitpro-blog/4889/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-5/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.5', 'bulletproof-security'); ?></a><br /><br />
     <a href="http://www.ait-pro.com/aitpro-blog/4876/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-7-0/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 7.0', 'bulletproof-security'); ?></a><br /><br />
     <a href="http://www.ait-pro.com/aitpro-blog/4845/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-6-5/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 6.5', 'bulletproof-security'); ?></a><br /><br />
