@@ -58,7 +58,7 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 
 	if (file_exists($maintenance_htaccess_file)) {
 		$bpsString = file_get_contents($maintenance_htaccess_file);
-	echo $bpsString;
+		echo $bpsString;
 	} else {
 		_e('The maintenance.htaccess file either does not exist or is not named correctly. Check the /', 'bulletproof-security').$bps_plugin_dir.__('/bulletproof-security/admin/htaccess/ folder to make sure the maintenance.htaccess file exists and is named maintenance.htaccess.', 'bulletproof-security');
 	}
@@ -309,7 +309,7 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 	if ( current_user_can('manage_options') ) {
 	
 	if ( !file_exists($filename) ) {
-		$text = '<div class="update-nag"><font color="red"><strong>'.__('BPS Alert! An htaccess file was NOT found in your root folder. Check the BPS', 'bulletproof-security').' <a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a> '.__('for more specific information.', 'bulletproof-security').'</strong></font></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your root folder. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</font></div>';
 		echo $text;
 	
 	} else {
@@ -420,7 +420,7 @@ switch ($bps_version) {
 		}
 
 		if ( getBPSInstallTime() == getBPSRootHtaccessLasModTime_minutes() || getBPSInstallTime_plusone() == getBPSRootHtaccessLasModTime_minutes() ) {
-			$updateText = '<div class="update-nag"><font color="blue"><strong>'.__("The BPS Automatic htaccess File Update Completed Successfully!", 'bulletproof-security').'</strong></font></div>';
+			$updateText = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__("The BPS Automatic htaccess File Update Completed Successfully!", 'bulletproof-security').'</font></div>';
 			copy($bps_denyall_htaccess, $bps_denyall_htaccess_renamed);	
 			copy($bps_denyall_htaccess, $security_log_denyall_htaccess);	
 			copy($bps_denyall_htaccess, $system_info_denyall_htaccess);
@@ -435,7 +435,7 @@ switch ($bps_version) {
 		break;
 		}
 	default:
-		$text = '<div class="update-nag"><strong><font color="red">'.__('BPS Alert! Your site does not appear to be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('Go to the Security Modes page and click the Create secure.htaccess File AutoMagic button and Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('If your site is in Maintenance Mode then your site is protected by BPS and this Alert will remain to remind you to put your site back in BulletProof Mode again.', 'bulletproof-security').'<br>'.__('If your site is in Default Mode then it is NOT protected by BulletProof Security. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your site does not appear to be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('Go to the Security Modes page and click the Create secure.htaccess File AutoMagic button and Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('If your site is in Maintenance Mode then your site is protected by BPS and this Alert will remain to remind you to put your site back in BulletProof Mode again.', 'bulletproof-security').'<br>'.__('If your site is in Default Mode then it is NOT protected by BulletProof Security. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</div>';
 		echo $text;
 	}
 }}}}
@@ -456,7 +456,7 @@ $BPSVreplace = "BULLETPROOF $bps_version WP-ADMIN";
 	if ( current_user_can('manage_options') ) {
 	
 	if ( !file_exists($filename) ) {
-		$text = '<div class="update-nag"><font color="red"><strong>'.__('BPS Alert! An htaccess file was NOT found in your wp-admin folder. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</strong></font></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your wp-admin folder. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</font></div>';
 		echo $text;
 	
 	} else {
@@ -495,7 +495,7 @@ switch ($bps_version) {
 		break;
 		}
 	default:
-		$text = '<div class="update-nag"><font color="red"><strong>'.__('BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder', 'bulletproof-security').'</strong></font><br>'.__('BulletProof Mode for the wp-admin folder MUST be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'<br>'.__('Check the BPS ', 'bulletproof-security').'<strong><a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a></strong>'.__(' for more specific information.', 'bulletproof-security').'</div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder', 'bulletproof-security').'</font><br>'.__('BulletProof Mode for the wp-admin folder MUST be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'<br>'.__('Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</div>';
 		echo $text;
 	}
 }}}}
@@ -795,7 +795,7 @@ function bps_check_php_version_error() {
     	echo '';
 	}
 	if (version_compare(PHP_VERSION, '5.0.0', '<')) {
-		$text = '<font color="red"><strong>'.__('WARNING! BPS requires at least PHP5 to function correctly. Your PHP version is: ', 'bulletproof-security').PHP_VERSION.'</font></strong><br><strong><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45#bulletproof-security-issues-problems" target="_blank">'.__(' BPS Guide - PHP5 Solution ', 'bulletproof-security').'</a></strong><br><strong>'.__('The BPS Guide will open in a new browser window. You will not be directed away from your WordPress Dashboard.', 'bulletproof-security').'</strong><br>';
+		$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WARNING! BPS requires at least PHP5 to function correctly. Your PHP version is: ', 'bulletproof-security').PHP_VERSION.'</font><br><a href="http://www.ait-pro.com/aitpro-blog/1166/bulletproof-security-plugin-support/bulletproof-security-plugin-guide-bps-version-45#bulletproof-security-issues-problems" target="_blank">'.__('BPS Guide - PHP5 Solution', 'bulletproof-security').'</a><br>'.__('The BPS Guide will open in a new browser window. You will not be directed away from your WordPress Dashboard.', 'bulletproof-security').'</div>';
 		echo $text;
 	}
 }
@@ -810,7 +810,7 @@ $permalink_structure = get_option('permalink_structure');
 $options = get_option('bulletproof_security_options_monitor');	
 	
 	if ( current_user_can('manage_options') && get_option('permalink_structure') == '' && !get_user_meta($user_id, 'bps_ignore_Permalinks_notice')) { 
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('HUD Check: Custom Permalinks are NOT being used.', 'bulletproof-security').'</font><br>'.__('It is recommended that you use Custom Permalinks: ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2304/wordpress-tips-tricks-fixes/permalinks-wordpress-custom-permalinks-wordpress-best-wordpress-permalinks-structure/" target="_blank" title="Link opens in a new Browser window">'.__('How to setup Custom Permalinks', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_Permalinks_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('HUD Check: Custom Permalinks are NOT being used.', 'bulletproof-security').'</font><br>'.__('It is recommended that you use Custom Permalinks: ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2304/wordpress-tips-tricks-fixes/permalinks-wordpress-custom-permalinks-wordpress-best-wordpress-permalinks-structure/" target="_blank" title="Link opens in a new Browser window">'.__('How to setup Custom Permalinks', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_Permalinks_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 		echo $text;
 	} else {
 		return;
@@ -836,7 +836,7 @@ global $wp_rewrite, $is_IIS, $is_iis7, $current_user;
 $user_id = $current_user->ID;	
 
 	if ( current_user_can('manage_options') && $is_IIS && !iis7_supports_permalinks() && !get_user_meta($user_id, 'bps_ignore_iis_notice') ) {
-		$text = '<div class="update-nag"><strong><font color="red">'.__('WARNING! BPS has detected that your Server is a Windows IIS Server that does not support htaccess rewriting.', 'bulletproof-security').'</font><br>'.__('Do NOT activate BulletProof Modes unless you know what you are doing.', 'bulletproof-security').'<br>'.__('Your Server Type is: ', 'bulletproof-security').$_SERVER['SERVER_SOFTWARE'].' </strong><br><strong><a href="http://codex.wordpress.org/Using_Permalinks" target="_blank" title="This link will open in a new browser window.">'.__('WordPress Codex - Using Permalinks - see IIS section', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_iis_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('WARNING! BPS has detected that your Server is a Windows IIS Server that does not support htaccess rewriting.', 'bulletproof-security').'</font><br>'.__('Do NOT activate BulletProof Modes unless you know what you are doing.', 'bulletproof-security').'<br>'.__('Your Server Type is: ', 'bulletproof-security').$_SERVER['SERVER_SOFTWARE'].'<br><a href="http://codex.wordpress.org/Using_Permalinks" target="_blank" title="This link will open in a new browser window.">'.__('WordPress Codex - Using Permalinks - see IIS section', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_iis_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 		echo $text;
 	} else {
 		return;
@@ -859,13 +859,13 @@ function bps_hud_check_bpsbackup() {
 $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
 
 	if( !is_dir (WP_CONTENT_DIR . '/bps-backup')) {
-		$text = '<br><font color="red"><strong>'.__('WARNING! BPS was unable to automatically create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder.', 'bulletproof-security').'</strong></font><br><strong>'.__('You will need to create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder manually via FTP. The folder permissions for the bps-backup folder need to be set to 755 in order to successfully perform permanent online backups.', 'bulletproof-security').'</strong><br>'.__('To remove this message permanently click ', 'bulletproof-security').'<strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></strong><br>';
+		$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WARNING! BPS was unable to automatically create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder.', 'bulletproof-security').'</font><br>'.__('You will need to create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder manually via FTP. The folder permissions for the bps-backup folder need to be set to 755 in order to successfully perform permanent online backups.', 'bulletproof-security').'<br>'.__('To remove this message permanently click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></div>';
 		echo $text;
 	} else {
 		echo '';
 	}
 	if( !is_dir (WP_CONTENT_DIR . '/bps-backup/master-backups')) {
-		$text = '<br><font color="red"><strong>'.__('WARNING! BPS was unable to automatically create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/master-backups folder.', 'bulletproof-security').'</strong></font><br><strong>'.__('You will need to create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/master-backups folder manually via FTP. The folder permissions for the master-backups folder need to be set to 755 in order to successfully perform permanent online backups.', 'bulletproof-security').'</strong><br>'.__('To remove this message permanently click ', 'bulletproof-security').'<strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></strong><br>';
+		$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WARNING! BPS was unable to automatically create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/master-backups folder.', 'bulletproof-security').'</font><br>'.__('You will need to create the /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/master-backups folder manually via FTP. The folder permissions for the master-backups folder need to be set to 755 in order to successfully perform permanent online backups.', 'bulletproof-security').'<br>'.__('To remove this message permanently click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></div>';
 		echo $text;
 	} else {
 		echo '';
@@ -876,7 +876,7 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
 function bps_check_safemode() {
 	
 	if (ini_get('safe_mode') == 1) {
-		$text = '<br><font color="red"><strong>'.__('WARNING! BPS has detected that Safe Mode is set to On in your php.ini file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If you see errors that BPS was unable to automatically create the backup folders this is probably the reason why.', 'bulletproof-security').'</strong><br>'.__('To remove this message permanently click ', 'bulletproof-security').'<strong><a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></strong><br>';
+		$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WARNING! BPS has detected that Safe Mode is set to On in your php.ini file.', 'bulletproof-security').'</font><br>'.__('If you see errors that BPS was unable to automatically create the backup folders this is probably the reason why.', 'bulletproof-security').'<br>'.__('To remove this message permanently click ', 'bulletproof-security').'<a href="http://www.ait-pro.com/aitpro-blog/2566/bulletproof-security-plugin-support/bulletproof-security-error-messages" target="_blank">'.__('here.', 'bulletproof-security').'</a></div>';
 		echo $text;
 	} else {
 		echo '';
@@ -895,7 +895,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	if ($return_var == 1 || is_plugin_active_for_network( 'w3-total-cache/w3-total-cache.php' )) { // checks if W3TC is active for Single site or Network
 		if ($bpsSiteUrl == $bpsHomeUrl) {
 		if (!strpos($string, "W3TC")) {
-			$text = '<font color="red"><strong>'.__('W3 Total Cache is activated, but W3TC .htaccess code was NOT found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('W3TC needs to be redeployed by clicking either the auto-install or deploy buttons. If your root .htaccess file is locked then you need to unlock it to allow W3TC to write its htaccess code to your root htaccess file. Click to ', 'bulletproof-security').'<a href="admin.php?page=w3tc_general">'.__('Redeploy W3TC.', 'bulletproof-security').'</a>'.__('BPS Lock and Unlock buttons are on the htaccess File Editor page.', 'bulletproof-security').'</strong><br><br>';
+			$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('W3 Total Cache is activated, but W3TC .htaccess code was NOT found in your root .htaccess file.', 'bulletproof-security').'</font><br>'.__('W3TC needs to be redeployed by clicking either the auto-install or deploy buttons. If your root .htaccess file is locked then you need to unlock it to allow W3TC to write its htaccess code to your root htaccess file. Click to ', 'bulletproof-security').'<a href="admin.php?page=w3tc_general">'.__('Redeploy W3TC.', 'bulletproof-security').'</a>'.__('BPS Lock and Unlock buttons are on the htaccess File Editor page.', 'bulletproof-security').'</div>';
 			echo $text;
 		} 
 		}
@@ -903,7 +903,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	elseif ($return_var != 1 || !is_plugin_active_for_network( 'w3-total-cache/w3-total-cache.php' )) { // checks if W3TC is active for Single site or Network
 		if ($bpsSiteUrl == $bpsHomeUrl) {
 		if (strpos($string, "W3TC")) {
-			$text = '<font color="red"><strong>'.__('W3 Total Cache is deactivated and W3TC .htaccess code was found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If this is just temporary then this warning message will go away when you reactivate W3TC. If you are planning on uninstalling W3TC the W3TC .htaccess code will be automatically removed from your root .htaccess file when you uninstall W3TC. If you manually edit your root htaccess file then refresh your browser to perform a new HUD htaccess file check.', 'bulletproof-security').'</strong><br><br>';
+			$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('W3 Total Cache is deactivated and W3TC .htaccess code was found in your root .htaccess file.', 'bulletproof-security').'</font><br>'.__('If this is just temporary then this warning message will go away when you reactivate W3TC. If you are planning on uninstalling W3TC the W3TC .htaccess code will be automatically removed from your root .htaccess file when you uninstall W3TC. If you manually edit your root htaccess file then refresh your browser to perform a new HUD htaccess file check.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 		} 
@@ -922,7 +922,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	if ($return_var == 1 || is_plugin_active_for_network( 'wp-super-cache/wp-cache.php' )) { // checks if WPSC is active for Single site or Network
 		if ($bpsSiteUrl == $bpsHomeUrl) {
 		if (!strpos($string, "WPSuperCache")) { 
-			$text = '<font color="red"><strong>'.__('WP Super Cache is activated, but either you are not using WPSC mod_rewrite to serve cache files or the WPSC .htaccess code was NOT found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If you are not using WPSC mod_rewrite then just add this commented out line of code in anywhere in your root htaccess file - # WPSuperCache. If you are using WPSC mod_rewrite and the WPSC htaccess code is not in your root htaccess file then click this ', 'bulletproof-security').'<a href="options-general.php?page=wpsupercache&tab=settings">'.__('Update WPSC link', 'bulletproof-security').'</a>'.__(' to go to the WPSC Settings page and click the Update Mod_Rewrite Rules button. If your root .htaccess file is locked then you will need to unlock it to allow WPSC to write its htaccess code to your root htaccess file. BPS Lock and Unlock buttons are on the htaccess File Editor page. Refresh your browser to perform a new htaccess file check after updating WPSC mod_rewrite.', 'bulletproof-security').'</strong><br><br>';
+			$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WP Super Cache is activated, but either you are not using WPSC mod_rewrite to serve cache files or the WPSC .htaccess code was NOT found in your root .htaccess file.', 'bulletproof-security').'</font><br>'.__('If you are not using WPSC mod_rewrite then just add this commented out line of code in anywhere in your root htaccess file - # WPSuperCache. If you are using WPSC mod_rewrite and the WPSC htaccess code is not in your root htaccess file then click this ', 'bulletproof-security').'<a href="options-general.php?page=wpsupercache&tab=settings">'.__('Update WPSC link', 'bulletproof-security').'</a>'.__(' to go to the WPSC Settings page and click the Update Mod_Rewrite Rules button. If your root .htaccess file is locked then you will need to unlock it to allow WPSC to write its htaccess code to your root htaccess file. BPS Lock and Unlock buttons are on the htaccess File Editor page. Refresh your browser to perform a new htaccess file check after updating WPSC mod_rewrite.', 'bulletproof-security').'</div>';
 			echo $text;
 		} 
 		}
@@ -930,7 +930,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	elseif ($return_var != 1 || !is_plugin_active_for_network( 'wp-super-cache/wp-cache.php' )) { // checks if WPSC is NOT active for Single or Network
 		if ($bpsSiteUrl == $bpsHomeUrl) {
 		if (strpos($string, "WPSuperCache") ) {
-			$text = '<font color="red"><strong>'.__('WP Super Cache is deactivated and WPSC .htaccess code - # BEGIN WPSuperCache # END WPSuperCache - was found in your root .htaccess file.', 'bulletproof-security').'</strong></font><br><strong>'.__('If this is just temporary then this warning message will go away when you reactivate WPSC. You will need to set up and reconfigure WPSC again when you reactivate WPSC. If you are planning on uninstalling WPSC the WPSC .htaccess code will be automatically removed from your root .htaccess file when you uninstall WPSC. If you added this commented out line of code in anywhere in your root htaccess file - # WPSuperCache - then delete it and refresh your browser.', 'bulletproof-security').'</strong><br><br>';
+			$text = '<div style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:0px 5px;"><font color="red">'.__('WP Super Cache is deactivated and WPSC .htaccess code - # BEGIN WPSuperCache # END WPSuperCache - was found in your root .htaccess file.', 'bulletproof-security').'</font><br>'.__('If this is just temporary then this warning message will go away when you reactivate WPSC. You will need to set up and reconfigure WPSC again when you reactivate WPSC. If you are planning on uninstalling WPSC the WPSC .htaccess code will be automatically removed from your root .htaccess file when you uninstall WPSC. If you added this commented out line of code in anywhere in your root htaccess file - # WPSuperCache - then delete it and refresh your browser.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 		} 
@@ -979,7 +979,7 @@ function bps_multsite_check() {
 function bps_multsite_check_smode_single() {  
 
 	if ( !is_multisite() ) { 
-		$text = '<font color="green" style="font-size:13px;"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For Standard WP Installations', 'bulletproof-security').'</strong></font>';
+		$text = '<div class="automagic-text">'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For Standard WP Installations', 'bulletproof-security').'</div>';
 		echo $text;
 	} else {
 		$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Standard WP Single Sites Only', 'bulletproof-security');
@@ -991,7 +991,7 @@ function bps_multsite_check_smode_single() {
 function bps_multsite_check_smode_MUSDir() {  
 	
 	if ( is_multisite() && !is_subdomain_install() ) { 
-		$text = '<font color="green" style="font-size:13px;"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-directory Installations', 'bulletproof-security').'</strong></font>';
+		$text = '<div class="automagic-text">'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-directory Installations', 'bulletproof-security').'</div>';
 		echo $text;
 	} else {
 		$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Multisite subdirectory Websites Only', 'bulletproof-security');
@@ -1003,7 +1003,7 @@ function bps_multsite_check_smode_MUSDir() {
 function bps_multsite_check_smode_MUSDom() {  
 	
 	if ( is_multisite() && is_subdomain_install() ) { 
-		$text = '<font color="green" style="font-size:13px;"><strong>'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-domain Installations', 'bulletproof-security').'</strong></font>';
+		$text = '<div class="automagic-text">'.__('Use These AutoMagic Buttons For Your Website', 'bulletproof-security').'<br>'.__('For WP Network / Multisite sub-domain Installations', 'bulletproof-security').'</div>';
 		echo $text;
 	} else {
 		$text = '<strong>'.__('Do Not Use These AutoMagic Buttons', 'bulletproof-security').'</strong><br>'.__('For Multisite subdomain Websites Only', 'bulletproof-security');
@@ -1143,21 +1143,37 @@ function bps_wp_generator_meta_removed() {
 	}
 }
 
-// Multisite/Network - BPS Plugin Activation Alerts
-function bpsNetworkActivationAlert() {
-global $blog_id;
-	
-	if ( is_multisite() && current_user_can('manage_options') && is_plugin_active_for_network( 'bulletproof-security/bulletproof-security.php' ) ) {
-		$text = '<div class="update-nag"><strong><font color="red">'.__('BPS Alert', 'bulletproof-security').'</font><br>'.__('The BPS plugin should NOT be Network Activated. Network Deactivate BPS and then activate BPS on your Primary site ONLY.', 'bulletproof-security').'</strong></div>';
-		echo $text;
-	}
+add_action('admin_notices', 'bps_hud_NetworkActivationAlert_notice');
 
-	if ( is_multisite() && is_super_admin() && $blog_id != 1 ) {
-		$text = '<div class="update-nag"><strong><font color="red">'.__('BPS Alert', 'bulletproof-security').'</font><br>'.__('The BPS plugin should NOT be Activated on Network / Multisite subsites and should ONLY be activated on your Primary site. Deactivate BPS on this subsite.', 'bulletproof-security').'</strong></div>';
-		echo $text;
+// Heads Up Display - Multisite/Network ONLY - BPS Pro Network Activation or Single activation for subsites
+function bps_hud_NetworkActivationAlert_notice() {
+global $current_user, $blog_id;
+$user_id = $current_user->ID;
+
+	if ( !is_multisite() ) {
+		return;
+	}
+	
+	if ( is_multisite() && is_super_admin() && !get_user_meta($user_id, 'bps_hud_NetworkActivationAlert_notice') ) {
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('New Feature Notice: BPS can now be Network Activated on Multisite', 'bulletproof-security').'</font><br>'.__('Go to the BPS Whats New tab page for details about the new BPS Network/Multisite capabilities.', 'bulletproof-security').'<br>'.__('or just click the Dismiss Notice link below if you do not want to allow BPS to be used on your Multisite subsites.', 'bulletproof-security').'<br>'.__('To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_networkactivation_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';	
+		echo $text;	
 	}
 }
-add_action('admin_notices', 'bpsNetworkActivationAlert');
+
+add_action('admin_init', 'bps_networkactivation_nag_ignore');
+
+function bps_networkactivation_nag_ignore() {
+global $current_user;
+$user_id = $current_user->ID;
+        
+	if ( !is_multisite() ) {
+		return;
+	}
+
+	if ( isset($_GET['bps_networkactivation_nag_ignore']) && '0' == $_GET['bps_networkactivation_nag_ignore'] ) {
+		add_user_meta($user_id, 'bps_hud_NetworkActivationAlert_notice', 'true', true);
+	}
+}
 
 add_action('admin_notices', 'bps_brute_force_login_protection_notice');
 
@@ -1168,7 +1184,7 @@ $user_id = $current_user->ID;
 	
 	if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_brute_force_login_protection_notice') ) { 
 
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('Bonus Custom Code: Brute Force Login Protection', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get additional Brute Force Login Protection code for your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_brute_force_login_protection_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code: Brute Force Login Protection', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get additional Brute Force Login Protection code for your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_brute_force_login_protection_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 		echo $text;
 	}
 }
@@ -1194,7 +1210,7 @@ $user_id = $current_user->ID;
 	
 	if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_speed_boost_cache_notice') && get_user_meta($user_id, 'bps_brute_force_login_protection_notice', true) ) { 
 
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('Bonus Custom Code: Speed Boost Cache Code', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Link opens in a new Browser window" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get Speed Boost Cache code to speed up your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_speed_boost_cache_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code: Speed Boost Cache Code', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Link opens in a new Browser window" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get Speed Boost Cache code to speed up your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_speed_boost_cache_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 		echo $text;
 	}
 }
@@ -1220,7 +1236,7 @@ $user_id = $current_user->ID;
 	
 	if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_author_enumeration_notice') && get_user_meta($user_id, 'bps_speed_boost_cache_notice', true) ) { 
 
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('Bonus Custom Code: Author Enumeration BOT Probe Code', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Link opens in a new Browser window" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get Author Enumeration BOT Probe Code. Protects against hacker bots finding Author names & User names on your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_author_enumeration_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code: Author Enumeration BOT Probe Code', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Link opens in a new Browser window" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get Author Enumeration BOT Probe Code. Protects against hacker bots finding Author names & User names on your website.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_author_enumeration_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 		echo $text;
 	}
 }
@@ -1255,7 +1271,7 @@ $file_contents = @file_get_contents($file);
 		preg_match_all('/AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application/', $CustomCodeoptions['bps_customcode_one'], $DBmatches);
 		
 		if ( $matches[0] && !$DBmatches[0] ) {
-			$text = '<div class="update-nag"><strong><font color="blue">'.__('HUD Check: PHP/php.ini handler htaccess code check', 'bulletproof-security').'</font><br>'.__('PHP/php.ini handler htaccess code was found in your root .htaccess file, but was NOT found in BPS Custom Code.', 'bulletproof-security').'<br>'.__('It is recommended that you copy your PHP/php.ini handler htaccess code in your root htaccess file to BPS Custom Code.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/pre-installation-wizard-checks-phpphp-ini-handler-htaccess-code-check/" target="_blank" title="Link opens in a new Browser window">'.__('Click Here', 'bulletproof-security').'</a>'.__(' for instructions on how to copy your PHP/php.ini handler htaccess code to BPS Custom Code.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_PhpiniHandler_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('HUD Check: PHP/php.ini handler htaccess code check', 'bulletproof-security').'</font><br>'.__('PHP/php.ini handler htaccess code was found in your root .htaccess file, but was NOT found in BPS Custom Code.', 'bulletproof-security').'<br>'.__('It is recommended that you copy your PHP/php.ini handler htaccess code in your root htaccess file to BPS Custom Code.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/pre-installation-wizard-checks-phpphp-ini-handler-htaccess-code-check/" target="_blank" title="Link opens in a new Browser window">'.__('Click Here', 'bulletproof-security').'</a>'.__(' for instructions on how to copy your PHP/php.ini handler htaccess code to BPS Custom Code.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_PhpiniHandler_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 			echo $text;			
 		}
 	}
@@ -1283,7 +1299,7 @@ $BPSoptions = get_option('bulletproof_security_options_login_security');
 	}
 	
 	if ( @$BPSoptions['bps_max_logins'] && @!$BPSoptions['bps_login_security_errors'] || @!$BPSoptions['bps_login_security_errors'] ) {
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('New Login Security Options Notification', 'bulletproof-security').'</font><br><a href="admin.php?page=bulletproof-security/admin/login/login.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to Login Security page and choose the settings you want to use for these 2 new Login Security Options:', 'bulletproof-security').'<br>'.__('Error Messages Option & Password Reset Option and then click the Save Options button.', 'bulletproof-security').'</strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('New Login Security Options Notification', 'bulletproof-security').'</font><br><a href="admin.php?page=bulletproof-security/admin/login/login.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to Login Security page and choose the settings you want to use for these 2 new Login Security Options:', 'bulletproof-security').'<br>'.__('Error Messages Option & Password Reset Option and then click the Save Options button.', 'bulletproof-security').'</div>';
 		echo $text;		
 	}
 }
@@ -1308,7 +1324,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	if ( $return_var == 1 && file_exists($filename) && strpos($check_string, "deny from all") ) { // 1 equals active	
 	
 		if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_ignore_sucuri_notice') ) { 
-			$text = '<div class="update-nag"><strong><font color="red">'.__('Sucuri 1-click Hardening wp-content .htaccess file problem detected', 'bulletproof-security').'</font><br>'.__('Using the Sucuri 1-click Hardening wp-content .htaccess file option will prevent BPS Security Error Logging from working.', 'bulletproof-security').'<br>'.__('To fix this issue delete the Sucuri .htaccess file in your wp-content folder.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_sucuri_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('Sucuri 1-click Hardening wp-content .htaccess file problem detected', 'bulletproof-security').'</font><br>'.__('Using the Sucuri 1-click Hardening wp-content .htaccess file option will prevent BPS Security Error Logging from working.', 'bulletproof-security').'<br>'.__('To fix this issue delete the Sucuri .htaccess file in your wp-content folder.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_sucuri_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 			echo $text;		
 		}
 	}
@@ -1343,7 +1359,7 @@ $return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option(
 	if ( $return_var == 1 && strpos($check_string, "HEAD|TRACE|DELETE|TRACK|DEBUG") ) {
 		
 		if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_ignore_BLC_notice') ) { 
-			$text = '<div class="update-nag"><strong><font color="red">'.__('Broken Link Checker plugin HEAD Request Method filter problem detected', 'bulletproof-security').'</font><br><strong>'.__('To fix this problem ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/forums/topic/broken-link-checker-plugin-403-error/" target="_blank">'.__('Click Here', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_BLC_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></strong></div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('Broken Link Checker plugin HEAD Request Method filter problem detected', 'bulletproof-security').'</font><br><strong>'.__('To fix this problem ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/forums/topic/broken-link-checker-plugin-403-error/" target="_blank">'.__('Click Here', 'bulletproof-security').'</a><br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_BLC_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
 			echo $text;
 		}		
 	}
@@ -1566,7 +1582,7 @@ $pattern = '/RewriteCond\s%{QUERY_STRING}\s\(\\\.\/\|\\\.\.\/\|\\\.\.\.\/\)\+\(m
 	
 	if ( $CustomCodeoptions['bps_customcode_bpsqse'] != '' && preg_match($pattern, $subject, $matches) ) {
 
-		$text = '<div class="update-nag"><strong><font color="blue">'.__('Notice: BPS Query String Exploits Code Changes', 'bulletproof-security').'</font><br>'.__('Older BPS Query String Exploits code was found in BPS Custom Code. Several Query String Exploits rules were changed/added/modified in the root .htaccess file in BPS .49.6.', 'bulletproof-security').'<br>'.__('Copy the new Query String Exploits section of code from your root .htaccess file and paste it into this BPS Custom Code text box: CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS and click the Save Root Custom Code button.', 'bulletproof-security').'<br>'.__('This Notice will go away once you have copied the new Query String Exploits code to BPS Custom Code and clicked the Save Root Custom Code button.', 'bulletproof-security').'</strong></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Notice: BPS Query String Exploits Code Changes', 'bulletproof-security').'</font><br>'.__('Older BPS Query String Exploits code was found in BPS Custom Code. Several Query String Exploits rules were changed/added/modified in the root .htaccess file in BPS .49.6.', 'bulletproof-security').'<br>'.__('Copy the new Query String Exploits section of code from your root .htaccess file and paste it into this BPS Custom Code text box: CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS and click the Save Root Custom Code button.', 'bulletproof-security').'<br>'.__('This Notice will go away once you have copied the new Query String Exploits code to BPS Custom Code and clicked the Save Root Custom Code button.', 'bulletproof-security').'</div>';
 		echo $text;
 	}
 }

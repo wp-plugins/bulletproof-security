@@ -75,7 +75,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
 
 <h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ System Information', 'bulletproof-security'); ?></h2>
-<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;">
+<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;background-color: #000;">
 
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
@@ -90,7 +90,7 @@ echo @bps_wpsc_htaccess_check($plugin_var);
 // General all purpose "Settings Saved." message for forms
 if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {
 if ( @$_GET['settings-updated'] == true) {
-	$text = '<p><font color="green"><strong>'.__('Settings Saved', 'bulletproof-security').'</strong></font></p>';
+	$text = '<p style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:5px;margin:0px;"><font color="green"><strong>'.__('Settings Saved', 'bulletproof-security').'</strong></font></p>';
 	echo $text;
 	}
 }
@@ -301,6 +301,11 @@ $bpsTarget = '';
     <td rowspan="2" class="bps-table_cell">
 	
 	<?php 
+	if ( is_multisite() && $blog_id != 1 ) {
+		echo '<font color="blue"><strong>'.__('MySQL DB Info is not displayed on Network/Multisite subsites', 'bulletproof-security').'</strong></font><br><br>';
+	
+	} else {
+	
 	echo __('MySQL Database Version', 'bulletproof-security').': ';
 	$sqlversion = $wpdb->get_var("SELECT VERSION() AS version");
 	echo '<strong>'.$sqlversion.'</strong><br>';
@@ -309,7 +314,7 @@ $bpsTarget = '';
 			return mysqli_get_client_info(); 
 		}
 	}
-	echo __('MySQL Client Version', 'bulletproof-security').': <strong>'.bps_mysqli_get_client_info().'</strong><br>';
+	echo __('MySQL Client Version', 'bulletproof-security').': <strong>'.bps_mysqli_get_client_info().'</strong><br>';	
 	echo __('Database Host', 'bulletproof-security').': <strong>'.DB_HOST.'</strong><br>';
 	echo __('Database Name', 'bulletproof-security').': <strong>'.DB_NAME.'</strong><br>';
 	echo __('Database User', 'bulletproof-security').': <strong>'.DB_USER.'</strong><br>';
@@ -325,6 +330,8 @@ $bpsTarget = '';
 	}}
 	echo $sql_mode;
 	echo '<br><br>';
+	}
+	
 	echo __('WordPress Installation Folder', 'bulletproof-security').': <strong>';
 	echo bps_wp_get_root_folder().'</strong><br>';
 	echo __('WordPress Installation Type', 'bulletproof-security').': ';
@@ -583,7 +590,7 @@ function bps_sysinfo_get_headers() {
 </table>
 </div>
          
-<div id="AITpro-link">BulletProof Security<?php echo BULLETPROOF_VERSION; ?> Plugin by <a href="http://www.ait-pro.com/" target="_blank" title="AITpro Website Security">AITpro Website Security</a>
+<div id="AITpro-link">BulletProof Security <?php echo BULLETPROOF_VERSION; ?> Plugin by <a href="http://www.ait-pro.com/" target="_blank" title="AITpro Website Security">AITpro Website Security</a>
 </div>
 </div>
 </div>

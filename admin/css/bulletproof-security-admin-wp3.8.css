@@ -7,9 +7,35 @@
 
 #bps-container table label { font-weight: 700; vertical-align:bottom;}
 
-#bps-container input[type=text] {background-color: #f4f9ff;}
+/* New BPS .49.7 */
+#bps-container input[type=text] {background-color: #f4f9ff; font-size:12px;}
+label { font-size:1em; font-weight: bold; vertical-align:bottom; }
 
 #bps-container textarea {background-color: #f4f9ff;} /* a little too blue #f2fdfd */
+
+/* New BPS .49.7 */
+#bps-container .bps-text-area-600x700 { font-family:"Courier New", Courier, monospace; font-size:1em; height:600px; width:700px; overflow:auto; }
+#bps-container .bps-text-area-custom-code { font-family:"Courier New", Courier, monospace; font-size:1em; height:220px; width:580px; overflow:auto; }
+#bps-container .bps-pro-tools { font-family:"Courier New", Courier, monospace; font-size:1em; height:250px; width:700px; overflow:auto; }
+
+/* Login Security .49.7 */
+label[for=LSLog1] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 27px; float: left; }
+label[for=LSLog2] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .25em; float: left; }
+label[for=LSLog3] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 19px; float: left; }
+label[for=LSLog4] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
+label[for=LSLog5] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .30em; float: left; }
+label[for=LSLog6] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 10px; float: left; }
+label[for=LSLog7] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 15px; float: left; }
+label[for=LSLog8] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
+
+label[for=bps-monitor-email1] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 18px; float: left; }
+label[for=bps-monitor-email2] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .25em; float: left; }
+label[for=bps-monitor-email3] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 18px; float: left; }
+label[for=bps-monitor-email4] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
+
+.widefat td { border-bottom:1px solid #eee; }
+
+div.automagic-text { font-weight: bold; color:green; border:1px solid black; background-color:#ffffe0; width:300px; padding:5px; }
 
 #bps-container div div { font-size: 1em; }
 
@@ -107,6 +133,10 @@
 /********* WordPress Default & Default CSS **************/
 .form-table {background: #EBEBEB; border:1px solid #addae6;}
 
+/* New BPS .49.7 */
+.form-table th { padding-left:5px; }
+.update-nag {  background-color:#ffffe0; }
+
 .tog {}
 
 .submit { padding:10px 0px 10px 15px;}
@@ -119,7 +149,8 @@
 .bps-menu {}
 .bps-menu ul { border:1px solid #999; background-image:url(../images/menu_bg.png); background-repeat:repeat; background-position: left bottom; }
 .bps-menu ul li { border:1px solid #EBEBEB; font-size: 1.25em; font-weight:700; }
-.bps-menu ul li a { color:#FFFFFF; background-color: #fff; background-image:url(../images/menu_btn.png); background-repeat:none;}
+/* New BPS .49.7 background-color: #eee; */
+.bps-menu ul li a { color:#FFFFFF; background-color: #eee; background-image:url(../images/menu_btn.png); background-repeat:none;}
 .bps-menu ul li a:hover {color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:none;}
 .bps-menu ul li a:active {color:#FFFFFF; background-image:url(../images/menu_btn_over.png); background-repeat:none;}
 
@@ -383,6 +414,16 @@
 	padding:15px 10px 0px 10px;
 }
 
+/* New BPS .49.7 */
+.bps-table_cell_help_custom_code { 
+	vertical-align:top;
+	background-color:#FFFFFF;
+	font-size:1em;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	padding:15px 10px 0px 10px;
+}
+
 .bps-table_cell_help_no_left_border {
 	background-color:#FFFFFF;
 	font-size:1em;
@@ -438,11 +479,13 @@
 }
 
 /************* BPS File Editor ************/
-#bps_file_editor {width:700px;}
+/* New BPS .49.7 width:690px; */
+#bps_file_editor {width:690px;}
 #bps-edittabs {width:700px;position:relative;left:0px;top:0px;}
 #bps-enable_bu_file_dl_button {position:relative; top:-15px; left:0px; }
 #bps-download_buttons_table {position:relative; top:-25px; left:0px; }
-.bps_file_editor_update { background-color:#ffffe0;border:1px solid #999999; padding:5px 0px 5px 5px;}
+/* New BPS Pro .49.7 */
+.bps_file_editor_update { background-color:#ffffe0;border:1px solid #999999; padding:5px }
 
 .bps-file_upload_title { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; padding:5px;}
 .bps-file_download_title { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; padding:5px; margin-top:1px;}
@@ -452,12 +495,53 @@
 
 .bps-download_links {font-size:1em; font-weight:bold; line-height:30px; display: block;}
 
+/************ Custom Code ******************/
+/* New BPS .49.7 */
+pre { 
+	position: relative;
+	z-index: 50;
+	background:#fff url(../images/pre_bg.png) top left repeat;
+	border:1px solid #999;
+	color:#000;
+	display:block;
+	font-family:"Courier New", Courier, monospace;
+	font-size:11px;
+	line-height:14px;
+	width:700px;
+	margin:0px 0px 0px 0px;
+	overflow:auto;
+	max-height:200px;
+	overflow-x:scroll;
+	overflow-y:scroll;	
+	padding:5px;;
+
+}
+
+#CC-phpini-handler { margin:65px 0px 0px 0px; }
+#CC-directory-index { margin:100px 0px 0px 0px;padding:3px; }
+#CC-brute-force { margin:120px 0px 0px 0px;padding:3px; }
+#CC-error-logging { margin:115px 0px 0px 0px;padding:3px; }
+#CC-wpadmin-includes { margin:100px 0px 0px 0px;padding:3px; }
+#CC-start-rewrite { margin:160px 0px 0px 0px;padding:3px; }
+#CC-request-methods { margin:160px 0px 0px 0px;padding:3px; }
+#CC-plugins-skip-rules { margin:115px 0px 0px 0px; }
+#CC-timthumb { margin:145px 0px 0px 0px;padding:3px; }
+#CC-BPSQSE { margin:130px 0px 0px 0px;padding:3px; }
+#CC-deny-browser-access { margin:120px 0px 0px 0px;padding:3px; }
+#CC-bottom-spam-block { margin:85px 0px 0px 0px;padding:3px; }
+
+#CC-wpadmin-deny-files { margin:120px 0px 0px 0px;padding:3px; }
+#CC-wpadmin-optional-measures { margin:150px 0px 0px 0px; }
+#CC-wpadmin-request-methods { margin:100px 0px 0px 0px; }
+#CC-wpadmin-BPSQSE { margin:130px 0px 0px 0px;padding:3px; }
+
 /************ Maintenance Form ************/
 #bps-maintenance_form_table {}
 
 #bps-maintenance_form_table .regular-text { width: 250px; }
 
-#bps-maintenance_form_table table th { width: 150px; background: #FFFFFF;}
+/* New BPS Pro .49.7 */
+#bps-maintenance_form_table table th { width: 150px; background: #FFFFFF; padding-left:10px;}
 
 #bps-maintenance_form_table table .description {margin-left:5px;}
 
@@ -610,4 +694,5 @@
 	padding:0;
 	}
 
-.wp-dialog .ui-dialog-titlebar-close:hover,.wp-dialog .ui-dialog-titlebar-close:focus{background-position:-88px -34px;}.ui-widget-overlay{background-color:#000;opacity:.6;filter:alpha(opacity=60);}
+.wp-dialog .ui-dialog-titlebar-close:hover,.wp-dialog .ui-dialog-titlebar-close:focus{background-position:-88px -34px;}
+.ui-widget-overlay{background-color:#000;opacity:.6;filter:alpha(opacity=60);}
