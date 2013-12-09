@@ -199,10 +199,10 @@ if (isset($_POST['submit13']) && current_user_can('manage_options')) {
 	$bpsString2 = "# CCWPF";
 	$bpsString3 = '/#\sBEGIN\sBPS\sWPADMIN\sDENY\sACCESS\sTO\sFILES(.*)#\sEND\sBPS\sWPADMIN\sDENY\sACCESS\sTO\sFILES/s';
 	$bpsString4 = '/#\sBEGIN\sBPSQSE-check\sBPS\sQUERY\sSTRING\sEXPLOITS\sAND\sFILTERS(.*)#\sEND\sBPSQSE-check\sBPS\sQUERY\sSTRING\sEXPLOITS\sAND\sFILTERS/s';
-	$bpsReplace1 = htmlspecialchars_decode($options['bps_customcode_one_wpa']);
-	$bpsReplace2 = htmlspecialchars_decode($options['bps_customcode_two_wpa']);
-	$bpsReplace3 = htmlspecialchars_decode($options['bps_customcode_deny_files_wpa']);	
-	$bpsReplace4 = htmlspecialchars_decode($options['bps_customcode_bpsqse_wpa']);	
+	$bpsReplace1 = htmlspecialchars_decode($options['bps_customcode_one_wpa'], ENT_QUOTES);
+	$bpsReplace2 = htmlspecialchars_decode($options['bps_customcode_two_wpa'], ENT_QUOTES);
+	$bpsReplace3 = htmlspecialchars_decode($options['bps_customcode_deny_files_wpa'], ENT_QUOTES);	
+	$bpsReplace4 = htmlspecialchars_decode($options['bps_customcode_bpsqse_wpa'], ENT_QUOTES);	
 	
 	$selected_radio = $_POST['selection13'];
 	
@@ -530,7 +530,7 @@ $bpsSuccessMessageDef = '<font color="green"><strong>'.__('Success! Your Default
 $bpsFailMessageDef = '<font color="red"><strong>'.__('The file ', 'bulletproof-security').$bps_auto_write_default_file.__(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named default.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/" target="_blank">'.__('HERE', 'bulletproof-security').'</a>'.__(' to go the the BulletProof Security Forum.', 'bulletproof-security').'</strong>';
 
 if ( $BPSCustomCodeOptions['bps_customcode_wp_rewrite_start'] != '') {        
-$bpsBeginWP = "# CUSTOM CODE WP REWRITE LOOP START - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_wp_rewrite_start'])."\n\n";
+$bpsBeginWP = "# CUSTOM CODE WP REWRITE LOOP START - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_wp_rewrite_start'], ENT_QUOTES)."\n\n";
 } else {
 $bpsBeginWP = "# WP REWRITE LOOP START
 RewriteEngine On
@@ -652,7 +652,7 @@ $bpsCCTop = 'CustomCodeOne';
 // AutoMagic - CUSTOM CODE TOP
 switch ($bpsCCTop) {
 	case "CustomCodeOne":
-        $phpiniHCode = "# CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_one'])."\n\n";
+        $phpiniHCode = "# CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_one'], ENT_QUOTES)."\n\n";
 		break;
 	default:
 		$phpiniHCode = "# CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE - Your Custom .htaccess code will be created here with AutoMagic\n\n";
@@ -660,7 +660,7 @@ switch ($bpsCCTop) {
 }
 
 if ( $BPSCustomCodeOptions['bps_customcode_directory_index'] != '') {        
-$bps_secure_content_top_two = "# CUSTOM CODE DIRECTORY LISTING/DIRECTORY INDEX - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_directory_index'])."\n\n";
+$bps_secure_content_top_two = "# CUSTOM CODE DIRECTORY LISTING/DIRECTORY INDEX - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_directory_index'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_content_top_two = "# DO NOT SHOW DIRECTORY LISTING
 # If you are getting 500 Errors when activating BPS then comment out Options -Indexes 
@@ -675,7 +675,7 @@ DirectoryIndex index.php index.html /index.php\n\n";
 // 95%/5% success/fail ratio for the original/standard code - code and has been modified as optional vs standard code
 // this code needs to remain for those folks who choose/want to use this optional/Bonus code in Custom Code
 if ( $BPSCustomCodeOptions['bps_customcode_server_protocol'] != '') {        
-$bps_secure_server_protocol = "# CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_server_protocol'])."\n\n";
+$bps_secure_server_protocol = "# CUSTOM CODE BRUTE FORCE LOGIN PAGE PROTECTION - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_server_protocol'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_server_protocol = "# BRUTE FORCE LOGIN PAGE PROTECTION
 # PLACEHOLDER ONLY
@@ -686,7 +686,7 @@ $bps_secure_server_protocol = "# BRUTE FORCE LOGIN PAGE PROTECTION
 }
 
 if ( $BPSCustomCodeOptions['bps_customcode_error_logging'] != '') {        
-$bps_secure_error_logging = "# CUSTOM CODE ERROR LOGGING AND TRACKING - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_error_logging'])."\n\n";
+$bps_secure_error_logging = "# CUSTOM CODE ERROR LOGGING AND TRACKING - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_error_logging'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 # BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
@@ -712,7 +712,7 @@ $bps_secure_dot_server_files = "# DENY ACCESS TO PROTECTED SERVER FILES AND FOLD
 RedirectMatch 403 \.(htaccess|htpasswd|errordocs|logs)$\n\n";
 
 if ( $BPSCustomCodeOptions['bps_customcode_admin_includes'] != '') {        
-$bps_secure_content_wpadmin = "# CUSTOM CODE WP-ADMIN/INCLUDES - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_admin_includes'])."\n\n";
+$bps_secure_content_wpadmin = "# CUSTOM CODE WP-ADMIN/INCLUDES - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_admin_includes'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_content_wpadmin = "# WP-ADMIN/INCLUDES
 RewriteEngine On
@@ -725,7 +725,7 @@ RewriteRule ^wp-includes/theme-compat/ - [F,L]\n\n";
 }
 
 if ( $BPSCustomCodeOptions['bps_customcode_request_methods'] != '') {        
-$bps_secure_content_mid_top = "# CUSTOM CODE REQUEST METHODS FILTERED - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_request_methods'])."\n\n";
+$bps_secure_content_mid_top = "# CUSTOM CODE REQUEST METHODS FILTERED - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_request_methods'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_content_mid_top = "# REQUEST METHODS FILTERED
 # This filter is for blocking junk bots and spam bots from making a HEAD request, but may also block some
@@ -745,7 +745,7 @@ $bps_secure_begin_plugins_skip_rules_text = "# PLUGINS/THEMES AND VARIOUS EXPLOI
 // AutoMagic - CUSTOM CODE PLUGIN FIXES
 $CustomCodeTwo = '';
 if ( $BPSCustomCodeOptions['bps_customcode_two'] != '') {
-$CustomCodeTwo = "# CUSTOM CODE PLUGIN/THEME SKIP/BYPASS RULES - Your plugins/themes skip/bypass rules .htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_two'])."\n\n";
+$CustomCodeTwo = "# CUSTOM CODE PLUGIN/THEME SKIP/BYPASS RULES - Your plugins/themes skip/bypass rules .htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_two'], ENT_QUOTES)."\n\n";
 }
 
 $bps_secure_content_mid_top2 = "# Adminer MySQL management tool data populate
@@ -780,7 +780,7 @@ RewriteCond %{QUERY_STRING} action=rp&key=(.*) [NC]
 RewriteRule . - [S=3]\n\n";
 
 if ( $BPSCustomCodeOptions['bps_customcode_timthumb_misc'] != '') {        
-$bps_secure_timthumb_misc = "# CUSTOM CODE TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_timthumb_misc'])."\n\n";
+$bps_secure_timthumb_misc = "# CUSTOM CODE TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_timthumb_misc'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_timthumb_misc = "# TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE
 # Only Allow Internal File Requests From Your Website
@@ -796,7 +796,7 @@ RewriteRule . - [S=1]\n\n";
 }
 
 if ( $BPSCustomCodeOptions['bps_customcode_bpsqse'] != '') {        
-$bps_secure_BPSQSE = "# CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_bpsqse'])."\n\n";
+$bps_secure_BPSQSE = "# CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_bpsqse'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_BPSQSE = "# BEGIN BPSQSE BPS QUERY STRING EXPLOITS
 # The libwww-perl User Agent is forbidden - Many bad bots use libwww-perl modules, but some good bots use it too.
@@ -860,7 +860,7 @@ RewriteRule . $bps_get_wp_root_secure"."index.php [L]
 # WP REWRITE LOOP END\n\n";
 
 if ( $BPSCustomCodeOptions['bps_customcode_deny_files'] != '') {        
-$bps_secure_content_bottom = "# CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_deny_files'])."\n\n";
+$bps_secure_content_bottom = "# CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_deny_files'], ENT_QUOTES)."\n\n";
 } else {
 $bps_secure_content_bottom = "# DENY BROWSER ACCESS TO THESE FILES 
 # wp-config.php, bb-config.php, php.ini, php5.ini, readme.html
@@ -880,7 +880,7 @@ $bps_secure_end_wordpress_text = "# IMPORTANT!!! DO NOT DELETE!!! the END WordPr
 // AutoMagic - CUSTOM CODE BOTTOM
 $CustomCodeThree = '';
 if ( $BPSCustomCodeOptions['bps_customcode_three'] != '') {
-$CustomCodeThree = "# CUSTOM CODE BOTTOM HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/BLOCK IP/REDIRECT CODE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_three'])."\n\n";
+$CustomCodeThree = "# CUSTOM CODE BOTTOM HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/BLOCK IP/REDIRECT CODE - Your Custom htaccess code will be created here with AutoMagic\n".htmlspecialchars_decode($BPSCustomCodeOptions['bps_customcode_three'], ENT_QUOTES)."\n\n";
 } else {
 $CustomCodeThree = "# BLOCK HOTLINKING TO IMAGES
 # To Test that your Hotlinking protection is working visit http://altlab.com/htaccess_tutorial.html
@@ -2697,6 +2697,19 @@ if (isset($_POST['maintenance-mode-preview-submit']) && current_user_can('manage
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Custom Code Code Correction:', 'bulletproof-security').'</strong></h3>'.__('ENT_QUOTES flag added to Custom Code AutoMagic variables to convert Single Quote HTML entities stored in the DB back to characters during AutoMagic File writing.', 'bulletproof-security').'</a></strong>'; echo $text; ?>
+    </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+ <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><strong><?php $text = '<h3><strong>'.__('BPS .49.7', 'bulletproof-security').'</strong></h3>'; echo $text; ?></td>
+  </tr>
  <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Network / Multisite Plugin Network Activation or Single subsite Plugin Activation:', 'bulletproof-security').'</strong></h3>'.__('As of BulletProof Security .49.7, the BPS plugin can be Network Activated or you can allow the BPS plugin to be activated individually on each Network / Multisite subsite or of course you can choose not to Network Activate BPS or allow the BPS plugin on subsites. Super Admins will see BPS Dashboard Alerts and other Status displays on the Primary Site only. Administrators can activate or deactivate BPS on subsites if you allow this on your Network / Multisite website.', 'bulletproof-security').'<br><br><strong>'.__('Primary Network / Multisite Site Menus: ', 'bulletproof-security').'</strong>'.__('The BPS Primary Site Menus will display all BPS menus. All other BulletProof Security features are not available on subsites since Network/Multisite subsites are virtual and do not have separate website files of their own. All of the other standard BulletProof Security features work sitewide and affect all other virtual subsites with the exception of Login Security which works individually for each specific website - Primary or virtual subsites and therefore should only be available to and controlled by the Super Admin with Network Admin capabilities for the Network/Multisite website.', 'bulletproof-security').'<br><br><strong>'.__('NEW BulletProof Security Pro .49.7 Network / Multisite Subsite Menus', 'bulletproof-security').'<br><br>'; echo $text; ?>
