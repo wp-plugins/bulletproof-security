@@ -80,12 +80,11 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
 echo bps_check_php_version_error();
-//echo bps_check_permalinks_error(); // this is now an admin notice w/dimiss button
-//echo bps_check_iis_supports_permalinks(); // this is now an admin notice w/dimiss button
 echo bps_hud_check_bpsbackup();
 echo bps_check_safemode();
 echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
+bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
 if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {

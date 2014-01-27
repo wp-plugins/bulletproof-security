@@ -80,12 +80,11 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
 echo bps_check_php_version_error();
-//echo bps_check_permalinks_error(); // this is now an admin notice w/dimiss button
-//echo bps_check_iis_supports_permalinks(); // this is now an admin notice w/dimiss button
 echo bps_hud_check_bpsbackup();
 echo bps_check_safemode();
 echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
+bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
 if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {
@@ -390,11 +389,13 @@ $search = '';
 	$getSecLogTable = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $table_name WHERE user_agent_bot LIKE %s", "%$search%") );
 	$UserAgentRules = array();
 		
-		foreach ($getSecLogTable as $row) {
+	if ( $wpdb->num_rows != 0 ) {
+
+		foreach ( $getSecLogTable as $row ) {
 			$UserAgentRules[] = "(.*)".$row->user_agent_bot."(.*)|";
 			file_put_contents($userAgentMaster, $UserAgentRules);
 		}
-
+	
 	$UserAgentRulesT = @file_get_contents($userAgentMaster);
 	$stringReplace = @file_get_contents($bps403File);
 
@@ -411,6 +412,7 @@ $search = '';
 			echo $text;	
 			echo $bps_bottomDiv;
 		}
+	}
 }
 ?>
 

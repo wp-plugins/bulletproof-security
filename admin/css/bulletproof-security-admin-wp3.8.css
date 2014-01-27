@@ -535,15 +535,20 @@ pre {
 #CC-wpadmin-request-methods { margin:100px 0px 0px 0px; }
 #CC-wpadmin-BPSQSE { margin:130px 0px 0px 0px;padding:3px; }
 
-/************ Maintenance Form ************/
-#bps-maintenance_form_table {}
+/************ Maintenance Mode ************/
+#mmode-caution {
+	font-weight:bold;
+	margin:0px 0px 10px 0px; 
+	border:2px solid #000; 
+	width:400px; 
+	background-color:#ffffe0; 
+	padding:5px;
+}
 
-#bps-maintenance_form_table .regular-text { width: 250px; }
+.PFW-Whitelist-Text-Area { width:450px; height:180px; }
+.PFW-Allow-From-Text-Area { width:400px; height:100px; margin-top:5px; }
 
-/* New BPS Pro .49.7 */
-#bps-maintenance_form_table table th { width: 150px; background: #FFFFFF; padding-left:10px;}
-
-#bps-maintenance_form_table table .description {margin-left:5px;}
+.mmode-tinymce { width:50% }
 
 /*********** PHP ini pages *****************/
 #iniselector {float:left; margin:0px 0px 20px 0px; }
