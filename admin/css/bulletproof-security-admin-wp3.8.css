@@ -593,9 +593,10 @@ pre {
 #AITpro-link { padding:5px 0px 0px 10px;}
 
 /*********** jQuery UI Dialog ********/
-.ui-helper-hidden{display:none;}.ui-helper-hidden-accessible{position:absolute;left:-99999999px;}.ui-helper-reset{margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.ui-helper-clearfix{display:inline-block;}/* required comment for clearfix to work in Opera \*/ * html .ui-helper-clearfix{height:1%;}.ui-helper-clearfix{display:block;}/* end clearfix */ .ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}.ui-state-disabled{cursor:default!important;}.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;}.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;}.ui-resizable{position:relative;}.ui-resizable-handle{position:absolute;font-size:.1px;z-index:99999;display:block;}.ui-resizable-disabled .ui-resizable-handle,.ui-resizable-autohide .ui-resizable-handle{display:none;}.ui-resizable-n{cursor:n-resize;height:7px;width:100%;top:-5px;left:0;}.ui-resizable-s{cursor:s-resize;height:7px;width:100%;bottom:-5px;left:0;}.ui-resizable-e{cursor:e-resize;width:7px;right:-5px;top:0;height:100%;}.ui-resizable-w{cursor:w-resize;width:7px;left:-5px;top:0;height:100%;}.ui-resizable-se{cursor:se-resize;width:12px;height:12px;right:1px;bottom:1px;}.ui-resizable-sw{cursor:sw-resize;width:9px;height:9px;left:-5px;bottom:-5px;}.ui-resizable-nw{cursor:nw-resize;width:9px;height:9px;left:-5px;top:-5px;}.ui-resizable-ne{cursor:ne-resize;width:9px;height:9px;right:-5px;top:-5px;}.wp-dialog{position:absolute;width:300px;overflow:hidden;}.wp-dialog .ui-dialog-titlebar{position:relative;}
+.ui-helper-hidden{display:none;}.ui-helper-hidden-accessible{position:absolute;left:-99999999px;}.ui-helper-reset{margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.ui-helper-clearfix{display:inline-block;}/* required comment for clearfix to work in Opera \*/ * html .ui-helper-clearfix{height:1%;}.ui-helper-clearfix{display:block;}/* end clearfix */ .ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}.ui-state-disabled{cursor:default!important;}.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;}.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;}.ui-resizable{position:relative;}.ui-resizable-handle{position:absolute;font-size:.1px;z-index:99999;display:block;}.ui-resizable-disabled .ui-resizable-handle,.ui-resizable-autohide .ui-resizable-handle{display:none;}.ui-resizable-n{cursor:n-resize;height:7px;width:100%;top:-5px;left:0;}.ui-resizable-s{cursor:s-resize;height:7px;width:100%;bottom:-5px;left:0;}.ui-resizable-e{cursor:e-resize;width:7px;right:-5px;top:0;height:100%;}.ui-resizable-w{cursor:w-resize;width:7px;left:-5px;top:0;height:100%;}.ui-resizable-se{cursor:se-resize;width:12px;height:12px;right:1px;bottom:1px;}.ui-resizable-sw{cursor:sw-resize;width:9px;height:9px;left:-5px;bottom:-5px;}.ui-resizable-nw{cursor:nw-resize;width:9px;height:9px;left:-5px;top:-5px;}.ui-resizable-ne{cursor:ne-resize;width:9px;height:9px;right:-5px;top:-5px;}.wp-dialog{z-index:999;position:absolute;width:300px;overflow:hidden;}.wp-dialog .ui-dialog-titlebar{position:relative;}
 
 #bps-open-modal input[type="button"],.bps-modal-button {
+	z-index: 999;
 	border-color:#bbb;color:#464646;
 	background:#f2f2f2 url(../images/table_title_bg.png) repeat-x scroll left top;
 	color:#fff;
@@ -621,6 +622,7 @@ pre {
 	}
 
 #bps-open-modal input[type="button"]:hover,.bps-modal-button:hover {
+	z-index: 999;
 	color:#000;
 	border-color:#666;
 /*	text-shadow:rgba(255,255,255,1) 0 1px 0;
@@ -630,15 +632,18 @@ pre {
 	}
 	
 #bps-open-modal input[type="button"]:active,.bps-modal-button:active {
+	z-index: 999;
 	background:#eee url(../images/white-grad-active.png) repeat-x scroll left top;
 	}	
 
 .wp-dialog .ui-dialog-titlebar-close span{
+	z-index: 999;
 	display:block;
 	margin:1px;
 	}
 
 .wp-dialog .ui-dialog-content {
+	z-index: 999;
 	position:relative;
 	border:0;
 	padding:0px 10px 0px 10px;;
@@ -649,6 +654,7 @@ pre {
 
 /* bottom pane */
 .wp-dialog .ui-dialog-buttonpane {
+	z-index: 999;
 	text-align:left;
 	border-width:1px 0 0 0;
 	background:url('../images/table_title_bg.png') repeat;
@@ -669,6 +675,7 @@ pre {
 
 /* this is the top pane */
 .wp-dialog .ui-dialog-title {
+	z-index: 999;
 	display:block;
 	margin-top:0px;
 	text-align:center;
@@ -676,6 +683,7 @@ pre {
 	}
 
 .wp-dialog .ui-dialog-titlebar {
+	z-index: 999;
 	padding:0 1em;
 	/* background-color:#444; */
 	background:url('../images/table_title_bg.png') repeat;
@@ -690,6 +698,7 @@ pre {
 
 /* this is the top right corner X button , .wp-dialog .ui-dialog-titlebar-close .ui-button-text */
 .wp-dialog .ui-dialog-titlebar-close {
+	z-index: 999;
 	position:absolute;
 	width:29px;
 	height:16px;

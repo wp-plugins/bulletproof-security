@@ -5,7 +5,7 @@ Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: Website Security Protection: BulletProof Security protects your website against XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection... hacking attempts. One-click .htaccess WordPress security protection. Protects wp-config.php, bb-config.php, php.ini, php5.ini, install.php and readme.html with .htaccess security protection.  Security Logging. HTTP Error Logging. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts. Website FrontEnd/BackEnd Maintenance Mode (HTTP 503). Additional website security checks: DB errors off, file and folder permissions check... System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, DNS, Max Upload... Built-in .htaccess file Editor.
-Version: .49.9
+Version: .50
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,10 +28,10 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.49.9' );
-$bps_last_version = '.49.8';
-$bps_version = '.49.9';
-$bps_readme_install_ver = '9';
+define( 'BULLETPROOF_VERSION', '.50' );
+$bps_last_version = '.49.9';
+$bps_version = '.50';
+$bps_readme_install_ver = '0';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free
 //require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/class.php' );

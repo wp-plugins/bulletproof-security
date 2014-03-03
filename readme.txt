@@ -1,10 +1,10 @@
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: 503, antivirus, attack, authenticate, authentication, Author ID, base64, block, blocked, Bot, brute force, bulletproof, chmod, code, coming soon, CRLF, CSRF, developer, development, encode, enumeration, error log, firewall, hack, hackers, htaccess, HTTP log, injection, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, multisite, offline, permissions, plugin, prevent, prevention, privacy, private, protection, RFI, script, secure, security log, security, spam, spammers, SQL Injection, unavailable, under construction, User ID, Username, users, virus, vulnerability, website security, WordPress security, XSS
+Tags: 503, antivirus, attack, authenticate, authentication, Author ID, base64, block, blocked, Bot, brute force, bulletproof, chmod, code, coming soon, CRLF, CSRF, developer, development, encode, enumeration, error log, firewall, hack, hackers, htaccess, HTTP log, injection, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, multisite, offline, performance, permissions, plugin, prevent, prevention, privacy, private, protection, RFI, script, secure, security log, security, spam, spammers, SQL Injection, unavailable, under construction, User ID, Username, users, virus, vulnerability, website security, WordPress security, XSS
 Requires at least: 3.0 
 Tested up to: 3.8.1 
-Stable tag: .49.9
+Stable tag: .50
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -27,6 +27,17 @@ An Administrator Logs in, An Administrator Logs in and when a User Account is lo
 Do Not Send Email Alerts. Choose Standard WP Error Messages or Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable 
 Login Password Reset capability for Login Security Stealth Mode. See BulletProof Security Login Security & Monitoring Features for additional features and options.
 
+= BulletProof Security is Website Performance Optimized (Performance/Optimization) =
+
+Website performance is just as important as website security. BulletProof Security is website performance optimized with website owners best interests at heart. 
+* BulletProof Security does NOT abuse the WordPress Database by making excessive MySQL Queries.
+* BulletProof Security does NOT store excessive & non-essential data in your WordPress Database.
+* BulletProof Security does NOT use excessive Server Memory & Resources.
+* BulletProof Security does NOT use gimmicks or bells & whistles that will cost website owners their website performance. 
+* The benefits of having website security protection are negated if your website is performing poorly/slowly, continually experiencing out of memory 
+errors/running out of memory, database size growing exponentially with non-essential stored data, etc. BulletProof Security can actually speed up & improve 
+your website performance by using our Speed Boost Cache Bonus Code. See the BulletProof Security Bonus Custom Code help section below.
+
 = FrontEnd/BackEnd Maintenance Mode (Security/Development) =
 
 Display a website under maintenance page with Countdown Timer to website visitors while the website displays and functions normally for you. When the  
@@ -41,8 +52,8 @@ by IP address. See BulletProof Security FrontEnd/BackEnd Maintenance Mode Featur
 
 The answer is very simple - .htaccess files (distributed configuration files) are processed first before any other code on your website. In other words, 
 hackers malicious scripts are stopped by BulletProof Security .htaccess files/Firewalls before those scripts even have a chance to 
-reach the php coding in WordPress. BulletProof Security uses .htaccess website security files, which are specific to 
-Apache Linux Servers. Please read the FAQ page for Server compatibility questions. 
+reach the php code in WordPress. BulletProof Security uses .htaccess website security files, which are specific to 
+Apache Linux Servers. Please read the FAQ page for Server compatibility questions.
 
 = Security Log File Automation - Automatically Zipped, Emailed and Replaced =
 
@@ -417,6 +428,11 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 7. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .50 =
+* Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
+* Special Thanks go to Eddy Estevez for reporting this bug.
+* Enjoy!
 
 = .49.9 =
 * New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode
@@ -909,24 +925,10 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
-= .49.8 =
-* See BPS Whats New page for details
-* New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode
-* New Headers check tool added to the System Info page
-* New System Info checks
-* BPS Plugin/Theme Script Dequeue function added: Dequeue any/all other plugin or theme scripts that attempt to load in BPS plugin pages
-* Security Log Code Correction/Enhancement: Security Log User Agent/Bot filter auto-updated during BPS upgrade
-* W3TC and WPSC Error checking/messages modified to reflect current version error checking
-* DB Table datatype Issue/problem affects SQL Server (not MySQL) only
-* Backup & Restore page/other misc pages - removal of obsolete features and checks
-* htaccess Core Security Modes page descriptive titles added
-* Feature Request by Daedalon: Unused po & mo Language files automatically deleted
+= .50 =
+* Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
+* Special Thanks go to Eddy Estevez for reporting this bug.
 * Enjoy!
-
-= .49.8 =
-* Custom Code Code Correction: ENT_QUOTES flag added to Custom Code AutoMagic variables to convert Single Quote HTML entities stored in the DB back to characters during AutoMagic File writing.
-* Enjoy!
-
 
 == Help Info ==
 
@@ -936,10 +938,14 @@ the particular section or page of the BulletProof Security plugin that you are i
 Help and FAQ page contains links to Help pages that will load in a new browser tab so
 that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .49.9
+What's New in .50
+
+= .50 =
+* Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
+* Special Thanks go to Eddy Estevez for reporting this bug.
+* Enjoy!
 
 = .49.9 =
-
 * New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode
 Maintenance Mode Guide
 The previous Maintenance Mode feature in BPS has been completely removed/replaced with the new Maintenance Mode feature in BPS .49.9. This is a completely new BPS feature. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. Background image files/options and Center images (text box image) are independent of each other so that you can mix and match different background images with different Center images (text box image).

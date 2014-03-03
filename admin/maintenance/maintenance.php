@@ -1055,8 +1055,10 @@ $gwiod_pattern_ip = '/#\sBEGIN\sBPS\sMAINTENANCE\sMODE\sIP\s*(.*)\s*#\sEND\sBPS\
 	if ( $publicly_displayed_url != $actual_wp_install_url ) {
 
 		$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-		$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-		$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+		//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+		$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';		
 		$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 		$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 		$sapi_type = php_sapi_name();
@@ -1121,8 +1123,10 @@ $actual_wp_install_url = get_site_option('siteurl');
 	if ( $publicly_displayed_url != $actual_wp_install_url ) {
 
 		$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-		$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-		$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+		//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+		$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';
 		$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 		$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 		$sapi_type = php_sapi_name();
@@ -1233,8 +1237,11 @@ $root_folder_maintenance_values = ABSPATH . 'bps-maintenance-values.php';
 	$actual_wp_install_url = get_option('siteurl');
 	$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 	$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-	$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-	$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+	//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+	$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';
+	
 	$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 	
 	if ( file_exists($gwiod_root_index_file_backup) ) {
@@ -1334,8 +1341,10 @@ $MMindexMaster = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenan
 	$actual_wp_install_url = get_site_option('siteurl');
 	$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 	$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-	$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-	$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+	//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+	$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';
 	$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 	
 		if ( @$gwiod_permsIndex == '0400') {
@@ -1464,8 +1473,10 @@ $permsHtaccess = @substr(sprintf('%o', fileperms($wpadminHtaccess)), -4);
 	$actual_wp_install_url = get_option('siteurl');
 	$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 	$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-	$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-	$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+	//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+	$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+	$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';
 	$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 	
 	if ( file_exists($gwiod_root_index_file_backup) ) {
@@ -1599,8 +1610,10 @@ $MMindexMaster = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/maintenan
 		$actual_wp_install_url = get_site_option('siteurl');
 		$gwiod_root_index_file_backup = WP_CONTENT_DIR . '/bps-backup/master-backups/backup_gwiod_index.php';
 		$gwiod_url = str_replace( $publicly_displayed_url, "", $actual_wp_install_url );
-		$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
-		$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		//$gwiod_url_path = str_replace( $gwiod_url, "", str_replace('\\', '/', ABSPATH ) );
+		//$gwiod_root_index_file = $gwiod_url_path . 'index.php';
+		$gwiod_url_path = str_replace( '\\', '/', ABSPATH );
+		$gwiod_root_index_file = dirname( $gwiod_url_path ) . '/index.php';
 		$gwiod_permsIndex = @substr(sprintf('%o', fileperms($gwiod_root_index_file)), -4);
 	
 	if ( @$gwiod_permsIndex == '0400') {

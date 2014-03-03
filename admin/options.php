@@ -2254,6 +2254,19 @@ jQuery(document).ready(function($){
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong>'.__('Maintenance Mode Bugfix/Code Correction:', 'bulletproof-security').'</strong><br>'.__('Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path. Special Thanks go to Eddy Estevez for reporting this bug.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr>  
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('.49.9', 'bulletproof-security').'</strong></h3>'; echo $text; ?>
+    </td>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<strong>'.__('New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" target="_blank" title="Link opens in a new Browser Window">'.__('Maintenance Mode Guide', 'bulletproof-security').'</a></strong><br>'.__('The previous Maintenance Mode feature in BPS has been completely removed/replaced with the new Maintenance Mode feature in BPS  .49.9. This is a completely new BPS feature. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. Background image files/options and Center images (text box image) are independent of each other so that you can mix and match different background images with different Center images (text box image).', 'bulletproof-security'); echo $text; ?>
 </td>
   </tr>  

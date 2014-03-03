@@ -6,7 +6,7 @@
 define('WP_USE_THEMES', true);
 
 # BEGIN BPS MAINTENANCE MODE IP
-$bps_maintenance_ip = array('100.99.88.77', '200.66.55.44', '44.33.22.1', '127.0.0.');
+$bps_maintenance_ip = array('100.99.88.77', '200.66.55.44', '44.33.22.1');
 # END BPS MAINTENANCE MODE IP
 
 $one_octet = preg_match( "/\d{1,3}\./", $_SERVER['REMOTE_ADDR'], $matches_one );
