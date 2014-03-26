@@ -88,13 +88,13 @@ $Ltable_name = $wpdb->prefix . "bpspro_login_security";
 	register_setting('bulletproof_security_options_email', 'bulletproof_security_options_email', 'bulletproof_security_options_validate_email');			
 
 	// Register BPS js
-	wp_register_script( 'bps-js', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin-4.js'));
+	wp_register_script( 'bps-js', plugins_url('/bulletproof-security/admin/js/bulletproof-security-admin-5.js'));
 				
-	// Register BPS stylesheet - will be adding other styles later - bulletproof-security-admin-wp3.8.css
+	// Register BPS stylesheet - will be adding other styles later - bulletproof-security-admin-wp3.8-2.css
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_register_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));	
+		wp_register_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));	
 	} else {
-		wp_register_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_register_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}
 
 	// Create BPS Backup Folder structure - suppressing errors on activation - errors displayed in HUD
@@ -206,9 +206,9 @@ global $bulletproof_security, $wp_version;
 	wp_enqueue_script('bps-js');
 	// Engueue BPS stylesheet
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));	
+		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));	
 	} else {
-		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}
 }
 
@@ -226,9 +226,9 @@ global $bulletproof_security, $wp_version;
 	wp_enqueue_script('bps-js');
 	// Enqueue BPS stylesheet
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));	
+		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));	
 	} else {
-		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}	
 }
 
@@ -246,9 +246,9 @@ global $bulletproof_security, $wp_version;
 	wp_enqueue_script('bps-js');
 	// Enqueue BPS stylesheet
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));	
+		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));	
 	} else {
-		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}
 }
 
@@ -266,9 +266,9 @@ global $bulletproof_security, $wp_version;
 	wp_enqueue_script('bps-js');
 	// Enqueue BPS stylesheet
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));
+		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));
 	} else {
-		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}
 }
 
@@ -286,9 +286,9 @@ global $bulletproof_security, $wp_version;
 	wp_enqueue_script('bps-js');
 	// Enqueue BPS stylesheet
 	if ( version_compare( $wp_version, '3.8', '>=' ) || preg_match('/3.8-[a-zA-Z0-9]/', $wp_version, $matches ) ) {
-		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8.css'));	
+		wp_enqueue_style('bps-css-38', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-wp3.8-2.css'));	
 	} else {
-		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-5.css'));
+		wp_enqueue_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue-6.css'));
 	}
 }
 

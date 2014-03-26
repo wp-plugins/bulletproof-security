@@ -1,10 +1,10 @@
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: 503, antivirus, attack, authenticate, authentication, Author ID, base64, block, blocked, Bot, brute force, bulletproof, chmod, code, coming soon, CRLF, CSRF, developer, development, encode, enumeration, error log, firewall, hack, hackers, htaccess, HTTP log, injection, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, multisite, offline, performance, permissions, plugin, prevent, prevention, privacy, private, protection, RFI, script, secure, security log, security, spam, spammers, SQL Injection, unavailable, under construction, User ID, Username, users, virus, vulnerability, website security, WordPress security, XSS
+Tags: 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, developer, development, directory traversal, DoS, DDoS, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
-Tested up to: 3.8.1 
-Stable tag: .50
+Tested up to: 3.9 
+Stable tag: .50.1
 
 WordPress Website Security Protection. Website security protection against: XSS, RFI, CRLF, CSRF, Base64, Code Injection and SQL Injection hacking... 
 
@@ -30,13 +30,12 @@ Login Password Reset capability for Login Security Stealth Mode. See BulletProof
 = BulletProof Security is Website Performance Optimized (Performance/Optimization) =
 
 Website performance is just as important as website security. BulletProof Security is website performance optimized with website owners best interests at heart. 
-* BulletProof Security does NOT abuse the WordPress Database by making excessive MySQL Queries.
-* BulletProof Security does NOT store excessive & non-essential data in your WordPress Database.
-* BulletProof Security does NOT use excessive Server Memory & Resources.
-* BulletProof Security does NOT use gimmicks or bells & whistles that will cost website owners their website performance. 
-* The benefits of having website security protection are negated if your website is performing poorly/slowly, continually experiencing out of memory 
-errors/running out of memory, database size growing exponentially with non-essential stored data, etc. BulletProof Security can actually speed up & improve 
-your website performance by using our Speed Boost Cache Bonus Code. See the BulletProof Security Bonus Custom Code help section below.
+BulletProof Security does NOT abuse the WordPress Database by making excessive MySQL Queries. BulletProof Security does NOT store excessive & non-essential data 
+in your WordPress Database. BulletProof Security does NOT use excessive Server Memory & Resources. BulletProof Security does NOT use gimmicks or bells & whistles 
+that will cost website owners their website performance. The benefits of having website security protection are negated if your website is performing 
+poorly/slowly, continually experiencing out of memory errors/running out of memory, database size growing exponentially with non-essential stored data, etc. 
+BulletProof Security can actually speed up & improve your website performance by using the Speed Boost Cache Bonus Code. 
+See the BulletProof Security Bonus Custom Code help section below.
 
 = FrontEnd/BackEnd Maintenance Mode (Security/Development) =
 
@@ -94,10 +93,11 @@ have additional website security measures in place as a standard. BulletProof Se
 
 = BulletProof Security Bonus Custom Code =
 
-* <a href="http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/" title="Brute Force Login Protection .htaccess code" rel="nofollow" target="_blank">Brute Force Login Protection .htaccess code</a>
-* <a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Speed Boost Cache .htaccess code" rel="nofollow" target="_blank">Speed Boost Cache .htaccess code</a>
-* <a href="http://forum.ait-pro.com/forums/topic/hotlink-protection-do-not-block-google-bing-or-yahoo/" title="HotLink Protection .htaccess code - Google, Yahoo, Bing safe" rel="nofollow" target="_blank">HotLink Protection .htaccess code - Google, Yahoo, Bing safe</a>
-* <a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Author ID / Username Bot Probe Protection Code" rel="nofollow" target="_blank">Author ID / Username Bot Probe Protection Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/" title="Brute Force Login Protection .htaccess code" rel="nofollow" target="_blank">Brute Force Login Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Speed Boost Cache .htaccess code" rel="nofollow" target="_blank">Speed Boost Cache .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/hotlink-protection-do-not-block-google-bing-or-yahoo/" title="HotLink Protection .htaccess code - Google, Yahoo, Bing safe" rel="nofollow" target="_blank">HotLink Protection .htaccess Code - Google, Yahoo, Bing safe</a>
+* <a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Author ID / Username Bot Probe Protection Code" rel="nofollow" target="_blank">Author ID / Username Bot Probe Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/wordpress-xml-rpc-ddos-protection-protect-xmlrpc-php-block-xmlrpc-php-forbid-xmlrpc-php/" title="XML-RPC DDoS Protection" rel="nofollow" target="_blank">XML-RPC DDoS Protection .htaccess Code</a> (Double Bonus: Trackback/Pingback Protection)
 
 = BulletProof Security htaccess Core (Firewalls, etc.) Features =
 
@@ -263,19 +263,19 @@ page for a link to the Speed Boost Cache Bonus Code.
 
 When upgrading/updating the BulletProof Security plugin you may see this WP Dashboard Alert. <strong>BPS Alert! Your site does not 
 appear to be protected by BulletProof Security.</strong> There are 2 very common issues/problems that can cause this. The cPanel 
-HotLink Protection Tool issue or the WordPress flush_rewrite_rules function issue. Click this link <a href="http://wordpress.org/support/topic/bps-setup-steps-removal-steps-requirements-and-compatibility/" title="BulletProof Security Forum">Common BPS Issues</a> 
+HotLink Protection Tool issue or the WordPress flush_rewrite_rules function issue. Click this link <a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/" title="BulletProof Security Troubleshooting" rel="nofollow" target="_blank">Common BPS Issues</a> 
 Note: Any custom htaccess code or modifications that you have made to your htaccess files will not be altered, modified or changed 
 during the auto-update. Activating BulletProof Modes again after upgrading BPS is no longer necessary.
 
 = Where can I find BulletProof Security additional troubleshooting steps & support? =
 
-Please see the <a href="http://forum.ait-pro.com/forums/forum/bulletproof-security-free/" title="BulletProof Security Forum" rel="nofollow" target="_blank">BulletProof Security Forum.</a>
+Please see the <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" title="BulletProof Security Forum" rel="nofollow" target="_blank">BulletProof Security Forum.</a>
 
 = BulletProof Security Server Compatibilty =
 
 * Compatible with Apache CGI configured Servers
 * Compatible with Apache DSO configured Servers (May require CHOWN Ownership change or file/folder permission changes)
-* <a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-compatibility-check-upgrading-from-bps-free-to-bps-pro/" title="DSO Help Info" rel="nofollow" target="_blank">DSO Help Info</a>
+* <a href="http://forum.ait-pro.com/forums/topic/dso-setup-steps/" title="DSO Help Info" rel="nofollow" target="_blank">DSO Help Info</a>
 * Compatible with Nginx frontend Server with Apache backend Server
 * Compatible with LiteSpeed Servers
 * Compatible with Windows IIS Servers - Windows Hosting - See IMPORTANT NOTES below.
@@ -306,8 +306,7 @@ instead you either need to build PHP with FPM (ie: php-fpm/fastcgi), or you need
 
 Occasionally issues or conflicts do occur with other plugins, but they are always quickly resolved. BPS is compatible with all
 other Plugins and Themes. An .htaccess bypass / skip rule is all that is required to allow a plugin or theme to do something that is blocked by BPS.
-Please check the BulletProof Security <a href="http://www.ait-pro.com/aitpro-blog/2252/bulletproof-security-plugin-support/checking-plugin-compatibility-with-bps-plugin-testing-to-do-list/" title="BPS Plugin Testing and Fixes" rel="nofollow" target="_blank">Plugin Compatibility Testing and Fixes</a> page for the latest plugin bypass / skip rules. All new plugin skip / bypass 
-rules are now being posted in the <a href="http://forum.ait-pro.com/" title="BPS Forum" rel="nofollow" target="_blank">BulletProof Security Forum</a>.
+Please check the BulletProof Security <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" title="Plugin Compatibility" rel="nofollow" target="_blank">Plugin Compatibility</a> page for the latest plugin bypass / skip rules.
 
 = I am seeing Security Log entries in my BulletProof Security Log. What do they mean? =
 
@@ -428,6 +427,20 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 7. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .50.1 =
+* Security Logging major changes/improvements to logging template files/code & start of Phase 1 Security Log Solution Targeting: 
+The Security Logging code has been significantly improved in BPS .50.1. Logging is more streamlined, performance optimized & faster than in previous BPS versions, even with the new general conditional pattern checking code added.
+* As of BPS .50.1 two new Security Log Fields have been added to Security Logging: Event Code and Solution. In Phase 1 of Security Log Solution Targeting the primary focus is on detecting possible Plugin Skip/Bypass rules & wp-admin Skip/Bypass Rules issues that need/require a one-time solution. Since 99.99% of the Security Log entries are blocked/forbidden hackers, spammers, scrapers, harvesters, miners, bad bots, etc. then the Security Log checking conditions can and should be streamlined/performance optimized by only looking at pattern matches in a broad scope.
+* Maintenance Mode Accordion:
+Maintenance Mode Accordion created for better functionality/usability. Code correction: Maintenance Mode website name not displayed in the reminder email. Code correction: Maintenance Mode Apostrophes/single quote code character displayed with an escape backslash.
+* New Bonus Custom Code/Dismiss Notice: WordPress XML-RPC DDoS Protection:
+Special Thanks goes to Gary Gordon for reporting the recent WordPress XML-RPC exploits/attacks. The XML-RPC DDoS PROTECTION Bonus Custom Code .htaccess code completely turns off/disables IXR-RPC Client/Server capabilities on a website by protecting the WordPress xmlrpc.php file from being publicly accessible, which prevents the IXR XML-RPC Client/Server connection. Using this Bonus Custom Code will turn off/disable remote posting capability from Weblog Clients (A Weblog Client is software you run on your local machine (desktop) that lets you post to your blog via XML-RPC), unless you add (whitelist) your IP address in the XML-RPC DDoS PROTECTION Bonus Code.
+* New Dismiss Notice Added: WordPress Firewall 2 plugin check
+The WordPress Firewall 2 plugin contains a coding mistake and has not been updated in over 3 years. The wp-admin area is supposed to be whitelisted by default, but that code is not working correctly, which breaks several things in the BPS plugin. The Dismiss Notice will alert users to this existing problem.
+* New/Updated Help & FAQ Help Links:
+Help & FAQ tab pages have updated links, old/outdated links removed, etc.
+* Enjoy!
 
 = .50 =
 * Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
@@ -925,56 +938,38 @@ Create new Master .htaccess files with AutoMagic and activate all BulletProof Mo
 
 == Upgrade Notice ==
 
-= .50 =
-* Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
-* Special Thanks go to Eddy Estevez for reporting this bug.
+= .50.1 =
+* Security Logging major changes/improvements to logging template files/code & start of Phase 1 Security Log Solution Targeting: 
+The Security Logging code has been significantly improved in BPS .50.1. Logging is more streamlined, performance optimized & faster than in previous BPS versions, even with the new general conditional pattern checking code added.
+* As of BPS .50.1 two new Security Log Fields have been added to Security Logging: Event Code and Solution. In Phase 1 of Security Log Solution Targeting the primary focus is on detecting possible Plugin Skip/Bypass rules & wp-admin Skip/Bypass Rules issues that need/require a one-time solution. Since 99.99% of the Security Log entries are blocked/forbidden hackers, spammers, scrapers, harvesters, miners, bad bots, etc. then the Security Log checking conditions can and should be streamlined/performance optimized by only looking at pattern matches in a broad scope.
+* Maintenance Mode Accordion:
+Maintenance Mode Accordion created for better functionality/usability. Code correction: Maintenance Mode website name not displayed in the reminder email. Code correction: Maintenance Mode Apostrophes/single quote code character displayed with an escape backslash.
+* New Bonus Custom Code/Dismiss Notice: WordPress XML-RPC DDoS Protection:
+Special Thanks goes to Gary Gordon for reporting the recent WordPress XML-RPC exploits/attacks. The XML-RPC DDoS PROTECTION Bonus Custom Code .htaccess code completely turns off/disables IXR-RPC Client/Server capabilities on a website by protecting the WordPress xmlrpc.php file from being publicly accessible, which prevents the IXR XML-RPC Client/Server connection. Using this Bonus Custom Code will turn off/disable remote posting capability from Weblog Clients (A Weblog Client is software you run on your local machine (desktop) that lets you post to your blog via XML-RPC), unless you add (whitelist) your IP address in the XML-RPC DDoS PROTECTION Bonus Code.
+* New Dismiss Notice Added: WordPress Firewall 2 plugin check
+The WordPress Firewall 2 plugin contains a coding mistake and has not been updated in over 3 years. The wp-admin area is supposed to be whitelisted by default, but that code is not working correctly, which breaks several things in the BPS plugin. The Dismiss Notice will alert users to this existing problem.
+* New/Updated Help & FAQ Help Links:
+Help & FAQ tab pages have updated links, old/outdated links removed, etc.
 * Enjoy!
 
 == Help Info ==
 
-Extensive Help Info can be found on the AIT-pro.com website and within the BulletProof 
- Security pages themselves. Click on the blue Read Me Help buttons to get Help Info about
-the particular section or page of the BulletProof Security plugin that you are in. The
-Help and FAQ page contains links to Help pages that will load in a new browser tab so
-that you are not redirected away from your WordPress Dashboard. 
+Extensive Help Info can be found on the <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" title="AIT-pro.com Forum" rel="nofollow" target="_blank">AIT-pro.com Forum</a> website and within the BulletProof Security pages themselves. Click on the blue Read Me 
+Help buttons to get Help Info about the particular section or page of the BulletProof Security plugin that you are in. The Help and FAQ page contains 
+links to Help pages that will load in a new browser tab so that you are not redirected away from your WordPress Dashboard. 
 
-What's New in .50
+What's New in .50.1
 
-= .50 =
-* Bugfix/Code Correction: Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
-* Special Thanks go to Eddy Estevez for reporting this bug.
-* Enjoy!
-
-= .49.9 =
-* New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode
-Maintenance Mode Guide
-The previous Maintenance Mode feature in BPS has been completely removed/replaced with the new Maintenance Mode feature in BPS .49.9. This is a completely new BPS feature. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. Background image files/options and Center images (text box image) are independent of each other so that you can mix and match different background images with different Center images (text box image).
- 	 
-* New Headers check tool added to the System Info page:
-Check your website Headers or another website's Headers by making a GET Request. Both GET and HEAD Headers checking is now available on the System Info page.
- 	 
-* New System Info checks:
-Standard/GWIOD Site Type, BuddyPress and bbPress. If GWIOD site type display WordPress Address (URL) and Site Address (URL).
- 	 
-* BPS Plugin/Theme Script Dequeue function added: Dequeue any/all other plugin or theme scripts that attempt to load in BPS plugin pages:
-A new BPS function has been added that Dequeues any/all other plugin or theme scripts on/in BPS plugin pages ONLY, which causes a wide variety of problems for BPS , such as broken plugin functionality, broken menus and pages not displaying visually correct. This new BPS Dequeue function only runs on/in BPS plugin pages and does not run anywhere else or affect anything else on a website. The BPS Dequeue function is only designed to prevent any other plugins or themes from loading their scripts in BPS plugin pages and does not do or affect anything else on a website.
- 	 
-* Security Log Code Correction/Enhancement: Security Log User Agent/Bot filter auto-updated during BPS upgrade:
-The BPS 403.php Security Log template file is replaced during BPS plugin updates/upgrades, which is normal WordPress plugin update/upgrade procedure. The BPS 403.php Security Logging template is now auto-updated during BPS plugin upgrades/updates and automatically adds any previously added/saved User Agent/Bot filters to the new 403.php template file if any User Agents/Bots to Ignore/Not Log were previously added/saved.
- 	 
-* W3TC and WPSC Error checking/messages modified to reflect current version error checking:
-Several things have changed in BPS .49.9 relating to W3TC and WPSC and related error messages.
- 	 
-* DB Table datatype Issue/problem affects SQL Server (not MySQL) only:
-CREATE TABLE Query id column datatype has been changed from mediumint(9) to bigint(20).
- 	 
-* Backup & Restore page/other misc pages:
-Master File backups and checks are obsolete and have been removed from BPS .49.9.
- 	 
-* htaccess Core Security Modes page:
-Descriptive titles added to Radio buttons for BulletProof Modes: Root Folder BulletProof Mode, wp-admin Folder BulletProof Mode, Master htaccess BulletProof Mode and BPS Backup BulletProof Mode.
- 	 
-* Feature Request by Daedalon: Unused po & mo Language files automatically deleted:
-Unused po & mo Language files are automatically deleted on page access for these BPS pages: htaccess Core, Login Security, Security Log and Maintenance Mode.
-
+= .50.1 =
+* Security Logging major changes/improvements to logging template files/code & start of Phase 1 Security Log Solution Targeting: 
+The Security Logging code has been significantly improved in BPS .50.1. Logging is more streamlined, performance optimized & faster than in previous BPS versions, even with the new general conditional pattern checking code added.
+* As of BPS .50.1 two new Security Log Fields have been added to Security Logging: Event Code and Solution. In Phase 1 of Security Log Solution Targeting the primary focus is on detecting possible Plugin Skip/Bypass rules & wp-admin Skip/Bypass Rules issues that need/require a one-time solution. Since 99.99% of the Security Log entries are blocked/forbidden hackers, spammers, scrapers, harvesters, miners, bad bots, etc. then the Security Log checking conditions can and should be streamlined/performance optimized by only looking at pattern matches in a broad scope.
+* Maintenance Mode Accordion:
+Maintenance Mode Accordion created for better functionality/usability. Code correction: Maintenance Mode website name not displayed in the reminder email. Code correction: Maintenance Mode Apostrophes/single quote code character displayed with an escape backslash.
+* New Bonus Custom Code/Dismiss Notice: WordPress XML-RPC DDoS Protection:
+Special Thanks goes to Gary Gordon for reporting the recent WordPress XML-RPC exploits/attacks. The XML-RPC DDoS PROTECTION Bonus Custom Code .htaccess code completely turns off/disables IXR-RPC Client/Server capabilities on a website by protecting the WordPress xmlrpc.php file from being publicly accessible, which prevents the IXR XML-RPC Client/Server connection. Using this Bonus Custom Code will turn off/disable remote posting capability from Weblog Clients (A Weblog Client is software you run on your local machine (desktop) that lets you post to your blog via XML-RPC), unless you add (whitelist) your IP address in the XML-RPC DDoS PROTECTION Bonus Code.
+* New Dismiss Notice Added: WordPress Firewall 2 plugin check
+The WordPress Firewall 2 plugin contains a coding mistake and has not been updated in over 3 years. The wp-admin area is supposed to be whitelisted by default, but that code is not working correctly, which breaks several things in the BPS plugin. The Dismiss Notice will alert users to this existing problem.
+* New/Updated Help & FAQ Help Links:
+Help & FAQ tab pages have updated links, old/outdated links removed, etc.
 * Enjoy!

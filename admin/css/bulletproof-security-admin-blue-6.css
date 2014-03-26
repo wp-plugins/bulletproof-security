@@ -7,9 +7,7 @@
 
 #bps-container table label { font-weight: 700; vertical-align:bottom;}
 
-/* New BPS .49.7 */
-#bps-container input[type=text] {background-color: #f4f9ff; font-size:12px;}
-label { font-size:1em; font-weight: bold; vertical-align:bottom; }
+#bps-container input[type=text] {background-color: #f4f9ff;}
 
 #bps-container textarea {background-color: #f4f9ff;} /* a little too blue #f2fdfd */
 
@@ -18,22 +16,20 @@ label { font-size:1em; font-weight: bold; vertical-align:bottom; }
 #bps-container .bps-text-area-custom-code { font-family:"Courier New", Courier, monospace; font-size:1em; height:220px; width:580px; overflow:auto; }
 #bps-container .bps-pro-tools { font-family:"Courier New", Courier, monospace; font-size:1em; height:250px; width:700px; overflow:auto; }
 
-/* Login Security .49.7 */
-label[for=LSLog1] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 27px; float: left; }
+/* Login Security */
+label[for=LSLog1] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 28px; float: left; }
 label[for=LSLog2] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .25em; float: left; }
-label[for=LSLog3] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 19px; float: left; }
-label[for=LSLog4] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
-label[for=LSLog5] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .30em; float: left; }
-label[for=LSLog6] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 10px; float: left; }
-label[for=LSLog7] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 15px; float: left; }
-label[for=LSLog8] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
+label[for=LSLog3] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 20px; float: left; }
+label[for=LSLog4] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 11px; float: left; }
+label[for=LSLog5] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .25em; float: left; }
+label[for=LSLog6] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 5px; float: left; }
+label[for=LSLog7] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 6px; float: left; }
+label[for=LSLog8] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 3px; float: left; }
 
 label[for=bps-monitor-email1] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 18px; float: left; }
 label[for=bps-monitor-email2] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: .25em; float: left; }
 label[for=bps-monitor-email3] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 18px; float: left; }
 label[for=bps-monitor-email4] { margin: 0; padding: 0; display: block; font-size:1em; font-weight: bold;padding-top: .35em; padding-right: 13px; float: left; }
-
-.widefat td { border-bottom:1px solid #eee; }
 
 div.automagic-text { font-weight: bold; color:green; border:1px solid black; background-color:#ffffe0; width:300px; padding:5px; }
 
@@ -133,10 +129,6 @@ div.automagic-text { font-weight: bold; color:green; border:1px solid black; bac
 /********* WordPress Default & Default CSS **************/
 .form-table {background: #EBEBEB; border:1px solid #addae6;}
 
-/* New BPS .49.7 */
-.form-table th { padding-left:5px; }
-.update-nag {  background-color:#ffffe0; }
-
 .tog {}
 
 .submit { padding:10px 0px 10px 15px;}
@@ -149,8 +141,7 @@ div.automagic-text { font-weight: bold; color:green; border:1px solid black; bac
 .bps-menu {}
 .bps-menu ul { border:1px solid #999; background-image:url(../images/menu_bg.png); background-repeat:repeat; background-position: left bottom; }
 .bps-menu ul li { border:1px solid #EBEBEB; font-size: 1.25em; font-weight:700; }
-/* New BPS .49.7 background-color: #eee; */
-.bps-menu ul li a { color:#FFFFFF; background-color: #eee; background-image:url(../images/menu_btn.png); background-repeat:none;}
+.bps-menu ul li a { color:#FFFFFF; background-color: #fff; background-image:url(../images/menu_btn.png); background-repeat:none;}
 .bps-menu ul li a:hover {color:#000000; background-image:url(../images/menu_btn_over.png); background-repeat:none;}
 .bps-menu ul li a:active {color:#FFFFFF; background-image:url(../images/menu_btn_over.png); background-repeat:none;}
 
@@ -479,13 +470,11 @@ div.automagic-text { font-weight: bold; color:green; border:1px solid black; bac
 }
 
 /************* BPS File Editor ************/
-/* New BPS .49.7 width:690px; */
-#bps_file_editor {width:690px;}
+#bps_file_editor {width:700px;}
 #bps-edittabs {width:700px;position:relative;left:0px;top:0px;}
 #bps-enable_bu_file_dl_button {position:relative; top:-15px; left:0px; }
 #bps-download_buttons_table {position:relative; top:-25px; left:0px; }
-/* New BPS Pro .49.7 */
-.bps_file_editor_update { background-color:#ffffe0;border:1px solid #999999; padding:5px }
+.bps_file_editor_update { background-color:#ffffe0;border:1px solid #999999; padding:5px 0px 5px 5px;}
 
 .bps-file_upload_title { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; padding:5px;}
 .bps-file_download_title { background: #A9F5A0; border:1px solid #addae6; text-align:center; font-weight:900; padding:5px; margin-top:1px;}
@@ -520,15 +509,15 @@ pre {
 #CC-phpini-handler { margin:65px 0px 0px 0px; }
 #CC-directory-index { margin:100px 0px 0px 0px;padding:3px; }
 #CC-brute-force { margin:120px 0px 0px 0px;padding:3px; }
-#CC-error-logging { margin:115px 0px 0px 0px;padding:3px; }
-#CC-wpadmin-includes { margin:100px 0px 0px 0px;padding:3px; }
+#CC-error-logging { margin:120px 0px 0px 0px;padding:3px; }
+#CC-wpadmin-includes { margin:105px 0px 0px 0px;padding:3px; }
 #CC-start-rewrite { margin:160px 0px 0px 0px;padding:3px; }
 #CC-request-methods { margin:160px 0px 0px 0px;padding:3px; }
 #CC-plugins-skip-rules { margin:115px 0px 0px 0px; }
 #CC-timthumb { margin:145px 0px 0px 0px;padding:3px; }
 #CC-BPSQSE { margin:130px 0px 0px 0px;padding:3px; }
 #CC-deny-browser-access { margin:120px 0px 0px 0px;padding:3px; }
-#CC-bottom-spam-block { margin:85px 0px 0px 0px;padding:3px; }
+#CC-bottom-spam-block { margin:75px 0px 0px 0px;padding:3px; }
 
 #CC-wpadmin-deny-files { margin:120px 0px 0px 0px;padding:3px; }
 #CC-wpadmin-optional-measures { margin:150px 0px 0px 0px; }
@@ -545,10 +534,10 @@ pre {
 	padding:5px;
 }
 
-.PFW-Whitelist-Text-Area { width:450px; height:180px; }
-.PFW-Allow-From-Text-Area { width:400px; height:100px; margin-top:5px; }
+.mmode-tinymce { width:60% }
 
-.mmode-tinymce { width:50% }
+/* .PFW-Whitelist-Text-Area { width:450px; height:180px; }
+.PFW-Allow-From-Text-Area { width:400px; height:100px; margin-top:5px; } */
 
 /*********** PHP ini pages *****************/
 #iniselector {float:left; margin:0px 0px 20px 0px; }
@@ -596,7 +585,7 @@ pre {
 .ui-helper-hidden{display:none;}.ui-helper-hidden-accessible{position:absolute;left:-99999999px;}.ui-helper-reset{margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.ui-helper-clearfix{display:inline-block;}/* required comment for clearfix to work in Opera \*/ * html .ui-helper-clearfix{height:1%;}.ui-helper-clearfix{display:block;}/* end clearfix */ .ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}.ui-state-disabled{cursor:default!important;}.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;}.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;}.ui-resizable{position:relative;}.ui-resizable-handle{position:absolute;font-size:.1px;z-index:99999;display:block;}.ui-resizable-disabled .ui-resizable-handle,.ui-resizable-autohide .ui-resizable-handle{display:none;}.ui-resizable-n{cursor:n-resize;height:7px;width:100%;top:-5px;left:0;}.ui-resizable-s{cursor:s-resize;height:7px;width:100%;bottom:-5px;left:0;}.ui-resizable-e{cursor:e-resize;width:7px;right:-5px;top:0;height:100%;}.ui-resizable-w{cursor:w-resize;width:7px;left:-5px;top:0;height:100%;}.ui-resizable-se{cursor:se-resize;width:12px;height:12px;right:1px;bottom:1px;}.ui-resizable-sw{cursor:sw-resize;width:9px;height:9px;left:-5px;bottom:-5px;}.ui-resizable-nw{cursor:nw-resize;width:9px;height:9px;left:-5px;top:-5px;}.ui-resizable-ne{cursor:ne-resize;width:9px;height:9px;right:-5px;top:-5px;}.wp-dialog{z-index:999;position:absolute;width:300px;overflow:hidden;}.wp-dialog .ui-dialog-titlebar{position:relative;}
 
 #bps-open-modal input[type="button"],.bps-modal-button {
-	z-index: 999;
+	z-index:999;
 	border-color:#bbb;color:#464646;
 	background:#f2f2f2 url(../images/table_title_bg.png) repeat-x scroll left top;
 	color:#fff;
@@ -622,7 +611,7 @@ pre {
 	}
 
 #bps-open-modal input[type="button"]:hover,.bps-modal-button:hover {
-	z-index: 999;
+	z-index:999;
 	color:#000;
 	border-color:#666;
 /*	text-shadow:rgba(255,255,255,1) 0 1px 0;
@@ -632,18 +621,18 @@ pre {
 	}
 	
 #bps-open-modal input[type="button"]:active,.bps-modal-button:active {
-	z-index: 999;
+	z-index:999;
 	background:#eee url(../images/white-grad-active.png) repeat-x scroll left top;
 	}	
 
 .wp-dialog .ui-dialog-titlebar-close span{
-	z-index: 999;
+	z-index:999;
 	display:block;
 	margin:1px;
 	}
 
 .wp-dialog .ui-dialog-content {
-	z-index: 999;
+	z-index:999;
 	position:relative;
 	border:0;
 	padding:0px 10px 0px 10px;;
@@ -654,7 +643,7 @@ pre {
 
 /* bottom pane */
 .wp-dialog .ui-dialog-buttonpane {
-	z-index: 999;
+	z-index:999;
 	text-align:left;
 	border-width:1px 0 0 0;
 	background:url('../images/table_title_bg.png') repeat;
@@ -675,7 +664,7 @@ pre {
 
 /* this is the top pane */
 .wp-dialog .ui-dialog-title {
-	z-index: 999;
+	z-index:999;
 	display:block;
 	margin-top:0px;
 	text-align:center;
@@ -683,7 +672,7 @@ pre {
 	}
 
 .wp-dialog .ui-dialog-titlebar {
-	z-index: 999;
+	z-index:999;
 	padding:0 1em;
 	/* background-color:#444; */
 	background:url('../images/table_title_bg.png') repeat;
@@ -698,7 +687,7 @@ pre {
 
 /* this is the top right corner X button , .wp-dialog .ui-dialog-titlebar-close .ui-button-text */
 .wp-dialog .ui-dialog-titlebar-close {
-	z-index: 999;
+	z-index:999;
 	position:absolute;
 	width:29px;
 	height:16px;

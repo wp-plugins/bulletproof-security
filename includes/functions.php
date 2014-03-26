@@ -1244,6 +1244,32 @@ $user_id = $current_user->ID;
 	}
 }
 
+add_action('admin_notices', 'bps_xmlrpc_ddos_notice');
+
+// Heads Up Display - Dismiss Notice - Bonus Custom Code: XML-RPC DDoS PROTECTION
+// Only display this Dismiss notice if the WP AUTHOR ENUMERATION BOT PROBE PROTECTION Dismiss Notice has already been dismissed == true
+function bps_xmlrpc_ddos_notice() {
+global $current_user;
+$user_id = $current_user->ID;	
+	
+	if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_xmlrpc_ddos_notice') && get_user_meta($user_id, 'bps_author_enumeration_notice', true) ) { 
+
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code: XML-RPC DDoS Protection Code', 'bulletproof-security').'</font><br><a href="http://forum.ait-pro.com/forums/topic/wordpress-xml-rpc-ddos-protection-protect-xmlrpc-php-block-xmlrpc-php-forbid-xmlrpc-php/" title="Link opens in a new Browser window" target="_blank">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to get the XML-RPC DDoS Protection Code. Protects against DDoS attacks against your website that exploit your WordPress xmlrpc.php file and XML-RPC Server.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_xmlrpc_ddos_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
+		echo $text;
+	}
+}
+
+add_action('admin_init', 'bps_xmlrpc_ddos_nag_ignore');
+
+function bps_xmlrpc_ddos_nag_ignore() {
+global $current_user;
+$user_id = $current_user->ID;
+        
+	if ( isset($_GET['bps_xmlrpc_ddos_nag_ignore']) && '0' == $_GET['bps_xmlrpc_ddos_nag_ignore'] ) {
+		add_user_meta($user_id, 'bps_xmlrpc_ddos_notice', 'true', true);
+	}
+}
+
 add_action('admin_notices', 'bps_ignore_PhpiniHandler_notice');
 
 // HUD w/ Dismiss - Check if php.ini handler code exists in root .htaccess file, but not in Custom Code
@@ -1330,6 +1356,39 @@ $user_id = $current_user->ID;
         
 	if ( isset($_GET['bps_sucuri_nag_ignore']) && '0' == $_GET['bps_sucuri_nag_ignore'] ) {
 		add_user_meta($user_id, 'bps_ignore_sucuri_notice', 'true', true);
+	}
+}
+
+add_action('admin_notices', 'bps_hud_check_wordpress_firewall2');
+
+// Heads Up Display w/ Dismiss - WordPress Firewall 2 plugin - breaks BPS and lots of other stuff
+function bps_hud_check_wordpress_firewall2() {
+global $current_user;
+$user_id = $current_user->ID;	
+$plugin_var = 'wordpress-firewall-2/wordpress-firewall-2.php';
+$return_var = in_array( $plugin_var, apply_filters('active_plugins', get_option('active_plugins')));
+
+	if ( $return_var != 1 ) { // 1 equals active
+		return;	
+	}
+	
+	if ( $return_var == 1 ) { // 1 equals active	
+	
+		if ( current_user_can('manage_options') && !get_user_meta($user_id, 'bps_ignore_wpfirewall2_notice') ) { 
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('The WordPress Firewall 2 plugin is installed and activated', 'bulletproof-security').'</font><br>'.__('It is recommended that you delete the WordPress Firewall 2 plugin.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/wordpress-firewall-2-plugin-unable-to-save-custom-code/" target="_blank" title="Link opens in a new Browser window">'.__('Click Here', 'bulletproof-security').'</a>'.__(' for more information.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss Notices click the Reset/Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br><a href="index.php?bps_wpfirewall2_nag_ignore=0">'.__('Dismiss Notice', 'bulletproof-security').'</a></div>';
+			echo $text;		
+		}
+	}
+}
+
+add_action('admin_init', 'bps_wpfirewall2_nag_ignore');
+
+function bps_wpfirewall2_nag_ignore() {
+global $current_user;
+$user_id = $current_user->ID;
+        
+	if ( isset($_GET['bps_wpfirewall2_nag_ignore']) && '0' == $_GET['bps_wpfirewall2_nag_ignore'] ) {
+		add_user_meta($user_id, 'bps_ignore_wpfirewall2_notice', 'true', true);
 	}
 }
 
@@ -1734,99 +1793,5 @@ $lang_fileTLPO = $base_path.'bulletproof-security-tl_TL.po';
 		}
 	}
 }
-
-/**
-add to a later BPS version once the issue is fixed
-possible issue: function_exists needs be to called outside of the function
-either way this code needs more work before publicly releasing it - clunky/junky
-
-// Daily Cron - BPS Plugin Upgrade Notification - add cron
-function bpsPro_upgrade_check_add_cron( $schedules ) {
-	$schedules['daily'] = array('interval' => 86400, 'display' => __('Once Daily'));
-	//$schedules['hourly'] = array('interval' => 3600, 'display' => __('Once Hourly'));
-	return $schedules;
-}
-
-add_filter('cron_schedules', 'bpsPro_upgrade_check_add_cron');
-
-// Daily Cron - BPS Plugin Upgrade Notification - schedule event
-function bpsPro_schedule_update_checks() {
-	$bpsCronCheck = wp_get_schedule('bpsPro_update_check');
-	
-	if ( !wp_next_scheduled('bpsPro_update_check') ) {
-		wp_schedule_event(time(), 'daily', 'bpsPro_update_check');
-	//wp_schedule_event(time(), 'hourly', 'bpsPro_security_log_check');
-	}
-}
-
-add_action('init', 'bpsPro_schedule_update_checks');
-
-// Daily Cron - BPS Plugin Upgrade Notification - send email
-// gets the latest version from WP.org
-function bpsPro_update_checks() {
-if (function_exists('get_transient')) {
-require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
-global $bps_version;
-
-	if (false === ($bpsapi = get_transient('bulletproof-security_info'))) {
-		$bpsapi = plugins_api('plugin_information', array('slug' => stripslashes( 'bulletproof-security' ) ));
-	
-	//if ( !is_wp_error($bpsapi) ) {
-	//	$bpsexpire = 60 * 15; // Cache data for 15 minutes
-	//	set_transient('bulletproof-security_info', $bpsapi, $bpsexpire);
-	//}
-	}
-  
-	if ( !is_wp_error($bpsapi) ) {
-		$plugins_allowedtags = array('a' => array('href' => array(), 'title' => array(), 'target' => array()),
-								'abbr' => array('title' => array()), 'acronym' => array('title' => array()),
-								'code' => array(), 'pre' => array(), 'em' => array(), 'strong' => array(),
-								'div' => array(), 'p' => array(), 'ul' => array(), 'ol' => array(), 'li' => array(),
-								'h1' => array(), 'h2' => array(), 'h3' => array(), 'h4' => array(), 'h5' => array(), 'h6' => array(),
-								'img' => array('src' => array(), 'class' => array(), 'alt' => array()));
-	//Sanitize HTML
-	foreach ( (array)$bpsapi->sections as $section_name => $content )
-		$bpsapi->sections[$section_name] = wp_kses($content, $plugins_allowedtags);
-	
-	foreach ( array('version', 'author', 'requires', 'tested', 'homepage', 'downloaded', 'slug') as $key )
-		$bpsapi->$key = wp_kses($bpsapi->$key, $plugins_allowedtags);
-
-	if ( version_compare($bpsapi->version, $bps_version, '>=') ) { 
-		return false;	 
-	} else {
-	
-	$Emailoptions = get_option('bulletproof_security_options_email');	
-	
-	if ( $Emailoptions['bps_upgrade_email'] == 'yes') {
-	
-	$bps_email = $Emailoptions['bps_send_email_to'];
-	$bps_email_from = $Emailoptions['bps_send_email_from'];
-	$bps_email_cc = $Emailoptions['bps_send_email_cc'];
-	$bps_email_bcc = $Emailoptions['bps_send_email_bcc'];
-	
-	$justUrl = get_site_url();
-	$timeNow = time();
-	$gmt_offset = get_option( 'gmt_offset' ) * 3600;
-	$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
-
-	$mail_To = "$bps_email";
-	$headers = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-	$headers .= "From: $bps_email_from" . "\r\n";
-	$headers .= "Cc: $bps_email_cc" . "\r\n";
-	$headers .= "Bcc: $bps_email_bcc" . "\r\n";
-	$mail_Subject = " BPS Plugin Upgrade Notification - $timestamp ";
-
-	$mail_message = '<p><font color="blue"><strong>A new version of BPS is available.</strong></font></p>';
-	$mail_message .= '<p><font color="blue"><strong>Site: </strong></font>'."$justUrl".'</p>'; 
-	$mail_message .= '<p>If you do not want to receive BPS Plugin Upgrade Email Notifications go to the BPS Login Security page, select the Do Not Send Email Alerts option and click the Save Options button.</p>';
-	wp_mail($mail_To, $mail_Subject, $mail_message, $headers);
-	}
-	}
-}
-}
-}
-add_action('bpsPro_update_check', 'bpsPro_update_checks');
-**/
 
 ?>

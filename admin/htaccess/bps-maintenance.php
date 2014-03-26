@@ -133,14 +133,13 @@ p { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transp
 <?php 
 // Send Email Reminder when Maintenance Mode Countdown Timer has completed
 function bps_send_mmode_email_alert() {
-global $bps_maint_countdown_email, $bps_maint_email_to, $bps_maint_email_from, $bps_maint_email_cc, $bps_maint_email_bcc, $bps_maint_login_link, $bps_maint_time;
+global $bps_maint_countdown_email, $bps_maint_email_to, $bps_maint_email_from, $bps_maint_email_cc, $bps_maint_email_bcc, $bps_maint_time;
 
-	// 1 minute buffer ensures that email cannot be sent prematurely
+	// -1 minute buffer so that email is not sent prematurely
 	if ( $bps_maint_countdown_email == '1' && time() >= $bps_maint_time - 60 ) { 
 	
-	$strip_url = array(' | <a href="', '" style="text-decoration:none;">Login</a>');
-	$bps_maint_login_link = str_replace($strip_url, "", $bps_maint_login_link);
-	
+	$site_link = htmlspecialchars( $_SERVER['SERVER_NAME'], ENT_QUOTES );
+
 	$headers = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 	$headers .= "From: $bps_maint_email_from" . "\r\n";
@@ -148,9 +147,9 @@ global $bps_maint_countdown_email, $bps_maint_email_to, $bps_maint_email_from, $
 	$headers .= "Bcc: $bps_maint_email_bcc" . "\r\n";	
 	$subject = " BPS Maintenance Mode Reminder ";
 	$message = '<p><font color="blue"><strong>The Maintenance Mode Countdown Timer has completed for:</strong></font></p>';
-	$message .= '<p>Website: '."$bps_maint_login_link".'</p>'; 
-
-	$mailed = mail($bps_maint_email_to, $subject, $message, $headers);
+	$message .= '<p>Website: '.$site_link.'</p>';
+	
+	$mailed = mail( $bps_maint_email_to, $subject, $message, $headers );
 	
 	if ( $mailed ) {
 		// do something else if/when email is sent

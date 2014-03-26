@@ -33,7 +33,8 @@ jQuery(document).ready(function($){
 		clearStyle: true,
 		heightStyle: "content"
     });
-    // not displayed open by default - slower/smoother animation
+    
+	// not displayed open by default - slower/smoother animation
 	$( "#bps-accordion-2" ).accordion({
 		active: false,
 		animate: 1500,
@@ -42,7 +43,15 @@ jQuery(document).ready(function($){
 		clearStyle: true,
 		heightStyle: "content"
     });
-
+    
+	// displayed open by default - slower/smoother animation
+	$( "#bps-accordion-3" ).accordion({
+		animate: 1400,
+		collapsible: true,
+		autoHeight: false,
+		clearStyle: true,
+		heightStyle: "content"
+    });
 });
 
 /**** Example bits of code to play with later ****
