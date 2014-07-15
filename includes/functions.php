@@ -195,9 +195,10 @@ $ServerName = $_SERVER['SERVER_NAME'];
 // Get the Current / Last Modifed Date of the bulletproof-security.php File - Minutes check
 function getBPSInstallTime() {
 $filename = WP_PLUGIN_DIR . '/bulletproof-security/bulletproof-security.php';
-
+$gmt_offset = get_option( 'gmt_offset' ) * 3600;
+	
 	if ( file_exists($filename) ) {
-		$last_modified_install = date ("F d Y H:i", filemtime($filename));
+		$last_modified_install = date ("F d Y H:i", filemtime($filename) + $gmt_offset );
 	return $last_modified_install;
 	}
 }
@@ -205,9 +206,10 @@ $filename = WP_PLUGIN_DIR . '/bulletproof-security/bulletproof-security.php';
 // Get the Current / Last Modifed Date of the bulletproof-security.php File + one minute buffer - Minutes check
 function getBPSInstallTime_plusone() {
 $filename = WP_PLUGIN_DIR . '/bulletproof-security/bulletproof-security.php';
+$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 	
 	if ( file_exists($filename) ) {
-		$last_modified_install = date("F d Y H:i", filemtime($filename) + (60 * 1));
+		$last_modified_install = date("F d Y H:i", filemtime($filename) + $gmt_offset + (60 * 1));
 	return $last_modified_install;
 	}
 }
@@ -215,9 +217,10 @@ $filename = WP_PLUGIN_DIR . '/bulletproof-security/bulletproof-security.php';
 // Get the Current / Last Modifed Date of the Root .htaccess File - Minutes check
 function getBPSRootHtaccessLasModTime_minutes() {
 $filename = ABSPATH . '.htaccess';
+$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 	
 	if ( file_exists($filename) ) {
-		$last_modified_install = date ("F d Y H:i", filemtime($filename));
+		$last_modified_install = date ("F d Y H:i", filemtime($filename) + $gmt_offset );
 	return $last_modified_install;
 	}
 }
@@ -225,9 +228,10 @@ $filename = ABSPATH . '.htaccess';
 // Get the Current / Last Modifed Date of the wp-admin .htaccess File - Minutes check
 function getBPSwpadminHtaccessLasModTime_minutes() {
 $filename = ABSPATH . 'wp-admin/.htaccess';
+$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 	
 	if ( file_exists($filename) ) {
-		$last_modified_install = date ("F d Y H:i", filemtime($filename));
+		$last_modified_install = date ("F d Y H:i", filemtime($filename) + $gmt_offset );
 	return $last_modified_install;
 	}
 }
@@ -305,6 +309,7 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 	$pattern10 = '/#\sBEGIN\sBPSQSE\sBPS\sQUERY\sSTRING\sEXPLOITS\s*#\sThe\slibwww-perl\sUser\sAgent\sis\sforbidden/';
 	$pattern10a = '/RewriteCond\s%\{THE_REQUEST\}\s(.*)\?(.*)\sHTTP\/\s\[NC,OR\]\s*RewriteCond\s%\{THE_REQUEST\}\s(.*)\*(.*)\sHTTP\/\s\[NC,OR\]/';
 	$pattern10b = '/RewriteCond\s%\{THE_REQUEST\}\s.*\?\+\(%20\{1,\}.*\s*RewriteCond\s%\{THE_REQUEST\}\s.*\+\(.*\*\|%2a.*\s\[NC,OR\]/';	
+	$pattern10c = '/RewriteCond\s%\{THE_REQUEST\}\s\(\\\\?.*%2a\)\+\(%20\+\|\\\\s\+.*HTTP\(:\/.*\[NC,OR\]/';
 	$pattern11 = '/RewriteCond\s%\{QUERY_STRING\}\s\[a-zA-Z0-9_\]\=http:\/\/\s\[OR\]/';
 	$pattern12 = '/RewriteCond\s%\{QUERY_STRING\}\s\[a-zA-Z0-9_\]\=\(\\\.\\\.\/\/\?\)\+\s\[OR\]/';
 	$pattern13 = '/RewriteCond\s%\{QUERY_STRING\}\s\(\\\.\\\.\/\|\\\.\\\.\)\s\[OR\]/';
@@ -385,11 +390,15 @@ switch ($bps_version) {
 		}
 
 		if ( preg_match($pattern10a, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace( $pattern10a, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+			$stringReplace = preg_replace( $pattern10a, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
 		}
 
 		if ( preg_match($pattern10b, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace( $pattern10b, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+			$stringReplace = preg_replace( $pattern10b, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+		}
+
+		if ( preg_match($pattern10c, $stringReplace, $matches) ) {
+			$stringReplace = preg_replace( $pattern10c, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
 		}
 
 		if ( preg_match($pattern11, $stringReplace, $matches) ) {
@@ -472,11 +481,13 @@ add_action('admin_notices', 'bps_root_htaccess_status_dashboard');
 // BPS Update/Upgrade Status Alert in WP Dashboard - wp-admin .htaccess file
 function bps_wpadmin_htaccess_status_dashboard() {
 global $bps_version, $bps_last_version;
+
 $filename = ABSPATH . 'wp-admin/.htaccess';
 $permsHtaccess = @substr(sprintf('%o', fileperms($filename)), -4);	
 $check_string = @file_get_contents($filename);
 $pattern10a = '/RewriteCond\s%\{THE_REQUEST\}\s(.*)\?(.*)\sHTTP\/\s\[NC,OR\]\s*RewriteCond\s%\{THE_REQUEST\}\s(.*)\*(.*)\sHTTP\/\s\[NC,OR\]/';
 $pattern10b = '/RewriteCond\s%\{THE_REQUEST\}\s.*\?\+\(%20\{1,\}.*\s*RewriteCond\s%\{THE_REQUEST\}\s.*\+\(.*\*\|%2a.*\s\[NC,OR\]/';	
+$pattern10c = '/RewriteCond\s%\{THE_REQUEST\}\s\(\\\\?.*%2a\)\+\(%20\+\|\\\\s\+.*HTTP\(:\/.*\[NC,OR\]/';
 $pattern1 = '/(\[|\]|\(|\)|<|>)/s';
 $BPSVpattern = '/BULLETPROOF\s\.[\d](.*)WP-ADMIN/';
 $BPSVreplace = "BULLETPROOF $bps_version WP-ADMIN";
@@ -508,11 +519,15 @@ switch ($bps_version) {
 			$stringReplace = preg_replace($BPSVpattern, $BPSVreplace, $stringReplace);	
 
 		if ( preg_match($pattern10a, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace( $pattern10a, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+			$stringReplace = preg_replace( $pattern10a, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
 		}
 
 		if ( preg_match($pattern10b, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace( $pattern10b, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+			$stringReplace = preg_replace( $pattern10b, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
+		}
+
+		if ( preg_match($pattern10c, $stringReplace, $matches) ) {
+			$stringReplace = preg_replace( $pattern10c, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)HTTP(:/|/) [NC,OR]", $stringReplace);
 		}
 
 		if ( preg_match($pattern1, $stringReplace, $matches) ) {

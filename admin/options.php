@@ -529,7 +529,7 @@ RewriteRule . index.php [L]
 $bps_get_wp_root_secure = bps_wp_get_root_folder();
 $bps_auto_write_secure_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/secure.htaccess';
 
-$bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletProof Security Root Master htaccess file was created successfully!', 'bulletproof-security').'</strong></font><br><font color="black"><strong>'.__('You can now Activate BulletProof Mode for your Root folder. Select the BulletProof Mode radio button and click Activate to put your website in BulletProof Mode.', 'bulletproof-security').'</strong></font>';
+$bpsSuccessMessageSec = '<font color="green"><strong>'.__('Success! Your BulletProof Security Root Master htaccess file was created successfully!', 'bulletproof-security').'</strong></font><br><font color="black"><strong>'.__('You can now Activate BulletProof Mode for your Root folder. Select the Root Folder BulletProof Mode radio button and click Activate to put your website in BulletProof Mode.', 'bulletproof-security').'</strong></font>';
 
 $bpsFailMessageSec = '<font color="red"><strong>'.__('The file ', 'bulletproof-security').$bps_auto_write_secure_file.__(' is not writable or does not exist.', 'bulletproof-security').'</strong></font><br><strong>'.__('Check that the file is named secure.htaccess and that the file exists in the /bulletproof-security/admin/htaccess master folder. If this is not the problem click', 'bulletproof-security').' <a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/" target="_blank">'.__('HERE', 'bulletproof-security').'</a>'.__(' to go the the BulletProof Security Forum.', 'bulletproof-security').'</strong>';
 
@@ -714,7 +714,7 @@ $bps_secure_BPSQSE = "# BEGIN BPSQSE BPS QUERY STRING EXPLOITS
 RewriteCond %{HTTP_USER_AGENT} (havij|libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|".'"'."|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
-RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]
+RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\s+|%20+\\\\s+|\\\\s+%20+|\\\\s+%20+\\\\s+)HTTP(:/|/) [NC,OR]
 RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
 RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
 RewriteCond %{THE_REQUEST} (%0A|%0D|\\"."\\"."r|\\"."\\"."n) [NC,OR]
@@ -2271,22 +2271,25 @@ jQuery(document).ready(function($){
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.4', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes/Code Corrections/Misc/CSS/Visual/Other:', 'bulletproof-security').'</strong></h3>'.__('- DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.<br>- DB Backup dynamic DB table: max-height CSS change<br>- Login Security CSS auto-scroll: max-height CSS change<br>- DB Table Prefix Changer: Additional check for writable files for DSO server types.<br>- Root and wp-admin filter change<br>- Log timestamps synchronized to GMT: All log timestamps are now synchronized to GMT time.
+', 'bulletproof-security'); echo $text; ?>
+    </td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.3', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('Root & wp-admin .htaccess Security Filters Change:', 'bulletproof-security').'</h3><strong>'.__('The BPS upgrade will seamlessly replace and combine the older root & wp-admin .htaccess filters into the new security filter below during the BPS upgrade.<br>Thanks goes to aselektor for spotting and reporting this.<br><br>Old security filters', 'bulletproof-security').'</strong>'; echo $text; ?>
-<pre style="width:530px;">
-RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
-RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
-
-RewriteCond %{THE_REQUEST} \?+(%20{1,}|[^\s])+HTTP+(:/|/) [NC,OR]
-RewriteCond %{THE_REQUEST} \/+(\*|%2a)+(%20|\s){1,}+HTTP+(:/|/) [NC,OR]
-</pre><br />
-<?php $text = '<strong>'.__('New security filter', 'bulletproof-security').'</strong>'; echo $text; ?>
-<pre style="width:530px;">
-RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP(:/|/) [NC,OR]
-</pre>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('Root & wp-admin .htaccess Security Filters Change:', 'bulletproof-security').'</h3><strong>'.__('The BPS upgrade will seamlessly replace and combine the older root & wp-admin .htaccess filters into the new security filter below during the BPS upgrade.<br>Thanks goes to aselektor for spotting and reporting this.', 'bulletproof-security').'</strong>'; echo $text; ?>
     </td>
   </tr> 
    <tr>
@@ -2337,16 +2340,7 @@ RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\s+|%20+\s+|\s+%20+|\s+%20+\s+)HTTP
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('Root .htaccess Security Filters Change:', 'bulletproof-security').'</h3><strong>'.__('Old security filters', 'bulletproof-security').'</strong>'; echo $text; ?>
-<pre style="width:530px;">
-RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
-RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
-</pre>
-<?php $text = '<strong>'.__('New security filters', 'bulletproof-security').'</strong>'; echo $text; ?>
-<pre style="width:530px;">
-RewriteCond %{THE_REQUEST} \?+(%20{1,}|[^\s])+HTTP+(:/|/) [NC,OR]
-RewriteCond %{THE_REQUEST} \/+(\*|%2a)+(%20|\s){1,}+HTTP+(:/|/) [NC,OR]
-</pre>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('Root .htaccess Security Filters Change:', 'bulletproof-security').'</h3><strong>'; echo $text; ?>
     </td>
   </tr> 
    <tr>

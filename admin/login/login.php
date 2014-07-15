@@ -281,7 +281,7 @@ $Max_db_rows = $BPSoptions['bps_max_db_rows_display'];
 echo bpsDBRowCount();
 
 // Login Security Search Form
-if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_options')) {
+if ( isset($_POST['Submit-Login-Security-search'] ) && current_user_can('manage_options') ) {
 	check_admin_referer('bulletproof_security_login_security_search');
 	
 	if ( wp_script_is( 'bps-js', $list = 'queue' ) ) {
@@ -317,12 +317,12 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		echo '<tbody>';
 		echo '<tr>';
 		
-		foreach ($getLoginSecurityTable as $row) {
+		foreach ( $getLoginSecurityTable as $row ) {
 
-		if ($wpdb->num_rows != 0) {
+		if ( $wpdb->num_rows != 0 ) {
 			$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 		
-			if ( $row->status == 'Locked') {
+			if ( $row->status == 'Locked' ) {
 				echo '<th scope="row" style="border-bottom:none;color:red;font-weight:bold;">'.$row->status.'</th>';
 			} else {
 				echo '<th scope="row" style="border-bottom:none;">'.$row->status.'</th>';
@@ -336,7 +336,7 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		echo '<td>'.$row->email.'</td>';	
 		echo '<td>'.$row->role.'</td>';	
 		echo '<td>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->login_time + $gmt_offset).'</td>';
-		if ( $row->lockout_time == 0) { 
+		if ( $row->lockout_time == 0 ) { 
 		echo '<td>'.__('NA', 'bulletproof-security').'</td>';
 		} else {
 		echo '<td>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->lockout_time + $gmt_offset).'</td>';
@@ -348,7 +348,7 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		}
 		} 
 		
-		if ($wpdb->num_rows == 0) {		
+		if ( $wpdb->num_rows == 0 ) {		
 		echo '<th scope="row" style="border-bottom:none;">'.__('No Logins/Locked', 'bulletproof-security').'</th>';
 		echo "<td></td>";
 		echo "<td></td>";
@@ -380,7 +380,7 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 	$BPSoptions = get_option('bulletproof_security_options_login_security');
 	$db_row_limit = $BPSoptions['bps_max_db_rows_display'];
 	
-	if ( $BPSoptions['bps_max_db_rows_display'] != '') {
+	if ( $BPSoptions['bps_max_db_rows_display'] != '' ) {
 		$getLoginSecurityTable = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE (user_id LIKE %s) ORDER BY id LIMIT $db_row_limit", "%$searchAll%") );
 	} else {
 		$getLoginSecurityTable = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE (user_id LIKE %s) ORDER BY id ASC", "%$searchAll%") );
@@ -409,12 +409,12 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		echo '<tbody>';
 		echo '<tr>';
 		
-		foreach ($getLoginSecurityTable as $row) {
+		foreach ( $getLoginSecurityTable as $row ) {
 
-		if ($wpdb->num_rows != 0) {
+		if ( $wpdb->num_rows != 0 ) {
 			$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 			
-			if ( $row->status == 'Locked') {
+			if ( $row->status == 'Locked' ) {
 				echo '<th scope="row" style="border-bottom:none;color:red;font-weight:bold;">'.$row->status.'</th>';
 			} else {
 				echo '<th scope="row" style="border-bottom:none;">'.$row->status.'</th>';
@@ -428,7 +428,7 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		echo '<td>'.$row->email.'</td>';	
 		echo '<td>'.$row->role.'</td>';	
 		echo '<td>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->login_time + $gmt_offset).'</td>';
-		if ( $row->lockout_time == 0) { 
+		if ( $row->lockout_time == 0 ) { 
 		echo '<td>'.__('NA', 'bulletproof-security').'</td>';
 		} else {
 		echo '<td>'.date_i18n(get_option('date_format').' '.get_option('time_format'), $row->lockout_time + $gmt_offset).'</td>';
@@ -440,7 +440,7 @@ if (isset($_POST['Submit-Login-Security-search']) && current_user_can('manage_op
 		}
 		} 
 		
-		if ($wpdb->num_rows == 0) {		
+		if ( $wpdb->num_rows == 0 ) {		
 		echo '<th scope="row" style="border-bottom:none;">'.__('No Logins/Locked', 'bulletproof-security').'</th>';
 		echo "<td></td>";
 		echo "<td></td>";
@@ -499,40 +499,40 @@ jQuery(document).ready(function($){
 
 <?php 
 // Standard Visible Login Security form proccessing - Lock, Unlock or Delete user login status from DB
-if (isset($_POST['Submit-Login-Security-Radio']) && current_user_can('manage_options')) {
+if ( isset($_POST['Submit-Login-Security-Radio'] ) && current_user_can('manage_options') ) {
 	check_admin_referer('bulletproof_security_login_security');
 	
 	$LSradio = $_POST['LSradio'];
 	$bpspro_login_table = $wpdb->prefix . "bpspro_login_security";
 
-	switch($_POST['Submit-Login-Security-Radio']) {
+	switch( $_POST['Submit-Login-Security-Radio'] ) {
 		case __('Submit', 'bulletproof-security'):
 		
 		$delete_users = array();
 		$unlock_users = array();
 		$lock_users = array();		
 		
-		if (!empty($LSradio)) {
-			foreach ($LSradio as $key => $value) {
+		if ( !empty($LSradio) ) {
+			foreach ( $LSradio as $key => $value ) {
 				
-				if ($value == 'deleteuser') {
+				if ( $value == 'deleteuser' ) {
 					$delete_users[] = $key;
 				
-				} elseif ($value == 'unlockuser') {
+				} elseif ( $value == 'unlockuser' ) {
 					$unlock_users[] = $key;
 				
-				} elseif ($value == 'lockuser') {
+				} elseif ( $value == 'lockuser' ) {
 					$lock_users[] = $key;
 				}
 			}
 		}
 			
-		if (!empty($delete_users)) {
-			foreach ($delete_users as $delete_user) {
+		if ( !empty($delete_users) ) {
+			foreach ( $delete_users as $delete_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $delete_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
-					$delete_row = $wpdb->query( $wpdb->prepare( "DELETE FROM $bpspro_login_table WHERE user_id = %s", $delete_user));
+				foreach ( $LoginSecurityRows as $row ) {
+					$delete_row = $wpdb->query( $wpdb->prepare( "DELETE FROM $bpspro_login_table WHERE user_id = %s", $delete_user) );
 				
 				echo $bps_topDiv;
 				$textDelete = '<font color="green">'.$row->username.__(' has been deleted from the Login Security Database Table.', 'bulletproof-security').'</font><br><div class="bps-message-button" style="width:90px;"><a href="admin.php?page=bulletproof-security/admin/login/login.php">'.__('Refresh Status', 'bulletproof-security').'</a></div>';
@@ -542,11 +542,11 @@ if (isset($_POST['Submit-Login-Security-Radio']) && current_user_can('manage_opt
 			}
 		}
 		
-		if (!empty($unlock_users)) {
-			foreach ($unlock_users as $unlock_user) {
+		if ( !empty($unlock_users) ) {
+			foreach ( $unlock_users as $unlock_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $unlock_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
+				foreach ( $LoginSecurityRows as $row ) {
 					$NLstatus = 'Not Locked';
 					$lockout_time = '0';		
 					$failed_logins ='0';
@@ -561,11 +561,11 @@ if (isset($_POST['Submit-Login-Security-Radio']) && current_user_can('manage_opt
 			}
 		}
 
-		if (!empty($lock_users)) {
-			foreach ($lock_users as $lock_user) {
+		if ( !empty($lock_users) ) {
+			foreach ( $lock_users as $lock_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $lock_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
+				foreach ( $LoginSecurityRows as $row ) {
 					$Lstatus = 'Locked';
 					$manual_lockout_time = time() + (60 * $BPSoptions['bps_manual_lockout_duration']); // default is 1 hour/3600 seconds
 					$BPSoptions = get_option('bulletproof_security_options_login_security');
@@ -585,39 +585,39 @@ if (isset($_POST['Submit-Login-Security-Radio']) && current_user_can('manage_opt
 }
 
 // Search Form - Login Security form proccessing - Lock, Unlock or Delete user login status from DB
-if (isset($_POST['Submit-Login-Search-Radio']) && current_user_can('manage_options')) {
+if ( isset($_POST['Submit-Login-Search-Radio'] ) && current_user_can('manage_options') ) {
 	check_admin_referer('bulletproof_security_login_security_search');
 	
 	$LSradio = $_POST['LSradio'];
 	$bpspro_login_table = $wpdb->prefix . "bpspro_login_security";
 	
-	switch($_POST['Submit-Login-Search-Radio']) {
+	switch( $_POST['Submit-Login-Search-Radio'] ) {
 		case __('Submit', 'bulletproof-security'):
 		
 		$delete_users = array();
 		$unlock_users = array();
 		$lock_users = array();		
 		
-		if (!empty($LSradio)) {
-			foreach ($LSradio as $key => $value) {
+		if ( !empty($LSradio) ) {
+			foreach ( $LSradio as $key => $value ) {
 				
-				if ($value == 'deleteuser') {
+				if ( $value == 'deleteuser' ) {
 					$delete_users[] = $key;
 				
-				} elseif ($value == 'unlockuser') {
+				} elseif ( $value == 'unlockuser' ) {
 					$unlock_users[] = $key;
 				
-				} elseif ($value == 'lockuser') {
+				} elseif ( $value == 'lockuser' ) {
 					$lock_users[] = $key;
 				}
 			}
 		}
 			
-		if (!empty($delete_users)) {
-			foreach ($delete_users as $delete_user) {
+		if ( !empty($delete_users) ) {
+			foreach ( $delete_users as $delete_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $delete_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
+				foreach ( $LoginSecurityRows as $row ) {
 					$delete_row = $wpdb->query( $wpdb->prepare( "DELETE FROM $bpspro_login_table WHERE user_id = %s", $delete_user));
 				
 				echo $bps_topDiv;
@@ -628,11 +628,11 @@ if (isset($_POST['Submit-Login-Search-Radio']) && current_user_can('manage_optio
 			}
 		}
 		
-		if (!empty($unlock_users)) {
-			foreach ($unlock_users as $unlock_user) {
+		if ( !empty($unlock_users) ) {
+			foreach ( $unlock_users as $unlock_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $unlock_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
+				foreach ( $LoginSecurityRows as $row ) {
 					$NLstatus = 'Not Locked';
 					$lockout_time = '0';		
 					$failed_logins ='0';						
@@ -647,11 +647,11 @@ if (isset($_POST['Submit-Login-Search-Radio']) && current_user_can('manage_optio
 			}
 		}
 
-		if (!empty($lock_users)) {
-			foreach ($lock_users as $lock_user) {
+		if ( !empty($lock_users) ) {
+			foreach ( $lock_users as $lock_user ) {
 				$LoginSecurityRows = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $bpspro_login_table WHERE user_id = %s", $lock_user) );
 			
-				foreach ($LoginSecurityRows as $row) {
+				foreach ( $LoginSecurityRows as $row ) {
 					$Lstatus = 'Locked';
 					$manual_lockout_time = time() + (60 * $BPSoptions['bps_manual_lockout_duration']); // default is 1 hour/3600 seconds 	
 					$BPSoptions = get_option('bulletproof_security_options_login_security');

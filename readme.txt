@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.0 
-Stable tag: .50.3
+Stable tag: .50.4
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -345,6 +345,16 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .50.4 =
+* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
+* DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.
+* DB Backup dynamic DB table: max-height CSS change
+* Login Security CSS auto-scroll: max-height CSS change
+* DB Table Prefix Changer: Additional check for writable files for DSO server types.
+* Root and wp-admin filter change
+* Log timestamps synchronized to GMT: All log timestamps are now synchronized to GMT time.
+* Enjoy!
+
 = .50.3 =
 * Correction/BugFix/Improvement: root and wp-admin .htaccess filters/rules change/correction/improvement. See the BPS Whats New tab page for more details.
 * Thanks goes to aselektor for spotting and reporting this.
@@ -501,6 +511,16 @@ Additional function checking code has been added in cases where the mysqli_get_c
 * Enjoy!
 
 == Upgrade Notice ==
+
+= .50.4 =
+* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
+* DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.
+* DB Backup dynamic DB table: max-height CSS change
+* Login Security CSS auto-scroll: max-height CSS change
+* DB Table Prefix Changer: Additional check for writable files for DSO server types.
+* Root and wp-admin filter change
+* Log timestamps synchronized to GMT: All log timestamps are now synchronized to GMT time.
+* Enjoy!
 
 = .50.3 =
 * Correction/BugFix/Improvement: root and wp-admin .htaccess filters/rules change/correction/improvement. See the BPS Whats New tab page for more details.

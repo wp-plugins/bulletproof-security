@@ -110,7 +110,7 @@ div.bps-white-background {background-color:#fff;}
 /** DB Backup **/
 #DBBJobscheckall {margin:0px;}
 #DBBFilescheckall {margin:0px;}
-#DBBcheckall {margin:0px 30px 10px 0px;float:left;overflow:auto;width:400px;height:400px;border:1px solid black;}
+#DBBcheckall {margin:0px 30px 10px 0px;float:left;overflow:auto;width:400px;max-height:400px;border:1px solid black;}
 
 /** jQuery Tabs **/
 .ui-tabs {padding:0;zoom:1;}
