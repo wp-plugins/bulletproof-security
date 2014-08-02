@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.0 
-Stable tag: .50.4
+Stable tag: .50.5
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -345,6 +345,12 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .50.5 =
+* Login Security Password Reset BugFix & New Option:
+* BugFix: The Lost your password link was not being displayed when Login Security was turned Off.
+* New Option: Turn Off Login Security/Use Password Reset Option ONLY.
+* Enjoy!
+
 = .50.4 =
 * BugFixes/Code Corrections/Misc/CSS/Visual/Other:
 * DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.
@@ -512,6 +518,12 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
+= .50.5 =
+* Login Security Password Reset BugFix & New Option:
+* BugFix: The Lost your password link was not being displayed when Login Security was turned Off.
+* New Option: Turn Off Login Security/Use Password Reset Option ONLY.
+* Enjoy!
+
 = .50.4 =
 * BugFixes/Code Corrections/Misc/CSS/Visual/Other:
 * DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.
@@ -537,20 +549,6 @@ Additional function checking code has been added in cases where the mysqli_get_c
 * System Info page: added MySQL Extension, MySQLi Extension check.
 * Login Security email message text change when user account is locked.
 * Whitelist the Debug Bar plugin debug-bar css and js scripts.
-* Enjoy!
-
-= .50.1 =
-* Security Logging major changes/improvements to logging template files/code & start of Phase 1 Security Log Solution Targeting: 
-The Security Logging code has been significantly improved in BPS .50.1. Logging is more streamlined, performance optimized & faster than in previous BPS versions, even with the new general conditional pattern checking code added.
-* As of BPS .50.1 two new Security Log Fields have been added to Security Logging: Event Code and Solution. In Phase 1 of Security Log Solution Targeting the primary focus is on detecting possible Plugin Skip/Bypass rules & wp-admin Skip/Bypass Rules issues that need/require a one-time solution. Since 99.99% of the Security Log entries are blocked/forbidden hackers, spammers, scrapers, harvesters, miners, bad bots, etc. then the Security Log checking conditions can and should be streamlined/performance optimized by only looking at pattern matches in a broad scope.
-* Maintenance Mode Accordion:
-Maintenance Mode Accordion created for better functionality/usability. Code correction: Maintenance Mode website name not displayed in the reminder email. Code correction: Maintenance Mode Apostrophes/single quote code character displayed with an escape backslash.
-* New Bonus Custom Code/Dismiss Notice: WordPress XML-RPC DDoS Protection:
-Special Thanks goes to Gary Gordon for reporting the recent WordPress XML-RPC exploits/attacks. The XML-RPC DDoS PROTECTION Bonus Custom Code .htaccess code completely turns off/disables IXR-RPC Client/Server capabilities on a website by protecting the WordPress xmlrpc.php file from being publicly accessible, which prevents the IXR XML-RPC Client/Server connection. Using this Bonus Custom Code will turn off/disable remote posting capability from Weblog Clients (A Weblog Client is software you run on your local machine (desktop) that lets you post to your blog via XML-RPC), unless you add (whitelist) your IP address in the XML-RPC DDoS PROTECTION Bonus Code.
-* New Dismiss Notice Added: WordPress Firewall 2 plugin check
-The WordPress Firewall 2 plugin contains a coding mistake and has not been updated in over 3 years. The wp-admin area is supposed to be whitelisted by default, but that code is not working correctly, which breaks several things in the BPS plugin. The Dismiss Notice will alert users to this existing problem.
-* New/Updated Help & FAQ Help Links:
-Help & FAQ tab pages have updated links, old/outdated links removed, etc.
 * Enjoy!
 
 == Help Info ==

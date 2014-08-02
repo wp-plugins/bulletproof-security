@@ -2271,6 +2271,19 @@ jQuery(document).ready(function($){
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.5', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Login Security Password Reset BugFix & New Option:', 'bulletproof-security').'</strong></h3>'.__('- BugFix: The Lost your password link was not being displayed when Login Security was turned Off.<br>- New Option: Turn Off Login Security/Use Password Reset Option ONLY. The Turn Off Login Security/Use Password Reset Option ONLY setting means that all Login Security features are turned Off except for the Password Reset Option, which can be used independently by itself.', 'bulletproof-security'); echo $text; ?>
+    </td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.4', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
   </tr>
   <tr>
@@ -2476,6 +2489,7 @@ jQuery(document).ready(function($){
 
 <div id="bpsProVersions">
 <a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Releases', 'bulletproof-security'); ?></a><br /><br />
+     <a href="http://www.ait-pro.com/aitpro-blog/5027/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.1', 'bulletproof-security'); ?></a><br /><br />  
      <a href="http://www.ait-pro.com/aitpro-blog/5009/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-0/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.0', 'bulletproof-security'); ?></a><br /><br />  
      <a href="http://www.ait-pro.com/aitpro-blog/4994/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-8-3/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 8.3', 'bulletproof-security'); ?></a><br /><br />  
       <a href="http://www.ait-pro.com/aitpro-blog/4953/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-8-2/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 8.2', 'bulletproof-security'); ?></a><br /><br />  

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulletproof-security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-15 14:09-0800\n"
-"PO-Revision-Date: 2014-07-15 14:09-0800\n"
+"POT-Creation-Date: 2014-08-02 13:31-0800\n"
+"PO-Revision-Date: 2014-08-02 13:31-0800\n"
 "Last-Translator: Ed Alexander <edward@ait-pro.com>\n"
 "Language-Team: AITpro <info@ait-pro.com>\n"
 "Language: en_US\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.6.7\n"
 "X-Poedit-SearchPath-0: C:\\BPS47\n"
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:21
@@ -193,7 +193,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid ""
 "DB Backup & Security Guide & Troubleshooting: http://forum.ait-pro.com/"
 "forums/topic/database-backup-security-guide/"
@@ -266,12 +266,12 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid "Backup Jobs - Manual/Scheduled Accordion Tab"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid ""
 "- Displays the Description/Job Name, Delete and Run Checkboxes, Job Type, "
 "Frequency, Last Backup, Next Backup, Email Backup and Job Created table "
@@ -310,12 +310,12 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid "Backup Files - Download/Delete Accordion Tab"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid ""
 "- Displays the Backup Filename, Delete Checkbox, Download Links, Backup "
 "Folder, Size and Date/Time table columns."
@@ -339,7 +339,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:215
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid "Create Backup Jobs Accordion Tab"
 msgstr ""
 
@@ -571,7 +571,7 @@ msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:245
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:438
-#: C:\BPS47/admin/login/login.php:304 C:\BPS47/admin/login/login.php:396
+#: C:\BPS47/admin/login/login.php:305 C:\BPS47/admin/login/login.php:397
 msgid "Delete"
 msgstr ""
 
@@ -638,9 +638,9 @@ msgstr ""
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:406
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:539
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:929
-#: C:\BPS47/admin/login/login.php:538 C:\BPS47/admin/login/login.php:557
-#: C:\BPS47/admin/login/login.php:577 C:\BPS47/admin/login/login.php:624
-#: C:\BPS47/admin/login/login.php:643 C:\BPS47/admin/login/login.php:663
+#: C:\BPS47/admin/login/login.php:539 C:\BPS47/admin/login/login.php:558
+#: C:\BPS47/admin/login/login.php:578 C:\BPS47/admin/login/login.php:625
+#: C:\BPS47/admin/login/login.php:644 C:\BPS47/admin/login/login.php:664
 #: C:\BPS47/admin/options.php:1239 C:\BPS47/admin/options.php:1247
 #: C:\BPS47/admin/options.php:1255 C:\BPS47/admin/options.php:1263
 #: C:\BPS47/admin/options.php:1271 C:\BPS47/admin/options.php:1279
@@ -1142,7 +1142,7 @@ msgid "Backup Job Settings Logged successfully in the DB Backup Log"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:964
-#: C:\BPS47/admin/options.php:2315
+#: C:\BPS47/admin/options.php:2328
 msgid "DB Backup Log General Information"
 msgstr ""
 
@@ -1167,12 +1167,12 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:964
-#: C:\BPS47/admin/options.php:2315
+#: C:\BPS47/admin/options.php:2328
 msgid "What is Logged in The DB Backup Log?"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:964
-#: C:\BPS47/admin/options.php:2315
+#: C:\BPS47/admin/options.php:2328
 msgid ""
 "Depending on your DB Backup settings, log entries will be logged anytime you "
 "run a Manual Backup Job or whenever a Scheduled Cron Backup Job is run. The "
@@ -1244,74 +1244,74 @@ msgid "DB Backup Log Last Modified Time: "
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1007
-#: C:\BPS47/admin/login/login.php:191
+#: C:\BPS47/admin/login/login.php:192
 #: C:\BPS47/admin/security-log/security-log.php:425
 msgid "Send Email Alerts & Log Files To:"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1009
-#: C:\BPS47/admin/login/login.php:193
+#: C:\BPS47/admin/login/login.php:194
 #: C:\BPS47/admin/security-log/security-log.php:427
 msgid "Send Email Alerts & Log Files From:"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1011
-#: C:\BPS47/admin/login/login.php:195
+#: C:\BPS47/admin/login/login.php:196
 #: C:\BPS47/admin/security-log/security-log.php:429
 msgid "Send Email Alerts & Log Files Cc:"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1013
-#: C:\BPS47/admin/login/login.php:197
+#: C:\BPS47/admin/login/login.php:198
 #: C:\BPS47/admin/security-log/security-log.php:431
 msgid "Send Email Alerts & Log Files Bcc:"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1016
-#: C:\BPS47/admin/login/login.php:200
+#: C:\BPS47/admin/login/login.php:201
 #: C:\BPS47/admin/security-log/security-log.php:434
 msgid "Login Security: Send Login Security Email Alert When..."
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1018
-#: C:\BPS47/admin/login/login.php:202
+#: C:\BPS47/admin/login/login.php:203
 #: C:\BPS47/admin/security-log/security-log.php:436
 msgid "A User Account Is Locked Out"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1019
-#: C:\BPS47/admin/login/login.php:203
+#: C:\BPS47/admin/login/login.php:204
 #: C:\BPS47/admin/security-log/security-log.php:437
 msgid "An Administrator Logs In"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1020
-#: C:\BPS47/admin/login/login.php:204
+#: C:\BPS47/admin/login/login.php:205
 #: C:\BPS47/admin/security-log/security-log.php:438
 msgid "An Administrator Logs In & A User Account is Locked Out"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1021
-#: C:\BPS47/admin/login/login.php:205
+#: C:\BPS47/admin/login/login.php:206
 #: C:\BPS47/admin/security-log/security-log.php:439
 msgid "Any User Logs In & A User Account is Locked Out"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1022
-#: C:\BPS47/admin/login/login.php:206
+#: C:\BPS47/admin/login/login.php:207
 #: C:\BPS47/admin/security-log/security-log.php:440
 msgid "Do Not Send Email Alerts"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1025
-#: C:\BPS47/admin/login/login.php:209
+#: C:\BPS47/admin/login/login.php:210
 #: C:\BPS47/admin/security-log/security-log.php:443
 msgid "Security Log: Email/Delete Security Log File When..."
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1027
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1038
-#: C:\BPS47/admin/login/login.php:211 C:\BPS47/admin/login/login.php:222
+#: C:\BPS47/admin/login/login.php:212 C:\BPS47/admin/login/login.php:223
 #: C:\BPS47/admin/security-log/security-log.php:445
 #: C:\BPS47/admin/security-log/security-log.php:456
 msgid "500KB"
@@ -1319,7 +1319,7 @@ msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1028
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1039
-#: C:\BPS47/admin/login/login.php:212 C:\BPS47/admin/login/login.php:223
+#: C:\BPS47/admin/login/login.php:213 C:\BPS47/admin/login/login.php:224
 #: C:\BPS47/admin/security-log/security-log.php:446
 #: C:\BPS47/admin/security-log/security-log.php:457
 msgid "256KB"
@@ -1327,7 +1327,7 @@ msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1029
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1040
-#: C:\BPS47/admin/login/login.php:213 C:\BPS47/admin/login/login.php:224
+#: C:\BPS47/admin/login/login.php:214 C:\BPS47/admin/login/login.php:225
 #: C:\BPS47/admin/security-log/security-log.php:447
 #: C:\BPS47/admin/security-log/security-log.php:458
 msgid "1MB"
@@ -1335,7 +1335,7 @@ msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1032
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1043
-#: C:\BPS47/admin/login/login.php:216 C:\BPS47/admin/login/login.php:227
+#: C:\BPS47/admin/login/login.php:217 C:\BPS47/admin/login/login.php:228
 #: C:\BPS47/admin/security-log/security-log.php:450
 #: C:\BPS47/admin/security-log/security-log.php:461
 msgid "Email Log & Then Delete Log File"
@@ -1343,14 +1343,14 @@ msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1033
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1044
-#: C:\BPS47/admin/login/login.php:217 C:\BPS47/admin/login/login.php:228
+#: C:\BPS47/admin/login/login.php:218 C:\BPS47/admin/login/login.php:229
 #: C:\BPS47/admin/security-log/security-log.php:451
 #: C:\BPS47/admin/security-log/security-log.php:462
 msgid "Delete Log File"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1036
-#: C:\BPS47/admin/login/login.php:220
+#: C:\BPS47/admin/login/login.php:221
 #: C:\BPS47/admin/security-log/security-log.php:454
 msgid "DB Backup Log: Email/Delete DB Backup Log File When..."
 msgstr ""
@@ -1607,7 +1607,7 @@ msgid "DB Backup & Security Guide & Troubleshooting"
 msgstr ""
 
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1447
-#: C:\BPS47/admin/login/login.php:693
+#: C:\BPS47/admin/login/login.php:694
 #: C:\BPS47/admin/maintenance/maintenance.php:1791
 #: C:\BPS47/admin/options.php:2246
 #: C:\BPS47/admin/security-log/security-log.php:762
@@ -1766,8 +1766,12 @@ msgstr ""
 
 #: C:\BPS47/admin/login/login.php:132
 msgid ""
-"Turn On Login Security or Turn Off Login Security. After making any setting "
-"changes click the Save Options button to save your new option settings."
+"Turn On Login Security or Turn Off Login Security or Turn Off Login Security "
+"and Use the Password Reset Option ONLY. The Turn Off Login Security/Use "
+"Password Reset Option ONLY setting means that all Login Security features "
+"are turned Off except for the Password Reset Option, which can be used "
+"independently by itself. After making any setting changes click the Save "
+"Options button to save your new option settings."
 msgstr ""
 
 #: C:\BPS47/admin/login/login.php:132
@@ -1895,7 +1899,7 @@ msgstr ""
 #: C:\BPS47/admin/options.php:1094 C:\BPS47/admin/options.php:1189
 #: C:\BPS47/admin/options.php:1357 C:\BPS47/admin/options.php:1453
 #: C:\BPS47/admin/options.php:1563 C:\BPS47/admin/options.php:2031
-#: C:\BPS47/admin/options.php:2381
+#: C:\BPS47/admin/options.php:2394
 #: C:\BPS47/admin/system-info/system-info.php:121
 msgid "Permission Denied"
 msgstr ""
@@ -1936,128 +1940,132 @@ msgstr ""
 msgid "Turn Off Login Security"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:160
+#: C:\BPS47/admin/login/login.php:159
+msgid "Turn Off Login Security/Use Password Reset Option ONLY"
+msgstr ""
+
+#: C:\BPS47/admin/login/login.php:161
 msgid "Logging Options:"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:162
+#: C:\BPS47/admin/login/login.php:163
 msgid "Log Only Account Lockouts"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:163
+#: C:\BPS47/admin/login/login.php:164
 msgid "Log All Account Logins"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:165
+#: C:\BPS47/admin/login/login.php:166
 msgid "Error Messages:"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:167
+#: C:\BPS47/admin/login/login.php:168
 msgid "Standard WP Login Errors"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:168
+#: C:\BPS47/admin/login/login.php:169
 msgid "User/Pass Invalid Entry Error"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:169
+#: C:\BPS47/admin/login/login.php:170
 msgid "User/Pass/Lock Invalid Entry Error"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:171
+#: C:\BPS47/admin/login/login.php:172
 msgid "Password Reset:"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:173
+#: C:\BPS47/admin/login/login.php:174
 msgid "Enable Password Reset"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:174
+#: C:\BPS47/admin/login/login.php:175
 msgid "Disable Password Reset Frontend Only"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:175
+#: C:\BPS47/admin/login/login.php:176
 msgid "Disable Password Reset Frontend & Backend"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:272
+#: C:\BPS47/admin/login/login.php:273
 msgid " out of "
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:272
+#: C:\BPS47/admin/login/login.php:273
 msgid " Database Rows are currently being displayed"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:275
+#: C:\BPS47/admin/login/login.php:276
 msgid "Total number of Database Rows is: "
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:301 C:\BPS47/admin/login/login.php:393
+#: C:\BPS47/admin/login/login.php:302 C:\BPS47/admin/login/login.php:394
 msgid "Login Status"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:302 C:\BPS47/admin/login/login.php:394
+#: C:\BPS47/admin/login/login.php:303 C:\BPS47/admin/login/login.php:395
 msgid "Lock"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:303 C:\BPS47/admin/login/login.php:395
+#: C:\BPS47/admin/login/login.php:304 C:\BPS47/admin/login/login.php:396
 msgid "Unlock"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:305 C:\BPS47/admin/login/login.php:397
+#: C:\BPS47/admin/login/login.php:306 C:\BPS47/admin/login/login.php:398
 msgid "User ID"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:306 C:\BPS47/admin/login/login.php:398
+#: C:\BPS47/admin/login/login.php:307 C:\BPS47/admin/login/login.php:399
 msgid "Username"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:307 C:\BPS47/admin/login/login.php:399
+#: C:\BPS47/admin/login/login.php:308 C:\BPS47/admin/login/login.php:400
 msgid "Display Name"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:308 C:\BPS47/admin/login/login.php:400
+#: C:\BPS47/admin/login/login.php:309 C:\BPS47/admin/login/login.php:401
 msgid "Email"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:309 C:\BPS47/admin/login/login.php:401
+#: C:\BPS47/admin/login/login.php:310 C:\BPS47/admin/login/login.php:402
 msgid "Role"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:310 C:\BPS47/admin/login/login.php:402
+#: C:\BPS47/admin/login/login.php:311 C:\BPS47/admin/login/login.php:403
 msgid "Login Time"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:311 C:\BPS47/admin/login/login.php:403
+#: C:\BPS47/admin/login/login.php:312 C:\BPS47/admin/login/login.php:404
 msgid "Lockout Expires"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:312 C:\BPS47/admin/login/login.php:404
+#: C:\BPS47/admin/login/login.php:313 C:\BPS47/admin/login/login.php:405
 msgid "IP Address"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:313 C:\BPS47/admin/login/login.php:405
+#: C:\BPS47/admin/login/login.php:314 C:\BPS47/admin/login/login.php:406
 msgid "Hostname"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:314 C:\BPS47/admin/login/login.php:406
+#: C:\BPS47/admin/login/login.php:315 C:\BPS47/admin/login/login.php:407
 msgid "Request URI"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:340 C:\BPS47/admin/login/login.php:432
+#: C:\BPS47/admin/login/login.php:341 C:\BPS47/admin/login/login.php:433
 msgid "NA"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:352 C:\BPS47/admin/login/login.php:444
+#: C:\BPS47/admin/login/login.php:353 C:\BPS47/admin/login/login.php:445
 msgid "No Logins/Locked"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:369 C:\BPS47/admin/login/login.php:461
-#: C:\BPS47/admin/login/login.php:509 C:\BPS47/admin/login/login.php:595
+#: C:\BPS47/admin/login/login.php:370 C:\BPS47/admin/login/login.php:462
+#: C:\BPS47/admin/login/login.php:510 C:\BPS47/admin/login/login.php:596
 msgid "Submit"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:369 C:\BPS47/admin/login/login.php:461
+#: C:\BPS47/admin/login/login.php:370 C:\BPS47/admin/login/login.php:462
 msgid ""
 "Locking and Unlocking a User is reversible, but Deleting a User is not.\\n"
 "\\n-------------------------------------------------------------\\n\\nWhen "
@@ -2070,29 +2078,29 @@ msgid ""
 "OK to proceed or click Cancel"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:369 C:\BPS47/admin/login/login.php:461
+#: C:\BPS47/admin/login/login.php:370 C:\BPS47/admin/login/login.php:462
 msgid "Clear/Refresh"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:538 C:\BPS47/admin/login/login.php:624
+#: C:\BPS47/admin/login/login.php:539 C:\BPS47/admin/login/login.php:625
 msgid " has been deleted from the Login Security Database Table."
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:557 C:\BPS47/admin/login/login.php:643
+#: C:\BPS47/admin/login/login.php:558 C:\BPS47/admin/login/login.php:644
 msgid " has been Unlocked."
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:577 C:\BPS47/admin/login/login.php:663
+#: C:\BPS47/admin/login/login.php:578 C:\BPS47/admin/login/login.php:664
 msgid " has been Locked."
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:683 C:\BPS47/admin/options.php:2231
+#: C:\BPS47/admin/login/login.php:684 C:\BPS47/admin/options.php:2231
 #: C:\BPS47/admin/security-log/security-log.php:752
 #: C:\BPS47/admin/system-info/system-info.php:648
 msgid "BulletProof Security Help &amp; FAQ"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:689
+#: C:\BPS47/admin/login/login.php:690
 #: C:\BPS47/admin/maintenance/maintenance.php:1790
 #: C:\BPS47/admin/options.php:2242
 #: C:\BPS47/admin/security-log/security-log.php:758
@@ -2100,7 +2108,7 @@ msgstr ""
 msgid "Security Log Event Codes"
 msgstr ""
 
-#: C:\BPS47/admin/login/login.php:690
+#: C:\BPS47/admin/login/login.php:691
 #: C:\BPS47/admin/maintenance/maintenance.php:1787
 #: C:\BPS47/admin/options.php:2238
 #: C:\BPS47/admin/security-log/security-log.php:759
@@ -3159,7 +3167,7 @@ msgstr ""
 msgid "Whats New"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:1002 C:\BPS47/admin/options.php:2376
+#: C:\BPS47/admin/options.php:1002 C:\BPS47/admin/options.php:2389
 msgid "My Notes"
 msgstr ""
 
@@ -3171,7 +3179,7 @@ msgstr ""
 msgid "Website Scanner"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:1005 C:\BPS47/admin/options.php:2551
+#: C:\BPS47/admin/options.php:1005 C:\BPS47/admin/options.php:2565
 msgid "Website SEO"
 msgstr ""
 
@@ -5089,14 +5097,32 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2274
+msgid "50.5"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2278
+msgid "Login Security Password Reset BugFix & New Option:"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2278
+msgid ""
+"- BugFix: The Lost your password link was not being displayed when Login "
+"Security was turned Off.<br>- New Option: Turn Off Login Security/Use "
+"Password Reset Option ONLY. The Turn Off Login Security/Use Password Reset "
+"Option ONLY setting means that all Login Security features are turned Off "
+"except for the Password Reset Option, which can be used independently by "
+"itself."
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2287
 msgid "50.4"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2278
+#: C:\BPS47/admin/options.php:2291
 msgid "BugFixes/Code Corrections/Misc/CSS/Visual/Other:"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2278
+#: C:\BPS47/admin/options.php:2291
 msgid ""
 "- DB Backup: backticks added to DB Backup Query to allow for hyphenated or "
 "other special characters in DB naming conventions.<br>- DB Backup dynamic DB "
@@ -5107,30 +5133,30 @@ msgid ""
 "GMT time.\n"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2288
+#: C:\BPS47/admin/options.php:2301
 msgid "50.3"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2292
+#: C:\BPS47/admin/options.php:2305
 msgid "Root & wp-admin .htaccess Security Filters Change:"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2292
+#: C:\BPS47/admin/options.php:2305
 msgid ""
 "The BPS upgrade will seamlessly replace and combine the older root & wp-"
 "admin .htaccess filters into the new security filter below during the BPS "
 "upgrade.<br>Thanks goes to aselektor for spotting and reporting this."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2301
+#: C:\BPS47/admin/options.php:2314
 msgid "50.2"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid "New Feature: DB Backup"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid ""
 "Create manual and scheduled Backup Jobs. Choose which database tables to "
 "backup. Scheduled backup job options: Hourly, Daily, Weekly and Monthly. "
@@ -5141,7 +5167,7 @@ msgid ""
 "default settings."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2305
+#: C:\BPS47/admin/options.php:2318
 msgid ""
 "- Displays a dynamic DB Table Name checkbox form, Description/Backup Job "
 "Name textbox, DB Backup Folder Location textbox, DB Backup File Download "
@@ -5156,11 +5182,11 @@ msgid ""
 "dropdown option."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2315
+#: C:\BPS47/admin/options.php:2328
 msgid "New Feature: DB Backup Log"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2315
+#: C:\BPS47/admin/options.php:2328
 msgid ""
 "Your DB Backup Log file is a plain text static file and not a dynamic file "
 "or dynamic display to keep your website resource usage at a bare minimum and "
@@ -5171,11 +5197,11 @@ msgid ""
 "size (256KB, 500KB or 1MB)."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2325
+#: C:\BPS47/admin/options.php:2338
 msgid "New Feature: DB Table Prefix Changer"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2325
+#: C:\BPS47/admin/options.php:2338
 msgid ""
 "By changing your Database Table Prefix name you will probably stop a lot of "
 "random Bot probes from doing any further reconnaissance against your website "
@@ -5185,7 +5211,7 @@ msgid ""
 "that information."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2325
+#: C:\BPS47/admin/options.php:2338
 msgid ""
 "The Anti-nuisance benefits alone are worth changing your DB Table Prefix "
 "name. BPS has many layers of security protection that protect your Database "
@@ -5194,11 +5220,11 @@ msgid ""
 "protection and changed or modified your Database in any way."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2334
+#: C:\BPS47/admin/options.php:2347
 msgid "New Feature: UI Theme Skin"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2334
+#: C:\BPS47/admin/options.php:2347
 msgid ""
 "You can choose between 3 UI Theme Skins for BPS:  Blue Gel Classic UI Theme, "
 "Light Grey jQuery UI Theme, Dark Black WP UI Theme. Requires WordPress 3.8 "
@@ -5207,101 +5233,101 @@ msgid ""
 "installed then ONLY the Blue Gel Classic UI Theme Skin is available."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2343
+#: C:\BPS47/admin/options.php:2356
 msgid "Root .htaccess Security Filters Change:"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "Login Security New Option/Option Change & Misc:"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "New Option/Option Change: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid ""
 "Disable Password Reset Frontend Only, Disable Password Reset Frontend & "
 "Backend."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "Displayed message: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid ""
 "BPS Login Security Disable Password Reset Frontend & Backend is turned On. "
 "Backend Password Reset has been disabled. To enable Backend Password Reset "
 "click here."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "Displayed on Pages: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "profile.php, user-edit.php, user-new.php."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2352
+#: C:\BPS47/admin/options.php:2365
 msgid "Login Security Dynamic DB table Auto-scroll added."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2361
+#: C:\BPS47/admin/options.php:2374
 msgid "BugFixes/Code Corrections/Misc/Other:"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2361
+#: C:\BPS47/admin/options.php:2374
 msgid ""
 "Whitelist the Debug Bar plugin debug-bar css and js scripts<br>System Info "
 "page added MySQL Extension, MySQLi Extension check.<br>Login Security email "
 "text change when user account is locked"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2378
+#: C:\BPS47/admin/options.php:2391
 msgid "Save any personal notes or htaccess code to your WordPress Database"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2420
+#: C:\BPS47/admin/options.php:2433
 msgid "BulletProof Security Pro Feature Highlights"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2434
+#: C:\BPS47/admin/options.php:2447
 msgid "The Most Effective & Comprehensive<br>WordPress Security Plugin"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2437
+#: C:\BPS47/admin/options.php:2450
 msgid "BPS Pro 1 Click Setup Wizard & Demo Video Tutorial"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2438
+#: C:\BPS47/admin/options.php:2451
 msgid "BPS Pro Affiliate Program"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2439
+#: C:\BPS47/admin/options.php:2452
 msgid "View All BPS Pro Features"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2445
+#: C:\BPS47/admin/options.php:2458
 msgid ""
 "BulletProof Security Pro is The Complete Website Security Package for Hacker "
 "and Spammer Protection"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2447
+#: C:\BPS47/admin/options.php:2460
 msgid "1 Click Setup Wizard: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2447
+#: C:\BPS47/admin/options.php:2460
 msgid "All BPS Pro security features are setup by the BPS Pro Setup Wizard."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2449
+#: C:\BPS47/admin/options.php:2462
 msgid "1 Click Upgrades: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2449
+#: C:\BPS47/admin/options.php:2462
 msgid ""
 "BPS Pro Plugin upgrade notifications are displayed in your WordPress "
 "Dashboard exactly the same way as all other WordPress plugins. All BPS Pro "
@@ -5312,12 +5338,12 @@ msgid ""
 "additional setup or configuration by you."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2451
+#: C:\BPS47/admin/options.php:2464
 msgid ""
 "AutoRestore / Quarantine Intrusion Detection and Prevention System (IDPS): "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2451
+#: C:\BPS47/admin/options.php:2464
 msgid ""
 "ARQ is a real-time file monitor that automatically AutoRestores and/or "
 "Quarantines files. ARQ utilizes countermeasure website security that has the "
@@ -5331,13 +5357,13 @@ msgid ""
 "installations."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2453
+#: C:\BPS47/admin/options.php:2466
 msgid ""
 "New Concept in Website Security: DB Monitor Intrusion Detection System "
 "(IDS): "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2453
+#: C:\BPS47/admin/options.php:2466
 msgid ""
 "The DB Monitor (DBM) is an Intrusion Detection System (IDS) that alerts you "
 "via email anytime a change/modification occurs in your WordPress database or "
@@ -5354,11 +5380,11 @@ msgid ""
 "files or your WordPress database have been tampered with."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2455
+#: C:\BPS47/admin/options.php:2468
 msgid "DB Diff Tool: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2455
+#: C:\BPS47/admin/options.php:2468
 msgid ""
 "The DB Diff Tool compares old database tables from DB backups to current "
 "database tables and displays any differences in the data/content of those 2 "
@@ -5367,11 +5393,11 @@ msgid ""
 "database table name change/modification."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2457
+#: C:\BPS47/admin/options.php:2470
 msgid "Plugin Firewall: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2457
+#: C:\BPS47/admin/options.php:2470
 msgid ""
 "The Plugin Firewall / Plugins BulletProof Mode prevents/blocks/forbids "
 "Remote Access to the plugins folder from external sources (remote script "
@@ -5380,11 +5406,11 @@ msgid ""
 "Domain name, Server IP Address and Public IP / Your Computer IP Address."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2459
+#: C:\BPS47/admin/options.php:2472
 msgid "Uploads Folder Anti-Exploit Guard: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2459
+#: C:\BPS47/admin/options.php:2472
 msgid ""
 "The Uploads Folder Anti-Exploit Guard / Uploads BulletProof Mode allows ONLY "
 "safe image files with valid image file extensions such as jpg, gif, png, "
@@ -5394,11 +5420,11 @@ msgid ""
 "executed."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2461
+#: C:\BPS47/admin/options.php:2474
 msgid "JTC Anti-Spam / Anti-Hacker: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2461
+#: C:\BPS47/admin/options.php:2474
 msgid ""
 "Hacker Protection ~ Spammer Protection ~ DoS/DDoS Attack Protection ~ Brute "
 "Force Login Attack Protection ~ SpamBot Trap. JTC Anti-Spam provides website "
@@ -5411,11 +5437,11 @@ msgid ""
 "Form with a user friendly & customizable jQuery ToolTip CAPTCHA."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2463
+#: C:\BPS47/admin/options.php:2476
 msgid "S-Monitor Displayed Alerts, Email Alerting & Log File Options: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2463
+#: C:\BPS47/admin/options.php:2476
 msgid ""
 "S-Monitor displayed alerting options allow you to choose how you want real-"
 "time alerts displayed to you: WP Dashboard, BPS Pro pages only or turned "
@@ -5426,21 +5452,21 @@ msgid ""
 "option that you choose."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2465
+#: C:\BPS47/admin/options.php:2478
 msgid "F-Lock: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2465
+#: C:\BPS47/admin/options.php:2478
 msgid ""
 "Lock and Unlock WordPress Mission Critical files from within your WordPress "
 "Dashboard."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2467
+#: C:\BPS47/admin/options.php:2480
 msgid "Custom php.ini / ini_set Options: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2467
+#: C:\BPS47/admin/options.php:2480
 msgid ""
 "Quickly create a custom php.ini file for your website or use ini_set Options "
 "to increase security and performance with just a few clicks. Additional P-"
@@ -5448,11 +5474,11 @@ msgid ""
 "Protected PHP Error Log, PHP Error Alerts, Secure phpinfo Viewer..."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2469
+#: C:\BPS47/admin/options.php:2482
 msgid "Advanced Real-Time Alerting & Heads Up Dashboard Status Display: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2469
+#: C:\BPS47/admin/options.php:2482
 msgid ""
 "BPS Pro checks and displays error, warning, notifications and alert messages "
 "in real time. You can choose how you want these messages displayed to you "
@@ -5460,11 +5486,11 @@ msgid ""
 "Dashboard, BPS Pro pages only, Turned off, Email Alerts, Logging..."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2471
+#: C:\BPS47/admin/options.php:2484
 msgid "Pro-Tools: "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2471
+#: C:\BPS47/admin/options.php:2484
 msgid ""
 "Pro-Tools is a set of versatile 16 website tools (16 mini-plugins): Online "
 "Base64 Decoder, Offline Base64 Decode/Encode, Mcrypt Decrypt/Encrypt, Crypt "
@@ -5474,150 +5500,154 @@ msgid ""
 "Exploit Checker"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2478
+#: C:\BPS47/admin/options.php:2491
 msgid "BPS Pro Version Releases"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2479
-msgid "Whats New in BPS Pro 9.0"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2480
-msgid "Whats New in BPS Pro 8.3"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2481
-msgid "Whats New in BPS Pro 8.2"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2482
-msgid "Whats New in BPS Pro 8.1"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2483
-msgid "Whats New in BPS Pro 8.0"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2484
-msgid "Whats New in BPS Pro 7.9"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2485
-msgid "Whats New in BPS Pro 7.8"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2486
-msgid "Whats New in BPS Pro 7.7"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2487
-msgid "Whats New in BPS Pro 7.6"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2488
-msgid "Whats New in BPS Pro 7.5"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2489
-msgid "Whats New in BPS Pro 7.0"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2490
-msgid "Whats New in BPS Pro 6.5"
-msgstr ""
-
-#: C:\BPS47/admin/options.php:2491
-msgid "Whats New in BPS Pro 6.0"
-msgstr ""
-
 #: C:\BPS47/admin/options.php:2492
-msgid "Whats New in BPS Pro 5.9"
+msgid "Whats New in BPS Pro 9.1"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2493
-msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgid "Whats New in BPS Pro 9.0"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2494
-msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
+msgid "Whats New in BPS Pro 8.3"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2495
-msgid "Whats New in BPS Pro 5.6/5.6.1"
+msgid "Whats New in BPS Pro 8.2"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2496
-msgid "Whats New in BPS Pro 5.5"
+msgid "Whats New in BPS Pro 8.1"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2497
-msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgid "Whats New in BPS Pro 8.0"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2498
-msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgid "Whats New in BPS Pro 7.9"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2499
-msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgid "Whats New in BPS Pro 7.8"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2500
-msgid "Whats New in BPS Pro 5.1.9"
+msgid "Whats New in BPS Pro 7.7"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2501
-msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgid "Whats New in BPS Pro 7.6"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2502
-msgid "Whats New in BPS Pro 5.1.7"
+msgid "Whats New in BPS Pro 7.5"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2503
-msgid "Whats New in BPS Pro 5.1.6"
+msgid "Whats New in BPS Pro 7.0"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2504
-msgid "Whats New in BPS Pro 5.1.5"
+msgid "Whats New in BPS Pro 6.5"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2505
-msgid "Whats New in BPS Pro 5.1.4"
+msgid "Whats New in BPS Pro 6.0"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2506
-msgid "Whats New in BPS Pro 5.1.3"
+msgid "Whats New in BPS Pro 5.9"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2507
-msgid "Whats New in BPS Pro 5.1.2"
+msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2508
-msgid "Whats New in BPS Pro 5.1.1"
+msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2509
-msgid "Whats New in BPS Pro 5.1"
+msgid "Whats New in BPS Pro 5.6/5.6.1"
 msgstr ""
 
 #: C:\BPS47/admin/options.php:2510
+msgid "Whats New in BPS Pro 5.5"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2511
+msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2512
+msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2513
+msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2514
+msgid "Whats New in BPS Pro 5.1.9"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2515
+msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2516
+msgid "Whats New in BPS Pro 5.1.7"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2517
+msgid "Whats New in BPS Pro 5.1.6"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2518
+msgid "Whats New in BPS Pro 5.1.5"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2519
+msgid "Whats New in BPS Pro 5.1.4"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2520
+msgid "Whats New in BPS Pro 5.1.3"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2521
+msgid "Whats New in BPS Pro 5.1.2"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2522
+msgid "Whats New in BPS Pro 5.1.1"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2523
+msgid "Whats New in BPS Pro 5.1"
+msgstr ""
+
+#: C:\BPS47/admin/options.php:2524
 msgid "Whats New in BPS Pro 5.0"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2526
+#: C:\BPS47/admin/options.php:2540
 msgid "Sucuri SiteCheck - Free website malware & blacklist scan"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2527
+#: C:\BPS47/admin/options.php:2541
 msgid ""
 "BPS is designed to protect your website from being hacked. If your website "
 "was already hacked prior to installing BPS then BPS will not automatically "
 "clean it up. Sucuri offers hacked website cleanup services."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2536
+#: C:\BPS47/admin/options.php:2550
 #, php-format
 msgid ""
 "the sheer nature of malware makes it very challenging to give you "
@@ -5627,35 +5657,35 @@ msgid ""
 "your feet."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2536
+#: C:\BPS47/admin/options.php:2550
 msgid "Tony Perez, CFO Sucuri, LLC"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2552
+#: C:\BPS47/admin/options.php:2566
 msgid "Free, Premium Plugin and Theme testing, rating and review."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2552
+#: C:\BPS47/admin/options.php:2566
 msgid "SPECIAL OFFER!!! "
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2552
+#: C:\BPS47/admin/options.php:2566
 msgid ""
 "Search Engine Optimization (SEO) eBook for Beginners to Experienced Website "
 "Owners."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2562
+#: C:\BPS47/admin/options.php:2576
 msgid ""
 "We Test, Review & Rate Premium, Free and Paid WordPress Themes, Templates & "
 "Plugins Daily. 494 themes and 193 plugins have been tested to date...."
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2562 C:\BPS47/admin/options.php:2567
+#: C:\BPS47/admin/options.php:2576 C:\BPS47/admin/options.php:2581
 msgid "Reza Shadpay, founder of themesplugins.com"
 msgstr ""
 
-#: C:\BPS47/admin/options.php:2567
+#: C:\BPS47/admin/options.php:2581
 msgid ""
 "SEO explained for Beginners to Experienced website owners. Simple and fully "
 "explained WhiteHat SEO techniques and methods that will get your website top "
