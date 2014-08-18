@@ -21,7 +21,8 @@ label[for=LSLog5] {margin:0;padding:0;display:block;font-size:1em;font-weight:bo
 label[for=LSLog6] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:5px;float:left;}
 label[for=LSLog7] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:6px;float:left;}
 label[for=LSLog8] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:3px;float:left;}
-#LoginSecurityCheckall {max-height:1000px;width:100%;overflow:auto;margin:0px 0px 20px 0px;}
+label[for=LSLog8b] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:19px;float:left;}
+#LoginSecurityCheckall {max-height:600px;width:100%;overflow:auto;margin:0px 0px 20px 0px;}
 
 /* JTC Anti-Spam */
 label[for=LSLog9] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:.25em;float:left;}

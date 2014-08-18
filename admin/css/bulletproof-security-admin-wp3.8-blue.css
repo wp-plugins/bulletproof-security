@@ -11,7 +11,7 @@ select[id=iniSelector], select[id=iniServerType], select[id=iniHost], select[id=
 
 /* Login Security */
 #LoginSecurityOptions {width:340px;}
-#LoginSecurityCheckall {max-height:1000px;width:100%;overflow:auto;margin:0px 0px 20px 0px;}
+#LoginSecurityCheckall {max-height:600px;width:100%;overflow:auto;margin:0px 0px 20px 0px;}
 #LoginSecurityCheckall .widefat td {font-size:12px;}
 label[for=LSLog1] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:27px;float:left;}
 label[for=LSLog2] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:.25em;float:left;}
@@ -21,6 +21,7 @@ label[for=LSLog5] {margin:0;padding:0;display:block;font-size:1em;font-weight:bo
 label[for=LSLog6] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:10px;float:left;}
 label[for=LSLog7] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:15px;float:left;}
 label[for=LSLog8] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:13px;float:left;}
+label[for=LSLog8b] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:26px;float:left;}
 
 label[for=bps-monitor-email1] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:18px;float:left;}
 label[for=bps-monitor-email2] {margin:0;padding:0;display:block;font-size:1em;font-weight:bold;padding-top:.35em;padding-right:.25em;float:left;}
