@@ -1974,6 +1974,10 @@ function bpsPro_network_root_htaccess_correction() {
 			return;
 		}
 
+	global $current_blog, $blog_id;
+
+	if ( is_multisite() && $blog_id == 1 ) {
+
 		$Net_options = get_option('bulletproof_security_options_net_correction');
 	
 		if ( $Net_options['bps_net_automagic'] == 'automagic' && $Net_options['bps_net_activated'] == 'activated' ) {
@@ -1990,6 +1994,7 @@ function bpsPro_network_root_htaccess_correction() {
 			echo $text;
 			echo '</p></div>';
 		}
+	}
 	}
 }
 

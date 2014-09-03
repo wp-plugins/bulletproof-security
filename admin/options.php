@@ -2236,7 +2236,19 @@ jQuery(document).ready(function($){
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr> 
-
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.8', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Network/Multisite BPS plugin Network Activation correction:', 'bulletproof-security').'</strong></h3>'.__('Conditional wrap added for blog_id 1 if the BPS plugin is Network Activated on Network/Multisite websites.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('50.7', 'bulletproof-security').'</h3></strong>'; echo $text; ?></td>
