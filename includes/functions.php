@@ -992,23 +992,24 @@ function bpsPro_site_type_automagic() {
 	}
 }
 
-// Check if username Admin exists
+// Check if username Admin is being used as an Administrator User Account/Role
 function bps_check_admin_username() {
 global $wpdb;
 $user_login = 'admin';	
+$user = get_user_by( 'login', $user_login );
 $username = $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM $wpdb->users WHERE user_login = %s", $user_login ) );
 	
-	if ( $username == "admin" ) {
-		$text = '<font color="green"><strong>'.__('Recommended Security Changes: Username '.'"'.'admin'.'"'.' is being used. It is recommended that you change the default administrator username "admin" to a new unique username.', 'bulletproof-security').'</strong></font><br><br>';
+	if ( 'admin' == $username && 'administrator' == $user->roles[0] ) {
+		$text = '<font color="red"><strong>'.__('Recommended Security Change: Username '.'"'.'admin'.'"'.' is being used for an Administrator User Account. It is recommended that you create a new unique administrator User Account name and delete the old "admin" User Account.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 	} else {
-		$text = '<font color="green"><strong>&radic; '.__('The Default Admin username '.'"'.'admin'.'"'.' is not being used', 'bulletproof-security').'</strong></font><br>';
+		$text = '<font color="green"><strong>&radic; '.__('The Default Admin username '.'"'.'admin'.'"'.' is not being used for an Administrator User Account.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
 	}
 }
 
 // Check for WP readme.html file and if valid BPS .htaccess file is activated
-// .50+ check - checks the 0 in position 15 - offset 14
+// .51+ check - checks the 1 in position 15 - offset 14
 function bps_filesmatch_check_readmehtml() {
 global $bps_readme_install_ver;
 $htaccess_filename = ABSPATH . '.htaccess';
@@ -1039,7 +1040,7 @@ $check_stringBPSQSE = @file_get_contents($htaccess_filename);
 }
 
 // Check for WP /wp-admin/install.php file and if valid BPS .htaccess file is activated
-// .50+ check - checks the 0 in position 15 - offset 14
+// .51+ check - checks the 1 in position 15 - offset 14
 function bps_filesmatch_check_installphp() {
 global $bps_readme_install_ver;
 $htaccess_filename = ABSPATH . 'wp-admin/.htaccess';

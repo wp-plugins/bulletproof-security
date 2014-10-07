@@ -1757,6 +1757,24 @@ jQuery(document).ready(function($){
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFix/Code Correction:', 'bulletproof-security').'</strong></h3>'.__('System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Code Correction/Sanitization:', 'bulletproof-security').'</strong></h3>'.__('System Info page Check Headers Tool Form code sanitization. Special thanks to Benjamin Kunz Mejri for finding and reporting this Form code sanitization issue that needed to be corrected.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .50.9', 'bulletproof-security').'</strong></h2>'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<strong><h3>'.__('System Info Enhancements/Improvements/Additions', 'bulletproof-security').'</h3></strong></h3>'.__('DNS Name Server checking code performance improvement and conditional checking added based on domain labels. Network/Multisite subdirectory / subdomain site type check added and changes to existing conditional checks. output_buffering directive variable check changed and text correction. Additional conditional checks for PHP Actual Configuration Memory Limit. Will display color coded recommendations and/or memory limits. Various naming/text changes.', 'bulletproof-security'); echo $text; ?></td>
   </tr>
   <tr>
@@ -1903,6 +1921,7 @@ jQuery(document).ready(function($){
 
 <div id="bpsProVersions">
 <a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a><br /><br />
+     <a href="http://www.ait-pro.com/aitpro-blog/5066/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-7/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.7', 'bulletproof-security'); ?></a><br /><br />
      <a href="http://www.ait-pro.com/aitpro-blog/5062/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-6/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.6', 'bulletproof-security'); ?></a><br /><br />
      <a href="http://www.ait-pro.com/aitpro-blog/5056/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-5/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.5', 'bulletproof-security'); ?></a><br /><br />
      <a href="http://www.ait-pro.com/aitpro-blog/5046/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-3/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.3/9.4', 'bulletproof-security'); ?></a><br /><br />

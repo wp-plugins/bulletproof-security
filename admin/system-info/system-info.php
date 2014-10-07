@@ -168,7 +168,7 @@ function bps_get_server_ip_address_sysinfo() {
 			$ip = esc_html($_SERVER['SERVER_ADDR']);
 			echo __('Server / Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';
 		} elseif ( isset( $_SERVER['HTTP_HOST'] ) ) {
-			$ip = esc_html($_SERVER['HTTP_HOST']);
+			$ip = esc_html( gethostbyname( $_SERVER['HTTP_HOST'] ) );
 			echo __('Server / Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';		
 		} else { 
 			$ip = @dns_get_record( bpsGetDomainRoot(), DNS_ALL );
@@ -593,16 +593,19 @@ function bps_get_proxy_real_ip_address() {
 	_e('Check your website Headers or another website\'s Headers by making a GET Request', 'bulletproof-security').'<br>';
 
 // Form - wp_remote_get Headers check - GET Request Method
+// Note: htmlspecialchars displays the sanitized esc_html output
 function bps_sysinfo_get_headers_get() {
+	
 	if ( isset( $_POST['Submit-Headers-Check-Get'] ) && current_user_can('manage_options') ) {
 		check_admin_referer( 'bpsHeaderCheckGet' );
 
 	$url = ( isset( $_POST['bpsURLGET'] ) ) ? $_POST['bpsURLGET'] : '';
+	$url = esc_html($url);
 	$response = wp_remote_get( $url );
 
 	if ( !is_wp_error( $response ) ) {	
 
-	echo '<strong>'.__('GET Request Headers: ', 'bulletproof-security').'</strong>'.$url.'<br>';
+	echo '<strong>'.__('GET Request Headers: ', 'bulletproof-security').'</strong>'.htmlspecialchars($url).'<br>';
 	echo '<pre>';
 	echo 'HTTP Status Code: ';
 	print_r($response['response']['code']);
@@ -636,7 +639,9 @@ function bps_sysinfo_get_headers_get() {
 _e('Check your website Headers or another website\'s Headers by making a HEAD Request', 'bulletproof-security').'<br>';
 
 // Form - cURL Headers check - HEAD Request Method
+// Note: htmlspecialchars displays the sanitized esc_html output
 function bps_sysinfo_get_headers_head() {
+
 	if ( isset( $_POST['Submit-Headers-Check-Head'] ) && current_user_can('manage_options') ) {
 		check_admin_referer( 'bpsHeaderCheckHead' );
 
@@ -645,6 +650,7 @@ function bps_sysinfo_get_headers_head() {
 	if ( extension_loaded('curl') && !in_array('curl_init', $disabled) && !in_array('curl_exec', $disabled) && !in_array('curl_setopt', $disabled) ) {
 
 		$url = ( isset( $_POST['bpsURL'] ) ) ? $_POST['bpsURL'] : '';
+		$url = esc_html($url);
 		$useragent = 'BPS Headers Check';
 
 		$ch = curl_init();
@@ -660,7 +666,7 @@ function bps_sysinfo_get_headers_head() {
 		$ce = curl_exec($ch);
 		curl_close($ch);
 
-		echo '<strong>'.__('HEAD Request Headers: ', 'bulletproof-security').'</strong>'.$url.'<br>';
+		echo '<strong>'.__('HEAD Request Headers: ', 'bulletproof-security').'</strong>'.htmlspecialchars($url).'<br>';
 		echo '<pre>';
 		print_r($ce);
 		echo '</pre>';

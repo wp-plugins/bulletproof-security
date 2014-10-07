@@ -66,7 +66,7 @@ $gmt_offset = get_option( 'gmt_offset' ) * 3600;
 		$event = 'PSBR-HPR';
 		$solution = 'http://forum.ait-pro.com/forums/topic/security-log-event-codes/';
 	}
-	elseif ( preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['REQUEST_URI'], $matches ) || preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['HTTP_REFERER'], $matches ) ) {
+	elseif ( preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['REQUEST_URI'], $matches ) || @preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['HTTP_REFERER'], $matches ) ) {
 		$event = 'WPADMIN-SBR';
 		$solution = 'http://forum.ait-pro.com/forums/topic/security-log-event-codes/';	
 	
@@ -75,7 +75,7 @@ $gmt_offset = get_option( 'gmt_offset' ) * 3600;
 		$solution = 'N/A - Hacker/Spammer Blocked/Forbidden';
 	}
 
-$log_contents = "\r\n" . '[403 POST Request: ' . $timestamp . ']' . "\r\n" . 'Event Code: ' . $event . "\r\n" . 'Solution: ' . $solution . "\r\n" . 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n" . 'Host Name: ' . $hostname . "\r\n" . 'SERVER_PROTOCOL: '.$_SERVER['SERVER_PROTOCOL']."\r\n" . 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n" . 'HTTP_FORWARDED: '.$_SERVER['HTTP_FORWARDED']."\r\n" . 'HTTP_X_FORWARDED_FOR: '.$_SERVER['HTTP_X_FORWARDED_FOR']."\r\n" . 'HTTP_X_CLUSTER_CLIENT_IP: '.$_SERVER['HTTP_X_CLUSTER_CLIENT_IP']."\r\n" . 'REQUEST_METHOD: '.$_SERVER['REQUEST_METHOD']."\r\n" . 'HTTP_REFERER: '.$_SERVER['HTTP_REFERER']."\r\n" . 'REQUEST_URI: '.$_SERVER['REQUEST_URI']."\r\n" . 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n" . 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
+@$log_contents = "\r\n" . '[403 POST Request: ' . $timestamp . ']' . "\r\n" . 'Event Code: ' . $event . "\r\n" . 'Solution: ' . $solution . "\r\n" . 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n" . 'Host Name: ' . $hostname . "\r\n" . 'SERVER_PROTOCOL: '.$_SERVER['SERVER_PROTOCOL']."\r\n" . 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n" . 'HTTP_FORWARDED: '.$_SERVER['HTTP_FORWARDED']."\r\n" . 'HTTP_X_FORWARDED_FOR: '.$_SERVER['HTTP_X_FORWARDED_FOR']."\r\n" . 'HTTP_X_CLUSTER_CLIENT_IP: '.$_SERVER['HTTP_X_CLUSTER_CLIENT_IP']."\r\n" . 'REQUEST_METHOD: '.$_SERVER['REQUEST_METHOD']."\r\n" . 'HTTP_REFERER: '.$_SERVER['HTTP_REFERER']."\r\n" . 'REQUEST_URI: '.$_SERVER['REQUEST_URI']."\r\n" . 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n" . 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
 
 	if ( is_writable( $bpsProLog ) ) {
 
@@ -93,14 +93,14 @@ $log_contents = "\r\n" . '[403 POST Request: ' . $timestamp . ']' . "\r\n" . 'Ev
 
 	if ( $_SERVER['REQUEST_METHOD'] != 'POST' ) {
 # BEGIN USERAGENT FILTER
-if ( !preg_match('/(.*)Assmunch(.*)/', $_SERVER['HTTP_USER_AGENT']) ) {
+if ( !preg_match('/BPSUserAgentPlaceHolder/', $_SERVER['HTTP_USER_AGENT']) ) {
 # END USERAGENT FILTER
 
 	if ( preg_match_all('/(.*)\/plugins\/(.*)\.js|(.*)\/plugins\/(.*)\.php|(.*)\/plugins\/(.*)\.swf/', $_SERVER['REQUEST_URI'], $matches ) ) {
 		$event = 'PSBR-HPR';
 		$solution = 'http://forum.ait-pro.com/forums/topic/security-log-event-codes/';
 	}
-	elseif ( preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['REQUEST_URI'], $matches ) || preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['HTTP_REFERER'], $matches ) ) {
+	elseif ( preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['REQUEST_URI'], $matches ) || @preg_match('/(.*)\/wp-admin\/(.*)\.php/', $_SERVER['HTTP_REFERER'], $matches ) ) {
 		$event = 'WPADMIN-SBR';
 		$solution = 'http://forum.ait-pro.com/forums/topic/security-log-event-codes/';	
 	
@@ -109,7 +109,7 @@ if ( !preg_match('/(.*)Assmunch(.*)/', $_SERVER['HTTP_USER_AGENT']) ) {
 		$solution = 'N/A - Hacker/Spammer Blocked/Forbidden';
 	}
 
-$log_contents = "\r\n" . '[403 GET / HEAD Request: ' . $timestamp . ']' . "\r\n" . 'Event Code: ' . $event . "\r\n" . 'Solution: ' . $solution . "\r\n" . 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n" . 'Host Name: ' . $hostname . "\r\n" . 'SERVER_PROTOCOL: '.$_SERVER['SERVER_PROTOCOL']."\r\n" . 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n" . 'HTTP_FORWARDED: '.$_SERVER['HTTP_FORWARDED']."\r\n" . 'HTTP_X_FORWARDED_FOR: '.$_SERVER['HTTP_X_FORWARDED_FOR']."\r\n" . 'HTTP_X_CLUSTER_CLIENT_IP: '.$_SERVER['HTTP_X_CLUSTER_CLIENT_IP']."\r\n" . 'REQUEST_METHOD: '.$_SERVER['REQUEST_METHOD']."\r\n" . 'HTTP_REFERER: '.$_SERVER['HTTP_REFERER']."\r\n" . 'REQUEST_URI: '.$_SERVER['REQUEST_URI']."\r\n" . 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n" . 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
+@$log_contents = "\r\n" . '[403 GET / HEAD Request: ' . $timestamp . ']' . "\r\n" . 'Event Code: ' . $event . "\r\n" . 'Solution: ' . $solution . "\r\n" . 'REMOTE_ADDR: '.$_SERVER['REMOTE_ADDR']."\r\n" . 'Host Name: ' . $hostname . "\r\n" . 'SERVER_PROTOCOL: '.$_SERVER['SERVER_PROTOCOL']."\r\n" . 'HTTP_CLIENT_IP: '.$_SERVER['HTTP_CLIENT_IP']."\r\n" . 'HTTP_FORWARDED: '.$_SERVER['HTTP_FORWARDED']."\r\n" . 'HTTP_X_FORWARDED_FOR: '.$_SERVER['HTTP_X_FORWARDED_FOR']."\r\n" . 'HTTP_X_CLUSTER_CLIENT_IP: '.$_SERVER['HTTP_X_CLUSTER_CLIENT_IP']."\r\n" . 'REQUEST_METHOD: '.$_SERVER['REQUEST_METHOD']."\r\n" . 'HTTP_REFERER: '.$_SERVER['HTTP_REFERER']."\r\n" . 'REQUEST_URI: '.$_SERVER['REQUEST_URI']."\r\n" . 'QUERY_STRING: '.$_SERVER['QUERY_STRING']."\r\n" . 'HTTP_USER_AGENT: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
 
 	if ( is_writable( $bpsProLog ) ) {
 

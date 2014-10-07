@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
-Tested up to: 4.0 
-Stable tag: .50.9
+Tested up to: 4.1
+Stable tag: .51
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -353,6 +353,12 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .51 =
+* BugFix/Code Correction:
+* System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.
+* Code Correction/Sanitization:
+* System Info page Check Headers Tool Form code sanitization. Special thanks to Benjamin Kunz Mejri for finding and reporting this Form code sanitization issue that needed to be corrected.
+
 = .50.9 =
 * System Info Enhancements/Improvements/Additions:
 * DNS Name Server checking code performance improvement and conditional checking added based on domain labels. Network/Multisite subdirectory / subdomain site type check added and changes to existing conditional checks. output_buffering directive variable check changed and text correction. Additional conditional checks for PHP Actual Configuration Memory Limit. Will display color coded recommendations and/or memory limits. Various naming/text changes.
@@ -575,22 +581,11 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .50.9 =
-* System Info Enhancements/Improvements/Additions:
-* DNS Name Server checking code performance improvement and conditional checking added based on domain labels. Network/Multisite subdirectory / subdomain site type check added and changes to existing conditional checks. output_buffering directive variable check changed and text correction. Additional conditional checks for PHP Actual Configuration Memory Limit. Will display color coded recommendations and/or memory limits. Various naming/text changes.
-* htaccess Core Structural Core Changes:
-* Reduction in size of large Options Core file by creating additional conditional supporting files with require. Deny All htaccess file is created in the new /core/ folder on init to protect the options.php core file. Other internal Core stuff.
-* Security Log Design/Visual/Enhancement Changes:
-* Auto-Locking added to Security Log Turn On/Off Forms. The root .htaccess file is automatically locked again if it was locked. Cross Browser compatibility visual display issues/problems with Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-* Login Security Visual/Design Change:
-* Cross Browser compatibility visual display issues/problems with Option/Settings & Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-* DB Backup Log Visual/Design Change:
-* Cross Browser compatibility visual display issues/problems with Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-* Custom Code Network/Multisite Additional Text Box:
-* CUSTOM CODE WP REWRITE LOOP END: Add WP Rewrite Loop End code here. This is a Special Network/Multisite Custom Code text box that should ONLY be used if the correct WP REWRITE LOOP END code is not being created in your root .htaccess file by AutoMagic. This Custom Code text box and Read Me help text is ONLY displayed if you have a Network/Multisite website.
-* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
-* Backend Maintenance Mode causing crashes due to newline not being generated in some cases. Additional newline added to wp-admin backend MMode htaccess writing code base
-* Removal/Deletion of obsolete usage of bps_DNS_NS() function.
+= .51 =
+* BugFix/Code Correction:
+* System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.
+* Code Correction/Sanitization:
+* System Info page Check Headers Tool Form code sanitization. Special thanks to Benjamin Kunz Mejri for finding and reporting this Form code sanitization issue that needed to be corrected.
 
 == Help Info ==
 
