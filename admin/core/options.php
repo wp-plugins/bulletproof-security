@@ -1757,6 +1757,19 @@ jQuery(document).ready(function($){
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Obsolete File Deletion:', 'bulletproof-security').'</strong></h3>'.__('Special thanks to Pietro Oliva for finding and reporting Form code sanitization issues in the stand-alone bpsunlock.php file/Form code. The bpsunlock.php stand-alone Login Security user account unlock file/Form has been removed/deleted from BPS. After review of the usefulness of this Form it was decided that instead of spending the time to sanitize the Form code the bpsunlock.php file/Form has instead been removed/deleted from BPS.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51', 'bulletproof-security').'</strong></h2>'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFix/Code Correction:', 'bulletproof-security').'</strong></h3>'.__('System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.', 'bulletproof-security'); echo $text; ?>
 </td>
   </tr>

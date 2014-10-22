@@ -5,12 +5,12 @@ Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging/HTTP Error Logging. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts. DB Backup: Database Backup. Website FrontEnd/BackEnd Maintenance Mode. System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, WP Filesystem API Method, DNS, Max Upload...
-Version: .51
+Version: .51.1
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
-/*  Copyright (C) 2010 Edward Alexander @ AITpro.com (email : edward @ ait-pro.com)
+/*  Copyright (C) 2010 Edward Alexander | AITpro.com
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,9 +28,9 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.51' );
-$bps_last_version = '.50.9';
-$bps_version = '.51';
+define( 'BULLETPROOF_VERSION', '.51.1' );
+$bps_last_version = '.51';
+$bps_version = '.51.1';
 $bps_readme_install_ver = '1';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free

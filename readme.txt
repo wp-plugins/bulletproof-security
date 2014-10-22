@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.1
-Stable tag: .51
+Stable tag: .51.1
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -152,7 +152,6 @@ WordPress is already very secure, but every website, no matter what type of plat
 * Login Security Stealth Mode: Enable or Disable Login Password Reset capability and links.
 * Dynamic DB Form: Lock, Unlock, Delete
 * Enhanced Search: Allows you to search all of the Login Security database rows/Fields
-* Stand-alone Unlock Form bpsunlock.php: Unlock User Accounts without having to be logged into the WP Dashboard
 * Click the Login Security Read Me help button for full descriptions of all features and options.
 
 = BulletProof Security DB Backup/Database Backup Features =
@@ -231,7 +230,7 @@ FrontEnd Maintenance Mode creates template files based on the options you choose
 
 = What do I do if my User Account is locked out? =
 
-You can either use FTP and rename the /bulletproof-security plugin folder to login to your site or a stand alone Login Security Unlock User Account Form has been created that allows you to Unlock locked User Accounts outside of your WordPress Dashboard. To use this stand alone script download it from this BulletProof Security Pro plugin folder - /wp-content/plugins/bulletproof-security/admin/htaccess/bpsunlock.php and then upload it to your website root folder. Then type in the path to the bpsunlock.php file in your Browser. Example: http://www.example.com/bpsunlock.php. The stand alone script displays step by step instructions on how to use it.
+Use FTP or your web host control panel file manager and rename the /bulletproof-security/ plugin folder name to /_bulletproof-security and login to your website. After logging into your website, rename the /_bulletproof-security/ plugin folder name back to /bulletproof-security/. Unlock your User Account on the BPS Login Security and Monitoring page.
 
 = Do I need to understand .htaccess code in order to use BulletProof Security? =
 
@@ -352,6 +351,10 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 8. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .51.1 =
+* Obsolete File Deletion:
+* Special thanks to Pietro Oliva for finding and reporting Form code sanitization issues in the stand-alone bpsunlock.php file/Form code. The bpsunlock.php stand-alone Login Security user account unlock file/Form has been removed/deleted from BPS. After review of the usefulness of this Form it was decided that instead of spending the time to sanitize the Form code the bpsunlock.php file/Form has instead been removed/deleted from BPS.
 
 = .51 =
 * BugFix/Code Correction:
@@ -581,14 +584,10 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51 =
-* BugFix/Code Correction:
-* System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.
-* Code Correction/Sanitization:
-* System Info page Check Headers Tool Form code sanitization. Special thanks to Benjamin Kunz Mejri for finding and reporting this Form code sanitization issue that needed to be corrected.
+= .51.1 =
+* Obsolete File Deletion:
+* Special thanks to Pietro Oliva for finding and reporting Form code sanitization issues in the stand-alone bpsunlock.php file/Form code. The bpsunlock.php stand-alone Login Security user account unlock file/Form has been removed/deleted from BPS. After review of the usefulness of this Form it was decided that instead of spending the time to sanitize the Form code the bpsunlock.php file/Form has instead been removed/deleted from BPS.
 
 == Help Info ==
 
-Extensive Help Info can be found on the <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" title="AIT-pro.com Forum" rel="nofollow" target="_blank">AIT-pro.com Forum</a> website and within the BulletProof Security pages themselves. Click on the Read Me 
-Help buttons to get Help Info about the particular section or page of the BulletProof Security plugin that you are in. The Help and FAQ page contains 
-links to Help pages that will load in a new browser tab so that you are not redirected away from your WordPress Dashboard.
+Extensive Help Info can be found on the <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" title="AIT-pro.com Forum" rel="nofollow" target="_blank">AIT-pro.com Forum</a> website and by clicking the Read Me Help buttons on BulletProof Security pages themselves. The BPS Help and FAQ tab pages contain additional help links.
