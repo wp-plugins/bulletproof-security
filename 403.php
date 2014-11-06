@@ -41,6 +41,7 @@ p {
 	$bps_hostname = str_replace('www.', '', $bps_hostname);
 	echo $bps_hostname; ?> 403 Forbidden Error Page</p>
 	<p>If you arrived here due to a search or clicking on a link click your Browser's back button to return to the previous page. Thank you.</p>
+    <p>IP Address: <?php echo $_SERVER['REMOTE_ADDR']; ?></p>
 </div>
 
 <?php

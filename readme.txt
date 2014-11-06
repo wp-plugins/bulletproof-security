@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.1
-Stable tag: .51.1
+Stable tag: .51.2
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -48,7 +48,7 @@ WordPress Website Security Protection: Effective...Reliable...Easy to use
 * DB Table Prefix Changer
 * AutoRestore/Quarantine Logging
 * S-Monitor - Monitoring & Alerting Core
-* Versatile Set of 16 Pro-Tools (16 mini-plugins)
+* Pro Tools - 16 mini-plugins
 * Heads Up Dashboard Status Display
 * UI Theme Skin Changer
 * <a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
@@ -203,11 +203,11 @@ WordPress is already very secure, but every website, no matter what type of plat
 
 == Installation ==
 
-1. Install, activate plugin, click AutoMagic buttons, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
+1. Install, activate plugin, click the AutoMagic buttons on the Security Modes page, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
 2. Download Installation:
 3. Download the bulletproof-security.zip file to your computer and unzip it.
 4. Upload the bulletproof-security folder (including all files within) to your /wp-content/plugins folder.
-5. Activate plugin, click AutoMagic buttons, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
+5. Activate plugin, click the AutoMagic buttons on the Security Modes page, Activate BulletProof Modes, choose Login Security options and turn On Login Security.
 6. Enjoy!
 
 == Frequently Asked Questions ==
@@ -351,6 +351,22 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 8. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .51.2 =
+* Significant Root and wp-admin htaccess File Changes:
+* See the BPS plugin Whats New page for more details.
+* Root htaccess File/Code Fix: Removal of additional instances of "BEGIN WordPress" and "END WordPress" text from the root htaccess file which caused multiple instances of the default wp htaccess code to be created in the root htaccess file when the WP flush_rewrite_rules function was executed by other plugins and themes.
+* htaccess Help Text Improvement Overall: The help text throughout both the root and wp-admin htaccess files was very dated and was in need of updating. Better/clearer examples have been created in the help text. Overall the htaccess files are more streamlined and less cluttered looking visually.
+* Structure/Order Code Changes: Several blocks of htaccess code has been structured differently as far as the general order/sequence of code goes in the root htaccess file and more importantly what code will remain in the root htaccess file in the event that the WP flush_rewrite_rules function is executed by another plugin or theme. There are several technical reasons for making these structure/order changes, which I will not bore you with. Basically things are structured/ordered much better for any/every possible scenario that may occur.
+* Note: This is a one-time BPS Update that requires manual steps to be performed. All future versions of BPS will do the normal/typical automatic update of the BPS htaccess files. Overall we felt that creating a Notice about these significant changes vs just doing a normal automatic update was the best route to take for the primary reasons stated above and some additional reasons not stated here.
+* New Custom Code Text Boxes Added:
+* CUSTOM CODE TURN OFF YOUR SERVER SIGNATURE
+* CUSTOM CODE DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS
+* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
+* Custom Code accordion is now using tables vs CSS divs for cross Browser visual compatibility and obsolete CSS code has been removed for the CSS divs.
+* Overall inpage Custom Code help text information/example improvements.
+* Network/Multisite Net Correction code/check removed. No longer needed and is now obsolete.
+* Remote Address IP check added in the 403.php Security logging template. Will display current IP address for troubleshooting purposes.
 
 = .51.1 =
 * Obsolete File Deletion:
@@ -584,9 +600,20 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.1 =
-* Obsolete File Deletion:
-* Special thanks to Pietro Oliva for finding and reporting Form code sanitization issues in the stand-alone bpsunlock.php file/Form code. The bpsunlock.php stand-alone Login Security user account unlock file/Form has been removed/deleted from BPS. After review of the usefulness of this Form it was decided that instead of spending the time to sanitize the Form code the bpsunlock.php file/Form has instead been removed/deleted from BPS.
+= .51.2 =
+* Significant Root and wp-admin htaccess File Changes:
+* See the BPS plugin Whats New page for more details.
+* Root htaccess File/Code Fix: Removal of additional instances of "BEGIN WordPress" and "END WordPress" text from the root htaccess file which caused multiple instances of the default wp htaccess code to be created in the root htaccess file when the WP flush_rewrite_rules function was executed by other plugins and themes.
+* htaccess Help Text Improvement Overall: The help text throughout both the root and wp-admin htaccess files was very dated and was in need of updating. Better/clearer examples have been created in the help text. Overall the htaccess files are more streamlined and less cluttered looking visually.
+* Structure/Order Code Changes: Several blocks of htaccess code has been structured differently as far as the general order/sequence of code goes in the root htaccess file and more importantly what code will remain in the root htaccess file in the event that the WP flush_rewrite_rules function is executed by another plugin or theme. There are several technical reasons for making these structure/order changes, which I will not bore you with. Basically things are structured/ordered much better for any/every possible scenario that may occur.
+* New Custom Code Text Boxes Added:
+* CUSTOM CODE TURN OFF YOUR SERVER SIGNATURE
+* CUSTOM CODE DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS
+* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
+* Custom Code accordion is now using tables vs CSS divs for cross Browser visual compatibility and obsolete CSS code has been removed for the CSS divs.
+* Overall inpage Custom Code help text information/example improvements.
+* Network/Multisite Net Correction code/check removed. No longer needed and is now obsolete.
+* Remote Address IP check added in the 403.php Security logging template. Will display current IP address for troubleshooting purposes.
 
 == Help Info ==
 

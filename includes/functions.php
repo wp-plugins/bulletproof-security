@@ -396,14 +396,19 @@ switch ( $bps_version ) {
 		}
 
 		if ( getBPSInstallTime() == getBPSRootHtaccessLasModTime_minutes() || getBPSInstallTime_plusone() == getBPSRootHtaccessLasModTime_minutes() ) {
-			$updateText = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__("The BPS Automatic htaccess File Update Completed Successfully!", 'bulletproof-security').'</font></div>';
-
+			
+			$pos = strpos( $check_string, 'IMPORTANT!!! DO NOT DELETE!!! - B E G I N Wordpress' );
+			
+			if ( $pos === false ) {			
+			
+				$updateText = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__("The BPS Automatic htaccess File Update Completed Successfully!", 'bulletproof-security').'</font></div>';
+				print($updateText);				
+			}
+			
 			// Recreate the User Agent filters in the 403.php file on BPS upgrade
 			bpsPro_autoupdate_useragent_filters();
 			// Delete all the old plugin api junk content in this transient
 			delete_transient( 'bulletproof-security_info' );
-
-		print($updateText);	
 		}
 		}
 		
@@ -1910,40 +1915,45 @@ global $pagenow;
 
 add_action('admin_notices', 'bpsPro_login_security_password_reset_disabled_notice');
 
-// Network/Multisite one time htaccess code correction
-// NOTE: Instead of automating this, this needs to be done manually by users to ensure that all files have been corrected to cover all possible scenarios
-function bpsPro_network_root_htaccess_correction() {
+// One time manual htaccess code update added in BPS Pro .51.2
+// NOTE: Instead of automating this, this needs to be done manually by users
+// "Always On" flush_rewrite_rules code correction: Unfortunately this needs to be an "Always On" check in order for it to be 100% effective
+function bpsPro_htaccess_manual_update_notice() {
 	
 	if ( current_user_can('manage_options') ) {
-
-		if ( ! is_multisite() ) {
-			return;
-		}
-
-	global $current_blog, $blog_id;
-
-	if ( is_multisite() && $blog_id == 1 ) {
-
-		$Net_options = get_option('bulletproof_security_options_net_correction');
-	
-		if ( $Net_options['bps_net_automagic'] == 'automagic' && $Net_options['bps_net_activated'] == 'activated' ) {
-			return;		
-		}
-
+		global $pagenow;
 		$filename = ABSPATH . '.htaccess';
 		$check_string = @file_get_contents($filename);
-	
-		if ( file_exists($filename) && strpos( $check_string, "BULLETPROOF" ) ) {
+		$pattern = '/#\sBEGIN\sWordPress\s*<IfModule\smod_rewrite\.c>\s*RewriteEngine\sOn\s*RewriteBase(.*)\s*RewriteRule(.*)\s*RewriteCond((.*)\s*){2}RewriteRule(.*)\s*<\/IfModule>\s*#\sEND\sWordPress/';
+		
+		if ( file_exists($filename) ) {
+		
+			if ( preg_match( $pattern, $check_string, $flush_matches ) ) {
+				$stringReplace = preg_replace('/\n#\sBEGIN\sWordPress\s*<IfModule\smod_rewrite\.c>\s*RewriteEngine\sOn\s*RewriteBase(.*)\s*RewriteRule(.*)\s*RewriteCond((.*)\s*){2}RewriteRule(.*)\s*<\/IfModule>\s*#\sEND\sWordPress\n/s', "", $check_string);
+				file_put_contents($filename, $stringReplace);
+			}				
+		
+			if ( $pagenow == 'plugins.php' || preg_match( '/page=bulletproof-security\/admin\/core\/options\.php/', $_SERVER['REQUEST_URI'], $matches ) ) {
 
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
-			$text = '<strong><font color="blue">'.__('BPS Notice: Network/Multisite htaccess Code Correction Needed', 'bulletproof-security').'</font><br>'.__('To correct the htaccess code, do the steps below. This is a one time htaccess code correction that only needs to be done once.', 'bulletproof-security').'<br>'.__('This Notice will go away automatically after doing all of the steps below.', 'bulletproof-security').'<br><br><a href="admin.php?page=bulletproof-security/admin/core/options.php" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Security Modes page.', 'bulletproof-security').'<br>'.__('1. Click the "Create default.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Click the "Create secure.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('3. Select the Root Folder BulletProof Mode Radio button.', 'bulletproof-security').'<br>'.__('4. Click the Activate button to activate Root Folder BulletProof Mode again.', 'bulletproof-security').'<br>'.__('5. Click the Refresh Status button below.', 'bulletproof-security').'<div class="bps-message-button" style="width:90px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></strong>';
-			echo $text;
-			echo '</p></div>';
+
+				$pos = strpos( $check_string, 'IMPORTANT!!! DO NOT DELETE!!! - B E G I N Wordpress' );
+			
+				if ( $pos === false ) {
+    		
+					return;
+			
+				} else {
+    		
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
+					$text = '<strong><font color="blue">'.__('BPS Notice: One-time Update Steps Required', 'bulletproof-security').'</font><br>'.__('Significant changes were made to the root and wp-admin htaccess files that require doing the one-time Update Steps below.', 'bulletproof-security').'<br>'.__('All future BPS upgrades will not require these one-time Update Steps to be performed.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/root-and-wp-admin-htaccess-file-significant-changes/" target="_blank" title="Link opens in a new Browser window" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' If you would like to know what changes were made to the root and wp-admin htaccess files.', 'bulletproof-security').'<br>'.__('This Notice will go away automatically after doing all of the steps below.', 'bulletproof-security').'<br><br><a href="admin.php?page=bulletproof-security/admin/core/options.php" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Security Modes page.', 'bulletproof-security').'<br>'.__('1. Click the "Create secure.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('3. Activate wp-admin Folder BulletProof Mode.', 'bulletproof-security').'</strong>';
+					echo $text;
+					echo '</p></div>';	
+				}
+			}
 		}
-	}
 	}
 }
 
-add_action('admin_notices', 'bpsPro_network_root_htaccess_correction');
+add_action('admin_notices', 'bpsPro_htaccess_manual_update_notice');
 
 ?>

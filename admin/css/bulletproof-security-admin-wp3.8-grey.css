@@ -174,25 +174,6 @@ div.bps-white-background {background-color:#fff;}
 pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top left repeat;border:1px solid #999;color:#000;display:block;font-family:"Courier New", Courier, monospace;font-size:11px;line-height:14px;width:700px;margin:0px 0px 0px 0px;overflow:auto;max-height:200px;overflow-x:scroll;overflow-y:scroll;padding:5px;}
 #cc-accordian-inner {}
 label[for=bps-CCode] {font-size:10px;}
-/* #cc-example-text {font-size:1.13em;font-weight:bold;} */
-#CC-phpini-handler {margin:65px 0px 0px 0px;}
-#CC-directory-index {margin:105px 0px 0px 0px;padding:3px;}
-#CC-brute-force {margin:125px 0px 0px 0px;padding:3px;}
-#CC-error-logging {margin:115px 0px 0px 0px;padding:3px;}
-#CC-wpadmin-includes {margin:95px 0px 0px 0px;padding:3px;}
-#CC-start-rewrite {margin:155px 0px 0px 0px;padding:3px;}
-#CC-request-methods {margin:155px 0px 0px 0px;padding:3px;}
-#CC-plugins-skip-rules {margin:110px 0px 0px 0px;}
-#CC-timthumb {margin:135px 0px 0px 0px;padding:3px;}
-#CC-BPSQSE {margin:130px 0px 0px 0px;padding:3px;}
-#CC-end-rewrite {margin:130px 0px 0px 0px;padding:3px;}
-#CC-deny-browser-access {margin:110px 0px 0px 0px;padding:3px;}
-#CC-bottom-spam-block {margin:70px 0px 0px 0px;padding:3px;}
-
-#CC-wpadmin-deny-files {margin:105px 0px 0px 0px;padding:3px;}
-#CC-wpadmin-optional-measures {margin:145px 0px 0px 0px;}
-#CC-wpadmin-request-methods {margin:90px 0px 0px 0px;}
-#CC-wpadmin-BPSQSE {margin:125px 0px 0px 0px;padding:3px;}
 
 /** Maintenance Mode **/
 #bps-container #mmode-caution {font-size:.88em;font-weight:bold;margin:0px 0px 10px 0px;border:2px solid #000;width:400px;background-color:#ffffe0;padding:5px;}

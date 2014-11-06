@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present
-if (!function_exists ('add_action')) {
+if ( !function_exists ('add_action') ) {
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -105,7 +105,7 @@ $DBBtable_name = $wpdb->prefix . "bpspro_db_backup";
 	register_setting('bulletproof_security_options_DBB_log', 'bulletproof_security_options_DBB_log', 'bulletproof_security_options_validate_DBB_log');
 	register_setting('bulletproof_security_options_autolock', 'bulletproof_security_options_autolock', 'bulletproof_security_options_validate_autolock');
 	register_setting('bulletproof_security_options_customcode', 'bulletproof_security_options_customcode', 'bulletproof_security_options_validate_customcode');
-	register_setting('bulletproof_security_options_net_correction', 'bulletproof_security_options_net_correction', 'bulletproof_security_options_validate_net_correction');
+	//register_setting('bulletproof_security_options_net_correction', 'bulletproof_security_options_net_correction', 'bulletproof_security_options_validate_net_correction');
 	register_setting('bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_validate_customcode_WPA');
 	register_setting('bulletproof_security_options_login_security', 'bulletproof_security_options_login_security', 'bulletproof_security_options_validate_login_security');
 	register_setting('bulletproof_security_options_htaccess_res', 'bulletproof_security_options_htaccess_res', 'bulletproof_security_options_validate_htaccess_res');
@@ -740,21 +740,31 @@ function bulletproof_security_options_validate_autolock($input) {
 // Validate BPS options - BPS Custom Code - Root .htaccess
 function bulletproof_security_options_validate_customcode($input) {  
 	$options = get_option('bulletproof_security_options_customcode');  
+	// TOP PHP/PHP.INI HANDLER/CACHE CODE
 	$options['bps_customcode_one'] = esc_html($input['bps_customcode_one']);
+	$options['bps_customcode_server_signature'] = esc_html($input['bps_customcode_server_signature']);
 	$options['bps_customcode_directory_index'] = esc_html($input['bps_customcode_directory_index']);
+	// BRUTE FORCE LOGIN PAGE PROTECTION
+	$options['bps_customcode_server_protocol'] = esc_html($input['bps_customcode_server_protocol']);	
 	$options['bps_customcode_error_logging'] = esc_html($input['bps_customcode_error_logging']);
+	$options['bps_customcode_deny_dot_folders'] = esc_html($input['bps_customcode_deny_dot_folders']);	
 	$options['bps_customcode_admin_includes'] = esc_html($input['bps_customcode_admin_includes']);
 	$options['bps_customcode_wp_rewrite_start'] = esc_html($input['bps_customcode_wp_rewrite_start']);
 	$options['bps_customcode_request_methods'] = esc_html($input['bps_customcode_request_methods']);
+	// PLUGIN/THEME SKIP/BYPASS RULES
 	$options['bps_customcode_two'] = esc_html($input['bps_customcode_two']);
 	$options['bps_customcode_timthumb_misc'] = esc_html($input['bps_customcode_timthumb_misc']);
 	$options['bps_customcode_bpsqse'] = esc_html($input['bps_customcode_bpsqse']);
+	if ( is_multisite() ) {
+	$options['bps_customcode_wp_rewrite_end'] = esc_html($input['bps_customcode_wp_rewrite_end']);
+	}
 	$options['bps_customcode_deny_files'] = esc_html($input['bps_customcode_deny_files']);
+	// BOTTOM HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/BLOCK IP/REDIRECT CODE
 	$options['bps_customcode_three'] = esc_html($input['bps_customcode_three']);
-	$options['bps_customcode_server_protocol'] = esc_html($input['bps_customcode_server_protocol']);
 
 	return $options;  
 }
+
 
 // Validate BPS options - BPS Custom Code - WP-admin .htaccess
 function bulletproof_security_options_validate_customcode_WPA($input) {  
@@ -851,6 +861,7 @@ function bulletproof_security_options_validate_htaccess_res($input) {
 	return $options;  
 }
 
+/*
 // Validate BPS options - Network/Multisite root .htaccess file code correction checks
 function bulletproof_security_options_validate_net_correction($input) {  
 	$options = get_option('bulletproof_security_options_net_correction');  
@@ -859,5 +870,6 @@ function bulletproof_security_options_validate_net_correction($input) {
 	
 	return $options;  
 }
+*/
 
 ?>
