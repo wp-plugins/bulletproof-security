@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.1
-Stable tag: .51.2
+Stable tag: .51.3
 
 WordPress Website Security Protection: Effective...Reliable...Easy to use
 
@@ -272,7 +272,7 @@ will not be able to use .htaccess files on your Server/website and can only use 
  
 = Additional BulletProof Security Server Compatibilty Info =
 
-BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. BPS is compatible with Apache Linux Servers, LiteSpeed Servers, Nginx Servers (if the Nginx Server is the frontend Server and Apache Linux Server is the backend Server). If you do not know what type of Server you have you can check your Server Type and Operating System on the BPS System Info page. You can install BulletProof Security if you have a Windows IIS hosted website to use the additional features in BPS, but may or may not be able to Activate BulletProof Modes depending on what your IIS Server does and does not have installed / configured. Please see this WordPress Codex <a href="http://codex.wordpress.org/Using_Permalinks#Permalinks_without_mod_rewrite" title="Permalinks without mod_rewrite" target="_blank">Permalinks without mod_rewrite</a> for additional information regarding IIS Servers and also the Helicon Tech website <a href="http://www.isapirewrite.com/" title="Helicon Tech ISAPI_Rewrite" target="_blank"> for additional information regarding ISAPI_Rewrite.
+BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. BPS is compatible with Apache Linux Servers, LiteSpeed Servers, Nginx Servers (if the Nginx Server is the frontend Server and Apache Linux Server is the backend Server). If you do not know what type of Server you have you can check your Server Type and Operating System on the BPS System Info page. You can install BulletProof Security if you have a Windows IIS hosted website to use the additional features in BPS, but may or may not be able to Activate BulletProof Modes depending on what your IIS Server does and does not have installed / configured. Please see this WordPress Codex <a href="http://codex.wordpress.org/Using_Permalinks#Permalinks_without_mod_rewrite" title="Permalinks without mod_rewrite" target="_blank">Permalinks without mod_rewrite</a> for additional information regarding IIS Servers and ISAPI_Rewrite see the <a href="http://www.isapirewrite.com/" title="Helicon Tech ISAPI_Rewrite" target="_blank">Helicon Tech website</a>.
 
 = Does BulletProof Security Work on ALL Nginx Servers / Server Configurations? =
 
@@ -351,6 +351,14 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 8. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .51.3 =
+* WordPress 4.1 jQuery UI Compatibility Code Correction:
+* Bug: BPS jQuery UI Dialog Read Me help window position not centered in WordPress 4.1.
+* Fix: Corrected the BPS jQuery UI Dialog Position Method code by adding the appropriate "my" and "at" options.
+* Note: For anyone else experiencing this issue see this Forum Topic for the solution: <a href="http://forum.ait-pro.com/forums/topic/wordpress-4-1-jquery-ui-dialog-window-position-not-centered/" rel="nofollow" title="jQuery UI Dialog window position not centered" target="_blank">jQuery UI Dialog window position not centered</a>
+* Help Link Corrections:
+* Special thanks to WordPress Member: <a href="https://wordpress.org/support/profile/mrppp" rel="nofollow" title="WordPress Member mrppp" target="_blank">mrppp</a> for finding and reporting invalid help links in BPS.
 
 = .51.2 =
 * Significant Root and wp-admin htaccess File Changes:
@@ -599,6 +607,14 @@ Additional function checking code has been added in cases where the mysqli_get_c
 * Enjoy!
 
 == Upgrade Notice ==
+
+= .51.3 =
+* WordPress 4.1 jQuery UI Compatibility Code Correction:
+* Bug: BPS jQuery UI Dialog Read Me help window position not centered in WordPress 4.1.
+* Fix: Corrected the BPS jQuery UI Dialog Position Method code by adding the appropriate "my" and "at" options.
+* Note: For anyone else experiencing this issue see this Forum Topic for the solution: <a href="http://forum.ait-pro.com/forums/topic/wordpress-4-1-jquery-ui-dialog-window-position-not-centered/" rel="nofollow" title="jQuery UI Dialog window position not centered" target="_blank">jQuery UI Dialog window position not centered</a>
+* Help Link Corrections:
+* Special thanks to WordPress Member: <a href="https://wordpress.org/support/profile/mrppp" rel="nofollow" title="WordPress Member mrppp" target="_blank">mrppp</a> for finding and reporting invalid help links in BPS.
 
 = .51.2 =
 * Significant Root and wp-admin htaccess File Changes:

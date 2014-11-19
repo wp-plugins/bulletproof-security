@@ -134,7 +134,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -162,7 +165,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -190,7 +196,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -218,7 +227,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -246,7 +258,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -274,7 +289,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -302,7 +320,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -330,7 +351,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -358,7 +382,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -386,7 +413,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -414,7 +444,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -442,7 +475,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -470,7 +506,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -498,7 +537,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -526,7 +568,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -554,7 +599,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -582,7 +630,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -610,7 +661,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -638,7 +692,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -666,7 +723,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -694,7 +754,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             
@@ -722,7 +785,10 @@ jQuery(document).ready(function($){
 			modal: false,
 		 	width: 400,
 		 	height: 500,			
-		 	position: "center",
+		 	position: { 
+				my: "center", 
+				at: "center" 
+			},
 		 	buttons: {             
 				"Close": function() {                 
 					$(this).dialog("close");             

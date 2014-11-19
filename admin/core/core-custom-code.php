@@ -45,7 +45,7 @@ bps_CustomCode_BPSQSE_check();
 	<?php settings_fields('bulletproof_security_options_customcode'); ?>
 	<?php $options = get_option('bulletproof_security_options_customcode'); ?>
     
-    <strong><label for="bps-CCode"><?php _e('CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE:<br>Add php/php.ini handler code, cache code and/or <a href=http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Link opens in a new Browser window" target="_blank" style="font-size:11px;">Speed Boost Cache Code</a> here', 'bulletproof-security'); ?> </label></strong><br />
+    <strong><label for="bps-CCode"><?php _e('CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE:<br>Add php/php.ini handler code, cache code and/or <a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Link opens in a new Browser window" target="_blank" style="font-size:11px;">Speed Boost Cache Code</a> here', 'bulletproof-security'); ?> </label></strong><br />
 <strong><label for="bps-CCode"><?php $text = '<font color="blue">'.__('ONLY add valid php/php.ini handler htaccess code and/or cache htaccess code below or text commented out with a pound sign #', 'bulletproof-security').'</font>'; echo $text ; ?> </label></strong><br />
     <textarea class="bps-text-area-custom-code" name="bulletproof_security_options_customcode[bps_customcode_one]" tabindex="1"><?php echo $options['bps_customcode_one']; ?></textarea>
     </td>
