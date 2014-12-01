@@ -250,10 +250,9 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR );
 	$patternb = '/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument\s401\sdefault\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s';	
 	$pattern0 = '/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
 	$pattern1 = '/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s';	
-	$pattern2 = '/TIMTHUMB FORBID RFI and MISC FILE SKIP\/BYPASS RULE/s';
-	$pattern3 = '/\[NC\]\s*RewriteCond %{HTTP_REFERER} \^\.\*(.*)\.\*\s*(.*)\s*RewriteRule \. \- \[S\=1\]/s';
+	// Only match 2 or more identical duplicate referer lines: 1 will not match and 2, 3, 4... will match
+	$pattern2 = '/AnotherWebsite\.com\)\.\*\s*(RewriteCond\s%\{HTTP_REFERER\}\s\^\.\*'.$bps_get_domain_root.'\.\*\s*){2,}\s*RewriteRule\s\.\s\-\s\[S=1\]/s';
 	$pattern4 = '/\.\*\(allow_url_include\|allow_url_fopen\|safe_mode\|disable_functions\|auto_prepend_file\) \[NC,OR\]/s';
-	//$pattern5 = '/FORBID COMMENT SPAMMERS ACCESS TO YOUR wp-comments-post.php FILE/s';
 	$pattern6 = '/(\[|\]|\(|\)|<|>|%3c|%3e|%5b|%5d)/s';
 	$pattern7 = '/RewriteCond %{QUERY_STRING} \^\.\*(.*)[3](.*)[5](.*)[5](.*)[7](.*)\)/';
 	$pattern8 = '/\[NC\]\s*RewriteCond\s%{HTTP_REFERER}\s\^\.\*(.*)\.\*\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*RewriteRule\s\.\s\-\s\[S=1\]/';
@@ -319,18 +318,10 @@ switch ( $bps_version ) {
 			$stringReplace = preg_replace('/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s', '', $stringReplace);
 		}			
 			
-		if ( !preg_match($pattern2, $stringReplace, $matches) ) {
-			$stringReplace = str_replace("# TimThumb Forbid RFI By Host Name But Allow Internal Requests", "# TIMTHUMB FORBID RFI and MISC FILE SKIP/BYPASS RULE\n# Only Allow Internal File Requests From Your Website\n# To Allow Additional Websites Access to a File Use [OR] as shown below.\n# RewriteCond %{HTTP_REFERER} ^.*YourWebsite.com.* [OR]\n# RewriteCond %{HTTP_REFERER} ^.*AnotherWebsite.com.*", $stringReplace);
+		if ( preg_match($pattern2, $stringReplace, $matches) ) {
+			$stringReplace = preg_replace('/AnotherWebsite\.com\)\.\*\s*(RewriteCond\s%\{HTTP_REFERER\}\s\^\.\*'.$bps_get_domain_root.'\.\*\s*){2,}\s*RewriteRule\s\.\s\-\s\[S=1\]/s', "AnotherWebsite.com).*\nRewriteCond %{HTTP_REFERER} ^.*$bps_get_domain_root.*\nRewriteRule . - [S=1]", $stringReplace);
 		}
 		
-		if ( !preg_match($pattern3, $stringReplace, $matches) ) {
-			$stringReplace = str_replace("RewriteRule . - [S=1]", "RewriteCond %{HTTP_REFERER} ^.*$bps_get_domain_root.*\nRewriteRule . - [S=1]", $stringReplace);
-		}
-		
-		if ( preg_match($pattern3, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace('/\[NC\]\s*RewriteCond %{HTTP_REFERER} \^\.\*(.*)\.\*\s*(.*)\s*RewriteRule \. \- \[S\=1\]/s', "[NC]\nRewriteCond %{HTTP_REFERER} ^.*$bps_get_domain_root.*\nRewriteRule . - [S=1]", $stringReplace);
-		}
-
 		if ( !preg_match($pattern10, $stringReplace, $matches) ) {
 			$stringReplace = preg_replace('/#\sBPSQSE\sBPS\sQUERY\sSTRING\sEXPLOITS\s*#\sThe\slibwww-perl\sUser\sAgent\sis\sforbidden/', "# BEGIN BPSQSE BPS QUERY STRING EXPLOITS\n# The libwww-perl User Agent is forbidden", $stringReplace);
 		}
@@ -1805,8 +1796,17 @@ if ( current_user_can('manage_options') ) {
 	}
 	
 	if ( $blog_id != 1 ) {
+			
+		if ( is_subdomain_install() ) {
+		
+			$subsite_remove_slashes = str_replace( '.', "-", $current_blog->domain );	
+	
+		} else {
+	
 			$subsite_remove_slashes = str_replace( '/', "", $current_blog->path );
-			$subsite_maintenance_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/bps-maintenance-'.$subsite_remove_slashes.'.php';		
+		}			
+			
+		$subsite_maintenance_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/bps-maintenance-'.$subsite_remove_slashes.'.php';		
 
 		if ( strpos($check_string_values, '$all_sites = \'1\';') ) {
 			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Reminder: Frontend Maintenance Mode is Turned On for The Primary Site and All Subsites.', 'bulletproof-security').'</font></div>';

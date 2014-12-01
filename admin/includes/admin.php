@@ -142,13 +142,18 @@ $DBBtable_name = $wpdb->prefix . "bpspro_db_backup";
 		wp_register_style('bps-css', plugins_url('/bulletproof-security/admin/css/bulletproof-security-admin-blue.css'));
 	}
 
-	// Create BPS Backup Folder structure - suppressing errors on activation - errors displayed in HUD
-	if( !is_dir( WP_CONTENT_DIR . '/bps-backup' ) ) {
-		@mkdir( WP_CONTENT_DIR . '/bps-backup/master-backups', 0755, true );
+	// Create BPS Backup Folder
+	if ( !is_dir( WP_CONTENT_DIR . '/bps-backup' ) ) {
+		@mkdir( WP_CONTENT_DIR . '/bps-backup', 0755, true );
 		@chmod( WP_CONTENT_DIR . '/bps-backup/', 0755 );
-		@chmod( WP_CONTENT_DIR . '/bps-backup/master-backups/', 0755 );
 	}
 	
+	// Create master backups folder
+	if ( !is_dir( WP_CONTENT_DIR . '/bps-backup/master-backups' ) ) {
+		@mkdir( WP_CONTENT_DIR . '/bps-backup/master-backups', 0755, true );
+		@chmod( WP_CONTENT_DIR . '/bps-backup/master-backups/', 0755 );
+	}
+
 	// Create Deny all .htaccess files - /bps-backup htaccess file is recursive and will protect all subfolders
 	$bps_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
 	$bps_denyall_htaccess_renamed = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
@@ -231,12 +236,7 @@ global $blog_id;
 
 	add_menu_page(__('BulletProof Security Settings', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
 	add_submenu_page('bulletproof-security/admin/login/login.php', __('Login Security', 'bulletproof-security'), __('Login Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php' );
-	
-	// hiding MMode menu in BPS .50.7 for subdomain subsites - currently subsite MMode is not working - pending code correction in .50.8
-	if ( ! is_subdomain_install() ) {
 	add_submenu_page('bulletproof-security/admin/login/login.php', __('Maintenance Mode', 'bulletproof-security'), __('Maintenance Mode', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/maintenance/maintenance.php' );
-	}
-	
 	add_submenu_page('bulletproof-security/admin/login/login.php', __('System Info', 'bulletproof-security'), __('System Info', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/system-info/system-info.php' );
 	add_submenu_page('bulletproof-security/admin/login/login.php', __('UI Theme Skin', 'bulletproof-security'), __('UI Theme Skin', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/theme-skin/theme-skin.php' );
 	

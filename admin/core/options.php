@@ -1557,6 +1557,25 @@ if ( !current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Maintenance Mode Network/Multisite Subdomain Completion:', 'bulletproof-security').'</strong></h3>'.__('Maintenance Mode coding work has been completed for Network/Multisite subdomain site types. Maintenance Mode now works for every/all WordPress site types, BuddyPress and bbPress site types.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes/Code Corrections/Misc/CSS/Visual/Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; master-backups folder creation fix for unusual scenarios.<br>&bull; Automatic correction during upgrade for any existing timthumb RFI filter duplicate Referer lines.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51.3', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('WordPress 4.1 jQuery UI Compatibility Code Correction:', 'bulletproof-security').'</strong></h3>'.__('<strong>Bug:</strong> BPS jQuery UI Dialog Read Me help window position not centered in WordPress 4.1.', 'bulletproof-security').'<br>'.__('<strong>Fix:</strong> Corrected the BPS jQuery UI Dialog Position Method code by adding the appropriate "my" and "at" options.', 'bulletproof-security').'<br>'.__('<strong>Note:</strong> For anyone else experiencing this issue see this Forum Topic for the solution: ', 'bulletproof-security').'<strong><a href="http://forum.ait-pro.com/forums/topic/wordpress-4-1-jquery-ui-dialog-window-position-not-centered/" target="_blank" title="jQuery UI Dialog window position not centered">'.__('jQuery UI Dialog window position not centered', 'bulletproof-security').'</a></strong>'; echo $text; ?>
 </td>
   </tr> 
@@ -1704,6 +1723,8 @@ jQuery(document).ready(function($){
 
 <div id="bpsProVersions">
 <a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a><br /><br />
+<a href="http://www.ait-pro.com/aitpro-blog/5080/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-9/" target="_blank" title="Link Opens in New Browser Window">
+	 <?php _e('Whats New in BPS Pro 9.9', 'bulletproof-security'); ?></a><br /><br />
 <a href="http://www.ait-pro.com/aitpro-blog/5075/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-8/" target="_blank" title="Link Opens in New Browser Window">
 	 <?php _e('Whats New in BPS Pro 9.8', 'bulletproof-security'); ?></a><br /><br />
 <a href="http://www.ait-pro.com/aitpro-blog/5066/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-7/" target="_blank" title="Link Opens in New Browser Window">
@@ -1801,7 +1822,7 @@ jQuery(document).ready(function($){
     <br /><br /><a href="http://www.themesplugins.com/" target="_blank" title="Link opens in new browser window">ThemesPlugins.com</a>
     </h3>
 	
-    <div id="ThemesPlugins" style="position:relative; top:0px; left:0px;">
+    <div id="ThemesPlugins" style="position:relative; top:0px; left:0px; margin-bottom:-30px;">
     <h3 style="font-size:14px;"><?php echo '<em>'.'"'.'...'; _e('SEO explained for Beginners to Experienced website owners. Simple and fully explained WhiteHat SEO techniques and methods that will get your website top Google page ranking positions.', 'bulletproof-security'); echo '"'.'</em><br> -- '; _e('Reza Shadpay, founder of themesplugins.com', 'bulletproof-security'); ?>
     <br /><br /><a href="http://www.themesplugins.com/downloads/seo-ebook-wordpress-book-seo/" target="_blank" title="Link opens in new browser window">SEO eBook</a>
     </h3>

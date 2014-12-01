@@ -4,9 +4,9 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.1
-Stable tag: .51.3
+Stable tag: .51.4
 
-WordPress Website Security Protection: Effective...Reliable...Easy to use
+WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
 == Description ==
 
@@ -14,7 +14,7 @@ WordPress Website Security Protection: Effective...Reliable...Easy to use
 
 * .htaccess Website Security Protection (Firewalls)
 * Login Security & Monitoring
-* DB Backup
+* DB Backup - Manual and Scheduled
 * DB Backup Logging
 * DB Table Prefix Changer
 * Security Logging
@@ -30,7 +30,7 @@ WordPress Website Security Protection: Effective...Reliable...Easy to use
 * Real-time File Monitor (IDPS)
 * DB Monitor Intrusion Detection System (IDS)
 * DB Diff Tool - data comparison tool
-* DB Backup
+* DB Backup - Manual and Scheduled
 * DB Status & Info - extensive database status & info
 * Plugin Firewall (True IP Based Firewall)
 * JTC Anti-Spam / Anti-Hacker
@@ -301,7 +301,7 @@ Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 loggin
 Yes, BulletProof Security works on Network / Multisite websites. Both subdirectory and subdomain .htaccess code is written / created for your specific Network / Multisite site based on your WordPress installation version (pre 3.5 or 3.5+). The BulletProof Security plugin can be Network Activated or you can allow BulletProof Security to be activated individually on each Network / Multisite subsite or of course you can choose not to Network Activate BulletProof Security or allow the BPS plugin on subsites. Super Admins will see BPS Dashboard Alerts and other Status displays on the Primary Site only. Administrators can activate or deactivate BulletProof Security on subsites if you allow this on your Network / Multisite website. The BPS Primary Site Menus will display all BPS menus. The BPS Subsite Menus will display: Login Security, Maintenance Mode, System Info & UI Theme Skin menus. All BulletProof Security features are not available on subsites since Network/Multisite subsites are virtual and do not have physical website folders. All BulletProof Security features work sitewide and affect all other virtual subsites. Login Security and Maintenance Mode work independently on each subsite. 
 
 * Login Security works individually for each specific subsite. Login Security has all the same functionality on Network/Multisite subsites with these exceptions: Login Security email alerting is not available for subsites. 
-* Maintenance Mode works individually for each specific subsite. MMode has all the same functionality on Network/Multisite subsites with these exceptions: BackEnd Maintenance is not available on subsites & these Primary site options are not available on subsites: Put The Primary Site And All Subsites In Maintenance Mode & Put All Subsites In Maintenance Mode, But Not The Primary Site. MMode is currently not available for Network/Multisite subdomain sites. Pending future development.
+* Maintenance Mode works individually for each specific subsite. MMode has all the same functionality on Network/Multisite subsites with these exceptions: BackEnd Maintenance is not available on subsites & these Primary site options are not available on subsites: Put The Primary Site And All Subsites In Maintenance Mode & Put All Subsites In Maintenance Mode, But Not The Primary Site.
 * System Info has all the same functionality on Network/Multisite subsites with these exceptions: MySQL Database information is not displayed on subsites. 
 * BulletProof Security also works with Network / Multisite Domain Mapping.
 
@@ -311,7 +311,7 @@ Yes, BulletProof Security works with all BuddyPress/bbPress site types.
 
 = Is BulletProof Security Compatible with subdomain websites and subdirectory websites? =
 
-Yes, BulletProof Security works on all types of WordPress installations including "Giving WordPress Its Own Directory" websites. Note: Maintenance Mode is currently not available for Network/Multisite subdomain sites. Pending future development.
+Yes, BulletProof Security works on all types of WordPress installations including "Giving WordPress Its Own Directory" (GWIOD) websites.
 
 = Can I add my own .htaccess code to the BulletProof Security .htaccess files? =
 
@@ -351,6 +351,13 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 8. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .51.4 =
+* Maintenance Mode Network/Multisite Subdomain Completion:
+* Maintenance Mode coding work has been completed for Network/Multisite subdomain site types. Maintenance Mode now works for every/all WordPress site types, BuddyPress and bbPress site types.
+* BugFixes/Code Corrections/Misc/CSS/Visual/Other:
+* master-backups folder creation fix for unusual scenarios.
+* Automatic correction during upgrade for any existing timthumb RFI filter duplicate Referer lines.
 
 = .51.3 =
 * WordPress 4.1 jQuery UI Compatibility Code Correction:
@@ -608,28 +615,12 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.3 =
-* WordPress 4.1 jQuery UI Compatibility Code Correction:
-* Bug: BPS jQuery UI Dialog Read Me help window position not centered in WordPress 4.1.
-* Fix: Corrected the BPS jQuery UI Dialog Position Method code by adding the appropriate "my" and "at" options.
-* Note: For anyone else experiencing this issue see this Forum Topic for the solution: <a href="http://forum.ait-pro.com/forums/topic/wordpress-4-1-jquery-ui-dialog-window-position-not-centered/" rel="nofollow" title="jQuery UI Dialog window position not centered" target="_blank">jQuery UI Dialog window position not centered</a>
-* Help Link Corrections:
-* Special thanks to WordPress Member: <a href="https://wordpress.org/support/profile/mrppp" rel="nofollow" title="WordPress Member mrppp" target="_blank">mrppp</a> for finding and reporting invalid help links in BPS.
-
-= .51.2 =
-* Significant Root and wp-admin htaccess File Changes:
-* See the BPS plugin Whats New page for more details.
-* Root htaccess File/Code Fix: Removal of additional instances of "BEGIN WordPress" and "END WordPress" text from the root htaccess file which caused multiple instances of the default wp htaccess code to be created in the root htaccess file when the WP flush_rewrite_rules function was executed by other plugins and themes.
-* htaccess Help Text Improvement Overall: The help text throughout both the root and wp-admin htaccess files was very dated and was in need of updating. Better/clearer examples have been created in the help text. Overall the htaccess files are more streamlined and less cluttered looking visually.
-* Structure/Order Code Changes: Several blocks of htaccess code has been structured differently as far as the general order/sequence of code goes in the root htaccess file and more importantly what code will remain in the root htaccess file in the event that the WP flush_rewrite_rules function is executed by another plugin or theme. There are several technical reasons for making these structure/order changes, which I will not bore you with. Basically things are structured/ordered much better for any/every possible scenario that may occur.
-* New Custom Code Text Boxes Added:
-* CUSTOM CODE TURN OFF YOUR SERVER SIGNATURE
-* CUSTOM CODE DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS
+= .51.4 =
+* Maintenance Mode Network/Multisite Subdomain Completion:
+* Maintenance Mode coding work has been completed for Network/Multisite subdomain site types. Maintenance Mode now works for every/all WordPress site types, BuddyPress and bbPress site types.
 * BugFixes/Code Corrections/Misc/CSS/Visual/Other:
-* Custom Code accordion is now using tables vs CSS divs for cross Browser visual compatibility and obsolete CSS code has been removed for the CSS divs.
-* Overall inpage Custom Code help text information/example improvements.
-* Network/Multisite Net Correction code/check removed. No longer needed and is now obsolete.
-* Remote Address IP check added in the 403.php Security logging template. Will display current IP address for troubleshooting purposes.
+* master-backups folder creation fix for unusual scenarios.
+* Automatic correction during upgrade for any existing timthumb RFI filter duplicate Referer lines.
 
 == Help Info ==
 

@@ -29,18 +29,22 @@ These BPS files need to exist in the root folder permanently: bps-maintenance.ph
 New Switch cases for subsites are created if they do not already exist when mmode is turned On.
 The Subsite URI and Subsite STATUS variables are created when mmode is turned On.
 The Subsite STATUS variable is Off when mmode is turned Off.
-The Primary site STATUS variable is static. The value can only be set by the Primary set when mmode is turned On.
+The Primary site STATUS variable is static. The value can only be set by the Primary site when mmode is turned On.
 Each subsite has its own bps-maintenance-{subsite-uri}.php file created when Save Options is clicked.
 Each subsite has its own bps-maintenance-values-{subsite-uri}.php file created when Save Options is clicked.
 These BPS Subsite files are deleted on Turn Off: bps-maintenance-{subsite-uri}.php & bps-maintenance-values-{subsite-uri}.php
 Override: If $all_sites or $all_subsites == 1 then bps-maintenance.php is loaded instead of bps-maintenance-{subsite-uri}.php
-All BPS index.php writing occurs in the maintenance-mode-index-MU.php Master file & then it is copied to the root index.php file again
-with the exception of Network GWIOD site types. The root directory index file is written to directly.
+All BPS index.php writing occurs in the maintenance-mode-index-MU.php Master file & then it is copied to the root index.php file again.
+For Network GWIOD site types the site root directory index file is written to directly.
+Network subdomain sites use a HTTP_HOST instead of REQUEST_URI condition in the switch and the root domain/subdomain is used for checking.
 */
 
 $one_octet = preg_match( "/\d{1,3}\./", $_SERVER['REMOTE_ADDR'], $matches_one );
 $two_octets = preg_match( "/\d{1,3}\.\d{1,3}\./", $_SERVER['REMOTE_ADDR'], $matches_two );
 $three_octets = preg_match( "/\d{1,3}\.\d{1,3}\.\d{1,3}\./", $_SERVER['REMOTE_ADDR'], $matches_three );
+
+// Used in Network Subdomain sites only: The switch condition is $subdomain instead of $_SERVER['REQUEST_URI']
+$subdomain = array_shift( explode( "." , str_replace( 'www.', "", $_SERVER['HTTP_HOST'] ) ) );
 
 switch ( $_SERVER['REQUEST_URI'] ) {
     case $primary_site_uri:

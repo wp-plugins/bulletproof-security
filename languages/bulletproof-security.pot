@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulletproof-security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-05 13:44-0800\n"
-"PO-Revision-Date: 2014-11-05 13:45-0800\n"
+"POT-Creation-Date: 2014-12-01 15:20-0800\n"
+"PO-Revision-Date: 2014-12-01 15:20-0800\n"
 "Last-Translator: Ed Alexander <edward@ait-pro.com>\n"
 "Language-Team: AITpro <info@ait-pro.com>\n"
 "Language: en_US\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: C:\BPS47/admin/core/core-custom-code.php:48
 msgid ""
 "CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE:<br>Add php/php.ini handler "
-"code, cache code and/or <a href=http://forum.ait-pro.com/forums/topic/"
+"code, cache code and/or <a href=\"http://forum.ait-pro.com/forums/topic/"
 "htaccess-caching-code-speed-boost-cache-code/\" title=\"Link opens in a new "
 "Browser window\" target=\"_blank\" style=\"font-size:11px;\">Speed Boost "
 "Cache Code</a> here"
@@ -921,7 +921,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/core/core-help-text.php:34
-#: C:\BPS47/includes/functions.php:840
+#: C:\BPS47/includes/functions.php:831
 msgid "/bps-backup/master-backups folder."
 msgstr ""
 
@@ -1308,15 +1308,15 @@ msgstr ""
 
 #: C:\BPS47/admin/core/core-htaccess-code.php:56
 #: C:\BPS47/admin/core/core-htaccess-code.php:121
-#: C:\BPS47/admin/maintenance/maintenance.php:293
-#: C:\BPS47/admin/maintenance/maintenance.php:313
+#: C:\BPS47/admin/maintenance/maintenance.php:318
+#: C:\BPS47/admin/maintenance/maintenance.php:338
 msgid "The file "
 msgstr ""
 
 #: C:\BPS47/admin/core/core-htaccess-code.php:56
 #: C:\BPS47/admin/core/core-htaccess-code.php:121
-#: C:\BPS47/admin/maintenance/maintenance.php:293
-#: C:\BPS47/admin/maintenance/maintenance.php:313
+#: C:\BPS47/admin/maintenance/maintenance.php:318
+#: C:\BPS47/admin/maintenance/maintenance.php:338
 msgid " is not writable or does not exist."
 msgstr ""
 
@@ -1388,7 +1388,7 @@ msgstr ""
 msgid "IMPORTANT!"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:110 C:\BPS47/includes/functions.php:570
+#: C:\BPS47/admin/core/options.php:110 C:\BPS47/includes/functions.php:561
 msgid ""
 "BulletProof Mode for the wp-admin folder MUST also be activated when you "
 "have BulletProof Mode activated for the Root folder."
@@ -1606,7 +1606,7 @@ msgstr ""
 msgid "Whats New"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:460 C:\BPS47/admin/core/options.php:1585
+#: C:\BPS47/admin/core/options.php:460 C:\BPS47/admin/core/options.php:1623
 msgid "My Notes"
 msgstr ""
 
@@ -1618,7 +1618,7 @@ msgstr ""
 msgid "Website Scanner"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:463 C:\BPS47/admin/core/options.php:1770
+#: C:\BPS47/admin/core/options.php:463 C:\BPS47/admin/core/options.php:1810
 msgid "Website SEO"
 msgstr ""
 
@@ -1654,7 +1654,7 @@ msgstr ""
 #: C:\BPS47/admin/core/options.php:482 C:\BPS47/admin/core/options.php:534
 #: C:\BPS47/admin/core/options.php:641 C:\BPS47/admin/core/options.php:801
 #: C:\BPS47/admin/core/options.php:897 C:\BPS47/admin/core/options.php:1008
-#: C:\BPS47/admin/core/options.php:1498 C:\BPS47/admin/core/options.php:1590
+#: C:\BPS47/admin/core/options.php:1498 C:\BPS47/admin/core/options.php:1628
 #: C:\BPS47/admin/login/login.php:110
 #: C:\BPS47/admin/system-info/system-info.php:85
 msgid "Permission Denied"
@@ -2095,7 +2095,7 @@ msgstr ""
 
 #: C:\BPS47/admin/core/options.php:906 C:\BPS47/admin/core/options.php:918
 #: C:\BPS47/admin/login/login.php:107
-#: C:\BPS47/admin/maintenance/maintenance.php:449
+#: C:\BPS47/admin/maintenance/maintenance.php:476
 msgid "CAUTION: "
 msgstr ""
 
@@ -2342,7 +2342,7 @@ msgstr ""
 #: C:\BPS47/admin/system-info/system-info.php:532
 #: C:\BPS47/admin/system-info/system-info.php:540
 #: C:\BPS47/admin/system-info/system-info.php:551
-#: C:\BPS47/includes/functions.php:1105
+#: C:\BPS47/includes/functions.php:1096
 msgid "Off"
 msgstr ""
 
@@ -2402,7 +2402,7 @@ msgid "BulletProof Security Help &amp; FAQ"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1524 C:\BPS47/admin/login/login.php:747
-#: C:\BPS47/admin/maintenance/maintenance.php:1763
+#: C:\BPS47/admin/maintenance/maintenance.php:1883
 #: C:\BPS47/admin/security-log/security-log.php:766
 #: C:\BPS47/admin/system-info/system-info.php:719
 msgid "Contributors Page"
@@ -2413,7 +2413,7 @@ msgid "WP Permalinks - Custom Permalink Structure Help Info"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1528 C:\BPS47/admin/login/login.php:746
-#: C:\BPS47/admin/maintenance/maintenance.php:1766
+#: C:\BPS47/admin/maintenance/maintenance.php:1886
 #: C:\BPS47/admin/security-log/security-log.php:765
 #: C:\BPS47/admin/system-info/system-info.php:718
 msgid "Security Log Event Codes"
@@ -2426,7 +2426,7 @@ msgstr ""
 #: C:\BPS47/admin/core/options.php:1532
 #: C:\BPS47/admin/db-backup-security/db-backup-security.php:1434
 #: C:\BPS47/admin/login/login.php:750
-#: C:\BPS47/admin/maintenance/maintenance.php:1767
+#: C:\BPS47/admin/maintenance/maintenance.php:1887
 #: C:\BPS47/admin/security-log/security-log.php:769
 #: C:\BPS47/admin/system-info/system-info.php:722
 #: C:\BPS47/admin/theme-skin/theme-skin.php:146
@@ -2444,35 +2444,103 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1560
-msgid "Significant Root and wp-admin htaccess File Changes:"
+msgid "Maintenance Mode Network/Multisite Subdomain Completion:"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1560
+msgid ""
+"Maintenance Mode coding work has been completed for Network/Multisite "
+"subdomain site types. Maintenance Mode now works for every/all WordPress "
+"site types, BuddyPress and bbPress site types."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1565 C:\BPS47/admin/core/options.php:1608
+msgid "BugFixes/Code Corrections/Misc/CSS/Visual/Other:"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1565
+msgid ""
+"&bull; master-backups folder creation fix for unusual scenarios.<br>&bull; "
+"Automatic correction during upgrade for any existing timthumb RFI filter "
+"duplicate Referer lines."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1574
+msgid "Whats New in BPS .51.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1579
+msgid "WordPress 4.1 jQuery UI Compatibility Code Correction:"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1579
+msgid ""
+"<strong>Bug:</strong> BPS jQuery UI Dialog Read Me help window position not "
+"centered in WordPress 4.1."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1579
+msgid ""
+"<strong>Fix:</strong> Corrected the BPS jQuery UI Dialog Position Method "
+"code by adding the appropriate \"my\" and \"at\" options."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1579
+msgid ""
+"<strong>Note:</strong> For anyone else experiencing this issue see this "
+"Forum Topic for the solution: "
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1579
+msgid "jQuery UI Dialog window position not centered"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1584
+msgid "Help Link Corrections:"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1584
+msgid "Special thanks to WordPress Member: "
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1584
+msgid "mrppp"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1584
+msgid " for finding and reporting invalid help links in BPS."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1593
+msgid "Whats New in BPS .51.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1598
+msgid "Significant Root and wp-admin htaccess File Changes:"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1598
 msgid ""
 "Most significant changes/fixes/improvements to the BPS root and wp-admin "
 "htaccess files.<br>For additional information about these changes click this "
 "Forum link: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1560
+#: C:\BPS47/admin/core/options.php:1598
 msgid "Significant Root and wp-admin htaccess File Changes"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1565
+#: C:\BPS47/admin/core/options.php:1603
 msgid "New Custom Code Text Boxes Added:"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1565
+#: C:\BPS47/admin/core/options.php:1603
 msgid ""
 "&bull; CUSTOM CODE TURN OFF YOUR SERVER SIGNATURE<br>&bull; CUSTOM CODE DENY "
 "ACCESS TO PROTECTED SERVER FILES AND FOLDERS"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1570
-msgid "BugFixes/Code Corrections/Misc/CSS/Visual/Other:"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1570
+#: C:\BPS47/admin/core/options.php:1608
 msgid ""
 "&bull; Custom Code accordion is now using tables vs CSS divs for cross "
 "Browser visual compatibility and obsolete CSS code has been removed for the "
@@ -2483,49 +2551,49 @@ msgid ""
 "address for troubleshooting purposes."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1587
+#: C:\BPS47/admin/core/options.php:1625
 msgid "Save any personal notes or htaccess code to your WordPress Database"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1629
+#: C:\BPS47/admin/core/options.php:1667
 msgid "BulletProof Security Pro Feature Highlights"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1643
+#: C:\BPS47/admin/core/options.php:1681
 msgid "The Most Effective & Comprehensive<br>WordPress Security Plugin"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1646
+#: C:\BPS47/admin/core/options.php:1684
 msgid "BPS Pro 1 Click Setup Wizard & Demo Video Tutorial"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1647
+#: C:\BPS47/admin/core/options.php:1685
 msgid "BPS Pro Affiliate Program"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1648
+#: C:\BPS47/admin/core/options.php:1686
 msgid "View All BPS Pro Features"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1654
+#: C:\BPS47/admin/core/options.php:1692
 msgid ""
 "BulletProof Security Pro is The Complete Website Security Package for Hacker "
 "and Spammer Protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1656
+#: C:\BPS47/admin/core/options.php:1694
 msgid "1 Click Setup Wizard: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1656
+#: C:\BPS47/admin/core/options.php:1694
 msgid "All BPS Pro security features are setup by the BPS Pro Setup Wizard."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1658
+#: C:\BPS47/admin/core/options.php:1696
 msgid "1 Click Upgrades: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1658
+#: C:\BPS47/admin/core/options.php:1696
 msgid ""
 "BPS Pro Plugin upgrade notifications are displayed in your WordPress "
 "Dashboard exactly the same way as all other WordPress plugins. All BPS Pro "
@@ -2536,12 +2604,12 @@ msgid ""
 "additional setup or configuration by you."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1660
+#: C:\BPS47/admin/core/options.php:1698
 msgid ""
 "AutoRestore / Quarantine Intrusion Detection and Prevention System (IDPS): "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1660
+#: C:\BPS47/admin/core/options.php:1698
 msgid ""
 "ARQ is a real-time file monitor that automatically AutoRestores and/or "
 "Quarantines files. ARQ utilizes countermeasure website security that has the "
@@ -2555,13 +2623,13 @@ msgid ""
 "installations."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1662
+#: C:\BPS47/admin/core/options.php:1700
 msgid ""
 "New Concept in Website Security: DB Monitor Intrusion Detection System "
 "(IDS): "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1662
+#: C:\BPS47/admin/core/options.php:1700
 msgid ""
 "The DB Monitor (DBM) is an Intrusion Detection System (IDS) that alerts you "
 "via email anytime a change/modification occurs in your WordPress database or "
@@ -2578,11 +2646,11 @@ msgid ""
 "files or your WordPress database have been tampered with."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1664
+#: C:\BPS47/admin/core/options.php:1702
 msgid "DB Diff Tool: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1664
+#: C:\BPS47/admin/core/options.php:1702
 msgid ""
 "The DB Diff Tool compares old database tables from DB backups to current "
 "database tables and displays any differences in the data/content of those 2 "
@@ -2591,24 +2659,27 @@ msgid ""
 "database table name change/modification."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1666
+#: C:\BPS47/admin/core/options.php:1704
 msgid "Plugin Firewall: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1666
+#: C:\BPS47/admin/core/options.php:1704
 msgid ""
 "The Plugin Firewall / Plugins BulletProof Mode prevents/blocks/forbids "
 "Remote Access to the plugins folder from external sources (remote script "
 "execution, hacker recon, remote scanning, remote accessibility, etc.) and "
 "only allows internal access to the plugins folder based on this criteria: "
-"Domain name, Server IP Address and Public IP / Your Computer IP Address."
+"Domain name, Server IP Address and Public IP / Your Computer IP Address. "
+"True IP based Firewall that updates your IP addres in real-time when it "
+"changes. AutoPilot Mode automatically creates plugin whitelist rules in real-"
+"time."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1668
+#: C:\BPS47/admin/core/options.php:1706
 msgid "Uploads Folder Anti-Exploit Guard: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1668
+#: C:\BPS47/admin/core/options.php:1706
 msgid ""
 "The Uploads Folder Anti-Exploit Guard / Uploads BulletProof Mode allows ONLY "
 "safe image files with valid image file extensions such as jpg, gif, png, "
@@ -2618,11 +2689,11 @@ msgid ""
 "executed."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1670
+#: C:\BPS47/admin/core/options.php:1708
 msgid "JTC Anti-Spam / Anti-Hacker: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1670
+#: C:\BPS47/admin/core/options.php:1708
 msgid ""
 "Hacker Protection ~ Spammer Protection ~ DoS/DDoS Attack Protection ~ Brute "
 "Force Login Attack Protection ~ SpamBot Trap. JTC Anti-Spam provides website "
@@ -2635,11 +2706,11 @@ msgid ""
 "Form with a user friendly & customizable jQuery ToolTip CAPTCHA."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1672
+#: C:\BPS47/admin/core/options.php:1710
 msgid "S-Monitor Displayed Alerts, Email Alerting & Log File Options: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1672
+#: C:\BPS47/admin/core/options.php:1710
 msgid ""
 "S-Monitor displayed alerting options allow you to choose how you want real-"
 "time alerts displayed to you: WP Dashboard, BPS Pro pages only or turned "
@@ -2650,21 +2721,21 @@ msgid ""
 "option that you choose."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1674
+#: C:\BPS47/admin/core/options.php:1712
 msgid "F-Lock: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1674
+#: C:\BPS47/admin/core/options.php:1712
 msgid ""
 "Lock and Unlock WordPress Mission Critical files from within your WordPress "
 "Dashboard."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1676
+#: C:\BPS47/admin/core/options.php:1714
 msgid "Custom php.ini / ini_set Options: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1676
+#: C:\BPS47/admin/core/options.php:1714
 msgid ""
 "Quickly create a custom php.ini file for your website or use ini_set Options "
 "to increase security and performance with just a few clicks. Additional P-"
@@ -2672,11 +2743,11 @@ msgid ""
 "Protected PHP Error Log, PHP Error Alerts, Secure phpinfo Viewer..."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1678
+#: C:\BPS47/admin/core/options.php:1716
 msgid "Advanced Real-Time Alerting & Heads Up Dashboard Status Display: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1678
+#: C:\BPS47/admin/core/options.php:1716
 msgid ""
 "BPS Pro checks and displays error, warning, notifications and alert messages "
 "in real time. You can choose how you want these messages displayed to you "
@@ -2684,11 +2755,11 @@ msgid ""
 "Dashboard, BPS Pro pages only, Turned off, Email Alerts, Logging..."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1680
+#: C:\BPS47/admin/core/options.php:1718
 msgid "Pro-Tools: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1680
+#: C:\BPS47/admin/core/options.php:1718
 msgid ""
 "Pro-Tools is a set of versatile 16 website tools (16 mini-plugins): Online "
 "Base64 Decoder, Offline Base64 Decode/Encode, Mcrypt Decrypt/Encrypt, Crypt "
@@ -2698,178 +2769,182 @@ msgid ""
 "Exploit Checker"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1687
+#: C:\BPS47/admin/core/options.php:1725
 msgid "BPS Pro Version Release Dates"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1689
-msgid "Whats New in BPS Pro 9.8"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1691
-msgid "Whats New in BPS Pro 9.7"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1693
-msgid "Whats New in BPS Pro 9.6"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1694
-msgid "Whats New in BPS Pro 9.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1695
-msgid "Whats New in BPS Pro 9.3/9.4"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1696
-msgid "Whats New in BPS Pro 9.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1697
-msgid "Whats New in BPS Pro 9.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1698
-msgid "Whats New in BPS Pro 9.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1699
-msgid "Whats New in BPS Pro 8.3"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1700
-msgid "Whats New in BPS Pro 8.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1701
-msgid "Whats New in BPS Pro 8.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1702
-msgid "Whats New in BPS Pro 8.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1703
-msgid "Whats New in BPS Pro 7.9"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1704
-msgid "Whats New in BPS Pro 7.8"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1705
-msgid "Whats New in BPS Pro 7.7"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1706
-msgid "Whats New in BPS Pro 7.6"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1707
-msgid "Whats New in BPS Pro 7.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1708
-msgid "Whats New in BPS Pro 7.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1709
-msgid "Whats New in BPS Pro 6.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1710
-msgid "Whats New in BPS Pro 6.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1711
-msgid "Whats New in BPS Pro 5.9"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1712
-msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1713
-msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1714
-msgid "Whats New in BPS Pro 5.6/5.6.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1715
-msgid "Whats New in BPS Pro 5.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1716
-msgid "Whats New in BPS Pro 5.4/5.4.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1717
-msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1718
-msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1719
-msgid "Whats New in BPS Pro 5.1.9"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1720
-msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1721
-msgid "Whats New in BPS Pro 5.1.7"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1722
-msgid "Whats New in BPS Pro 5.1.6"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1723
-msgid "Whats New in BPS Pro 5.1.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1724
-msgid "Whats New in BPS Pro 5.1.4"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1725
-msgid "Whats New in BPS Pro 5.1.3"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1726
-msgid "Whats New in BPS Pro 5.1.2"
-msgstr ""
-
 #: C:\BPS47/admin/core/options.php:1727
-msgid "Whats New in BPS Pro 5.1.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1728
-msgid "Whats New in BPS Pro 5.1"
+msgid "Whats New in BPS Pro 9.9"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1729
-msgid "Whats New in BPS Pro 5.0"
+msgid "Whats New in BPS Pro 9.8"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1731
+msgid "Whats New in BPS Pro 9.7"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1733
+msgid "Whats New in BPS Pro 9.6"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1734
+msgid "Whats New in BPS Pro 9.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1735
+msgid "Whats New in BPS Pro 9.3/9.4"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1736
+msgid "Whats New in BPS Pro 9.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1737
+msgid "Whats New in BPS Pro 9.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1738
+msgid "Whats New in BPS Pro 9.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1739
+msgid "Whats New in BPS Pro 8.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1740
+msgid "Whats New in BPS Pro 8.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1741
+msgid "Whats New in BPS Pro 8.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1742
+msgid "Whats New in BPS Pro 8.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1743
+msgid "Whats New in BPS Pro 7.9"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1744
+msgid "Whats New in BPS Pro 7.8"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1745
-msgid "Sucuri SiteCheck - Free website malware & blacklist scan"
+msgid "Whats New in BPS Pro 7.7"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1746
+msgid "Whats New in BPS Pro 7.6"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1747
+msgid "Whats New in BPS Pro 7.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1748
+msgid "Whats New in BPS Pro 7.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1749
+msgid "Whats New in BPS Pro 6.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1750
+msgid "Whats New in BPS Pro 6.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1751
+msgid "Whats New in BPS Pro 5.9"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1752
+msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1753
+msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1754
+msgid "Whats New in BPS Pro 5.6/5.6.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1755
+msgid "Whats New in BPS Pro 5.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1756
+msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1757
+msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1758
+msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1759
+msgid "Whats New in BPS Pro 5.1.9"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1760
+msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1761
+msgid "Whats New in BPS Pro 5.1.7"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1762
+msgid "Whats New in BPS Pro 5.1.6"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1763
+msgid "Whats New in BPS Pro 5.1.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1764
+msgid "Whats New in BPS Pro 5.1.4"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1765
+msgid "Whats New in BPS Pro 5.1.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1766
+msgid "Whats New in BPS Pro 5.1.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1767
+msgid "Whats New in BPS Pro 5.1.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1768
+msgid "Whats New in BPS Pro 5.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1769
+msgid "Whats New in BPS Pro 5.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1785
+msgid "Sucuri SiteCheck - Free website malware & blacklist scan"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1786
 msgid ""
 "BPS is designed to protect your website from being hacked. If your website "
 "was already hacked prior to installing BPS then BPS will not automatically "
 "clean it up. Sucuri offers hacked website cleanup services."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1755
+#: C:\BPS47/admin/core/options.php:1795
 #, php-format
 msgid ""
 "the sheer nature of malware makes it very challenging to give you "
@@ -2879,35 +2954,35 @@ msgid ""
 "your feet."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1755
+#: C:\BPS47/admin/core/options.php:1795
 msgid "Tony Perez, CFO Sucuri, LLC"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1771
+#: C:\BPS47/admin/core/options.php:1811
 msgid "Free, Premium Plugin and Theme testing, rating and review."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1771
+#: C:\BPS47/admin/core/options.php:1811
 msgid "SPECIAL OFFER!!! "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1771
+#: C:\BPS47/admin/core/options.php:1811
 msgid ""
 "Search Engine Optimization (SEO) eBook for Beginners to Experienced Website "
 "Owners."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1781
+#: C:\BPS47/admin/core/options.php:1821
 msgid ""
 "We Test, Review & Rate Premium, Free and Paid WordPress Themes, Templates & "
 "Plugins Daily. 494 themes and 193 plugins have been tested to date...."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1781 C:\BPS47/admin/core/options.php:1786
+#: C:\BPS47/admin/core/options.php:1821 C:\BPS47/admin/core/options.php:1826
 msgid "Reza Shadpay, founder of themesplugins.com"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1786
+#: C:\BPS47/admin/core/options.php:1826
 msgid ""
 "SEO explained for Beginners to Experienced website owners. Simple and fully "
 "explained WhiteHat SEO techniques and methods that will get your website top "
@@ -4352,20 +4427,20 @@ msgstr ""
 msgid "DB Backup & Security Guide & Troubleshooting"
 msgstr ""
 
-#: C:\BPS47/admin/includes/admin.php:232
+#: C:\BPS47/admin/includes/admin.php:237
 msgid "BulletProof Security Settings"
 msgstr ""
 
-#: C:\BPS47/admin/includes/admin.php:232 C:\BPS47/admin/includes/admin.php:245
+#: C:\BPS47/admin/includes/admin.php:237 C:\BPS47/admin/includes/admin.php:245
 msgid "BPS Security"
 msgstr ""
 
-#: C:\BPS47/admin/includes/admin.php:233 C:\BPS47/admin/includes/admin.php:247
+#: C:\BPS47/admin/includes/admin.php:238 C:\BPS47/admin/includes/admin.php:247
 #: C:\BPS47/admin/login/login.php:81
 msgid "Login Security"
 msgstr ""
 
-#: C:\BPS47/admin/includes/admin.php:237 C:\BPS47/admin/includes/admin.php:250
+#: C:\BPS47/admin/includes/admin.php:239 C:\BPS47/admin/includes/admin.php:250
 #: C:\BPS47/admin/maintenance/maintenance.php:107
 #: C:\BPS47/admin/maintenance/maintenance.php:138
 #: C:\BPS47/admin/maintenance/maintenance.php:140
@@ -4911,7 +4986,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:428
+#: C:\BPS47/admin/maintenance/maintenance.php:454
 msgid "Countdown Timer Text Color:"
 msgstr ""
 
@@ -4920,7 +4995,7 @@ msgid "Select the text color for the Countdown Timer."
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:436
+#: C:\BPS47/admin/maintenance/maintenance.php:462
 msgid "Maintenance Mode Time (in Minutes):"
 msgstr ""
 
@@ -4932,7 +5007,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:440
+#: C:\BPS47/admin/maintenance/maintenance.php:466
 msgid ""
 "Header Retry-After (enter the same time as Maintenance Mode Time above):"
 msgstr ""
@@ -4976,7 +5051,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:454
+#: C:\BPS47/admin/maintenance/maintenance.php:482
 msgid "Maintenance Mode IP Address Whitelist Text Box:"
 msgstr ""
 
@@ -4999,7 +5074,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:412
+#: C:\BPS47/admin/maintenance/maintenance.php:438
 msgid ""
 "Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website "
 "Visitors:"
@@ -5017,7 +5092,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:463
+#: C:\BPS47/admin/maintenance/maintenance.php:494
 msgid "Background Images:"
 msgstr ""
 
@@ -5029,7 +5104,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:488
+#: C:\BPS47/admin/maintenance/maintenance.php:519
 msgid "Center Images:"
 msgstr ""
 
@@ -5041,7 +5116,7 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:508
+#: C:\BPS47/admin/maintenance/maintenance.php:539
 msgid "Background Colors (If not using a Background Image):"
 msgstr ""
 
@@ -5060,7 +5135,7 @@ msgid "Check this checkbox to display the website visitor's IP addresses."
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
-#: C:\BPS47/admin/maintenance/maintenance.php:518
+#: C:\BPS47/admin/maintenance/maintenance.php:549
 msgid "Display Admin/Login Link"
 msgstr ""
 
@@ -5128,6 +5203,22 @@ msgid ""
 "on the Primary Network/Multisite site. Checking these options on a Single/"
 "Standard WordPress installation have no effect since these options are ONLY "
 "for Network/Multisite WordPress installations."
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:141
+msgid "Steps to use these special Network/Multisite options:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:141
+msgid ""
+"To turn On either of these special options, check the checkbox, click the "
+"Save Options button and click the Turn On button. To turn Off either of "
+"these options, uncheck the checkbox, click the Save Options button and click "
+"the Turn On button - you would not click the Turn Off button. You are "
+"resaving your options and then writing those saved option settings to the "
+"Maintenance template files. Or in other words, you have removed those "
+"options settings and are creating another new template file without these "
+"special option settings in that template file."
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:141
@@ -5208,15 +5299,15 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:183
-#: C:\BPS47/admin/maintenance/maintenance.php:626
-#: C:\BPS47/admin/maintenance/maintenance.php:789
+#: C:\BPS47/admin/maintenance/maintenance.php:672
+#: C:\BPS47/admin/maintenance/maintenance.php:844
 msgid ""
 "Error: You did not enter an IP Address in the Maintenance Mode IP Address "
 "Whitelist Text Box."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:286
-#: C:\BPS47/admin/maintenance/maintenance.php:306
+#: C:\BPS47/admin/maintenance/maintenance.php:311
+#: C:\BPS47/admin/maintenance/maintenance.php:331
 msgid ""
 "Success! Your Options have been saved and your Maintenance Mode Form has "
 "been created successfully! Click the Preview button to preview your Website "
@@ -5224,46 +5315,46 @@ msgid ""
 "button."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:293
+#: C:\BPS47/admin/maintenance/maintenance.php:318
 msgid ""
 "Check that the file exists in the /bulletproof-security/admin/htaccess/ "
 "master folder. If this is not the problem "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:293
-#: C:\BPS47/admin/maintenance/maintenance.php:313
-#: C:\BPS47/includes/functions.php:1149 C:\BPS47/includes/functions.php:1175
-#: C:\BPS47/includes/functions.php:1201 C:\BPS47/includes/functions.php:1227
-#: C:\BPS47/includes/functions.php:1262 C:\BPS47/includes/functions.php:1290
-#: C:\BPS47/includes/functions.php:1348 C:\BPS47/includes/functions.php:1383
+#: C:\BPS47/admin/maintenance/maintenance.php:318
+#: C:\BPS47/admin/maintenance/maintenance.php:338
+#: C:\BPS47/includes/functions.php:1140 C:\BPS47/includes/functions.php:1166
+#: C:\BPS47/includes/functions.php:1192 C:\BPS47/includes/functions.php:1218
+#: C:\BPS47/includes/functions.php:1253 C:\BPS47/includes/functions.php:1281
+#: C:\BPS47/includes/functions.php:1339 C:\BPS47/includes/functions.php:1374
 #: C:\BPS47/includes/functions.php:1948
 msgid "Click Here"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:293
-#: C:\BPS47/admin/maintenance/maintenance.php:313
+#: C:\BPS47/admin/maintenance/maintenance.php:318
+#: C:\BPS47/admin/maintenance/maintenance.php:338
 msgid " for assistance."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:313
+#: C:\BPS47/admin/maintenance/maintenance.php:338
 msgid ""
 "Check that the bps-maintenance-values.php file exists in the /bulletproof-"
 "security/admin/htaccess/ master folder. If this is not the problem "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:373
-#: C:\BPS47/admin/maintenance/maintenance.php:380
-#: C:\BPS47/admin/maintenance/maintenance.php:387
+#: C:\BPS47/admin/maintenance/maintenance.php:399
+#: C:\BPS47/admin/maintenance/maintenance.php:406
+#: C:\BPS47/admin/maintenance/maintenance.php:413
 msgid "Your Current IP Address: "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:373
-#: C:\BPS47/admin/maintenance/maintenance.php:380
-#: C:\BPS47/admin/maintenance/maintenance.php:387
+#: C:\BPS47/admin/maintenance/maintenance.php:399
+#: C:\BPS47/admin/maintenance/maintenance.php:406
+#: C:\BPS47/admin/maintenance/maintenance.php:413
 msgid "Recommended IP Address: "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:405
+#: C:\BPS47/admin/maintenance/maintenance.php:431
 msgid ""
 "Clicking OK Saves your Options/Settings to your Database and also creates "
 "your Maintenance Mode page. Click the Preview button to preview your "
@@ -5271,7 +5362,7 @@ msgid ""
 "Turn On button to enable Maintenance Mode on your website."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:405
+#: C:\BPS47/admin/maintenance/maintenance.php:431
 #: C:\BPS47/admin/security-log/security-log.php:453
 #: C:\BPS47/admin/security-log/security-log.php:468
 #: C:\BPS47/admin/security-log/security-log.php:671
@@ -5280,365 +5371,379 @@ msgstr ""
 msgid "Click OK to proceed or click Cancel."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:409
+#: C:\BPS47/admin/maintenance/maintenance.php:435
 msgid "MMode Editor"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:413
+#: C:\BPS47/admin/maintenance/maintenance.php:439
 msgid ""
 "Click the Maintenance Mode Guide link below for CSS Code, Image & Video "
 "Embed examples."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:414
-#: C:\BPS47/admin/maintenance/maintenance.php:1762
+#: C:\BPS47/admin/maintenance/maintenance.php:440
+#: C:\BPS47/admin/maintenance/maintenance.php:1882
 msgid "Maintenance Mode Guide"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:423
+#: C:\BPS47/admin/maintenance/maintenance.php:449
 msgid "MMode Option Settings"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:426
+#: C:\BPS47/admin/maintenance/maintenance.php:452
 msgid "Enable Countdown Timer"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:430
+#: C:\BPS47/admin/maintenance/maintenance.php:456
 msgid "LCD/Lime Green"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:431
-#: C:\BPS47/admin/maintenance/maintenance.php:511
+#: C:\BPS47/admin/maintenance/maintenance.php:457
+#: C:\BPS47/admin/maintenance/maintenance.php:542
 msgid "White"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:432
+#: C:\BPS47/admin/maintenance/maintenance.php:458
 msgid "Silver"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:433
-#: C:\BPS47/admin/maintenance/maintenance.php:513
+#: C:\BPS47/admin/maintenance/maintenance.php:459
+#: C:\BPS47/admin/maintenance/maintenance.php:544
 msgid "Gray"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:437
-#: C:\BPS47/admin/maintenance/maintenance.php:441
+#: C:\BPS47/admin/maintenance/maintenance.php:463
+#: C:\BPS47/admin/maintenance/maintenance.php:467
 msgid "Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:444
+#: C:\BPS47/admin/maintenance/maintenance.php:470
 msgid "Enable FrontEnd Maintenance Mode"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:449
+#: C:\BPS47/admin/maintenance/maintenance.php:476
 msgid "You MUST enter Your Current IP Address or the"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:449
+#: C:\BPS47/admin/maintenance/maintenance.php:476
 msgid "Recommended IP Address if you Enable BackEnd Maintenance Mode"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:449
+#: C:\BPS47/admin/maintenance/maintenance.php:476
 msgid "or you will be locked out of your WordPress Dashboard."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:450
+#: C:\BPS47/admin/maintenance/maintenance.php:477
 msgid "Enable BackEnd Maintenance Mode "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:455
+#: C:\BPS47/admin/maintenance/maintenance.php:483
 msgid ""
 "Enter The IP Address That Can View The Website Normally (not in Maintenance "
 "Mode)."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:456
+#: C:\BPS47/admin/maintenance/maintenance.php:484
 msgid "Enter Multiple IP addresses separated by a comma and a single space."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:457
-msgid "Example: 100.99.88.77, 200.66.55.44, 44.33.22.1"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:465
-msgid "No Background Image"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:466
-msgid "Black Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:467
-msgid "Black Honeycomb Large Grey Line"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:468
-msgid "Black Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:469
-msgid "Black Mesh Small Grey Line"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:470
-msgid "Blue Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:471
-msgid "Blue Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:472
-msgid "Brown Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:473
-msgid "Brown Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:474
-msgid "Green Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:475
-msgid "Green Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:476
-msgid "Gray Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:477
-msgid "Gray Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:478
-msgid "Orange Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:479
-msgid "Orange Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:480
-msgid "Purple Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:481
-msgid "Purple Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:482
-msgid "Red/Burgundy Honeycomb Large"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:483
-msgid "Red/Burgundy Mesh Small"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:484
-msgid "Yellow Honeycomb Large"
-msgstr ""
-
 #: C:\BPS47/admin/maintenance/maintenance.php:485
-msgid "Yellow Mesh Small"
+msgid "Example IPv4 IP Addresses: 100.99.88.77, 200.66.55.44, 44.33.22.1"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:490
-msgid "No Center Image"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:491
-msgid "Basic Black"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:492
-msgid "Black Veins"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:493
-msgid "Blue Glass"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:494
-msgid "Brushed Metal Stamped"
-msgstr ""
-
-#: C:\BPS47/admin/maintenance/maintenance.php:495
-msgid "Chrome"
+#: C:\BPS47/admin/maintenance/maintenance.php:486
+msgid ""
+"Example IPv6 IP Addresses: 0:0:0:0:0:ffff:6463:584d, 0:0:0:0:0:ffff:c842:372c"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:496
-msgid "Chrome Slick"
+msgid "No Background Image"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:497
-msgid "Fire"
+msgid "Black Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:498
-msgid "Gun Metal"
+msgid "Black Honeycomb Large Grey Line"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:499
-msgid "Mercury"
+msgid "Black Mesh Small"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:500
-msgid "Smoke"
+msgid "Black Mesh Small Grey Line"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:501
-msgid "Striped Cone"
+msgid "Blue Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:502
-msgid "Swamp Bevel"
+msgid "Blue Mesh Small"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:503
-msgid "Toy"
+msgid "Brown Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:504
-msgid "Water Reflection"
+msgid "Brown Mesh Small"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:505
-msgid "Wood Grain"
+msgid "Green Honeycomb Large"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:506
+msgid "Green Mesh Small"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:507
+msgid "Gray Honeycomb Large"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:508
+msgid "Gray Mesh Small"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:509
+msgid "Orange Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:510
-msgid "No Background Color"
+msgid "Orange Mesh Small"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:511
+msgid "Purple Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:512
-msgid "Black"
+msgid "Purple Mesh Small"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:513
+msgid "Red/Burgundy Honeycomb Large"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:514
+msgid "Red/Burgundy Mesh Small"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:515
+msgid "Yellow Honeycomb Large"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:516
-msgid "Display Visitor IP Address"
+msgid "Yellow Mesh Small"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:520
-msgid "Display Dashboard Reminder Message when site is in Maintenance Mode"
+#: C:\BPS47/admin/maintenance/maintenance.php:521
+msgid "No Center Image"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:522
-msgid "Send Email Reminder when Maintenance Mode Countdown Timer has completed"
+msgid "Basic Black"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:523
+msgid "Black Veins"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:524
-msgid "Send Countdown Timer Email To:"
+msgid "Blue Glass"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:525
+msgid "Brushed Metal Stamped"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:526
-msgid "Send Countdown Timer Email From:"
+msgid "Chrome"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:527
+msgid "Chrome Slick"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:528
-msgid "Send Countdown Timer Email Cc:"
+msgid "Fire"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:529
+msgid "Gun Metal"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:530
-msgid "Send Countdown Timer Email Bcc:"
+msgid "Mercury"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:531
+msgid "Smoke"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:532
+msgid "Striped Cone"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:533
+msgid "Swamp Bevel"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:534
-msgid "MMode Network/Multisite Options"
+msgid "Toy"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:537
-msgid "Network/Multisite Primary Site Options ONLY"
+#: C:\BPS47/admin/maintenance/maintenance.php:535
+msgid "Water Reflection"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:536
+msgid "Wood Grain"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:541
-msgid "Put The Primary Site And All Subsites In Maintenance Mode"
+msgid "No Background Color"
 msgstr ""
 
 #: C:\BPS47/admin/maintenance/maintenance.php:543
+msgid "Black"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:547
+msgid "Display Visitor IP Address"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:551
+msgid "Display Dashboard Reminder Message when site is in Maintenance Mode"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:553
+msgid "Send Email Reminder when Maintenance Mode Countdown Timer has completed"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:555
+msgid "Send Countdown Timer Email To:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:557
+msgid "Send Countdown Timer Email From:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:559
+msgid "Send Countdown Timer Email Cc:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:561
+msgid "Send Countdown Timer Email Bcc:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:566
+msgid "MMode Network/Multisite Options"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:569
+msgid "Network/Multisite Primary Site Options ONLY"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:573
+msgid ""
+"Click the Maintenance Mode Read Me help button for the steps to use these "
+"special options:"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:574
+msgid "Put The Primary Site And All Subsites In Maintenance Mode"
+msgstr ""
+
+#: C:\BPS47/admin/maintenance/maintenance.php:576
 msgid "Put All Subsites In Maintenance Mode, But Not The Primary Site"
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:636
-#: C:\BPS47/admin/maintenance/maintenance.php:799
+#: C:\BPS47/admin/maintenance/maintenance.php:683
+#: C:\BPS47/admin/maintenance/maintenance.php:855
 msgid ""
 "IP Address Format Error: You have entered multiple IP Addresses using an "
 "incorrect Format."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:636
-#: C:\BPS47/admin/maintenance/maintenance.php:799
+#: C:\BPS47/admin/maintenance/maintenance.php:683
+#: C:\BPS47/admin/maintenance/maintenance.php:855
 msgid ""
 "The correct IP Address Format is: IP Address comma single space. Example: "
 "100.99.88.77, 200.66.55.44, 44.33.22.1 or 100.99.88., 200.66.55., 44.33.22. "
 "if you are using the recommended 3 octet IP addresses."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:636
-#: C:\BPS47/admin/maintenance/maintenance.php:799
-msgid "Correct the IP Address Format and click the Save Options button again."
+#: C:\BPS47/admin/maintenance/maintenance.php:683
+#: C:\BPS47/admin/maintenance/maintenance.php:855
+msgid ""
+"Correct the IP Address Format and click the Save Options button again. If "
+"you have an IPv6 IP address use the same general format as an IPv4 IP "
+"address - comma single space."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:687
-#: C:\BPS47/admin/maintenance/maintenance.php:846
-#: C:\BPS47/admin/maintenance/maintenance.php:915
+#: C:\BPS47/admin/maintenance/maintenance.php:734
+#: C:\BPS47/admin/maintenance/maintenance.php:906
+#: C:\BPS47/admin/maintenance/maintenance.php:1009
 msgid "FrontEnd Maintenance Mode has been Turned On."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:748
-#: C:\BPS47/admin/maintenance/maintenance.php:984
+#: C:\BPS47/admin/maintenance/maintenance.php:795
+#: C:\BPS47/admin/maintenance/maintenance.php:1078
 msgid "BackEnd Maintenance Mode has been Turned On."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:999
-#: C:\BPS47/admin/maintenance/maintenance.php:1691
+#: C:\BPS47/admin/maintenance/maintenance.php:1093
+#: C:\BPS47/admin/maintenance/maintenance.php:1811
 msgid ""
 "Error: You have not saved your option settings yet. Click the Save Options "
 "button."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1077
+#: C:\BPS47/admin/maintenance/maintenance.php:1169
 msgid ""
 "Error: Unable to get/find the site root index.php file for this GWIOD - "
 "Giving WordPress Its Own Directory - website."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1077
+#: C:\BPS47/admin/maintenance/maintenance.php:1169
 msgid "GWIOD Site Root index.php File Path Checked: "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1077
-#: C:\BPS47/admin/maintenance/maintenance.php:1145
+#: C:\BPS47/admin/maintenance/maintenance.php:1169
+#: C:\BPS47/admin/maintenance/maintenance.php:1235
 msgid ""
 "Please copy this error message and send it in an email to info@ait-pro.com "
 "for assistance."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1145
+#: C:\BPS47/admin/maintenance/maintenance.php:1235
 msgid ""
 "Error: Unable to get/find the site root index.php file for this Network "
 "GWIOD - Giving WordPress Its Own Directory - website."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1145
+#: C:\BPS47/admin/maintenance/maintenance.php:1235
 msgid "Network GWIOD Site Root index.php File Path Checked: "
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1230
-#: C:\BPS47/admin/maintenance/maintenance.php:1337
-#: C:\BPS47/admin/maintenance/maintenance.php:1467
-#: C:\BPS47/admin/maintenance/maintenance.php:1606
+#: C:\BPS47/admin/maintenance/maintenance.php:1320
+#: C:\BPS47/admin/maintenance/maintenance.php:1443
+#: C:\BPS47/admin/maintenance/maintenance.php:1571
+#: C:\BPS47/admin/maintenance/maintenance.php:1728
 msgid "FrontEnd Maintenance Mode has been Turned Off."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1417
-#: C:\BPS47/admin/maintenance/maintenance.php:1525
-#: C:\BPS47/admin/maintenance/maintenance.php:1675
+#: C:\BPS47/admin/maintenance/maintenance.php:1521
+#: C:\BPS47/admin/maintenance/maintenance.php:1627
+#: C:\BPS47/admin/maintenance/maintenance.php:1795
 msgid "BackEnd Maintenance Mode has been Turned Off."
 msgstr ""
 
-#: C:\BPS47/admin/maintenance/maintenance.php:1756
+#: C:\BPS47/admin/maintenance/maintenance.php:1876
 msgid "Help & FAQ"
 msgstr ""
 
@@ -6335,7 +6440,7 @@ msgid "MySQL DB Info is not displayed on Network/Multisite subsites"
 msgstr ""
 
 #: C:\BPS47/admin/system-info/system-info.php:365
-#: C:\BPS47/includes/functions.php:1103
+#: C:\BPS47/includes/functions.php:1094
 msgid "Not Set"
 msgstr ""
 
@@ -6755,81 +6860,81 @@ msgid ""
 "required is 600."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:276
+#: C:\BPS47/includes/functions.php:275
 msgid ""
 "BPS Alert! An htaccess file was NOT found in your root folder. Check the BPS "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:276 C:\BPS47/includes/functions.php:420
-#: C:\BPS47/includes/functions.php:451 C:\BPS47/includes/functions.php:502
+#: C:\BPS47/includes/functions.php:275 C:\BPS47/includes/functions.php:411
+#: C:\BPS47/includes/functions.php:442 C:\BPS47/includes/functions.php:493
 msgid "Security Status page"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:276 C:\BPS47/includes/functions.php:451
-#: C:\BPS47/includes/functions.php:502
+#: C:\BPS47/includes/functions.php:275 C:\BPS47/includes/functions.php:442
+#: C:\BPS47/includes/functions.php:493
 msgid " for more specific information."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:404
+#: C:\BPS47/includes/functions.php:395
 msgid "The BPS Automatic htaccess File Update Completed Successfully!"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:420
+#: C:\BPS47/includes/functions.php:411
 msgid ""
 "BPS Alert! Your site does not appear to be protected by BulletProof Security"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:420
+#: C:\BPS47/includes/functions.php:411
 msgid ""
 "Go to the Security Modes page and click the Create secure.htaccess File "
 "AutoMagic button and Activate Root Folder BulletProof Mode."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:420
+#: C:\BPS47/includes/functions.php:411
 msgid ""
 "If your site is in Default Mode then it is NOT protected by BulletProof "
 "Security. Check the BPS "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:420
+#: C:\BPS47/includes/functions.php:411
 msgid " to view your BPS Security Status information."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:451
+#: C:\BPS47/includes/functions.php:442
 msgid ""
 "BPS Alert! An htaccess file was NOT found in your wp-admin folder. Check the "
 "BPS "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:502
+#: C:\BPS47/includes/functions.php:493
 msgid ""
 "BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:502
+#: C:\BPS47/includes/functions.php:493
 msgid ""
 "BulletProof Mode for the wp-admin folder MUST be activated when you have "
 "BulletProof Mode activated for the Root folder."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:502
+#: C:\BPS47/includes/functions.php:493
 msgid "Check the BPS "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:517
+#: C:\BPS47/includes/functions.php:508
 msgid "ERROR: An htaccess file was NOT found in your root folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:517 C:\BPS47/includes/functions.php:530
-#: C:\BPS47/includes/functions.php:540 C:\BPS47/includes/functions.php:549
+#: C:\BPS47/includes/functions.php:508 C:\BPS47/includes/functions.php:521
+#: C:\BPS47/includes/functions.php:531 C:\BPS47/includes/functions.php:540
 msgid "wp-config.php is NOT htaccess protected by BPS"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:523
+#: C:\BPS47/includes/functions.php:514
 msgid "The htaccess file that is activated in your root folder is:"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:530 C:\BPS47/includes/functions.php:540
+#: C:\BPS47/includes/functions.php:521 C:\BPS47/includes/functions.php:531
 msgid ""
 "BPS may be in the process of updating the version number in your root "
 "htaccess file. Refresh your browser to display your current security status "
@@ -6840,15 +6945,15 @@ msgid ""
 "BulletProof Modes again."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:534 C:\BPS47/includes/functions.php:544
+#: C:\BPS47/includes/functions.php:525 C:\BPS47/includes/functions.php:535
 msgid "wp-config.php is htaccess protected by BPS"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:534 C:\BPS47/includes/functions.php:544
+#: C:\BPS47/includes/functions.php:525 C:\BPS47/includes/functions.php:535
 msgid "php.ini and php5.ini are htaccess protected by BPS"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:549
+#: C:\BPS47/includes/functions.php:540
 msgid ""
 "ERROR: Either a BPS htaccess file was NOT found in your root folder or you "
 "have not activated BulletProof Mode for your Root folder yet, Default Mode "
@@ -6857,17 +6962,17 @@ msgid ""
 "exist in your root htaccess file. Please view the Read Me Help button above."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:564
+#: C:\BPS47/includes/functions.php:555
 msgid ""
 "wp-admin BulletProof Mode is disabled on the Security Modes page or you have "
 "a Go Daddy Managed WordPress Hosting account type."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:570
+#: C:\BPS47/includes/functions.php:561
 msgid "ERROR: An htaccess file was NOT found in your wp-admin folder."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:580 C:\BPS47/includes/functions.php:591
+#: C:\BPS47/includes/functions.php:571 C:\BPS47/includes/functions.php:582
 msgid ""
 "BPS may be in the process of updating the version number in your wp-admin "
 "htaccess file. Refresh your browser to display your current security status "
@@ -6878,11 +6983,11 @@ msgid ""
 "again."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:584 C:\BPS47/includes/functions.php:595
+#: C:\BPS47/includes/functions.php:575 C:\BPS47/includes/functions.php:586
 msgid "The htaccess file that is activated in your wp-admin folder is:"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:601
+#: C:\BPS47/includes/functions.php:592
 msgid ""
 "ERROR: A valid BPS htaccess file was NOT found in your wp-admin folder. "
 "Either you have not activated BulletProof Mode for your wp-admin folder yet "
@@ -6892,40 +6997,40 @@ msgid ""
 "Please view the Read Me Help button above."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:610
+#: C:\BPS47/includes/functions.php:601
 msgid "Deny All protection activated for BPS Master /htaccess folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:613
+#: C:\BPS47/includes/functions.php:604
 msgid ""
 "ERROR: Deny All protection NOT activated for BPS Master /htaccess folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:623
+#: C:\BPS47/includes/functions.php:614
 msgid "Deny All protection activated for /"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:623 C:\BPS47/includes/functions.php:626
+#: C:\BPS47/includes/functions.php:614 C:\BPS47/includes/functions.php:617
 msgid "/bps-backup folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:626
+#: C:\BPS47/includes/functions.php:617
 msgid "ERROR: Deny All protection NOT activated for /"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:671
+#: C:\BPS47/includes/functions.php:662
 msgid " File Found"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:673
+#: C:\BPS47/includes/functions.php:664
 msgid " File NOT Found"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:684
+#: C:\BPS47/includes/functions.php:675
 msgid "Your Root .htaccess file is backed up."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:687
+#: C:\BPS47/includes/functions.php:678
 msgid ""
 "Your Root .htaccess file is NOT backed up either because you have not done a "
 "Backup yet, an .htaccess file did NOT already exist in your root folder or "
@@ -6933,18 +7038,18 @@ msgid ""
 "Status Read Me\" button for more specific information."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:694 C:\BPS47/includes/functions.php:724
+#: C:\BPS47/includes/functions.php:685 C:\BPS47/includes/functions.php:715
 msgid ""
 "wp-admin BulletProof Mode is disabled on the Security Modes page or you have "
 "a Go Daddy Managed WordPress Hosting account. The wp-admin folder is "
 "restricted on GDMW hosting account types."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:700
+#: C:\BPS47/includes/functions.php:691
 msgid "Your wp-admin .htaccess file is backed up."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:703
+#: C:\BPS47/includes/functions.php:694
 msgid ""
 "Your wp-admin .htaccess file is NOT backed up either because you have not "
 "done a Backup yet, an .htaccess file did NOT already exist in your /wp-admin "
@@ -6952,186 +7057,186 @@ msgid ""
 "htaccess Files Status Read Me\" button for more specific information"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:714
+#: C:\BPS47/includes/functions.php:705
 msgid "An .htaccess file was found in your root folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:717
+#: C:\BPS47/includes/functions.php:708
 msgid "An .htaccess file was NOT found in your root folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:730
+#: C:\BPS47/includes/functions.php:721
 msgid "An .htaccess file was found in your /wp-admin folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:733
+#: C:\BPS47/includes/functions.php:724
 msgid "An .htaccess file was NOT found in your /wp-admin folder"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:743 C:\BPS47/includes/functions.php:746
+#: C:\BPS47/includes/functions.php:734 C:\BPS47/includes/functions.php:737
 msgid "Custom Permalinks:"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:743
+#: C:\BPS47/includes/functions.php:734
 msgid "WARNING! Custom Permalinks are NOT in use"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:743
+#: C:\BPS47/includes/functions.php:734
 msgid "It is recommended that you use Custom Permalinks"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:746
+#: C:\BPS47/includes/functions.php:737
 msgid "Custom Permalinks are in use"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:755
+#: C:\BPS47/includes/functions.php:746
 msgid "PHP Version Check: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:755
+#: C:\BPS47/includes/functions.php:746
 msgid "Using PHP5"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:759
+#: C:\BPS47/includes/functions.php:750
 msgid "WARNING! BPS requires PHP5 to function correctly. Your PHP version is: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:771
+#: C:\BPS47/includes/functions.php:762
 msgid ""
 "WARNING! BPS requires at least PHP5 to function correctly. Your PHP version "
 "is: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:771
+#: C:\BPS47/includes/functions.php:762
 msgid "BPS Guide - PHP5 Solution"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:771
+#: C:\BPS47/includes/functions.php:762
 msgid ""
 "The BPS Guide will open in a new browser window. You will not be directed "
 "away from your WordPress Dashboard."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:786
+#: C:\BPS47/includes/functions.php:777
 msgid "HUD Check: Custom Permalinks are NOT being used."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:786
+#: C:\BPS47/includes/functions.php:777
 msgid "It is recommended that you use Custom Permalinks: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:786
+#: C:\BPS47/includes/functions.php:777
 msgid "How to setup Custom Permalinks"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:786 C:\BPS47/includes/functions.php:812
-#: C:\BPS47/includes/functions.php:1149 C:\BPS47/includes/functions.php:1175
-#: C:\BPS47/includes/functions.php:1201 C:\BPS47/includes/functions.php:1227
-#: C:\BPS47/includes/functions.php:1348
+#: C:\BPS47/includes/functions.php:777 C:\BPS47/includes/functions.php:803
+#: C:\BPS47/includes/functions.php:1140 C:\BPS47/includes/functions.php:1166
+#: C:\BPS47/includes/functions.php:1192 C:\BPS47/includes/functions.php:1218
+#: C:\BPS47/includes/functions.php:1339
 msgid ""
 "To Dismiss this Notice click the Dismiss Notice link below. To Reset Dismiss "
 "Notices click the Reset/Recheck Dismiss Notices button on the Security "
 "Status page."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:786 C:\BPS47/includes/functions.php:812
-#: C:\BPS47/includes/functions.php:1149 C:\BPS47/includes/functions.php:1175
-#: C:\BPS47/includes/functions.php:1201 C:\BPS47/includes/functions.php:1227
-#: C:\BPS47/includes/functions.php:1262 C:\BPS47/includes/functions.php:1315
-#: C:\BPS47/includes/functions.php:1348 C:\BPS47/includes/functions.php:1383
+#: C:\BPS47/includes/functions.php:777 C:\BPS47/includes/functions.php:803
+#: C:\BPS47/includes/functions.php:1140 C:\BPS47/includes/functions.php:1166
+#: C:\BPS47/includes/functions.php:1192 C:\BPS47/includes/functions.php:1218
+#: C:\BPS47/includes/functions.php:1253 C:\BPS47/includes/functions.php:1306
+#: C:\BPS47/includes/functions.php:1339 C:\BPS47/includes/functions.php:1374
 msgid "Dismiss Notice"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:812
+#: C:\BPS47/includes/functions.php:803
 msgid ""
 "WARNING! BPS has detected that your Server is a Windows IIS Server that does "
 "not support htaccess rewriting."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:812
+#: C:\BPS47/includes/functions.php:803
 msgid "Do NOT activate BulletProof Modes unless you know what you are doing."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:812
+#: C:\BPS47/includes/functions.php:803
 msgid "Your Server Type is: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:812
+#: C:\BPS47/includes/functions.php:803
 msgid "WordPress Codex - Using Permalinks - see IIS section"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835 C:\BPS47/includes/functions.php:840
+#: C:\BPS47/includes/functions.php:826 C:\BPS47/includes/functions.php:831
 msgid "WARNING! BPS was unable to automatically create the /"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835
+#: C:\BPS47/includes/functions.php:826
 msgid "/bps-backup folder."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835 C:\BPS47/includes/functions.php:840
+#: C:\BPS47/includes/functions.php:826 C:\BPS47/includes/functions.php:831
 msgid "You will need to create the /"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835
+#: C:\BPS47/includes/functions.php:826
 msgid ""
 "/bps-backup folder manually via FTP. The folder permissions for the bps-"
 "backup folder need to be set to 755 in order to successfully perform "
 "permanent online backups."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835 C:\BPS47/includes/functions.php:840
-#: C:\BPS47/includes/functions.php:849
+#: C:\BPS47/includes/functions.php:826 C:\BPS47/includes/functions.php:831
+#: C:\BPS47/includes/functions.php:840
 msgid "To remove this message permanently click "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:835 C:\BPS47/includes/functions.php:840
-#: C:\BPS47/includes/functions.php:849
+#: C:\BPS47/includes/functions.php:826 C:\BPS47/includes/functions.php:831
+#: C:\BPS47/includes/functions.php:840
 msgid "here."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:840
+#: C:\BPS47/includes/functions.php:831
 msgid ""
 "/bps-backup/master-backups folder manually via FTP. The folder permissions "
 "for the master-backups folder need to be set to 755 in order to successfully "
 "perform permanent online backups."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:849
+#: C:\BPS47/includes/functions.php:840
 msgid ""
 "WARNING! BPS has detected that Safe Mode is set to On in your php.ini file."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:849
+#: C:\BPS47/includes/functions.php:840
 msgid ""
 "If you see errors that BPS was unable to automatically create the backup "
 "folders this is probably the reason why."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:866
+#: C:\BPS47/includes/functions.php:857
 msgid ""
 "W3 Total Cache is activated, but W3TC htaccess code was NOT found in your "
 "root htaccess file."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:866
+#: C:\BPS47/includes/functions.php:857
 msgid ""
 "W3TC needs to be redeployed by clicking either the W3TC auto-install or "
 "deploy buttons. Your Root htaccess file must be temporarily unlocked so that "
 "W3TC can write to your Root htaccess file. Click to "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:866
+#: C:\BPS47/includes/functions.php:857
 msgid "Redeploy W3TC."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:866
+#: C:\BPS47/includes/functions.php:857
 msgid ""
 "You can copy W3TC .htaccess code from your Root .htaccess file to BPS Custom "
 "Code to save it permanently so that you will not have to do these steps in "
 "the future."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:866
+#: C:\BPS47/includes/functions.php:857
 msgid ""
 "Copy W3TC .htaccess code to this BPS Custom Code text box: CUSTOM CODE TOP "
 "PHP/PHP.INI HANDLER/CACHE CODE, click the Save Root Custom Code button, go "
@@ -7139,13 +7244,13 @@ msgid ""
 "AutoMagic button and activate Root folder BulletProof Mode again."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:874
+#: C:\BPS47/includes/functions.php:865
 msgid ""
 "W3 Total Cache is deactivated and W3TC .htaccess code was found in your "
 "root .htaccess file."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:874
+#: C:\BPS47/includes/functions.php:865
 msgid ""
 "If this is just temporary then this warning message will go away when you "
 "reactivate W3TC. If you are planning on uninstalling W3TC the W3TC .htaccess "
@@ -7154,14 +7259,14 @@ msgid ""
 "your browser to perform a new HUD htaccess file check."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "WP Super Cache is activated, but either you are not using WPSC mod_rewrite "
 "to serve cache files or the WPSC htaccess code was NOT found in your root "
 "htaccess file."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "If you are not using WPSC mod_rewrite then copy this: # WPSuperCache to this "
 "BPS Custom Code text box: CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE, "
@@ -7170,38 +7275,38 @@ msgid ""
 "BulletProof Mode again."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "If you are using WPSC mod_rewrite and the WPSC htaccess code is not in your "
 "root htaccess file then unlock your Root htaccess file temporarily then "
 "click this "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid "Update WPSC link"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 " to go to the WPSC Settings page and click the Update Mod_Rewrite Rules "
 "button."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "If you have put your site in Default Mode then disregard this Alert and DO "
 "NOT update your Mod_Rewrite Rules. Refresh your browser to perform a new "
 "htaccess file check."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "You can copy WPSC .htaccess code from your Root .htaccess file to BPS Custom "
 "Code to save it permanently so that you will not have to do these steps in "
 "the future."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:893
+#: C:\BPS47/includes/functions.php:884
 msgid ""
 "Copy WPSC .htaccess code to this BPS Custom Code text box: CUSTOM CODE TOP "
 "PHP/PHP.INI HANDLER/CACHE CODE, click the Save Root Custom Code button, go "
@@ -7209,13 +7314,13 @@ msgid ""
 "AutoMagic button and activate Root folder BulletProof Mode again."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:901
+#: C:\BPS47/includes/functions.php:892
 msgid ""
 "WP Super Cache is deactivated and WPSC .htaccess code - # BEGIN WPSuperCache "
 "# END WPSuperCache - was found in your root .htaccess file."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:901
+#: C:\BPS47/includes/functions.php:892
 msgid ""
 "If this is just temporary then this warning message will go away when you "
 "reactivate WPSC. You will need to set up and reconfigure WPSC again when you "
@@ -7226,313 +7331,313 @@ msgid ""
 "browser."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:928
+#: C:\BPS47/includes/functions.php:919
 msgid "Subfolder Installation"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:930
+#: C:\BPS47/includes/functions.php:921
 msgid "Root Folder Installation"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:940
+#: C:\BPS47/includes/functions.php:931
 msgid "Standard WP Site Type"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:942
+#: C:\BPS47/includes/functions.php:933
 msgid "GWIOD WP Site Type"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:943
+#: C:\BPS47/includes/functions.php:934
 msgid "WordPress Address (URL): "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:944
+#: C:\BPS47/includes/functions.php:935
 msgid "Site Address (URL): "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:952
+#: C:\BPS47/includes/functions.php:943
 msgid "BuddyPress is installed/enabled"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:954
+#: C:\BPS47/includes/functions.php:945
 msgid "BuddyPress is not installed/enabled"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:962
+#: C:\BPS47/includes/functions.php:953
 msgid "bbPress is installed/enabled"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:964
+#: C:\BPS47/includes/functions.php:955
 msgid "bbPress is not installed/enabled"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:972
+#: C:\BPS47/includes/functions.php:963
 msgid "Network/Multisite is not installed/enabled"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:978
+#: C:\BPS47/includes/functions.php:969
 msgid "Subdirectory Site Type"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:981
+#: C:\BPS47/includes/functions.php:972
 msgid "Subdomain Site Type"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:992
+#: C:\BPS47/includes/functions.php:983
 msgid "Network/Multisite AutoMagic Buttons"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:992
+#: C:\BPS47/includes/functions.php:983
 msgid "For All Network/Multisite Site Types"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:995
+#: C:\BPS47/includes/functions.php:986
 msgid "Single/Standard Site AutoMagic Buttons"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:995
+#: C:\BPS47/includes/functions.php:986
 msgid "For All Single/Standard Site Types"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1008
+#: C:\BPS47/includes/functions.php:999
 msgid ""
 "Recommended Security Change: Username \"admin\" is being used for an "
 "Administrator User Account. It is recommended that you create a new unique "
 "administrator User Account name and delete the old \"admin\" User Account."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1011
+#: C:\BPS47/includes/functions.php:1002
 msgid ""
 "The Default Admin username \"admin\" is not being used for an Administrator "
 "User Account."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1032
+#: C:\BPS47/includes/functions.php:1023
 msgid "The WP readme.html file does not exist"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1037
+#: C:\BPS47/includes/functions.php:1028
 msgid "The WP readme.html file is .htaccess protected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1040
+#: C:\BPS47/includes/functions.php:1031
 msgid "The WP readme.html file is not .htaccess protected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1063
+#: C:\BPS47/includes/functions.php:1054
 msgid "The WP /wp-admin/install.php file does not exist"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1068
+#: C:\BPS47/includes/functions.php:1059
 msgid "The WP /wp-admin/install.php file is .htaccess protected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1071
+#: C:\BPS47/includes/functions.php:1062
 msgid "The WP /wp-admin/install.php file is not .htaccess protected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1085
+#: C:\BPS47/includes/functions.php:1076
 msgid "BulletProof Security Pro Modules are installed and activated."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1089
+#: C:\BPS47/includes/functions.php:1080
 msgid "BPS Pro Modules are not installed"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1117
+#: C:\BPS47/includes/functions.php:1108
 msgid ""
 "WARNING! WordPress DB Show Errors Is Set To: true! DB errors will be "
 "displayed"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1120
+#: C:\BPS47/includes/functions.php:1111
 msgid "WordPress DB Show Errors Function Is Set To: "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1120
+#: C:\BPS47/includes/functions.php:1111
 msgid "false"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1120
+#: C:\BPS47/includes/functions.php:1111
 msgid "WordPress Database Errors Are Turned Off"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1128
+#: C:\BPS47/includes/functions.php:1119
 msgid "WordPress Meta Generator Tag Removed"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1128
+#: C:\BPS47/includes/functions.php:1119
 msgid "WordPress Version Is Not Displayed / Not Shown"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1149
+#: C:\BPS47/includes/functions.php:1140
 msgid "Bonus Custom Code: Brute Force Login Protection"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1149
+#: C:\BPS47/includes/functions.php:1140
 msgid " to get additional Brute Force Login Protection code for your website."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1175
+#: C:\BPS47/includes/functions.php:1166
 msgid "Bonus Custom Code: Speed Boost Cache Code"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1175
+#: C:\BPS47/includes/functions.php:1166
 msgid " to get Speed Boost Cache code to speed up your website."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1201
+#: C:\BPS47/includes/functions.php:1192
 msgid "Bonus Custom Code: Author Enumeration BOT Probe Code"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1201
+#: C:\BPS47/includes/functions.php:1192
 msgid ""
 " to get Author Enumeration BOT Probe Code. Protects against hacker bots "
 "finding Author names & User names on your website."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1227
+#: C:\BPS47/includes/functions.php:1218
 msgid "Bonus Custom Code: XML-RPC DDoS Protection Code"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1227
+#: C:\BPS47/includes/functions.php:1218
 msgid ""
 " to get the XML-RPC DDoS Protection Code. Protects against DDoS attacks "
 "against your website that exploit your WordPress xmlrpc.php file and XML-RPC "
 "Server."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1262
+#: C:\BPS47/includes/functions.php:1253
 msgid "HUD Check: PHP/php.ini handler htaccess code check"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1262
+#: C:\BPS47/includes/functions.php:1253
 msgid ""
 "PHP/php.ini handler htaccess code was found in your root .htaccess file, but "
 "was NOT found in BPS Custom Code."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1262
+#: C:\BPS47/includes/functions.php:1253
 msgid ""
 "It is recommended that you copy your PHP/php.ini handler htaccess code in "
 "your root htaccess file to BPS Custom Code."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1262
+#: C:\BPS47/includes/functions.php:1253
 msgid ""
 " for instructions on how to copy your PHP/php.ini handler htaccess code to "
 "BPS Custom Code."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1262 C:\BPS47/includes/functions.php:1315
-#: C:\BPS47/includes/functions.php:1383
+#: C:\BPS47/includes/functions.php:1253 C:\BPS47/includes/functions.php:1306
+#: C:\BPS47/includes/functions.php:1374
 msgid ""
 "To Dismiss this Notice click the Dismiss Notice link below. To Dismiss this "
 "Notice click the Dismiss Notice link below. To Reset Dismiss Notices click "
 "the Reset/Recheck Dismiss Notices button on the Security Status page."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1290
+#: C:\BPS47/includes/functions.php:1281
 msgid "New Login Security Options Notification"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1290
+#: C:\BPS47/includes/functions.php:1281
 msgid ""
 " to go to Login Security page and choose the settings you want to use for "
 "these 2 new Login Security Options:"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1290
+#: C:\BPS47/includes/functions.php:1281
 msgid ""
 "Error Messages Option & Password Reset Option and then click the Save "
 "Options button."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1315
+#: C:\BPS47/includes/functions.php:1306
 msgid "Sucuri 1-click Hardening wp-content .htaccess file problem detected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1315
+#: C:\BPS47/includes/functions.php:1306
 msgid ""
 "Using the Sucuri 1-click Hardening wp-content .htaccess file option will "
 "prevent BPS Security Error Logging from working."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1315
+#: C:\BPS47/includes/functions.php:1306
 msgid ""
 "To fix this issue delete the Sucuri .htaccess file in your wp-content folder."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1348
+#: C:\BPS47/includes/functions.php:1339
 msgid "The WordPress Firewall 2 plugin is installed and activated"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1348
+#: C:\BPS47/includes/functions.php:1339
 msgid "It is recommended that you delete the WordPress Firewall 2 plugin."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1348
+#: C:\BPS47/includes/functions.php:1339
 msgid " for more information."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1383
+#: C:\BPS47/includes/functions.php:1374
 msgid "Broken Link Checker plugin HEAD Request Method filter problem detected"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1383
+#: C:\BPS47/includes/functions.php:1374
 msgid "To fix this problem "
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1489
+#: C:\BPS47/includes/functions.php:1480
 msgid "Once Hourly"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1739
+#: C:\BPS47/includes/functions.php:1730
 msgid "Notice: BPS Query String Exploits Code Changes"
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1739
+#: C:\BPS47/includes/functions.php:1730
 msgid ""
 "Older BPS Query String Exploits code was found in BPS Custom Code. Several "
 "Query String Exploits rules were changed/added/modified in the root ."
 "htaccess file in BPS .49.6, .50.2 & .50.3."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1739
+#: C:\BPS47/includes/functions.php:1730
 msgid ""
 "Copy the new Query String Exploits section of code from your root .htaccess "
 "file and paste it into this BPS Custom Code text box: CUSTOM CODE BPSQSE BPS "
 "QUERY STRING EXPLOITS and click the Save Root Custom Code button."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1739
+#: C:\BPS47/includes/functions.php:1730
 msgid ""
 "This Notice will go away once you have copied the new Query String Exploits "
 "code to BPS Custom Code and clicked the Save Root Custom Code button."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1763 C:\BPS47/includes/functions.php:1795
+#: C:\BPS47/includes/functions.php:1754 C:\BPS47/includes/functions.php:1786
 #: C:\BPS47/includes/functions.php:1824
 msgid "Reminder: Frontend Maintenance Mode is Turned On."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1766 C:\BPS47/includes/functions.php:1798
+#: C:\BPS47/includes/functions.php:1757 C:\BPS47/includes/functions.php:1789
 #: C:\BPS47/includes/functions.php:1827
 msgid "Reminder: Backend Maintenance Mode is Turned On."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1769 C:\BPS47/includes/functions.php:1801
+#: C:\BPS47/includes/functions.php:1760 C:\BPS47/includes/functions.php:1792
 #: C:\BPS47/includes/functions.php:1830
 msgid "Reminder: Frontend & Backend Maintenance Modes are Turned On."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1783 C:\BPS47/includes/functions.php:1812
+#: C:\BPS47/includes/functions.php:1774 C:\BPS47/includes/functions.php:1812
 msgid ""
 "Reminder: Frontend Maintenance Mode is Turned On for The Primary Site and "
 "All Subsites."
 msgstr ""
 
-#: C:\BPS47/includes/functions.php:1788 C:\BPS47/includes/functions.php:1817
+#: C:\BPS47/includes/functions.php:1779 C:\BPS47/includes/functions.php:1817
 msgid ""
 "Reminder: Frontend Maintenance Mode is Turned On for All Subsites, but Not "
 "The Primary Site."
