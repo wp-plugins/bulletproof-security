@@ -62,7 +62,7 @@ echo @bps_wpsc_htaccess_check($plugin_var);
 bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
-if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {
+if ( current_user_can('manage_options') && wp_script_is( 'bps-accordion', $list = 'queue' ) ) {
 if ( @$_GET['settings-updated'] == true ) {
 	$text = '<p style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:5px;margin:0px;"><font color="green"><strong>'.__('Settings Saved', 'bulletproof-security').'</strong></font></p>';
 	echo $text;
@@ -114,7 +114,7 @@ $bps_bottomDiv = '</p></div>';
 if ( is_multisite() && $blog_id != 1 ) {
 _e('Display FrontEnd Maintenance Mode Page', 'bulletproof-security');
 } else {
-_e('FrontEnd ~ Display Maintenance Mode Page / BackEnd ~ Lock BackEnd with Deny All htaccess Protection', 'bulletproof-security'); 
+_e('FrontEnd ~ Display Maintenance Mode Page|BackEnd ~ Lock BackEnd with Deny All htaccess Protection', 'bulletproof-security'); 
 }
 ?>
 </h2>
@@ -135,11 +135,13 @@ _e('FrontEnd ~ Display Maintenance Mode Page / BackEnd ~ Lock BackEnd with Deny 
   <tr>
     <td class="bps-table_cell_help">
 
-<h3><?php _e('Maintenance Mode', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+<h3 style="margin:0px 0px 10px 0px;"><?php _e('Maintenance Mode', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
 
 <div id="bps-modal-content1" style="background-color:#fff; padding:0px 10px 10px 10px;" title="<?php _e('Maintenance Mode', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('Select your options/settings, click the Save Options button, Preview your Maintenance Mode page and click the Turn On button. Rinse and repeat if you make any new changes to your options/settings.', 'bulletproof-security').'</strong><br><br><strong>'.__('For more extensive help info or CSS Code, Image & Video Embed examples to add in the Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors text area go to this Maintenance Mode Guide Forum Topic link: http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/.', 'bulletproof-security').'</strong><br><br><strong>'.__('Enable Countdown Timer:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable a javascript Countdown Timer that will be displayed to visitors.', 'bulletproof-security').'<br><br><strong>'.__('Countdown Timer Text Color:', 'bulletproof-security').'</strong><br>'.__('Select the text color for the Countdown Timer.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode Time (in Minutes):', 'bulletproof-security').'</strong><br>'.__('Enter the amount of time that you want to put your site into Maintenance Mode in minutes. Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours, 4320 = 3 days.', 'bulletproof-security').'<br><br><strong>'.__('Header Retry-After (enter the same time as Maintenance Mode Time above):', 'bulletproof-security').'</strong><br>'.__('This is the amount of time that you are telling Search Engines to wait before visiting your website again. Enter the same time in minutes that you entered for Maintenance Mode Time.', 'bulletproof-security').'<br><br><strong>'.__('Enable FrontEnd Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable FrontEnd Maintenance Mode. When you Turn On FrontEnd Maintenance Mode your website Maintenance Mode page will be displayed to website visitors instead of your website. Hint: besides using Preview to see what your site will look like to visitors you can also not enter your IP address in the Maintenance Mode IP Address Whitelist Text Box - CAUTION: do not enable BackEnd Maintenance Mode if you do that or you will be locked out of your WordPress Dashboard.', 'bulletproof-security').'<br><br><strong>'.__('Enable BackEnd Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable BackEnd Maintenance Mode. Be sure to enter the Your IP address/the Recommended IP address in the Maintenance Mode IP Address Whitelist Text Box before you click the Save Options button and click the Turn On button. If you Turn On BackEnd Maintenance Mode and your IP address is not entered and saved then you will be locked out of your WordPress Dashboard. To get back into your WordPress Dashboard, FTP to your website and delete the /wp-admin/.htaccess file to be able to log back into your WordPress Dashboard.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode IP Address Whitelist Text Box:', 'bulletproof-security').'</strong><br>'.__('Enter The IP Address That Can View The Website Normally (not in Maintenance Mode):', 'bulletproof-security').'<br>'.__('Enter Multiple IP addresses separated by a comma and a single space. Example: 100.99.88.77, 200.66.55.44, 44.33.22.1 It is recommended that you use the Recommended IP address that is displayed to you. IP addresses are dynamic and will be changed frequently by your ISP. The Recommended IP address is 3 octets (xxx.xxx.xxx.) of your IP address instead of 4 octets (xxx.xxx.xxx.xxx). ISP\'s typically only change the 4th octet of IP addresses that are assigned to you. You can use/enter either 1 octet, 2 octets, 3 octets or your current IP address to whitelist your IP address.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors:', 'bulletproof-security').'</strong><br>'.__('This text box allows you to enter plain text, CSS or HTML code. You can embed images or YouTube videos using CSS and HTML code. For CSS and HTML code examples that you can copy and paste into this text box go to this Maintenance Mode Guide Forum Topic link: http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/. After you cppy and paste the code into this text box, edit it and change the links or whatever else you want to modify and click the Save Options button to save your edits.', 'bulletproof-security').'<br><br><strong>'.__('Background Images:', 'bulletproof-security').'</strong><br>'.__('Select a background image that you want to use. BPS includes 20 background images and 15 center images (text box images) that you can mix and match to your design/color scheme preference.', 'bulletproof-security').'<br><br><strong>'.__('Center Images:', 'bulletproof-security').'</strong>'.__('Select a center image that you want to use. BPS includes 20 background images and 15 center images (text box images) that you can mix and match to your design/color scheme preference.', 'bulletproof-security').'<br><br><strong>'.__('Background Colors (If not using a Background Image):', 'bulletproof-security').'</strong><br>'.__('Select a background color that you want to use. If you do not want to use a background image then you can instead choose a background color.', 'bulletproof-security').'<br><strong>'.__('Display Visitor IP Address:', 'bulletproof-security').'</strong>'.__('Check this checkbox to display the website visitor\'s IP addresses.', 'bulletproof-security').'<br><br><strong>'.__('Display Admin/Login Link', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to display a Login link that points to your wp-admin folder/Login page.', 'bulletproof-security').'<br><br><strong>'.__('Display Dashboard Reminder Message when site is in Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to display a WordPress Dashboard Reminder Notice that your website is in Maintenance Mode.', 'bulletproof-security').'<br><br><strong>'.__('Send Email Reminder when Maintenance Mode Countdown Timer has completed:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable the javascript Countdown Timer to send you an email reminder when the Countdown Timer reaches 0 / is completed. More importantly when this option is selected you will receive another email reminder each time a visitor visits your website.', 'bulletproof-security').'<br><br><strong>'.__('Testing the Countdown Timer Send Email Option:', 'bulletproof-security').'</strong><br>'.__('There is a 1 minute buffer so that when the Maintenance Mode page is created an email will not be sent immediately. To test the Send Email option use 2 minutes for the Maintenance Mode Time, click the Save Options button and click the Preview button. Leave the Preview Browser Window/Tab open. When the Countdown Timer has completed (reached 0) an email will be sent. You may receive the email immediately or it may take several minutes depending on how fast your Mail Server sends the email to you.', 'bulletproof-security').'<br><br><strong>'.__('Send Countdown Timer Email:', 'bulletproof-security').'</strong><br>'.__('Enter the email addresses that you would like the Countdown Timer reminder email sent to, from, cc or bcc.', 'bulletproof-security').'<br><br><strong>'.__('Network/Multisite Primary Site Options ONLY:', 'bulletproof-security').'</strong><br>'.__('These options/settings are for Network/Multisite ONLY and are ONLY displayed on the Primary Network/Multisite site. Checking these options on a Single/Standard WordPress installation have no effect since these options are ONLY for Network/Multisite WordPress installations.', 'bulletproof-security').'<br><br><strong>'.__('Steps to use these special Network/Multisite options:', 'bulletproof-security').'</strong><br>'.__('To turn On either of these special options, check the checkbox, click the Save Options button and click the Turn On button. To turn Off either of these options, uncheck the checkbox, click the Save Options button and click the Turn On button - you would not click the Turn Off button. You are resaving your options and then writing those saved option settings to the Maintenance template files. Or in other words, you have removed those options settings and are creating another new template file without these special option settings in that template file.', 'bulletproof-security').'<br><br><strong>'.__('Put The Primary Site And All Subsites In Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to put all of the sites into Maintenance Mode.', 'bulletproof-security').'<br><br><strong>'.__('Put All Subsites In Maintenance Mode, But Not The Primary Site:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to put all of the subsites into Maintenance Mode except for the Primary site.', 'bulletproof-security').'<br><br><strong>'.__('Save Options Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Save Options button does 2 things: Saves all your options/settings to your Database and creates all necessary Maintenance Mode files/Forms. Clicking the Save Options button does NOT Turn On Maintenance Mode. Click the Turn On button after clicking the Save Options button.', 'bulletproof-security').'<br><br><strong>'.__('Preview Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Preview button allows you to preview the Maintenance Mode files/Forms that were created when you clicked the Save Options button. Preview allows you to view what will be displayed to visitors to your website when you turn On Maintenance Mode. Maintenance Mode is not turned On when you click the Preview button. Maintenance Mode is turned On by clicking the Turn On button.', 'bulletproof-security').'<br><br><strong>'.__('Turn On Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Turn On button turns On Maintenance Mode. Turn On is conditional and allows you to make changes to your Maintenance Mode page that is displayed to your website visitors. You can make any new changes to your options/settings, click the Save Options button again, click the Turn On button again and your new changes/settings will be immediately displayed on your Maintenance Mode page.', 'bulletproof-security').'<br><br><strong>'.__('Turn Off Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Turn Off button turns Off Maintenance Mode. Turn Off is non-conditional and works like a Form Reset, but does not remove any of your Saved Options/settings. All active/enabled maintenance mode files/Forms are removed from your site and of course maintenance mode is turned Off. If you have a Network/Multisite site then some Maintenance Mode files need to remain in your website root folder, but Maintenance Mode will be turned Off.', 'bulletproof-security').'<br><br><strong>'.__('BPS help links can be found in the Help & FAQ pages.', 'bulletproof-security').'</strong>'; echo $text; ?></p>
+	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('Select your options/settings, click the Save Options button, Preview your Maintenance Mode page and click the Turn On button. Rinse and repeat if you make any new changes to your options/settings.', 'bulletproof-security').'</strong><br><br><strong>'.__('For more extensive help info or CSS Code, Image & Video Embed examples to add in the Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors text area go to this Maintenance Mode Guide Forum Topic link: http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/.', 'bulletproof-security').'</strong><br><br><strong>'.__('Enable Countdown Timer:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable a javascript Countdown Timer that will be displayed to visitors.', 'bulletproof-security').'<br><br><strong>'.__('Countdown Timer Text Color:', 'bulletproof-security').'</strong><br>'.__('Select the text color for the Countdown Timer.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode Time (in Minutes):', 'bulletproof-security').'</strong><br>'.__('Enter the amount of time that you want to put your site into Maintenance Mode in minutes. Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours, 4320 = 3 days.', 'bulletproof-security').'<br><br><strong>'.__('Header Retry-After (enter the same time as Maintenance Mode Time above):', 'bulletproof-security').'</strong><br>'.__('This is the amount of time that you are telling Search Engines to wait before visiting your website again. Enter the same time in minutes that you entered for Maintenance Mode Time.', 'bulletproof-security').'<br><br><strong>'.__('Enable FrontEnd Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable FrontEnd Maintenance Mode. When you Turn On FrontEnd Maintenance Mode your website Maintenance Mode page will be displayed to website visitors instead of your website. Hint: besides using Preview to see what your site will look like to visitors you can also not enter your IP address in the Maintenance Mode IP Address Whitelist Text Box - CAUTION: do not enable BackEnd Maintenance Mode if you do that or you will be locked out of your WordPress Dashboard.', 'bulletproof-security').'<br><br><strong>'.__('Enable BackEnd Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable BackEnd Maintenance Mode. Be sure to enter the Your IP address/the Recommended IP address in the Maintenance Mode IP Address Whitelist Text Box before you click the Save Options button and click the Turn On button. If you Turn On BackEnd Maintenance Mode and your IP address is not entered and saved then you will be locked out of your WordPress Dashboard. To get back into your WordPress Dashboard, FTP to your website and delete the /wp-admin/.htaccess file to be able to log back into your WordPress Dashboard.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode IP Address Whitelist Text Box:', 'bulletproof-security').'</strong><br>'.__('Enter The IP Address That Can View The Website Normally (not in Maintenance Mode):', 'bulletproof-security').'<br>'.__('Enter Multiple IP addresses separated by a comma and a single space. Example: 100.99.88.77, 200.66.55.44, 44.33.22.1 It is recommended that you use the Recommended IP address that is displayed to you. IP addresses are dynamic and will be changed frequently by your ISP. The Recommended IP address is 3 octets (xxx.xxx.xxx.) of your IP address instead of 4 octets (xxx.xxx.xxx.xxx). ISP\'s typically only change the 4th octet of IP addresses that are assigned to you. You can use/enter either 1 octet, 2 octets, 3 octets or your current IP address to whitelist your IP address.', 'bulletproof-security').'<br><br><strong>'.__('Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors:', 'bulletproof-security').'</strong><br>'.__('This text box allows you to enter plain text, CSS or HTML code. You can embed images or YouTube videos using CSS and HTML code. For CSS and HTML code examples that you can copy and paste into this text box go to this Maintenance Mode Guide Forum Topic link: http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/. After you copy and paste the code into this text box, edit it and change the links or whatever else you want to modify and click the Save Options button to save your edits.', 'bulletproof-security').'<br><br><strong>'.__('Background Images:', 'bulletproof-security').'</strong><br>'.__('Select a background image that you want to use. BPS includes 20 background images and 15 center images (text box images) that you can mix and match to your design/color scheme preference.', 'bulletproof-security').'<br><br><strong>'.__('Center Images:', 'bulletproof-security').'</strong>'.__('Select a center image that you want to use. BPS includes 20 background images and 15 center images (text box images) that you can mix and match to your design/color scheme preference.', 'bulletproof-security').'<br><br><strong>'.__('Background Colors (If not using a Background Image):', 'bulletproof-security').'</strong><br>'.__('Select a background color that you want to use. If you do not want to use a background image then you can instead choose a background color.', 'bulletproof-security').'<br><strong>'.__('Display Visitor IP Address:', 'bulletproof-security').'</strong>'.__('Check this checkbox to display the website visitor\'s IP addresses.', 'bulletproof-security').'<br><br><strong>'.__('Display Admin|Login Link', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to display a Login link that points to your wp-admin folder/Login page.', 'bulletproof-security').'<br><br><strong>'.__('Display Dashboard Reminder Message when site is in Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to display a WordPress Dashboard Reminder Notice that your website is in Maintenance Mode.', 'bulletproof-security').'<br><br><strong>'.__('Send Email Reminder when Maintenance Mode Countdown Timer has completed:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to enable the javascript Countdown Timer to send you an email reminder when the Countdown Timer reaches 0/is completed. More importantly when this option is selected you will receive another email reminder each time a visitor visits your website.', 'bulletproof-security').'<br><br><strong>'.__('Testing the Countdown Timer Send Email Option:', 'bulletproof-security').'</strong><br>'.__('There is a 1 minute buffer so that when the Maintenance Mode page is created an email will not be sent immediately. To test the Send Email option use 2 minutes for the Maintenance Mode Time, click the Save Options button and click the Preview button. Leave the Preview Browser Window/Tab open. When the Countdown Timer has completed (reached 0) an email will be sent. You may receive the email immediately or it may take several minutes depending on how fast your Mail Server sends the email to you.', 'bulletproof-security').'<br><br><strong>'.__('Send Countdown Timer Email:', 'bulletproof-security').'</strong><br>'.__('Enter the email addresses that you would like the Countdown Timer reminder email sent to, from, cc or bcc.', 'bulletproof-security').'<br><br><strong>'.__('Network|Multisite Primary Site Options ONLY:', 'bulletproof-security').'</strong><br>'.__('These options/settings are for Network/Multisite ONLY and are ONLY displayed on the Primary Network/Multisite site. Checking these options on a Single/Standard WordPress installation have no effect since these options are ONLY for Network/Multisite WordPress installations.', 'bulletproof-security').'<br><br><strong>'.__('Steps to use these special Network/Multisite options:', 'bulletproof-security').'</strong><br>'.__('To turn On either of these special options, check the checkbox, click the Save Options button and click the Turn On button. To turn Off either of these options, uncheck the checkbox, click the Save Options button and click the Turn On button - you would not click the Turn Off button. You are resaving your options and then writing those saved option settings to the Maintenance template files. Or in other words, you have removed those options settings and are creating another new template file without these special option settings in that template file.', 'bulletproof-security').'<br><br><strong>'.__('Put The Primary Site And All Subsites In Maintenance Mode:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to put all of the sites into Maintenance Mode.', 'bulletproof-security').'<br><br><strong>'.__('Put All Subsites In Maintenance Mode, But Not The Primary Site:', 'bulletproof-security').'</strong><br>'.__('Check this checkbox to put all of the subsites into Maintenance Mode except for the Primary site.', 'bulletproof-security').'<br><br><strong>'.__('Save Options Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Save Options button does 2 things: Saves all your options/settings to your Database and creates all necessary Maintenance Mode files/Forms. Clicking the Save Options button does NOT Turn On Maintenance Mode. Click the Turn On button after clicking the Save Options button.', 'bulletproof-security').'<br><br><strong>'.__('Preview Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Preview button allows you to preview the Maintenance Mode files/Forms that were created when you clicked the Save Options button. Preview allows you to view what will be displayed to visitors to your website when you turn On Maintenance Mode. Maintenance Mode is not turned On when you click the Preview button. Maintenance Mode is turned On by clicking the Turn On button.', 'bulletproof-security').'<br><br><strong>'.__('Turn On Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Turn On button turns On Maintenance Mode. Turn On is conditional and allows you to make changes to your Maintenance Mode page that is displayed to your website visitors. You can make any new changes to your options/settings, click the Save Options button again, click the Turn On button again and your new changes/settings will be immediately displayed on your Maintenance Mode page.', 'bulletproof-security').'<br><br><strong>'.__('Turn Off Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Turn Off button turns Off Maintenance Mode. Turn Off is non-conditional and works like a Form Reset, but does not remove any of your Saved Options/settings. All active/enabled maintenance mode files/Forms are removed from your site and of course maintenance mode is turned Off. If you have a Network/Multisite site then some Maintenance Mode files need to remain in your website root folder, but Maintenance Mode will be turned Off.', 'bulletproof-security').'<br><br><strong>'.__('BPS help links can be found in the Help & FAQ pages.', 'bulletproof-security').'</strong>'; echo $text; ?></p>
 </div>
+
+<h3><?php $text = '<strong><a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" target="_blank" title="Link opens in a new Browser window">'.__('Maintenance Mode Guide', 'bulletproof-security').'</a></strong>'; echo $text; ?></h3>
 
 <?php
 // Maintenance Mode Values Form Single/GWIOD/Network - Saves DB Options & creates bps-maintenance-values.php
@@ -389,28 +391,28 @@ $woodGrain = $background_image_url . 'wood-grain-center.png';
 // Get Real IP address & 3 Octets - USE EXTREME CAUTION!!!
 // Will display an IPv6 IP address as Current IP Address so not going to do anything additional with that for now
 function bps_get_proxy_real_ip_address_maint() {
-if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 	
 	$pattern = "/\d{1,3}\.\d{1,3}\.\d{1,3}\./";
 	
 	if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 		$ip = esc_html( $_SERVER['HTTP_CLIENT_IP'] );
 		$octets_ip = preg_match( $pattern, $_SERVER['HTTP_CLIENT_IP'], $matches );
-		echo '<font color="blue" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
+		echo '<font color="#2ea2cc" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
 		print_r($matches[0]);
 		echo '</strong></font><br>';
 	
 	} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 		$ip = esc_html( $_SERVER['HTTP_X_FORWARDED_FOR'] );
 		$octets_ip = preg_match( $pattern, $_SERVER['HTTP_X_FORWARDED_FOR'], $matches );
-		echo '<font color="blue" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
+		echo '<font color="#2ea2cc" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
 		print_r($matches[0]);
 		echo '</strong></font><br>';
 	
 	} elseif ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
 		$ip = esc_html( $_SERVER['REMOTE_ADDR'] );
 		$octets_ip = preg_match( $pattern, $_SERVER['REMOTE_ADDR'], $matches );
-		echo '<font color="blue" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
+		echo '<font color="#2ea2cc" style="font-size:14px;"><strong>'.__('Your Current IP Address: ', 'bulletproof-security').$ip.'<br>'.__('Recommended IP Address: ', 'bulletproof-security');
 		print_r($matches[0]);
 		echo '</strong></font><br>';	
 	}
@@ -427,19 +429,15 @@ bpsPro_maintenance_mode_values_form();
 $MMoptions = get_option('bulletproof_security_options_maint_mode');
 ?>
 
-<div id="MMode-button-position" style="position:absolute;bottom:-50px;left:0px;">
-    <input type="submit" name="Submit-Maintenance-Mode-Form" class="bps-blue-button" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('Clicking OK Saves your Options/Settings to your Database and also creates your Maintenance Mode page. Click the Preview button to preview your Maintenance Mode page. After previewing your Maintenance Mode page click the Turn On button to enable Maintenance Mode on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
-</div>
-
 <div id="bps-accordion-3" class="bps-accordian-main-2">
 <h3><?php _e('MMode Editor', 'bulletproof-security'); ?></h3>
 <div id="mmode-accordian-inner">
 
   	<label for="mmode"><?php _e('Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors:', 'bulletproof-security'); ?></label><br />
-    <label for="mmode"><?php _e('Click the Maintenance Mode Guide link below for CSS Code, Image & Video Embed examples.', 'bulletproof-security'); ?></label><br />
-    <label for="mmode"><?php $text = '<div style="margin:0px 0px -10px 0px;"><strong><a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" target="_blank" title="Link opens in a new Browser window">'.__('Maintenance Mode Guide', 'bulletproof-security').'</a></strong></div>'; echo $text; ?></label><br /><br />
+    <label for="mmode"><?php _e('Click the Maintenance Mode Guide link above for CSS Code, Image & Video Embed examples.', 'bulletproof-security'); ?></label><br /><br />
     
-    <!-- Delete Me - leave this style inline for 3 version3 -->
+    <!-- Delete Me - leave this style inline for 3 versions -->
+    <!-- Note: wp_editor/TinyMCE causes XAMPP Apache server crash: XAMPP: 1.8.1, pcre.dll, PHP 5.4.7 (VC9 X86 32bit thread safe) + PEAR -->
     <div class="mmode-tinymce" style="width:60%;">
 	<?php wp_editor( stripslashes(htmlspecialchars_decode($MMoptions['bps_maint_text'], ENT_QUOTES)), 'bpscustomeditor' ); ?><br />
     </div> 
@@ -453,7 +451,7 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
     
     <label for="mmode"><?php _e('Countdown Timer Text Color:', 'bulletproof-security'); ?></label><br />
 <select name="mmode_countdown_timer_color" style="width:300px;">
-<option value="lime" <?php selected('lime', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('LCD/Lime Green', 'bulletproof-security'); ?></option>
+<option value="lime" <?php selected('lime', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('LCD|Lime Green', 'bulletproof-security'); ?></option>
 <option value="white" <?php selected('white', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('White', 'bulletproof-security'); ?></option>
 <option value="silver" <?php selected('silver', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('Silver', 'bulletproof-security'); ?></option>
 <option value="gray" <?php selected('gray', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('Gray', 'bulletproof-security'); ?></option>
@@ -473,17 +471,19 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 	
     <!-- Delete Me - leave this style inline for 1 BPS Pro version -->	
     <div id="mmode-caution" style="font-weight:bold;margin:0px 0px 10px 0px;border:2px solid #000;width:400px;background-color:#ffffe0;padding:5px;">
-    <label for="mmode"><?php $text = '<font color="red">'.__('CAUTION: ', 'bulletproof-security').'</font><font color="blue">'.__('You MUST enter Your Current IP Address or the', 'bulletproof-security').'<br>'.__('Recommended IP Address if you Enable BackEnd Maintenance Mode', 'bulletproof-security').'<br>'.__('or you will be locked out of your WordPress Dashboard.', 'bulletproof-security').'</font>'; echo $text; ?></label></div>
+    <?php $text = '<font color="red">'.__('CAUTION: ', 'bulletproof-security').'</font><font color="blue">'.__('You MUST enter Your Current IP Address or the', 'bulletproof-security').'<br>'.__('Recommended IP Address if you Enable BackEnd Maintenance Mode', 'bulletproof-security').'<br>'.__('or you will be locked out of your WordPress Dashboard.', 'bulletproof-security').'</font>'; echo $text; ?></div>
     <input type="checkbox" name="mmode_backend" value="1" <?php checked( $MMoptions['bps_maint_backend'], 1 ); ?> /><label for="mmode"><?php _e('Enable BackEnd Maintenance Mode ', 'bulletproof-security'); ?></label><br /><br />        
 
 <?php } ?>    
 
     <!-- important note: in a text area you cannot leave whitespace within the form code or that whitespace will be echoed -->
 	<label for="mmode"><?php _e('Maintenance Mode IP Address Whitelist Text Box:', 'bulletproof-security'); ?></label><br />
-	<label for="mmode"><?php _e('Enter The IP Address That Can View The Website Normally (not in Maintenance Mode).', 'bulletproof-security'); ?></label><br />
-	<label for="mmode"><?php _e('Enter Multiple IP addresses separated by a comma and a single space.', 'bulletproof-security'); ?></label><br />
-	<label for="mmode"><?php _e('Example IPv4 IP Addresses: 100.99.88.77, 200.66.55.44, 44.33.22.1', 'bulletproof-security'); ?></label><br />
-	<label for="mmode"><?php _e('Example IPv6 IP Addresses: 0:0:0:0:0:ffff:6463:584d, 0:0:0:0:0:ffff:c842:372c', 'bulletproof-security'); ?></label><br />      
+	<div id="mmode-small-text">
+	<?php _e('Enter The IP Address That Can View The Website Normally (not in Maintenance Mode).', 'bulletproof-security'); ?><br />
+	<?php _e('Enter Multiple IP addresses separated by a comma and a single space.', 'bulletproof-security'); ?><br />
+	<?php _e('Example IPv4 IP Addresses: 100.99.88.77, 200.66.55.44, 44.33.22.1', 'bulletproof-security'); ?><br />
+	<?php _e('Example IPv6 IP Addresses: 0:0:0:0:0:ffff:6463:584d, 0:0:0:0:0:ffff:c842:372c', 'bulletproof-security'); ?><br />    
+	</div>    
 	
 	<?php bps_get_proxy_real_ip_address_maint(); ?>
 	
@@ -510,8 +510,8 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 <option value="<?php echo $orangeMS; ?>" <?php selected($orangeMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Orange Mesh Small', 'bulletproof-security'); ?></option>
 <option value="<?php echo $purpleHL; ?>" <?php selected($purpleHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Purple Honeycomb Large', 'bulletproof-security'); ?></option>
 <option value="<?php echo $purpleMS; ?>" <?php selected($purpleMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Purple Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $redHL; ?>" <?php selected($redHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red/Burgundy Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $redMS; ?>" <?php selected($redMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red/Burgundy Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $redHL; ?>" <?php selected($redHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red|Burgundy Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $redMS; ?>" <?php selected($redMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red|Burgundy Mesh Small', 'bulletproof-security'); ?></option>
 <option value="<?php echo $yellowHL; ?>" <?php selected($yellowHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Yellow Honeycomb Large', 'bulletproof-security'); ?></option>
 <option value="<?php echo $yellowMS; ?>" <?php selected($yellowMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Yellow Mesh Small', 'bulletproof-security'); ?></option>
 </select><br /><br />    
@@ -546,7 +546,7 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 
     <input type="checkbox" name="mmode_visitor_ip" value="1" <?php checked( $MMoptions['bps_maint_show_visitor_ip'], 1 ); ?> /><label for="mmode"><?php _e('Display Visitor IP Address', 'bulletproof-security'); ?></label><br /><br />
 	
-    <input type="checkbox" name="mmode_login_link" value="1" <?php checked( $MMoptions['bps_maint_show_login_link'], 1 ); ?> /><label for="mmode"><?php _e('Display Admin/Login Link', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_login_link" value="1" <?php checked( $MMoptions['bps_maint_show_login_link'], 1 ); ?> /><label for="mmode"><?php _e('Display Admin|Login Link', 'bulletproof-security'); ?></label><br /><br />
 
     <input type="checkbox" name="mmode_dashboard_reminder" value="1" <?php checked( $MMoptions['bps_maint_dashboard_reminder'], 1 ); ?> /><label for="mmode"><?php _e('Display Dashboard Reminder Message when site is in Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
 
@@ -563,14 +563,14 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 
 </div>
 
-<h3><?php _e('MMode Network/Multisite Options', 'bulletproof-security'); ?></h3>
+<h3><?php _e('MMode Network|Multisite Options', 'bulletproof-security'); ?></h3>
 <div id="mmode-accordian-inner">
 
-	<p style="font-size:16px;font-weight:bold;"><?php _e('Network/Multisite Primary Site Options ONLY', 'bulletproof-security'); ?></p> 
+	<div id="mmode-network-text" style="font-size:16px;font-weight:bold;"><?php _e('Network|Multisite Primary Site Options ONLY', 'bulletproof-security'); ?></div> 
 
 <?php if ( is_multisite() && $blog_id != 1 ) { echo '<div style="margin:0px 0px 10px 0px;"></div>'; } else { ?>
 
-	<strong><label for="mmode" style="color:blue;"><?php _e('Click the Maintenance Mode Read Me help button for the steps to use these special options:', 'bulletproof-security'); ?></label></strong><br /><br />
+ 	<strong><label for="mmode" style="color:#2ea2cc;"><?php _e('Click the Maintenance Mode Read Me help button for the steps to use these special options:', 'bulletproof-security'); ?></label></strong><br /><br />
     <input type="checkbox" name="mmode_mu_entire_site" value="1" <?php checked( $MMoptions['bps_maint_mu_entire_site'], 1 ); ?> /><label for="mmode"><?php _e('Put The Primary Site And All Subsites In Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
 
     <input type="checkbox" name="mmode_mu_subsites_only" value="1" <?php checked( $MMoptions['bps_maint_mu_subsites_only'], 1 ); ?> /><label for="mmode"><?php _e('Put All Subsites In Maintenance Mode, But Not The Primary Site', 'bulletproof-security'); ?></label><br /><br />   
@@ -579,6 +579,11 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 
 </div>
 </div>
+
+<div id="MMode-button-position" style="position:relative;bottom:0px;left:0px;">
+    <input type="submit" name="Submit-Maintenance-Mode-Form" class="button bps-button" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('Clicking OK Saves your Options/Settings to your Database and also creates your Maintenance Mode page. Click the Preview button to preview your Maintenance Mode page. After previewing your Maintenance Mode page click the Turn On button to enable Maintenance Mode on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
+</div>
+
 </form>
 </div> 
 
@@ -593,12 +598,12 @@ jQuery(document).ready(function($){
 
 <?php
 // Maintenance Mode Preview - check Referer
-if ( isset( $_POST['maintenance-mode-preview-submit'] ) && current_user_can('manage_options')) {
+if ( isset( $_POST['maintenance-mode-preview-submit'] ) && current_user_can('manage_options') ) {
 	check_admin_referer( 'bulletproof_security_maintenance_preview' );
 }
 ?>
 
-<div id="MMode-button-position" style="margin-left:110px;">
+<div id="MMode-button-position" style="">
 
 <?php
 	
@@ -617,7 +622,7 @@ if ( isset( $_POST['maintenance-mode-preview-submit'] ) && current_user_can('man
 <form name="MaintenanceModePreview" method="post" action="admin.php?page=bulletproof-security/admin/maintenance/maintenance.php" target="" onSubmit="window.open('<?php echo plugins_url('/bulletproof-security/admin/htaccess/bps-maintenance-'.$subsite_remove_slashes.'.php'); ?>','','scrollbars=yes,menubar=yes,width=800,height=600,resizable=yes,status=yes,toolbar=yes')">
 <?php wp_nonce_field('bulletproof_security_maintenance_preview'); ?>
 <p class="submit" style="float:left; margin:15px 10px 0px 0px;">
-<input type="submit" name="maintenance-mode-preview-submit" class="bps-blue-button" value="<?php esc_attr_e('Preview', 'bulletproof-security') ?>" />
+<input type="submit" name="maintenance-mode-preview-submit" class="button bps-button" value="<?php esc_attr_e('Preview', 'bulletproof-security') ?>" />
 </p>
 </form>
 
@@ -626,7 +631,7 @@ if ( isset( $_POST['maintenance-mode-preview-submit'] ) && current_user_can('man
 <form name="MaintenanceModePreview" method="post" action="admin.php?page=bulletproof-security/admin/maintenance/maintenance.php" target="" onSubmit="window.open('<?php echo plugins_url('/bulletproof-security/admin/htaccess/bps-maintenance.php'); ?>','','scrollbars=yes,menubar=yes,width=800,height=600,resizable=yes,status=yes,toolbar=yes')">
 <?php wp_nonce_field('bulletproof_security_maintenance_preview'); ?>
 <p class="submit" style="float:left; margin:15px 10px 0px 0px;">
-<input type="submit" name="maintenance-mode-preview-submit" class="bps-blue-button" value="<?php esc_attr_e('Preview', 'bulletproof-security') ?>" />
+<input type="submit" name="maintenance-mode-preview-submit" class="button bps-button" value="<?php esc_attr_e('Preview', 'bulletproof-security') ?>" />
 </p>
 </form>
 
@@ -635,14 +640,14 @@ if ( isset( $_POST['maintenance-mode-preview-submit'] ) && current_user_can('man
 <form name="bpsMaintenanceModeOn" action="admin.php?page=bulletproof-security/admin/maintenance/maintenance.php" method="post">
 <?php wp_nonce_field('bulletproof_security_mmode_on'); ?>
 <p class="submit" style="float:left; margin:15px 10px 0px 0px;">
-<input type="submit" name="Submit-maintenance-mode-on" class="bps-blue-button" value="<?php esc_attr_e('Turn On', 'bulletproof-security') ?>" />
+<input type="submit" name="Submit-maintenance-mode-on" class="button bps-button" value="<?php esc_attr_e('Turn On', 'bulletproof-security') ?>" />
 </p>
 </form>
 
 <form name="bpsMaintenanceModeOff" action="admin.php?page=bulletproof-security/admin/maintenance/maintenance.php" method="post">
 <?php wp_nonce_field('bulletproof_security_mmode_off'); ?>
-<p class="submit" style="float:left; margin:15px 10px 0px 0px;">
-<input type="submit" name="Submit-maintenance-mode-off" class="bps-blue-button" value="<?php esc_attr_e('Turn Off', 'bulletproof-security') ?>" />
+<p class="submit" style="float:left;margin:15px 10px 0px 0px;">
+<input type="submit" name="Submit-maintenance-mode-off" class="button bps-button" value="<?php esc_attr_e('Turn Off', 'bulletproof-security') ?>" />
 </p>
 </form>
 
@@ -1879,16 +1884,16 @@ if ( isset( $_POST['Submit-maintenance-mode-off'] ) && current_user_can('manage_
     <td colspan="2" class="bps-table_title">&nbsp;</td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" target="_blank"><?php _e('Maintenance Mode Guide', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-contributors/" target="_blank"><?php _e('Contributors Page', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" target="_blank"><?php _e('Maintenance Mode Guide', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-contributors/" target="_blank"><?php _e('Contributors Page', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/security-log-event-codes/" target="_blank"><?php _e('Security Log Event Codes', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/security-log-event-codes/" target="_blank"><?php _e('Security Log Event Codes', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help">&nbsp;</td>
-    <td class="bps-table_cell_help">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
   </tr>
    <tr>
     <td colspan="2" class="bps-table_cell_bottom">&nbsp;</td>

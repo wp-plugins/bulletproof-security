@@ -626,13 +626,13 @@ switch ( $pw_reset ) {
 		}
 		add_filter( 'gettext', 'bpspro_remove_pw_text' ); 
 
-		// Replace invalidcombo error - valid user account / invalid user account same exact result 
+		// Replace invalidcombo error - valid user account/invalid user account same exact result 
 		function bpspro_login_error_invalidcombo($text) { 
 			return str_replace( '<strong>ERROR</strong>: Invalid username or e-mail.', 'Password reset is not allowed for this user', $text ); 
 		}
 		add_filter ( 'login_errors', 'bpspro_login_error_invalidcombo');
 
-		// Replace invalid_email error - valid email / invalid email same exact result
+		// Replace invalid_email error - valid email/invalid email same exact result
 		function bpspro_login_error_invalid_email($text) { 
 			return str_replace( '<strong>ERROR</strong>: There is no user registered with that email address.', 'Password reset is not allowed for this user', $text );
 		}
@@ -662,13 +662,13 @@ switch ( $pw_reset ) {
 		}
 		add_filter( 'gettext', 'bpspro_remove_pw_text' ); 
 
-		// Replace invalidcombo error - valid user account / invalid user account same exact result 
+		// Replace invalidcombo error - valid user account/invalid user account same exact result 
 		function bpspro_login_error_invalidcombo($text) { 
 			return str_replace( '<strong>ERROR</strong>: Invalid username or e-mail.', 'Password reset is not allowed for this user', $text ); 
 		}
 		add_filter ( 'login_errors', 'bpspro_login_error_invalidcombo');
 
-		// Replace invalid_email error - valid email / invalid email same exact result
+		// Replace invalid_email error - valid email/invalid email same exact result
 		function bpspro_login_error_invalid_email($text) { 
 			return str_replace( '<strong>ERROR</strong>: There is no user registered with that email address.', 'Password reset is not allowed for this user', $text );
 		}

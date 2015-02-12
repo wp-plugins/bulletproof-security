@@ -172,7 +172,7 @@ $bps_secure_brute_force_login = "# BRUTE FORCE LOGIN PAGE PROTECTION
 if ( $BPSCustomCodeOptions['bps_customcode_error_logging'] != '' ) {        
 $bps_secure_error_logging = "# CUSTOM CODE ERROR LOGGING AND TRACKING\n" . htmlspecialchars_decode( $BPSCustomCodeOptions['bps_customcode_error_logging'], ENT_QUOTES ) . "\n\n";
 } else {
-$bps_secure_error_logging = "# BPS PRO ERROR LOGGING AND TRACKING
+$bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.
 # BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
 # to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to
@@ -466,23 +466,6 @@ if ( isset( $_POST['bps-auto-write-secure-root-MUSDir'] ) && current_user_can('m
 			echo $bpsSuccessMessageSec;
 			echo $bps_bottomDiv;
 		
-			/*
-			$Net_options = get_option('bulletproof_security_options_net_correction');  
-			$bps_netcorrect_options = 'bulletproof_security_options_net_correction';
-			
-			$bps_net_automagic = ! $Net_options['bps_net_automagic'] ? 'automagic' : 'automagic';
-			$bps_net_activated = ! $Net_options['bps_net_activated'] ? '' : 'activated';
-
-			$NC_Options = array( 
-			'bps_net_automagic' => $bps_net_automagic, 
-			'bps_net_activated' => $bps_net_activated
-			);
-	
-			foreach( $NC_Options as $key => $value ) {
-				update_option('bulletproof_security_options_net_correction', $NC_Options);
-			}
-			*/
-			
 		} else {
 		
 			echo $bps_topDiv;

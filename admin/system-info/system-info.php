@@ -52,7 +52,7 @@ echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
 
 // General all purpose "Settings Saved." message for forms
-if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {
+if ( current_user_can('manage_options') && wp_script_is( 'bps-accordion', $list = 'queue' ) ) {
 if ( @$_GET['settings-updated'] == true) {
 	$text = '<p style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:5px;margin:0px;"><font color="green"><strong>'.__('Settings Saved', 'bulletproof-security').'</strong></font></p>';
 	echo $text;
@@ -65,6 +65,9 @@ $bpsSpacePop = '-------------------------------------------------------------';
 $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 // Replace ABSPATH = wp-content
 $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
+// Replace ABSPATH = wp-content/uploads
+$wp_upload_dir = wp_upload_dir();
+$bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
 
 ?>
 </div>
@@ -75,33 +78,39 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
     <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
 		<ul>
 			<li><a href="#bps-tabs-1"><?php _e('System Info', 'bulletproof-security'); ?></a></li>
-			<li><a href="#bps-tabs-2"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
+            <li><a href="#bps-tabs-2"><?php _e('Website Headers Check Tool', 'bulletproof-security'); ?></a></li>			
+            <li><a href="#bps-tabs-3"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
 		</ul>
             
 <div id="bps-tabs-1">
 <h2><?php _e('System Information', 'bulletproof-security'); ?></h2>
 
+<div id="SysInfoBorder" style="border-top:1px solid #999999;">
+
+<h3><?php _e('File|Folder Permissions & UID', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
+	<div id="bps-modal-content1" title="<?php _e('File|Folder Permissions & UID', 'bulletproof-security'); ?>">
+	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)','bulletproof-security').'</strong><br><br><strong>'.__('File|Folder Diagnostic & Troubleshooting Info','bulletproof-security').'</strong><br>'.__('The file/folder permissions and UID checks are mainly for diagnostic troubleshooting so that you can check permissions or the UID of mission critical WP & BPS folders and files at a glance. There is some security benefit to changing file and folder permissions to more secure permissions, but this is not an essential or critical thing to do these days.', 'bulletproof-security').'<br><br><strong>'.__('Script Owner User ID (UID)|File Owner User ID','bulletproof-security').'</strong><br>'.__('Your Script Owner User ID (UID) and File Owner User ID should match. If they do not match for any folders then you will need to change the Owner of that folder so that both match. If you have a DSO server type see this forum topic: http://forum.ait-pro.com/forums/topic/dso-setup-steps/', 'bulletproof-security').'<br><br><strong>'.__('CGI And DSO File And Folder Permission Recommendations','bulletproof-security').'</strong><br>'.__('If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO/Apache mod_php you will see a table listing file and folder permission recommendations for DSO.', 'bulletproof-security').'<br><br>'.__('If your Host is using CGI, but they do not allow you to set your folder permissions more restrictive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host or you may see a 403 or 500 error and will need to change the folder permissions back to what they were before. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins on several different Web Hosts, but all web hosts have different things that they specifically allow or do not allow.', 'bulletproof-security').'<br><br>'.__('Most Hosts now use 705 Root folder permissions. Your Host might not be doing this or allow this, but typically 755 is fine for your Root folder. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.','bulletproof-security').'<br><br><strong>'.__('If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.','bulletproof-security').'</strong><br><br><strong>'.__('The /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.','bulletproof-security').'</strong><br><br>'.__('Your current file and folder permissions are shown below with suggested/recommended file and folder permissions. ','bulletproof-security').'<strong>'.__('Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.', 'bulletproof-security').'</strong> '.__('If you see 500 errors after changing your folder permissions than change them back to what they were.','bulletproof-security').'<br><br>'.__('I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.','bulletproof-security'); echo $text; ?></p>
+</div>
+</div>
+
 <?php 
 if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); 
 } else { 
-if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-system_info_table">
   <tr>
-    <td width="49%" class="bps-table_title"><?php _e('Website / Server / Opcode Cache / Accelerators / IP Info', 'bulletproof-security'); ?></td>
+    <td width="49%" class="bps-table_title"><?php _e('Website|Server|Opcode Cache|Accelerators|IP Info', 'bulletproof-security'); ?></td>
     <td width="2%">&nbsp;</td>
-    <td width="49%" class="bps-table_title"><?php _e('SQL Database / Permalink Structure / WP Installation Folder / Site Type', 'bulletproof-security'); ?></td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class="bps-table_cell">&nbsp;</td>
+    <td width="49%" class="bps-table_title"><?php _e('SQL Database|Permalink Structure|WP Installation Folder|Site Type', 'bulletproof-security'); ?></td>
   </tr>
   <tr>
     <td class="bps-table_cell">
-    
-	<?php 
+<?php 
+
+	$time_start = microtime( true );
 
 	// Get DNS Name Server from [target] Root Domain
 	// Note: This code runs fastest in this format vs nesting conditions
@@ -163,16 +172,16 @@ if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can
 // Get Server IP address
 function bps_get_server_ip_address_sysinfo() {
 
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		if ( isset( $_SERVER['SERVER_ADDR'] ) ) {
 			$ip = esc_html($_SERVER['SERVER_ADDR']);
-			echo __('Server / Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';
+			echo __('Server|Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';
 		} elseif ( isset( $_SERVER['HTTP_HOST'] ) ) {
 			$ip = esc_html( gethostbyname( $_SERVER['HTTP_HOST'] ) );
-			echo __('Server / Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';		
+			echo __('Server|Website IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';		
 		} else { 
 			$ip = @dns_get_record( bpsGetDomainRoot(), DNS_ALL );
-			echo __('Server / Website IP Address: ', 'bulletproof-security').'<strong>'.$ip[0]['ip'].'</strong><br>';	
+			echo __('Server|Website IP Address: ', 'bulletproof-security').'<strong>'.$ip[0]['ip'].'</strong><br>';	
 		}
 	}
 }
@@ -180,7 +189,7 @@ function bps_get_server_ip_address_sysinfo() {
 // Get Real IP address - USE EXTREME CAUTION!!!
 function bps_get_proxy_real_ip_address() {
 	
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		if ( isset($_SERVER['HTTP_CLIENT_IP'] ) ) {
 			$ip = esc_html($_SERVER['HTTP_CLIENT_IP']);
 			echo __('HTTP_CLIENT_IP IP Address: ', 'bulletproof-security').'<strong>'.$ip.'</strong><br>';
@@ -244,7 +253,7 @@ function bps_get_proxy_real_ip_address() {
 	}
 	echo '</strong><br>';	
 	echo __('Zend Engine Version', 'bulletproof-security').': <strong>' . zend_version() . '</strong><br>'; 
-	echo __('Zend Guard/Optimizer', 'bulletproof-security').': <strong>';
+	echo __('Zend Guard|Optimizer', 'bulletproof-security').': <strong>';
 	if ( extension_loaded('Zend Optimizer+') && ini_get('zend_optimizerplus.enable') == 1 || ini_get('zend_optimizerplus.enable') == 'On' ) {
 		_e('Zend Optimizer+ Extension is Loaded and Enabled', 'bulletproof-security');
 	}
@@ -276,7 +285,7 @@ function bps_get_proxy_real_ip_address() {
 		_e('Suhosin-Extension is Loaded', 'bulletproof-security');	
 	} else {
 	if ( !isset( $bpsconstants['SUHOSIN_PATCH'] ) && @$bpsconstants['SUHOSIN_PATCH'] != 1 && !extension_loaded('suhosin') ) {
-		_e('Suhosin is Not Installed/Loaded', 'bulletproof-security');			
+		_e('Suhosin is Not Installed|Loaded', 'bulletproof-security');			
 	}
 	}
 	echo '</strong><br>';
@@ -321,7 +330,7 @@ function bps_get_proxy_real_ip_address() {
 	if ( extension_loaded('memcache') ) {
 		$memcache = new Memcache;
 		@$memcache->connect('localhost', 11211);
-	echo __('Memcache Extension is Loaded', 'bulletproof-security').__('Version: ', 'bulletproof-security') . @$memcache->getVersion();
+		echo __('Memcache Extension is Loaded - ', 'bulletproof-security').__('Version: ', 'bulletproof-security') . @$memcache->getVersion();
 	} else {
 		_e('Memcache Extension is Not Loaded', 'bulletproof-security');	
 	}	
@@ -330,7 +339,7 @@ function bps_get_proxy_real_ip_address() {
 	if ( extension_loaded('memcached') ) {
 		$memcached = new Memcached();
 		@$memcached->addServer('localhost', 11211);
-	echo __('Memcached Extension is Loaded', 'bulletproof-security').__('Version: ', 'bulletproof-security') . @$memcached->getVersion();
+	echo __('Memcached Extension is Loaded - ', 'bulletproof-security').__('Version: ', 'bulletproof-security') . @$memcached->getVersion();
 	} else {
 		_e('Memcached Extension is Not Loaded', 'bulletproof-security');	
 	}	
@@ -372,17 +381,18 @@ function bps_get_proxy_real_ip_address() {
 	echo $text;
 	
 	if ( function_exists('mysql_connect') ) {
-		$text = '<strong>'.__('MySQL Extension: ', 'bulletproof-security').'</strong>'.__('Installed/Enabled', 'bulletproof-security').'<br>';
+		$text = '<strong>'.__('MySQL Extension: ', 'bulletproof-security').'</strong>'.__('Installed|Enabled', 'bulletproof-security').'<br>';
 		echo $text;
 	} else {
-		$text = '<strong>'.__('MySQL Extension: ', 'bulletproof-security').'</strong>'.__('NOT Installed/Enabled', 'bulletproof-security').'<br>';		
+		$text = '<strong>'.__('MySQL Extension: ', 'bulletproof-security').'</strong>'.__('NOT Installed|Enabled', 'bulletproof-security').'<br>';		
 		echo $text;
 	}
+	
 	if ( function_exists('mysqli_connect') ) {
-		$text = '<strong>'.__('MySQLi Extension: ', 'bulletproof-security').'</strong>'.__('Installed/Enabled', 'bulletproof-security').'<br>';
+		$text = '<strong>'.__('MySQLi Extension: ', 'bulletproof-security').'</strong>'.__('Installed|Enabled', 'bulletproof-security').'<br>';
 		echo $text;
 	} else {
-		$text = '<strong>'.__('MySQLi Extension: ', 'bulletproof-security').'</strong>'.__('NOT Installed/Enabled', 'bulletproof-security').'<br>';		
+		$text = '<strong>'.__('MySQLi Extension: ', 'bulletproof-security').'</strong>'.__('NOT Installed|Enabled', 'bulletproof-security').'<br>';		
 		echo $text;
 	}
 
@@ -395,9 +405,9 @@ function bps_get_proxy_real_ip_address() {
 	echo str_replace( ABSPATH, '', WP_PLUGIN_DIR ).'</strong><br>';	
 	echo __('WordPress Installation Type', 'bulletproof-security').': ';
 	echo bps_wp_get_root_folder_display_type().'<br>';
-	echo __('Standard/GWIOD Site Type', 'bulletproof-security').': ';
+	echo __('Standard|GWIOD Site Type', 'bulletproof-security').': ';
 	echo bps_gwiod_site_type_check().'<br>';
-	echo __('Network/Multisite', 'bulletproof-security').': ';
+	echo __('Network|Multisite', 'bulletproof-security').': ';
 	echo bps_multisite_check().'<br>';
 	echo __('BuddyPress', 'bulletproof-security').': ';
 	echo bps_buddypress_site_type_check().'<br>';
@@ -409,31 +419,28 @@ function bps_get_proxy_real_ip_address() {
 	echo $permalink_structure.'</strong><br>';
 	echo bps_check_permalinks().'<br>';
 	echo bps_check_php_version().'<br>';
+	
 	echo __('Browser Compression Supported', 'bulletproof-security').': <strong>' . esc_html( $_SERVER['HTTP_ACCEPT_ENCODING'] ).'</strong>';
 	
 	?>
-      
+     
       </td>
   </tr>
   <tr>
     <td class="bps-table_cell">&nbsp;</td>
     <td>&nbsp;</td>
+    <!-- <td class="bps-table_cell">&nbsp;</td> -->
     </tr>
   <tr>
-    <td class="bps-table_title"><?php _e('PHP Server / PHP.ini Info', 'bulletproof-security'); ?></td>
+    <td class="bps-table_title"><?php _e('PHP Server|PHP.ini Info', 'bulletproof-security'); ?></td>
     <td>&nbsp;</td>
-    <td class="bps-table_title"><?php _e('Check Website Headers Tool', 'bulletproof-security'); ?></td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class="bps-table_cell">&nbsp;</td>
+    <td class="bps-table_title"><?php _e('File|Folder Permissions (CGI or DSO)|Script Owner User ID (UID)|File Owner User ID', 'bulletproof-security'); ?></td>
   </tr>
   <tr>
     <td class="bps-table_cell">
 	
-	<?php 
-	echo __('PHP Version', 'bulletproof-security').': <strong>'.PHP_VERSION.'</strong><br>';
+<?php 
+	echo __('PHP Version', 'bulletproof-security').': <strong>' . PHP_VERSION . '</strong><br>';
 	echo __('PHP Memory Usage', 'bulletproof-security').': <strong>' . round( memory_get_usage(false) / 1024 / 1024, 2 ) . __(' MB') . '</strong><br>';    
 	echo __('WordPress Admin Memory Limit', 'bulletproof-security').': '; 
 		$memory_limit = ini_get('memory_limit');
@@ -460,6 +467,14 @@ function bps_get_proxy_real_ip_address() {
 		break;
  	}
 	}		
+
+	if ( gc_enabled() ) {
+		$garbage = 'On | Cycles: ' . gc_collect_cycles();
+		
+	} else {
+		$garbage = 'Off';
+	}
+	echo __('Garbage Collector', 'bulletproof-security').': <strong>' . $garbage . '</strong><br>';
 
 	echo __('PHP Max Upload Size', 'bulletproof-security').': '; 
 		$upload_max = ini_get('upload_max_filesize');
@@ -556,7 +571,7 @@ function bps_get_proxy_real_ip_address() {
 	if ( $open_basedir != '' ) {
 		echo '<strong>'.$open_basedir.'</strong><br>';
 	} else {
-		echo '<strong>'.__('not in use', 'bulletproof-security').'</strong><br>';	
+		echo '<font color="green"><strong>'.__('Off|Not in use', 'bulletproof-security').'</strong></font><br>';	
 	}
 	echo __('PHP XML Support', 'bulletproof-security').': ';
 	if ( is_callable('xml_parser_create') ) { 
@@ -586,8 +601,124 @@ function bps_get_proxy_real_ip_address() {
 	
     </td>      
     <td>&nbsp;</td>
-    <td rowspan="2" class="bps-table_cell">
+    <td rowspan="2" class="bps-table_cell_perms_blank">
 	
+	<?php 
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
+	
+	$sapi_type = php_sapi_name();
+	$DBBoptions = get_option('bulletproof_security_options_db_backup');
+	$db_backup = str_replace( array( '\\', '//'), "/", $DBBoptions['bps_db_backup_folder'] );
+	$wpcontent_single_slash = str_replace( array( '\\', '//'), "/", WP_CONTENT_DIR );
+	
+	if ( @substr($sapi_type, 0, 6) != 'apache' ) {		
+	
+	echo '<div style=\'padding:0px 0px 5px 5px;\'><strong>'; _e('CGI File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
+	echo '<table style="width:100%;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
+	echo '<tr>';
+    echo '<td style="padding:2px;width:40%;font-weight:bold;">'; _e('File Path', 'bulletproof-security'); echo '<br>'; _e('Folder Path', 'bulletproof-security'); echo '</td>';
+    echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Recommended', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';
+    echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Current', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';
+	echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Script Owner', 'bulletproof-security'); echo '<br>'; _e(' User ID (UID)', 'bulletproof-security'); echo '</td>';
+	echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('File Owner', 'bulletproof-security'); echo '<br>'; _e(' User ID', 'bulletproof-security'); echo '</td>';
+	echo '</tr>';
+    echo '</table>';
+
+	bps_check_perms("../", "705");
+	bps_check_perms("../.htaccess", "404");
+	bps_check_perms("../wp-config.php", "400");
+	bps_check_perms("../index.php", "400");
+	bps_check_perms("../wp-blog-header.php", "400");
+	bps_check_perms("../wp-admin", "705");
+	bps_check_perms("../wp-includes", "705");
+	bps_check_perms("../$bps_wpcontent_dir", "705");
+	bps_check_perms("../$bps_plugin_dir", "705");
+	bps_check_perms( str_replace( WP_CONTENT_DIR, "../$bps_wpcontent_dir", get_theme_root() ), "705");
+	bps_check_perms("../$bps_uploads_dir", "705");
+	bps_check_perms("../$bps_wpcontent_dir/upgrade", "755");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup", "705");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup/logs", "705");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup/master-backups", "705");
+	if ( $DBBoptions['bps_db_backup_folder'] != '' ) {
+	bps_check_perms( str_replace( $wpcontent_single_slash, "../$bps_wpcontent_dir", $db_backup ), "705");
+	}
+	echo '<div style=\'padding-bottom:15px;\'></div>';
+	
+	} else {
+	
+	echo '<div style=\'padding:0px 0px 5px 5px;\'><strong>'; _e('DSO File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
+	echo '<table style="width:100%;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
+	echo '<tr>';
+    echo '<td style="padding:2px;width:40%;font-weight:bold;">'; _e('File Path', 'bulletproof-security'); echo '<br>'; _e('Folder Path', 'bulletproof-security'); echo '</td>';
+    echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Recommended', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';
+    echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Current', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';
+	echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Script Owner', 'bulletproof-security'); echo '<br>'; _e(' User ID (UID)', 'bulletproof-security'); echo '</td>';
+	echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('File Owner', 'bulletproof-security'); echo '<br>'; _e(' User ID', 'bulletproof-security'); echo '</td>';
+	echo '</tr>';
+    echo '</table>';
+	
+	bps_check_perms("../", "755");
+	bps_check_perms("../.htaccess", "644");
+	bps_check_perms("../wp-config.php", "644");
+	bps_check_perms("../index.php", "644");
+	bps_check_perms("../wp-blog-header.php", "644");
+	bps_check_perms("../wp-admin", "755");
+	bps_check_perms("../wp-includes", "755");
+	bps_check_perms("../$bps_wpcontent_dir", "755");
+	bps_check_perms("../$bps_plugin_dir", "755");
+	bps_check_perms( str_replace( WP_CONTENT_DIR, "../$bps_wpcontent_dir", get_theme_root() ), "755");
+	bps_check_perms("../$bps_uploads_dir", "755");
+	bps_check_perms("../$bps_wpcontent_dir/upgrade", "755");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup", "755");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup/logs", "755");
+	bps_check_perms("../$bps_wpcontent_dir/bps-backup/master-backups", "755");
+	if ( $DBBoptions['bps_db_backup_folder'] != '' ) {
+	bps_check_perms( str_replace( $wpcontent_single_slash, "../$bps_wpcontent_dir", $db_backup ), "755");
+	}
+	echo '<div style=\'padding-bottom:15px;\'></div>';
+	}
+	}
+
+	$time_end = microtime( true );
+	$run_time = $time_end - $time_start;
+	$time_display = '<strong>'.__('System Info Processing Completion Time: ', 'bulletproof-security').'</strong>'. round( $run_time, 2 ) . ' Seconds';	
+	
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo bpsPro_memory_resource_usage();
+	echo $time_display;
+	echo '</p></div>';
+?>
+
+    </td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell">&nbsp;</td>
+    <td>&nbsp;</td>
+    <!-- <td class="bps-table_cell">&nbsp;</td> -->
+  </tr>
+  <tr>
+    <td class="bps-table_cell_bottom">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="bps-table_cell_bottom">&nbsp;</td>
+  </tr>
+</table>
+<br />
+
+<?php }} // end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) { ?>
+</div>
+
+<div id="bps-tabs-2" class="bps-tab-page">
+<h2><?php _e('Website Headers Check Tool ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Check your website Headers or another website\'s Headers by making a GET or HEAD Request', 'bulletproof-security'); ?></span></h2>
+
+<?php if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
+  <tr>
+    <td class="bps-table_title">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_help">
+
 	<?php 
     
 	_e('Check your website Headers or another website\'s Headers by making a GET Request', 'bulletproof-security').'<br>';
@@ -630,7 +761,7 @@ function bps_sysinfo_get_headers_get() {
 <div><label for="bpsHeaders"><strong><?php _e('Enter a Website URL - Example: http://www.ait-pro.com/', 'bulletproof-security'); ?></strong></label><br />
     <input type="text" name="bpsURLGET" value="" size="50" /> <br />
     <p class="submit">
-	<input type="submit" name="Submit-Headers-Check-Get" class="bps-blue-button" value="<?php esc_attr_e('Check Headers GET Request', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('This Headers check makes a GET Request using the WordPress wp_remote_get function.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('You can use the Check Headers HEAD Request tool to check headers using HEAD instead of GET.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" /></p>
+	<input type="submit" name="Submit-Headers-Check-Get" class="button bps-button" value="<?php esc_attr_e('Check Headers GET Request', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('This Headers check makes a GET Request using the WordPress wp_remote_get function.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('You can use the Check Headers HEAD Request tool to check headers using HEAD instead of GET.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" /></p>
 </div>
 <?php bps_sysinfo_get_headers_get(); ?>
 </form>
@@ -685,46 +816,37 @@ function bps_sysinfo_get_headers_head() {
 <div><label for="bpsHeaders"><strong><?php _e('Enter a Website URL - Example: http://www.ait-pro.com/', 'bulletproof-security'); ?></strong></label><br />
     <input type="text" name="bpsURL" value="" size="50" /> <br />
     <p class="submit">
-	<input type="submit" name="Submit-Headers-Check-Head" class="bps-blue-button" value="<?php esc_attr_e('Check Headers HEAD Request', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('This cURL Headers check makes a HEAD Request and you will see HTTP/1.1 403 Forbidden displayed if you are blocking HEAD Requests in your BPS root .htaccess file on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Use the Check Headers GET Request tool to check your headers using GET instead of HEAD. This tool can also be used to check that your Security Log is working correctly and will generate a Security Log entry when you make a HEAD Request using this tool if you are blocking HEAD Requests in your BPS root .htaccess file on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" /></p>
+	<input type="submit" name="Submit-Headers-Check-Head" class="button bps-button" value="<?php esc_attr_e('Check Headers HEAD Request', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('This cURL Headers check makes a HEAD Request and you will see HTTP/1.1 403 Forbidden displayed if you are blocking HEAD Requests in your BPS root .htaccess file on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Use the Check Headers GET Request tool to check your headers using GET instead of HEAD. This tool can also be used to check that your Security Log is working correctly and will generate a Security Log entry when you make a HEAD Request using this tool if you are blocking HEAD Requests in your BPS root .htaccess file on your website.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')" /></p>
 </div>
 <?php bps_sysinfo_get_headers_head(); ?>
 </form>
 
-    </td>
+</td>
   </tr>
   <tr>
-    <td class="bps-table_cell">&nbsp;</td>
-    <td>&nbsp;</td>
-    <!-- <td class="bps-table_cell">&nbsp;</td> -->
-  </tr>
-  <tr>
-    <td class="bps-table_cell_bottom">&nbsp;</td>
-    <td>&nbsp;</td>
     <td class="bps-table_cell_bottom">&nbsp;</td>
   </tr>
 </table>
-<br />
-
-<?php }} // end if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) { ?>
+<?php } ?>
 </div>
 
-<div id="bps-tabs-2" class="bps-tab-page">
+<div id="bps-tabs-3" class="bps-tab-page">
 <h2><?php _e('BulletProof Security Help &amp; FAQ', 'bulletproof-security'); ?></h2>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
    <tr>
     <td colspan="2" class="bps-table_title">&nbsp;</td>
   </tr>
   <tr>
-    <td width="50%" class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/security-log-event-codes/" target="_blank"><?php _e('Security Log Event Codes', 'bulletproof-security'); ?></a></td>
-    <td width="50%" class="bps-table_cell_help"><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-contributors/" target="_blank"><?php _e('Contributors Page', 'bulletproof-security'); ?></a></td>
+    <td width="50%" class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/security-log-event-codes/" target="_blank"><?php _e('Security Log Event Codes', 'bulletproof-security'); ?></a></td>
+    <td width="50%" class="bps-table_cell_help_links"><a href="http://www.ait-pro.com/aitpro-blog/category/bulletproof-security-contributors/" target="_blank"><?php _e('Contributors Page', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help">&nbsp;</td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help">&nbsp;</td>
-    <td class="bps-table_cell_help">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
   </tr>
   <tr>
     <td colspan="2" class="bps-table_cell_bottom">&nbsp;</td>

@@ -4,8 +4,8 @@ Plugin Name: BulletProof Security
 Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
-Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging/HTTP Error Logging. Login Security/Login Monitoring: Log All Account Logins or Log Only Account Lockouts. DB Backup: Database Backup. Website FrontEnd/BackEnd Maintenance Mode. System Info: PHP, MySQL, OS, Server, Memory Usage, IP, SAPI, WP Filesystem API Method, DNS, Max Upload...
-Version: .51.4
+Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging|HTTP Error Logging. Login Security|Login Monitoring: Log All Account Logins or Log Only Account Lockouts. DB Backup: Database Backup. Website FrontEnd|BackEnd Maintenance Mode. System Info: PHP|MySQL|OS|Server|Memory Usage|IP|SAPI|WP Filesystem API Method|DNS|Max Upload|Zend Engine Version|Zend Guard|Loader|Optimizer|ionCube Loader|Suhosin|APC|eAccelerator|XCache|Varnish|cURL|Memcache|Memcached...
+Version: .51.5
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,10 +28,11 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.51.4' );
-$bps_last_version = '.51.3';
-$bps_version = '.51.4';
+define( 'BULLETPROOF_VERSION', '.51.5' );
+$bps_last_version = '.51.4';
+$bps_version = '.51.5';
 $bps_readme_install_ver = '1';
+$aitpro_bullet = '<img src="'.plugins_url('/bulletproof-security/admin/images/aitpro-bullet.png').'" style="padding:0px 3px 0px 3px;" />';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free
 //require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/class.php' );
@@ -74,7 +75,7 @@ function bps_plugin_actlinks( $links, $file ) {
 static $this_plugin;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
 	if ( $file == $this_plugin ) {
-		$settings_link = '<a href="admin.php?page=bulletproof-security/admin/core/options.php" title="htaccess Core Settings">'.__('Settings', 'bulletproof-security').'</a>';
+		$settings_link = '<a href="admin.php?page=bulletproof-security/admin/core/options.php" title="htaccess Core Setup Steps">'.__('Setup Steps', 'bulletproof-security').'</a>';
 		array_unshift( $links, $settings_link );
 	}
 	return $links;

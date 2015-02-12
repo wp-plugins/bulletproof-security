@@ -52,6 +52,7 @@ global $wpdb;
 			
 		if ( time() >= $row->bps_next_job_unix ) {
 
+			$job_name = $row->bps_desc;			
 			$job_type = $row->bps_job_type;
 			$email_zip = $row->bps_email_zip;
 					
@@ -60,7 +61,7 @@ global $wpdb;
 			$build_query_3 = "'";
 			$tables = $wpdb->get_results( $build_query_1.$build_query_2.$build_query_3, ARRAY_A );
 
-			bpsPro_db_backup( $db_backup, $tables, $job_type, $email_zip );
+			bpsPro_db_backup( $db_backup, $tables, $job_name, $job_type, $email_zip );
 			
 			if ( $row->bps_frequency == 'Hourly' ) {
 				$update_rows = $wpdb->update( $DBB_table_name, array( 'bps_next_job_unix' => time() + 3600 ), array( 'bps_id' => $row->bps_id ) );
@@ -163,7 +164,7 @@ if ( file_exists($filename) ) {
 
 // DB Backup: Processes Manual and Scheduled Jobs
 // Notes: fwrite is faster in benchmark tests than file_put_contents for successive writes
-function bpsPro_db_backup( $db_backup, $tables, $job_type, $email_zip ) {
+function bpsPro_db_backup( $db_backup, $tables, $job_name, $job_type, $email_zip ) {
 global $wpdb;
 
 $time_start = microtime( true );
@@ -179,9 +180,9 @@ $time_start = microtime( true );
 		$email_zip_log = $email_zip;
 	}
 
-$timeNow = time();
-$gmt_offset = get_option( 'gmt_offset' ) * 3600;
-$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
+	$timeNow = time();
+	$gmt_offset = get_option( 'gmt_offset' ) * 3600;
+	$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
 
 	$handle = fopen( $db_backup, 'wb' );
 
@@ -190,6 +191,7 @@ $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' '
 	fwrite( $handle, "-- -------------------------------------------\n" );
 	fwrite( $handle, "-- BulletProof Security DB Backup\n" );
 	fwrite( $handle, "-- Support: http://forum.ait-pro.com/\n" );
+	fwrite( $handle, "-- Backup Job Name: ". $job_name . "\n" );
 	fwrite( $handle, "-- DB Backup Job Type: ". $job_type . "\n" );
 	fwrite( $handle, "-- Email DB Backup: ". $email_zip_log . "\n" );
 	fwrite( $handle, "-- DB Backup Time: ". $timestamp . "\n" );
@@ -309,10 +311,16 @@ $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' '
 	$time_end = microtime( true );
 	
 	$backup_time = $time_end - $time_start;
-	$backup_time_log = 'Backup Job Completion Time: '. substr( $backup_time, 0, 8 ) . ' Seconds';
+	$backup_time_log = 'Backup Job Completion Time: '. round( $backup_time, 2 ) . ' Seconds';
+	$backup_time_display = '<strong>Backup Job Completion Time: </strong>'. round( $backup_time, 2 ) . ' Seconds';
 	$bpsDBBLog = WP_CONTENT_DIR . '/bps-backup/logs/db_backup_log.txt';
 	
-	$log_contents = "\r\n" . '[Backup Job Logged: ' . $timestamp . ']' . "\r\n" . 'Backup Job Type: ' . $job_type .  "\r\n" . 'Email DB Backup: ' . $email_zip_log . "\r\n" . $backup_time_log . "\r\n" . 'Zip Backup File Name: ' . $filename . "\r\n";
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo bpsPro_memory_resource_usage();
+	echo $backup_time_display;
+	echo '</p></div>';
+
+	$log_contents = "\r\n" . '[Backup Job Logged: ' . $timestamp . ']' . "\r\n" . 'Backup Job Name: ' . $job_name .  "\r\n" . 'Backup Job Type: ' . $job_type .  "\r\n" . 'Email DB Backup: ' . $email_zip_log . "\r\n" . $backup_time_log . "\r\n" . bpsPro_memory_resource_usage_logging() . "\r\n" . 'Zip Backup File Name: ' . $filename . "\r\n";
 					
 	if ( is_writable( $bpsDBBLog ) ) {
 	if ( !$handle = fopen( $bpsDBBLog, 'a' ) ) {
@@ -386,11 +394,10 @@ $timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' '
 	$mailed = wp_mail( $bps_email_to, $subject, $message, $headers, $attachments );	
 	}
 
-		if ( $mailed && $email_zip == 'Delete' ) {
+		if ( @$mailed && $email_zip == 'Delete' ) {
 			unlink($filename);
 		}
 	}
-}
-
+} 
 
 ?>

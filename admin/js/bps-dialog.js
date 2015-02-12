@@ -1,124 +1,6 @@
-// BPS jQuery Tabs Menus with Toggle/Opacity
-jQuery(document).ready(function($){
-	$( '#bps-tabs' ).tabs({ 
-		show: { 
-			opacity: "toggle", 
-			duration: 400 
-			} 
-	});
-
-    var show = $(".selector").tabs("option", "show");
-
-    $(".selector").tabs("option", "show", {
-        opacity: "toggle",
-        duration: 400
-    });
-
-	$('#bps-edittabs').tabs();
-	/* toggle causes undesirable effects/results for inpage tabs
-	$( '#bps-edittabs' ).tabs({ 
-		fx: { 
-			opacity: 'toggle', 
-			duration: 'normal' 
-			} 
-	});
-*/
-});
-
-// BPS jQuery Accordian
-jQuery(document).ready(function($){
-    $( "#bps-accordion-1" ).accordion({
-		collapsible: true,
-		autoHeight: false,
-		clearStyle: true,
-		heightStyle: "content"
-    });
-    
-	// not displayed open by default - slower/smoother animation
-	$( "#bps-accordion-2" ).accordion({
-		active: false,
-		animate: 1500,
-		collapsible: true,
-		autoHeight: false,
-		clearStyle: true,
-		heightStyle: "content"
-    });
-    
-	// displayed open by default - slower/smoother animation
-	$( "#bps-accordion-3" ).accordion({
-		animate: 1400,
-		collapsible: true,
-		autoHeight: false,
-		clearStyle: true,
-		heightStyle: "content"
-    });
-});
-
-/**** Example bits of code to play with later ****
-*****************************************************
-
-  $(function() {
-    var icons = {
-      header: "ui-icon-circle-arrow-e",
-      activeHeader: "ui-icon-circle-arrow-s"
-    };
-    $( "#accordion" ).accordion({
-      icons: icons
-    });
-    $( "#toggle" ).button().click(function() {
-      if ( $( "#accordion" ).accordion( "option", "icons" ) ) {
-        $( "#accordion" ).accordion( "option", "icons", null );
-      } else {
-        $( "#accordion" ).accordion( "option", "icons", icons );
-      }
-    });
-  });
-
-$('#bps-tabs').tabs({ spinner: "Retrieving data..." });
-
-$('#bps-tabs').tabs({ collapsible: false });
-
-$( '#bps-tabs' ).tabs({ event: "mouseover" });
-
-Example of hiding on load with toggle
-$(".feature-tabs").tabs({
-    disabled: [0, 1, 2],
-    collapsible: true,
-    fx: [{
-        opacity: 'toggle',
-        duration: 'slow',
-        height: 'toggle'}, // hide option  
-         {opacity: 'toggle',
-        duration: 'slow',
-        height: 'toggle'}]
-}); // show option
-
-ui.panel delegation
-$('#bps-tabs').tabs({
-    load: function(event, ui) {
-        $(ui.panel).delegate('a', 'click', function(event) {
-            $(ui.panel).load(this.href);
-            event.preventDefault();
-        });
-    }
-});
-
-Pop up Alert on tab click
-	var tab_select_function = function(event, ui) {
-    // Objects available in the function context:
-    // ui.tab     // anchor element of the selected (clicked) tab
-    // ui.panel   // element, that contains the selected/clicked tab contents
-    // ui.index   // zero-based index of the selected (clicked) tab
-    alert("Tab with index " + ui.index + " clicked!");
-};
-
-	$('#bps-tabs').tabs({
-   		select: tab_select_function
-});
-*************************************************/
-
 // Note: each + num has undesirable results - continue to use per div
 jQuery(document).ready(function($){				
+	
 	var $info1 = $("#bps-modal-content1");     
 		$info1.dialog({                            
 			dialogClass: "wp-dialog",  
@@ -145,9 +27,8 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal1").click(function(event) {
-		event.preventDefault();
-		$info1.dialog("open");
+	$( "#bps-open-modal1" ).on( "click", function() {
+		$info1.dialog( "open" );
 	});
 
 	var $info2 = $("#bps-modal-content2");     
@@ -176,8 +57,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal2").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal2" ).on( "click", function() {
 		$info2.dialog("open");
 	});
 
@@ -207,8 +87,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal3").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal3" ).on( "click", function() {
 		$info3.dialog("open");
 	});
 
@@ -238,8 +117,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal4").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal4" ).on( "click", function() {
 		$info4.dialog("open");
 	});
 
@@ -269,8 +147,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal5").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal5" ).on( "click", function() {
 		$info5.dialog("open");
 	});
 
@@ -300,8 +177,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal6").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal6" ).on( "click", function() {
 		$info6.dialog("open");
 	});
 
@@ -331,8 +207,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal7").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal7" ).on( "click", function() {
 		$info7.dialog("open");
 	});
 
@@ -362,8 +237,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal8").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal8" ).on( "click", function() {
 		$info8.dialog("open");
 	});
 
@@ -393,8 +267,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal9").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal9" ).on( "click", function() {
 		$info9.dialog("open");
 	});
 
@@ -424,8 +297,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal10").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal10" ).on( "click", function() {
 		$info10.dialog("open");
 	});
 
@@ -455,8 +327,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal11").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal11" ).on( "click", function() {
 		$info11.dialog("open");
 	});
 
@@ -486,8 +357,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal12").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal12" ).on( "click", function() {
 		$info12.dialog("open");
 	});
 
@@ -517,8 +387,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal13").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal13" ).on( "click", function() {
 		$info13.dialog("open");
 	});
 
@@ -548,8 +417,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal14").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal14" ).on( "click", function() {
 		$info14.dialog("open");
 	});
 
@@ -579,8 +447,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal15").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal15" ).on( "click", function() {
 		$info15.dialog("open");
 	});
 
@@ -610,8 +477,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal16").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal16" ).on( "click", function() {
 		$info16.dialog("open");
 	});
 
@@ -641,8 +507,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal17").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal17" ).on( "click", function() {
 		$info17.dialog("open");
 	});
 
@@ -672,8 +537,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal18").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal18" ).on( "click", function() {
 		$info18.dialog("open");
 	});
 
@@ -703,8 +567,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal19").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal19" ).on( "click", function() {
 		$info19.dialog("open");
 	});
 
@@ -734,8 +597,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal20").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal20" ).on( "click", function() {
 		$info20.dialog("open");
 	});
 
@@ -765,8 +627,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal21").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal21" ).on( "click", function() {
 		$info21.dialog("open");
 	});
 
@@ -796,8 +657,7 @@ jQuery(document).ready(function($){
 			}
 		});
  
-	$("#bps-open-modal22").click(function(event) {
-		event.preventDefault();
+	$( "#bps-open-modal22" ).on( "click", function() {
 		$info22.dialog("open");
 	});
 });

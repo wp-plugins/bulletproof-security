@@ -15,32 +15,6 @@ if ( !current_user_can('manage_options') ) {
 <div class="wrap" style="margin-top:45px;">
 
 <?php
-// Run Job Form: display Backup is Running message
-if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options') ) {
-	check_admin_referer('bulletproof_security_db_backup_run_job');
-	
-	$DBBjobsX = $_POST['DBBjobs'];
-
-	switch( $_POST['Submit-DBB-Run-Job'] ) {
-		case __('Run Job/Delete Job', 'bulletproof-security'):
-		
-		if ( !empty( $DBBjobsX ) ) {
-			
-			echo '<div id="message" class="updated" style="margin-left:70px;background-color:#000;">';
-			
-			foreach ( $DBBjobsX as $keyX => $valueX ) {
-				
-				if ( $valueX == 'runjob' ) {
-				
-				$backup_running = '<p style="border:1px solid #999999;background-color:#ffffe0;margin:-1px;"><strong><font color="green">'.__('Backup is Running...Please Wait...', 'bulletproof-security').'<br>'.__('Backup & Zip Time Estimates: ', 'bulletproof-security').'<br>'.__('10MB DB: 3 Seconds', 'bulletproof-security').'<br>'.__('100MB DB: 30 Seconds', 'bulletproof-security').'</font></strong></p>';
-				echo $backup_running;
-				}
-			}
-			echo '</div>';
-		}
-	}
-}
-
 if ( function_exists('get_transient') ) {
 require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
@@ -84,19 +58,21 @@ echo @bps_wpsc_htaccess_check($plugin_var);
 bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
-if ( current_user_can('manage_options') && wp_script_is( 'bps-js', $list = 'queue' ) ) {
+if ( current_user_can('manage_options') && wp_script_is( 'bps-accordion', $list = 'queue' ) ) {
 if ( @$_GET['settings-updated'] == true) {
 	$text = '<p style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:5px;margin:0px;"><font color="green"><strong>'.__('Settings Saved', 'bulletproof-security').'</strong></font></p>';
 	echo $text;
 	}
 }
 
+require_once( WP_PLUGIN_DIR . '/bulletproof-security/admin/db-backup-security/db-backup-help-text.php' );
+
 $bpsSpacePop = '-------------------------------------------------------------';
 
 // Replace ABSPATH = wp-content/plugins
-$bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
+$bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR );
 // Replace ABSPATH = wp-content
-$bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
+$bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR );
 // Top div echo & bottom div echo
 $bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:70px;"><p>';
 $bps_bottomDiv = '</p></div>';
@@ -104,7 +80,7 @@ $bps_bottomDiv = '</p></div>';
 // Get Real IP address - USE EXTREME CAUTION!!!
 function bpsPro_get_real_ip_address() {
 	
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 	
 		if ( isset($_SERVER['HTTP_CLIENT_IP'] ) ) {
 			$ip = esc_html($_SERVER['HTTP_CLIENT_IP']);
@@ -124,7 +100,7 @@ function bpsPro_get_real_ip_address() {
 // Create a new Deny All .htaccess file if IP address is not current
 function bpsPro_DBBackup_deny_all() {
 
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		
 		$DBBoptions = get_option('bulletproof_security_options_db_backup');
 		$denyall_content = "Order Deny,Allow\nDeny from all\nAllow from " . bpsPro_get_real_ip_address();
@@ -157,7 +133,90 @@ bpsPro_DBBackup_deny_all();
 <!-- jQuery UI Tab Menu -->
 <div id="bps-container">
 	<div id="bps-tabs" class="bps-menu">
-    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
+    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" />
+    
+<style>
+<!--
+.bps-spinner {
+    visibility:visible;
+	position:fixed;
+    top:7%;
+    left:45%;
+ 	width:240px;
+	background:#fff;
+	border:4px solid black;
+	padding:2px 0px 4px 8px;   
+	z-index:99999;
+}
+-->
+</style> 
+
+    <div id="bps-spinner" class="bps-spinner" style="visibility:hidden;">
+    	<img id="bps-img-spinner" src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-spinner.gif'); ?>" style="float:left;margin:0px 20px 0px 0px;" />
+        <div id="bps-spinner-text-btn" style="padding:20px 0px 26px 0px;font-size:14px;">Processing...<br><button style="margin:10px 0px 0px 10px;" onclick="javascript:history.go(-1)">Cancel</button>
+		</div>
+    </div> 
+
+<script type="text/javascript">
+/* <![CDATA[ */
+function bpsSpinnerDBBackup() {
+	
+    var r = confirm("CAUTION:\n\n-------------------------------------------------------------\n\nThis Form is used to Run Backup Jobs or Delete Backup Jobs depending on which checkbox you selected.\n\n-------------------------------------------------------------\n\nClick OK to either Run a Backup Job or Delete Backup Job(s) or click Cancel");
+	
+	var img = document.getElementById("bps-spinner"); 	
+	
+	if (r == true) {
+
+		img.style.visibility = "visible";
+	
+	} else {
+	
+		history.go(-1);
+	}
+}
+/* ]]> */
+</script> 
+
+<script type="text/javascript">
+/* <![CDATA[ */
+function bpsSpinnerTablePrefix() {
+	
+    var r = confirm("Clicking OK will change your DB Table Prefix name.\n\n-------------------------------------------------------------\n\nClick OK to Change your DB Table Prefix name or click Cancel.");
+	
+	var img = document.getElementById("bps-spinner"); 	
+	
+	if (r == true) {
+
+		img.style.visibility = "visible";
+	
+	} else {
+	
+		history.go(-1);
+	}
+}
+/* ]]> */
+</script> 
+
+<script type="text/javascript">
+/* <![CDATA[ */
+function bpsSpinnerTableRefresh() {
+	
+    var r = confirm("Click OK to Load|Refresh the DB Table Names and Character Length Table or click Cancel.");
+	var img = document.getElementById("bps-spinner"); 	
+	
+	if (r == true) {
+
+		img.style.visibility = "visible";
+	
+	} else {
+	
+		history.go(-1);
+	}
+}
+/* ]]> */
+</script> 
+    
+    </div>
 		<ul>
             <li><a href="#bps-tabs-1"><?php _e('DB Backup', 'bulletproof-security'); ?></a></li>
             <li><a href="#bps-tabs-2"><?php _e('DB Backup Log', 'bulletproof-security'); ?></a></li>
@@ -166,7 +225,15 @@ bpsPro_DBBackup_deny_all();
 		</ul>
             
 <div id="bps-tabs-1" class="bps-tab-page">
-<h2><?php _e('DB Backup', 'bulletproof-security'); ?></h2>
+
+<h2><?php _e('DB Backup ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Full & Partial DB Backups, Manual & Scheduled DB Backups, Email Zip Backups, Automatically Delete Old Backups', 'bulletproof-security'); ?></span></h2>
+
+<div id="backup-job-time-estimates" style="font-size:1.13em;margin:0px 0px 10px 0px;">
+<?php
+	$text = '<strong>'.__('DB Backup Job Completion Time Estimates: ', 'bulletproof-security').'</strong><br><strong>'.__('10MB DB: ', 'bulletproof-security').'</strong>'.__('3 Seconds', 'bulletproof-security').'<br><strong>'.__('100MB DB: ', 'bulletproof-security').'</strong>'.__('30 Seconds', 'bulletproof-security');
+	echo $text;
+?>
+</div>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
@@ -175,18 +242,19 @@ bpsPro_DBBackup_deny_all();
   <tr>
     <td class="bps-table_cell_help">
 
-<h3><?php _e('DB Backup', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+<h3 style="margin:0px 0px 15px 0px;"><?php _e('DB Backup', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
 <div id="bps-modal-content1" title="<?php _e('DB Backup', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong><font color="blue">'.__('Backup Job settings and other information about backups are logged in the DB backup Log. The sql dump backup file in the DB Backup zip file/archive also contains information about the Backup Job.', 'bulletproof-security').'</font></strong><br><br><strong>'.__('DB Backup & Security Guide & Troubleshooting: http://forum.ait-pro.com/forums/topic/database-backup-security-guide/', 'bulletproof-security').'</strong><br><br><strong>'.__('How To Create a Backup Job, Run a Backup Job, Download a Backup File and Delete a Backup File', 'bulletproof-security').'</strong><br><strong>'.__('NOTE: ', 'bulletproof-security').'</strong>'.__('Before creating a Scheduled Backup Job please read the - ', 'bulletproof-security').'<strong>'.__('Scheduled Backup Jobs General Information and Notes', 'bulletproof-security').'</strong>'.__(' help section.', 'bulletproof-security').'<br><br>'.__('1. Click the Create Backup Jobs accordion tab.', 'bulletproof-security').'<br>'.__('2. Enter a Description/Backup Job Name and select the Form option choices that you want.', 'bulletproof-security').'<br>'.__('3. Click the Create Backup Job button to save your Form option choices and create your Backup Job.', 'bulletproof-security').'<br>'.__('4. Click the Backup Jobs - Manual/Scheduled accordion tab, click on the Run checkbox for the Backup Job that you want to run and click the Run Job/Delete Job button.', 'bulletproof-security').'<br>'.__('5. Your Backup files are displayed under the Backup Files - Download/Delete accordion tab.', 'bulletproof-security').'<br>'.__('6. You can Download Backup files to your computer by clicking the Download link for that Backup file.', 'bulletproof-security').'<br>'.__('7. You can delete Backup files by clicking the checkbox for the Backup file that you want to delete and then click the Delete Files button.', 'bulletproof-security').'<br><br><strong>'.__('Backup Jobs - Manual/Scheduled Accordion Tab', 'bulletproof-security').'</strong><br>'.__('- Displays the Description/Job Name, Delete and Run Checkboxes, Job Type, Frequency, Last Backup, Next Backup, Email Backup and Job Created table columns.', 'bulletproof-security').'<br>'.__('- Job Type displays either Manual or Scheduled.', 'bulletproof-security').'<br>'.__('- Frequency displays either Manual, Hourly, Daily, Weekly or Monthly.', 'bulletproof-security').'<br>'.__('- Last Backup displays either Backup Job Created or a timestamp when the last backup job was run.', 'bulletproof-security').'<br>'.__('- Next Backup displays either Manual, Hourly or a combination of user-friendly next job run times: 5PM, Sunday 5PM, 30th 5PM.', 'bulletproof-security').'<br>'.__('- Email Backup displays either Manual, Yes, Yes & Delete, No or Send Email Only.', 'bulletproof-security').'<br>'.__('- Job Created displays the timestamp for when the Backup Job was created.', 'bulletproof-security').'<br><br><strong>'.__('Backup Files - Download/Delete Accordion Tab', 'bulletproof-security').'</strong><br>'.__('- Displays the Backup Filename, Delete Checkbox, Download Links, Backup Folder, Size and Date/Time table columns.', 'bulletproof-security').'<br>'.__('- Backup Filename displays the name of the backup zip file.', 'bulletproof-security').'<br>'.__('- Backup Folder displays the backup folder path.', 'bulletproof-security').'<br>'.__('- Size displays the size of the backup zip file.', 'bulletproof-security').'<br>'.__('- Date/Time displays the date and time that the backup zip file was created.', 'bulletproof-security').'<br><br><strong>'.__('Create Backup Jobs Accordion Tab', 'bulletproof-security').'</strong><br>'.__('- Displays a dynamic DB Table Name checkbox form used to select the database tables that you want to backup.', 'bulletproof-security').'<br>'.__('- Description/Backup Job Name textbox to enter a description for your Backup Job.', 'bulletproof-security').'<br>'.__('- DB Backup Folder Location textbox with a default Obfuscated & Secure BPS Backup Folder location.', 'bulletproof-security').'<br>'.__('- DB Backup File Download Link/URL textbox with a default download URL path.', 'bulletproof-security').'<br>'.__('- Backup Job Type: Manual or Scheduled select dropdown option to choose either a Manual or Scheduled Backup job type.', 'bulletproof-security').'<br>'.__('- Frequency of Scheduled Backup Job (recurring) select dropdown option to choose either N/A, Hourly, Daily, Weekly or Monthly backup job frequency.', 'bulletproof-security').'<br>'.__('- Hour When Scheduled Backup is Run (recurring) select dropdown option to choose a start time for a scheduled backup job: N/A and 12AM through 11PM.', 'bulletproof-security').'<br>'.__('- Day of Week When Scheduled Backup is Run (recurring) select dropdown option to choose a weekday day when a scheduled backup job is run: N/A and Sunday through Monday.', 'bulletproof-security').'<br>'.__('- Day of Month When Scheduled Backup is Run (recurring) select dropdown option to choose a day of the month for a start time when a backup job is run: N/A and 1st through 30th.', 'bulletproof-security').'<br>'.__('- Send Scheduled Backup Zip File Via Email or Just Email Only select dropdown option to choose either to email a zip backup file, do not email backup zip file, email and delete zip backup file or just send an email that backup job has completed/been run.', 'bulletproof-security').'<br>'.__('- Automatically Delete Old Backup Files select dropdown option to choose Never delete old backup files, delete backup files older than 1 day, 5 days, 10 days, 15 days, 30 days, 60 days, 90 days or 180 days.', 'bulletproof-security').'<br>'.__('- Turn On/Off All Scheduled Backups (override) select dropdown option to choose either turn on all scheduled backups or turn off all scheduled backups. This an override option that prevent any/all scheduled backup jobs from being run.', 'bulletproof-security').'<br><br><strong>'.__('Scheduled Backup Jobs General Information and Notes', 'bulletproof-security').'</strong><br>'.__('- Scheduled Backup Cron Jobs are synchronized to run exactly on the hour: 5:00pm, 6:00pm, 7:00pm. The Backup Cron job actual run times may fluctuate. That is just the normal nature of WordPress Crons. The DB Backup Cron is designed to resynchronize itself to the top of the hour on the hour.', 'bulletproof-security').'<br><br>'.__('- Today is 12AM to 11:59PM. If you want a Daily scheduled backup job to start running for the first time at 12AM tomorrow (which seems like today, but is actually tomorrow) then choose the Day of the Week that is tomorrow. 12AM tomorrow is the start time and the Daily scheduled backup job will continue to be run at 12AM every day after the start time that you choose.', 'bulletproof-security').'<br><br>'.__('- The Create Backup Jobs Form allows for the widest possible combinations of start times for scheduled backup jobs. The start time choices are: Frequency, Hour, Day of Week and Day of Month and have many different possible logical combinations that can be chosen. See this help section before creating any scheduled backup jobs - ', 'bulletproof-security').'<strong>'.__('Best Logical Choices For Start Times When Scheduling Backup Jobs With the Create Backup Jobs Form', 'bulletproof-security').'</strong><br><br>'.__('- You can schedule multiple backup jobs for the same frequency. Example: You can create/schedule a backup job to run Weekly at 8PM on Sunday and can create/schedule a backup job to run Weekly at 10PM on Wednesday. Scheduled backup jobs run based on the time the scheduled backup job is scheduled to run - there are no limitations with scheduling multiple backup jobs.', 'bulletproof-security').'<br><br><strong>'.__('Best Logical Choices For Start Times When Scheduling Backup Jobs With the Create Backup Jobs Form', 'bulletproof-security').'</strong><br>'.__('These are some common logical option choices for Creating/Scheduling Backup Jobs. There are other possible combinations of option settings/start times, but these are intended to be simple examples of common logical option setting choices.', 'bulletproof-security').'<br><br><strong>'.__('Hourly Backup Job', 'bulletproof-security').'</strong><br>'.__('- If you choose Hourly for the Frequency and you do not pick a start Time/Hour when the Backup Job is next run. The next Backup Job will be run at the top of the next hour. Example: If the time now is 4:30PM then the next backup job will be run at 5PM, then 6PM, then 7PM, etc.', 'bulletproof-security').'<br>'.__('- If you choose Hourly for the Frequency and pick a start Time/Hour when the Backup Job is next run. The next Backup Job will be run at the start Time/Hour that you chose. Example: If the time now is 4:30PM and you chose 8PM for the start Time/Hour then the next backup job will be run at 8PM, then 9PM, then 10PM, etc.', 'bulletproof-security').'<br><br><strong>'.__('Daily Backup Job', 'bulletproof-security').'</strong><br>'.__('- If today is Tuesday and you want to schedule a Backup Job to run at 12AM daily/every night. You would choose Daily for the Frequency, start Time/Hour of 12AM (12AM is tomorrow) and Wednesday for the day of the week for the start time when the Backup Job is next run. The next Backup Job will be run at 12AM Wednesday tonight/tomorrow and at 12AM every night/morning.', 'bulletproof-security').'<br><br><strong>'.__('Weekly Backup Job', 'bulletproof-security').'</strong><br>'.__('- If you want to schedule a Backup Job to run Weekly at 12AM every Sunday. You would choose Weekly for the Frequency, start Time/Hour of 12AM and Sunday for the day of the week for the start time when the Backup Job is next run. The next Backup Job will be run at 12AM next Sunday and every Sunday at 12AM.', 'bulletproof-security').'<br><br><strong>'.__('Monthly Backup Job', 'bulletproof-security').'</strong><br>'.__('- If you want to schedule a Backup Job to run Monthly on the 30th of each month at 11PM. You would choose Monthly for the Frequency, start Time/Hour of 11PM and 30th for the day of the month for the start time when the Backup Job is next run. The next Backup Job will be run on the 30th of this month at 11PM and each month on the 30th at 11PM.', 'bulletproof-security').'<br><br><strong>'.__('404 errors when trying to download zip files or if you have changed the DB Backup Folder Location', 'bulletproof-security').'</strong><br>'.__('On some web hosts (Go Daddy) if you have a WordPress subfolder website installation: Example: Main domain is example.com and Subfolder WordPress site is example.com/wordpress-subfolder-website/ then the download link will not work correctly and you will see 404 errors when trying to download zip backup files. Your options are to not change the default backup folder path for your subfolder site and download zip backup files via FTP or you can use/add the backup folder path for your main site instead of the default backup folder path for your subfolder site. You would also change the DB Backup File Download Link/URL to your main site\'s backup folder Link/URL path. What this means is that DB Backups for both your main site and your subfolder site will be saved/stored under your main site\'s backup folder.', 'bulletproof-security').'<br><br>'.__('If you are seeing 404 errors after changing the DB Backup File Download Link/URL and/or the DB Backup Folder Location then make sure that you have entered the correct folder path and also the correct link/URL paths for where your DB backup files are being saved/stored. The DB Backup File Download Link/URL path MUST end with/have a trailing slash. Example: http://www.example.com/wp-content/bps-backup/backups_xxxxxxxxxx/', 'bulletproof-security'); echo $text; ?></p>
+	<p><?php echo $bps_modal_content1; ?></p>
 </div>
 
 <div id="bps-accordion-1" class="bps-accordian-main-2" style="margin:0px 0px 20px 0px;">
-<h3><?php _e('Backup Jobs ~ Manual/Scheduled', 'bulletproof-security'); ?></h3>
-<div>
+<h3><?php _e('Backup Jobs ~ Manual|Scheduled', 'bulletproof-security'); ?></h3>
+<div id="dbb-accordian-inner">
 
 <?php
 
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {	
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {	
 
 	// Reusable variables
 	$DBBoptions = get_option('bulletproof_security_options_db_backup');	
@@ -194,7 +262,7 @@ bpsPro_DBBackup_deny_all();
 	$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 	$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
 
-	// Form: DB Backup Run Jobs/Delete Jobs Form
+	// Form: DB Backup Run Jobs|Delete Jobs Form
 	echo '<form name="bpsDBBackupRunJob" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" method="post">';
 	wp_nonce_field('bulletproof_security_db_backup_run_job');
 
@@ -203,10 +271,10 @@ bpsPro_DBBackup_deny_all();
 	$DBBTableRows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $DBBtable_name WHERE bps_table_name != %s", $DBBRows ) );	
 	
 	echo '<div id="DBBJobscheckall">';
-	echo '<table class="widefat" style="text-align:left;padding:5px;">';
+	echo '<table class="widefat" style="text-align:left;">';
 	echo '<thead>';
 	echo '<tr>';
-	echo '<th scope="col" style="width:20%;font-size:1.13em;background-color:transparent;"><strong>'.__('Description/Job Name', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:20%;font-size:1.13em;background-color:transparent;"><strong>'.__('Description|Job Name', 'bulletproof-security').'</strong></th>';
 	echo '<th scope="col" style="width:5%;font-size:1.13em;"><strong><div style="position:relative; bottom:-9px; left:0px;">'.__('Delete', 'bulletproof-security').'</span></strong><br><input type="checkbox" class="checkallDeleteJobs" style="text-align:left;margin-left:0px;" /></th>';	
 	echo '<th scope="col" style="width:5%;font-size:1.13em;background-color:transparent;"><strong>'.__('Run', 'bulletproof-security').'</strong></th>';
 	echo '<th scope="col" style="width:10%;font-size:1.13em;background-color:transparent;"><strong>'.__('Job Type', 'bulletproof-security').'</strong></th>';
@@ -271,10 +339,9 @@ bpsPro_DBBackup_deny_all();
 	echo '</table>';
 	echo '</div>';
 
-	echo "<p><input type=\"submit\" name=\"Submit-DBB-Run-Job\" value=\"".__('Run Job/Delete Job', 'bulletproof-security')."\" class=\"bps-blue-button\" onclick=\"return confirm('".__('CAUTION:\n\n-------------------------------------------------------------\n\nThis Form is used to Run Backup Jobs or Delete Backup Jobs depending on which checkbox you selected.\n\n-------------------------------------------------------------\n\nClick OK to either Run a Backup Job or Delete Backup Job(s) or click Cancel', 'bulletproof-security')."')\" /></p></form>";
+	echo "<p><input type=\"submit\" name=\"Submit-DBB-Run-Job\" value=\"".__('Run Job|Delete Job', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"bpsSpinnerDBBackup()\" /></p></form>";
 
-
-	} // end if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' )...
+	} // end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...
 ?>
 
 <script type="text/javascript">
@@ -289,15 +356,23 @@ jQuery(document).ready(function($){
 
 <?php
 
-// Form Processing: DB Backup Run/Delete Jobs Form
+// Form Processing: DB Backup Run|Delete Jobs Form
+function bpsPro_dbbackup_form_processing() {
+
 if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options') ) {
 	check_admin_referer('bulletproof_security_db_backup_run_job');
 	
+global $wpdb;	
+$timeNow = time();
+$gmt_offset = get_option( 'gmt_offset' ) * 3600;
+$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);	
+$DBBoptions = get_option('bulletproof_security_options_db_backup');
+
 	$DBBjobs = $_POST['DBBjobs'];
 	$DBBtable_name = $wpdb->prefix . "bpspro_db_backup";
 
 	switch( $_POST['Submit-DBB-Run-Job'] ) {
-		case __('Run Job/Delete Job', 'bulletproof-security'):
+		case __('Run Job|Delete Job', 'bulletproof-security'):
 		
 		$delete_jobs = array();
 		$run_jobs = array();
@@ -340,10 +415,9 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 		
 		if ( !empty( $run_jobs ) ) {
 			
-			//$DBBoptions = get_option('bulletproof_security_options_db_backup'); 
 			$db_backup = $DBBoptions['bps_db_backup_folder'] . '/' . DB_NAME . '.sql';
 				
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';			
 
 			foreach ( $run_jobs as $run_job ) {
 				
@@ -351,6 +425,7 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 			
 				foreach ( $DBBackupRows as $row ) {
 
+					$job_name = $row->bps_desc;
 					$job_type = $row->bps_job_type;
 					$email_zip = $row->bps_email_zip;
 					
@@ -359,30 +434,32 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 					$build_query_3 = "'";
 					$tables = $wpdb->get_results( $build_query_1.$build_query_2.$build_query_3, ARRAY_A );
 					
-					bpsPro_db_backup( $db_backup, $tables, $job_type, $email_zip );
+					bpsPro_db_backup( $db_backup, $tables, $job_name, $job_type, $email_zip );
 					
 					$update_rows = $wpdb->update( $DBBtable_name, array( 'bps_last_job' => $timestamp ), array( 'bps_id' => $row->bps_id ) );
 
-					$textRunJob = '<strong><font color="green">'.__('Backup Job: ', 'bulletproof-security').$row->bps_desc.__(' has completed.', 'bulletproof-security').'<br>'.__('Your DB Backup Log contains the Backup Job Completion Time and other information about this Backup.', 'bulletproof-security').'</font></strong><br>';
+					$textRunJob = '<strong><font color="green">'.__('Backup Job: ', 'bulletproof-security').$row->bps_desc.__(' has completed.', 'bulletproof-security').'<br>'.__('Your DB Backup Log contains the Backup Job Completion Time, Total Memory Used and other information about this Backup.', 'bulletproof-security').'<br>'.__('Click the Refresh Status button below to refresh the DB Backup Timestamp.', 'bulletproof-security').'</font></strong><br>';
 					echo $textRunJob;
 
 				}			
 			}
-			echo '<div class="bps-message-button" style="width:90px;"><a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php">'.__('Refresh Status', 'bulletproof-security').'</a></div>';
+			echo '<div class="bps-message-button" style="width:90px;margin-top:10px;"><a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php">'.__('Refresh Status', 'bulletproof-security').'</a></div>';
 			echo '</p></div>';			
 		}
 		break;
 	} // end Switch
 }
+}
+bpsPro_dbbackup_form_processing();
 
 ?>
 
 </div>
-<h3><?php _e('Backup Files ~ Download/Delete', 'bulletproof-security'); ?></h3>
-<div>
+<h3><?php _e('Backup Files ~ Download|Delete', 'bulletproof-security'); ?></h3>
+<div id="dbb-accordian-inner">
 
 <?php
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {	
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {	
 
 	// Form: DB Backup File Delete & Download Files Form
 	echo '<form name="bpsDBBackupFiles" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" method="post">';
@@ -396,7 +473,7 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 		$iterator = new DirectoryIterator($source);
 
 	echo '<div id="DBBFilescheckall">';
-	echo '<table class="widefat" style="text-align:left;padding:5px;">';
+	echo '<table class="widefat" style="text-align:left;">';
 	echo '<thead>';
 	echo '<tr>';
 	echo '<th scope="col" style="width:20%;font-size:1.13em;background-color:transparent;"><strong>'.__('Backup Filename', 'bulletproof-security').'</strong></th>';
@@ -404,7 +481,7 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 	echo '<th scope="col" style="width:5%;font-size:1.13em;background-color:transparent;"><strong>'.__('Download', 'bulletproof-security').'</strong></th>';
 	echo '<th scope="col" style="width:45%;font-size:1.13em;background-color:transparent;"><strong>'.__('Backup Folder', 'bulletproof-security').'</strong></th>';
 	echo '<th scope="col" style="width:10%;font-size:1.13em;background-color:transparent;"><strong>'.__('Size', 'bulletproof-security').'</strong></th>';
-	echo '<th scope="col" style="width:15%;font-size:1.13em;background-color:transparent;"><strong>'.__('Date/Time', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:15%;font-size:1.13em;background-color:transparent;"><strong>'.__('Date|Time', 'bulletproof-security').'</strong></th>';
 	echo '</tr>';
 	echo '</thead>';
 	echo '<tbody>';
@@ -419,9 +496,9 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 
 			echo '<th scope="row" style="border-bottom:none;font-size:1.13em;">'.$file->getFilename().'</th>';
 			echo "<td><input type=\"checkbox\" id=\"deletefile\" name=\"DBBfiles[".$file->getFilename()."]\" value=\"deletefile\" class=\"deletefileALL\" /></td>";
-			echo '<td><a href="'.$DBBoptions['bps_db_backup_download_link'] . $file->getFilename().'" style="font-size:1em;">'.__('Download', 'bulletproof-security').'</a></td>';			
+			echo '<td><div style="margin:0px;padding:2px 6px 2px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$DBBoptions['bps_db_backup_download_link'] . $file->getFilename().'" style="font-size:1em;text-decoration:none;">'.__('Download', 'bulletproof-security').'</a></div></td>';			
 			echo '<td>'.$DBBoptions['bps_db_backup_folder'].'</td>';
-			
+
 			if ( number_format( $fileSize, 2, '.', '' ) >= 1048576 ) {
 				echo '<td>'.number_format( $fileSize / ( 1024 * 1024 ), 2 ).' MB</td>';				
 			} else {
@@ -450,9 +527,9 @@ if ( isset( $_POST['Submit-DBB-Run-Job'] ) && current_user_can('manage_options')
 	echo '</div>';		
 	}
 
-	echo "<p><input type=\"submit\" name=\"Submit-DBB-Files\" value=\"".__('Delete Files', 'bulletproof-security')."\" class=\"bps-blue-button\" onclick=\"return confirm('".__('Click OK to Delete Backup File(s) or click Cancel', 'bulletproof-security')."')\" /></p></form>";
+	echo "<p><input type=\"submit\" name=\"Submit-DBB-Files\" value=\"".__('Delete Files', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"return confirm('".__('Click OK to Delete Backup File(s) or click Cancel', 'bulletproof-security')."')\" /></p></form>";
 
-	} // end if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' )...
+	} // end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...
 ?>  
 
 <script type="text/javascript">
@@ -512,11 +589,12 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 
 </div>
 <h3><?php _e('Create Backup Jobs', 'bulletproof-security'); ?></h3>
-<div>
+<div id="dbb-accordian-inner">
 
 <?php
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') ) {	
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {	
 	
+	echo '<div id="dbb-special">';
 	// Form: DB Backup Create Job Form
 	echo '<form name="bpsDBBackupCreateJob" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" method="post">';
 	wp_nonce_field('bulletproof_security_db_backup_create_job');
@@ -526,12 +604,25 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 	$size = 0;
 	$getDBTables = $wpdb->get_results( $wpdb->prepare( "SHOW TABLE STATUS WHERE Rows >= %d", $DBTables ) );
 
-	echo '<div id="DBBcheckall" style="max-height:400px;">';
-	echo '<table style="text-align:left;border-right:1px solid black;padding:5px;">';
+	echo '<table class="widefat" style="text-align:left;">';
 	echo '<thead>';
 	echo '<tr>';
-	echo '<th scope="col" style="width:20px;font-size:1em;border-bottom:1px solid black;background-color:transparent;"><strong>'.__('All', 'bulletproof-security').'</strong><br><input type="checkbox" class="checkallDBB" /></th>';
-	echo '<th scope="col" style="width:400px;font-size:1.13em;padding-top:20px;margin-right:20px;border-bottom:1px solid black;background-color:transparent;"><strong>'.__('DB Table Name', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:30%;font-size:1.13em;background-color:transparent;"><strong>'.__('Database Tables ', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:50%;font-size:1.13em;background-color:transparent;"><strong>'.__('Backup Job Settings|Independent Options', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:20%;font-size:1.13em;background-color:transparent;"><strong>'.__('Rename|Create|Reset Tool', 'bulletproof-security').'</strong></th>';
+	echo '</tr>';
+	echo '</thead>';
+	echo '<tbody>';
+	echo '<tr>';	
+
+	echo '<th scope="row" style="border-bottom:none;font-size:1.13em;vertical-align:top;">';
+
+	echo '<div id="DBBcheckall" style="max-height:600px;margin-top:6px;">';
+	echo '<table style="text-align:left;border-right:1px solid #e5e5e5;padding:5px;">';
+	echo '<thead>';
+	echo '<tr>';
+	echo '<th scope="col" style="width:20px;border-bottom:1px solid #e5e5e5;background-color:transparent;"><strong><span style="margin-left:9px;font-size:.88em;">'.__('All', 'bulletproof-security').'</span></strong><br><input type="checkbox" class="checkallDBB" /></th>';
+	echo '<th scope="col" style="width:400px;font-size:1em;padding-top:20px;margin-right:20px;border-bottom:1px solid #e5e5e5;background-color:transparent;"><strong>'.__('DB Table Name', 'bulletproof-security').'</strong></th>';
 	echo '</tr>';
 	echo '</thead>';
 	echo '<tbody>';
@@ -549,23 +640,25 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 	echo '</tbody>';
 	echo '</table>';
 	echo '</div>'; // jQuery div parent
+	echo '</th>';
 	
+	echo '<td>';		
 	echo '<div id="DBBOptions" style="margin:0px 0px 0px 0px;float:left;">';
 
 	$DBBDescription = ( isset( $_POST['DBBDescription'] ) ) ? $_POST['DBBDescription'] : $DBBoptions['bps_db_backup_description'];	
 	$DBBFolder = ( isset( $_POST['DBBFolder'] ) ) ? $_POST['DBBFolder'] : $DBBoptions['bps_db_backup_folder'];
 	$DBBDownloadLink = ( isset( $_POST['DBBDownloadLink'] ) ) ? $_POST['DBBDownloadLink'] : $DBBoptions['bps_db_backup_download_link'];	
 	
-	echo '<label for="bps-dbb">'.__('Description/Backup Job Name:', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb">'.__('Description|Backup Job Name:', 'bulletproof-security').'</label><br>';
 	echo '<input type="text" name="DBBDescription" class="regular-text-short-fixed" style="width:500px;margin:0px 0px 10px 0px;" value="" /><br>';
 
 	echo '<label for="bps-dbb">'.__('DB Backup Folder Location:', 'bulletproof-security').'</label><br>';
-	echo '<label for="bps-dbb"><font color="blue"><strong>'.__('Recommended: Use The Default Obfuscated & Secure BPS Backup Folder', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Recommended: Use The Default Obfuscated & Secure BPS Backup Folder', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<input type="text" name="DBBFolder" class="regular-text-short-fixed" style="width:500px;margin:0px 0px 10px 0px;" value="'.trim(stripslashes($DBBFolder)).'" /><br>';
 	
-	echo '<label for="bps-dbb">'.__('DB Backup File Download Link/URL:', 'bulletproof-security').'</label><br>';
-	echo '<label for="bps-dbb"><font color="blue"><strong>'.__('Note: If you are seeing 404 errors when trying to download zip files or if you have changed', 'bulletproof-security').'</strong></font></label><br>';
-	echo '<label for="bps-dbb"><font color="blue"><strong>'.__('the DB Backup Folder Location above, click the DB Backup Read Me help button', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<label for="bps-dbb">'.__('DB Backup File Download Link|URL:', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Note: If you see 404 errors when trying to download zip files or if you have', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('changed the DB Backup Folder Location above, click the Read Me help button.', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<input type="text" name="DBBDownloadLink" class="regular-text-short-fixed" style="width:500px;margin:0px 0px 10px 0px;" value="'.trim($DBBDownloadLink).'" /><br>';
 
 	echo '<label for="bps-dbb">'.__('Backup Job Type: Manual or Scheduled', 'bulletproof-security').'</label><br>';
@@ -660,7 +753,7 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 	echo '</select><br><br>';	
 
 	echo '<label for="bps-dbb">'.__('Send Scheduled Backup Zip File Via Email or Just Email Only:', 'bulletproof-security').'</label><br>';
-	echo '<label for="bps-dbb"><font color="blue"><strong>'.__('Note: Check with your email provider for the maximum<br>file attachment size limit that is allowed by your Mail Server', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Note: Check with your email provider for the maximum<br>file attachment size limit that is allowed by your Mail Server', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<select name="dbb_backup_email_zip" style="width:340px;">';
 	echo '<option value="No"'. selected('No', $DBBoptions['bps_db_backup_email_zip']).'>'.__('Do Not Email Zip Backup File', 'bulletproof-security').'</option>';
 	echo '<option value="Delete"'. selected('Delete', $DBBoptions['bps_db_backup_email_zip']).'>'.__('Email & Delete Zip Backup File', 'bulletproof-security').'</option>';
@@ -668,7 +761,8 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 	echo '<option value="EmailOnly"'. selected('EmailOnly', $DBBoptions['bps_db_backup_email_zip']).'>'.__('Send Email Only & Not Zip Backup File', 'bulletproof-security').'</option>';
 	echo '</select><br><br>';
 
-	echo '<label for="bps-dbb">'.__('Automatically Delete Old Backup Files', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb">'.__('Automatically Delete Old Backup Files:', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Independent Option:', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<select name="dbb_backup_delete" style="width:340px;">';
 	echo '<option value="Never"'. selected('Never', $DBBoptions['bps_db_backup_delete']).'>'.__('Never Delete Old Backup Files', 'bulletproof-security').'</option>';
 	echo '<option value="1"'. selected('1', $DBBoptions['bps_db_backup_delete']).'>'.__('Delete Backup Files Older Than 1 Day', 'bulletproof-security').'</option>';
@@ -681,16 +775,50 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 	echo '<option value="180"'. selected('180', $DBBoptions['bps_db_backup_delete']).'>'.__('Delete Backup Files Older Than 180 Days', 'bulletproof-security').'</option>';
 	echo '</select><br><br>';
 
-	echo '<label for="bps-dbb">'.__('Turn On/Off All Scheduled Backups (override):', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb">'.__('Turn On|Off All Scheduled Backups (Override):', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Independent Option:', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<select name="dbb_backup_on_off" style="width:340px;">';
 	echo '<option value="On"'. selected('On', $DBBoptions['bps_db_backup']).'>'.__('Turn On All Scheduled Backups', 'bulletproof-security').'</option>';
 	echo '<option value="Off"'. selected('Off', $DBBoptions['bps_db_backup']).'>'.__('Turn Off All Scheduled Backups', 'bulletproof-security').'</option>';
 	echo '</select><br><br>';
-
-	echo "<p><input type=\"submit\" name=\"Submit-DBB-Create-Job\" value=\"".__('Create Backup Job', 'bulletproof-security')."\" class=\"bps-blue-button\" onclick=\"return confirm('".__('Click OK to Create this Backup Job or click Cancel', 'bulletproof-security')."')\" /></p></form>";
+	
+	echo "<p><input type=\"submit\" name=\"Submit-DBB-Create-Job\" value=\"".__('Create Backup Job|Save Settings', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"return confirm('".__('Click OK to Create this Backup Job or click Cancel', 'bulletproof-security')."')\" /></p></form>";
 
 	echo '</div>';
+
+	echo '</td>';
+	echo '<td>';
+	echo '<div id="DBBOptions" style="margin:0px 0px 0px 0px;float:left;">';
+	
+	// Form: Rename|Create|Reset DB Backup Folder Location and DB Backup File Download Link|URL
+	// Note: $_POST['Submit-DBB-Reset'] == true condition added in admin.php return if == true
+	$str = '1234567890abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZU3xt8Eb9Qw422hG0yv1LCT2Pzub7';
+	$db_backup_folder_obs = 'backups_' . substr( str_shuffle($str), 0, 15 );
+	$DBBFolderReset = ( isset( $_POST['DBBFolderReset'] ) ) ? $_POST['DBBFolderReset'] : $db_backup_folder_obs;
+	
+	echo '<form name="bpsDBBackupReset" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" method="post">';
+	wp_nonce_field('bulletproof_security_db_backup_reset');
+	
+	echo '<label for="bps-dbb">'.__('Rename|Create|Reset DB Backup Folder Name:', 'bulletproof-security').'</label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Randomly Generated New DB Backup Folder Name.', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Valid Folder Naming Characters: a-z A-Z 0-9 - _', 'bulletproof-security').'</strong></font></label><br>';
+	echo '<input type="text" name="DBBFolderReset" class="regular-text-short-fixed" style="width:325px;margin:0px 0px 10px 0px;" value="'.trim(stripslashes($DBBFolderReset)).'" /><br>';	
+	
+	echo "<p><input type=\"submit\" name=\"Submit-DBB-Reset\" value=\"".__('Rename|Create|Reset', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"return confirm('".__('The Rename|Create|Reset Tool renames the DB Backup folder if it already exists or creates a new DB Backup folder if it does not already exist.\n\n-------------------------------------------------------------\n\nIf you have DB Backup files they will not be affected/changed. The DB Backup File Download Link|URL path will also be changed and have the new DB Backup folder name in the URL path.\n\n-------------------------------------------------------------\n\nClick OK to proceed or click Cancel', 'bulletproof-security')."')\" /></p></form>";
+
+	echo '</div>';
+	echo '</td>';
+	echo '</tr>';	
+	echo '</tbody>';
+	echo '</table>';	
+	
 	}
+	echo '</div>';
+// Form Processing: Rename|Create|Reset DB Backup Folder Location and DB Backup File Download Link|URL
+if ( isset( $_POST['Submit-DBB-Reset'] ) && current_user_can('manage_options') ) {
+require_once( WP_PLUGIN_DIR . '/bulletproof-security/admin/db-backup-security/db-backup-functions.php' );		
+bpsPro_reset_db_backup_folder();
+}
 
 ?>
 
@@ -778,7 +906,7 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
 			}
 		}
 
-	$log_title = "\r\n" . '[Create Backup Job Settings Logged: ' . $timestamp . ']' . "\r\n" . 'Description/Backup Job Name: ' . $_POST['DBBDescription'] . "\r\n" . 'DB Backup Folder Location: ' . $_POST['DBBFolder'] . "\r\n" . 'DB Backup File Download Link/URL: ' . $_POST['DBBDownloadLink'] . "\r\n" . 'Backup Job Type: ' . $_POST['dbb_backup_job_type'] . "\r\n" . 'Frequency: ' . $_POST['dbb_backup_job_frequency'] . "\r\n" . 'Time When Scheduled Backup is Run: ' . $bps_next_job . "\r\n" . 'Send Scheduled Backup Zip Files Via Email: ' . $bps_email_zip_log . "\r\n" . 'Automatically Delete Old Backup Files Older Than: ' . $_POST['dbb_backup_delete'] .' day(s) old'. "\r\n" . 'Scheduled Backups (override): ' . $_POST['dbb_backup_on_off'] . "\r\n";
+	$log_title = "\r\n" . '[Create Backup Job Settings Logged: ' . $timestamp . ']' . "\r\n" . 'Description|Backup Job Name: ' . $_POST['DBBDescription'] . "\r\n" . 'DB Backup Folder Location: ' . $_POST['DBBFolder'] . "\r\n" . 'DB Backup File Download Link|URL: ' . $_POST['DBBDownloadLink'] . "\r\n" . 'Backup Job Type: ' . $_POST['dbb_backup_job_type'] . "\r\n" . 'Frequency: ' . $_POST['dbb_backup_job_frequency'] . "\r\n" . 'Time When Scheduled Backup is Run: ' . $bps_next_job . "\r\n" . 'Send Scheduled Backup Zip Files Via Email: ' . $bps_email_zip_log . "\r\n" . 'Automatically Delete Old Backup Files Older Than: ' . $_POST['dbb_backup_delete'] .' day(s) old'. "\r\n" . 'Scheduled Backups (override): ' . $_POST['dbb_backup_on_off'] . "\r\n";
 	
 	if ( empty( $DBB_Create_Job ) ) {
 		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';	
@@ -903,9 +1031,11 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
 }
 
 ?>
+
 </div>
 </div>
- </td>
+
+</td>
   </tr>
   <tr>
     <td class="bps-table_cell_bottom">&nbsp;</td>
@@ -915,7 +1045,8 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
 </div>
 
 <div id="bps-tabs-2" class="bps-tab-page">
-<h2><?php _e('DB Backup Log', 'bulletproof-security'); ?></h2>
+
+<h2><?php _e('DB Backup Log ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Logs Backup Job Settings, Completion Time, Memory Usage, Zip Backup File Name, Timestamp...', 'bulletproof-security'); ?></span></h2>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
@@ -924,9 +1055,10 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
   <tr>
     <td class="bps-table_cell_help">
 
-<h3><?php _e('DB Backup Log', 'bulletproof-security'); ?>  <button id="bps-open-modal2" class="bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+<h3 style="margin:0px 0px 10px 0px;"><?php _e('DB Backup Log', 'bulletproof-security'); ?>  <button id="bps-open-modal2" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
 <div id="bps-modal-content2" title="<?php _e('DB Backup Log', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('DB Backup Log General Information', 'bulletproof-security').'</strong><br>'.__('Your DB Backup Log file is a plain text static file and not a dynamic file or dynamic display to keep your website resource usage at a bare minimum and keep your website performance at a maximum. Log entries are logged in descending order by Date and Time. You can copy, edit and delete this plain text file.', 'bulletproof-security').'<br><br><strong>'.__('NOTE: ', 'bulletproof-security').'</strong>'.__('Email Alerting and Log file options are located in S-Monitor in BPS Pro instead of being on the Login Security page, Security Log & DB Backup Log pages. The Email Alerting & Log File Options Form is identical on the Login Security, Security Log & DB Backup Log pages in BPS free. You can change and save your email alerting and log file options on any of these pages.', 'bulletproof-security').'<strong><br><br>'.__('What is Logged in The DB Backup Log?', 'bulletproof-security').'</strong><br>'.__('Depending on your DB Backup settings, log entries will be logged anytime you run a Manual Backup Job or whenever a Scheduled Cron Backup Job is run. The Backup Job Completion Time, Zip Backup File Name, timestamp and other information is logged. If you have chosen the option to automatically delete old zip backup files then the zip backup file name and timestamp will be logged when old zip backup files are automatically deleted. When you create a new Backup Job your Backup Job Settings are logged/saved in the DB Backup Log.', 'bulletproof-security').'<strong><br><br>'.__('DB Backup Log File Size', 'bulletproof-security').'</strong><br>'.__('Displays the size of your DB Backup Log file. If your log file is larger than 2MB then you will see a Red warning message displayed: The Email Alerting & Log File Options will only send log files up to 2MB in size. Copy and paste the DB Backup Log file contents into a Notepad text file on your computer and save it. Then click the Delete Log button to delete the contents of this Log file.', 'bulletproof-security').'<br><br><strong>'.__('DB Backup Log Last Modified Time', 'bulletproof-security').'</strong><br>'.__('Displays the time when the last log entry was created in your DB Backup Log file.', 'bulletproof-security').'<br><br><strong>'.__('Delete Log Button', 'bulletproof-security').'</strong><br>'.__('Clicking the Delete Log button will delete the entire contents of your DB Backup Log File.', 'bulletproof-security'); echo $text; ?></p>
+	<p><?php echo $bps_modal_content2; ?></p>
 </div>
 
 <?php
@@ -939,7 +1071,7 @@ if ( file_exists($filename) ) {
 	$logSize = filesize($filename);
 	
 	if ( $logSize < 2097152 ) {
- 		$text = '<strong>'. __('DB Backup Log File Size: ', 'bulletproof-security').'<font color="blue">'. round($logSize / 1024, 2) .' KB</font></strong><br>';
+ 		$text = '<strong>'. __('DB Backup Log File Size: ', 'bulletproof-security').'<font color="#2ea2cc">'. round($logSize / 1024, 2) .' KB</font></strong><br>';
 		echo $text;
 	} else {
  		$text = '<strong>'. __('DB Backup Log File Size: ', 'bulletproof-security').'<font color="red">'. round($logSize / 1024, 2) .' KB<br>'.__('The Email Logging options will only send log files up to 2MB in size.', 'bulletproof-security').'</font></strong><br>'.__('Copy and paste the DB Backup Log file contents into a Notepad text file on your computer and save it.', 'bulletproof-security').'<br>'.__('Then click the Delete Log button to delete the contents of this Log file.', 'bulletproof-security').'<br>';		
@@ -949,7 +1081,7 @@ if ( file_exists($filename) ) {
 }
 bpsPro_DBB_LogSize();
 
-// Get the Current / Last Modifed Date of the DB Backup Log File
+// Get the Current/Last Modifed Date of the DB Backup Log File
 function bpsPro_DBB_Log_LastMod() {
 $filename = WP_CONTENT_DIR . '/bps-backup/logs/db_backup_log.txt';
 
@@ -957,7 +1089,7 @@ $filename = WP_CONTENT_DIR . '/bps-backup/logs/db_backup_log.txt';
 		$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 		$timestamp = date_i18n(get_option('date_format').' - '.get_option('time_format'), @filemtime($filename) + $gmt_offset);
 
-	$text = '<strong>'. __('DB Backup Log Last Modified Time: ', 'bulletproof-security').'<font color="blue">'.$timestamp.'</font></strong><br><br>';
+	$text = '<strong>'. __('DB Backup Log Last Modified Time: ', 'bulletproof-security').'<font color="#2ea2cc">'.$timestamp.'</font></strong><br><br>';
 	echo $text;
 	}
 }
@@ -1003,7 +1135,7 @@ bpsPro_DBB_Log_LastMod();
 </select></td>
   </tr>
   <tr>
-    <td style="padding-top:5px;"><strong><label for="bps-monitor-email-log"><?php _e('Security Log: Email/Delete Security Log File When...', 'bulletproof-security'); ?></label></strong><br />
+    <td style="padding-top:5px;"><strong><label for="bps-monitor-email-log"><?php _e('Security Log: Email|Delete Security Log File When...', 'bulletproof-security'); ?></label></strong><br />
 <select name="bulletproof_security_options_email[bps_security_log_size]" style="width:80px;">
 <option value="500KB" <?php selected( $options['bps_security_log_size'], '500KB' ); ?>><?php _e('500KB', 'bulletproof-security'); ?></option>
 <option value="256KB" <?php selected( $options['bps_security_log_size'], '256KB'); ?>><?php _e('256KB', 'bulletproof-security'); ?></option>
@@ -1015,7 +1147,7 @@ bpsPro_DBB_Log_LastMod();
 </select></td>
   </tr>
   <tr>
-    <td style="padding-top:5px;"><strong><label for="bps-monitor-email-log"><?php _e('DB Backup Log: Email/Delete DB Backup Log File When...', 'bulletproof-security'); ?></label></strong><br />
+    <td style="padding-top:5px;"><strong><label for="bps-monitor-email-log"><?php _e('DB Backup Log: Email|Delete DB Backup Log File When...', 'bulletproof-security'); ?></label></strong><br />
 <select name="bulletproof_security_options_email[bps_dbb_log_size]" style="width:80px;">
 <option value="500KB" <?php selected( $options['bps_dbb_log_size'], '500KB' ); ?>><?php _e('500KB', 'bulletproof-security'); ?></option>
 <option value="256KB" <?php selected( $options['bps_dbb_log_size'], '256KB'); ?>><?php _e('256KB', 'bulletproof-security'); ?></option>
@@ -1035,7 +1167,7 @@ bpsPro_DBB_Log_LastMod();
 </select><br /><br /> -->
 
 <input type="hidden" name="bpsEMA" value="bps-EMA" />
-<input type="submit" name="bpsEmailAlertSubmit" class="bps-blue-button" style="margin:15px 0px 0px 0px;" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" />
+<input type="submit" name="bpsEmailAlertSubmit" class="button bps-button" style="margin:15px 0px 0px 0px;" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" />
 </form>
 </div>
 
@@ -1057,7 +1189,7 @@ if ( isset( $_POST['Submit-Delete-DBB-Log'] ) && current_user_can('manage_option
 <div id="DBBLogDelete" style="margin:0px 0px 10px 600px;">
 <form name="DeleteDBBLogForm" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php#bps-tabs-2" method="post">
 <?php wp_nonce_field('bulletproof_security_delete_dbb_log'); ?>
-<input type="submit" name="Submit-Delete-DBB-Log" value="<?php esc_attr_e('Delete Log', 'bulletproof-security') ?>" class="bps-blue-button" onclick="return confirm('<?php $text = __('Clicking OK will delete the contents of your DB Backup Log file.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to Delete the Log file contents or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
+<input type="submit" name="Submit-Delete-DBB-Log" value="<?php esc_attr_e('Delete Log', 'bulletproof-security') ?>" class="button bps-button" onclick="return confirm('<?php $text = __('Clicking OK will delete the contents of your DB Backup Log file.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to Delete the Log file contents or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
 </form>
 </div>
 
@@ -1125,7 +1257,7 @@ $scrolltodbblog = isset($_REQUEST['scrolltodbblog']) ? (int) $_REQUEST['scrollto
     <textarea class="bps-text-area-600x700" name="newcontentdbb" id="newcontentdbb" tabindex="1"><?php echo bpsPro_DBB_get_contents(); ?></textarea>
 	<input type="hidden" name="scrolltodbblog" id="scrolltodbblog" value="<?php echo esc_html($scrolltodbblog); ?>" />
     <p class="submit">
-	<input type="submit" name="Submit-DBB-Log" class="bps-blue-button" value="<?php esc_attr_e('Update File', 'bulletproof-security') ?>" /></p>
+	<input type="submit" name="Submit-DBB-Log" class="button bps-button" value="<?php esc_attr_e('Update File', 'bulletproof-security') ?>" /></p>
 </div>
 </form>
 
@@ -1149,7 +1281,8 @@ jQuery(document).ready(function($){
 </div>
 
 <div id="bps-tabs-3" class="bps-tab-page">
-<h2><?php _e('DB Table Prefix Changer', 'bulletproof-security'); ?></h2>
+
+<h2><?php _e('DB Table Prefix Changer ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Tools to change & check your WordPress Database Table Prefix', 'bulletproof-security'); ?></span></h2>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
@@ -1158,22 +1291,25 @@ jQuery(document).ready(function($){
   <tr>
     <td width="50%" valign="top" class="bps-table_cell_help">
 
-<h3><?php _e('DB Table Prefix Changer', 'bulletproof-security'); ?>  <button id="bps-open-modal3" class="bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+<h3 style="margin:0px 0px 10px 0px;"><?php _e('DB Table Prefix Changer', 'bulletproof-security'); ?>  <button id="bps-open-modal3" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
 <div id="bps-modal-content3" title="<?php _e('DB Table Prefix Changer', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('Safety Precautions & Procedures', 'bulletproof-security').'</strong><br>'.__('Changing the DB Table Prefix name is a very simple thing to automate. This tool has been extensively tested and is safe and reliable, but anytime you are modifying your database you should ALWAYS perform a database backup as a safety precaution.', 'bulletproof-security').'<br><br><strong>'.__('Compatibility', 'bulletproof-security').'</strong><br>'.__('Works on all WordPress, BuddyPress and bbPress site types: Single standard WordPress installations and Network/Multisite installations.', 'bulletproof-security').'<br><br><strong><font color="blue">'.__('Note: The DB Table Names & Character Length Table needs to be a clickable Form button and is not displayed permanently open because that would cause the entire DB Backup & Security page (all Tab pages) to perform poorly/sluggishly on large websites.', 'bulletproof-security').'</font></strong><br><br><strong>'.__('Other Prefix Changes Explained', 'bulletproof-security').'</strong><br>'.__('In your WordPress xxxxxx_options DB Table there is 1 value that will be changed in the option_name Column: xxxxxx_user_roles. In your WordPress xxxxxx_usermeta DB Table there are several values that will be changed in the meta_key Column. These are user/user ID specific values based on individual user\'s Metadata stored in the xxxxxx_usermeta DB Table. Metadata is user specific saved settings, such as individual user\'s capabilities, permissions, saved screen options settings, etc.', 'bulletproof-security').'<br><br><strong>'.__('Security measure vs Anti-nuisance measure', 'bulletproof-security').'</strong><br>'.__('By changing your Database Table Prefix name you will probably stop a lot of random Bot probes from doing any further reconnaissance against your website and causing unnecessary slowness from those random Bot probes. Changing the DB Table Prefix name is not really a security measure since if a hacker wants to find/get your DB Table Prefix name he/she will be able to find/get that information. The Anti-nuisance benefits alone are worth changing your DB Table Prefix name.', 'bulletproof-security').'<br><br><strong>'.__('Correct Usage & Technical Info.', 'bulletproof-security').'</strong><br>'.__('If you want to create your own DB Table Prefix name or add additional characters to the randomly generated DB Table Prefix name then ONLY use lowercase letters, numbers and underscores in your DB Table Prefix name. The standard MySQL DB Table naming convention is xxxxxx_ where the x\'s should be ONLY lowercase letters and/or numbers and the DB Table Prefix name should end with an underscore.', 'bulletproof-security').'<br><br>'.__('The maximum length limitation of a DB Table name, including the table prefix is 64 characters. See the DB Table Names & Character Length Table for character lengths of your database table names.', 'bulletproof-security').'<br><br>'.__('If a plugin or theme is using "wp_" in its DB Table naming conventions, example: wp_wp_some_plugin_table_name, then the DB Table Prefix Changer tool will NOT change anything besides the first wp_ in the DB Table name - The DB Table Prefix Change will ONLY change the actual start/prefix of a DB Table name.', 'bulletproof-security').'<br><br>'.__('To change your DB Table Prefix name back to the WordPress default DB Table Prefix name, enter wp_ for the DB Table Prefix name.', 'bulletproof-security'); echo $text; ?></p>
+	<p><?php echo $bps_modal_content3; ?>
 </div>
 
 <?php
-	if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' ) && current_user_can('manage_options') && preg_match( '/page=bulletproof-security/', $_SERVER['REQUEST_URI'], $matches) ) {	
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') && preg_match( '/page=bulletproof-security/', $_SERVER['REQUEST_URI'], $matches) ) {	
 
 echo '<div id="DBPrefixText" style="width:90%;padding-bottom:20px;">';
-$text = '<span style="font-size:1.13em;">'.__('Your current WordPress Database Table Prefix is: ', 'bulletproof-security').'<strong><font color="blue">'.$wpdb->base_prefix .'</span><br><br>'.__('NOTES: ', 'bulletproof-security').'<br>'.__('1. It is recommended that you backup your database before using this tool.', 'bulletproof-security').'<br>'.__('2. If you want to create your own DB Table Prefix name or add additional characters to the randomly generated DB Table Prefix name below then ONLY use lowercase letters, numbers and underscores in your DB Table Prefix name.', 'bulletproof-security').'<br>'.__('3. The maximum length limitation of a DB Table name, including the table prefix is 64 characters. See the DB Table Names & Character Length Table to the right.', 'bulletproof-security').'<br>'.__('4. To change your DB Table Prefix name back to the WordPress default DB Table Prefix name, enter wp_ for the DB Table Prefix name.', 'bulletproof-security').'</font></strong>';
+$text = '<span style="font-size:1.13em;">'.__('Your current WordPress Database Table Prefix is: ', 'bulletproof-security').'<strong><font color="#2ea2cc">'.$wpdb->base_prefix .'</span><br><br>'.__('NOTES: ', 'bulletproof-security').'<br>'.__('1. It is recommended that you backup your database before using this tool.', 'bulletproof-security').'<br>'.__('2. If you want to create your own DB Table Prefix name or add additional characters to the randomly generated DB Table Prefix name below then ONLY use lowercase letters, numbers and underscores in your DB Table Prefix name.', 'bulletproof-security').'<br>'.__('3. The maximum length limitation of a DB Table name, including the table prefix is 64 characters. See the DB Table Names & Character Length Table to the right.', 'bulletproof-security').'<br>'.__('4. To change your DB Table Prefix name back to the WordPress default DB Table Prefix name, enter wp_ for the DB Table Prefix name.', 'bulletproof-security').'</font></strong>';
 echo $text;
 echo '</div>';
 
 if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_options') ) {
 	check_admin_referer( 'bulletproof_security_table_prefix_changer' );
 	set_time_limit(300);
+
+	$time_start = microtime( true );
 
 	$DBTablePrefix = $_POST['DBTablePrefix'];
 	$wpconfig_file = ABSPATH . 'wp-config.php';
@@ -1248,7 +1384,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 
 	$contents = file_get_contents($wpconfig_file);
 	$pattern = '/\$table_prefix(.*)=(.*);/';
-	$wpconfigARQ = WP_CONTENT_DIR . '/bps-backup/autorestore/root-files/wp-config.php';
+	//$wpconfigARQ = WP_CONTENT_DIR . '/bps-backup/autorestore/root-files/wp-config.php';
 
 		$stringReplace = @file_get_contents($wpconfig_file);
 		
@@ -1264,22 +1400,31 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 				@chmod($wpconfig_file, 0400);
 			}
 		
-		@copy($wpconfig_file, $wpconfigARQ);	
+		//@copy($wpconfig_file, $wpconfigARQ);	
 		}
 			
 			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
-			$text = '<font color="green"><strong>'.__('DB Table Prefix Name change completed. Click the Load/Refresh Table button to load/refresh the DB Table Names & Character Length Table.', 'bulletproof-security').'</strong></font>';
+			$text = '<font color="green"><strong>'.__('DB Table Prefix Name change completed. Click the Load|Refresh Table button to load/refresh the DB Table Names & Character Length Table.', 'bulletproof-security').'</strong></font>';
+			
 			echo $text;
 			echo '</p></div>';
 	
 	} // end if ( file_exists($filename) ) {
-}
+
+	$time_end = microtime( true );
+	$run_time = $time_end - $time_start;
+	$time_display = '<strong>DB Table Prefix Changer Completion Time: </strong>'. round( $run_time, 2 ) . ' Seconds';
+
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo bpsPro_memory_resource_usage();
+	echo $time_display;
+	echo '</p></div>';
+	}
 
 	// Random DB Table Prefix Name generator
 	$str = '1234567890abcdefghijklmnopqrstuvxyz';
 	$prefix_obs = substr( str_shuffle($str), 0, 6 ).'_';
 	$DBTablePrefix = ( isset( $_POST['DBTablePrefix'] ) ) ? $_POST['DBTablePrefix'] : $prefix_obs;
-
 ?>
 
 <form name="bpsTablePrefixChanger" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php#bps-tabs-3" method="post">
@@ -1288,7 +1433,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 <strong><label for="bpsTablePrefix"><?php _e('Randomly Generated DB Table Prefix', 'bulletproof-security'); ?></label></strong><br />  
 <input type="text" style="width:215px;" name="DBTablePrefix" value="<?php echo $DBTablePrefix; ?>" class="regular-text-short-fixed" /> <br />
 <p class="submit">
-<input type="submit" name="Submit-DB-Table-Prefix" value="<?php esc_attr_e('Change DB Table Prefix', 'bulletproof-security') ?>" class="bps-blue-button" onclick="return confirm('<?php $text = __('Clicking OK will change your DB Table Prefix name.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to Change your DB Table Prefix name or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
+<input type="submit" name="Submit-DB-Table-Prefix" value="<?php esc_attr_e('Change DB Table Prefix', 'bulletproof-security') ?>" class="button bps-button" onclick="bpsSpinnerTablePrefix()" />
 </p>
 </div>
 </form>
@@ -1298,12 +1443,15 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 
 <?php
 
+// Form: DB Table Names & Character Length Table
 function bpsPro_table_status_length() {
 global $wpdb;
 	
 	if ( isset( $_POST['Submit-DB-Prefix-Table-Refresh'] ) && current_user_can('manage_options') ) {
 		check_admin_referer( 'bulletproof_security_db_prefix_refresh' );
-
+	
+	$time_start = microtime( true );
+	
 	$base_prefix = $wpdb->base_prefix;
 	$DBTables = 0;
 	$getDBTables = $wpdb->get_results( $wpdb->prepare( "SHOW TABLE STATUS WHERE Rows >= %d", $DBTables ) );
@@ -1337,7 +1485,7 @@ global $wpdb;
 	echo '<table style="text-align:left;border-right:1px solid black;padding:5px;">';
 	echo '<thead>';
 	echo '<tr>';
-	echo '<th scope="col" style="width:250px;font-size:1.13em;border-bottom:1px solid black;background-color:transparent;"><strong>'.__('DB Table Name / Column', 'bulletproof-security').'</strong></th>';
+	echo '<th scope="col" style="width:250px;font-size:1.13em;border-bottom:1px solid black;background-color:transparent;"><strong>'.__('DB Table Name|Column', 'bulletproof-security').'</strong></th>';
 	echo '<th scope="col" style="width:400px;font-size:1.13em;border-bottom:1px solid black;background-color:transparent;"><strong>'.__('Other Prefix Changes', 'bulletproof-security').'</strong></th>';
 	echo '</tr>';
 	echo '</thead>';
@@ -1346,7 +1494,7 @@ global $wpdb;
 
 	foreach ( $UserRolesRows as $data ) {
 
-	echo '<td>'.$wpdb->options.' / option_name</td>';
+	echo '<td>'.$wpdb->options.' | option_name</td>';
 	echo '<td>'.$data->option_name.'</td>';
 	echo '</tr>';
 	}
@@ -1367,7 +1515,7 @@ global $wpdb;
 			
 			$NetUserRolesRows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $network_options_tables WHERE option_name LIKE %s", "%$userRoles" ) );
 
-	echo '<td>'.$network_options_tables.' / option_name</td>';
+	echo '<td>'.$network_options_tables.' | option_name</td>';
 	echo '<td>'.$base_prefix . $net_id . '_user_roles'.'</td>';
 	echo '</tr>';
 			
@@ -1381,7 +1529,7 @@ global $wpdb;
 	
 	if ( preg_match( "/^$wpdb->base_prefix/", $mdata->meta_key, $matches ) ) {
 	
-	echo '<td>'.$wpdb->usermeta.' / meta_key</td>';
+	echo '<td>'.$wpdb->usermeta.' | meta_key</td>';
 	echo '<td>'.'User ID: '.$mdata->user_id.' '.$mdata->meta_key.'</td>';
 	echo '</tr>';
 	}
@@ -1390,21 +1538,31 @@ global $wpdb;
 	echo '</tbody>';
 	echo '</table>';
 	echo '</div>';
+	
+	$time_end = microtime( true );
+	$run_time = $time_end - $time_start;
+	$time_display = '<strong>DB Table Names Tool Completion Time: </strong>'. round( $run_time, 2 ) . ' Seconds';
+
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo bpsPro_memory_resource_usage();
+	echo $time_display;
+	echo '</p></div>';	
 	}
 }
 
 	// Form: DB Table Names & Character Length Table - needs to be a clickable form otherwise causes slowness on large websites if query is running
 	echo '<div id="DB-Prefix-Table-Refresh-Button" style="margin:0px 0px 20px 0px;">';
-	echo '<h3>'.__('DB Table Names & Character Length Table', 'bulletproof-security').'</h3>';
-	echo '<h4><font color="blue">'.__('Displays your Current DB Table Names & Length Including The DB Table Prefix', 'bulletproof-security').'</font></h4>';
+	echo '<h3 style="margin:0px 0px -5px 0px;">'.__('DB Table Names & Character Length Table', 'bulletproof-security').'</h3>';
+	echo '<h4><font color="#2ea2cc">'.__('Displays your Current DB Table Names & Length Including The DB Table Prefix', 'bulletproof-security').'</font></h4>';
 	echo '<form name="DB-Prefix-Table-Refresh" action="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php#bps-tabs-3" method="post">';
 	wp_nonce_field('bulletproof_security_db_prefix_refresh');
-	echo "<p><input type=\"submit\" name=\"Submit-DB-Prefix-Table-Refresh\" value=\"".__('Load/Refresh Table', 'bulletproof-security')."\" class=\"bps-blue-button\" /></p>";
-	bpsPro_table_status_length();
+	echo "<p><input type=\"submit\" name=\"Submit-DB-Prefix-Table-Refresh\" value=\"".__('Load|Refresh Table', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"bpsSpinnerTableRefresh()\" /></p>";
+	bpsPro_table_status_length(); 
 	echo "</form>";
 	echo '</div>';
 	
-}// end if ( is_admin() && wp_script_is( 'bps-js', $list = 'queue' )...	
+}// end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...	
+
 ?>
 
     </td>
@@ -1423,20 +1581,20 @@ global $wpdb;
     <td colspan="2" class="bps-table_title">&nbsp;</td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-10" target="_blank"><?php _e('Whats New in ', 'bulletproof-security'); echo BULLETPROOF_VERSION; ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank"><?php _e('BPS Pro Features & Version Release Dates', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-10" target="_blank"><?php _e('Whats New in ', 'bulletproof-security'); echo BULLETPROOF_VERSION; ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank"><?php _e('BPS Pro Features & Version Release Dates', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/video-tutorials/" target="_blank"><?php _e('Video Tutorials', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/database-backup-security-guide/" target="_blank"><?php _e('DB Backup & Security Guide & Troubleshooting', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/video-tutorials/" target="_blank"><?php _e('Video Tutorials', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/database-backup-security-guide/" target="_blank"><?php _e('DB Backup & Security Guide & Troubleshooting', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
-    <td class="bps-table_cell_help">&nbsp;</td>
+    <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-actively-blocked-plugins-plugin-compatibility/" target="_blank"><?php _e('Forum: Search, Troubleshooting Steps & Post Questions For Assistance', 'bulletproof-security'); ?></a></td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help">&nbsp;</td>
-    <td class="bps-table_cell_help">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
+    <td class="bps-table_cell_help_links">&nbsp;</td>
   </tr>
    <tr>
     <td colspan="2" class="bps-table_cell_bottom">&nbsp;</td>
@@ -1448,4 +1606,9 @@ global $wpdb;
 </div>
 </div>
 </div>
+<style>
+<!--
+.bps-spinner {visibility:hidden;}
+-->
+</style>
 </div>
