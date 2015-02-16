@@ -1382,6 +1382,20 @@ if ( !current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Inpage Status Display Turn On|Off code correction.<br>&bull; System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.<br>&bull; Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.<br>&bull; Link to Security Modes page added to wp-admin htaccess file alert.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51.5', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature|Visual Enhancement: Inpage Status Display', 'bulletproof-security').'</strong></h3>'.__('The Inpage Status Display performs checks and displays the status of BPS security features, options and your site security in real-time. The Inpage Status Display automatically turns itself off when a Form is submitted using POST and displays a Reload BPS Status Display button. Clicking the Reload BPS Status Display button reloads|displays the Inpage Status Display again.', 'bulletproof-security'); echo $text; ?>
 	<img src="<?php echo plugins_url('/bulletproof-security/admin/images/inpage-status-display.jpg'); ?>" style="" />
 </td>

@@ -468,6 +468,7 @@ function bps_get_proxy_real_ip_address() {
  	}
 	}		
 
+	if ( function_exists('gc_enabled') && function_exists('gc_collect_cycles') ) {
 	if ( gc_enabled() ) {
 		$garbage = 'On | Cycles: ' . gc_collect_cycles();
 		
@@ -475,6 +476,7 @@ function bps_get_proxy_real_ip_address() {
 		$garbage = 'Off';
 	}
 	echo __('Garbage Collector', 'bulletproof-security').': <strong>' . $garbage . '</strong><br>';
+	}
 
 	echo __('PHP Max Upload Size', 'bulletproof-security').': '; 
 		$upload_max = ini_get('upload_max_filesize');

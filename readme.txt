@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.2
-Stable tag: .51.5
+Stable tag: .51.6
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -204,17 +204,17 @@ WordPress is already very secure, but every website, no matter what type of plat
 
 == Installation ==
 
-* htaccess Core htaccess Files Setup Steps
-1. Click the Create default.htaccess File button.
-2. Click the Create secure.htaccess File button.
+* <strong>htaccess Core htaccess Files Setup Steps</strong>
+1. Click the Create default.htaccess File button on the Security Modes page.
+2. Click the Create secure.htaccess File button on the Security Modes page.
 3. Select the Activate Root Folder BulletProof Mode Radio button and click the Activate|Deactivate button.
 4. Select the Activate wp-admin Folder BulletProof Mode Radio button and click the Activate|Deactivate button.
 
-* Login Security & Monitoring Setup Steps
+* <strong>Login Security & Monitoring Setup Steps</strong>
 1. Click the Login Security & Monitoring Save Options button to use & save the BPS default Login Security settings or choose your own settings.
 2. Click the Login Security: Send Login Security Email Alert When... Save Options button to use and save BPS default Email Alerts and Log File settings or choose your own settings.
 
-* DB Backup & Security Setup Steps
+* <strong>DB Backup & Security Setup Steps</strong>
 1. Click the Create Backup Jobs accordion tab.
 2. Enter a Description|Backup Job Name and select the Form option choices that you want.
 3. Click the Create Backup Job|Save Settings button to save your Form option choices and create your Backup Job.
@@ -223,14 +223,14 @@ WordPress is already very secure, but every website, no matter what type of plat
 6. You can Download Backup files to your computer by clicking the Download link for that Backup file.
 7. You can delete Backup files by clicking the checkbox for the Backup file that you want to delete and then click the Delete Files button.
 
-* Maintenance Mode Usage: Display an Under Maintenance page
+* <strong>Maintenance Mode Usage: Display an Under Maintenance page</strong>
 1. Choose the Maintenance Mode settings you want to use.
 2. Use one of the BPS pre-created Background Images & Center Images or create your own unique Under Maintenance page.
 3. Click the Save Options button.
 4. Click the Preview button.
 5. Click the Turn On button.
 
-* UI Theme Skin|Processing Spinner|WP Toolbar
+* <strong>UI Theme Skin|Processing Spinner|WP Toolbar</strong>
 1. Select a Theme Skin.
 2. Click the Save Skin button.
 3. Optional: Choose to Turn the Processing Spinner On|Off (On by Default).
@@ -375,6 +375,13 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 6. BulletProof Security - Maintenance Mode template images
 
 == Changelog ==
+
+= .51.6 =
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* Inpage Status Display Turn On|Off code correction.
+* System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.
+* Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.
+* Link to Security Modes page added to wp-admin htaccess file alert.
 
 = .51.5 =
 * Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
@@ -660,26 +667,12 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.5 =
-* Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
-* New Feature|Visual Enhancement: Inpage Status Display
-* New Features|Options|Visual Enhancements: UI|UX|Theme Skin | Processing Spinner | WP Toolbar
-* New Feature|Option: Turn On|Off The Processing Spinner
-* New Feature|Option: WP Toolbar Functionality In BPS Plugin Pages
-* New Feature: Memory Usage and Script Completion Time Check|Display
-* New Features|Options|Visual Enhancements: DB Backup & Security
-* New Feature|Option: Create Backup Jobs: Rename|Create|Reset Tool
-* System Info: New Check Added | Changes
-* htaccess Core: Security Status Page Changes
-* BPS Submenu Name Change: UI Theme Skin submenu name has been changed to: UI|UX|Theme Skin | Processing Spinner | WP Toolbar
+= .51.6 =
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* Dismiss Notices button/link reload current page based on Request URI or Query String.
-* Optimization|Performance: All BPS pages and functions.
-* Obsolete functions/code removed/deleted.
-* BPS plugin register scripts|styles | Enqueue scripts|styles | Dequeue plugin|theme scripts|styles loading in BPS plugin pages combined into one function. Additionally eliminated bloated individual load settings page code.
-* Additional variable check for conflicting|contradictory Automatic Update message/alert issue.
-* WordPress Plugins page|BulletProof Security plugin "Settings" link name change to "Setup Steps".
-* Maintenance Mode menu page will not be displayed if wp-admin BulletProof Mode has been disabled.
+* Inpage Status Display Turn On|Off code correction.
+* System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.
+* Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.
+* Link to Security Modes page added to wp-admin htaccess file alert.
 
 == Help Info ==
 

@@ -288,6 +288,10 @@ function bps_root_htaccess_status_dashboard() {
 
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' ) {
 		
+		$bps_status_display = get_option('bulletproof_security_options_status_display'); 
+
+		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
+
 		if ( esc_html($_SERVER['QUERY_STRING']) == '' ) {
 			$bps_base = basename(esc_html($_SERVER['REQUEST_URI']));
 		} else {
@@ -296,6 +300,7 @@ function bps_root_htaccess_status_dashboard() {
 		
 		echo '<div id="bps-status-display" style="float:left;margin:6px 0px -40px 8px;padding:3px 5px 3px 5px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'" style="text-decoration:none;font-weight:bold;">'.__('Reload BPS Status Display', 'bulletproof-security').'</a></div>';
 		echo '<div style="clear:both;"></div>';
+		}
 
 		if ( @$_POST['Submit-DBB-Run-Job'] == true || @$_POST['Submit-DB-Table-Prefix'] == true || @$_POST['Submit-DB-Prefix-Table-Refresh'] == true ) {  
 		
@@ -331,8 +336,14 @@ function bps_root_htaccess_status_dashboard() {
 		}
 
 	} elseif ( esc_html($_SERVER['QUERY_STRING']) == 'page=bulletproof-security/admin/system-info/system-info.php' ) {
+		
+		$bps_status_display = get_option('bulletproof_security_options_status_display');
+
+		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
+		
 		echo '<div id="bps-status-display" style="float:left;padding:0px 0px 10px 0px;">'.__('The BPS Status Display is set to Off by default on the System Info page', 'bulletproof-security').'</div>';
-		echo '<div style="clear:both;"></div>';	
+		echo '<div style="clear:both;"></div>';
+		}
 
 	} else {
 
@@ -377,8 +388,6 @@ function bps_root_htaccess_status_dashboard() {
 	} else {
 	
 	if ( file_exists($filename) ) {
-
-	$bps_status_display = get_option('bulletproof_security_options_status_display');
 
 switch ( $bps_version ) {
     case $bps_last_version: // for testing
@@ -486,7 +495,7 @@ switch ( $bps_version ) {
 			$stringReplace = preg_replace("/\[NC\]\s*RewriteCond\s%{HTTP_REFERER}\s\^\.\*(.*)\.\*\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*(.*)\s*RewriteRule\s\.\s\-\s\[S=1\]/", "[NC]\nRewriteCond %{HTTP_REFERER} ^.*$bps_get_domain_root.*\nRewriteRule . - [S=1]", $stringReplace);
 		}
 
-			file_put_contents($filename, $stringReplace);
+		file_put_contents($filename, $stringReplace);
 		
 		if ( @$permsHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off') {			
 			@chmod($filename, 0404);
@@ -512,6 +521,8 @@ switch ( $bps_version ) {
 		break;		
 	case strpos( $check_string, "BULLETPROOF $bps_version" ) && strpos( $check_string, "BPSQSE" ):
 		
+		$bps_status_display = get_option('bulletproof_security_options_status_display');
+
 		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
 					
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
@@ -568,14 +579,12 @@ function bps_wpadmin_htaccess_status_dashboard() {
 	$BPSVreplace = "BULLETPROOF $bps_version WP-ADMIN";
 	
 	if ( !file_exists($filename) ) {
-		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your wp-admin folder. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</font></div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your wp-admin folder. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' for more specific information.', 'bulletproof-security').'</font><br><font color="blue">'.__('BPS First Time|New Installation', 'bulletproof-security').'</font><br>'.__('If you are installing BPS for the first time click here ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Security Modes page', 'bulletproof-security').'</a>'.__(' and then click the AutoMagic, Setup Steps & Other Help Info Read Me help button for BPS Setup Steps.', 'bulletproof-security').'</div>';		
 		echo $text;
 	
 	} else {
 	
 	if ( file_exists($filename) ) {
-
-	$bps_status_display = get_option('bulletproof_security_options_status_display');
 
 switch ( $bps_version ) {
     case $bps_last_version: // for Testing
@@ -623,6 +632,8 @@ switch ( $bps_version ) {
 		break;		
 	case strpos( $check_string, "BULLETPROOF $bps_version" ) && strpos( $check_string, "BPSQSE-check" ):		
 		
+		$bps_status_display = get_option('bulletproof_security_options_status_display');
+
 		if ( $bps_status_display['bps_status_display'] != 'Off' ) {		
 
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
