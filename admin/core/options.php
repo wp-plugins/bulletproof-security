@@ -439,6 +439,8 @@ $bpsSpacePop = '-------------------------------------------------------------';
 	<p><?php echo $bps_modal_content1; ?></p>
 </div>
 
+<h3 style="padding-left:10px;"><?php $text = '<strong><a href="https://www.youtube.com/watch?v=AZmwDV1_YYk" target="_blank" title="Link opens in a new Browser window">'.__('Setup & Overview Video Tutorial', 'bulletproof-security').'</a></strong>'; echo $text; ?></h3>
+
 <?php if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
 
 <div id="AutoMagic-buttons" style="">
@@ -734,7 +736,7 @@ function bpsDeleteUserMetaDismiss() {
 </div>
 
 <div id="Status-Display" style="">
-<form name="Inpage-Status-Display" action="options.php" method="post">
+<form name="Inpage-Status-Display" action="options.php#bps-tabs-2" method="post">
 	<?php settings_fields('bulletproof_security_options_status_display'); ?> 
 	<?php $bps_status_display = get_option('bulletproof_security_options_status_display'); ?>
 
@@ -1379,6 +1381,20 @@ if ( !current_user_can('manage_options') ) {
    <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.<br>&bull; DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.<br>&bull; Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.<br>&bull; WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.<br>&bull; Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51.6', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>

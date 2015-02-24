@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.2
-Stable tag: .51.6
+Stable tag: .51.7
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -52,6 +52,9 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 * Heads Up Dashboard Status Display
 * UI Theme Skin Changer (3 Theme Skins)
 * <a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
+
+= BulletProof Security Setup & Overview Video Tutorial =
+https://www.youtube.com/watch?v=AZmwDV1_YYk
 
 = BulletProof Security One-Click Method vs Multiple Separate Option Settings =
 
@@ -372,9 +375,18 @@ Yes, BulletProof Security works with Git, but does require some additional set u
 3. BulletProof Security - Login Security and Monitoring page
 4. BulletProof Security - DB Backup page
 5. BulletProof Security - Maintenance Mode page
-6. BulletProof Security - Maintenance Mode template images
+6. BulletProof Security - Maintenance Mode examples
+7. BulletProof Security - Maintenance Mode Pre-made example images
 
 == Changelog ==
+
+= .51.7 =
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.
+* DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.
+* Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.
+* WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.
+* Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.
 
 = .51.6 =
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
@@ -667,12 +679,13 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.6 =
+= .51.7 =
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* Inpage Status Display Turn On|Off code correction.
-* System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.
-* Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.
-* Link to Security Modes page added to wp-admin htaccess file alert.
+* Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.
+* DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.
+* Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.
+* WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.
+* Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.
 
 == Help Info ==
 

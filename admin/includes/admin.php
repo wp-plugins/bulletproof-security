@@ -241,7 +241,7 @@ function bpsPro_register_enqueue_scripts_styles() {
 global $wp_scripts, $wp_styles, $bulletproof_security, $wp_version;
 
 	// Register & Load BPS scripts and styles on BPS plugin pages ONLY
-	if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches) ) {
+	if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
 		$UIoptions = get_option('bulletproof_security_options_theme_skin');
 
@@ -333,7 +333,7 @@ add_action( 'wp_before_admin_bar_render', 'bpsPro_remove_non_wp_nodes_from_toolb
 
 // Removes any/all additional WP Toolbar nodes / menu items added by other plugins and themes
 // in BPS plugin pages ONLY. Does NOT remove any of the default WP Toolbar nodes.
-// Note: This file is ONLY loaded in the WP Dashboard. This function is ONLY processed in BPS plugin pages.
+// Note: This file is loaded in the WP Dashboard. This function is ONLY processed in BPS plugin pages.
 function bpsPro_remove_non_wp_nodes_from_toolbar() {
 	
 	if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
@@ -347,13 +347,31 @@ function bpsPro_remove_non_wp_nodes_from_toolbar() {
 
 			if ( $all_toolbar_nodes ) {
 		
-				$wp_default_nodes = array( 'user-actions', 'user-info', 'edit-profile', 'logout', 'menu-toggle', 'my-account', 'wp-logo', 'about', 'wporg', 'documentation', 'support-forums', 'feedback', 'site-name', 'view-site', 'updates', 'comments', 'new-content', 'new-post', 'new-media', 'new-page', 'new-user', 'top-secondary', 'wp-logo-external' );
-			
-				foreach ( $all_toolbar_nodes as $node ) {
-					// For Testing: print_r($node->id);	
-					if ( ! in_array( $node->id, $wp_default_nodes ) ) {
-			
-						$wp_admin_bar->remove_node( $node->id );	
+				if ( ! is_multisite() ) {
+				
+					$wp_default_nodes = array( 'user-actions', 'user-info', 'edit-profile', 'logout', 'menu-toggle', 'my-account', 'wp-logo', 'about', 'wporg', 'documentation', 'support-forums', 'feedback', 'site-name', 'view-site', 'updates', 'comments', 'new-content', 'new-post', 'new-media', 'new-page', 'new-user', 'top-secondary', 'wp-logo-external' );
+				
+					foreach ( $all_toolbar_nodes as $node ) {
+						// For Testing: echo '<br>'; print_r($node->id); 
+					
+						if ( ! in_array( $node->id, $wp_default_nodes ) ) {
+							// For Testing: echo '<br>'; print_r($node->id);
+							$wp_admin_bar->remove_node( $node->id );	
+						}
+					}				
+				
+				
+				} else {
+				
+					$wp_default_nodes = array( 'user-actions', 'user-info', 'edit-profile', 'logout', 'menu-toggle', 'my-account', 'wp-logo', 'about', 'wporg', 'documentation', 'support-forums', 'feedback', 'site-name', 'view-site', 'updates', 'comments', 'new-content', 'new-post', 'new-media', 'new-page', 'new-user', 'top-secondary', 'wp-logo-external', 'my-sites', 'my-sites-super-admin', 'network-admin', 'network-admin-d', 'network-admin-s', 'network-admin-u', 'network-admin-t', 'network-admin-p', 'my-sites-list', 'edit-site' );
+				
+					foreach ( $all_toolbar_nodes as $node ) {
+						// For Testing: echo '<br>'; print_r($node->id); 
+					
+						if ( ! in_array( $node->id, $wp_default_nodes ) && ! preg_match( '/blog-[0-9]/', $node->id, $matches ) ) {
+							// For Testing: echo '<br>'; print_r($node->id);
+							$wp_admin_bar->remove_node( $node->id );	
+						}
 					}
 				}
 			}

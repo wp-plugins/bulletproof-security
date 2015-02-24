@@ -100,7 +100,7 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 .iniFinderStyle {background-color:#fff;padding:2px 2px 2px 4px;border-right:2px solid black;border-left:2px solid black;border-top:1px solid #999999;border-bottom:1px solid #999999;}
 /* DB Backup */
 #DBBJobscheckall {margin:0px 0px 0px -20px;}
-#DBBFilescheckall {margin:0px 0px 0px -20px;}
+#DBBFilescheckall {max-height:270px;overflow:auto;margin:0px 0px 0px -20px;border-bottom:1px solid #999;}
 #DBBcheckall {margin:0px 15px 0px -20px;float:left;overflow:auto;width:400px;max-height:600px;border:1px solid #e5e5e5;}
 /* BPS Pro-Tools pages */
 .regular-text-mycrypt {width:60%}

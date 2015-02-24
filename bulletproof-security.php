@@ -5,7 +5,7 @@ Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging|HTTP Error Logging. Login Security|Login Monitoring: Log All Account Logins or Log Only Account Lockouts. DB Backup: Database Backup. Website FrontEnd|BackEnd Maintenance Mode. System Info: PHP|MySQL|OS|Server|Memory Usage|IP|SAPI|WP Filesystem API Method|DNS|Max Upload|Zend Engine Version|Zend Guard|Loader|Optimizer|ionCube Loader|Suhosin|APC|eAccelerator|XCache|Varnish|cURL|Memcache|Memcached...
-Version: .51.6
+Version: .51.7
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,9 +28,9 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.51.6' );
-$bps_last_version = '.51.5';
-$bps_version = '.51.6';
+define( 'BULLETPROOF_VERSION', '.51.7' );
+$bps_last_version = '.51.6';
+$bps_version = '.51.7';
 $bps_readme_install_ver = '1';
 $aitpro_bullet = '<img src="'.plugins_url('/bulletproof-security/admin/images/aitpro-bullet.png').'" style="padding:0px 3px 0px 3px;" />';
 

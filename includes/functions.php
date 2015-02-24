@@ -292,16 +292,19 @@ function bps_root_htaccess_status_dashboard() {
 
 		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
 
-		if ( esc_html($_SERVER['QUERY_STRING']) == '' ) {
-			$bps_base = basename(esc_html($_SERVER['REQUEST_URI']));
-		} else {
-			$bps_base = str_replace( admin_url(), '', esc_html($_SERVER['REQUEST_URI']) );
-		}		
+			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 		
-		echo '<div id="bps-status-display" style="float:left;margin:6px 0px -40px 8px;padding:3px 5px 3px 5px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'" style="text-decoration:none;font-weight:bold;">'.__('Reload BPS Status Display', 'bulletproof-security').'</a></div>';
-		echo '<div style="clear:both;"></div>';
+			if ( esc_html($_SERVER['QUERY_STRING']) == '' ) {
+				$bps_base = basename(esc_html($_SERVER['REQUEST_URI']));
+			} else {
+				$bps_base = str_replace( admin_url(), '', esc_html($_SERVER['REQUEST_URI']) );
+			}		
+		
+			echo '<div id="bps-status-display" style="float:left;margin:6px 0px -40px 8px;padding:3px 5px 3px 5px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'" style="text-decoration:none;font-weight:bold;">'.__('Reload BPS Status Display', 'bulletproof-security').'</a></div>';
+			echo '<div style="clear:both;"></div>';
+			}
 		}
-
+		
 		if ( @$_POST['Submit-DBB-Run-Job'] == true || @$_POST['Submit-DB-Table-Prefix'] == true || @$_POST['Submit-DB-Prefix-Table-Refresh'] == true ) {  
 		
 			$bpsPro_Spinner = get_option('bulletproof_security_options_spinner');	

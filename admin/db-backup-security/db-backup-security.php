@@ -472,7 +472,7 @@ bpsPro_dbbackup_form_processing();
 		
 		$iterator = new DirectoryIterator($source);
 
-	echo '<div id="DBBFilescheckall">';
+	echo '<div id="DBBFilescheckall" style="max-height:270px;overflow:auto;">';
 	echo '<table class="widefat" style="text-align:left;">';
 	echo '<thead>';
 	echo '<tr>';
