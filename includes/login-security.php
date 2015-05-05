@@ -148,8 +148,8 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			} // end if ( $insert_rows = $wpdb->insert...
 		} // end if ( $wpdb->num_rows != 0...
 
-		// Bad Login - DB Row does NOT Exist - First bad login attempt = $failed_logins = '1';
-		if ( $wpdb->num_rows == 0 && $user->ID != 0 && !wp_check_password($password, $user->user_pass, $user->ID) ) {
+		// Bad Login - DB Row does NOT Exist - First bad login attempt = $failed_logins = '1'; - Insert a new Row with Locked status
+		if ( $wpdb->num_rows == 0 && $user->ID != 0 && ! wp_check_password($password, $user->user_pass, $user->ID) ) {
 			$failed_logins = '1';
 
 			// Insane, but someone will do this... if max bad retries is set to 1
@@ -190,13 +190,15 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 		} // end if ( $wpdb->num_rows == 0...	
 
 		// Good Login - DB Row Exists - Reset locked out account on good login if it was locked and the lockout has expired
-		if ( $wpdb->num_rows != 0 && $user->ID != 0 && wp_check_password($password, $user->user_pass, $user->ID) && $row->status == 'Locked' && $timeNow > $row->lockout_time) {				
+		if ( $wpdb->num_rows != 0 && $user->ID != 0 && wp_check_password($password, $user->user_pass, $user->ID) && $row->status == 'Locked' && $timeNow > $row->lockout_time ) {				
 				$status = 'Not Locked';			
 				$lockout_time = '0';
 				$failed_logins = '0';
 
-			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
-			
+			// .51.8: additional WHERE clause added: 'status' => 'Locked' - Update ONLY the Row that has status of Locked.
+			// maybe later version keep this row and reset the status and failed login attempts only and create a new row for the new login - not critical
+			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id, 'status' => 'Locked' ) ) ) {	
+
 			// Network/Multisite subsites - logging is not used/allowed
 			if ( is_multisite() && $blog_id != 1 ) {
 				// do nothing
@@ -237,7 +239,7 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 		} // end if ( $wpdb->num_rows != 0...
 
 		// Bad Login - DB Row Exists - Count bad login attempts and Lock Account
-		if ( $wpdb->num_rows != 0 && $user->ID != 0 && !wp_check_password($password, $user->user_pass, $user->ID) ) {
+		if ( $wpdb->num_rows != 0 && $user->ID != 0 && ! wp_check_password($password, $user->user_pass, $user->ID) ) {
 
 			foreach ( $LoginSecurityRows as $row ) {
 
@@ -252,42 +254,53 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				if ( $row->failed_logins == 0 ) {
 					for ($failed_logins = 0; $failed_logins <= 0; $failed_logins++) {
     					$failed_logins;
+						// .51.8: added $remaining variables
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					} 
 				} elseif ( $row->failed_logins == 1 ) {
 					for ($failed_logins = 1; $failed_logins <= 1; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 2 ) {
 					for ($failed_logins = 2; $failed_logins <= 2; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 3 ) {
 					for ($failed_logins = 3; $failed_logins <= 3; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 4 ) {
 					for ($failed_logins = 4; $failed_logins <= 4; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 5 ) {
 					for ($failed_logins = 5; $failed_logins <= 5; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 6 ) {
 					for ($failed_logins = 6; $failed_logins <= 6; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 7 ) {
 					for ($failed_logins = 7; $failed_logins <= 7; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 8 ) {
 					for ($failed_logins = 8; $failed_logins <= 8; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 9 ) {
 					for ($failed_logins = 9; $failed_logins <= 9; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				}
 			} // end foreach
@@ -323,9 +336,19 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				$status = 'Not Locked';
 			}
 
-			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
-		
-			} // end if ( $update_rows = $wpdb->update...
+			// .51.8: Insert a new row on first bad login attempt. After that update that same row
+			if ( $failed_logins == 1 ) {
+				
+				$insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) );		
+					
+			} else {
+				
+				$no_zeros = '0';
+				$LSM_zero_filter = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $bpspro_login_table WHERE user_id = %d AND failed_logins != %d", $user->ID, $no_zeros ) );
+				
+				$update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id, 'failed_logins' => $row->failed_logins ) );
+
+			}
 		} // end if ( $wpdb->num_rows != 0...
 } // end $BPSoptions['bps_login_security_logging'] == 'logAll') {...
 
@@ -355,7 +378,7 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 		}
 
 		// Bad Login - DB Row does NOT Exist - First bad login attempt = $failed_logins = '1';
-		if ( $wpdb->num_rows == 0 && $user->ID != 0 && !wp_check_password($password, $user->user_pass, $user->ID) ) {
+		if ( $wpdb->num_rows == 0 && $user->ID != 0 && ! wp_check_password($password, $user->user_pass, $user->ID) ) {
 			$failed_logins = '1';
 
 			// Insane, but someone will do this... if max bad retries is set to 1
@@ -395,13 +418,20 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			} // end if ( $insert_rows = $wpdb->insert...
 		} // end if ( $wpdb->num_rows == 0...	
 
-			// Good Login - DB Row Exists - Reset locked out account on good login if it was locked and the lockout has expired
+			// .51.8: Good Login - DB Row Exists - Status == Not Locked - Reset lockout time and failed logins to 0
+			// Update all rows for the user id on good login
+			if ( $wpdb->num_rows != 0 && $user->ID != 0 && wp_check_password($password, $user->user_pass, $user->ID) && $row->status == 'Not Locked' ) {				
+
+				$update_rows = $wpdb->update( $bpspro_login_table, array( 'lockout_time' => '0', 'failed_logins' => '0' ), array( 'user_id' => $row->user_id ) );		
+			}
+
+			// Good Login - DB Row Exists & status is Locked - Reset Only a locked out account on good login if it was locked and the lockout time has expired
 			if ( $wpdb->num_rows != 0 && $user->ID != 0 && wp_check_password($password, $user->user_pass, $user->ID) && $row->status == 'Locked' && $timeNow > $row->lockout_time) {				
 				$status = 'Not Locked';			
 				$lockout_time = '0';
 				$failed_logins = '0';
 
-			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
+			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id, 'status' => 'Locked' ) ) ) {	
 
 			// Network/Multisite subsites - logging is not used/allowed
 			if ( is_multisite() && $blog_id != 1 ) {
@@ -443,7 +473,7 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 		} // end if ( $wpdb->num_rows != 0...
 
 		// Bad Login - DB Row Exists - Count bad login attempts and Lock Account
-		if ( $wpdb->num_rows != 0 && $user->ID != 0 && !wp_check_password($password, $user->user_pass, $user->ID) ) {
+		if ( $wpdb->num_rows != 0 && $user->ID != 0 && ! wp_check_password($password, $user->user_pass, $user->ID) ) {
 
 			foreach ( $LoginSecurityRows as $row ) {
 
@@ -458,42 +488,53 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				if ( $row->failed_logins == 0 ) {
 					for ($failed_logins = 0; $failed_logins <= 0; $failed_logins++) {
     					$failed_logins;
+						// .51.8: added $remaining variables
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					} 
 				} elseif ( $row->failed_logins == 1 ) {
 					for ($failed_logins = 1; $failed_logins <= 1; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 2 ) {
 					for ($failed_logins = 2; $failed_logins <= 2; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 3 ) {
 					for ($failed_logins = 3; $failed_logins <= 3; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 4 ) {
 					for ($failed_logins = 4; $failed_logins <= 4; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 5 ) {
 					for ($failed_logins = 5; $failed_logins <= 5; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 6 ) {
 					for ($failed_logins = 6; $failed_logins <= 6; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 7 ) {
 					for ($failed_logins = 7; $failed_logins <= 7; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 8 ) {
 					for ($failed_logins = 8; $failed_logins <= 8; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				} elseif ( $row->failed_logins == 9 ) {
 					for ($failed_logins = 9; $failed_logins <= 9; $failed_logins++) {
     					$failed_logins;
+						$remaining = $BPSoptions['bps_max_logins'] - $failed_logins - 1;
 					}
 				}
 			} // end foreach
@@ -529,9 +570,19 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				$status = 'Not Locked';
 			}
 			
-			if ( $update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id ) ) ) {	
-		
-			} // end if ( $update_rows = $wpdb->update...
+			// .51.8: Insert a new row on first bad login attempt. After that update that same row
+			if ( $failed_logins == 1 ) {
+				
+				$insert_rows = $wpdb->insert( $bpspro_login_table, array( 'status' => $status, 'user_id' => $user->ID, 'username' => $user->user_login, 'public_name' => $user->display_name, 'email' => $user->user_email, 'role' => $user->roles[0], 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $ip_address, 'hostname' => $hostname, 'request_uri' => $request_uri ) );		
+					
+			} else {
+				
+				$no_zeros = '0';
+				$LSM_zero_filter = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $bpspro_login_table WHERE user_id = %d AND failed_logins != %d", $user->ID, $no_zeros ) );
+				
+				$update_rows = $wpdb->update( $bpspro_login_table, array( 'status' => $status, 'user_id' => $row->user_id, 'username' => $row->username, 'public_name' => $row->public_name, 'email' => $row->email, 'role' => $row->role, 'human_time' => current_time('mysql'), 'login_time' => $login_time, 'lockout_time' => $lockout_time, 'failed_logins' => $failed_logins, 'ip_address' => $row->ip_address, 'hostname' => $row->hostname, 'request_uri' => $row->request_uri ), array( 'user_id' => $row->user_id, 'failed_logins' => $row->failed_logins ) );
+
+			}
 		} // end if ( $wpdb->num_rows != 0...
 } // end $BPSoptions['bps_login_security_logging'] == 'logLockouts') {...
 
@@ -544,19 +595,19 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && isset( $_POST['wp-submit'] ) ) {
 
 	// if a user does not set/save this option then default to WP Errors
-	if ( !$user && !$BPSoptions['bps_login_security_errors'] ) {
+	if ( ! $user && !$BPSoptions['bps_login_security_errors'] ) {
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid username. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 	}
 
-	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'wpErrors') {
+	if ( ! $user && $BPSoptions['bps_login_security_errors'] == 'wpErrors') {
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid username. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 	}
 	
-	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'generic') {
+	if ( ! $user && $BPSoptions['bps_login_security_errors'] == 'generic') {
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 	}
 	
-	if ( !$user && $BPSoptions['bps_login_security_errors'] == 'genericAll') {
+	if ( ! $user && $BPSoptions['bps_login_security_errors'] == 'genericAll') {
 		return new WP_Error('invalid_username', sprintf(__('<strong>ERROR</strong>: Invalid Entry. <a href="%s" title="Password Lost and Found">Lost your password</a>?'), wp_lostpassword_url()));
 	}
 
@@ -565,22 +616,48 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && isset( $_POST['wp-submit
 		return $user;
 
 	// if a user does not set/save this option then default to WP Errors
-	if ( !wp_check_password($password, $user->user_pass, $user->ID) && !$BPSoptions['bps_login_security_errors'] ) {
+	if ( ! wp_check_password($password, $user->user_pass, $user->ID) && ! $BPSoptions['bps_login_security_errors'] ) {
+		
 		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );		
 	}
 
-	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'wpErrors') {
-		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );		
+	if ( ! wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'wpErrors' ) {
+		
+		if ( $BPSoptions['bps_login_security_remaining'] == 'On' ) {
+		
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>? Login Attempts Remaining <strong>%3$d</strong>' ), $username, wp_lostpassword_url(), $remaining ) );		
+		
+		} else {
+
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong> is incorrect. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );
+
+		}
 	}
 	
-	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'generic') {	
-		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ),
-		$username, wp_lostpassword_url() ) );
+	if ( ! wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'generic' ) {	
+
+		if ( $BPSoptions['bps_login_security_remaining'] == 'On' ) {
+
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>? Login Attempts Remaining <strong>%3$d</strong>' ), $username, wp_lostpassword_url(), $remaining ) );
+		
+		} else {	
+		
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );	
+		
+		}
 	}
 	
-	if ( !wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'genericAll') {	
-		return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ),
-		$username, wp_lostpassword_url() ) );
+	if ( ! wp_check_password($password, $user->user_pass, $user->ID) && $BPSoptions['bps_login_security_errors'] == 'genericAll' ) {	
+
+		if ( $BPSoptions['bps_login_security_remaining'] == 'On' ) {
+
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>? Login Attempts Remaining <strong>%3$d</strong>' ), $username, wp_lostpassword_url(), $remaining ) );
+
+		} else {
+
+			return new WP_Error( 'incorrect_password', sprintf( __( '<strong>ERROR</strong>: Invalid Entry. <a href="%2$s" title="Password Lost and Found">Lost your password</a>?' ), $username, wp_lostpassword_url() ) );		
+		
+		}
 	}
 
 	return $user;
@@ -609,7 +686,7 @@ switch ( $pw_reset ) {
 
     case ( $pw_reset == '1' && $BPSoptions['bps_login_security_pw_reset'] == 'disableFrontend' ):
 		
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 		
 		function bpspro_disable_password_reset() { 
 			return false; 

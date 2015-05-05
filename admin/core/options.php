@@ -1,12 +1,12 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present
-if ( !function_exists('add_action') ) {
+if ( ! function_exists('add_action') ) {
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
 }
  
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -24,7 +24,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 	if ( false === ( $bps_api = get_transient('bulletproof-security_info') ) ) {
 		$bps_api = plugins_api( 'plugin_information', array( 'slug' => stripslashes( 'bulletproof-security' ) ) );
 		
-	if ( !is_wp_error( $bps_api ) ) {
+	if ( ! is_wp_error( $bps_api ) ) {
 		$bps_expire = 60 * 30; // Cache downloads data for 30 minutes
 		$bps_downloaded = array( 'downloaded' => $bps_api->downloaded );
 		maybe_serialize( $bps_downloaded );
@@ -65,9 +65,9 @@ bps_delete_language_files();
 $bps_get_domain_root = bpsGetDomainRoot();
 $bps_get_wp_root_default = bps_wp_get_root_folder();
 // Replace ABSPATH = wp-content/plugins
-$bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
+$bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR );
 // Replace ABSPATH = wp-content
-$bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
+$bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR );
 // Replace ABSPATH = wp-content/uploads
 $wp_upload_dir = wp_upload_dir();
 $bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
@@ -91,7 +91,7 @@ if ( isset( $_POST['Submit-Secure-Root'] ) && current_user_can('manage_options')
 			@chmod($RootHtaccess, 0644);
 		}		
 		
-		if ( !copy($SecureHtaccess, $RootHtaccess) ) {
+		if ( ! copy($SecureHtaccess, $RootHtaccess) ) {
 			echo $bps_topDiv;
 			$text = '<font color="red"><strong>'.__('Failed to activate Root Folder BulletProof Mode protection. Your website is NOT protected.', 'bulletproof-security').'</strong></font>';
 			echo $text;
@@ -108,6 +108,18 @@ if ( isset( $_POST['Submit-Secure-Root'] ) && current_user_can('manage_options')
 			echo $text;
     		echo $bps_bottomDiv;
 
+			// Save the Setup Wizard DB option only once if it does not already exist
+			// A manual new setup of BPS was chosen instead of using the Setup Wizard
+			// A BPS upgrade updates the value to: upgrade once if the option does not already exist.
+			$bps_setup_wizard = 'bulletproof_security_options_wizard_free';
+			$BPS_Wizard = array( 'bps_wizard_free' => 'manual' );	
+	
+			if ( ! get_option( $bps_setup_wizard ) ) {	
+		
+				foreach( $BPS_Wizard as $key => $value ) {
+					update_option('bulletproof_security_options_wizard_free', $BPS_Wizard);
+				}
+			}		
 		}
 	}
 	elseif ( $_POST['bpsecureroot'] == 'default' ) {
@@ -408,6 +420,13 @@ $bpsSpacePop = '-------------------------------------------------------------';
 	<div id="bps-tabs" class="bps-menu">
     <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
    
+<style>
+<!--
+.bps-readme-table {background:#fff;vertical-align:text-top;margin:8px 0px 10px 0px;}
+.bps-readme-table-td {padding:5px;}
+-->
+</style>
+
 		<ul>
 			<li><a href="#bps-tabs-1"><?php _e('Security Modes', 'bulletproof-security'); ?></a></li>
             <li><a href="#bps-tabs-2"><?php _e('Security Status', 'bulletproof-security'); ?></a></li>
@@ -436,12 +455,17 @@ $bpsSpacePop = '-------------------------------------------------------------';
 <h3><?php _e('AutoMagic, Setup Steps & Other Help Info', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
 
 <div id="bps-modal-content1" title="<?php _e('Setup Steps & AutoMagic', 'bulletproof-security'); ?>">
-	<p><?php echo $bps_modal_content1; ?></p>
+	<p><?php 
+	$text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br>';
+	echo $text;
+	?>
+	<strong><a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/#bps-free-general-troubleshooting" title="BPS Troubleshooting Steps" target="_blank"><?php _e('BPS Troubleshooting Steps', 'bulletproof-security'); ?></a></strong><br /><br />
+	<?php echo $bps_modal_content1; ?></p>
 </div>
 
-<h3 style="padding-left:10px;"><?php $text = '<strong><a href="https://www.youtube.com/watch?v=AZmwDV1_YYk" target="_blank" title="Link opens in a new Browser window">'.__('Setup & Overview Video Tutorial', 'bulletproof-security').'</a></strong>'; echo $text; ?></h3>
+<h3 style="padding-left:10px;"><?php $text = '<strong><a href="http://forum.ait-pro.com/video-tutorials/#setup-overview-free" target="_blank" title="Setup Wizard Link opens in a new Browser window">'.__('Setup & Overview Video Tutorial', 'bulletproof-security').'</a></strong>'; echo $text; ?></h3>
 
-<?php if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
+<?php if ( ! current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
 
 <div id="AutoMagic-buttons" style="">
 
@@ -630,7 +654,7 @@ function bpsDeleteUserMetaDismiss() {
 	global $current_user;
 	$user_id = $current_user->ID;
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_iis_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_iis_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Windows IIS Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -638,7 +662,7 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_brute_force_login_protection_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_brute_force_login_protection_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Brute Force Login Protection Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -646,39 +670,63 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_speed_boost_cache_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_speed_boost_cache_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Speed Boost Cache Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
-		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Speed Boost Cache Code Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The Speed Boost Cache Code Notice will ONLY be displayed after you dismiss the Brute Force Login Protection Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Speed Boost Cache Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_author_enumeration_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_author_enumeration_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Author Enumeration BOT Probe Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
-		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Author Enumeration BOT Probe Code Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The Author Enumeration BOT Probe Code Notice will ONLY be displayed after you dismiss the Speed Boost Cache Code Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Author Enumeration BOT Probe Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_xmlrpc_ddos_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_xmlrpc_ddos_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: XML-RPC DDoS Protection Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
-		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: XML-RPC DDoS Protection Code Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The XML-RPC DDoS Protection Code Notice will ONLY be displayed after you dismiss the Author Enumeration BOT Probe Code Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: XML-RPC DDoS Protection Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_PhpiniHandler_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_referer_spam_notice') ) {
+		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Referer Spam|Phishing Protection Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
+		echo $text;
+	} else {
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Referer Spam|Phishing Protection Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		echo $text;
+	}
+
+	if ( ! delete_user_meta($user_id, 'bps_sniff_driveby_notice') ) {
+		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Mime Sniffing|Drive-by Download Attack Protection Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
+		echo $text;
+	} else {
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Mime Sniffing|Drive-by Download Attack Protection Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		echo $text;
+	}
+
+	if ( ! delete_user_meta($user_id, 'bps_iframe_clickjack_notice') ) {
+		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: External iFrame|Clickjacking Protection Code Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
+		echo $text;
+	} else {
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: External iFrame|Clickjacking Protection Code Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		echo $text;
+	}
+
+	if ( ! delete_user_meta($user_id, 'bps_ignore_PhpiniHandler_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The PHP/php.ini handler htaccess code check Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
-		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The PHP/php.ini handler htaccess code check Notice is reset.', 'bulletproof-security').'<br>'.__('Note: The PHP/php.ini handler htaccess code check Notice will ONLY be displayed after you dismiss the Speed Boost Cache Code Notice.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The PHP/php.ini handler htaccess code check Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_Permalinks_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_Permalinks_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Custom Permalinks HUD Check Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -686,7 +734,7 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_sucuri_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_sucuri_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Sucuri 1-click Hardening wp-content HUD Check Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -694,7 +742,7 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_wpfirewall2_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_wpfirewall2_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The WordPress Firewall 2 Plugin Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -702,7 +750,7 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}	
 
-	if ( !delete_user_meta($user_id, 'bps_ignore_BLC_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_BLC_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Broken Link Checker plugin HEAD Request Method filter HUD Check Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
@@ -711,11 +759,11 @@ function bpsDeleteUserMetaDismiss() {
 	}
 
 /* maybe later version - not now
-	if ( !delete_user_meta($user_id, 'bps_ignore_public_username_notice') ) {
+	if ( ! delete_user_meta($user_id, 'bps_ignore_public_username_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The username/user account Public Display Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
 	} else {
-		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The username/user account Public Display check is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/monitor/monitor.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The username/user account Public Display check is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
 		echo $text;
 	}
 */
@@ -1321,7 +1369,7 @@ jQuery(document).ready(function($){
 <h3><?php $text = '<strong><a href="http://forum.ait-pro.com/read-me-first/" target="_blank" title="Link opens in a new Browser window">'.__('BulletProof Security Forum', 'bulletproof-security').'</a></strong>'; echo $text; ?></h3>
 
 <?php 
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 	_e('Permission Denied', 'bulletproof-security'); 
 	
 	} else { 
@@ -1384,7 +1432,41 @@ if ( !current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.<br>&bull; DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.<br>&bull; Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.<br>&bull; WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.<br>&bull; Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.', 'bulletproof-security'); echo $text; ?>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: Setup Wizard', 'bulletproof-security').'</strong></h3>'.__('The BPS plugin can be setup with literally only 1 click now on the new Setup Wizard page. Setup Wizard Pre-Installation Checks are automatically performed and displayed on the Setup Wizard page. Green font messages mean everything is good. Red and blue font messages are displayed with an exact description of the issue and how to correct the issue. Red font error messages need to be fixed before running the Setup Wizard. Blue font messages can either be a recommendation or a notice about something. Blue font messages do not need to be fixed before running the Setup Wizard. You can re-run the Setup Wizard again at any time. Your existing settings will NOT be overwritten and will be re-saved. Any new or additional settings that the Setup Wizard finds on your website will be saved/setup. A link to the Setup Wizard has been created on the WordPress Plugins page under the BulletProof Security plugin.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: jQuery UI Dialog Form BPS Uninstall Options', 'bulletproof-security').'</strong></h3>'.__('An Uninstall Options link has been created on the WordPress Plugins page under the BulletProof Security plugin. Clicking the Uninstall Options link loads a jQuery UI Dialog Form with 2 uninstall options: BPS Pro Upgrade Uninstall option - If you are upgrading to BPS Pro, select the BPS Pro Upgrade Uninstall option and click the Save Option button or just click the Close button below and do a normal plugin uninstall. Complete BPS Plugin Uninstall option - If you want to completely delete the BPS plugin, all files, Custom Code and BPS database settings, select the Complete BPS Plugin Uninstall option and click the Save Option button.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Option: Login Security Attempts Remaining option and Core Functionality Improvements', 'bulletproof-security').'</strong></h3>'.__('<strong>New Option Attempts Remaining:</strong> You can choose to display a "Login Attempts Remaining X" message when an incorrect password is entered. X is the total number of login attempts left/remaining before the User Account is locked. This new option is enabled by default during BPS upgrades and new installations.', 'bulletproof-security').'<br><br>'.__('<strong>Core Functionality Improvements:</strong> When a User Account is locked out and previous User Account logins were logged|stored in the DB, those previously logged logins and data for those DB Rows is not changed|updated and instead a new DB Row is inserted. This allows for better chronological login tracking and monitoring. Affects both Logging Options - Log All Account Logins and Log Only Account Lockouts options and allows for switching between these Logging Options without affecting functionality or causing issues/problems.', 'bulletproof-security'); echo $text; ?>
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation', 'bulletproof-security').'</strong></h3>'.__('<strong>Bonus Custom Code Dismiss Notice Consolidation:</strong> Combined|consolidated all Bonus Custom Code Notices into 1 Bonus Custom Code Notice function with 1 displayed Notice message instead of having several different displayed Notices. Each Bonus Custom Code contains a link to the Bonus Custom Code and a Dismiss Notice link.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/block-referer-spammers-semalt-kambasoft-ranksonic-buttons-for-website/" target="_blank" title="Referer Spammers|Phishing Protection">'.__('Referer Spammers|Phishing Protection', 'bulletproof-security').'</a><br><a href="http://forum.ait-pro.com/forums/topic/mime-sniffing-data-sniffing-content-sniffing-drive-by-download-attack-protection/" target="_blank" title="Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection">'.__('Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection', 'bulletproof-security').'</a><br><a href="http://forum.ait-pro.com/forums/topic/rssing-com-good-or-bad/" target="_blank" title="External iFrame and Clickjacking Protection">'.__('External iFrame and Clickjacking Protection', 'bulletproof-security').'</a>'; echo $text; ?>
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; New BPS Setup & Overview Video tutorial created: <a href="http://forum.ait-pro.com/video-tutorials/#setup-overview-free" target="_blank" title="BPS Setup & Overview Video Tutorial">'.__('BPS Setup & Overview Video Tutorial', 'bulletproof-security').'</a> - link added on the Setup Wizard page and htaccess Core Security Modes page.<br>&bull; WP 4.2 Bug Reported|Ticket created with POC (Proof Of Concept) and solution provided: ', 'bulletproof-security').'<a href="https://core.trac.wordpress.org/ticket/31758" target="_blank" title="WP 4.2 hash anchor Bug">'.__('WP 4.2 hash anchor Bug', 'bulletproof-security').'</a>'.__(' Hash anchors were being stripped of URI\'s. Solution provided to WP folks. Solution implemented by WP folks. No other issues or problems found with WP 4.2 and BPS Pro versions.<br>&bull; WP flush_rewrite_rules function added to BPS complete plugin uninstall function. Creates new default generic WP root htaccess file on BPS complete plugin uninstall.<br>&bull; Dismiss Notice link correction when basename == wp-admin on first Dashboard login.<br>&bull; Custom Code inpage check for default WordPress Rewrite code added in Custom Code text boxes.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51.7', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('- Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.<br>- DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.<br>- Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.<br>- WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.<br>- Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.', 'bulletproof-security'); echo $text; ?>
      </td>
   </tr> 
    <tr>
@@ -1398,7 +1480,7 @@ if ( !current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Inpage Status Display Turn On|Off code correction.<br>&bull; System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.<br>&bull; Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.<br>&bull; Link to Security Modes page added to wp-admin htaccess file alert.', 'bulletproof-security'); echo $text; ?>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('- Inpage Status Display Turn On|Off code correction.<br>- System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.<br>- Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.<br>- Link to Security Modes page added to wp-admin htaccess file alert.', 'bulletproof-security'); echo $text; ?>
      </td>
   </tr> 
    <tr>
@@ -1463,7 +1545,7 @@ if ( !current_user_can('manage_options') ) {
   </tr>   
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Dismiss Notices button/link reload current page based on Request URI or Query String.<br>&bull; Optimization|Performance: All BPS pages and functions.<br>&bull; Obsolete functions/code removed/deleted.<br>&bull; BPS plugin register scripts|styles | Enqueue scripts|styles | Dequeue plugin|theme scripts|styles loading in BPS plugin pages combined into one function. Additionally eliminated bloated individual load settings page code.<br>&bull; Additional variable check for conflicting|contradictory Automatic Update message/alert issue.<br>&bull; WordPress Plugins page|BulletProof Security plugin "Settings" link name change to "Setup Steps".<br>&bull; Maintenance Mode menu page will not be displayed if wp-admin BulletProof Mode has been disabled.', 'bulletproof-security'); echo $text; ?>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('- Dismiss Notices button/link reload current page based on Request URI or Query String.<br>- Optimization|Performance: All BPS pages and functions.<br>- Obsolete functions/code removed/deleted.<br>- BPS plugin register scripts|styles | Enqueue scripts|styles | Dequeue plugin|theme scripts|styles loading in BPS plugin pages combined into one function. Additionally eliminated bloated individual load settings page code.<br>- Additional variable check for conflicting|contradictory Automatic Update message/alert issue.<br>- WordPress Plugins page|BulletProof Security plugin "Settings" link name change to "Setup Steps".<br>- Maintenance Mode menu page will not be displayed if wp-admin BulletProof Mode has been disabled.', 'bulletproof-security'); echo $text; ?>
      </td>
   </tr> 
   <tr>
@@ -1590,6 +1672,8 @@ for hacker and spammer protection', 'bulletproof-security').'</strong></h4>'; ec
 <div id="bpsProVersions" style="padding-left:5px;">
 <div class="pro-links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a></div><br />
 
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5141/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-2/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.2', 'bulletproof-security'); ?></a></div>
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5109/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.1', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5094/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5087/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-9-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.9.1', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5080/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-9-9/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 9.9', 'bulletproof-security'); ?></a></div>

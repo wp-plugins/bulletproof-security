@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present 
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -10,15 +10,38 @@ $scrolltoCCode = isset( $_REQUEST['scrolltoCCode'] ) ? (int) $_REQUEST['scrollto
 $scrolltoCCodeWPA = isset( $_REQUEST['scrolltoCCodeWPA'] ) ? (int) $_REQUEST['scrolltoCCodeWPA'] : 0; 
 
 // Custom Code Check BPS Query String DB option for invalid code
+// .51.8: added check for Default WP Rewrite htaccess code
 function bps_CustomCode_BPSQSE_check() {
 global $bps_topDiv, $bps_bottomDiv;
+
 $options = get_option('bulletproof_security_options_customcode');	
-$subject = $options['bps_customcode_bpsqse'];
 $pattern = '/RewriteCond\s%{REQUEST_FILENAME}\s!-f\s*RewriteCond\s%{REQUEST_FILENAME}\s!-d\s*RewriteRule\s\.(.*)\/index\.php\s\[L\]/';
 
-	if ( preg_match($pattern, $subject, $matches) ) {
- 		echo $bps_topDiv;
-		$text = '<strong><font color="red">'.__('The BPS Query String Exploits Custom Code below is NOT valid.', 'bulletproof-security').'</font><br>'.__('Delete the code shown below from the CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS: text box and click the Save Root Custom Code button again.', 'bulletproof-security').'</strong><br>';
+	if ( preg_match( $pattern, htmlspecialchars_decode( $options['bps_customcode_bpsqse'], ENT_QUOTES ), $matches ) ) {
+ 		
+		echo $bps_topDiv;
+		$text = '<strong><font color="red">'.__('The BPS Query String Exploits Custom Code below is NOT valid.', 'bulletproof-security').'</font><br>'.__('Delete the code shown below from the CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS: text box and click the Save Root Custom Code button.', 'bulletproof-security').'</strong><br>';
+ 		echo $text;
+		echo '<pre>';
+ 		print_r($matches[0]);
+ 		echo '</pre>';
+		echo $bps_bottomDiv;
+	}
+
+$pattern2 = '/#\sBEGIN\sWordPress\s*<IfModule\smod_rewrite\.c>\s*RewriteEngine\sOn\s*RewriteBase(.*)\s*RewriteRule(.*)\s*RewriteCond((.*)\s*){2}RewriteRule(.*)\s*<\/IfModule>\s*#\sEND\sWordPress/';
+
+/*
+Check these Custom Code DB option values:
+CUSTOM CODE TOP PHP/PHP.INI HANDLER/CACHE CODE: bps_customcode_one
+CUSTOM CODE WP REWRITE LOOP START: bps_customcode_wp_rewrite_start
+CUSTOM CODE BPSQSE BPS QUERY STRING EXPLOITS: bps_customcode_bpsqse
+CUSTOM CODE BOTTOM HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/BLOCK IP/REDIRECT CODE: bps_customcode_three
+*/
+
+	if ( preg_match( $pattern2, htmlspecialchars_decode( $options['bps_customcode_one'], ENT_QUOTES ), $matches ) || preg_match( $pattern2, htmlspecialchars_decode( $options['bps_customcode_wp_rewrite_start'], ENT_QUOTES ), $matches ) || preg_match( $pattern2, htmlspecialchars_decode( $options['bps_customcode_bpsqse'], ENT_QUOTES ), $matches ) || preg_match( $pattern2, htmlspecialchars_decode( $options['bps_customcode_three'], ENT_QUOTES ), $matches ) ) {
+ 		
+		echo $bps_topDiv;
+		$text = '<strong><font color="red">'.__('Default WordPress Rewrite htaccess code has been added to BPS Custom Code.', 'bulletproof-security').'</font><br>'.__('The BPS plugin already uses/has Default WordPress Rewrite code. Delete the Default WordPress Rewrite htaccess code shown below from the CUSTOM CODE text box were it was added and click the Save Root Custom Code button.', 'bulletproof-security').'</strong><br>';
  		echo $text;
 		echo '<pre>';
  		print_r($matches[0]);
@@ -26,7 +49,9 @@ $pattern = '/RewriteCond\s%{REQUEST_FILENAME}\s!-f\s*RewriteCond\s%{REQUEST_FILE
 		echo $bps_bottomDiv;
 	}
 }
+
 bps_CustomCode_BPSQSE_check();
+
 ?>
         
 <div id="bps-accordion-2" class="bps-accordian-main-2">

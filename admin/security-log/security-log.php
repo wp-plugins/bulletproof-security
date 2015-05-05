@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();

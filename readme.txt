@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
-Tested up to: 4.2
-Stable tag: .51.7
+Tested up to: 4.2.1
+Stable tag: .51.8
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -12,6 +12,8 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 
 = BulletProof Security Feature Highlights =
 
+* One-Click Setup Wizard
+* jQuery UI Dialog Form Uninstall Options: BPS Pro upgrade uninstallation or complete BPS plugin uninstallation
 * .htaccess Website Security Protection (Firewalls)
 * Login Security & Monitoring
 * DB Backup: Full|Partial DB Backups | Manual|Scheduled DB Backups | Email Zip Backups | Cron Delete Old Backups
@@ -24,7 +26,7 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 
 = BulletProof Security Pro Feature Highlights =
 
-* 1 Click Setup Wizard
+* One-Click Setup Wizard
 * AutoRestore Intrusion Detection & Prevention System (ARQ IDPS)
 * Quarantine Intrusion Detection & Prevention System (ARQ IDPS)
 * Real-time File Monitor (IDPS)
@@ -54,23 +56,27 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 * <a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
 = BulletProof Security Setup & Overview Video Tutorial =
-https://www.youtube.com/watch?v=AZmwDV1_YYk
+https://youtu.be/8NNc6ycWbhw
+
+= BulletProof Security Recommended Video Tutorials =
+* <a href="http://forum.ait-pro.com/video-tutorials/#custom-code" title="BulletProof Security Custom Code Video Tutorial" rel="nofollow" target="_blank">BulletProof Security Custom Code Video Tutorial</a>
+* <a href="http://forum.ait-pro.com/video-tutorials/#security-log-firewall" title="BulletProof Security Security Log Video Tutorial" rel="nofollow" target="_blank">BulletProof Security Security Log Video Tutorial</a>
 
 = BulletProof Security One-Click Method vs Multiple Separate Option Settings =
 
-BulletProof Security uses a one-click setup method vs breaking up options and settings into multiple separate different options and settings. One-click is used figuratively and not literally. One-click is the concept where several tasks are performed with one-click of a button. BPS BulletProof Modes setup actually takes 4 clicks, but with those 4 clicks BPS BulletProof Modes are setup and the website has maximum security enabled with all BPS security features and code enabled instead of having to choose multiple separate options and settings. Customization, whitelisting, adding BPS Bonus Custom Code or adding other personal custom .htaccess code is done with the BPS Custom Code feature.
+BulletProof Security uses a one-click setup method vs breaking up options and settings into multiple separate different options and settings. One-click is literal if you are setting up BulletProof Security using the Setup Wizard. BPS is setup completely and all security features are turned on when you click the Setup Wizard button. One-click is used figuratively and not literally if you are using the Manual Controls to setup BulletProof Security. One-click is generally the concept where several tasks are performed with one-click of a button. BPS BulletProof Modes Manual setup actually takes 4 clicks, but with those 4 clicks BPS BulletProof Modes are setup and the website has maximum security enabled with all BPS security features and code enabled instead of having to choose multiple separate options and settings. Customization, whitelisting, adding BPS Bonus Custom Code or adding other personal custom .htaccess code is done with the BPS Custom Code feature.
 
 = htaccess Core Website Security (Security|Firewalls) =
 
-WordPress Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. The .htaccess security filters in BulletProof Security are designed to match malicious and nuisance attack patterns. The most important benefits of using a finite pattern matching method vs infinite banning/blocking individual IP's, Host's, Referer's, etc. is that your website performance and Server resources are not negatively impacted. In general, BulletProof Security takes an "Action Approach" to website security. Hacker X, Spammer X, Bad Bot X does bad Action Y = Forbidden/Blocked. An "Action Approach" is a much more effective and performance optimized approach to website security since the bad action itself is being blocked/forbidden instead of attempting to block an individual hacker/spammer that performed a bad action. Example: BulletProof Security blocks all SQL Injection hacking attempts/attacks no matter who performed that SQL Injection hacking attempt/attack.
+WordPress Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. The .htaccess security filters in BulletProof Security are designed to match malicious and nuisance attack patterns. The most important benefits of using a finite pattern matching method vs infinite banning/blocking individual IP's, Host's, Referer's, etc. is that your website performance and Server resources are not negatively impacted. In general, BulletProof Security takes an "Action Approach" to website security. Hacker X, Spammer X, Bad Bot X does bad Action Y = Forbidden/Blocked. An "Action Approach" is a much more effective and performance optimized approach to website security since the bad action itself is being blocked/forbidden instead of attempting to block an individual hacker/spammer that performed a bad action. Example: BulletProof Security blocks all SQL Injection hacking attempts/attacks no matter who performed that SQL Injection hacking attempt/attack. See the BulletProof Security Login Security & Monitoring Features section for additional features and options. See the BulletProof Security htaccess Core (Firewalls, etc.) Features section for additional features and options.
 
 = Login Security & Monitoring Website Security (Security|Monitoring) =
 
-Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Brute Force Login Security Protection. Email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in and when a User Account is locked out or Do Not Send Email Alerts. Choose Standard WP Error Messages or Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable Login Password Reset capability for Login Security Stealth Mode. See BulletProof Security Login Security & Monitoring Features for additional features and options.
+Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Brute Force Login Security Protection. Email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in and when a User Account is locked out or Do Not Send Email Alerts. Choose Standard WP Error Messages or Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable Login Password Reset capability for Login Security Stealth Mode. See the BulletProof Security Login Security & Monitoring Features section for additional features and options.
 
 = DB Backup: Database Backup Website Security (Security|Backup) =
 
-DB Backup: Create manual and scheduled Backup Jobs. Selective database table backup and full database backup. Scheduled backup job options: Hourly, Daily, Weekly and Monthly. Send scheduled backup zip file via email or just send email only, automatically delete old backup files after a certain period of time, etc., etc., etc. All DB Backup options/settings and default setup is done automatically during upgrades and new installations.
+DB Backup: Create manual and scheduled Backup Jobs. Selective database table backup and full database backup. Scheduled backup job options: Hourly, Daily, Weekly and Monthly. Send scheduled backup zip file via email or just send email only, automatically delete old backup files after a certain period of time, etc., etc., etc. All DB Backup options/settings and default setup is done automatically during upgrades and new installations. See the BulletProof Security DB Backup|Database Backup Features section for additional features and options.
 
 = BulletProof Security is Website Performance Optimized (Performance|Optimization) =
 
@@ -78,11 +84,11 @@ Website performance is just as important as website security. BulletProof Securi
 
 = FrontEnd|BackEnd Maintenance Mode (Security|Development) =
 
-Display a website under maintenance page with Countdown Timer to website visitors while the website displays and functions normally for you. When the Countdown Timer has completed (reached 0) an email reminder is sent to you to remind you that the Countdown Timer has completed. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. FrontEnd Maintenance mode is primarily designed for development/maintenance purposes and BackEnd Maintenance Mode is technically a security feature since enabling BackEnd Maintenance Mode allows you to deny access to the /wp-admin folder/WP Dashboard by IP address. See BulletProof Security FrontEnd|BackEnd Maintenance Mode Features for additional features and options.
+Display a website under maintenance page with Countdown Timer to website visitors while the website displays and functions normally for you. When the Countdown Timer has completed (reached 0) an email reminder is sent to you to remind you that the Countdown Timer has completed. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. FrontEnd Maintenance mode is primarily designed for development/maintenance purposes and BackEnd Maintenance Mode is technically a security feature since enabling BackEnd Maintenance Mode allows you to deny access to the /wp-admin folder/WP Dashboard by IP address. See the BulletProof Security FrontEnd|BackEnd Maintenance Mode Features section for additional features and options.
 
 = Why .htaccess Website Security So Much Better Than Other Types of Website Security =
 
-The answer is very simple - .htaccess files (distributed Server configuration files) are processed first before any other code on your website. In other words, hackers malicious scripts are stopped by BulletProof Security .htaccess files/Firewalls before those scripts even have a chance to reach the php code in WordPress. BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. Please read the FAQ page for Server compatibility questions.
+The answer is very simple - .htaccess files (distributed Server configuration files) are processed by your server first before any other code on your website. In other words, hackers malicious scripts are stopped by BulletProof Security .htaccess files/Firewalls before those scripts even have a chance to reach the php code in WordPress. BulletProof Security uses .htaccess website security files, which are specific to Apache Linux Servers. Please read the FAQ page for Server compatibility questions.
 
 = BulletProof Security Additional Website Security Protection =
 
@@ -93,7 +99,7 @@ WordPress is already very secure, but every website, no matter what type of plat
 * Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a>
 * Filipino/Tagalog by <a href="http://pointen.dk/" title="Filipino/Tagalog Language Translation by pointen.dk" target="_blank">pointen.dk</a>
 * Russian by EyeFinity
-* If you would like to translate the BPS plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BPS Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
+* If you would like to translate the BulletProof Security plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BulletProof Security Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BulletProof Security Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
 * Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
 
 = BulletProof Security Bonus Custom Code =
@@ -101,8 +107,11 @@ WordPress is already very secure, but every website, no matter what type of plat
 * <a href="http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/" title="Brute Force Login Protection .htaccess code" rel="nofollow" target="_blank">Brute Force Login Protection .htaccess Code</a>
 * <a href="http://forum.ait-pro.com/forums/topic/htaccess-caching-code-speed-boost-cache-code/" title="Speed Boost Cache .htaccess code" rel="nofollow" target="_blank">Speed Boost Cache .htaccess Code</a>
 * <a href="http://forum.ait-pro.com/forums/topic/hotlink-protection-do-not-block-google-bing-or-yahoo/" title="HotLink Protection .htaccess code - Google, Yahoo, Bing safe" rel="nofollow" target="_blank">HotLink Protection .htaccess Code - Google, Yahoo, Bing safe</a>
-* <a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Author ID / Username Bot Probe Protection Code" rel="nofollow" target="_blank">Author ID / Username Bot Probe Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/wordpress-author-enumeration-bot-probe-protection-author-id-user-id/" title="Author ID|Username Bot Probe Protection Code" rel="nofollow" target="_blank">Author ID|Username Bot Probe Protection .htaccess Code</a>
 * <a href="http://forum.ait-pro.com/forums/topic/wordpress-xml-rpc-ddos-protection-protect-xmlrpc-php-block-xmlrpc-php-forbid-xmlrpc-php/" title="XML-RPC DDoS Protection" rel="nofollow" target="_blank">XML-RPC DDoS Protection .htaccess Code</a> (Double Bonus: Trackback|Pingback Protection)
+* <a href="http://forum.ait-pro.com/forums/topic/block-referer-spammers-semalt-kambasoft-ranksonic-buttons-for-website/" title="Referer Spammers|Phishing Protection .htaccess Code" rel="nofollow" target="_blank">Referer Spammers|Phishing Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/mime-sniffing-data-sniffing-content-sniffing-drive-by-download-attack-protection/" title="Mime Sniffing|Drive-by Download Attack Protection .htaccess Code" rel="nofollow" target="_blank">Mime Sniffing|Drive-by Download Attack Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/rssing-com-good-or-bad/" title="External iFrame and Clickjacking Protection .htaccess Code" rel="nofollow" target="_blank">External iFrame and Clickjacking Protection .htaccess Code</a>
 
 = BulletProof Security htaccess Core (Firewalls, etc.) Features =
 
@@ -152,6 +161,7 @@ WordPress is already very secure, but every website, no matter what type of plat
 * Email Alerting Options: User Account is locked out|An Administrator Logs in|An Administrator Logs in and when a User Account is locked out|Any User logs in and when a User Account is locked out|Do Not Send Email Alerts
 * Login Security Additional Options: Max Login Attempts|Automatic Lockout Time|Manual Lockout Time|Max DB Rows To Show|Turn On|Turn Off
 * Login Security Stealth Mode: Standard WP Error Messages or Generic Error Messages. 
+* Login Security Attempts Remaining: Display a "Login Attempts Remaining X" message when an incorrect password is entered. 
 * Login Security Stealth Mode: Enable or Disable Login Password Reset capability and links.
 * Dynamic DB Form: Lock|Unlock|Delete
 * Enhanced Search: Allows you to search all of the Login Security database rows/Fields
@@ -207,6 +217,17 @@ WordPress is already very secure, but every website, no matter what type of plat
 
 == Installation ==
 
+* <strong>Automated Setup Steps</strong>
+1. Click the Setup Wizard button.
+
+* <strong>Uninstall Options</strong>
+1. An Uninstall Options link is located on the WordPress Plugins page under the BulletProof Security plugin.
+2. Clicking the Uninstall Options link loads a jQuery UI Dialog Form with 2 uninstall options.
+3. If you are upgrading to BPS Pro, select the BPS Pro Upgrade Uninstall option and click the Save Option button or just click the Close button below and do a normal plugin uninstall.
+4. If you want to completely delete the BPS plugin, all files, Custom Code and BPS database settings, select the Complete BPS Plugin Uninstall option and click the Save Option button.
+
+* <strong>Manual Setup Steps</strong>
+
 * <strong>htaccess Core htaccess Files Setup Steps</strong>
 1. Click the Create default.htaccess File button on the Security Modes page.
 2. Click the Create secure.htaccess File button on the Security Modes page.
@@ -233,7 +254,7 @@ WordPress is already very secure, but every website, no matter what type of plat
 4. Click the Preview button.
 5. Click the Turn On button.
 
-* <strong>UI Theme Skin|Processing Spinner|WP Toolbar</strong>
+* <strong>UI|UX Theme Skin|Processing Spinner|WP Toolbar</strong>
 1. Select a Theme Skin.
 2. Click the Save Skin button.
 3. Optional: Choose to Turn the Processing Spinner On|Off (On by Default).
@@ -243,43 +264,43 @@ WordPress is already very secure, but every website, no matter what type of plat
 
 = How does the BulletProof Security Plugin htaccess Core (Firewalls) work? =
 
-The BulletProof Security Plugin allows you to create and activate .htaccess website security with one-click (figuratively) for your website without having to know anything about .htaccess files. The Master .htaccess files are pre-made and BPS writes .htaccess code that is customized to each specific website. There is nothing to figure out or to configure. Click the AutoMagic buttons (creates customized Master .htaccess files) and Activate BulletProof Modes (copies the customized Master .htaccess files to your root and wp-admin folders). BPS has built-in Backup and Restore and an .htaccess File Editor for full manual editing control as well. BPS Custom Code allows you to add additional custom .htaccess code or BPS Bonus Custom Code.
+The BulletProof Security Plugin allows you to create and activate .htaccess website security with one-click (figuratively) for your website without having to know anything about .htaccess files. The Master .htaccess files are pre-made and BPS writes additional .htaccess code that is customized to each specific website when you run the Setup Wizard or if you use the Manual Controls. There is nothing to figure out or to configure. Either run the Setup Wizard or use the Manual Setup Controls: Click the AutoMagic buttons (creates customized Master .htaccess files) and Activate BulletProof Modes (copies the customized Master .htaccess files to your root and wp-admin folders). BPS has built-in Backup and Restore and an .htaccess File Editor for full manual editing control as well. BPS Custom Code allows you to add additional custom .htaccess code or BPS Bonus Custom Code and save it permanently so that your saved code is always written too/included in your htaccess files.
 
 = Does BulletProof Security Have Built-in Troubleshooting|Diagnostic|Logging|Whitelisting Capability? =
 
-Yes, Troubleshooting|Diagnostic|Logging|Whitelisting is built-in to BulletProof Security. The primary troubleshooting feature in BulletProof Security is the BPS Security Log. The primary whitelisting feature in BulletProof Security is BPS Custom Code. The BPS Security Log logs blocked hackers, spammers, bad bots, etc. and also logs anything else that is blocked by BPS. If something legitimate is being blocked in another plugin or theme that needs to be allowed/whitelisted then the BPS Security Log entry will contain all the information about what exactly is being blocked so that a whitelist rule can then be created in BPS Custom Code. The BPS Security Log also logs all other 403 errors that occur on your website whether or not they are related to or caused by BPS.
+Yes. Troubleshooting|Diagnostic|Logging|Whitelisting is built-in to BulletProof Security. The Setup Wizard performs Pre-Installation Checks to check for any pre-existing issues that could cause any issues or problems and displays exactly what needs to be done to fix the issue. The primary troubleshooting feature in BulletProof Security is the BPS Security Log. The primary whitelisting feature in BulletProof Security is BPS Custom Code. The BPS Security Log logs blocked hackers, spammers, bad bots, etc. and also logs anything else that is blocked by BPS. If something legitimate is being blocked in another plugin or theme that needs to be allowed/whitelisted then the BPS Security Log entry will contain all the information about what exactly is being blocked so that a whitelist rule can then be created in BPS Custom Code. The BPS Security Log also logs all other 403 errors that occur on your website whether or not they are related to or caused by BPS. Turning Off BPS Security Logging will allow your server to handle error logging and display your server error message instead of BPS displaying the standard 403 template file error message. This is also considered a troubleshooting method to determine if an error is actually coming from your server and not the BPS plugin.
 
 = How does BulletProof Security Plugin Login Security & Monitoring work? =
 
-BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or Log Only User Account Lockouts. The Dynamic DB Logging Form has 3 checkbox options: Lock, Unlock or Delete database rows. The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate database tables. If you lock a User Account then BPS Pro will enforce that lock on that User Account and the User will not be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security database table does NOT delete the User Account from the WordPress Users database table. When you delete a User Account it is pretty much the same thing as unlocking a User Account. To delete actual User Accounts you would go to the WordPress Users page and delete that User Account.
+BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or Log Only User Account Lockouts. The Dynamic DB Logging Form has 3 checkbox options: Lock, Unlock or Delete database rows. The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate database tables. If you lock a User Account then BPS will enforce that lock on that User Account and the User will not be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security database table does NOT delete the User Account from the WordPress Users database table. When you delete a User Account it is pretty much the same thing as unlocking a User Account. To delete actual User Accounts you would go to the WordPress Users page and delete that User Account.
 
 = How does BulletProof Security FrontEnd|BackEnd Maintenance Mode work? =
 
 FrontEnd Maintenance Mode creates template files based on the options you choose and save. When you Turn On Maintenance Mode those template files are copied to the root directory of your website. When you Turn Off Maintenance Mode those template files are deleted from the root directory of your website. Maintenance Mode works by allowing the IP addresses that you enter & save to view the site normally. All other IP addresses will see the Maintenance Mode template page. BackEnd Maintenance Mode writes directly to your wp-admin .htaccess file and adds a deny all block of .htaccess code with the IP addresses the you enter & save when you enable BackEnd Maintenance Mode. When you disable/uncheck BackEnd Maintenance Mode that deny all block of .htaccess code is removed/deleted from your wp-admin .htaccess file. For more extensive help info or CSS Code, Image & Video Embed examples to add in the Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors text area click this Maintenance Mode Guide Forum Topic link: <a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" title="Maintenance Mode Guide" rel="nofollow" target="_blank">Maintenance Mode Guide</a>.
 
-= What do I do if my User Account is locked out? =
+= What do I do if my User Account is locked out and I am unable to login? =
 
 Use FTP or your web host control panel file manager and rename the /bulletproof-security/ plugin folder name to /_bulletproof-security and login to your website. After logging into your website, rename the /_bulletproof-security/ plugin folder name back to /bulletproof-security/. Unlock your User Account on the BPS Login Security and Monitoring page.
 
 = Do I need to understand .htaccess code in order to use BulletProof Security? =
 
-No, customized .htaccess files are created for each specific website by clicking the AutoMagic buttons and activating BulletProof Modes. You do not need to know anything about .htaccess website security files or code in order to use the BulletProof Security plugin. Extensive help information can be found in the Read Me help buttons in BPS. The Help & FAQ tab pages in BulletProof Security contain links to the BulletProof Security Forum. The process of adding Custom Code or adding whitelisting rules is automated - copy, paste & click.
+No. We use a paint by numbers approach, have extensive documented help and fixes on our Forum site and provide exact steps to perform any tasks that need to be done such as adding whitelist rules or other custom code. ie do Step 1, Step 2, Step 3. BPS creates customized .htaccess files for your website by either running the Setup Wizard or clicking the AutoMagic buttons and activating BulletProof Modes. You do not need to know anything about .htaccess website security files or code in order to use the BulletProof Security plugin. Extensive help information can be found in the Read Me help buttons in BPS. The Help & FAQ tab pages in BulletProof Security contain links to BulletProof Security Forum help topics and video tutorials. The process of adding Custom Code or adding whitelisting rules is automated - See the Custom Code Read Me help button for Custom Code steps.
 
 = What do I do if I cannot log back into my website due to an htaccess file problem? =
 
-If you accidentally activated BulletProof Modes without first clicking the AutoMagic buttons or your web host does not allow you to lock your root .htaccess file. Use FTP or your Web Host Control Panel File Manager and delete the .htaccess files that BPS creates in your website root folder and your wp-admin folder. Deleting the .htaccess files in your website root folder & wp-admin folder will allow you to log back in to your website. Log back into your website. If your web host does not allow locking the root .htaccess file then go to htaccess File Editor tab page and click the Turn Off AutoLock button. Click the AutoMagic buttons and activate BulletProof Modes again. 
+If you accidentally activated BulletProof Modes without first running the Setup Wizard or clicking the AutoMagic buttons or your web host does not allow you to lock your root .htaccess file and your htaccess file was locked: Use FTP or your Web Host Control Panel File Manager and delete the .htaccess files that BPS creates in your website root folder and your wp-admin folder. Deleting the .htaccess files in your website root folder & wp-admin folder will allow you to log back in to your website. If your web host does not allow locking the root .htaccess file then go to htaccess File Editor tab page and click the Turn Off AutoLock button. Either run the Setup Wizard again or click the AutoMagic buttons and activate BulletProof Modes again. 
 
 = Will BulletProof Security or .htaccess files or .htaccess code cause my website to run slower? =
 
-No, BulletProof Security or .htaccess files or code will not cause a website to run slower. BulletProof Security is website performance optimized and uses very little/low website resources and very little Server memory. BulletProof Security uses a finite amount of security rules/filters/code in all .htaccess files. Note: Both W3 Total Cache and WP Super Cache use .htaccess code to speed up websites.
+No. BulletProof Security or .htaccess files/code in general will not cause a website to run slower. BulletProof Security is website performance optimized and uses very little/low website resources and very little Server memory. BulletProof Security uses a finite number of security rules/filters/code in all .htaccess files. Note: Both W3 Total Cache and WP Super Cache use .htaccess code to speed up website performance.
 
 = Can BulletProof Security speed up my website and make it run faster? =
 
-Yes, BulletProof security can speed up your website and make it run faster if you use the Speed Boost Cache Bonus Code and add it to BPS Custom Code. See the BulletProof Security Bonus Custom Code section on the BulletProof Security plugin Description page for a link to the Speed Boost Cache Bonus Code.
+Yes. BulletProof security can speed up your website and make it run faster if you use the Speed Boost Cache Bonus Code and add it to BPS Custom Code. See the BulletProof Security Bonus Custom Code section on the BulletProof Security plugin Description page for a link to the Speed Boost Cache Bonus Code.
 
 = BPS Alert! Your site does not appear to be protected by BulletProof Security. What does the Alert mean? =
 
-When upgrading/updating the BulletProof Security plugin you may see this WP Dashboard Alert. <strong>BPS Alert! Your site does not appear to be protected by BulletProof Security.</strong> There are 2 very common issues/problems that can cause this. The cPanel HotLink Protection Tool issue or the WordPress flush_rewrite_rules function issue. Click this link <a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/" title="BulletProof Security Troubleshooting" rel="nofollow" target="_blank">Common BPS Issues</a> Note: Any custom htaccess code or modifications that you have made to your htaccess files will not be altered, modified or changed during the auto-update. Activating BulletProof Modes again after upgrading BPS is no longer necessary.
+The alert means that the currently active root htaccess file that is in use on your website does not contain BPS htaccess security code. You can either run the Setup Wizard again or do the manual setup steps on the htaccess Core Security Modes page to fix this.
 
 = Where can I find BulletProof Security additional troubleshooting steps & support? =
 
@@ -287,6 +308,7 @@ Please see the <a href="http://forum.ait-pro.com/forums/topic/plugin-conflicts-a
 
 = BulletProof Security Server Compatibilty =
 
+* The Setup Wizard Inpage Pre-Installation Checks perform and display compatibility checking results
 * Compatible with Apache CGI configured Servers
 * Compatible with Apache DSO configured Servers (May require CHOWN Ownership change or file/folder permission changes)
 * <a href="http://forum.ait-pro.com/forums/topic/dso-setup-steps/" title="DSO Help Info" rel="nofollow" target="_blank">DSO Help Info</a>
@@ -313,11 +335,11 @@ Occasionally issues or conflicts do occur with other plugins, but they are alway
 
 = Does BulletProof Security Work On All Web Hosts? =
 
-BulletProof Security works on all web hosts except for these 3 web hosts: <a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/#incompatible-hosts" title="Incompatible Hosts" rel="nofollow" target="_blank">Incompatible Hosts</a>. If you have Go Daddy "Managed WordPress" hosting, which is special type of hosting account and is not a regular/standard Go Daddy hosting account then click this link for more information: <a href="http://forum.ait-pro.com/forums/topic/gdmw/" title="Go Daddy Managed WordPress Hosting" rel="nofollow" target="_blank">Go Daddy Managed WordPress Hosting</a>. BPS works fine on Go Daddy "Managed WordPress" Hosting. BPS has a one click option setting that has been created for Go Daddy "Managed WordPress" Hosting. 
+BulletProof Security works on all web hosts except for these 3 web hosts: <a href="http://forum.ait-pro.com/forums/topic/read-me-first-free/#incompatible-hosts" title="Incompatible Hosts" rel="nofollow" target="_blank">Incompatible Hosts</a>. If you have Go Daddy "Managed WordPress" hosting, which is special type of hosting account and is not a regular/standard Go Daddy hosting account then click this link for more information: <a href="http://forum.ait-pro.com/forums/topic/gdmw/" title="Go Daddy Managed WordPress Hosting" rel="nofollow" target="_blank">Go Daddy Managed WordPress Hosting</a>. BPS works fine on Go Daddy "Managed WordPress" Hosting.
 
 = I am seeing Security Log entries in my BulletProof Security Log. What do they mean? =
 
-Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. The Security Log logs all 400 and 403 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS Pro 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file. 99.99% of what is logged in the Security Log is blocked hackers, spammers, bad bots, scrapers, miners, etc. The Security Log is also a troubleshooting tool. If BPS is blocking something legitimate in another plugin or theme then exactly what is being blocked in another plugin or theme by BPS will be logged in the Security Log.
+Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. The Security Log logs all 400 and 403 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file. 99.99% of what is logged in the Security Log is blocked hackers, spammers, bad bots, scrapers, miners, etc. The Security Log is also a troubleshooting tool. If BPS is blocking something legitimate in another plugin or theme then exactly what is being blocked in another plugin or theme by BPS will be logged in the Security Log. A whitelist rule can be created to allow anything legitmate that is being blocked in another plugin or theme.
 
 = HTTP Response Status Codes =
 
@@ -327,7 +349,7 @@ Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 loggin
 
 = Is BulletProof Security Network/Multisite Compatible? =
 
-Yes, BulletProof Security works on Network/Multisite websites. Both subdirectory and subdomain .htaccess code is written/created for your specific Network/Multisite site based on your WordPress installation version (pre 3.5 or 3.5+). The BulletProof Security plugin can be Network Activated or you can allow BulletProof Security to be activated individually on each Network/Multisite subsite or of course you can choose not to Network Activate BulletProof Security or allow the BPS plugin on subsites. Super Admins will see BPS Dashboard Alerts and other Status displays on the Primary Site only. Administrators can activate or deactivate BulletProof Security on subsites if you allow this on your Network/Multisite website. The BPS Primary Site Menus will display all BPS menus. The BPS Subsite Menus will display: Login Security, Maintenance Mode, System Info & UI Theme Skin menus. All BulletProof Security features are not available on subsites since Network/Multisite subsites are virtual and do not have physical website folders. All BulletProof Security features work sitewide and affect all other virtual subsites. Login Security and Maintenance Mode work independently on each subsite. 
+Yes. BulletProof Security works on Network/Multisite site types. Both subdirectory and subdomain .htaccess code is written/created for your specific Network/Multisite site based on your WordPress installation version (pre 3.5 or 3.5+). The BulletProof Security plugin can be Network Activated or you can allow BulletProof Security to be activated individually on each Network/Multisite subsite or of course you can choose not to Network Activate BulletProof Security or allow the BPS plugin on subsites. Super Admins will see BPS Dashboard Alerts and other Status displays on the Primary Site only. Administrators can activate or deactivate BulletProof Security on subsites if you allow this on your Network/Multisite website. The BPS Primary Site Menus will display all BPS menus. The BPS Subsite Menus will display: Login Security, Maintenance Mode, System Info & UI|UX Theme Skin menus. All BulletProof Security features are not available on subsites since Network/Multisite subsites are virtual and do not have physical website folders. All BulletProof Security features work sitewide and affect all other virtual subsites. Login Security and Maintenance Mode work independently on each subsite. 
 
 * Login Security works individually for each specific subsite. Login Security has all the same functionality on Network/Multisite subsites with these exceptions: Login Security email alerting is not available for subsites. 
 * Maintenance Mode works individually for each specific subsite. MMode has all the same functionality on Network/Multisite subsites with these exceptions: BackEnd Maintenance is not available on subsites & these Primary site options are not available on subsites: Put The Primary Site And All Subsites In Maintenance Mode & Put All Subsites In Maintenance Mode, But Not The Primary Site.
@@ -336,20 +358,19 @@ Yes, BulletProof Security works on Network/Multisite websites. Both subdirectory
 
 = Is BulletProof Security BuddyPress/bbPress Compatible? =
 
-Yes, BulletProof Security works with all BuddyPress/bbPress site types.
+Yes. BulletProof Security works with all BuddyPress/bbPress site types.
 
 = Is BulletProof Security Compatible with subdomain websites and subdirectory websites? =
 
-Yes, BulletProof Security works on all types of WordPress installations including "Giving WordPress Its Own Directory" (GWIOD) websites.
+Yes. BulletProof Security works on all types of WordPress installations including "Giving WordPress Its Own Directory" (GWIOD) websites.
 
 = Can I add my own .htaccess code to the BulletProof Security .htaccess files? =
 
-Yes, add any additional security code to BulletProof Security Custom Code. Your custom .htaccess code will be saved permanently or until you delete it. Please view the Read Me 
-Help button in Custom Code for specific details.
+Yes. Add any additional custom htaccess security code to BulletProof Security Custom Code. Your custom .htaccess code will be saved permanently or until you delete it. Please view the Read Me Help button in Custom Code for specific details and Custom Code setup steps.
 
 = Does BulletProof Security automatically create or write .htaccess files? =
 
-Yes, BulletProof Security automatically creates customized .htaccess website security files for your specific website with AutoMagic and BPS Custom Code. BulletProof Security also offers full manual control of editing .htaccess files using the built-in .htaccess File Editor. The BPS Master .htaccess files are pre-made. When you click the AutoMagic buttons your .htaccess Master files are created with specific code for your specific website. You can add additional code to BPS Custom Code or edit the .htaccess files directly or create completely new .htaccess master files from within the WordPress Dashboard using the built-in BPS File Editor or Custom Code - no FTP required - no Web Host Control Panel required. Automation is great, but having both AutoMagic, Custom Code and full manual editing control makes BulletProof Security very versatile.
+Yes. BulletProof Security automatically creates customized .htaccess website security files for your specific website with either the Setup Wizard or the Manual AutoMagic controls on the htaccess Core Security Modes page. BulletProof Security also offers full manual control of editing .htaccess files using the built-in .htaccess File Editor. The BPS Master .htaccess files are pre-made. When you run the Setup Wizard or click the AutoMagic buttons your .htaccess Master files are created with specific code for your specific website. You can add additional code to BPS Custom Code or edit the .htaccess files directly or create completely new .htaccess master files from within the WordPress Dashboard using the built-in BPS File Editor or Custom Code - no FTP required - no Web Host Control Panel required. Automation is great, but also having full manual editing control makes BulletProof Security very versatile.
 
 = Security Log File Automation - Automatically Zipped, Emailed and Replaced =
 
@@ -365,20 +386,42 @@ The BulletProof Security WordPress plugin is a one-click security solution that 
 
 = Does BulletProof Security work with Git distributed version control system? =
 
-Yes, BulletProof Security works with Git, but does require some additional set up steps. Please see this thread for the setup steps
+Yes. BulletProof Security works with Git, but does require some additional set up steps. Please see this thread for the setup steps
  <a href="http://wordpress.org/support/topic/plugin-bulletproof-security-bps-and-folder-locations?replies=15#post-2979555" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">Git distributed version control system setup steps</a>
 
 == Screenshots ==
 
-1. BulletProof Security - Security Modes page
-2. BulletProof Security - htaccess File Editor page
-3. BulletProof Security - Login Security and Monitoring page
-4. BulletProof Security - DB Backup page
-5. BulletProof Security - Maintenance Mode page
-6. BulletProof Security - Maintenance Mode examples
-7. BulletProof Security - Maintenance Mode Pre-made example images
+1. BulletProof Security - Setup Wizard page
+2. BulletProof Security - Security Modes page
+3. BulletProof Security - htaccess File Editor page
+4. BulletProof Security - Login Security and Monitoring page
+5. BulletProof Security - DB Backup page
+6. BulletProof Security - Maintenance Mode page
+7. BulletProof Security - Maintenance Mode examples
+8. BulletProof Security - Maintenance Mode Pre-made example images
 
 == Changelog ==
+
+= .51.8 =
+* Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
+* New Feature: Setup Wizard
+* The BPS plugin can be setup with literally only 1 click now on the new Setup Wizard page. Setup Wizard Pre-Installation Checks are automatically performed and displayed on the Setup Wizard page. You can re-run the Setup Wizard again at any time.
+* New Feature: jQuery UI Dialog Form BPS Uninstall Options
+* An Uninstall Options link has been created on the WordPress Plugins page under the BulletProof Security plugin. Clicking the Uninstall Options link loads a jQuery UI Dialog Form with 2 uninstall options: BPS Pro Upgrade Uninstall option - If you are upgrading to BPS Pro, select the BPS Pro Upgrade Uninstall option and click the Save Option button or just click the Close button below and do a normal plugin uninstall. Complete BPS Plugin Uninstall option - If you want to completely delete the BPS plugin, all files, Custom Code and BPS database settings, select the Complete BPS Plugin Uninstall option and click the Save Option button.
+* New Option: Login Security Attempts Remaining option and Core Functionality Improvements
+* New Option Attempts Remaining: You can choose to display a "Login Attempts Remaining X" message when an incorrect password is entered. This new option is enabled by default during BPS upgrades and new installations.
+* Core Functionality Improvements: When a User Account is locked out and previous User Account logins were logged|stored in the DB, those previously logged logins and data for those DB Rows is not changed|updated and instead a new DB Row is inserted. This allows for better chronological login tracking and monitoring. Affects both Logging Options - Log All Account Logins and Log Only Account Lockouts options and allows for switching between these Logging Options without affecting functionality or causing issues/problems.
+* New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation
+* Bonus Custom Code Dismiss Notice Consolidation: Combined|consolidated all Bonus Custom Code Notices into 1 Bonus Custom Code Notice function with 1 displayed Notice message instead of having several different displayed Notices. Each Bonus Custom Code contains a link to the Bonus Custom Code and a Dismiss Notice link.
+* Referer Spammers|Phishing Protection
+* Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection
+* External iFrame and Clickjacking Protection
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* New BPS Setup & Overview Video tutorial created: BPS Setup & Overview Video Tutorial - link added on the Setup Wizard page and htaccess Core Security Modes page.
+* WP 4.2 Bug Reported|Ticket created with POC (Proof Of Concept) and solution provided: WP 4.2 hash anchor Bug Hash anchors were being stripped of URI's. Solution provided to WP folks. Solution implemented by WP folks. No other issues or problems found with WP 4.2 and BPS Pro versions.
+* WP flush_rewrite_rules function added to BPS complete plugin uninstall function. Creates new default generic WP root htaccess file on BPS complete plugin uninstall.
+* Dismiss Notice link correction when basename == wp-admin on first Dashboard login.
+* Custom Code inpage check for default WordPress Rewrite code added in Custom Code text boxes.
 
 = .51.7 =
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
@@ -567,7 +610,7 @@ Check your website Headers or another website's Headers by making a GET Request.
 * New System Info checks:
 Standard/GWIOD Site Type, BuddyPress and bbPress. If GWIOD site type display WordPress Address (URL) and Site Address (URL).
 * BPS Plugin/Theme Script Dequeue function added: Dequeue any/all other plugin or theme scripts that attempt to load in BPS plugin pages:
-A new BPS function has been added that Dequeues any/all other plugin or theme scripts on/in BPS plugin pages ONLY, which causes a wide variety of problems for BPS , such as broken plugin functionality, broken menus and pages not displaying visually correct. This new BPS Dequeue function only runs on/in BPS plugin pages and does not run anywhere else or affect anything else on a website. The BPS Dequeue function is only designed to prevent any other plugins or themes from loading their scripts in BPS plugin pages and does not do or affect anything else on a website.
+A new BPS function has been added that Dequeues any/all other plugin or theme scripts on/in BPS plugin pages ONLY, which causes a wide variety of problems for BPS, such as broken plugin functionality, broken menus and pages not displaying visually correct. This new BPS Dequeue function only runs on/in BPS plugin pages and does not run anywhere else or affect anything else on a website. The BPS Dequeue function is only designed to prevent any other plugins or themes from loading their scripts in BPS plugin pages and does not do or affect anything else on a website.
 * Security Log Code Correction/Enhancement: Security Log User Agent/Bot filter auto-updated during BPS upgrade:
 The BPS 403.php Security Log template file is replaced during BPS plugin updates/upgrades, which is normal WordPress plugin update/upgrade procedure. The BPS 403.php Security Logging template is now auto-updated during BPS plugin upgrades/updates and automatically adds any previously added/saved User Agent/Bot filters to the new 403.php template file if any User Agents/Bots to Ignore/Not Log were previously added/saved.
 * W3TC and WPSC Error checking/messages modified to reflect current version error checking:
@@ -679,13 +722,21 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.7 =
+= .51.8 =
+* Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
+* New Feature: Setup Wizard
+* New Feature: jQuery UI Dialog Form BPS Uninstall Options
+* New Option: Login Security Attempts Remaining option and Core Functionality Improvements
+* New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation
+* Referer Spammers|Phishing Protection
+* Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection
+* External iFrame and Clickjacking Protection
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.
-* DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.
-* Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.
-* WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.
-* Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.
+* New BPS Setup & Overview Video tutorial created: BPS Setup & Overview Video Tutorial - link added on the Setup Wizard page and htaccess Core Security Modes page.
+* WP 4.2 Bug Reported|Ticket created with POC and solution provided: WP 4.2 hash anchor Bug Hash anchors were being stripped of URI's. Solution provided to WP folks. Solution implemented by WP folks. No other issues or problems found with WP 4.2 and BPS Pro versions.
+* WP flush_rewrite_rules function added to BPS complete plugin uninstall function. Creates new default generic WP root htaccess file on BPS complete plugin uninstall.
+* Dismiss Notice link correction when basename == wp-admin on first Dashboard login.
+* Custom Code inpage check for default WordPress Rewrite code added in Custom Code text boxes.
 
 == Help Info ==
 

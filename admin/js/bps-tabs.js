@@ -10,4 +10,7 @@ jQuery(document).ready(function($){
 
 	// toggle causes undesirable effects/results for inpage tabs
 	$('#bps-edittabs').tabs();
+	
+	// Wizard no opacity toggle - Pro version only
+	$('#bps-tabs-wizard').tabs();
 });
