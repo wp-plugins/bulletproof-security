@@ -56,7 +56,7 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 * <a href="http://www.ait-pro.com/bulletproof-security-pro-flash/bulletproof.html" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
 = BulletProof Security Setup & Overview Video Tutorial =
-https://www.youtube.com/watch?v=8NNc6ycWbhw
+https://www.youtube.com/watch?v=8NNc6ycWbhw 
 
 = BulletProof Security Recommended Video Tutorials =
 * <a href="http://forum.ait-pro.com/video-tutorials/#custom-code" title="BulletProof Security Custom Code Video Tutorial" rel="nofollow" target="_blank">BulletProof Security Custom Code Video Tutorial</a>
