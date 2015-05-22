@@ -164,7 +164,9 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			if ( $options['bps_login_security_email'] == 'lockoutOnly' || $options['bps_login_security_email'] == 'anyUserLoginLock' || $options['bps_login_security_email'] == 'adminLoginLock') {
 				$message = '<p><font color="red"><strong>A User Account Has Been Locked</strong></font></p>';
 				$message .=  '<p>To take further action go to the Login Security page. If no action is taken then the User will be able to try and login again after the Lockout Time has expired. If you do not want to receive further email alerts change or turn off Login Security Email Alerts.</p>';
-				$message .=  '<p><strong>If your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is being locked repeatedly:</strong> Additional things that you can do to protect publicly displayed usernames, not exposing author names/user account names, etc.: http://forum.ait-pro.com/forums/topic/user-account-locked/#post-12634</p>';
+
 				$message .= '<p><strong>Username:</strong> '.$user->user_login.'</p>'; 
 				$message .= '<p><strong>Status:</strong> '.$status.'</p>'; 
 				$message .= '<p><strong>Role:</strong> '.$user->roles[0].'</p>'; 
@@ -316,7 +318,9 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			if ( $options['bps_login_security_email'] == 'lockoutOnly' || $options['bps_login_security_email'] == 'anyUserLoginLock' || $options['bps_login_security_email'] == 'adminLoginLock') {
 				$message = '<p><font color="red"><strong>A User Account Has Been Locked</strong></font></p>';
 				$message .=  '<p>To take further action go to the Login Security page. If no action is taken then the User will be able to try and login again after the Lockout Time has expired. If you do not want to receive further email alerts change or turn off Login Security Email Alerts.</p>';
-				$message .=  '<p><strong>If your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is being locked repeatedly:</strong> Additional things that you can do to protect publicly displayed usernames, not exposing author names/user account names, etc.: http://forum.ait-pro.com/forums/topic/user-account-locked/#post-12634</p>';
+
 				$message .= '<p><strong>Username:</strong> '.$user->user_login.'</p>'; 
 				$message .= '<p><strong>Status:</strong> '.$status.'</p>'; 
 				$message .= '<p><strong>Role:</strong> '.$user->roles[0].'</p>'; 
@@ -393,7 +397,9 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			if ( $options['bps_login_security_email'] == 'lockoutOnly' || $options['bps_login_security_email'] == 'anyUserLoginLock' || $options['bps_login_security_email'] == 'adminLoginLock') {
 				$message = '<p><font color="red"><strong>A User Account Has Been Locked</strong></font></p>';
 				$message .=  '<p>To take further action go to the Login Security page. If no action is taken then the User will be able to try and login again after the Lockout Time has expired. If you do not want to receive further email alerts change or turn off Login Security Email Alerts.</p>';
-				$message .=  '<p><strong>If your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is being locked repeatedly:</strong> Additional things that you can do to protect publicly displayed usernames, not exposing author names/user account names, etc.: http://forum.ait-pro.com/forums/topic/user-account-locked/#post-12634</p>';
+
 				$message .= '<p><strong>Username:</strong> '.$user->user_login.'</p>'; 
 				$message .= '<p><strong>Status:</strong> '.$status.'</p>'; 
 				$message .= '<p><strong>Role:</strong> '.$user->roles[0].'</p>'; 
@@ -550,7 +556,9 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 			if ( $options['bps_login_security_email'] == 'lockoutOnly' || $options['bps_login_security_email'] == 'anyUserLoginLock' || $options['bps_login_security_email'] == 'adminLoginLock') {
 				$message = '<p><font color="red"><strong>A User Account Has Been Locked</strong></font></p>';
 				$message .=  '<p>To take further action go to the Login Security page. If no action is taken then the User will be able to try and login again after the Lockout Time has expired. If you do not want to receive further email alerts change or turn off Login Security Email Alerts.</p>';
-				$message .=  '<p><strong>If your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is locked and you are unable to login to your website:</strong> Use FTP or your web host control panel file manager and rename the /bulletproof-security plugin folder name to /_bulletproof-security. Log into your website. Rename the /_bulletproof-security plugin folder name back to /bulletproof-security. Go to the BPS Login Security page and unlock your User Account.</p>';
+				$message .=  '<p><strong>What to do if your User Account is being locked repeatedly:</strong> Additional things that you can do to protect publicly displayed usernames, not exposing author names/user account names, etc.: http://forum.ait-pro.com/forums/topic/user-account-locked/#post-12634</p>';
+
 				$message .= '<p><strong>Username:</strong> '.$user->user_login.'</p>'; 
 				$message .= '<p><strong>Status:</strong> '.$status.'</p>'; 
 				$message .= '<p><strong>Role:</strong> '.$user->roles[0].'</p>'; 

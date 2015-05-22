@@ -99,7 +99,7 @@ if ( isset( $_POST['Submit-Secure-Root'] ) && current_user_can('manage_options')
 		
 		} else {
 			
-			if ( @$permsRootHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' ) {			
+			if ( @$permsRootHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' || $options['bps_root_htaccess_autolock'] == 'On' ) {			
 				@chmod($RootHtaccess, 0404);
 			}
 		
@@ -136,7 +136,7 @@ if ( isset( $_POST['Submit-Secure-Root'] ) && current_user_can('manage_options')
 		
 		} else {
 
-			if ( @$permsRootHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' ) {
+			if ( @$permsRootHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' || $options['bps_root_htaccess_autolock'] == 'On' ) {
 				@chmod($RootHtaccess, 0404);
 			}
 			
@@ -370,7 +370,7 @@ if ( isset( $_POST['Submit-Restore-htaccess-Files'] ) && current_user_can('manag
 		
 		} else {
 			
-			if ( @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' ) {			
+			if ( @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off' || $options['bps_root_htaccess_autolock'] == 'On' ) {			
 				@chmod($new_restoreroot, 0404);
 			}
 			
@@ -1432,6 +1432,25 @@ if ( ! current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Login Security & Monitoring Automated Email Alert Enhancement|Improvement:', 'bulletproof-security').'</strong></h3>'.__('Special Thanks to: ', 'bulletproof-security').'<a href="https://wordpress.org/support/profile/mewkazoid" title="mewkazoid WordPress Member" target="_blank">'.__('mewkazoid', 'bulletproof-security').'</a>'.__(' for pointing out this useful improvement to BPS Login Security & Monitoring automated email alerts.', 'bulletproof-security').'<br><br>'.__('The Login Security & Monitoring Automated Email Alert now contains additional help information about what to do if your User Account is being repeatedly locked.', 'bulletproof-security').'<br><br><strong>'.__('Brute Force Attack General Info: ', 'bulletproof-security').'</strong>'.__('Automated Brute Force Login attacks by spambots and hackerbots are a regular and ongoing type of website attack. The volume and frequency of Brute Force Login attacks are steadily increasing and will continue to increase. Brute Force attacks make up somewhere in the neighborhood of 85 percent (probably more like 90 percent to 95 percent) of the total of all types of ongoing website attacks these days.  BPS Login Security & Monitoring protects the WordPress Login page from Brute Force attacks, but if your username is publicly known/displayed or can be harvested by automated bots then your user account may get locked very frequently. Here are some additional things you can do to prevent your user account from being locked repeatedly: ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/forums/topic/user-account-locked/#post-12634" title="Additional Brute Force Attack Protection Methods" target="_blank">'.__('Additional Brute Force Attack Protection Methods', 'bulletproof-security').'</a>'; echo $text; ?>
+     </td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>&bull; BugFix: File Permissions cache issue: Root htaccess file not being re-locked when AutoLock is turned On. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" target="_blank">'.__('Mike Harrison', 'bulletproof-security').'</a>'.__(' for reporting this bug.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .51.8', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: Setup Wizard', 'bulletproof-security').'</strong></h3>'.__('The BPS plugin can be setup with literally only 1 click now on the new Setup Wizard page. Setup Wizard Pre-Installation Checks are automatically performed and displayed on the Setup Wizard page. Green font messages mean everything is good. Red and blue font messages are displayed with an exact description of the issue and how to correct the issue. Red font error messages need to be fixed before running the Setup Wizard. Blue font messages can either be a recommendation or a notice about something. Blue font messages do not need to be fixed before running the Setup Wizard. You can re-run the Setup Wizard again at any time. Your existing settings will NOT be overwritten and will be re-saved. Any new or additional settings that the Setup Wizard finds on your website will be saved/setup. A link to the Setup Wizard has been created on the WordPress Plugins page under the BulletProof Security plugin.', 'bulletproof-security'); echo $text; ?>
      </td>
   </tr> 
@@ -1672,6 +1691,7 @@ for hacker and spammer protection', 'bulletproof-security').'</strong></h4>'; ec
 <div id="bpsProVersions" style="padding-left:5px;">
 <div class="pro-links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a></div><br />
 
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5150/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-3/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.3', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5141/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-2/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.2', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5109/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.1', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5094/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10', 'bulletproof-security'); ?></a></div>

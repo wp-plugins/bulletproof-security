@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulletproof-security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 15:35-0800\n"
-"PO-Revision-Date: 2015-05-04 15:35-0800\n"
+"POT-Creation-Date: 2015-05-21 15:31-0800\n"
+"PO-Revision-Date: 2015-05-21 15:31-0800\n"
 "Last-Translator: Ed Alexander <edward@ait-pro.com>\n"
 "Language-Team: AITpro <info@ait-pro.com>\n"
 "Language: en_US\n"
@@ -1290,7 +1290,7 @@ msgstr ""
 #: C:\BPS47/admin/core/options.php:468 C:\BPS47/admin/core/options.php:516
 #: C:\BPS47/admin/core/options.php:623 C:\BPS47/admin/core/options.php:815
 #: C:\BPS47/admin/core/options.php:876 C:\BPS47/admin/core/options.php:1373
-#: C:\BPS47/admin/core/options.php:1565 C:\BPS47/admin/login/login.php:110
+#: C:\BPS47/admin/core/options.php:1584 C:\BPS47/admin/login/login.php:110
 #: C:\BPS47/admin/system-info/system-info.php:98
 #: C:\BPS47/admin/system-info/system-info.php:715
 msgid "Permission Denied"
@@ -1982,10 +1982,76 @@ msgid ""
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1435
-msgid "New Feature: Setup Wizard"
+msgid ""
+"Login Security & Monitoring Automated Email Alert Enhancement|Improvement:"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1435
+msgid "Special Thanks to: "
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid "mewkazoid"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid ""
+" for pointing out this useful improvement to BPS Login Security & Monitoring "
+"automated email alerts."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid ""
+"The Login Security & Monitoring Automated Email Alert now contains "
+"additional help information about what to do if your User Account is being "
+"repeatedly locked."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid "Brute Force Attack General Info: "
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid ""
+"Automated Brute Force Login attacks by spambots and hackerbots are a regular "
+"and ongoing type of website attack. The volume and frequency of Brute Force "
+"Login attacks are steadily increasing and will continue to increase. Brute "
+"Force attacks make up somewhere in the neighborhood of 85 percent (probably "
+"more like 90 percent to 95 percent) of the total of all types of ongoing "
+"website attacks these days.  BPS Login Security & Monitoring protects the "
+"WordPress Login page from Brute Force attacks, but if your username is "
+"publicly known/displayed or can be harvested by automated bots then your "
+"user account may get locked very frequently. Here are some additional things "
+"you can do to prevent your user account from being locked repeatedly: "
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1435
+msgid "Additional Brute Force Attack Protection Methods"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1440 C:\BPS47/admin/core/options.php:1474
+#: C:\BPS47/admin/core/options.php:1488 C:\BPS47/admin/core/options.php:1502
+#: C:\BPS47/admin/core/options.php:1567
+msgid "BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1440
+msgid "Mike Harrison"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1440
+msgid " for reporting this bug."
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1449
+msgid "Whats New in BPS .51.8"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1454
+msgid "New Feature: Setup Wizard"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1454
 msgid ""
 "The BPS plugin can be setup with literally only 1 click now on the new Setup "
 "Wizard page. Setup Wizard Pre-Installation Checks are automatically "
@@ -2002,11 +2068,11 @@ msgid ""
 "BulletProof Security plugin."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1440
+#: C:\BPS47/admin/core/options.php:1459
 msgid "New Feature: jQuery UI Dialog Form BPS Uninstall Options"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1440
+#: C:\BPS47/admin/core/options.php:1459
 msgid ""
 "An Uninstall Options link has been created on the WordPress Plugins page "
 "under the BulletProof Security plugin. Clicking the Uninstall Options link "
@@ -2019,13 +2085,13 @@ msgid ""
 "Uninstall option and click the Save Option button."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1445
+#: C:\BPS47/admin/core/options.php:1464
 msgid ""
 "New Option: Login Security Attempts Remaining option and Core Functionality "
 "Improvements"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1445
+#: C:\BPS47/admin/core/options.php:1464
 msgid ""
 "<strong>New Option Attempts Remaining:</strong> You can choose to display a "
 "\"Login Attempts Remaining X\" message when an incorrect password is "
@@ -2034,7 +2100,7 @@ msgid ""
 "upgrades and new installations."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1445
+#: C:\BPS47/admin/core/options.php:1464
 msgid ""
 "<strong>Core Functionality Improvements:</strong> When a User Account is "
 "locked out and previous User Account logins were logged|stored in the DB, "
@@ -2046,12 +2112,12 @@ msgid ""
 "causing issues/problems."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1450
+#: C:\BPS47/admin/core/options.php:1469
 msgid ""
 "New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1450
+#: C:\BPS47/admin/core/options.php:1469
 msgid ""
 "<strong>Bonus Custom Code Dismiss Notice Consolidation:</strong> Combined|"
 "consolidated all Bonus Custom Code Notices into 1 Bonus Custom Code Notice "
@@ -2060,41 +2126,36 @@ msgid ""
 "Custom Code and a Dismiss Notice link."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1450
+#: C:\BPS47/admin/core/options.php:1469
 msgid "Referer Spammers|Phishing Protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1450
+#: C:\BPS47/admin/core/options.php:1469
 msgid ""
 "Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack "
 "Protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1450
+#: C:\BPS47/admin/core/options.php:1469
 msgid "External iFrame and Clickjacking Protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1455 C:\BPS47/admin/core/options.php:1469
-#: C:\BPS47/admin/core/options.php:1483 C:\BPS47/admin/core/options.php:1548
-msgid "BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1455
+#: C:\BPS47/admin/core/options.php:1474
 msgid "BPS Setup & Overview Video Tutorial"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1455
+#: C:\BPS47/admin/core/options.php:1474
 msgid ""
 "&bull; New BPS Setup & Overview Video tutorial created: <a href=\"http://"
 "forum.ait-pro.com/video-tutorials/#setup-overview-free\" target=\"_blank\" "
 "title=\"BPS Setup & Overview Video Tutorial\">"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1455
+#: C:\BPS47/admin/core/options.php:1474
 msgid "WP 4.2 hash anchor Bug"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1455
+#: C:\BPS47/admin/core/options.php:1474
 msgid ""
 " Hash anchors were being stripped of URI's. Solution provided to WP folks. "
 "Solution implemented by WP folks. No other issues or problems found with WP "
@@ -2106,11 +2167,11 @@ msgid ""
 "in Custom Code text boxes."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1464
+#: C:\BPS47/admin/core/options.php:1483
 msgid "Whats New in BPS .51.7"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1469
+#: C:\BPS47/admin/core/options.php:1488
 msgid ""
 "- Setup & Overview Video Tutorial Created|Added: Link to video tutorial is "
 "posted on BPS plugin Description page and htaccess Core Security Modes page."
@@ -2122,11 +2183,11 @@ msgid ""
 "Display Turn On|Off Form action link correction to #bps-tabs-2 tab page."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1478
+#: C:\BPS47/admin/core/options.php:1497
 msgid "Whats New in BPS .51.6"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1483
+#: C:\BPS47/admin/core/options.php:1502
 msgid ""
 "- Inpage Status Display Turn On|Off code correction.<br>- System Info page "
 "conditional check added for: gc_enabled & gc_collect_cycles functions.<br>- "
@@ -2135,15 +2196,15 @@ msgid ""
 "file alert."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1492
+#: C:\BPS47/admin/core/options.php:1511
 msgid "Whats New in BPS .51.5"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1497
+#: C:\BPS47/admin/core/options.php:1516
 msgid "New Feature|Visual Enhancement: Inpage Status Display"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1497
+#: C:\BPS47/admin/core/options.php:1516
 msgid ""
 "The Inpage Status Display performs checks and displays the status of BPS "
 "security features, options and your site security in real-time. The Inpage "
@@ -2152,23 +2213,23 @@ msgid ""
 "BPS Status Display button reloads|displays the Inpage Status Display again."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1503
+#: C:\BPS47/admin/core/options.php:1522
 msgid ""
 "New Features|Options|Visual Enhancements: UI|UX|Theme Skin | Processing "
 "Spinner | WP Toolbar"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1503
+#: C:\BPS47/admin/core/options.php:1522
 msgid ""
 "Overall UI|UX visual enhancements throughout BPS have been made. The 3 Theme "
 "Skins in BPS are now uniform (CSS and HTML) and visually much more appealing."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1508
+#: C:\BPS47/admin/core/options.php:1527
 msgid "New Feature|Option: Turn On|Off The Processing Spinner"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1508
+#: C:\BPS47/admin/core/options.php:1527
 msgid ""
 "The Processing Spinner is displayed during processing of these Forms: DB "
 "Backup: DB Backup Job Processing, DB Table Names & Character Length Table & "
@@ -2180,11 +2241,11 @@ msgid ""
 "that it is being displayed."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1513
+#: C:\BPS47/admin/core/options.php:1532
 msgid "New Feature|Option: WP Toolbar Functionality In BPS Plugin Pages"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1513
+#: C:\BPS47/admin/core/options.php:1532
 msgid ""
 "This option affects the WP Toolbar in BPS plugin pages ONLY and does not "
 "affect the WP Toolbar anywhere else on your site. WP Toolbar additional menu "
@@ -2195,38 +2256,38 @@ msgid ""
 "other menu items (nodes) that have been added by other plugins and themes."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid "New Feature: Memory Usage and Script Completion Time Check|Display"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid ""
 "Displays the total memory used and script completion time for these Forms|"
 "Pages: System Info, DB Backup: DB Backup Job Processing, DB Table Names & "
 "Character Length Table & DB Table Prefix Changer."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid "Peak Memory Usage: 14.39MB|14,736KB"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid "Initial Memory in Use: 4.51MB|4,618KB"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid "Total Memory Used: 9.88MB|10,118KB"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1518
+#: C:\BPS47/admin/core/options.php:1537
 msgid "Backup Job Completion Time: 16.47 Seconds"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1523
+#: C:\BPS47/admin/core/options.php:1542
 msgid "New Features|Options|Visual Enhancements: DB Backup & Security"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1523
+#: C:\BPS47/admin/core/options.php:1542
 msgid ""
 "Overall UI|UX visual enhancements. New table created for Create Backup Jobs "
 "option settings. Download buttons are now displayed for downloadable zip "
@@ -2237,11 +2298,11 @@ msgid ""
 "in the DB Backup Log. Backup Job Name logged in the DB Backup Log."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1528
+#: C:\BPS47/admin/core/options.php:1547
 msgid "New Feature|Option: Create Backup Jobs: Rename|Create|Reset Tool"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1528
+#: C:\BPS47/admin/core/options.php:1547
 msgid ""
 "Allows you to change/rename the DB Backup folder name. You can either use "
 "the automated randomly generated new DB Backup folder name or create your "
@@ -2252,11 +2313,11 @@ msgid ""
 "Backup folder creation."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1533
+#: C:\BPS47/admin/core/options.php:1552
 msgid "System Info: New Check Added | Changes"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1533
+#: C:\BPS47/admin/core/options.php:1552
 msgid ""
 "DSO|CGI folder|file permission checks moved from htaccess Core Security "
 "Status page. Additional folder checks added. Additional Script Owner User ID "
@@ -2268,27 +2329,27 @@ msgid ""
 "page."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1538
+#: C:\BPS47/admin/core/options.php:1557
 msgid "htaccess Core: Security Status Page Changes"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1538
+#: C:\BPS47/admin/core/options.php:1557
 msgid ""
 "DSO|CGI folder|file permission checks moved to System Info page. General "
 "BulletProof Security File Checks removed (obsolete)."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1543
+#: C:\BPS47/admin/core/options.php:1562
 msgid "BPS Submenu Name Change"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1543
+#: C:\BPS47/admin/core/options.php:1562
 msgid ""
 "UI Theme Skin submenu name has been changed to: UI|UX|Theme Skin | "
 "Processing Spinner | WP Toolbar"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1548
+#: C:\BPS47/admin/core/options.php:1567
 msgid ""
 "- Dismiss Notices button/link reload current page based on Request URI or "
 "Query String.<br>- Optimization|Performance: All BPS pages and functions."
@@ -2302,56 +2363,56 @@ msgid ""
 "not be displayed if wp-admin BulletProof Mode has been disabled."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1563
+#: C:\BPS47/admin/core/options.php:1582
 msgid "My Notes ~ "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1563
+#: C:\BPS47/admin/core/options.php:1582
 msgid "Save Personal Notes and htaccess Code Notes to your WordPress Database"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1604
+#: C:\BPS47/admin/core/options.php:1623
 msgid "BulletProof Security Pro Feature Highlights"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1618
+#: C:\BPS47/admin/core/options.php:1637
 msgid "The Ultimate Security Protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1621
+#: C:\BPS47/admin/core/options.php:1640
 msgid "BPS Pro One-Click Setup Wizard & Demo Video Tutorial"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1622
+#: C:\BPS47/admin/core/options.php:1641
 msgid "BPS Pro Affiliate Program"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1623
+#: C:\BPS47/admin/core/options.php:1642
 msgid "View All BPS Pro Features"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1629
+#: C:\BPS47/admin/core/options.php:1648
 msgid ""
 "BulletProof Security Pro Website Security Suite is the complete website "
 "security package\n"
 "for hacker and spammer protection"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1632
+#: C:\BPS47/admin/core/options.php:1651
 msgid "One-Click Setup Wizard|Unlimited Installations: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1632
+#: C:\BPS47/admin/core/options.php:1651
 msgid ""
 "All BPS Pro security features are setup by the one-click BPS Pro Setup "
 "Wizard in less than 1 minute."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1634
+#: C:\BPS47/admin/core/options.php:1653
 msgid "One-Click Upgrades|Unlimited Upgrades: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1634
+#: C:\BPS47/admin/core/options.php:1653
 msgid ""
 "BPS Pro Plugin upgrade notifications are displayed in your WordPress "
 "Dashboard exactly the same way as all other WordPress plugins. All BPS Pro "
@@ -2362,12 +2423,12 @@ msgid ""
 "additional setup or configuration by you."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1636
+#: C:\BPS47/admin/core/options.php:1655
 msgid ""
 "AutoRestore|Quarantine Intrusion Detection and Prevention System (IDPS): "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1636
+#: C:\BPS47/admin/core/options.php:1655
 msgid ""
 "ARQ is a real-time file monitor that automatically AutoRestores and/or "
 "Quarantines files. ARQ utilizes countermeasure website security that has the "
@@ -2381,11 +2442,11 @@ msgid ""
 "installations."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1638
+#: C:\BPS47/admin/core/options.php:1657
 msgid "DB Monitor Intrusion Detection System (IDS): "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1638
+#: C:\BPS47/admin/core/options.php:1657
 msgid ""
 "The DB Monitor (DBM) is an Intrusion Detection System (IDS) that alerts you "
 "via email anytime a change/modification occurs in your WordPress database or "
@@ -2402,11 +2463,11 @@ msgid ""
 "files or your WordPress database have been tampered with."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1640
+#: C:\BPS47/admin/core/options.php:1659
 msgid "DB Diff Tool: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1640
+#: C:\BPS47/admin/core/options.php:1659
 msgid ""
 "The DB Diff Tool compares old database tables from DB backups to current "
 "database tables and displays any differences in the data/content of those 2 "
@@ -2415,11 +2476,11 @@ msgid ""
 "database table name change/modification."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1642
+#: C:\BPS47/admin/core/options.php:1661
 msgid "Plugin Firewall|Plugin Firewall AutoPilot Mode: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1642
+#: C:\BPS47/admin/core/options.php:1661
 msgid ""
 "The Plugin Firewall|Plugins BulletProof Mode prevents/blocks/forbids Remote "
 "Access to the plugins folder from external sources (remote script execution, "
@@ -2430,11 +2491,11 @@ msgid ""
 "Mode automatically creates plugin whitelist rules in real-time."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1644
+#: C:\BPS47/admin/core/options.php:1663
 msgid "Uploads Folder Anti-Exploit Guard (UAEG): "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1644
+#: C:\BPS47/admin/core/options.php:1663
 msgid ""
 "The Uploads Folder Anti-Exploit Guard|Uploads Folder BulletProof Mode allows "
 "ONLY safe image files with valid image file extensions such as jpg, gif, "
@@ -2443,11 +2504,11 @@ msgid ""
 "from being accessed, opened, viewed, processed or executed."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1646
+#: C:\BPS47/admin/core/options.php:1665
 msgid "JTC Anti-Spam|Anti-Hacker: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1646
+#: C:\BPS47/admin/core/options.php:1665
 msgid ""
 "Hacker Protection|Spammer Protection|DoS/DDoS Attack Protection|Brute Force "
 "Login Attack Protection|SpamBot Trap. JTC Anti-Spam|Anti-Hacker provides "
@@ -2460,11 +2521,11 @@ msgid ""
 "Login Form with a user friendly & customizable jQuery ToolTip CAPTCHA."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1648
+#: C:\BPS47/admin/core/options.php:1667
 msgid "S-Monitor Displayed Alerts, Email Alerting & Log File Options: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1648
+#: C:\BPS47/admin/core/options.php:1667
 msgid ""
 "S-Monitor displayed alerting options allow you to choose how you want real-"
 "time alerts displayed to you: WP Dashboard, BPS Pro pages only or turned "
@@ -2475,21 +2536,21 @@ msgid ""
 "option that you choose."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1650
+#: C:\BPS47/admin/core/options.php:1669
 msgid "F-Lock: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1650
+#: C:\BPS47/admin/core/options.php:1669
 msgid ""
 "Lock and Unlock WordPress Mission Critical files from within your WordPress "
 "Dashboard."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1652
+#: C:\BPS47/admin/core/options.php:1671
 msgid "Custom php.ini|ini_set Options: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1652
+#: C:\BPS47/admin/core/options.php:1671
 msgid ""
 "Quickly create a custom php.ini file for your website or use ini_set Options "
 "to increase security and performance with just a few clicks. Additional P-"
@@ -2497,11 +2558,11 @@ msgid ""
 "Protected PHP Error Log, PHP Error Alerts, Secure phpinfo Viewer..."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1654
+#: C:\BPS47/admin/core/options.php:1673
 msgid "Advanced Real-Time Alerting & Heads Up Dashboard Status Display: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1654
+#: C:\BPS47/admin/core/options.php:1673
 msgid ""
 "BPS Pro checks and displays error, warning, notifications and alert messages "
 "in real time. You can choose how you want these messages displayed to you "
@@ -2509,11 +2570,11 @@ msgid ""
 "Dashboard, BPS Pro pages only, Turned off, Email Alerts, Logging..."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1658
+#: C:\BPS47/admin/core/options.php:1677
 msgid "Pro-Tools: "
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1658
+#: C:\BPS47/admin/core/options.php:1677
 msgid ""
 "Pro-Tools is a set of versatile 16 website tools (16 mini-plugins): Online "
 "Base64 Decoder, Offline Base64 Decode|Encode, Mcrypt Decrypt|Encrypt, Crypt "
@@ -2523,205 +2584,209 @@ msgid ""
 "Exploit Checker"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1673
+#: C:\BPS47/admin/core/options.php:1692
 msgid "BPS Pro Version Release Dates"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1675
-msgid "Whats New in BPS Pro 10.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1676
-msgid "Whats New in BPS Pro 10.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1677
-msgid "Whats New in BPS Pro 10"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1678
-msgid "Whats New in BPS Pro 9.9.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1679
-msgid "Whats New in BPS Pro 9.9"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1680
-msgid "Whats New in BPS Pro 9.8"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1681
-msgid "Whats New in BPS Pro 9.7"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1682
-msgid "Whats New in BPS Pro 9.6"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1683
-msgid "Whats New in BPS Pro 9.5"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1684
-msgid "Whats New in BPS Pro 9.3/9.4"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1685
-msgid "Whats New in BPS Pro 9.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1686
-msgid "Whats New in BPS Pro 9.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1687
-msgid "Whats New in BPS Pro 9.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1688
-msgid "Whats New in BPS Pro 8.3"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1689
-msgid "Whats New in BPS Pro 8.2"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1690
-msgid "Whats New in BPS Pro 8.1"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1691
-msgid "Whats New in BPS Pro 8.0"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1692
-msgid "Whats New in BPS Pro 7.9"
-msgstr ""
-
-#: C:\BPS47/admin/core/options.php:1693
-msgid "Whats New in BPS Pro 7.8"
-msgstr ""
-
 #: C:\BPS47/admin/core/options.php:1694
-msgid "Whats New in BPS Pro 7.7"
+msgid "Whats New in BPS Pro 10.3"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1695
-msgid "Whats New in BPS Pro 7.6"
+msgid "Whats New in BPS Pro 10.2"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1696
-msgid "Whats New in BPS Pro 7.5"
+msgid "Whats New in BPS Pro 10.1"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1697
-msgid "Whats New in BPS Pro 7.0"
+msgid "Whats New in BPS Pro 10"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1698
-msgid "Whats New in BPS Pro 6.5"
+msgid "Whats New in BPS Pro 9.9.1"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1699
-msgid "Whats New in BPS Pro 6.0"
+msgid "Whats New in BPS Pro 9.9"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1700
-msgid "Whats New in BPS Pro 5.9"
+msgid "Whats New in BPS Pro 9.8"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1701
-msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgid "Whats New in BPS Pro 9.7"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1702
-msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
+msgid "Whats New in BPS Pro 9.6"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1703
-msgid "Whats New in BPS Pro 5.6/5.6.1"
+msgid "Whats New in BPS Pro 9.5"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1704
-msgid "Whats New in BPS Pro 5.5"
+msgid "Whats New in BPS Pro 9.3/9.4"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1705
-msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgid "Whats New in BPS Pro 9.2"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1706
-msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgid "Whats New in BPS Pro 9.1"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1707
-msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgid "Whats New in BPS Pro 9.0"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1708
-msgid "Whats New in BPS Pro 5.1.9"
+msgid "Whats New in BPS Pro 8.3"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1709
-msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgid "Whats New in BPS Pro 8.2"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1710
-msgid "Whats New in BPS Pro 5.1.7"
+msgid "Whats New in BPS Pro 8.1"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1711
-msgid "Whats New in BPS Pro 5.1.6"
+msgid "Whats New in BPS Pro 8.0"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1712
-msgid "Whats New in BPS Pro 5.1.5"
+msgid "Whats New in BPS Pro 7.9"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1713
-msgid "Whats New in BPS Pro 5.1.4"
+msgid "Whats New in BPS Pro 7.8"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1714
-msgid "Whats New in BPS Pro 5.1.3"
+msgid "Whats New in BPS Pro 7.7"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1715
-msgid "Whats New in BPS Pro 5.1.2"
+msgid "Whats New in BPS Pro 7.6"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1716
-msgid "Whats New in BPS Pro 5.1.1"
+msgid "Whats New in BPS Pro 7.5"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1717
-msgid "Whats New in BPS Pro 5.1"
+msgid "Whats New in BPS Pro 7.0"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1718
-msgid "Whats New in BPS Pro 5.0"
+msgid "Whats New in BPS Pro 6.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1719
+msgid "Whats New in BPS Pro 6.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1720
+msgid "Whats New in BPS Pro 5.9"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1721
+msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1722
+msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1723
+msgid "Whats New in BPS Pro 5.6/5.6.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1724
+msgid "Whats New in BPS Pro 5.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1725
+msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1726
+msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1727
+msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1728
+msgid "Whats New in BPS Pro 5.1.9"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1729
+msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1730
+msgid "Whats New in BPS Pro 5.1.7"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1731
+msgid "Whats New in BPS Pro 5.1.6"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1732
+msgid "Whats New in BPS Pro 5.1.5"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1733
+msgid "Whats New in BPS Pro 5.1.4"
 msgstr ""
 
 #: C:\BPS47/admin/core/options.php:1734
+msgid "Whats New in BPS Pro 5.1.3"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1735
+msgid "Whats New in BPS Pro 5.1.2"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1736
+msgid "Whats New in BPS Pro 5.1.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1737
+msgid "Whats New in BPS Pro 5.1"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1738
+msgid "Whats New in BPS Pro 5.0"
+msgstr ""
+
+#: C:\BPS47/admin/core/options.php:1754
 msgid "Sucuri SiteCheck - Free website malware & blacklist scan"
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1736
+#: C:\BPS47/admin/core/options.php:1756
 msgid "BPS is designed to protect your website from being hacked."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1736
+#: C:\BPS47/admin/core/options.php:1756
 msgid ""
 "If your website was already hacked prior to installing BPS then BPS will not "
 "automatically clean it up."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1736
+#: C:\BPS47/admin/core/options.php:1756
 msgid "Sucuri offers hacked website cleanup services."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1751
+#: C:\BPS47/admin/core/options.php:1771
 #, php-format
 msgid ""
 "the sheer nature of malware makes it very challenging to give you "
@@ -2731,7 +2796,7 @@ msgid ""
 "your feet."
 msgstr ""
 
-#: C:\BPS47/admin/core/options.php:1751
+#: C:\BPS47/admin/core/options.php:1771
 msgid "Tony Perez, CFO Sucuri, LLC"
 msgstr ""
 
@@ -8523,33 +8588,33 @@ msgid "3. Activate wp-admin Folder BulletProof Mode."
 msgstr ""
 
 #: C:\BPS47/includes/login-security.php:47
-#: C:\BPS47/includes/login-security.php:248
-#: C:\BPS47/includes/login-security.php:370
-#: C:\BPS47/includes/login-security.php:482
+#: C:\BPS47/includes/login-security.php:250
+#: C:\BPS47/includes/login-security.php:374
+#: C:\BPS47/includes/login-security.php:488
 msgid ""
 "<strong>ERROR</strong>: This user account has been locked until <strong>"
 msgstr ""
 
 #: C:\BPS47/includes/login-security.php:53
-#: C:\BPS47/includes/login-security.php:376
-#: C:\BPS47/includes/login-security.php:607
-#: C:\BPS47/includes/login-security.php:611
+#: C:\BPS47/includes/login-security.php:380
+#: C:\BPS47/includes/login-security.php:615
+#: C:\BPS47/includes/login-security.php:619
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid Entry. <a href=\"%s\" title=\"Password Lost "
 "and Found\">Lost your password</a>?"
 msgstr ""
 
-#: C:\BPS47/includes/login-security.php:599
-#: C:\BPS47/includes/login-security.php:603
+#: C:\BPS47/includes/login-security.php:607
+#: C:\BPS47/includes/login-security.php:611
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password "
 "Lost and Found\">Lost your password</a>?"
 msgstr ""
 
-#: C:\BPS47/includes/login-security.php:621
-#: C:\BPS47/includes/login-security.php:632
+#: C:\BPS47/includes/login-security.php:629
+#: C:\BPS47/includes/login-security.php:640
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: The password you entered for the username <strong>"
@@ -8557,7 +8622,7 @@ msgid ""
 "\">Lost your password</a>?"
 msgstr ""
 
-#: C:\BPS47/includes/login-security.php:628
+#: C:\BPS47/includes/login-security.php:636
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: The password you entered for the username <strong>"
@@ -8565,8 +8630,8 @@ msgid ""
 "\">Lost your password</a>? Login Attempts Remaining <strong>%3$d</strong>"
 msgstr ""
 
-#: C:\BPS47/includes/login-security.php:641
-#: C:\BPS47/includes/login-security.php:654
+#: C:\BPS47/includes/login-security.php:649
+#: C:\BPS47/includes/login-security.php:662
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid Entry. <a href=\"%2$s\" title=\"Password "
@@ -8574,8 +8639,8 @@ msgid ""
 "%3$d</strong>"
 msgstr ""
 
-#: C:\BPS47/includes/login-security.php:645
-#: C:\BPS47/includes/login-security.php:658
+#: C:\BPS47/includes/login-security.php:653
+#: C:\BPS47/includes/login-security.php:666
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid Entry. <a href=\"%2$s\" title=\"Password "

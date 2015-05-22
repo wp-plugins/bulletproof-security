@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
-Tested up to: 4.2.1
-Stable tag: .51.8
+Tested up to: 4.2.2
+Stable tag: .51.9
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -402,6 +402,14 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .51.9 =
+* Login Security & Monitoring Automated Email Alert Enhancement|Improvement:
+* Special Thanks to: <a href="https://wordpress.org/support/profile/mewkazoid" title="mewkazoid WordPress Member">mewkazoid</a> for pointing out this useful improvement to BPS Login Security & Monitoring automated email alerts.
+* The Login Security & Monitoring Automated Email Alert now contains additional help information about what to do if your User Account is being repeatedly locked.
+* Brute Force Attack General Info: Automated Brute Force Login attacks by spambots and hackerbots are a regular and ongoing type of website attack. The volume and frequency of Brute Force Login attacks are steadily increasing and will continue to increase. Brute Force attacks make up somewhere in the neighborhood of 85 percent (probably more like 90 percent to 95 percent) of the total of all types of ongoing website attacks these days. BPS Login Security & Monitoring protects the WordPress Login page from Brute Force attacks, but if your username is publicly known/displayed or can be harvested by automated bots then your user account may get locked very frequently. Check the BPS plugin Whats New page for some additional things you can do to prevent your user account from being locked repeatedly.
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* BugFix: File Permissions cache issue: Root htaccess file not being re-locked when AutoLock is turned On. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
+
 = .51.8 =
 * Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
 * New Feature: Setup Wizard
@@ -722,21 +730,13 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.8 =
-* Summary Only: See the BPS plugin Whats New tab page for full descriptions and details
-* New Feature: Setup Wizard
-* New Feature: jQuery UI Dialog Form BPS Uninstall Options
-* New Option: Login Security Attempts Remaining option and Core Functionality Improvements
-* New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation
-* Referer Spammers|Phishing Protection
-* Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection
-* External iFrame and Clickjacking Protection
+= .51.9 =
+* Login Security & Monitoring Automated Email Alert Enhancement|Improvement:
+* Special Thanks to: <a href="https://wordpress.org/support/profile/mewkazoid" title="mewkazoid WordPress Member">mewkazoid</a> for pointing out this useful improvement to BPS Login Security & Monitoring automated email alerts.
+* The Login Security & Monitoring Automated Email Alert now contains additional help information about what to do if your User Account is being repeatedly locked.
+* Brute Force Attack General Info: Automated Brute Force Login attacks by spambots and hackerbots are a regular and ongoing type of website attack. The volume and frequency of Brute Force Login attacks are steadily increasing and will continue to increase. Brute Force attacks make up somewhere in the neighborhood of 85 percent (probably more like 90 percent to 95 percent) of the total of all types of ongoing website attacks these days. BPS Login Security & Monitoring protects the WordPress Login page from Brute Force attacks, but if your username is publicly known/displayed or can be harvested by automated bots then your user account may get locked very frequently. Check the BPS plugin Whats New page for some additional things you can do to prevent your user account from being locked repeatedly.
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* New BPS Setup & Overview Video tutorial created: BPS Setup & Overview Video Tutorial - link added on the Setup Wizard page and htaccess Core Security Modes page.
-* WP 4.2 Bug Reported|Ticket created with POC and solution provided: WP 4.2 hash anchor Bug Hash anchors were being stripped of URI's. Solution provided to WP folks. Solution implemented by WP folks. No other issues or problems found with WP 4.2 and BPS Pro versions.
-* WP flush_rewrite_rules function added to BPS complete plugin uninstall function. Creates new default generic WP root htaccess file on BPS complete plugin uninstall.
-* Dismiss Notice link correction when basename == wp-admin on first Dashboard login.
-* Custom Code inpage check for default WordPress Rewrite code added in Custom Code text boxes.
+* BugFix: File Permissions cache issue: Root htaccess file not being re-locked when AutoLock is turned On. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
 
 == Help Info ==
 

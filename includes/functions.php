@@ -565,7 +565,7 @@ switch ( $bps_version ) {
 
 		file_put_contents($filename, $stringReplace);
 		
-		if ( @$permsHtaccess == '0644' && @substr($sapi_type, 0, 6) != 'apache' && $options['bps_root_htaccess_autolock'] != 'Off') {			
+		if ( $options['bps_root_htaccess_autolock'] == 'On') {			
 			@chmod($filename, 0404);
 		}
 
