@@ -4,8 +4,8 @@ Plugin Name: BulletProof Security
 Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
-Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging|HTTP Error Logging. Login Security|Login Monitoring: Log All Account Logins or Log Only Account Lockouts. DB Backup: Database Backup. Website FrontEnd|BackEnd Maintenance Mode. System Info: PHP|MySQL|OS|Server|Memory Usage|IP|SAPI|WP Filesystem API Method|DNS|Max Upload|Zend Engine Version|Zend Guard|Loader|Optimizer|ionCube Loader|Suhosin|APC|eAccelerator|XCache|Varnish|cURL|Memcache|Memcached...
-Version: .51.9
+Description: Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. Built-in .htaccess file Editor. Security Logging|HTTP Error Logging. Login Security|Login Monitoring: Log All Account Logins or Log Only Account Lockouts. Idle Session Logout: Automated Idle/Inactive User Logout by User Role/User Account name. Auth Cookie Expiration: Set WP Authentication Cookie Expiration by User Role/User Account name. DB Backup: Database Backup. Website FrontEnd|BackEnd Maintenance Mode. System Info: PHP|MySQL|OS|Server|Memory Usage|IP|SAPI|WP Filesystem API Method|DNS|Max Upload|Zend Engine Version|Zend Guard|Loader|Optimizer|ionCube Loader|Suhosin|APC|eAccelerator|XCache|Varnish|cURL|Memcache|Memcached...
+Version: .52
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,10 +28,10 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.51.9' );
-$bps_last_version = '.51.8';
-$bps_version = '.51.9';
-$bps_readme_install_ver = '1';
+define( 'BULLETPROOF_VERSION', '.52' );
+$bps_last_version = '.51.9';
+$bps_version = '.52';
+$bps_readme_install_ver = '2';
 $aitpro_bullet = '<img src="'.plugins_url('/bulletproof-security/admin/images/aitpro-bullet.png').'" style="padding:0px 3px 0px 3px;" />';
 
 // Load BPS Global class - not doing anything with this Class in BPS Free
@@ -47,12 +47,15 @@ function bulletproof_security_load_plugin_textdomain() {
 // Load BPS functions.php
 require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/functions.php' );
 	remove_action('wp_head', 'wp_generator');
-	
 // BPS Login Security
 require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/login-security.php' );
-
 // BPS DB Backup
 require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/db-security.php' );
+// Idle Session Logout (ISL)
+$BPS_ISL_options = get_option('bulletproof_security_options_idle_session');
+if ( $BPS_ISL_options['bps_isl'] == 'On' ) {
+require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/idle-session-logout.php' );
+}
 
 // If in WP Admin Dashboard
 if ( is_admin() ) {

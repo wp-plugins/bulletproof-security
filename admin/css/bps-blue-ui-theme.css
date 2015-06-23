@@ -1,6 +1,5 @@
-/** BPS container and various form elements **/
 /* px to em: 12-.75 * 14-.88 * 16-1 * 18-1.13 * 20-1.25 * 22-1.38 * 24-1.5 * 26-1.63 * 28-1.75 * 30-1.88 * 32-2 * 34-2.13 * 36-2.25 * 38-2.38 */
-/* BPS Container|Top Level|Theme-wide Stuff */
+/* BPS Container / Top Level / Theme-wide Stuff */
 li#toplevel_page_bulletproof-security-admin-options .wp-menu-image, li#toplevel_page_bulletproof-security-admin-login-login .wp-menu-image {position:relative;top:-2px;left:-2px;}
 #bps-container {margin:20px 0 5px 0;font-size:12px;}
 div.bps-white-background {background-color:#fff;}
@@ -14,8 +13,7 @@ div.bps-white-background {background-color:#fff;}
 /** PayPal and AITpro Link **/
 #bpspaypal {float:right;position:relative;top:5px;right:15px;}
 #AITpro-link {padding:5px 0px 0px 10px;}
-#bpsProText {color:#000066;}
-/* Forms Theme-wide|Misc */
+/* Forms Theme-wide / Misc */
 #bps-container td label {font-size:13px;font-weight:bold;}
 #bps-container .log-date {width:200px;padding-left:4px;font-size:13px;font-weight:bold;border:none;background:none;outline:none;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:none;transition:none;}
 label[for=bps-ini-file-selector], label[for=bps-ini-file-deleter] {
@@ -33,7 +31,7 @@ select[id=iniSelector], select[id=iniServerType], select[id=iniHost], select[id=
 .regular-text-50-fixed {width:50px;}
 .regular-text-short-fixed {width:175px;}
 .regular-text-long-fixed {width:275px;}
-/* Form text areas|text input */
+/* Form text areas / text input */
 #bps-container input[type=text] {background-color:#f4f9ff;font-size:12px;}
 #bps-container textarea {background-color:#f4f9ff;} /* a little too blue #f2fdfd */
 #bps-container .bps-text-area-600x700 {font-family:"Courier New", Courier, monospace;font-size:1em;height:600px;width:700px;overflow:auto;}
@@ -62,11 +60,13 @@ select[id=iniSelector], select[id=iniServerType], select[id=iniHost], select[id=
 /* Activation page */
 #activation-steps {background-color:#fff;padding:10px;border-right:1px solid black;border-left:1px solid black;}
 #activation-steps h3 {font-size:14px;}
+.activation-inpage-text {font-size:13px;font-weight:normal;}
 /* Setup Wizard page */
 #wizard-steps {background-color:#fff;margin-top:10px;padding:10px;border-top:1px solid black;border-right:1px solid black;border-left:1px solid black;}
 #wizard-steps h3 {font-size:14px;}
+.setup-wizard-inpage-text {font-size:1.13em;font-weight:bold;margin-bottom:20px;}
 /** Plugin Firewall **/
-.PFW-Whitelist-Text-Area {width:450px;height:180px;}
+.PFW-Whitelist-Text-Area {width:450px;height:180px;font-size:13px;font-weight:bold;margin-top:5px;}
 .PFW-Allow-From-Text-Area {width:400px;height:100px;margin-top:5px;}
 #PFW3 {position:relative;top:0px;left:0px;float:left;margin:0px 15px 10px 0px;}
 #PFW5 {position:relative;top:5px;left:0px;float:left;margin:0px 0px 0px 0px;}
@@ -75,7 +75,7 @@ select[id=iniSelector], select[id=iniServerType], select[id=iniHost], select[id=
 /* AutoRestore */
 .arq-backup-files {color:#2ea2cc;}
 #bps-container .autorestore-status-text h3 {font-size:1em;border:1px solid black;background-color:#ffffe0;width:80%;margin:0px 0px 0px 0px;padding:10px;}
-/* B-Core|BPS htaccess File Editor */
+/* B-Core / BPS htaccess File Editor */
 div.automagic-text {font-weight:bold;color:green;border:1px solid black;background-color:#ffffe0;width:40%;padding:5px;}
 #bps_file_editor {width:690px;}
 .bps_file_editor_update {background-color:#ffffe0;border:1px solid #999999;padding:5px;}
@@ -102,6 +102,9 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 #DBBJobscheckall {margin:0px 0px 0px -20px;}
 #DBBFilescheckall {max-height:270px;overflow:auto;margin:0px 0px 0px -20px;border-bottom:1px solid #999;}
 #DBBcheckall {margin:0px 15px 0px -20px;float:left;overflow:auto;width:400px;max-height:600px;border:1px solid #e5e5e5;}
+/* DB Monitor */
+#DBcheckall .big-head {font-size:1.13em;}
+.DBMStatusTable .big-head {font-size:1.13em;}
 /* BPS Pro-Tools pages */
 .regular-text-mycrypt {width:60%}
 .StringFinder {background-color:#fff;padding:2px 2px 2px 4px;font-family:Arial, Helvetica, sans-serif;font-size:10px;font-weight:100;border-right:2px solid black;border-left:2px solid black;border-top:1px solid #999999;border-bottom:1px solid #999999;}
@@ -125,7 +128,6 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 #bpsDBFinder .sql{display:none;width:300px;padding:10px;border:0;}
 #bpsDBFinder .link_wrapper{margin-top:10px;} 
 #bpsDBFinder .me{font-size:11px;font-family:arial;color:#333;}
-
 /** Buttons **/
 #bps-container .button {height:28px;}
 /* Form Submit buttons */
@@ -138,14 +140,13 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 #bps-container .bps-modal-button:hover, #bps-container .bps-modal-button:focus {background:#05b5e1;border-color:#036881;color:white;-webkit-box-shadow:inset 0 1px 0 #09cafa;    box-shadow:inset 0 1px 0 #09cafa;}
 #bps-container .bps-modal-button:focus {-webkit-box-shadow:inset 0 1px 0 #09cafa, 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);box-shadow:inset 0 1px 0 #09cafa, 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);}
 #bps-container .bps-modal-button:active {background:#037c9a;border-color:#036881;color:white;-webkit-box-shadow:inset 0 2px 5px -3px rgba(0, 0, 0, 0.5), 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);box-shadow:inset 0 2px 5px -3px rgba(0, 0, 0, 0.5), 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);}
-/* Messages|message buttons */
+/* Messages / message buttons */
 /* buttons in displayed messages? check if these are obsolete */
 #message .bps-message-button, #messageinner .bps-message-button {border-color:#bbb;color:#464646;background:#f2f2f2 url(../images/white-grad-active.png) repeat-x scroll left top;color:#fff;font-weight:bold;text-align:center;/* width:100px; *//* text-shadow:rgba(255,255,255,1) 0 1px 0; *//* text-shadow:rgba(0,0,0,0.4) 0 1px 0; */border-width:1px;text-decoration:none;font-size:12px!important;line-height:12px;padding:5px 8px;cursor:pointer;border-width:1px;border-style:solid;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-khtml-box-sizing:content-box;box-sizing:content-box;}
 #message .bps-message-button:hover, #messageinner .bps-message-button:hover {color:#000;border-color:#666;text-shadow:rgba(255,255,255,1) 0 1px 0;background:#f2f2f2 url(../images/white-grad.png) repeat-x scroll left top;}
 #message .bps-message-button:active, #messageinner .bps-message-button:active {background:#eee url(../images/white-grad-active.png) repeat-x scroll left top;}	
 #messageinner {}
 .updatedinner {border:1px solid #999999;background-color:#ffffe0;width:80%;padding:2px 2px 2px 4px;margin:0px 0px 10px 0px;}
-
 /** BPS Tab Menus **/
 .bps-menu {text-decoration:none;border:1px solid #999;}
 .bps-menu ul {background-image:url(../images/menu-bg.png);background-repeat:none;}
@@ -190,74 +191,88 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 .bps_pro_activate_text_field {font-size:1em;font-style:italic;font-weight:700;padding:5px 0px 0px 5px;}
 .bps-table_cell_activation_details {vertical-align:text-top;padding:0px 0px 0px 5px;border-right:1px solid black;border-left:1px solid black;}
 .bps_pro_modules_info {background-color:#fff;vertical-align:text-top;padding:5px 0px 5px 5px;}
-
-/** jQuery defaults Layout helpers **/
-.ui-helper-hidden {display:none;}
-.ui-helper-hidden-accessible {position:absolute;left:-99999999px;}
-.ui-helper-reset {margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}
-.ui-helper-clearfix:after {content: ".";display:block;height:0;clear:both;visibility:hidden;}
-.ui-helper-clearfix {display:inline-block;}
-* html .ui-helper-clearfix {height:1%;}
-.ui-helper-clearfix {display:block;}
-.ui-helper-zfix {width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}
-/** jQuery Interaction Cues **/
-.ui-state-disabled {cursor:default !important;}
-/** jQuery Interaction States **/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {font-size:14px;border-left:1px solid #999999;border-right:1px solid #999999;border-bottom:1px solid #999999;padding:0px 10px 5px 10px;}
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#fff;background-image:url(../images/menu-btn.png);background-repeat:none;}
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {font-size:14px;border-left:1px solid #999999;border-right:1px solid #999999;border-bottom:1px solid #999999;padding:0px 10px 5px 10px;}
-.ui-state-hover a, .ui-state-hover a:hover {font-size:14px;color:#000;background-image:url(../images/menu-btn-hover.png);background-repeat:none;}
+/** jQuery UI Interaction States in jquery.ui.theme 
+Note: This filter: style_loader_tag should stop Roque scripts from breaking BPS. This is an additional protective measure 
+against Roque plugin and theme scripts loading in BPS plugn pages and breaking things visually. **/
+.ui-state-default.bps-menu, .ui-widget-content.bps-menu .ui-state-default, .ui-widget-header.bps-menu .ui-state-default {font-size:14px;border-left:1px solid #999999;border-right:1px solid #999999;border-bottom:1px solid #999999;padding:0px 10px 5px 10px;}
+.ui-state-default.bps-menu a, .ui-state-default.bps-menu a:link, .ui-state-default.bps-menu a:visited {color:#fff;background-image:url(../images/menu-btn.png);background-repeat:none;}
+.ui-state-hover.bps-menu, .ui-widget-content.bps-menu .ui-state-hover, .ui-widget-header.bps-menu .ui-state-hover, .ui-state-focus.bps-menu, .ui-widget-content.bps-menu .ui-state-focus, .ui-widget-header.bps-menu .ui-state-focus {font-size:14px;border-left:1px solid #999999;border-right:1px solid #999999;border-bottom:1px solid #999999;padding:0px 10px 5px 10px;}
+.ui-state-hover.bps-menu a, .ui-state-hover a:hover {font-size:14px;color:#000;background-image:url(../images/menu-btn-hover.png);background-repeat:none;}
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {color:#000;background-image:url(../images/menu-btn-hover.png);background-repeat:none;}
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#000;background-image:url(../images/menu-btn-hover.png);background-repeat:none;}
-/* jQuery Tabs defaults */
-.ui-tabs {padding:0;zoom:1;}
-.ui-tabs .ui-tabs-nav, .ui-tabs .ui-tabs-panel .ui-tabs-nav {list-style:none;position:relative;padding:0;}
-.ui-tabs .ui-tabs-nav li, .ui-tabs .ui-tabs-panel .ui-tabs-nav li {position:relative;float:left;margin:0;padding:0;}
-.ui-tabs .ui-tabs-nav li a, .ui-tabs .ui-tabs-panel .ui-tabs-nav li a {float:left;text-decoration:none;padding:.4em 1em;}
-.ui-tabs .ui-tabs-panel, .ui-tabs .ui-tabs-panel .ui-tabs-panel {padding:0 0 1em 0;display:block;border:none;}
-.ui-tabs .ui-tabs-panel .ui-tabs-panel {padding:0;}
-.ui-tabs .ui-tabs-hide, .ui-tabs .ui-tabs-panel .ui-tabs-hide {display:none !important;}
-/* jquery.ui.accordion.css  */
+/** jQuery UI Core defaults **/
+.ui-helper-hidden{display:none;}
+.ui-helper-hidden-accessible{position:absolute;left:-99999999px;}
+.ui-helper-reset{margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}
+.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.ui-helper-clearfix{display:inline-block;}
+/* required comment for clearfix to work in Opera \*/ 
+* html .ui-helper-clearfix{height:1%;}
+.ui-helper-clearfix{display:block;}/* end clearfix */ 
+.ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}
+.ui-state-disabled{cursor:default!important;}
+.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;}
+.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#000;opacity:.6;filter:alpha(opacity=60);}
+/* jQuery UI Tabs */
+.bps-tab-page.ui-tabs {padding:0;zoom:1;}
+.bps-tab-page.ui-tabs .ui-tabs-nav, .bps-tab-page.ui-tabs .ui-tabs-panel .ui-tabs-nav {list-style:none;position:relative;padding:0;}
+.bps-tab-page.ui-tabs .ui-tabs-nav li, .bps-tab-page.ui-tabs .ui-tabs-panel .ui-tabs-nav li {position:relative;float:left;margin:0;padding:0;}
+.bps-tab-page.ui-tabs .ui-tabs-nav li a, .bps-tab-page.ui-tabs .ui-tabs-panel .ui-tabs-nav li a {float:left;text-decoration:none;padding:.4em 1em;}
+.bps-tab-page.ui-tabs .ui-tabs-panel, .bps-tab-page.ui-tabs .ui-tabs-panel .ui-tabs-panel {padding:0 0 1em 0;display:block;border:none;}
+.bps-tab-page.ui-tabs .ui-tabs-panel .bps-tab-page.ui-tabs-panel {padding:0;}
+.bps-tab-page.ui-tabs .ui-tabs-hide, .bps-tab-page.ui-tabs .ui-tabs-panel .ui-tabs-hide {display:none !important;}
+/* jQuery UI Accordion defaults */
 /* controls the width and size of the accordion button only - does not affect content width */
-.ui-accordion .ui-accordion-header {display:block;cursor:pointer;position:relative;margin-top:2px;padding:.5em .5em .5em .7em;min-height:0;/* support: IE7 */}
-.ui-accordion .ui-accordion-icons {padding-left:2.2em;}
-.ui-accordion .ui-accordion-noicons {padding-left:.7em;}
-.ui-accordion .ui-accordion-icons .ui-accordion-icons {padding-left:2.2em;}
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
-.ui-accordion .ui-accordion-content {padding:1em 2.2em;border-top:0;overflow:auto;}
-
-/** BPS jQuery Accordian **/
-.bps-accordian-main {border:1px solid #999;background-color:#fff;}
-.bps-accordian-main h3 {color:#fff;width:183px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
-.bps-accordian-main-2 h3 {color:#fff;width:280px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
-.bps-accordian-main-3 h3 {color:#fff;width:300px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
-.bps-accordian-main-inner {border:1px solid #999;}
-#cc-accordian-inner {margin:0px -25px 0px -25px;}
-#mmode-accordian-inner {margin:0px -15px 0px -15px;}
-#dbb-accordian-inner {margin:0px -20px 0px 0px;}
-#dbb-accordian-inner #dbb-special {margin:0px 0px 0px -20px;}
-
-/** jQuery UI Dialog **/
-.ui-helper-hidden{display:none;}.ui-helper-hidden-accessible{position:absolute;left:-99999999px;}.ui-helper-reset{margin:0;padding:0;border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;}.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.ui-helper-clearfix{display:inline-block;}/* required comment for clearfix to work in Opera \*/ * html .ui-helper-clearfix{height:1%;}.ui-helper-clearfix{display:block;}/* end clearfix */ .ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0);}.ui-state-disabled{cursor:default!important;}.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;}.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;}
-/* Dialog Read Me buttons defaults */
-.ui-resizable{position:relative;}.ui-resizable-handle{position:absolute;font-size:.1px;z-index:99999;display:block;}.ui-resizable-disabled .ui-resizable-handle,.ui-resizable-autohide .ui-resizable-handle{display:none;}.ui-resizable-n{cursor:n-resize;height:7px;width:100%;top:-5px;left:0;}.ui-resizable-s{cursor:s-resize;height:7px;width:100%;bottom:-5px;left:0;}.ui-resizable-e{cursor:e-resize;width:7px;right:-5px;top:0;height:100%;}.ui-resizable-w{cursor:w-resize;width:7px;left:-5px;top:0;height:100%;}.ui-resizable-se{cursor:se-resize;width:12px;height:12px;right:1px;bottom:1px;}.ui-resizable-sw{cursor:sw-resize;width:9px;height:9px;left:-5px;bottom:-5px;}.ui-resizable-nw{cursor:nw-resize;width:9px;height:9px;left:-5px;top:-5px;}.ui-resizable-ne{cursor:ne-resize;width:9px;height:9px;right:-5px;top:-5px;}.wp-dialog{z-index:999;position:absolute;width:300px;overflow:hidden;}.wp-dialog .ui-dialog-titlebar{position:relative;}
-/* Dialog Read Me buttons customizations */
-.wp-dialog .ui-dialog-titlebar-close span {z-index:999;display:block;margin:1px;}
-.wp-dialog .ui-dialog-content {z-index:999;position:relative;border:0;padding:0px 10px 0px 10px;background:none;overflow:auto;zoom:1;}
+.ui-accordion.bps-accordion .ui-accordion-header {display:block;cursor:pointer;position:relative;margin-top:2px;padding:.5em .5em .5em .7em;min-height:0;/* support: IE7 */}
+.ui-accordion.bps-accordion .ui-accordion-icons {padding-left:2.2em;}
+.ui-accordion.bps-accordion .ui-accordion-noicons {padding-left:.7em;}
+.ui-accordion.bps-accordion .ui-accordion-icons .ui-accordion-icons {padding-left:2.2em;}
+.ui-accordion.bps-accordion .ui-accordion-header .ui-accordion-header-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
+.ui-accordion.bps-accordion .ui-accordion-content {padding:1em 2.2em;border-top:0;overflow:auto;}
+/** BPS jQuery UI Accordion **/
+.bps-accordion-main {border:1px solid #999;background-color:#fff;}
+.bps-accordion-main h3 {color:#fff;width:183px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
+.bps-accordion-main-2 h3 {color:#fff;width:280px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
+.bps-accordion-main-3 h3 {color:#fff;width:300px;border:1px solid #999;background-image:url(../images/menu-btn.png);background-repeat:none;}
+.bps-accordion-main-inner {border:1px solid #999;}
+#cc-accordion-inner {margin:0px -25px 0px -25px;}
+#mmode-accordion-inner {margin:0px -15px 0px -15px;}
+#dbb-accordion-inner {margin:0px -20px 0px 0px;}
+#dbb-accordion-inner #dbb-special {margin:0px 0px 0px -20px;}
+/* jQuery UI Dialog Read Me buttons */
+.bps-readme-table {background:#fff;vertical-align:text-top;margin:8px 0px 10px 0px;}
+.bps-readme-table-td {padding:5px;}
+.wp-dialog.bps-dialog .ui-resizable{position:relative;}
+.wp-dialog.bps-dialog .ui-resizable-handle{position:absolute;font-size:.1px;z-index:99999;display:block;}
+.wp-dialog.bps-dialog .ui-resizable-disabled .ui-resizable-handle,.wp-dialog.bps-dialog .ui-resizable-autohide .ui-resizable-handle{display:none;}
+.wp-dialog.bps-dialog .ui-resizable-n{cursor:n-resize;height:7px;width:100%;top:-5px;left:0;}
+.wp-dialog.bps-dialog .ui-resizable-s{cursor:s-resize;height:7px;width:100%;bottom:-5px;left:0;}
+.wp-dialog.bps-dialog .ui-resizable-e{cursor:e-resize;width:7px;right:-5px;top:0;height:100%;}
+.wp-dialog.bps-dialog .ui-resizable-w{cursor:w-resize;width:7px;left:-5px;top:0;height:100%;}
+.wp-dialog.bps-dialog .ui-resizable-se{cursor:se-resize;width:12px;height:12px;right:1px;bottom:1px;}
+.wp-dialog.bps-dialog .ui-resizable-sw{cursor:sw-resize;width:9px;height:9px;left:-5px;bottom:-5px;}
+.wp-dialog.bps-dialog .ui-resizable-nw{cursor:nw-resize;width:9px;height:9px;left:-5px;top:-5px;}
+.wp-dialog.bps-dialog .ui-resizable-ne{cursor:ne-resize;width:9px;height:9px;right:-5px;top:-5px;}
+/* jQuery UI Dialog Read Me buttons customizations */
+.wp-dialog.bps-dialog{z-index:999;position:absolute;width:300px;overflow:hidden;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar{position:relative;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar-close span {z-index:999;display:block;margin:1px;}
+.wp-dialog.bps-dialog .ui-dialog-content {z-index:999;position:relative;border:0;padding:0px 10px 0px 10px;background:none;overflow:auto;zoom:1;}
 /* bottom pane */
-.wp-dialog .ui-dialog-buttonpane {z-index:999;text-align:left;border-width:1px 0 0 0;background:url('../images/table_title_bg.png') repeat;height:35px;/*background-image:none;*/margin:0px;padding:0px;}
-.wp-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{float:right;}
-.wp-dialog .ui-dialog-buttonpane button{margin:.4em .5em .5em 0;cursor:pointer;}
-.wp-dialog .ui-resizable-se{width:20px;height:20px;right:0px;bottom:0px;}
+.wp-dialog.bps-dialog .ui-dialog-buttonpane {z-index:999;text-align:left;border-width:1px 0 0 0;background:url('../images/table_title_bg.png') repeat;height:35px;/*background-image:none;*/margin:0px;padding:0px;}
+.wp-dialog.bps-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{float:right;}
+.wp-dialog.bps-dialog .ui-dialog-buttonpane button{margin:.4em .5em .5em 0;cursor:pointer;}
+.wp-dialog.bps-dialog .ui-resizable-se{width:20px;height:20px;right:0px;bottom:0px;}
 .ui-draggable .ui-dialog-titlebar{cursor:move;}
-.wp-dialog{border:1px solid #999;-moz-box-shadow:0 0 16px rgba(0,0,0,0.3);-webkit-box-shadow:0 0 16px rgba(0,0,0,0.3);box-shadow:0 0 16px rgba(0,0,0,0.3);}
-.wp-dialog .ui-dialog-titlebar-close .ui-button-text {visibility:hidden;}/* important - this hides the duplicate close button */
-.wp-dialog .ui-button-text {font-size:11px; font-weight:bold;}
-.wp-dialog .ui-button {z-index:999;background:url('../images/close-button.png') no-repeat -3px -3px;}
+.wp-dialog.bps-dialog{border:1px solid #999;-moz-box-shadow:0 0 16px rgba(0,0,0,0.3);-webkit-box-shadow:0 0 16px rgba(0,0,0,0.3);box-shadow:0 0 16px rgba(0,0,0,0.3);}
+.wp-dialog.bps-dialog .ui-dialog-titlebar-close .ui-button-text {visibility:hidden;}/* important - this hides the duplicate close button */
+.wp-dialog.bps-dialog .ui-button-text {font-size:11px; font-weight:bold;}
+.wp-dialog.bps-dialog .ui-button {z-index:999;background:url('../images/close-button.png') no-repeat -3px -3px;}
 /* this is the top pane */
-.wp-dialog .ui-dialog-title {z-index:999;display:block;margin-top:0px;text-align:center;padding:7px 0px 0px 0px;}
-.wp-dialog .ui-dialog-titlebar {z-index:999;padding:0 1em;/* background-color:#444; */background:url('../images/table_title_bg.png') repeat;height:35px;font-weight:bold;font-size:14px;line-height:18px;color:#fff;}
-.wp-dialog{-moz-border-radius-topleft:4px;-webkit-border-top-left-radius:4px;-khtml-border-top-left-radius:4px;border-top-left-radius:4px;-moz-border-radius-topright:4px;-webkit-border-top-right-radius:4px;-khtml-border-top-right-radius:4px;border-top-right-radius:4px;}.wp-dialog .ui-dialog-titlebar{-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;}
+.wp-dialog.bps-dialog .ui-dialog-title {z-index:999;display:block;margin-top:0px;text-align:center;padding:7px 0px 0px 0px;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar {z-index:999;padding:0 1em;/* background-color:#444; */background:url('../images/table_title_bg.png') repeat;height:35px;font-weight:bold;font-size:14px;line-height:18px;color:#fff;}
+.wp-dialog.bps-dialog{-moz-border-radius-topleft:4px;-webkit-border-top-left-radius:4px;-khtml-border-top-left-radius:4px;border-top-left-radius:4px;-moz-border-radius-topright:4px;-webkit-border-top-right-radius:4px;-khtml-border-top-right-radius:4px;border-top-right-radius:4px;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar{-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;}
 /* this is the top right corner X button , .wp-dialog .ui-dialog-titlebar-close .ui-button-text */
-.wp-dialog .ui-dialog-titlebar-close {z-index:999;position:absolute;width:29px;height:16px;top:6px;right:6px;background:url('../images/buttons.gif') no-repeat -88px -18px;padding:0;}
-.wp-dialog .ui-dialog-titlebar-close:hover,.wp-dialog .ui-dialog-titlebar-close:focus{background-position:-88px -34px;}.ui-widget-overlay{background-color:#000;opacity:.6;filter:alpha(opacity=60);}
+.wp-dialog.bps-dialog .ui-dialog-titlebar-close {z-index:999;position:absolute;width:29px;height:16px;top:6px;right:6px;background:url('../images/buttons.gif') no-repeat -88px -18px;padding:0;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar-close:hover,.wp-dialog.bps-dialog .ui-dialog-titlebar-close:focus{background-position:-88px -34px;}

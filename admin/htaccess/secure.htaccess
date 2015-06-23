@@ -1,4 +1,4 @@
-#   BULLETPROOF .51.9 >>>>>>> SECURE .HTACCESS     
+#   BULLETPROOF .52 >>>>>>> SECURE .HTACCESS     
 
 # PHP/PHP.INI HANDLER/CACHE CODE
 # Use BPS Custom Code to add php/php.ini Handler and Cache htaccess code and to save it permanently.
@@ -32,15 +32,15 @@ DirectoryIndex index.php index.html /index.php
 # See this link: http://forum.ait-pro.com/forums/topic/protect-login-page-from-brute-force-login-attacks/
 # for more information.
 
-# BPS PRO ERROR LOGGING AND TRACKING
+# BPS ERROR LOGGING AND TRACKING
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.
-# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
-# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to
+# BPS has premade 403 Forbidden, 400 Bad Request, 410 Gone and 404 Not Found files that are used 
+# to track and log 403, 400, 410 and 404 errors that occur on your website. When a hacker attempts to
 # hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or
 # requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.
 # All BPS log files are htaccess protected so that only you can view them. 
-# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/
-# The 400 and 403 Error logging files are already set up and will automatically start logging errors
+# The 400.php, 403.php, 404.php and 410.php files are located in /wp-content/plugins/bulletproof-security/
+# The 400, 410 and 403 Error logging files are already set up and will automatically start logging errors
 # after you install BPS and have activated BulletProof Mode for your Root folder.
 # If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file
 # to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.
@@ -51,6 +51,7 @@ ErrorDocument 400 /wp-content/plugins/bulletproof-security/400.php
 ErrorDocument 401 default
 ErrorDocument 403 /wp-content/plugins/bulletproof-security/403.php
 ErrorDocument 404 /404.php
+ErrorDocument 410 /wp-content/plugins/bulletproof-security/410.php
 
 # DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.

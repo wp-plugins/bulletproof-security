@@ -768,4 +768,86 @@ switch ( $pw_reset ) {
  	}
 }
 
+/**************************************************************/
+// WordPress Authentication Cookie Expiration (ACE)
+// When Cookie Expiration Time Expires User is logged out
+// Username Exceptions default to WP Cookie Defaults
+// User Role Cookie Expiration set by User
+// SSL uses the same $expiration variable value
+// 2880 * 60 = 172800 = 2 days | 20160 * 60 = 1209600 = 14 days
+/**************************************************************/
+
+function bpsPro_ACE_cookie_expiration( $expiration, $user_id, $remember ) {
+$BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie');	
+
+	if ( $BPS_ACE_options['bps_ace'] == 'On' ) {
+
+		$user = get_userdata($user_id);
+
+		if ( $remember ) {
+
+			if ( $BPS_ACE_options['bps_ace_rememberme_expiration'] == '' ) {
+				
+				$expiration = 1209600;
+
+				return $expiration;		
+			}
+			
+			if ( preg_match( '/'.$user->user_login.'/i', $BPS_ACE_options['bps_ace_user_account_exceptions'], $matches ) ) {
+
+				$expiration = 1209600;
+		
+				return $expiration;	
+		
+			// If Role checkbox is not checked cookie expiration defaults to wp default cookie expiration
+			} elseif ( $user->user_level == 10 && $BPS_ACE_options['bps_ace_administrator'] == '1' || $user->user_level == 7 && $BPS_ACE_options['bps_ace_editor'] == '1' || $user->user_level == 2 && $BPS_ACE_options['bps_ace_author'] == '1' || $user->user_level == 1 && $BPS_ACE_options['bps_ace_contributor'] == '1' || $user->user_level == 0 && $BPS_ACE_options['bps_ace_subscriber'] == '1' ) {
+
+				$expiration = $BPS_ACE_options['bps_ace_rememberme_expiration'] * 60;
+
+				return $expiration;
+		
+			} else {
+			
+				$expiration = 1209600;
+
+				return $expiration;					
+			}
+	
+		} else {
+		
+			if ( $BPS_ACE_options['bps_ace_expiration'] == '' ) {
+				
+				$expiration = 172800;
+		
+				return $expiration;	
+			}
+			
+			if ( preg_match( '/'.$user->user_login.'/i', $BPS_ACE_options['bps_ace_user_account_exceptions'], $matches ) ) {
+
+				$expiration = 172800;
+		
+				return $expiration;	
+		
+			// If Role checkbox is not checked cookie expiration defaults to wp default cookie expiration
+			} elseif ( $user->user_level == 10 && $BPS_ACE_options['bps_ace_administrator'] == '1' || $user->user_level == 7 && $BPS_ACE_options['bps_ace_editor'] == '1' || $user->user_level == 2 && $BPS_ACE_options['bps_ace_author'] == '1' || $user->user_level == 1 && $BPS_ACE_options['bps_ace_contributor'] == '1' || $user->user_level == 0 && $BPS_ACE_options['bps_ace_subscriber'] == '1' ) {
+
+				$expiration = $BPS_ACE_options['bps_ace_expiration'] * 60;
+
+				return $expiration;		
+		
+			} else {
+			
+				$expiration = 172800;
+
+				return $expiration;					
+			}
+		}
+	}
+}
+
+$BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie');
+if ( $BPS_ACE_options && $BPS_ACE_options['bps_ace'] != 'Off' ) {	
+	add_filter( 'auth_cookie_expiration', 'bpsPro_ACE_cookie_expiration', 10, 3 );
+}
+
 ?>

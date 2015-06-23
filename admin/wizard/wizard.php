@@ -206,13 +206,13 @@ $bps_secure_error_logging = "# CUSTOM CODE ERROR LOGGING AND TRACKING\n" . htmls
 } else {
 $bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.
-# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
-# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to
+# BPS has premade 403 Forbidden, 400 Bad Request, 410 Gone and 404 Not Found files that are used 
+# to track and log 403, 400, 410 and 404 errors that occur on your website. When a hacker attempts to
 # hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or
 # requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.
 # All BPS log files are htaccess protected so that only you can view them. 
-# The 400.php, 403.php and 404.php files are located in /$bps_plugin_dir/bulletproof-security/
-# The 400 and 403 Error logging files are already set up and will automatically start logging errors
+# The 400.php, 403.php, 404.php and 410.php files are located in /$bps_plugin_dir/bulletproof-security/
+# The 400, 410 and 403 Error logging files are already set up and will automatically start logging errors
 # after you install BPS and have activated BulletProof Mode for your Root folder.
 # If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file
 # to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.
@@ -221,7 +221,8 @@ $bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 ErrorDocument 400 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/400.php
 ErrorDocument 401 default
 ErrorDocument 403 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/403.php
-ErrorDocument 404 " . $bps_get_wp_root_secure . "404.php\n\n";
+ErrorDocument 404 " . $bps_get_wp_root_secure . "404.php
+ErrorDocument 410 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/410.php\n\n";
 }
 
 if ( $BPSCustomCodeOptions['bps_customcode_deny_dot_folders'] != '' ) {        
@@ -953,6 +954,8 @@ $sapi_type = php_sapi_name();
 	
 	echo '<div id="Wizard-background" style="max-height:250px;width:85%;overflow:auto;margin:0px;padding:10px;border:2px solid black;background-color:#ffffe0;">';
 	
+	echo '<span class="setup-wizard-checks-text">';
+
 	if ( @substr($sapi_type, 0, 6) != 'apache' && get_filesystem_method() == 'direct') {
 		echo $successTextBegin.__('Pass! Compatible Server Configuration: Server API: CGI | WP Filesystem API Method: direct.', 'bulletproof-security').$successTextEnd;
 	}
@@ -1029,6 +1032,7 @@ switch ( $memoryLimit ) {
  		echo $failTextBegin.__('Error: The ', 'bulletproof-security').$defaultHtaccess.__(' File is NOT writable. If your Server type is DSO and the WP Filesystem API Method is NOT "direct" you can use the Setup Wizard, but you must first make some one-time manual changes to your website before running the Setup Wizard. Please click this Forum Link for instructions: ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/forums/topic/dso-setup-steps/" target="_blank" title="Link opens in a new Browser window"><strong>'.__('DSO Setup Steps', 'bulletproof-security').'</a>'.__(' If your Server type is CGI check the file permissions. File permissions should be either 644 or 604.', 'bulletproof-security').$failTextEnd.'<br>';
 	}
 
+	echo '</span>';
 	echo '</div>';
 }
 
@@ -1083,6 +1087,8 @@ $failTextEnd = '</strong></font><br>';
 	
 	echo '<div id="Wizard-background" style="max-height:250px;width:85%;overflow:auto;margin-bottom:20px;padding:10px;border:2px solid black;background-color:#ffffe0;">';
 	
+	echo '<span class="setup-wizard-checks-text">';
+
 	echo '<div style="color:black;font-size:1.13em;font-weight:bold;margin-bottom:15px;">'.__('BulletProof Security Database Tables Setup', 'bulletproof-security').'</div>';
 	echo '<div id="SWDBTables" style="border-top:3px solid #999999;margin-top:-10px;"><p>';
 	
@@ -1394,10 +1400,12 @@ $failTextEnd = '</strong></font><br>';
 	
 	echo '</p></div>';	
 	
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
-		$text = '<strong><font color="green">'.__('The Setup Wizard has completed BPS Setup.', 'bulletproof-security').'<br>'.__('Check the "BPS Setup Verification & Error Checks" section below for any errors in Red Font.', 'bulletproof-security').'</font></strong><br>';
-		echo $text;
-		echo '</p></div>';
+	echo '</span>';
+
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	$text = '<strong><font color="green">'.__('The Setup Wizard has completed BPS Setup.', 'bulletproof-security').'<br>'.__('Check the "BPS Setup Verification & Error Checks" section below for any errors in Red Font.', 'bulletproof-security').'</font></strong><br>';
+	echo $text;
+	echo '</p></div>';
 
 	$time_end = microtime( true );
 	$wizard_run_time = $time_end - $time_start;
@@ -1514,7 +1522,7 @@ function bpsSpinnerSWizard() {
 </div>
 
 <?php
-$text = '<div class="setup-wizard-video-link" style="font-size:1.13em;font-weight:bold;margin:15px 0px 20px 0px;"><a href="http://forum.ait-pro.com/video-tutorials/#setup-overview-free" target="_blank" title="This Setup Wizard link opens in a new Browser window">'.__('Setup Wizard & Overview Video Tutorial', 'bulletproof-security').'</a></div>';
+$text = '<span class="setup-wizard-inpage-text"><div class="setup-wizard-video-link" style="margin:15px 0px 20px 0px;"><a href="http://forum.ait-pro.com/video-tutorials/#setup-overview-free" target="_blank" title="This Setup Wizard link opens in a new Browser window">'.__('Setup Wizard & Overview Video Tutorial', 'bulletproof-security').'</a></div></span>';
 echo $text;
 
 bpsSetupWizardPrechecks();

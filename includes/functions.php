@@ -377,6 +377,7 @@ function bps_root_htaccess_status_dashboard() {
 	} else {
 
 	$options = get_option('bulletproof_security_options_autolock');	
+	$BPSCustomCodeOptions = get_option('bulletproof_security_options_customcode');
 	$filename = ABSPATH . '.htaccess';
 	$permsHtaccess = @substr(sprintf('%o', fileperms($filename)), -4);
 	$sapi_type = @php_sapi_name();	
@@ -388,8 +389,7 @@ function bps_root_htaccess_status_dashboard() {
 	$bps_root_upgrade = '';
 
 	$patterna = '/RedirectMatch\s403\s\/\\\.\.\*\$/';
-	$patternb = '/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument\s401\sdefault\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s';	
-	$pattern0 = '/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s';
+	$pattern0 = '/ErrorDocument\s404\s(.*)\/404\.php\s*ErrorDocument\s410\s(.*)410\.php/s';		
 	$pattern1 = '/#\sFORBID\sEMPTY\sREFFERER\sSPAMBOTS(.*)RewriteCond\s%{HTTP_USER_AGENT}\s\^\$\sRewriteRule\s\.\*\s\-\s\[F\]/s';	
 	// Only match 2 or more identical duplicate referer lines: 1 will not match and 2, 3, 4... will match
 	$pattern2 = '/AnotherWebsite\.com\)\.\*\s*(RewriteCond\s%\{HTTP_REFERER\}\s\^\.\*'.$bps_get_domain_root.'\.\*\s*){2,}\s*RewriteRule\s\.\s\-\s\[S=1\]/s';
@@ -489,12 +489,8 @@ switch ( $bps_version ) {
 			$stringReplace = preg_replace('/#\sDENY\sACCESS\sTO\sPROTECTED\sSERVER\sFILES(.*)RedirectMatch\s403\s\/\\\.\.\*\$/s', "# DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS\n# Files and folders starting with a dot: .htaccess, .htpasswd, .errordocs, .logs\nRedirectMatch 403 \.(htaccess|htpasswd|errordocs|logs)$", $stringReplace);
 		}
 
-		if ( preg_match($pattern0, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace('/#\sBPS\sPRO\sERROR\sLOGGING(.*)ErrorDocument\s404\s(.*)\/404\.php/s', "# BPS ERROR LOGGING AND TRACKING\n# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used\n# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to\n# hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or\n# requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.\n# All BPS log files are htaccess protected so that only you can view them.\n# The 400.php, 403.php and 404.php files are located in /wp-content/plugins/bulletproof-security/\n# The 400 and 403 Error logging files are already set up and will automatically start logging errors\n# after you install BPS and have activated BulletProof Mode for your Root folder.\n# If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file\n# to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.\n# You can open the BPS 404.php file using the WP Plugins Editor.\n# NOTE: By default WordPress automatically looks in your Theme's folder for a 404.php template file.\nErrorDocument 400 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
-		}
-
-		if ( ! preg_match($patternb, $stringReplace, $matches) ) {
-			$stringReplace = preg_replace('/ErrorDocument\s400\s(.*)400\.php\s*ErrorDocument(.*)\s*ErrorDocument\s404\s\/404\.php/s', "ErrorDocument 400 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/400.php\nErrorDocument 401 default\nErrorDocument 403 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/403.php\nErrorDocument 404 $bps_get_wp_root_secure"."404.php", $stringReplace);
+		if ( $BPSCustomCodeOptions['bps_customcode_error_logging'] == '' && ! preg_match( $pattern0, $stringReplace, $matches ) ) {
+			$stringReplace = preg_replace('/ErrorDocument\s404\s(.*)\/404\.php/s', "ErrorDocument 404 $bps_get_wp_root_secure"."404.php\nErrorDocument 410 $bps_get_wp_root_secure"."$bps_plugin_dir/bulletproof-security/410.php", $stringReplace);
 		}
 
 		if ( preg_match($pattern1, $stringReplace, $matches) ) {
@@ -843,7 +839,9 @@ function bps_root_htaccess_status() {
 	if ( file_exists($filename) ) {
 		$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your root folder is:', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
-	print($section);
+		echo '<font color="black">';
+		print($section);
+		echo '</font>';
 
 switch ( $bps_version ) {
     case $bps_last_version: // for Testing
@@ -909,7 +907,9 @@ switch ( $bps_version ) {
 		if ( strpos( $check_string, "BULLETPROOF $bps_last_version" ) && strpos( $check_string, "BPSQSE-check" ) ) {
 			$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your wp-admin folder is:', 'bulletproof-security').'</strong></font><br>';
 			echo $text;
-		print($section);
+			echo '<font color="black">';
+			print($section);
+			echo '</font>';
 		break;
 		}
     case $bps_version:
@@ -920,7 +920,9 @@ switch ( $bps_version ) {
 		if ( strpos( $check_string, "BULLETPROOF $bps_version" ) && strpos( $check_string, "BPSQSE-check" ) ) {		
 			$text = '<font color="green"><strong>'.__('The htaccess file that is activated in your wp-admin folder is:', 'bulletproof-security').'</strong></font><br>';
 			echo $text;
-		print($section);
+			echo '<font color="black">';
+			print($section);
+			echo '</font>';
 		break;
 		}
 	default:
@@ -958,7 +960,7 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR );
 	}
 }
 
-// File and Folder Permission Checking - substr error is suppressed @ else fileperms error if file does not exist
+// File and Folder Permission Checking
 function bps_check_perms($path, $perm) {
 clearstatcache();
 $current_perms = @substr(sprintf('%o', fileperms($path)), -4);
@@ -966,11 +968,11 @@ $stat = stat($path);
 
 	echo '<table style="width:100%;background-color:#fff;">';
 	echo '<tr>';
-    echo '<td style="background-color:#fff;padding:2px;width:40%;">' . $path . '</td>';
-    echo '<td style="background-color:#fff;padding:2px;width:15%;">' . $perm . '</td>';
-    echo '<td style="background-color:#fff;padding:2px;width:15%;">' . $current_perms . '</td>';
-    echo '<td style="background-color:#fff;padding:2px;width:15%;">' . $stat['uid'] . '</td>';
-    echo '<td style="background-color:#fff;padding:2px;width:15%;">' . @fileowner( $path ) . '</td>';
+    echo '<td style="color:#000;background-color:#fff;padding:2px;width:40%;">' . $path . '</td>';
+    echo '<td style="color:#000;background-color:#fff;padding:2px;width:15%;">' . $perm . '</td>';
+    echo '<td style="color:#000;background-color:#fff;padding:2px;width:15%;">' . $current_perms . '</td>';
+    echo '<td style="color:#000;background-color:#fff;padding:2px;width:15%;">' . $stat['uid'] . '</td>';
+    echo '<td style="color:#000;background-color:#fff;padding:2px;width:15%;">' . @fileowner( $path ) . '</td>';
     echo '</tr>';
 	echo '</table>';
 }

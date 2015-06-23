@@ -1,16 +1,29 @@
+/*  ________         ____________      _____ ________                       ________      
+#  ___  __ )____  _____  /___  /_____ __  /____  __ \______________ ______ ___  __/      
+#  __  __  |_  / / /__  / __  / _  _ \_  __/__  /_/ /__  ___/_  __ \_  __ \__  /_        
+#  _  /_/ / / /_/ / _  /  _  /  /  __// /_  _  ____/ _  /    / /_/ // /_/ /_  __/        
+#  /_____/  \__,_/  /_/   /_/   \___/ \__/  /_/      /_/     \____/ \____/ /_/           
+#  ________                             _____ _____              ________                
+#  __  ___/_____ ___________  _____________(_)__  /______  __    ___  __ \______________ 
+#  _____ \ _  _ \_  ___/_  / / /__  ___/__  / _  __/__  / / /    __  /_/ /__  ___/_  __ \
+#  ____/ / /  __// /__  / /_/ / _  /    _  /  / /_  _  /_/ /     _  ____/ _  /    / /_/ /
+#  /____/  \___/ \___/  \__,_/  /_/     /_/   \__/  _\__, /      /_/      /_/     \____/ 
+#                                                   /____/                               
+# 42756C6C657450726F6F66 5365637572697479 50726F 
+*/
 // Note: each + num has undesirable results - continue to use per div
 jQuery(document).ready(function($){				
 	
 	var $info1 = $("#bps-modal-content1");     
 		$info1.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -33,14 +46,14 @@ jQuery(document).ready(function($){
 
 	var $info2 = $("#bps-modal-content2");     
 		$info2.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -63,14 +76,14 @@ jQuery(document).ready(function($){
 
 	var $info3 = $("#bps-modal-content3");     
 		$info3.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -93,14 +106,14 @@ jQuery(document).ready(function($){
 
 	var $info4 = $("#bps-modal-content4");     
 		$info4.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -123,14 +136,14 @@ jQuery(document).ready(function($){
 
 	var $info5 = $("#bps-modal-content5");     
 		$info5.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -153,14 +166,14 @@ jQuery(document).ready(function($){
 
 	var $info6 = $("#bps-modal-content6");     
 		$info6.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -183,14 +196,14 @@ jQuery(document).ready(function($){
 
 	var $info7 = $("#bps-modal-content7");     
 		$info7.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -213,14 +226,14 @@ jQuery(document).ready(function($){
 
 	var $info8 = $("#bps-modal-content8");     
 		$info8.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -243,14 +256,14 @@ jQuery(document).ready(function($){
 
 	var $info9 = $("#bps-modal-content9");     
 		$info9.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -273,14 +286,14 @@ jQuery(document).ready(function($){
 
 	var $info10 = $("#bps-modal-content10");     
 		$info10.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -303,14 +316,14 @@ jQuery(document).ready(function($){
 
 	var $info11 = $("#bps-modal-content11");     
 		$info11.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -333,14 +346,14 @@ jQuery(document).ready(function($){
 
 	var $info12 = $("#bps-modal-content12");     
 		$info12.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -363,14 +376,14 @@ jQuery(document).ready(function($){
 
 	var $info13 = $("#bps-modal-content13");     
 		$info13.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -393,14 +406,14 @@ jQuery(document).ready(function($){
 
 	var $info14 = $("#bps-modal-content14");     
 		$info14.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -423,14 +436,14 @@ jQuery(document).ready(function($){
 
 	var $info15 = $("#bps-modal-content15");     
 		$info15.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -453,14 +466,14 @@ jQuery(document).ready(function($){
 
 	var $info16 = $("#bps-modal-content16");     
 		$info16.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -483,14 +496,14 @@ jQuery(document).ready(function($){
 
 	var $info17 = $("#bps-modal-content17");     
 		$info17.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -513,14 +526,14 @@ jQuery(document).ready(function($){
 
 	var $info18 = $("#bps-modal-content18");     
 		$info18.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -543,14 +556,14 @@ jQuery(document).ready(function($){
 
 	var $info19 = $("#bps-modal-content19");     
 		$info19.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -573,14 +586,14 @@ jQuery(document).ready(function($){
 
 	var $info20 = $("#bps-modal-content20");     
 		$info20.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -603,14 +616,14 @@ jQuery(document).ready(function($){
 
 	var $info21 = $("#bps-modal-content21");     
 		$info21.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,
@@ -633,14 +646,14 @@ jQuery(document).ready(function($){
 
 	var $info22 = $("#bps-modal-content22");     
 		$info22.dialog({                            
-			dialogClass: "wp-dialog",  
+			dialogClass: "wp-dialog bps-dialog",  
 			autoOpen: false,
 			show: {
 				effect: "blind",
 				duration: 500
 			},
 			hide: {
-				effect: "explode",
+				effect: "blind",
 				duration: 300
 			},
 			modal: false,

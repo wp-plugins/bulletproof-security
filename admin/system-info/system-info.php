@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -16,7 +16,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 	if ( false === ( $bps_api = get_transient('bulletproof-security_info') ) ) {
 		$bps_api = plugins_api( 'plugin_information', array( 'slug' => stripslashes( 'bulletproof-security' ) ) );
 		
-	if ( !is_wp_error( $bps_api ) ) {
+	if ( ! is_wp_error( $bps_api ) ) {
 		$bps_expire = 60 * 30; // Cache downloads data for 30 minutes
 		$bps_downloaded = array( 'downloaded' => $bps_api->downloaded );
 		maybe_serialize( $bps_downloaded );
@@ -90,7 +90,17 @@ $bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
 <h3><?php _e('File|Folder Permissions & UID', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
 
 	<div id="bps-modal-content1" title="<?php _e('File|Folder Permissions & UID', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)','bulletproof-security').'</strong><br><br><strong>'.__('File|Folder Diagnostic & Troubleshooting Info','bulletproof-security').'</strong><br>'.__('The file/folder permissions and UID checks are mainly for diagnostic troubleshooting so that you can check permissions or the UID of mission critical WP & BPS folders and files at a glance. There is some security benefit to changing file and folder permissions to more secure permissions, but this is not an essential or critical thing to do these days.', 'bulletproof-security').'<br><br><strong>'.__('Script Owner User ID (UID)|File Owner User ID','bulletproof-security').'</strong><br>'.__('Your Script Owner User ID (UID) and File Owner User ID should match. If they do not match for any folders then you will need to change the Owner of that folder so that both match. If you have a DSO server type see this forum topic: http://forum.ait-pro.com/forums/topic/dso-setup-steps/', 'bulletproof-security').'<br><br><strong>'.__('CGI And DSO File And Folder Permission Recommendations','bulletproof-security').'</strong><br>'.__('If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO/Apache mod_php you will see a table listing file and folder permission recommendations for DSO.', 'bulletproof-security').'<br><br>'.__('If your Host is using CGI, but they do not allow you to set your folder permissions more restrictive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host or you may see a 403 or 500 error and will need to change the folder permissions back to what they were before. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins on several different Web Hosts, but all web hosts have different things that they specifically allow or do not allow.', 'bulletproof-security').'<br><br>'.__('Most Hosts now use 705 Root folder permissions. Your Host might not be doing this or allow this, but typically 755 is fine for your Root folder. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.','bulletproof-security').'<br><br><strong>'.__('If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.','bulletproof-security').'</strong><br><br><strong>'.__('The /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.','bulletproof-security').'</strong><br><br>'.__('Your current file and folder permissions are shown below with suggested/recommended file and folder permissions. ','bulletproof-security').'<strong>'.__('Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.', 'bulletproof-security').'</strong> '.__('If you see 500 errors after changing your folder permissions than change them back to what they were.','bulletproof-security').'<br><br>'.__('I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.','bulletproof-security'); echo $text; ?></p>
+	<p>
+	<?php
+        $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br>';
+		echo $text; 
+		// Forum Help Links or of course both
+		$text = '<strong><font color="blue">'.__('Forum Help Links: ', 'bulletproof-security').'</font></strong>'; 	
+		echo $text;	
+	?>
+	<strong><a href="http://forum.ait-pro.com/forums/topic/dso-setup-steps/" title="DSO Server Setup Steps" target="_blank"><?php _e('DSO Server Setup Steps', 'bulletproof-security'); ?></a></strong><br /><br />		
+	
+	<?php $text = '<strong>'.__('File|Folder Diagnostic & Troubleshooting Info','bulletproof-security').'</strong><br>'.__('The file/folder permissions and UID checks are mainly for diagnostic troubleshooting so that you can check permissions or the UID of mission critical WP & BPS folders and files at a glance. There is some security benefit to changing file and folder permissions to more secure permissions, but this is not an essential or critical thing to do these days.', 'bulletproof-security').'<br><br><strong>'.__('Script Owner User ID (UID)|File Owner User ID','bulletproof-security').'</strong><br>'.__('Your Script Owner User ID (UID) and File Owner User ID should match. If they do not match for any folders then you will need to change the Owner of that folder so that both match. If you have a DSO server type see the DSO Server Setup Steps Forum Help Link at the top of this Read Me help window.', 'bulletproof-security').'<br><br><strong>'.__('CGI And DSO File And Folder Permission Recommendations','bulletproof-security').'</strong><br>'.__('If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO/Apache mod_php you will see a table listing file and folder permission recommendations for DSO.', 'bulletproof-security').'<br><br>'.__('If your Host is using CGI, but they do not allow you to set your folder permissions more restrictive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host or you may see a 403 or 500 error and will need to change the folder permissions back to what they were before. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins on several different Web Hosts, but all web hosts have different things that they specifically allow or do not allow.', 'bulletproof-security').'<br><br>'.__('Most Hosts now use 705 Root folder permissions. Your Host might not be doing this or allow this, but typically 755 is fine for your Root folder. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.','bulletproof-security').'<br><br><strong>'.__('If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.','bulletproof-security').'</strong><br><br><strong>'.__('The /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.','bulletproof-security').'</strong><br><br>'.__('Your current file and folder permissions are shown below with suggested/recommended file and folder permissions. ','bulletproof-security').'<strong>'.__('Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.', 'bulletproof-security').'</strong> '.__('If you see 500 errors after changing your folder permissions than change them back to what they were.','bulletproof-security').'<br><br>'.__('I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.','bulletproof-security'); echo $text; ?></p>
 </div>
 </div>
 
@@ -202,6 +212,8 @@ function bps_get_proxy_real_ip_address() {
 		}
 	}
 }
+
+	echo '<span class="system-info-text">';
 
 	echo __('Website Root URL', 'bulletproof-security').': <strong>' . get_site_url() . '</strong><br>';
 	echo __('Document Root Path', 'bulletproof-security').': <strong>' . esc_html( $_SERVER['DOCUMENT_ROOT'] ) . '</strong><br>'; 
@@ -344,6 +356,8 @@ function bps_get_proxy_real_ip_address() {
 		_e('Memcached Extension is Not Loaded', 'bulletproof-security');	
 	}	
 	echo '</strong><br>';
+
+	echo '</span>';
 	?>
 
     </td>
@@ -356,6 +370,8 @@ function bps_get_proxy_real_ip_address() {
 	
 	} else {
 	
+	echo '<span class="system-info-text">';
+
 	function bps_mysqli_get_client_info() {
 		if ( function_exists('mysqli_get_client_info') ) { 
 			return mysqli_get_client_info(); 
@@ -422,6 +438,7 @@ function bps_get_proxy_real_ip_address() {
 	
 	echo __('Browser Compression Supported', 'bulletproof-security').': <strong>' . esc_html( $_SERVER['HTTP_ACCEPT_ENCODING'] ).'</strong>';
 	
+	echo '</span>';
 	?>
      
       </td>
@@ -440,6 +457,8 @@ function bps_get_proxy_real_ip_address() {
     <td class="bps-table_cell">
 	
 <?php 
+	echo '<span class="system-info-text">';
+
 	echo __('PHP Version', 'bulletproof-security').': <strong>' . PHP_VERSION . '</strong><br>';
 	echo __('PHP Memory Usage', 'bulletproof-security').': <strong>' . round( memory_get_usage(false) / 1024 / 1024, 2 ) . __(' MB') . '</strong><br>';    
 	echo __('WordPress Admin Memory Limit', 'bulletproof-security').': '; 
@@ -599,6 +618,8 @@ function bps_get_proxy_real_ip_address() {
 		$text = '<strong>'.__('No', 'bulletproof-security').'</strong></font>';
 		echo $text.'<br>';
 	}
+	
+	echo '</span>';
 	?>
 	
     </td>      
@@ -615,8 +636,8 @@ function bps_get_proxy_real_ip_address() {
 	
 	if ( @substr($sapi_type, 0, 6) != 'apache' ) {		
 	
-	echo '<div style=\'padding:0px 0px 5px 5px;\'><strong>'; _e('CGI File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
-	echo '<table style="width:100%;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
+	echo '<div style=\'padding:0px 0px 5px 5px;color:#000;\'><strong>'; _e('CGI File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
+	echo '<table style="width:100%;color:#000;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
 	echo '<tr>';
     echo '<td style="padding:2px;width:40%;font-weight:bold;">'; _e('File Path', 'bulletproof-security'); echo '<br>'; _e('Folder Path', 'bulletproof-security'); echo '</td>';
     echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Recommended', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';
@@ -648,8 +669,8 @@ function bps_get_proxy_real_ip_address() {
 	
 	} else {
 	
-	echo '<div style=\'padding:0px 0px 5px 5px;\'><strong>'; _e('DSO File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
-	echo '<table style="width:100%;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
+	echo '<div style=\'padding:0px 0px 5px 5px;color:#000;\'><strong>'; _e('DSO File and Folder Permissions|Recommendations', 'bulletproof-security'); echo '</strong></div>';
+	echo '<table style="width:100%;color:#000;background-color:#A9F5A0;border-bottom:1px solid black;border-top:1px solid black;">';
 	echo '<tr>';
     echo '<td style="padding:2px;width:40%;font-weight:bold;">'; _e('File Path', 'bulletproof-security'); echo '<br>'; _e('Folder Path', 'bulletproof-security'); echo '</td>';
     echo '<td style="padding:2px;width:15%;font-weight:bold;">'; _e('Recommended', 'bulletproof-security'); echo '<br>'; _e('Permissions', 'bulletproof-security'); echo '</td>';

@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present 
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -174,13 +174,13 @@ $bps_secure_error_logging = "# CUSTOM CODE ERROR LOGGING AND TRACKING\n" . htmls
 } else {
 $bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.
-# BPS has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used 
-# to track and log 403, 400 and 404 errors that occur on your website. When a hacker attempts to
+# BPS has premade 403 Forbidden, 400 Bad Request, 410 Gone and 404 Not Found files that are used 
+# to track and log 403, 400, 410 and 404 errors that occur on your website. When a hacker attempts to
 # hack your website the hackers IP address, Host name, Request Method, Referering link, the file name or
 # requested resource, the user agent of the hacker and the query string used in the hack attempt are logged.
 # All BPS log files are htaccess protected so that only you can view them. 
-# The 400.php, 403.php and 404.php files are located in /$bps_plugin_dir/bulletproof-security/
-# The 400 and 403 Error logging files are already set up and will automatically start logging errors
+# The 400.php, 403.php, 404.php and 410.php files are located in /$bps_plugin_dir/bulletproof-security/
+# The 400, 410 and 403 Error logging files are already set up and will automatically start logging errors
 # after you install BPS and have activated BulletProof Mode for your Root folder.
 # If you would like to log 404 errors you will need to copy the logging code in the BPS 404.php file
 # to your Theme's 404.php template file. Simple instructions are included in the BPS 404.php file.
@@ -189,7 +189,8 @@ $bps_secure_error_logging = "# BPS ERROR LOGGING AND TRACKING
 ErrorDocument 400 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/400.php
 ErrorDocument 401 default
 ErrorDocument 403 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/403.php
-ErrorDocument 404 " . $bps_get_wp_root_secure . "404.php\n\n";
+ErrorDocument 404 " . $bps_get_wp_root_secure . "404.php
+ErrorDocument 410 " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/410.php\n\n";
 }
 
 if ( @$BPSCustomCodeOptions['bps_customcode_deny_dot_folders'] != '' ) {        

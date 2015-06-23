@@ -54,9 +54,9 @@ bps_CustomCode_BPSQSE_check();
 
 ?>
         
-<div id="bps-accordion-2" class="bps-accordian-main-2">
+<div id="bps-accordion-2" class="bps-accordion-main-2">
     <h3><?php _e('Root htaccess File Custom Code', 'bulletproof-security'); ?></h3>
-<div id="cc-accordian-inner">
+<div id="cc-accordion-inner">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="10" class="bps-help_faq_table">
   <tr>
@@ -106,7 +106,7 @@ bps_CustomCode_BPSQSE_check();
 <strong><?php $text = '<font color="#2ea2cc">'.__('You MUST copy and paste the entire ERROR LOGGING AND TRACKING section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text ; ?></strong><br />
     <textarea class="bps-text-area-custom-code" name="bulletproof_security_options_customcode[bps_customcode_error_logging]" tabindex="1"><?php echo $options['bps_customcode_error_logging']; ?></textarea>
     </td>
-    <td class="bps-table_cell_help_custom_code" style="padding-top:75px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for Custom Code Setup Steps. This example code is a visual reference to show you which root htaccess file code goes in the CUSTOM CODE ERROR LOGGING AND TRACKING text box. Go to the htaccess File Editor tab page and copy your actual ERROR LOGGING AND TRACKING root htaccess file code and paste it into the CUSTOM CODE ERROR LOGGING AND TRACKING text box to the left.</span><pre style="max-height:145px;"># BPS PRO ERROR LOGGING AND TRACKING<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># BPS Pro has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used<br /># to track and log 403, 400 and 404 errors that occur on your website.<br />.....<br />.....<br />ErrorDocument 400 <?php echo '/'.$bps_plugin_dir; ?>/bulletproof-security/400.php<br />ErrorDocument 401 default<br />ErrorDocument 403 <?php echo '/'.$bps_plugin_dir; ?>/bulletproof-security/403.php<br />ErrorDocument 404 /404.php</pre></td>
+    <td class="bps-table_cell_help_custom_code" style="padding-top:75px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for Custom Code Setup Steps. This example code is a visual reference to show you which root htaccess file code goes in the CUSTOM CODE ERROR LOGGING AND TRACKING text box. Go to the htaccess File Editor tab page and copy your actual ERROR LOGGING AND TRACKING root htaccess file code and paste it into the CUSTOM CODE ERROR LOGGING AND TRACKING text box to the left.</span><pre style="max-height:145px;"># BPS PRO ERROR LOGGING AND TRACKING<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># BPS Pro has premade 403 Forbidden, 400 Bad Request and 404 Not Found files that are used<br /># to track and log 403, 400 and 404 errors that occur on your website.<br />.....<br />.....<br />ErrorDocument 400 <?php echo '/'.$bps_plugin_dir; ?>/bulletproof-security/400.php<br />ErrorDocument 401 default<br />ErrorDocument 403 <?php echo '/'.$bps_plugin_dir; ?>/bulletproof-security/403.php<br />ErrorDocument 404 /404.php<br />ErrorDocument 410 <?php echo '/'.$bps_plugin_dir; ?>/bulletproof-security/410.php</pre></td>
   </tr>
   <tr>
     <td class="bps-table_cell_help_custom_code">
@@ -234,7 +234,7 @@ jQuery(document).ready(function($){
 	} else {
 ?>
     <h3><?php _e('wp-admin htaccess File Custom Code', 'bulletproof-security'); ?></h3>
-<div id="cc-accordian-inner">
+<div id="cc-accordion-inner">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="10" class="bps-help_faq_table">
   <tr>

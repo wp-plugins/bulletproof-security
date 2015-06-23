@@ -1,11 +1,11 @@
 <?php
-if ( !function_exists('add_action') ) {
+if ( ! function_exists('add_action') ) {
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
 }
 
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -21,7 +21,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 	if ( false === ( $bps_api = get_transient('bulletproof-security_info') ) ) {
 		$bps_api = plugins_api( 'plugin_information', array( 'slug' => stripslashes( 'bulletproof-security' ) ) );
 		
-	if ( !is_wp_error( $bps_api ) ) {
+	if ( ! is_wp_error( $bps_api ) ) {
 		$bps_expire = 60 * 30; // Cache downloads data for 30 minutes
 		$bps_downloaded = array( 'downloaded' => $bps_api->downloaded );
 		maybe_serialize( $bps_downloaded );
@@ -230,7 +230,7 @@ function bpsSpinnerTableRefresh() {
 
 <div id="backup-job-time-estimates" style="font-size:1.13em;margin:0px 0px 10px 0px;">
 <?php
-	$text = '<strong>'.__('DB Backup Job Completion Time Estimates: ', 'bulletproof-security').'</strong><br><strong>'.__('10MB DB: ', 'bulletproof-security').'</strong>'.__('3 Seconds', 'bulletproof-security').'<br><strong>'.__('100MB DB: ', 'bulletproof-security').'</strong>'.__('30 Seconds', 'bulletproof-security');
+	$text = '<font color="black"><strong>'.__('DB Backup Job Completion Time Estimates: ', 'bulletproof-security').'</strong><br><strong>'.__('10MB DB: ', 'bulletproof-security').'</strong>'.__('3 Seconds', 'bulletproof-security').'<br><strong>'.__('100MB DB: ', 'bulletproof-security').'</strong>'.__('30 Seconds', 'bulletproof-security').'</font>';
 	echo $text;
 ?>
 </div>
@@ -245,12 +245,23 @@ function bpsSpinnerTableRefresh() {
 <h3 style="margin:0px 0px 15px 0px;"><?php _e('DB Backup', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
 
 <div id="bps-modal-content1" title="<?php _e('DB Backup', 'bulletproof-security'); ?>">
-	<p><?php echo $bps_modal_content1; ?></p>
+	<p>
+	<?php
+        $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br>';
+		echo $text; 
+		// Forum Help Links or of course both
+		$text = '<strong><font color="blue">'.__('Forum Help Links: ', 'bulletproof-security').'</font></strong>'; 	
+		echo $text;	
+	?>
+	<strong><a href="http://forum.ait-pro.com/forums/topic/database-backup-security-guide/" title="DB Backup & Security Guide" target="_blank"><?php _e('DB Backup & Security Guide', 'bulletproof-security'); ?></a></strong><br /><br />		
+	
+	<?php echo $bps_modal_content1; ?>
+    </p>
 </div>
 
-<div id="bps-accordion-1" class="bps-accordian-main-2" style="margin:0px 0px 20px 0px;">
+<div id="bps-accordion-1" class="bps-accordion-main-2" style="margin:0px 0px 20px 0px;">
 <h3><?php _e('Backup Jobs ~ Manual|Scheduled', 'bulletproof-security'); ?></h3>
-<div id="dbb-accordian-inner">
+<div id="dbb-accordion-inner">
 
 <?php
 
@@ -456,7 +467,7 @@ bpsPro_dbbackup_form_processing();
 
 </div>
 <h3><?php _e('Backup Files ~ Download|Delete', 'bulletproof-security'); ?></h3>
-<div id="dbb-accordian-inner">
+<div id="dbb-accordion-inner">
 
 <?php
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {	
@@ -589,7 +600,7 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 
 </div>
 <h3><?php _e('Create Backup Jobs', 'bulletproof-security'); ?></h3>
-<div id="dbb-accordian-inner">
+<div id="dbb-accordion-inner">
 
 <?php
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {	
@@ -1228,7 +1239,7 @@ $write_test = "";
 	exit;
     }
 	
-	$text = '<font color="green"><strong>'.__('File Open and Write test successful! Your DB Backup Log file is writable.', 'bulletproof-security').'</strong></font><br>';
+	$text = '<font color="green" style="font-size:12px;"><strong>'.__('File Open and Write test successful! Your DB Backup Log file is writable.', 'bulletproof-security').'</strong></font><br>';
 	echo $text;
 	}
 	}
@@ -1240,7 +1251,7 @@ $write_test = "";
 	if ( is_writable($dbb_log) ) {
 		$handle = fopen($dbb_log, 'w+b');
 		fwrite($handle, $newcontentdbb);
-	$text = '<font color="green"><strong>'.__('Success! Your DB Backup Log file has been updated.', 'bulletproof-security').'</strong></font><br>';
+	$text = '<font color="green style="font-size:12px;""><strong>'.__('Success! Your DB Backup Log file has been updated.', 'bulletproof-security').'</strong></font><br>';
 	echo $text;	
     fclose($handle);
 	}
@@ -1301,7 +1312,7 @@ jQuery(document).ready(function($){
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') && preg_match( '/page=bulletproof-security/', $_SERVER['REQUEST_URI'], $matches) ) {	
 
 echo '<div id="DBPrefixText" style="width:90%;padding-bottom:20px;">';
-$text = '<span style="font-size:1.13em;">'.__('Your current WordPress Database Table Prefix is: ', 'bulletproof-security').'<strong><font color="#2ea2cc">'.$wpdb->base_prefix .'</span><br><br>'.__('NOTES: ', 'bulletproof-security').'<br>'.__('1. It is recommended that you backup your database before using this tool.', 'bulletproof-security').'<br>'.__('2. If you want to create your own DB Table Prefix name or add additional characters to the randomly generated DB Table Prefix name below then ONLY use lowercase letters, numbers and underscores in your DB Table Prefix name.', 'bulletproof-security').'<br>'.__('3. The maximum length limitation of a DB Table name, including the table prefix is 64 characters. See the DB Table Names & Character Length Table to the right.', 'bulletproof-security').'<br>'.__('4. To change your DB Table Prefix name back to the WordPress default DB Table Prefix name, enter wp_ for the DB Table Prefix name.', 'bulletproof-security').'</font></strong>';
+$text = '<span style="font-size:1.13em;">'.__('Your current WordPress Database Table Prefix is: ', 'bulletproof-security').'<strong><font color="#2ea2cc">'.$wpdb->base_prefix .'</span><br><br><span class="bps-dbb-small-text">'.__('NOTES: ', 'bulletproof-security').'<br>'.__('1. It is recommended that you backup your database before using this tool.', 'bulletproof-security').'<br>'.__('2. If you want to create your own DB Table Prefix name or add additional characters to the randomly generated DB Table Prefix name below then ONLY use lowercase letters, numbers and underscores in your DB Table Prefix name.', 'bulletproof-security').'<br>'.__('3. The maximum length limitation of a DB Table name, including the table prefix is 64 characters. See the DB Table Names & Character Length Table to the right.', 'bulletproof-security').'<br>'.__('4. To change your DB Table Prefix name back to the WordPress default DB Table Prefix name, enter wp_ for the DB Table Prefix name.', 'bulletproof-security').'</span></font></strong>';
 echo $text;
 echo '</div>';
 
@@ -1314,7 +1325,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 	$DBTablePrefix = $_POST['DBTablePrefix'];
 	$wpconfig_file = ABSPATH . 'wp-config.php';
 	
-	if ( !file_exists($wpconfig_file) ) {
+	if ( ! file_exists($wpconfig_file) ) {
 		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
 		$text = '<strong><font color="red">'.__('A wp-config.php file was NOT found in your website root folder.', 'bulletproof-security').'</font><br>'.__('Your DB Table Prefix was not changed. If you have moved your wp-config.php file to a another Server folder then you can use this tool to change your DB Table Prefix, but first you will need to temporarily move your wp-config.php file back to the default location: your WordPress website root folder.', 'bulletproof-security').'</strong>';
 		echo $text;

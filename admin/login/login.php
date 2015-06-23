@@ -1,6 +1,6 @@
 <?php
 // Direct calls to this file are Forbidden when core files are not present
-if ( !current_user_can('manage_options') ) { 
+if ( ! current_user_can('manage_options') ) { 
 		header('Status: 403 Forbidden');
 		header('HTTP/1.1 403 Forbidden');
 		exit();
@@ -16,7 +16,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 	if ( false === ( $bps_api = get_transient('bulletproof-security_info') ) ) {
 		$bps_api = plugins_api( 'plugin_information', array( 'slug' => stripslashes( 'bulletproof-security' ) ) );
 		
-	if ( !is_wp_error( $bps_api ) ) {
+	if ( ! is_wp_error( $bps_api ) ) {
 		$bps_expire = 60 * 30; // Cache downloads data for 30 minutes
 		$bps_downloaded = array( 'downloaded' => $bps_api->downloaded );
 		maybe_serialize( $bps_downloaded );
@@ -79,7 +79,12 @@ $bps_bottomDiv = '</p></div>';
     <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
 		<ul>
 			<li><a href="#bps-tabs-1"><?php _e('Login Security & Monitoring', 'bulletproof-security'); ?></a></li>
-			<li><a href="#bps-tabs-2"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
+ 			<?php if ( is_multisite() && $blog_id != 1 ) { ?>
+            <!-- <li><a href="#bps-tabs-3"><?php //_e('Idle Session Logout', 'bulletproof-security'); ?></a></li> -->  
+            <?php } else { ?>
+            <li><a href="#bps-tabs-2"><?php _e('Idle Session Logout|Auth Cookie Expiration', 'bulletproof-security'); ?></a></li>
+            <?php } ?>
+			<li><a href="#bps-tabs-3"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
 		</ul>
             
 <div id="bps-tabs-1" class="bps-tab-page">
@@ -744,7 +749,192 @@ if ( isset($_POST['Submit-Login-Search-Radio'] ) && current_user_can('manage_opt
 </table>
 </div>
 
+<?php if ( is_multisite() && $blog_id != 1 ) { echo '<div style="margin:0px 0px 0px 0px;"></div>'; } else { ?>
+
 <div id="bps-tabs-2" class="bps-tab-page">
+<h2><?php _e('Idle Session Logout (ISL) ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Automatically Logout Idle/Inactive User Accounts', 'bulletproof-security'); ?></span><br /><?php _e('Auth Cookie Expiration (ACE) ~ ', 'bulletproof-security'); ?></span><span style="font-size:.75em;"><?php _e('Change the WordPress Authentication Cookie Expiration Time', 'bulletproof-security'); ?></h2>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
+  <tr>
+    <td class="bps-table_title">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_help">
+
+<h3 style="margin:0px 0px 5px 0px;"><?php _e('Idle Session Logout|Auth Cookie Expiration', 'bulletproof-security'); ?>  <button id="bps-open-modal2" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
+<div id="bps-modal-content2" title="<?php _e('Idle Session Logout|Auth Cookie Expiration', 'bulletproof-security'); ?>">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-readme-table">
+  <tr>
+    <td class="bps-readme-table-td">
+
+<?php 
+	// top section of all Read Me help boxes
+	$text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br>';
+	echo $text; 	
+	
+	// Forum Help Links or of course both
+	$text = '<strong><font color="blue">'.__('Forum Help Links: ', 'bulletproof-security').'</font></strong>'; 	
+	echo $text;
+?>
+	<strong><a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace" title="ISL and ACE" target="_blank">
+	<?php _e('ISL and ACE Forum Topic', 'bulletproof-security'); ?></a></strong><br /><br />
+
+<?php
+	// Long blocks of text where each section of text is strong
+	$text = '<strong>'.__('Idle Session Logout (ISL) General Info:', 'bulletproof-security').'</strong><br>'.__('Idle Session Logout (ISL) can be considered a "soft" setting vs ACE being a "hard" setting. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen.', 'bulletproof-security').'<br><br>'.__('If you set the Idle Session Logout Time to 60 minutes and the User is idle/inactive for 10 minutes and becomes active again then the Idle Session Logout Time starts all over again/is reset to 60 minutes. If a User is idle/inactive for 60 continuous minutes then that User will be automatically logged out of the site and redirected to the BPS Idle Session Logout Page.', 'bulletproof-security').'<br><br>'.__('When an idle/inactive User is logged out of the site they are redirected to the BPS Idle Session Logout Page if their Browser is still open. If the User’s Browser is still open and the User is on another Browser tab window then the Browser tab window where they are logged into your site will be redirected to the BPS Idle Session Logout Page. If the User has closed their Browser without logging out of your site then that User will still be logged out of your site when the ISL Session Logout time expires for that User. Idle Session Logouts are logged in the BPS Security Log file.', 'bulletproof-security').'<br><br><strong><font color="blue">'.__('After making any option setting changes click the Save Options button to save your new option settings.', 'bulletproof-security').'</font></strong><br><br><strong>'.__('Turn On|Turn Off:', 'bulletproof-security').'</strong><br>'.__('ISL is Turned Off by default.  Select Turn On ISL to turn ISL On. Select Turn Off ISL to turn ISL Off.', 'bulletproof-security').'<br><br><strong>'.__('Idle Session Logout Time in Minutes:', 'bulletproof-security').'</strong><br>'.__('Enter the time in minutes for when an idle/inactive User should be logged out of your site. Example: Entering 60 will automatically logout Users who have been idle/inactive for 60 continuous minutes. Only enter numbers and not any other characters. If you accidently enter a blank value for the Idle Session Logout Time then ISL will be disabled automatically.', 'bulletproof-security').'<br><br><strong>'.__('Idle Session Logout Page Login URL:', 'bulletproof-security').'</strong><br>'.__('When an idle/inactive User is logged out of your site they are redirected to the BPS Idle Session Logout Page. The BPS Idle Session Logout Page displays a clickable Login link to log back into your site. If your Login page is different than the URL that you see displayed in the Idle Session Logout Page Login URL text box then change the URL to URL for your site’s Login page.', 'bulletproof-security').'<br><br><strong>'.__('User Account Exceptions:', 'bulletproof-security').'</strong><br>'.__('To create exceptions for User Account names enter User Account names (case-insensitive) separated by a comma and a space: johnDoe, janeDoe. ISL will be turned Off/disabled for any User Account names that you add in this text box. User Account Exceptions override the User Roles option setting. Example: If johnDoe is an Administrator and you have enabled ISL for the Administrator User Role and you have added johnDoe in the User Account Exceptions text box then the johnDoe User Account Exception will override the Administrator User Role option setting and ISL will still be disabled for the johnDoe User Account. It is recommended that you add your User Account name, but if you also want to be automatically logged out when your User Account is idle/inactive then do not add your User Account name.', 'bulletproof-security').'<br><br><strong>'.__('Enable|Disable Idle Session Logouts For These User Roles:', 'bulletproof-security').'</strong><br>'.__('Checking a User Role checkbox will enable ISL for all Users with that User Role (See User Account Exceptions). Unchecking a User Role checkbox will disable ISL for all Users with that User Role. Example: If you only check the Subscriber checkbox then ISL will only be enabled for Users that are Subscribers.', 'bulletproof-security').'<br><br><strong>'.__('Enable|Disable Idle Session Logouts For TinyMCE Editors:', 'bulletproof-security').'</strong><br>'.__('Please read all of the TinyMCE Editor Important Notes below. Checking the Enable|Disable ISL For TinyMCE Editor checkbox will disable ISL for any/all pages that have a TinyMCE Editor on them.', 'bulletproof-security').'<br><br><strong>'.__('TinyMCE Editor Important Notes:', 'bulletproof-security').'</strong><br><br><strong>'.__('ISL and TinyMCE javascript Event Listeners:', 'bulletproof-security').'</strong><br>'.__('ISL uses javascript Event Listeners to monitor User activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. The TinyMCE Editor also uses javascript Event Listeners in the Visual Editor window. ISL can monitor User activity in the Text tab Editor window and the Editor Toolbar buttons or menus for any of the ISL events listed above, but cannot monitor any User activity in the TinyMCE Visual tab Editor window.', 'bulletproof-security').'<br><br><strong>'.__('TinyMCE Editor on WordPress Post, Page and Comments pages:', 'bulletproof-security').'</strong><br>'.__('This example is using an Idle Session Logout Time of 60 minutes. If the User is typing content/text for 60 continuous minutes in the WordPress Post, Page or Comments TinyMCE Visual Editor window and has not clicked or moved their mouse outside of the TinyMCE Visual Editor window for 60 continuous minutes and the Enable|Disable ISL For TinyMCE Editor checkbox option is not checked to disable ISL for TinyMCE Editors, then the User will see the native WP Confirm Navigation alert popup window with buttons to either Leave this Page or Stay on this Page. Clicking the Stay on this Page button resets the ISL timer again to 60 minutes and the User will not lose any of their content/text.', 'bulletproof-security').'<br><br><strong>'.__('TinyMCE Editor Instances used in other plugins and themes:', 'bulletproof-security').'</strong><br>'.__('If another plugin or theme is using instances of the TinyMCE Editor, like BPS Maintenance Mode MMode Editor TinyMCE Editor instance for example, then if all of the same conditions stated above for the WordPress Post, Page and Comments pages TinyMCE Visual Editor are the same then instead of seeing the native WP Confirm Navigation alert popup window, the User will be logged out automatically and the User\'s content/text will not be saved. If you are using TinyMCE Editor Instances in another plugin or theme that Users can use to add/edit content/text and you do not want to risk a User being logged out and losing any of their content/text then check the Enable|Disable ISL For TinyMCE Editor checkbox to disable ISL on any pages that contain a TinyMCE Editor Instance.', 'bulletproof-security').'<br><br><strong>'.__('Auth Cookie Expiration (ACE) General Info:', 'bulletproof-security').'</strong><br>'.__('The WordPress Authentication Cookie Expiration (ACE) time can be considered a "hard" setting vs ISL being a "soft" setting. If you set the Cookie Expiration to 60 minutes then 60 consecutive minutes after a User has logged in, that user will be logged out automatically whether that User is idle/inactive or not. The WordPress Authentication Cookie Expiration (ACE) time is set when a User logs in. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. The WordPress Authentication Cookie Expiration time is set/reset each time a User logs in. So if a User logs out and then logs back into the site then the Cookie Expiration time for that User is set again to whatever Auth Cookie Expiration Time that you choose or the WordPress default Cookie Expiration time if you do not use or turn On ACE.', 'bulletproof-security').'<br><br><strong>'.__('Turn On|Turn Off:', 'bulletproof-security').'</strong><br>'.__('ACE is Turned Off by default. Select Turn On ACE to turn ACE On. Select Turn Off ACE to turn ACE Off.', 'bulletproof-security').'<br><br><strong>'.__('Auth Cookie Expiration Time in Minutes:', 'bulletproof-security').'</strong><br>'.__('Enter the time in minutes for when a User should be logged out of your site. Example: Entering 720 will automatically logout Users who have been logged in for 720 consecutive minutes/12 hours. Only enter numbers and not any other characters. If you accidently enter a blank value for the for Auth Cookie Expiration Time or Remember Me Auth Cookie Expiration Time then ACE will use the default WordPress Authentication Cookie Expiration time.', 'bulletproof-security').'<br><br><strong>'.__('Remember Me Auth Cookie Expiration Time in Minutes:', 'bulletproof-security').'</strong><br>'.__('Enter the time in minutes for when a User should be logged out of your site when the User has checked the Remember Me checkbox on the WordPress Login page. Example: Entering 720 will automatically logout Users who have been logged in for 720 consecutive minutes/12 hours. Only enter numbers and not any other characters. If you accidently enter a blank value for the for Auth Cookie Expiration Time or Remember Me Auth Cookie Expiration Time then ACE will use the default WordPress Authentication Cookie Expiration time.', 'bulletproof-security').'<br><br><strong>'.__('User Account Exceptions:', 'bulletproof-security').'</strong><br>'.__('To create exceptions for User Account names enter User Account names (case-insensitive) separated by a comma and a space: johnDoe, janeDoe. Auth Cookie Expiration Time settings will not be applied to any User Account names that you add in this text box and these User Accounts will instead use the default WordPress Authentication Cookie Expiration time. User Account Exceptions override the User Roles option setting. Example: If johnDoe is an Administrator and you have enabled ACE for the Administrator User Role and you have added johnDoe in the User Account Exceptions text box then the johnDoe User Account Exception will override the Administrator User Role option setting and the johnDoe User Account will use the default WordPress Authentication Cookie Expiration time. It is recommended that you add your User Account name, but if you also want to be automatically logged out for the Auth Cookie Expiration time that you choose then do not add your User Account name.', 'bulletproof-security').'<br><br><strong>'.__('Enable|Disable Auth Cookie Expiration Time For These User Roles:', 'bulletproof-security').'</strong><br>'.__('Checking a User Role checkbox will apply the Auth Cookie Expiration Time that you choose for all Users with that User Role (See User Account Exceptions). Unchecking a User Role checkbox will apply the default WordPress Authentication Cookie Expiration time for all Users with that User Role. Example: If you only check the Subscriber checkbox then ACE will only apply the Auth Cookie Expiration Time setting that you choose for Users that are Subscribers.', 'bulletproof-security').'<br><br>';
+	echo $text;	
+	
+	// the closing FAQ & Help 
+	$text = '<strong>'.__('The Help & FAQ tab pages contain help links.', 'bulletproof-security').'</strong>'; 
+	echo $text;
+?>
+    </td>
+  </tr> 
+</table> 
+
+</div>
+
+<?php
+if ( ! current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else {
+?>
+
+<div id="Idle-Session-Logout" style="position:relative;top:0px;left:0px;margin:0px 0px 0px 0px;">
+<form name="IdleSessionLogout" action="options.php#bps-tabs-2" method="post">
+	<?php settings_fields('bulletproof_security_options_idle_session'); ?> 
+	<?php $BPS_ISL_options = get_option('bulletproof_security_options_idle_session'); ?>
+    
+ <h3><?php _e('Idle Session Logout (ISL) Settings', 'bulletproof-security'); ?></h3>   
+    
+<table border="0">
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Turn On|Turn Off:', 'bulletproof-security'); ?></label><br />
+    <select name="bulletproof_security_options_idle_session[bps_isl]" style="width:250px;">
+	<option value="On" <?php selected('On', $BPS_ISL_options['bps_isl']); ?>><?php _e('Turn On ISL', 'bulletproof-security'); ?></option>
+	<option value="Off" <?php selected('Off', $BPS_ISL_options['bps_isl']); ?>><?php _e('Turn Off ISL', 'bulletproof-security'); ?></option>
+	</select>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Idle Session Logout Time in Minutes:', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_idle_session[bps_isl_timeout]" class="regular-text-short-fixed" style="width:250px" value="<?php if ( $BPS_ISL_options['bps_isl_timeout'] != '' ) { echo preg_replace( '/\D/', "", $BPS_ISL_options['bps_isl_timeout'] ); } else { echo '60'; } ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Idle Session Logout Page Login URL:', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_idle_session[bps_isl_login_url]" class="regular-text-short-fixed" style="width:250px" value="<?php if ( $BPS_ISL_options['bps_isl_login_url'] != '' ) { echo $BPS_ISL_options['bps_isl_login_url']; } else { echo site_url( '/wp-login.php' ); } ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('User Account Exceptions:', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('Enter User Account names separated by a comma and a space: johnDoe, janeDoe', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('Idle Session Logout Time Will Not Be Applied For These User Accounts.', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_idle_session[bps_isl_user_account_exceptions]" class="regular-text-short-fixed" style="width:500px;" value="<?php if ( $BPS_ISL_options['bps_isl_user_account_exceptions'] != '' ) { echo $BPS_ISL_options['bps_isl_user_account_exceptions']; } ?>" />
+	</td>
+  </tr>
+  <tr>
+	<td>
+    <label><strong><?php _e('Enable|Disable Idle Session Logouts For These User Roles: ', 'bulletproof-security'); ?></strong></label><br />  
+  <label><strong><i><?php _e('Check to Enable. Uncheck to Disable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
+    <input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_administrator]" value="1" <?php checked( $BPS_ISL_options['bps_isl_administrator'], 1 ); ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_editor]" value="1" <?php checked( $BPS_ISL_options['bps_isl_editor'], 1 ); ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
+<input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_author]" value="1" <?php checked( $BPS_ISL_options['bps_isl_author'], 1 ); ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
+<input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_contributor]" value="1" <?php checked( $BPS_ISL_options['bps_isl_contributor'], 1 ); ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
+<input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_subscriber]" value="1" <?php checked( $BPS_ISL_options['bps_isl_subscriber'], 1 ); ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br />
+	</td>
+  </tr>
+  <tr>
+	<td>
+    <label><strong><?php _e('Enable|Disable Idle Session Logouts For TinyMCE Editors: ', 'bulletproof-security'); ?></strong></label><br />  
+  <label><strong><i><?php _e('Check to Disable. Uncheck to Enable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
+    <input type="checkbox" name="bulletproof_security_options_idle_session[bps_isl_tinymce]" value="1" <?php checked( $BPS_ISL_options['bps_isl_tinymce'], 1 ); ?> /><label><?php _e(' Enable|Disable ISL For TinyMCE Editor', 'bulletproof-security'); ?></label><br /><br />
+
+<input type="submit" name="Submit-ISL-Options" class="button bps-button"  style="margin:5px 0px 15px 0px;" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('Click OK to Proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')"/>
+</form><br />
+</div> 
+
+</td>
+  </tr>
+</table> 
+
+<div id="ACE-Menu-Link"></div>
+
+<h3 style="border-bottom:1px solid #999999;"><?php _e('WordPress Authentication Cookie Expiration (ACE) Settings', 'bulletproof-security'); ?></h3>
+
+<div id="ACE-logout" style="position:relative;top:0px;left:0px;margin:0px 0px 0px 0px;">
+<form name="ACELogout" action="options.php#bps-tabs-2" method="post">
+	<?php settings_fields('bulletproof_security_options_auth_cookie'); ?> 
+	<?php $BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie'); ?>
+ 
+<table border="0">
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Turn On|Turn Off:', 'bulletproof-security'); ?></label><br />
+    <select name="bulletproof_security_options_auth_cookie[bps_ace]" style="width:250px"><br />
+	<option value="On" <?php selected('On', $BPS_ACE_options['bps_ace']); ?>><?php _e('Turn On ACE', 'bulletproof-security'); ?></option>
+	<option value="Off" <?php selected('Off', $BPS_ACE_options['bps_ace']); ?>><?php _e('Turn Off ACE', 'bulletproof-security'); ?></option>
+	</select>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Auth Cookie Expiration Time in Minutes:', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('WP Default setting is 2880 Minutes/2 Days:', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_auth_cookie[bps_ace_expiration]" class="regular-text-short-fixed" style="width:250px" value="<?php if ( $BPS_ACE_options['bps_ace_expiration'] != '' ) { echo preg_replace( '/\D/', "", $BPS_ACE_options['bps_ace_expiration'] ); } else { echo '2880'; } ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('Remember Me Auth Cookie Expiration Time in Minutes:', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('WP Default setting is 20160 Minutes/14 Days:', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_auth_cookie[bps_ace_rememberme_expiration]" class="regular-text-short-fixed" style="width:250px" value="<?php if ( $BPS_ACE_options['bps_ace_rememberme_expiration'] != '' ) { echo preg_replace( '/\D/', "", $BPS_ACE_options['bps_ace_rememberme_expiration'] ); } else { echo '20160'; } ?>" />
+	</td>
+  </tr>
+  <tr>
+    <td>
+    <label for="LSLog"><?php _e('User Account Exceptions:', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('Enter User Account names separated by a comma and a space: johnDoe, janeDoe', 'bulletproof-security'); ?></label><br />
+    <label for="LSLog"><?php _e('Auth Cookie Expiration Time Will Not Be Applied To These User Accounts.', 'bulletproof-security'); ?></label><br />
+    <input type="text" name="bulletproof_security_options_auth_cookie[bps_ace_user_account_exceptions]" class="regular-text-short-fixed" style="width:500px;" value="<?php if ( $BPS_ACE_options['bps_ace_user_account_exceptions'] != '' ) { echo $BPS_ACE_options['bps_ace_user_account_exceptions']; } ?>" />
+	</td>
+  </tr>
+  <tr>
+	<td>
+    <label><strong><?php _e('Enable|Disable Auth Cookie Expiration Time For These User Roles: ', 'bulletproof-security'); ?></strong></label><br />  
+  <label><strong><i><?php _e('Check to Enable. Uncheck to Disable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
+    <input type="checkbox" name="bulletproof_security_options_auth_cookie[bps_ace_administrator]" value="1" <?php checked( $BPS_ACE_options['bps_ace_administrator'], 1 ); ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bulletproof_security_options_auth_cookie[bps_ace_editor]" value="1" <?php checked( $BPS_ACE_options['bps_ace_editor'], 1 ); ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
+<input type="checkbox" name="bulletproof_security_options_auth_cookie[bps_ace_author]" value="1" <?php checked( $BPS_ACE_options['bps_ace_author'], 1 ); ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
+<input type="checkbox" name="bulletproof_security_options_auth_cookie[bps_ace_contributor]" value="1" <?php checked( $BPS_ACE_options['bps_ace_contributor'], 1 ); ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
+<input type="checkbox" name="bulletproof_security_options_auth_cookie[bps_ace_subscriber]" value="1" <?php checked( $BPS_ACE_options['bps_ace_subscriber'], 1 ); ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br /><br />
+
+	<input type="submit" name="Submit-ACE-Options" class="button bps-button"  style="margin:5px 0px 15px 0px;" value="<?php esc_attr_e('Save Options', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('Click OK to Proceed or click Cancel.', 'bulletproof-security'); echo $text; ?>')"/>
+</form><br />
+</div> 
+
+</td>
+  </tr>
+</table> 
+
+<?php } ?>
+
+</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_bottom">&nbsp;</td>
+  </tr>
+</table>
+
+</div>
+
+<?php } ?>
+
+<div id="bps-tabs-3" class="bps-tab-page">
 <h2><?php _e('BulletProof Security Help &amp; FAQ', 'bulletproof-security'); ?></h2>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
    <tr>

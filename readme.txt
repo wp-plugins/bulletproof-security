@@ -1,10 +1,10 @@
 === BulletProof Security ===
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
-Tags: 400, 403, 404, 503, antivirus, attack, authenticate, authentication, author, author id, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, infect, infected, infection, injection, LFI, lock, log, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, RFI, safe, safety, schedule backup, script, secure, security log, security, spam, spammers, speed increase, speed boost, SQL injection, trackback, unavailable, under construction, user id, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
+Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.2.2
-Stable tag: .51.9
+Stable tag: .52
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -16,6 +16,8 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 * jQuery UI Dialog Form Uninstall Options: BPS Pro upgrade uninstallation or complete BPS plugin uninstallation
 * .htaccess Website Security Protection (Firewalls)
 * Login Security & Monitoring
+* Idle Session Logout (ISL)
+* Auth Cookie Expiration (ACE)
 * DB Backup: Full|Partial DB Backups | Manual|Scheduled DB Backups | Email Zip Backups | Cron Delete Old Backups
 * DB Backup Logging
 * DB Table Prefix Changer
@@ -34,12 +36,14 @@ WordPress Website Security Protection: Firewall Security, Login Security, Databa
 * DB Diff Tool: data comparison tool
 * DB Backup: Full|Partial DB Backups | Manual|Scheduled DB Backups | Email Zip Backups | Cron Delete Old Backups
 * DB Status & Info: extensive database status & info
-* Plugin Firewall (True IP Based Firewall): Automatic IP Address Updating & Whitelisting in Real Time
+* Plugin Firewall (IP Firewall): Automated Whitelisting & IP Address Updating in Real Time
 * JTC Anti-Spam|Anti-Hacker
 * Uploads Folder Anti-Exploit Guard (UAEG)
 * .htaccess Website Security Protection (Firewalls)
 * Custom php.ini Website Security
 * Login Security & Monitoring w/Dashboard Alerting|Status Display & additional options/features
+* Idle Session Logout (ISL)
+* Auth Cookie Expiration (ACE)
 * F-Lock: Read Only File Locking
 * FrontEnd|BackEnd Maintenance Mode
 * Security Logging
@@ -66,6 +70,10 @@ https://www.youtube.com/watch?v=8NNc6ycWbhw
 
 BulletProof Security uses a one-click setup method vs breaking up options and settings into multiple separate different options and settings. One-click is literal if you are setting up BulletProof Security using the Setup Wizard. BPS is setup completely and all security features are turned on when you click the Setup Wizard button. One-click is used figuratively and not literally if you are using the Manual Controls to setup BulletProof Security. One-click is generally the concept where several tasks are performed with one-click of a button. BPS BulletProof Modes Manual setup actually takes 4 clicks, but with those 4 clicks BPS BulletProof Modes are setup and the website has maximum security enabled with all BPS security features and code enabled instead of having to choose multiple separate options and settings. Customization, whitelisting, adding BPS Bonus Custom Code or adding other personal custom .htaccess code is done with the BPS Custom Code feature.
 
+= BulletProof Security is Website Performance Optimized (Performance|Optimization) =
+
+Website performance is just as important as website security. BulletProof Security is website performance optimized with website owners best interests at heart. BulletProof Security does NOT abuse the WordPress Database by making excessive MySQL Queries. BulletProof Security does NOT store excessive & non-essential data in your WordPress Database. BulletProof Security does NOT use excessive Server Memory & Resources. BulletProof Security does NOT use any gimmicks or bells & whistles that will cost website owners their website performance. The benefits of having website security protection are negated if your website is performing poorly/slowly, continually experiencing out of memory errors/running out of memory, database size growing exponentially with non-essential stored data, etc. BulletProof Security can actually speed up & improve your website performance by using the Speed Boost Cache Bonus Code. See the BulletProof Security Bonus Custom Code help section below.
+
 = htaccess Core Website Security (Security|Firewalls) =
 
 WordPress Website Security Protection: BulletProof Security protects your website against 100,000's of different hacking attempts/attacks. The .htaccess security filters in BulletProof Security are designed to match malicious and nuisance attack patterns. The most important benefits of using a finite pattern matching method vs infinite banning/blocking individual IP's, Host's, Referer's, etc. is that your website performance and Server resources are not negatively impacted. In general, BulletProof Security takes an "Action Approach" to website security. Hacker X, Spammer X, Bad Bot X does bad Action Y = Forbidden/Blocked. An "Action Approach" is a much more effective and performance optimized approach to website security since the bad action itself is being blocked/forbidden instead of attempting to block an individual hacker/spammer that performed a bad action. Example: BulletProof Security blocks all SQL Injection hacking attempts/attacks no matter who performed that SQL Injection hacking attempt/attack. See the BulletProof Security Login Security & Monitoring Features section for additional features and options. See the BulletProof Security htaccess Core (Firewalls, etc.) Features section for additional features and options.
@@ -74,13 +82,17 @@ WordPress Website Security Protection: BulletProof Security protects your websit
 
 Login Security & Login Monitoring: Log All User Account Logins or Log Only User Account Lockouts (see Screenshot). Brute Force Login Security Protection. Email alerting options allow you to choose 5 different email alerting options: Choose to have email alerts sent when a User Account is locked out, An Administrator Logs in, An Administrator Logs in and when a User Account is locked out, Any User logs in and when a User Account is locked out or Do Not Send Email Alerts. Choose Standard WP Error Messages or Generic Error Messages for Login Security Stealth Mode. Choose to Enable or Disable Login Password Reset capability for Login Security Stealth Mode. See the BulletProof Security Login Security & Monitoring Features section for additional features and options.
 
+= Idle Session Logout (ISL) (Security|Performance|Optimization) =
+
+Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. See the BulletProof Security Idle Session Logout (ISL) Features section for additional features and options info.
+
+= Auth Cookie Expiration (ACE) (Security|Performance|Optimization) =
+
+Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. See the BulletProof Security Auth Cookie Expiration (ACE) Features section for additional features and options info.
+
 = DB Backup: Database Backup Website Security (Security|Backup) =
 
 DB Backup: Create manual and scheduled Backup Jobs. Selective database table backup and full database backup. Scheduled backup job options: Hourly, Daily, Weekly and Monthly. Send scheduled backup zip file via email or just send email only, automatically delete old backup files after a certain period of time, etc., etc., etc. All DB Backup options/settings and default setup is done automatically during upgrades and new installations. See the BulletProof Security DB Backup|Database Backup Features section for additional features and options.
-
-= BulletProof Security is Website Performance Optimized (Performance|Optimization) =
-
-Website performance is just as important as website security. BulletProof Security is website performance optimized with website owners best interests at heart. BulletProof Security does NOT abuse the WordPress Database by making excessive MySQL Queries. BulletProof Security does NOT store excessive & non-essential data in your WordPress Database. BulletProof Security does NOT use excessive Server Memory & Resources. BulletProof Security does NOT use any gimmicks or bells & whistles that will cost website owners their website performance. The benefits of having website security protection are negated if your website is performing poorly/slowly, continually experiencing out of memory errors/running out of memory, database size growing exponentially with non-essential stored data, etc. BulletProof Security can actually speed up & improve your website performance by using the Speed Boost Cache Bonus Code. See the BulletProof Security Bonus Custom Code help section below.
 
 = FrontEnd|BackEnd Maintenance Mode (Security|Development) =
 
@@ -167,6 +179,23 @@ WordPress is already very secure, but every website, no matter what type of plat
 * Enhanced Search: Allows you to search all of the Login Security database rows/Fields
 * Click the Login Security Read Me help button for full descriptions of all features and options.
 
+= BulletProof Security Idle Session Logout (ISL) Features =
+
+* Turn On|Turn Off: ISL is Turned Off by default. Select Turn On ISL to turn ISL On.
+* Idle Session Logout Time in Minutes: Time in minutes for when an idle/inactive User should be logged out of your site.
+* Idle Session Logout Page Login URL: Change the Login URL if your Login page is not the default WP Login page.
+* User Account Exceptions: Disable ISL by User Account names. User Account Exceptions override the User Roles option setting.
+* Enable|Disable Idle Session Logouts For These User Roles: Enable ISL for Users by User Role: Administrator, Editor, Author, Contributor and Subscriber.
+* Enable|Disable Idle Session Logouts For TinyMCE Editors: Disable ISL for any/all pages that have a TinyMCE Editor on them.
+
+= BulletProof Security Auth Cookie Expiration (ACE) Features =
+
+* Turn On|Turn Off: ACE is Turned Off by default. Select Turn On ACE to turn ACE On.
+* Auth Cookie Expiration Time in Minutes: Time in minutes for when a User should be logged out of your site.
+* Remember Me Auth Cookie Expiration Time in Minutes: Time in minutes for when a User should be logged out of your site when the User has checked the Remember Me checkbox.
+* User Account Exceptions: Disable ACE by User Account names. User Account Exceptions override the User Roles option setting.
+* Enable|Disable Auth Cookie Expiration Time For These User Roles: Enable ACE for Users by User Role: Administrator, Editor, Author, Contributor and Subscriber.
+
 = BulletProof Security DB Backup|Database Backup Features =
 
 * Manual or scheduled database backups
@@ -220,6 +249,13 @@ WordPress is already very secure, but every website, no matter what type of plat
 * <strong>Automated Setup Steps</strong>
 1. Click the Setup Wizard button.
 
+* <strong>Optional Features:</strong>
+1. Idle Session Logout (ISL)
+2. Auth Cookie Expiration (ACE)
+3. DB Table Prefix Changer
+4. Maintenance Mode
+5. UI|UX Theme Skin|Processing Spinner|WP Toolbar
+
 * <strong>Uninstall Options</strong>
 1. An Uninstall Options link is located on the WordPress Plugins page under the BulletProof Security plugin.
 2. Clicking the Uninstall Options link loads a jQuery UI Dialog Form with 2 uninstall options.
@@ -237,6 +273,14 @@ WordPress is already very secure, but every website, no matter what type of plat
 * <strong>Login Security & Monitoring Setup Steps</strong>
 1. Click the Login Security & Monitoring Save Options button to use & save the BPS default Login Security settings or choose your own settings.
 2. Click the Login Security: Send Login Security Email Alert When... Save Options button to use and save BPS default Email Alerts and Log File settings or choose your own settings.
+
+* <strong>Idle Session Logout (ISL) Setup Steps</strong>
+1. Choose the ISL option settings you want to use.
+2. Click the Save Options button.
+
+* <strong>Auth Cookie Expiration (ACE) Setup Steps</strong>
+1. Choose the ACE option settings you want to use.
+2. Click the Save Options button.
 
 * <strong>DB Backup & Security Setup Steps</strong>
 1. Click the Create Backup Jobs accordion tab.
@@ -257,12 +301,12 @@ WordPress is already very secure, but every website, no matter what type of plat
 * <strong>UI|UX Theme Skin|Processing Spinner|WP Toolbar</strong>
 1. Select a Theme Skin.
 2. Click the Save Skin button.
-3. Optional: Choose to Turn the Processing Spinner On|Off (On by Default).
-4. Optional: Choose WP Toolbar Functionality In BPS Plugin Pages (Load Only The Default WP Toolbar by Default).
+3. Choose to Turn the Processing Spinner On|Off (On by Default).
+4. Choose WP Toolbar Functionality In BPS Plugin Pages (Load Only The Default WP Toolbar by Default).
 
 == Frequently Asked Questions ==
 
-= How does the BulletProof Security Plugin htaccess Core (Firewalls) work? =
+= How do the BulletProof Security Plugin htaccess Core (Firewalls) work? =
 
 The BulletProof Security Plugin allows you to create and activate .htaccess website security with one-click (figuratively) for your website without having to know anything about .htaccess files. The Master .htaccess files are pre-made and BPS writes additional .htaccess code that is customized to each specific website when you run the Setup Wizard or if you use the Manual Controls. There is nothing to figure out or to configure. Either run the Setup Wizard or use the Manual Setup Controls: Click the AutoMagic buttons (creates customized Master .htaccess files) and Activate BulletProof Modes (copies the customized Master .htaccess files to your root and wp-admin folders). BPS has built-in Backup and Restore and an .htaccess File Editor for full manual editing control as well. BPS Custom Code allows you to add additional custom .htaccess code or BPS Bonus Custom Code and save it permanently so that your saved code is always written too/included in your htaccess files.
 
@@ -270,25 +314,9 @@ The BulletProof Security Plugin allows you to create and activate .htaccess webs
 
 Yes. Troubleshooting|Diagnostic|Logging|Whitelisting is built-in to BulletProof Security. The Setup Wizard performs Pre-Installation Checks to check for any pre-existing issues that could cause any issues or problems and displays exactly what needs to be done to fix the issue. The primary troubleshooting feature in BulletProof Security is the BPS Security Log. The primary whitelisting feature in BulletProof Security is BPS Custom Code. The BPS Security Log logs blocked hackers, spammers, bad bots, etc. and also logs anything else that is blocked by BPS. If something legitimate is being blocked in another plugin or theme that needs to be allowed/whitelisted then the BPS Security Log entry will contain all the information about what exactly is being blocked so that a whitelist rule can then be created in BPS Custom Code. The BPS Security Log also logs all other 403 errors that occur on your website whether or not they are related to or caused by BPS. Turning Off BPS Security Logging will allow your server to handle error logging and display your server error message instead of BPS displaying the standard 403 template file error message. This is also considered a troubleshooting method to determine if an error is actually coming from your server and not the BPS plugin.
 
-= How does BulletProof Security Plugin Login Security & Monitoring work? =
-
-BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or Log Only User Account Lockouts. The Dynamic DB Logging Form has 3 checkbox options: Lock, Unlock or Delete database rows. The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate database tables. If you lock a User Account then BPS will enforce that lock on that User Account and the User will not be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security database table does NOT delete the User Account from the WordPress Users database table. When you delete a User Account it is pretty much the same thing as unlocking a User Account. To delete actual User Accounts you would go to the WordPress Users page and delete that User Account.
-
-= How does BulletProof Security FrontEnd|BackEnd Maintenance Mode work? =
-
-FrontEnd Maintenance Mode creates template files based on the options you choose and save. When you Turn On Maintenance Mode those template files are copied to the root directory of your website. When you Turn Off Maintenance Mode those template files are deleted from the root directory of your website. Maintenance Mode works by allowing the IP addresses that you enter & save to view the site normally. All other IP addresses will see the Maintenance Mode template page. BackEnd Maintenance Mode writes directly to your wp-admin .htaccess file and adds a deny all block of .htaccess code with the IP addresses the you enter & save when you enable BackEnd Maintenance Mode. When you disable/uncheck BackEnd Maintenance Mode that deny all block of .htaccess code is removed/deleted from your wp-admin .htaccess file. For more extensive help info or CSS Code, Image & Video Embed examples to add in the Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors text area click this Maintenance Mode Guide Forum Topic link: <a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" title="Maintenance Mode Guide" rel="nofollow" target="_blank">Maintenance Mode Guide</a>.
-
-= What do I do if my User Account is locked out and I am unable to login? =
-
-Use FTP or your web host control panel file manager and rename the /bulletproof-security/ plugin folder name to /_bulletproof-security and login to your website. After logging into your website, rename the /_bulletproof-security/ plugin folder name back to /bulletproof-security/. Unlock your User Account on the BPS Login Security and Monitoring page.
-
 = Do I need to understand .htaccess code in order to use BulletProof Security? =
 
 No. We use a paint by numbers approach, have extensive documented help and fixes on our Forum site and provide exact steps to perform any tasks that need to be done such as adding whitelist rules or other custom code. ie do Step 1, Step 2, Step 3. BPS creates customized .htaccess files for your website by either running the Setup Wizard or clicking the AutoMagic buttons and activating BulletProof Modes. You do not need to know anything about .htaccess website security files or code in order to use the BulletProof Security plugin. Extensive help information can be found in the Read Me help buttons in BPS. The Help & FAQ tab pages in BulletProof Security contain links to BulletProof Security Forum help topics and video tutorials. The process of adding Custom Code or adding whitelisting rules is automated - See the Custom Code Read Me help button for Custom Code steps.
-
-= What do I do if I cannot log back into my website due to an htaccess file problem? =
-
-If you accidentally activated BulletProof Modes without first running the Setup Wizard or clicking the AutoMagic buttons or your web host does not allow you to lock your root .htaccess file and your htaccess file was locked: Use FTP or your Web Host Control Panel File Manager and delete the .htaccess files that BPS creates in your website root folder and your wp-admin folder. Deleting the .htaccess files in your website root folder & wp-admin folder will allow you to log back in to your website. If your web host does not allow locking the root .htaccess file then go to htaccess File Editor tab page and click the Turn Off AutoLock button. Either run the Setup Wizard again or click the AutoMagic buttons and activate BulletProof Modes again. 
 
 = Will BulletProof Security or .htaccess files or .htaccess code cause my website to run slower? =
 
@@ -297,6 +325,34 @@ No. BulletProof Security or .htaccess files/code in general will not cause a web
 = Can BulletProof Security speed up my website and make it run faster? =
 
 Yes. BulletProof security can speed up your website and make it run faster if you use the Speed Boost Cache Bonus Code and add it to BPS Custom Code. See the BulletProof Security Bonus Custom Code section on the BulletProof Security plugin Description page for a link to the Speed Boost Cache Bonus Code.
+
+= How does BulletProof Security Plugin Login Security & Monitoring work? =
+
+BulletProof Security Login Security & Monitoring allows you to choose whether you want to Log All User Account Logins or Log Only User Account Lockouts. The Dynamic DB Logging Form has 3 checkbox options: Lock, Unlock or Delete database rows. The Login Security database table is hooked into the WordPress Users database table, but they are 2 completely separate database tables. If you lock a User Account then BPS will enforce that lock on that User Account and the User will not be able to log in. If you unlock a User Account then the User will be able to login. Deleting database rows in the Login Security database table does NOT delete the User Account from the WordPress Users database table. When you delete a User Account it is pretty much the same thing as unlocking a User Account. To delete actual User Accounts you would go to the WordPress Users page and delete that User Account.
+
+= What to do if your User Account is locked by Login Security out and you are unable to login? =
+
+Use FTP or your web host control panel file manager and rename the /bulletproof-security/ plugin folder name to /_bulletproof-security and login to your website. After logging into your website, rename the /_bulletproof-security/ plugin folder name back to /bulletproof-security/. Unlock your User Account on the BPS Login Security and Monitoring page.
+
+= What to do if you cannot log back into my website due to an htaccess file/code problem? =
+
+If you accidentally activated BulletProof Modes without first running the Setup Wizard or clicking the AutoMagic buttons or you added additional invalid custom htaccess code to BPS Custom Code or your web host does not allow you to lock your root .htaccess file and your htaccess file was locked: Use FTP or your Web Host Control Panel File Manager and delete the .htaccess files that BPS creates in your website root folder and your wp-admin folder. Deleting the .htaccess files in your website root folder & wp-admin folder will allow you to log back in to your website. If your web host does not allow locking the root .htaccess file then go to htaccess File Editor tab page and click the Turn Off AutoLock button. Either run the Setup Wizard again or click the AutoMagic buttons and activate BulletProof Modes again. If the problem was caused by invalid custom htaccess code added to BPS Custom Code then remove/delete the invalid custom htaccess code from BPS Custom Code before activating BulletProof Modes again.
+
+= Do Idle Session Logout (ISL) or Auth Cookie Expiration (ACE) affect all website visitors to your website? =
+
+The Idle Session Logout (ISL) javascript code is only loaded if a User is logged into your website (depends on your ISL option settings for User Accounts/Roles) and is specific to only that User's Browser/Client Browser and Login Session. Auth Cookie Expiration (ACE) is a WordPress Authentication Cookie that is set when a User logs into your website. Visitors that visit your website that are not logged into your website are not affected in any way by ISL or ACE. 
+
+= Can the Idle Session Logout Time be changed while Users are logged in or after a User has already logged in? =
+
+Yes. ISL is Client Browser based and the Idle Session Logout Time is a variable that has a value that can be changed "on the fly". Example: If UserA and UserB login to your site and the Idle Session Logout Time was 60 minutes when they logged in and you change the Idle Session Logout Time to 1 minute while UserA and UserB are logged into your site then UserA and UserB and all other Users that are logged into your site (depending on your ISL option settings) will be automatically logged out after being idle/inactive for 1 minute.
+
+= Can the Auth Cookie Expiration Time be changed while Users are logged in or after a User has already logged in? =
+
+Yes and No. Yes, you can change the Auth Cookie Expiration Time option setting for all Users (depending on your ACE option settings), but the WordPress Authentication Cookie Expiration time is set when Users log into your site and cannot be changed "on the fly". So if you change the Auth Cookie Expiration Time while UserA and UserB are already logged into your site then the new Auth Cookie Expiration Time that you choose will not take effect until after UserA and UserB logout and log back into your site. The WordPress Authentication Cookie Expiration time can only be set/reset at login. This is the default functionality of the WordPress Authentication Cookie.
+
+= How does BulletProof Security FrontEnd|BackEnd Maintenance Mode work? =
+
+FrontEnd Maintenance Mode creates template files based on the options you choose and save. When you Turn On Maintenance Mode those template files are copied to the root directory of your website. When you Turn Off Maintenance Mode those template files are deleted from the root directory of your website. Maintenance Mode works by allowing the IP addresses that you enter & save to view the site normally. All other IP addresses will see the Maintenance Mode template page. BackEnd Maintenance Mode writes directly to your wp-admin .htaccess file and adds a deny all block of .htaccess code with the IP addresses the you enter & save when you enable BackEnd Maintenance Mode. When you disable/uncheck BackEnd Maintenance Mode that deny all block of .htaccess code is removed/deleted from your wp-admin .htaccess file. For more extensive help info or CSS Code, Image & Video Embed examples to add in the Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website Visitors text area click this Maintenance Mode Guide Forum Topic link: <a href="http://forum.ait-pro.com/forums/topic/maintenance-mode-guide-read-me-first/" title="Maintenance Mode Guide" rel="nofollow" target="_blank">Maintenance Mode Guide</a>.
 
 = BPS Alert! Your site does not appear to be protected by BulletProof Security. What does the Alert mean? =
 
@@ -341,11 +397,14 @@ BulletProof Security works on all web hosts except for these 3 web hosts: <a hre
 
 Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. The Security Log logs all 400 and 403 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file. 99.99% of what is logged in the Security Log is blocked hackers, spammers, bad bots, scrapers, miners, etc. The Security Log is also a troubleshooting tool. If BPS is blocking something legitimate in another plugin or theme then exactly what is being blocked in another plugin or theme by BPS will be logged in the Security Log. A whitelist rule can be created to allow anything legitmate that is being blocked in another plugin or theme.
 
-= HTTP Response Status Codes =
+= HTTP Status Codes (Internet Standard) =
 
-* 400 Bad Request - The request could not be understood by the server due to malformed syntax.
+* 400 Bad Request - The request could not be understood by the Server due to malformed syntax.
+* 401 Unauthorized - The request requires user authentication. By default BPS redirects Auth Requests to the correct URI to avoid 404 errors.
 * 403 Forbidden - The Server understood the request, but is refusing to fulfill it.
-* 404 Not Found - The server has not found anything matching the Request-URI/URL. No indication is given to whether the condition is temporary or permanent.
+* 404 Not Found - The Server has not found anything matching the Request-URI/URL. No indication is given to whether the condition is temporary or permanent.
+* 410 Gone - The requested resource is no longer available at the Server/site and no forwarding address is known. This condition is expected to be considered permanent.
+* 503 Service Unavailable - The Server/site is temporarily performing maintenance. Used in BPS MMode with Retry-After header to indicate when the Server/site will be available again.
 
 = Is BulletProof Security Network/Multisite Compatible? =
 
@@ -395,12 +454,28 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 2. BulletProof Security - Security Modes page
 3. BulletProof Security - htaccess File Editor page
 4. BulletProof Security - Login Security and Monitoring page
-5. BulletProof Security - DB Backup page
-6. BulletProof Security - Maintenance Mode page
-7. BulletProof Security - Maintenance Mode examples
-8. BulletProof Security - Maintenance Mode Pre-made example images
+5. BulletProof Security - Idle Session Logout (ISL)|Auth Cookie Expiration (ACE) page
+6. BulletProof Security - DB Backup page
+7. BulletProof Security - Maintenance Mode page
+8. BulletProof Security - Maintenance Mode examples
 
 == Changelog ==
+
+= .52 =
+* New Menu|Page: Idle Session Logout|Auth Cookie Expiration
+* New Feature: Idle Session Logout (ISL)
+* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
+* New Feature: Auth Cookie Expiration (ACE)
+* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
+* New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file
+* <a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" title="410 Gone Usage Info" rel="nofollow" target="_blank">410 Gone Usage Info:</a> A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.
+* New Core Enhancement|Improvement: Rogue Script Killer
+* <a href="http://forum.ait-pro.com/forums/topic/remove-plugin-scripts-from-loading-in-other-plugin-pages/" title="Roque Script Killer Info" rel="nofollow" target="_blank">Roque Script Killer Info:</a> Additional filters added to kill/null Roque scripts and styles in other plugins and themes from loading in BPS plugin pages and breaking BPS plugin js and css scripts. Nulls/Kills Rogue Scripts from loading in BPS plugin pages. Nulls/Kills Rogue Styles from loading in BPS plugin pages. Note: If you are seeing 404 errors in your Security log like this: jquery-ui.piklist.css-roque-script-nulled then see the link above for how to prevent these 404 errors from being logged in your Security Log.
+* 
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* jQuery Custom Classes added to all BPS jQuery code.
+* CSS and js file name changes: -ui- used in naming convention.
+* jQuery UI Dialog Read Me Help button hide effect changed from explode to blind.
 
 = .51.9 =
 * Login Security & Monitoring Automated Email Alert Enhancement|Improvement:
@@ -730,13 +805,20 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .51.9 =
-* Login Security & Monitoring Automated Email Alert Enhancement|Improvement:
-* Special Thanks to: <a href="https://wordpress.org/support/profile/mewkazoid" title="mewkazoid WordPress Member">mewkazoid</a> for pointing out this useful improvement to BPS Login Security & Monitoring automated email alerts.
-* The Login Security & Monitoring Automated Email Alert now contains additional help information about what to do if your User Account is being repeatedly locked.
-* Brute Force Attack General Info: Automated Brute Force Login attacks by spambots and hackerbots are a regular and ongoing type of website attack. The volume and frequency of Brute Force Login attacks are steadily increasing and will continue to increase. Brute Force attacks make up somewhere in the neighborhood of 85 percent (probably more like 90 percent to 95 percent) of the total of all types of ongoing website attacks these days. BPS Login Security & Monitoring protects the WordPress Login page from Brute Force attacks, but if your username is publicly known/displayed or can be harvested by automated bots then your user account may get locked very frequently. Check the BPS plugin Whats New page for some additional things you can do to prevent your user account from being locked repeatedly.
+= .52 =
+* New Menu|Page: Idle Session Logout|Auth Cookie Expiration
+* New Feature: Idle Session Logout (ISL)
+* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
+* New Feature: Auth Cookie Expiration (ACE)
+* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
+* New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file
+* <a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" title="410 Gone Usage Info" rel="nofollow" target="_blank">410 Gone Usage Info:</a> A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.
+* New Core Enhancement|Improvement: Rogue Script Killer
+* <a href="http://forum.ait-pro.com/forums/topic/remove-plugin-scripts-from-loading-in-other-plugin-pages/" title="Roque Script Killer Info" rel="nofollow" target="_blank">Roque Script Killer Info:</a> Additional filters added to kill/null Roque scripts and styles in other plugins and themes from loading in BPS plugin pages and breaking BPS plugin js and css scripts. Nulls/Kills Rogue Scripts from loading in BPS plugin pages. Nulls/Kills Rogue Styles from loading in BPS plugin pages. Note: If you are seeing 404 errors in your Security log like this: jquery-ui.piklist.css-roque-script-nulled then see the link above for how to prevent these 404 errors from being logged in your Security Log.
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* BugFix: File Permissions cache issue: Root htaccess file not being re-locked when AutoLock is turned On. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
+* jQuery Custom Classes added to all BPS jQuery code.
+* CSS and js file name changes: -ui- used in naming convention.
+* jQuery UI Dialog Read Me Help button hide effect changed from explode to blind.
 
 == Help Info ==
 
