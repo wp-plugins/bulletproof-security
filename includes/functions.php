@@ -1436,10 +1436,12 @@ $user_id = $current_user->ID;
 		$bps_base = str_replace( admin_url(), '', esc_html($_SERVER['REQUEST_URI']) ) . '&';
 	}
 		
+	if ( ! get_user_meta($user_id, 'bps_bonus_code_dismiss_all_notice') ) {
+
 	if ( ! get_user_meta($user_id, 'bps_brute_force_login_protection_notice') || ! get_user_meta($user_id, 'bps_speed_boost_cache_notice') || ! get_user_meta($user_id, 'bps_author_enumeration_notice') || ! get_user_meta($user_id, 'bps_xmlrpc_ddos_notice') || ! get_user_meta($user_id, 'bps_referer_spam_notice') || ! get_user_meta($user_id, 'bps_sniff_driveby_notice') || ! get_user_meta($user_id, 'bps_iframe_clickjack_notice') ) { 		
 		
-		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code:', 'bulletproof-security').'</font><br>'.__('Click the links below to get Bonus Custom Code or click the Dismiss Notice link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br>';
-		
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="blue">'.__('Bonus Custom Code:', 'bulletproof-security').'</font><br>'.__('Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this ', 'bulletproof-security').'<span style=""><a href="'.$bps_base.'bps_bonus_code_dismiss_all_nag_ignore=0'.'" style="">'.__('Dismiss All Notices', 'bulletproof-security').'</a></span>'.__(' link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security').'<br>';
+
 	}
 		
 	if ( ! get_user_meta($user_id, 'bps_brute_force_login_protection_notice') ) { 	
@@ -1488,6 +1490,7 @@ $user_id = $current_user->ID;
 		echo '</div>';
 		}
 	}
+	}
 }
 
 add_action('admin_init', 'bpsPro_bonus_custom_code_nag_ignores');
@@ -1496,6 +1499,10 @@ function bpsPro_bonus_custom_code_nag_ignores() {
 global $current_user;
 $user_id = $current_user->ID;
         
+	if ( isset($_GET['bps_bonus_code_dismiss_all_nag_ignore']) && '0' == $_GET['bps_bonus_code_dismiss_all_nag_ignore'] ) {
+		add_user_meta($user_id, 'bps_bonus_code_dismiss_all_notice', 'true', true);
+	}
+
 	if ( isset($_GET['bps_brute_force_login_protection_nag_ignore']) && '0' == $_GET['bps_brute_force_login_protection_nag_ignore'] ) {
 		add_user_meta($user_id, 'bps_brute_force_login_protection_notice', 'true', true);
 	}

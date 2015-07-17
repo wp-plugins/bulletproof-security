@@ -668,6 +668,14 @@ function bpsDeleteUserMetaDismiss() {
 		echo $text;
 	}
 
+	if ( ! delete_user_meta($user_id, 'bps_bonus_code_dismiss_all_notice') ) {
+		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Dismiss All Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
+		echo $text;
+	} else {
+		$text = '<div id="message" class="updated fade" style="color:#008000; font-weight:bold; border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.__('Success! The Bonus Custom Code: Dismiss All Notice is reset.', 'bulletproof-security').'</p><div class="bps-message-button" style="width:90px;margin-bottom:9px;"><a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Refresh Status', 'bulletproof-security').'</a></div></div>';
+		echo $text;
+	}
+
 	if ( ! delete_user_meta($user_id, 'bps_brute_force_login_protection_notice') ) {
 		$text = '<div id="message" class="updated fade" style="color:#000000; font-weight:bold; border:1px solid #999999; margin-left:70px; background-color:#ffffe0;"><p>'.__('The Bonus Custom Code: Brute Force Login Protection Dismiss Notice is NOT set. Nothing to reset.', 'bulletproof-security').'</p></div>';
 		echo $text;
@@ -1449,6 +1457,36 @@ if ( ! current_user_can('manage_options') ) {
   </tr> 
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Submenu Name Change|Addition:', 'bulletproof-security').'</strong></h3>'.__('BPS Main Menu > UI|UX Submenu name has been changed to:', 'bulletproof-security').'<br>UI|UX|Theme Skin<br>Processing Spinner<br>WP Toolbar|SLF'; echo $text; ?></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF)', 'bulletproof-security').'</strong></h3>'.__('RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.', 'bulletproof-security'); echo $text; ?></td>
+  </tr>  
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('SLF Mod|Description:', 'bulletproof-security').'</strong></h3>'.__('In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.', 'bulletproof-security'); echo $text; ?></td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Bonus Custom Code Dismiss Notice Enhancement|Improvement:', 'bulletproof-security').'</strong></h3>'.__('An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security'); echo $text; ?></td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .52', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Menu|Page: Idle Session Logout|Auth Cookie Expiration', 'bulletproof-security').'</strong></h3>'.__('BPS Security Main Menu > Idle Session Logout Cookie Expiration', 'bulletproof-security'); echo $text; ?></td>
   </tr>
   <tr>
@@ -1649,6 +1687,8 @@ for hacker and spammer protection', 'bulletproof-security').'</strong></h4>'; ec
 <div id="bpsProVersions" style="padding-left:5px;">
 <div class="pro-links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a></div><br />
 
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5169/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-6/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.6', 'bulletproof-security'); ?></a></div>
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5157/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-4/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.4/10.5', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5150/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-3/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.3', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5141/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-2/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.2', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5109/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-1/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.1', 'bulletproof-security'); ?></a></div>

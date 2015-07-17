@@ -21,7 +21,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 	if ( false === ( $bps_api = get_transient('bulletproof-security_info') ) ) {
 		$bps_api = plugins_api( 'plugin_information', array( 'slug' => stripslashes( 'bulletproof-security' ) ) );
 		
-	if ( !is_wp_error( $bps_api ) ) {
+	if ( ! is_wp_error( $bps_api ) ) {
 		$bps_expire = 60 * 30; // Cache downloads data for 30 minutes
 		$bps_downloaded = array( 'downloaded' => $bps_api->downloaded );
 		maybe_serialize( $bps_downloaded );
@@ -45,7 +45,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 }
 ?>
 
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ UI Theme Skin|Processing Spinner|WP Toolbar', 'bulletproof-security'); ?></h2>
+<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ UI Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'); ?></h2>
 <div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;background-color: #000;">
 
 <?php
@@ -83,14 +83,14 @@ $bps_bottomDiv = '</p></div>';
 	<div id="bps-tabs" class="bps-menu">
     <div id="bpsHead" style="position:relative;top:0px;left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left;padding:0px 8px 0px 0px;margin:-72px 0px 0px 0px;" /></div>
 		<ul>
-			<li><a href="#bps-tabs-1"><?php _e('Skin|Spinner|Toolbar', 'bulletproof-security'); ?></a></li>
+			<li><a href="#bps-tabs-1"><?php _e('Skin|Spinner|Toolbar|SLF', 'bulletproof-security'); ?></a></li>
 			<li><a href="#bps-tabs-2"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
 		</ul>
             
 
 <div id="bps-tabs-1" class="bps-tab-page">
 
-<h2><?php _e('UI Theme Skin|Processing Spinner|WP Toolbar ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Blue|Grey|Black UI Theme Skins, Processing Spinner On|Off, WP Toolbar Display', 'bulletproof-security'); ?></span></h2>
+<h2><?php _e('UI Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'); ?><br /><span style="font-size:.75em;"><?php _e('Blue|Grey|Black UI Theme Skins, Processing Spinner On|Off, WP Toolbar Display, Script/Style Loader Filter (SLF)', 'bulletproof-security'); ?></span></h2>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
@@ -99,10 +99,10 @@ $bps_bottomDiv = '</p></div>';
   <tr>
     <td class="bps-table_cell_help">
 
-<h3 style="margin:0px 0px 10px 0px;"><?php _e('UI Theme Skin|Processing Spinner|WP Toolbar', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+<h3 style="margin:0px 0px 10px 0px;"><?php _e('UI Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'); ?>  <button id="bps-open-modal1" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
 
-<div id="bps-modal-content1" title="<?php _e('UI Theme Skin|Processing Spinner|WP Toolbar', 'bulletproof-security'); ?>">
-	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('Select a UI Theme Skin', 'bulletproof-security').'</strong><br>'.__('Select a UI Theme Skin and click the Save Skin button.', 'bulletproof-security').'<br><br><strong>'.__('Notes:', 'bulletproof-security').'</strong><br>- '.__('All elements and CSS properties should automatically be refreshed when you select and save your Theme Skin. If some Theme Skin elements or properties are not displaying correctly, Refresh your Browser.', 'bulletproof-security').'<br><br>- '.__('The Black and Grey UI Theme Skins require WordPress 3.8 or higher. If you have an older version of WordPress (3.7 or below) then ONLY the Blue UI Theme Skin is available.', 'bulletproof-security').'<br><br><strong>'.__('Turn On|Off The Processing Spinner:', 'bulletproof-security').'</strong><br>'.__('The Processing Spinner is displayed during processing of the Forms listed below. The Processing Spinner includes a Cancel button to cancel the Form processing. The Processing Spinner can be turned off if you do not want to see it. If the Processing Spinner is not displaying correctly or at all then either your theme or another plugin is interfering with it. Since the Processing Spinner is just a visual enhancement it is not critical that it is being displayed.', 'bulletproof-security').'<br><br><strong>'.__('Forms That Display The Processing Spinner:', 'bulletproof-security').'</strong><br>'.__('DB Backup Job Processing, DB Table Names & Character Length Table and DB Table Prefix Changer.', 'bulletproof-security').'<br><br><strong>'.__('WP Toolbar Functionality In BPS Plugin Pages:', 'bulletproof-security').'</strong><br>'.__('This option affects the WP Toolbar in BPS plugin pages ONLY and does not affect the WP Toolbar anywhere else on your site. WP Toolbar additional menu items (nodes) added by other plugins and themes can cause problems for BPS when the WP Toolbar is loaded in BPS plugin pages. This option allows you to load only the default WP Toolbar without any additional menu items (nodes) loading/displayed on BPS plugin pages or to load the WP Toolbar with any/all other menu items (nodes) that have been added by other plugins and themes. The default setting is: Load Only The Default WP Toolbar (without loading any additional menu items (nodes) from other plugins or themes). If the BPS Processing Spinner is not working/displaying correctly then set this option to the default setting: Load Only The Default WP Toolbar.', 'bulletproof-security'); echo $text; ?></p>
+<div id="bps-modal-content1" title="<?php _e('UI Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'); ?>">
+	<p><?php $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br><strong>'.__('Select a UI Theme Skin', 'bulletproof-security').'</strong><br>'.__('Select a UI Theme Skin and click the Save Skin button.', 'bulletproof-security').'<br><br><strong>'.__('Notes:', 'bulletproof-security').'</strong><br>- '.__('All elements and CSS properties should automatically be refreshed when you select and save your Theme Skin. If some Theme Skin elements or properties are not displaying correctly, Refresh your Browser.', 'bulletproof-security').'<br><br>- '.__('The Black and Grey UI Theme Skins require WordPress 3.8 or higher. If you have an older version of WordPress (3.7 or below) then ONLY the Blue UI Theme Skin is available.', 'bulletproof-security').'<br><br><strong>'.__('Turn On|Off The Processing Spinner:', 'bulletproof-security').'</strong><br>'.__('The Processing Spinner is displayed during processing of the Forms listed below. The Processing Spinner includes a Cancel button to cancel the Form processing. The Processing Spinner can be turned off if you do not want to see it. If the Processing Spinner is not displaying correctly or at all then either your theme or another plugin is interfering with it. Since the Processing Spinner is just a visual enhancement it is not critical that it is being displayed.', 'bulletproof-security').'<br><br><strong>'.__('Forms That Display The Processing Spinner:', 'bulletproof-security').'</strong><br>'.__('DB Backup Job Processing, DB Table Names & Character Length Table and DB Table Prefix Changer.', 'bulletproof-security').'<br><br><strong>'.__('WP Toolbar Functionality In BPS Plugin Pages:', 'bulletproof-security').'</strong><br>'.__('This option affects the WP Toolbar in BPS plugin pages ONLY and does not affect the WP Toolbar anywhere else on your site. WP Toolbar additional menu items (nodes) added by other plugins and themes can cause problems for BPS when the WP Toolbar is loaded in BPS plugin pages. This option allows you to load only the default WP Toolbar without any additional menu items (nodes) loading/displayed on BPS plugin pages or to load the WP Toolbar with any/all other menu items (nodes) that have been added by other plugins and themes. The default setting is: Load Only The Default WP Toolbar (without loading any additional menu items (nodes) from other plugins or themes). If the BPS Processing Spinner is not working/displaying correctly then set this option to the default setting: Load Only The Default WP Toolbar.', 'bulletproof-security').'<br><br><strong>'.__('Script|Style Loader Filter (SLF) In BPS Plugin Pages:', 'bulletproof-security').'</strong><br>'.__('SLF is set to Off by default. If BPS plugin pages are not displaying visually correct then select the Turn On SLF option and click the Save Option button. This option prevents other plugin and theme scripts, which break BPS plugin pages visually, from loading in BPS plugin pages. In some cases turning the SLF option On can cause an even worse problem, which is that BPS plugin pages load extremely slowly. So if you turn On the SLF option and BPS plugin pages are displaying visually correct, but BPS plugin pages are loading extremely slowly then unfortunately turning Off SLF is the lesser of the two problems - BPS plugin pages will not display visually correct.', 'bulletproof-security'); echo $text; ?></p>
 </div>
 
 <div id="UI-Theme-Skin" style="width:340px;">
@@ -146,6 +146,21 @@ $bps_bottomDiv = '</p></div>';
 <option value="allnodes" <?php selected('allnodes', $UIWPToptions['bps_wpt_nodes']); ?>><?php _e('Load WP Toolbar With All Menu Items', 'bulletproof-security'); ?></option>
 </select>
 <input type="submit" name="Submit-UI-WP-Toolbar" class="button bps-button" style="margin:10px 0px 10px 0px;" value="<?php esc_attr_e('Save Option', 'bulletproof-security') ?>" />
+</form>
+</div>
+
+<div id="Script-Loader-Filter" style="width:340px;">
+<form name="script-loader-filter-form" action="options.php" method="post">
+	<?php settings_fields('bulletproof_security_options_SLF'); ?> 
+	<?php $bpsPro_SLF_options = get_option('bulletproof_security_options_SLF'); ?>
+
+	<label for="SLF"><?php _e('Script|Style Loader Filter (SLF) In BPS Plugin Pages:', 'bulletproof-security'); ?></label><br />
+	<label for="SLF" style="color:#2ea2cc;"><?php _e('Click the Read Me help button for information', 'bulletproof-security'); ?></label><br />
+<select name="bulletproof_security_options_SLF[bps_slf_filter]" style="width:265px;">
+<option value="Off" <?php selected('Off', $bpsPro_SLF_options['bps_slf_filter']); ?>><?php _e('Turn Off SLF', 'bulletproof-security'); ?></option>
+<option value="On" <?php selected('On', $bpsPro_SLF_options['bps_slf_filter']); ?>><?php _e('Turn On SLF', 'bulletproof-security'); ?></option>
+</select>
+<input type="submit" name="Submit-SLF" class="button bps-button" style="margin:10px 0px 10px 0px;" value="<?php esc_attr_e('Save Option', 'bulletproof-security') ?>" />
 </form>
 </div>
 

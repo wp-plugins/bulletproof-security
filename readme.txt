@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.0 
 Tested up to: 4.2.2
-Stable tag: .52
+Stable tag: .52.1
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -298,11 +298,12 @@ WordPress is already very secure, but every website, no matter what type of plat
 4. Click the Preview button.
 5. Click the Turn On button.
 
-* <strong>UI|UX Theme Skin|Processing Spinner|WP Toolbar</strong>
+* <strong>UI|UX Theme Skin|Processing Spinner|WP Toolbar|SLF</strong>
 1. Select a Theme Skin.
 2. Click the Save Skin button.
 3. Choose to Turn the Processing Spinner On|Off (On by Default).
 4. Choose WP Toolbar Functionality In BPS Plugin Pages (Load Only The Default WP Toolbar by Default).
+5. Choose On|Off for Script|Style Loader Filter (SLF) In BPS Plugin Pages. See BPS Read Me help button for details.
 
 == Frequently Asked Questions ==
 
@@ -340,10 +341,7 @@ If you accidentally activated BulletProof Modes without first running the Setup 
 
 = Do Idle Session Logout (ISL) or Auth Cookie Expiration (ACE) affect all website visitors to your website? =
 
-The Idle Session Logout (ISL) javascript code is only loaded if a User is logged into your website (depends on your ISL option settings for User Accounts/Roles) and is specific to only that User's Browser/Client Browser and Login Session. Auth Cookie Expiration (ACE) is a WordPress Authentication Cookie that is set when a User logs into your website. Visitors that visit your website that are not logged into your website are not affected in any way by ISL or ACE.
-
-= Can Idle Session Logout (ISL) be used to log all Users out of a site?  Can ISL be used to prevent anyone from logging into a site? =
-Yes. If you set the Idle Session Logout Time in Minutes to 0 then this will logout all logged in Users and also logout a User as soon as they login. <strong>CAUTION:</strong> If you do NOT enter your User Account name in the ISL User Account Exceptions text box then you will also be logged out of the site and will not be able to login to the site. If you accidentally lock yourself out of your site then use the BPS Pro XTF tools Turn Off|Deactivate Idle Session Logout (ISL) XTF Form option if you have BPS Pro installed. For BPS free, use FTP or your web host control panel file manager and edit the /bulletproof-security/bulletproof-security.php file and change: <code>if ( $BPS_ISL_options['bps_isl'] == 'On' ) {</code>  to:  <code>if ( $BPS_ISL_options['bps_isl'] == '0' ) {</code> (you are changing the value from "On" to "0"). Log into your site, go to the ISL page and change/fix your ISL settings.
+The Idle Session Logout (ISL) javascript code is only loaded if a User is logged into your website (depends on your ISL option settings for User Accounts/Roles) and is specific to only that User's Browser/Client Browser and Login Session. Auth Cookie Expiration (ACE) is a WordPress Authentication Cookie that is set when a User logs into your website. Visitors that visit your website that are not logged into your website are not affected in any way by ISL or ACE. 
 
 = Can the Idle Session Logout Time be changed while Users are logged in or after a User has already logged in? =
 
@@ -464,6 +462,21 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .52.1 =
+* Submenu Name Change|Addition:
+* BPS Main Menu > UI|UX Submenu name has been changed to:
+* UI|UX|Theme Skin
+* Processing Spinner
+* WP Toolbar|SLF
+* Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF)
+* RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.
+* SLF Mod|Description:
+* In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.
+* Bonus Custom Code Dismiss Notice Enhancement|Improvement:
+* An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.
+
 = .52 =
 * New Menu|Page: Idle Session Logout|Auth Cookie Expiration
 * New Feature: Idle Session Logout (ISL)
@@ -472,9 +485,6 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 * <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
 * New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file
 * <a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" title="410 Gone Usage Info" rel="nofollow" target="_blank">410 Gone Usage Info:</a> A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.
-* New Core Enhancement|Improvement: Rogue Script Killer
-* <a href="http://forum.ait-pro.com/forums/topic/remove-plugin-scripts-from-loading-in-other-plugin-pages/" title="Roque Script Killer Info" rel="nofollow" target="_blank">Roque Script Killer Info:</a> Additional filters added to kill/null Roque scripts and styles in other plugins and themes from loading in BPS plugin pages and breaking BPS plugin js and css scripts. Nulls/Kills Rogue Scripts from loading in BPS plugin pages. Nulls/Kills Rogue Styles from loading in BPS plugin pages. Note: If you are seeing 404 errors in your Security log like this: jquery-ui.piklist.css-roque-script-nulled then see the link above for how to prevent these 404 errors from being logged in your Security Log.
-* 
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
 * jQuery Custom Classes added to all BPS jQuery code.
 * CSS and js file name changes: -ui- used in naming convention.
@@ -808,20 +818,20 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .52 =
-* New Menu|Page: Idle Session Logout|Auth Cookie Expiration
-* New Feature: Idle Session Logout (ISL)
-* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
-* New Feature: Auth Cookie Expiration (ACE)
-* <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
-* New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file
-* <a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" title="410 Gone Usage Info" rel="nofollow" target="_blank">410 Gone Usage Info:</a> A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.
-* New Core Enhancement|Improvement: Rogue Script Killer
-* <a href="http://forum.ait-pro.com/forums/topic/remove-plugin-scripts-from-loading-in-other-plugin-pages/" title="Roque Script Killer Info" rel="nofollow" target="_blank">Roque Script Killer Info:</a> Additional filters added to kill/null Roque scripts and styles in other plugins and themes from loading in BPS plugin pages and breaking BPS plugin js and css scripts. Nulls/Kills Rogue Scripts from loading in BPS plugin pages. Nulls/Kills Rogue Styles from loading in BPS plugin pages. Note: If you are seeing 404 errors in your Security log like this: jquery-ui.piklist.css-roque-script-nulled then see the link above for how to prevent these 404 errors from being logged in your Security Log.
+= .52.1 =
+* Submenu Name Change|Addition:
+* BPS Main Menu > UI|UX Submenu name has been changed to:
+* UI|UX|Theme Skin
+* Processing Spinner
+* WP Toolbar|SLF
+* Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF)
+* RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.
+* SLF Mod|Description:
+* In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.
+* Bonus Custom Code Dismiss Notice Enhancement|Improvement:
+* An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* jQuery Custom Classes added to all BPS jQuery code.
-* CSS and js file name changes: -ui- used in naming convention.
-* jQuery UI Dialog Read Me Help button hide effect changed from explode to blind.
+* Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.
 
 == Help Info ==
 
