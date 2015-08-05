@@ -111,7 +111,7 @@ function bpsPro_DBBackup_deny_all() {
 			return;
 		}
 
-		if ( !file_exists($create_denyall_htaccess_file) ) { 
+		if ( ! file_exists($create_denyall_htaccess_file) ) { 
 
 			$handle = fopen( $create_denyall_htaccess_file, 'w+b' );
     		fwrite( $handle, $denyall_content );

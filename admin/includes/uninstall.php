@@ -31,11 +31,11 @@ function bpsPro_pop_get_message() {
 
 <style>
 <!--
-.wp-dialog .ui-dialog-titlebar-close {visibility:hidden;}
+.wp-dialog.bps-dialog .ui-dialog-titlebar-close {visibility:hidden;}
 
 #bps-pop-uninstall .button {height:28px;}
-#bps-pop-uninstall .bps-button {background:#0490b3;border-color:#037c9a;color:white;-webkit-box-shadow: inset 0 1px 0 #22cffb, 0 1px 0 rgba(0, 0, 0, 0.15);box-shadow:inset 0 1px 0 #22cffb, 0 1px 0 rgba(0, 0, 0, 0.15);}
-#bps-pop-uninstall .bps-button:hover, #bps-container .bps-button:focus {background:#05b5e1;border-color:#036881;color:white;-webkit-box-shadow:inset 0 1px 0 #09cafa;    box-shadow:inset 0 1px 0 #09cafa;}
+#bps-pop-uninstall .bps-button {background:#0490b3;border-color:#037c9a;color:white;-webkit-box-shadow:inset 0 1px 0 #22cffb, 0 1px 0 rgba(0, 0, 0, 0.15);box-shadow:inset 0 1px 0 #22cffb, 0 1px 0 rgba(0, 0, 0, 0.15);}
+#bps-pop-uninstall .bps-button:hover, #bps-container .bps-button:focus {background:#05b5e1;border-color:#036881;color:white;-webkit-box-shadow:inset 0 1px 0 #09cafa;box-shadow:inset 0 1px 0 #09cafa;}
 #bps-pop-uninstall .bps-button:focus {-webkit-box-shadow:inset 0 1px 0 #09cafa, 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);box-shadow:inset 0 1px 0 #09cafa, 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);}
 #bps-pop-uninstall .bps-button:active {background:#037c9a;border-color:#036881;color:white;-webkit-box-shadow:inset 0 2px 5px -3px rgba(0, 0, 0, 0.5), 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);box-shadow:inset 0 2px 5px -3px rgba(0, 0, 0, 0.5), 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);}
 -->
@@ -67,7 +67,7 @@ jQuery(document).ready(function($){
 	var $pop = $("#bps-pop-uninstall");     
 	
 	$pop.dialog({                            
-		dialogClass: "wp-dialog",  
+		dialogClass: "wp-dialog bps-dialog",  
 		autoOpen: true,
 		show: {
 			effect: "blind",

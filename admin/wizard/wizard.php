@@ -767,7 +767,7 @@ RewriteRule . index.php [L]
 	}
 }
 
-// Pre-Installation Pre-Checks - Check if php/php.ini handler code exists in root .htaccess file, but not in Custom Code
+// Pre-installation Wizard Pre-Checks - Check if php.ini handler code exists in root .htaccess file, but not in Custom Code
 // The bpsSetupWizardCreateRootHtaccess() function will ensure that Custom Code DB options already exist if a php.ini handler is found in the root .htaccess file
 // This additional insurance check is needed in cases where users re-run the wizard at a later time & for making error/troubleshooting simpler
 function bpsSetupWizardPhpiniHandlerCheck() {
@@ -781,21 +781,31 @@ $failTextEnd = '</strong></font><br>';
 
 	if ( file_exists($file) ) {		
 
-		preg_match_all( '/AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application/', $file_contents, $matches );
-		preg_match_all( '/AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application/', $options['bps_customcode_one'], $DBmatches );
+		preg_match_all('/AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application/', $file_contents, $matches);
+		preg_match_all('/AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application/', $options['bps_customcode_one'], $DBmatches);
 		
 		if ( ! $matches[0] ) {
-		echo $successTextBegin.__('Pass! PHP/php.ini handler htaccess code check: Currently not in use, required or needed for your website/server', 'bulletproof-security').$successTextEnd;
+			echo $successTextBegin.__('Pass! PHP/php.ini handler htaccess code check: Not in use, required or needed for your website/Server', 'bulletproof-security').$successTextEnd;
 		return;
 		}
 	
 		if ( $matches[0] && $DBmatches[0] ) {
-		echo $successTextBegin.__('Pass! PHP/php.ini handler htaccess code was found in your root .htaccess file AND in BPS Custom Code', 'bulletproof-security').$successTextEnd;
+			echo $successTextBegin.__('Pass! PHP/php.ini handler htaccess code was found in your root .htaccess file AND in BPS Pro Custom Code', 'bulletproof-security').$successTextEnd;
 		}
 		
 		if ( $matches[0] && ! $DBmatches[0] ) {
-			echo '<br>'.$failTextBegin.__('Error: PHP/php.ini handler htaccess code check', 'bulletproof-security').$failTextEnd.'<br>'.__('PHP/php.ini handler htaccess code was found in your root .htaccess file, but was NOT found in BPS Custom Code. Do NOT click the Setup Wizard button yet and instead click this Forum Link ', 'bulletproof-security').'<a href="http://forum.ait-pro.com/forums/topic/pre-installation-wizard-checks-phpphp-ini-handler-htaccess-code-check/" target="_blank" title="Link opens in a new Browser window"><strong>'.__('Add php.ini handler htaccess code to BPS Custom Code', 'bulletproof-security').'</a></strong>'.__(' for instructions on how to copy your PHP/php.ini handler htaccess code to BPS Custom Code before running the Setup Wizard.', 'bulletproof-security').'<br><br>';	
-		
+			
+			preg_match_all('/(([#\s]{1,}|)(AddHandler|SetEnv PHPRC|suPHP_ConfigPath|Action application).*\s*){1,}/', $file_contents, $h_matches );			
+			
+			foreach ( $h_matches[0] as $Key => $Value ) {
+
+				$BPS_CC_Options = array( 'bps_customcode_one' => '# PHP/php.ini handler htaccess code' . "\n" . trim( $Value, " \n\r" ) . "\n\n" . $options['bps_customcode_one'] );	
+
+				foreach( $BPS_CC_Options as $key => $value ) {
+					update_option('bulletproof_security_options_customcode', $BPS_CC_Options);
+				}
+			}
+			echo $successTextBegin.__('Pass! PHP/php.ini handler root htaccess code added/created in BPS Pro Custom Code', 'bulletproof-security').$successTextEnd;
 		}
 	}
 }
@@ -1570,7 +1580,7 @@ bpsSetupWizardPrechecks();
 	?>
 	<strong><a href="http://forum.ait-pro.com/forums/topic/gdmw/" title="Go Daddy Managed WordPress Hosting (GDMW)" target="_blank"><?php _e('Go Daddy Managed WordPress Hosting (GDMW)', 'bulletproof-security'); ?></a></strong><br /><br />	
 	<?php
-    $dialog_text = '<strong>'.__('Go Daddy Managed WordPress Hosting (GDMW):', 'bulletproof-security').'</strong><br>'.__('This option is ONLY for a special type of Go Daddy Hosting account called "Managed WordPress Hosting" and is NOT for regular/standard Go Daddy Hosting account types. Leave the default setting set to No, unless you have a Go Daddy Managed WordPress Hosting account. See the Forum Help Links section above for more information.', 'bulletproof-security'); 
+    $dialog_text = '<strong>'.__('Go Daddy Managed WordPress Hosting (GDMW):', 'bulletproof-security').'</strong><br>'.__('This option is ONLY for a special type of Go Daddy Hosting account called "Managed WordPress Hosting" and is NOT for regular/standard Go Daddy Hosting account types. Leave the default setting set to No, unless you have a Go Daddy Managed WordPress Hosting account. See the Forum Help Links section above for more information.', 'bulletproof-security').'<br><br><strong>'.__('Network|Multisite Sitewide Login Security Settings', 'bulletproof-security').'</strong><br>'.__('This option is for Network|Multisite sites ONLY. This is an independent option Form that creates and saves Login Security DB option settings for all Network sites when you click the Save Network LSM Options Sitewide button. If Login Security option settings have already been setup and saved for any Network site then those Login Security option settings will NOT be changed. If Login Security options settings have NOT already been setup and saved for any Network site then those Login Security option settings will be created and saved with these default settings: Max Login Attempts: 3, Automatic Lockout Time: 60, Manual Lockout Time: 60, Max DB Rows To Show: blank show all rows, Turn On|Turn Off: Turn On Login Security, Logging Options: Log Only Account Lockouts, Error Messages: Standard WP Login Errors, Attempts Remaining: Show Login Attempts Remaining, Password Reset: Enable Password Reset, Sort DB Rows: Ascending - Show Oldest Login First.', 'bulletproof-security'); 
 	echo $dialog_text; 
 	?>
     </td>
@@ -1590,6 +1600,91 @@ bpsSetupWizardPrechecks();
 </select><br />
 <input type="submit" name="Submit-Wizard-GDMW" class="button bps-button" style="margin:10px 0px 20px 0px;" value="<?php esc_attr_e('Save GDMW Option', 'bulletproof-security') ?>" />
 </form>    
+
+<form name="bpsNetLSM" action="admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-2" method="post">
+<?php wp_nonce_field('bulletproof_security_net_lsm'); ?>
+<div>
+<strong><label for="NetLSM"><?php _e('Network|Multisite Sitewide Login Security Settings', 'bulletproof-security'); ?></label></strong><br />  
+<input type="submit" name="Submit-Net-LSM" class="button bps-button" style="margin:10px 0px 20px 0px;" value="<?php esc_attr_e('Save Network LSM Options Sitewide', 'bulletproof-security') ?>" />
+</div>
+</form>
+
+<?php
+// Network|Multisite: update/save Login Security DB option settings for all sites
+if ( isset( $_POST['Submit-Net-LSM'] ) && current_user_can('manage_options') ) {
+		check_admin_referer( 'bulletproof_security_net_lsm' );
+
+	if ( is_multisite() ) {
+	
+		if ( wp_is_large_network() ) {
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			$text = '<font color="red"><strong>'.__('Error: Your Network site exceeds the default WP criteria for a large network site. Either you have more than 10,000 users or more than 10,000 sites. Please post a new forum thread in the BPS plugin support forum on wordpress.org for assistance.', 'bulletproof-security').'</strong></font>';
+			echo $text;
+			echo '</p></div>';
+		
+		return;
+		}
+
+		$successMessage = __(' LSM DB Options created or updated Successfully!', 'bulletproof-security');
+		$successTextBegin = '<font color="green"><strong>';
+		$successTextEnd = '</strong></font><br>';
+
+		$network_ids = wp_get_sites();
+
+		foreach ( $network_ids as $key => $value ) {
+			
+			$net_id = $value['blog_id'];
+		
+			$bps_Net_lsm = 'bulletproof_security_options_login_security';
+	
+			$BPS_Net_LSM_Options = array(
+			'bps_max_logins' 				=> '3', 
+			'bps_lockout_duration' 			=> '60', 
+			'bps_manual_lockout_duration' 	=> '60', 
+			'bps_max_db_rows_display' 		=> '', 
+			'bps_login_security_OnOff' 		=> 'On', 
+			'bps_login_security_logging' 	=> 'logLockouts', 
+			'bps_login_security_errors' 	=> 'wpErrors', 
+			'bps_login_security_remaining' 	=> 'On', 
+			'bps_login_security_pw_reset' 	=> 'enable',  
+			'bps_login_security_sort' 		=> 'ascending' 
+			);
+
+			if ( ! get_blog_option( $net_id, $bps_Net_lsm ) ) {	
+		
+				foreach( $BPS_Net_LSM_Options as $key => $value ) {
+					update_blog_option( $net_id, 'bulletproof_security_options_login_security', $BPS_Net_LSM_Options );
+				}
+	
+				echo $successTextBegin.'Site: '.$net_id.$successMessage.$successTextEnd;
+			
+			} else {
+
+				$BPS_LSM_Options_Net = get_blog_option( $net_id, 'bulletproof_security_options_login_security' );
+		
+				$BPS_Net_Options_lsm = array(
+				'bps_max_logins' 				=> $BPS_LSM_Options_Net['bps_max_logins'], 
+				'bps_lockout_duration' 			=> $BPS_LSM_Options_Net['bps_lockout_duration'], 
+				'bps_manual_lockout_duration' 	=> $BPS_LSM_Options_Net['bps_manual_lockout_duration'], 
+				'bps_max_db_rows_display' 		=> $BPS_LSM_Options_Net['bps_max_db_rows_display'], 
+				'bps_login_security_OnOff' 		=> $BPS_LSM_Options_Net['bps_login_security_OnOff'], 
+				'bps_login_security_logging' 	=> $BPS_LSM_Options_Net['bps_login_security_logging'], 
+				'bps_login_security_errors' 	=> $BPS_LSM_Options_Net['bps_login_security_errors'], 
+				'bps_login_security_remaining' 	=> $BPS_LSM_Options_Net['bps_login_security_remaining'], 
+				'bps_login_security_pw_reset' 	=> $BPS_LSM_Options_Net['bps_login_security_pw_reset'],  
+				'bps_login_security_sort' 		=> $BPS_LSM_Options_Net['bps_login_security_sort'] 
+				);
+
+				foreach( $BPS_Net_Options_lsm as $key => $value ) {
+					update_blog_option( $net_id, 'bulletproof_security_options_login_security', $BPS_Net_Options_lsm );
+				}
+			
+					echo $successTextBegin.'Site: '.$net_id.$successMessage.$successTextEnd;
+			}
+		}
+	}
+}
+?>
 
 	</td>
   </tr>

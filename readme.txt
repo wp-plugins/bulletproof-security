@@ -2,9 +2,9 @@
 Contributors: AITpro
 Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-support/bulletproof-security-donations-page/
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
-Requires at least: 3.0 
-Tested up to: 4.2.2
-Stable tag: .52.1
+Requires at least: 3.7 
+Tested up to: 4.2.4
+Stable tag: .52.2
 
 WordPress Website Security Protection: Firewall Security, Login Security, Database Security... Effective, Reliable, Easy to use...
 
@@ -146,7 +146,7 @@ WordPress is already very secure, but every website, no matter what type of plat
 * Anti Comment Spam .htaccess code - works together with Akismet or other Spam plugins to keep Comment Spam at a minimum
 * Anti Comment Spambot .htaccess code - Forbid Empty Referrer Spambots
 * Author ID|User ID|Username Bot Probe Protection
-* Custom Code feature: Add|Edit|Modify|Save additional Bonus or personal custom .htaccess code
+* Custom Code feature: Add|Edit|Modify|Save|Export|Import additional Bonus or personal custom .htaccess code
 * WordPress readme.html and /wp-admin/install.php protected with .htaccess security protection
 * wp-config.php and bb-config.php files protected with .htaccess security protection
 * php.ini and php5.ini files protected with .htaccess security protection
@@ -339,6 +339,10 @@ Use FTP or your web host control panel file manager and rename the /bulletproof-
 
 If you accidentally activated BulletProof Modes without first running the Setup Wizard or clicking the AutoMagic buttons or you added additional invalid custom htaccess code to BPS Custom Code or your web host does not allow you to lock your root .htaccess file and your htaccess file was locked: Use FTP or your Web Host Control Panel File Manager and delete the .htaccess files that BPS creates in your website root folder and your wp-admin folder. Deleting the .htaccess files in your website root folder & wp-admin folder will allow you to log back in to your website. If your web host does not allow locking the root .htaccess file then go to htaccess File Editor tab page and click the Turn Off AutoLock button. Either run the Setup Wizard again or click the AutoMagic buttons and activate BulletProof Modes again. If the problem was caused by invalid custom htaccess code added to BPS Custom Code then remove/delete the invalid custom htaccess code from BPS Custom Code before activating BulletProof Modes again.
 
+= What to do if you cannot log back into my website due to an Idle Session Logout (ISL) problem? =
+
+If you accidentally lock yourself out of your site then use FTP or your web host control panel file manager and edit the /bulletproof-security/bulletproof-security.php file and change: <code>if ( $BPS_ISL_options['bps_isl'] == 'On' ) {  to: if ( $BPS_ISL_options['bps_isl'] == '0' ) {</code> (you are changing the value from "On" to "0"). Log into your site, go to the ISL page and change/fix your ISL settings.
+
 = Do Idle Session Logout (ISL) or Auth Cookie Expiration (ACE) affect all website visitors to your website? =
 
 The Idle Session Logout (ISL) javascript code is only loaded if a User is logged into your website (depends on your ISL option settings for User Accounts/Roles) and is specific to only that User's Browser/Client Browser and Login Session. Auth Cookie Expiration (ACE) is a WordPress Authentication Cookie that is set when a User logs into your website. Visitors that visit your website that are not logged into your website are not affected in any way by ISL or ACE. 
@@ -396,7 +400,7 @@ BulletProof Security works on all web hosts except for these 3 web hosts: <a hre
 
 = I am seeing Security Log entries in my BulletProof Security Log. What do they mean? =
 
-Your Security Log will log 400, 403 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. The Security Log logs all 400 and 403 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file. 99.99% of what is logged in the Security Log is blocked hackers, spammers, bad bots, scrapers, miners, etc. The Security Log is also a troubleshooting tool. If BPS is blocking something legitimate in another plugin or theme then exactly what is being blocked in another plugin or theme by BPS will be logged in the Security Log. A whitelist rule can be created to allow anything legitmate that is being blocked in another plugin or theme.
+Your Security Log will log 400, 403, 410 and 404 (requires copying the BPS 404 logging code to your Theme's 404.php Template) Errors. The Security Log logs all 400, 403 and 410 HTTP Response Status Codes by default. You can also log 404 HTTP Response Status Codes by opening this BPS 404 Template file - /bulletproof-security/404.php and copying the logging code into your Theme's 404 Template file. When you open the BPS 404.php file you will see simple instructions on how to add the 404 logging code to your Theme's 404 Template file. 99.99% of what is logged in the Security Log is blocked hackers, spammers, bad bots, scrapers, miners, etc. The Security Log is also a troubleshooting tool. If BPS is blocking something legitimate in another plugin or theme then exactly what is being blocked in another plugin or theme by BPS will be logged in the Security Log. A whitelist rule can be created to allow anything legitmate that is being blocked in another plugin or theme.
 
 = HTTP Status Codes (Internet Standard) =
 
@@ -461,6 +465,26 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 8. BulletProof Security - Maintenance Mode examples
 
 == Changelog ==
+
+= .52.2 =
+* Setup Wizard Automation Enhancement|Improvement:
+* The Setup Wizard Pre-Installation Checks automatically detects php/php.ini handler htaccess code in an existing root htaccess file and creates/saves that php/php.ini handler code in BPS Custom Code and the new root htaccess file that is automatically created by the Wizard. Prior to BPS .52.2, php/php.ini handler htaccess code required additional manual steps to complete this task.
+* HUD Check Enhancement|Improvement: php/php.ini handler htaccess code check:
+* The php/php.ini handler htaccess code HUD check now displays a link to the Setup Wizard page. Clicking the link and visiting the Setup Wizard page automatically creates/saves that php/php.ini handler code in BPS Custom Code.
+* New Feature: Custom Code Export|Import|Delete Tools:
+* Export Tool: The Custom Code Export tool exports (copies) all of your Root and wp-admin custom htaccess code into the cc-master.zip file, which you can then download to your computer.
+* Import Tool: The Custom Code Import tool imports all of your Root and wp-admin Custom Code from the cc-master.zip file on your computer into the Custom Code text boxes and saves your imported custom htaccess code to your WordPress Database. You can unzip the cc-master.zip file on your computer to extract the cc-master.txt file for editing to add/change any custom htaccess code in the cc-master.txt file.
+* Delete Tool: The Custom Code Delete tool deletes all of your Root and wp-admin Custom Code from all of the Custom Code text boxes and your WordPress Database. The Delete tool can be used for troubleshooting possible invalid/bad custom htaccess code issues/problems or simply just to delete all custom htaccess code in all of the Custom Code text boxes.
+* New Option: Setup Wizard Options: Network|Multisite Sitewide Login Security Settings:
+* Network|Multisite Sitewide Login Security Settings: This option is for Network|Multisite sites ONLY. This is an independent option Form that creates and saves Login Security DB option settings for all Network sites when you click the Save Network LSM Options Sitewide button. If Login Security option settings have already been setup and saved for any Network site then those Login Security option settings will NOT be changed. If Login Security options settings have NOT already been setup and saved for any Network site then those Login Security option settings will be created and saved with default settings.
+* BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
+* Displayed message text correction for W3TC and WP Super Cache htaccess code error check.
+* General Help and info section added to Whats New page.
+* BPS Plugin Uninstall Options on WordPress Plugins page - Uninstaller CSS class name added for modal display problem.
+* htaccess Core tab page structure/order change.
+* Dev Core: WP Plugins page BPS plugin description changes.
+* DB Backup: Additional help info regarding Export|Import of Backup Jobs DB Table.
+* readme.txt: Requires at least: 3.0 changed to Requires at least: 3.7
 
 = .52.1 =
 * Submenu Name Change|Addition:
@@ -818,20 +842,25 @@ Additional function checking code has been added in cases where the mysqli_get_c
 
 == Upgrade Notice ==
 
-= .52.1 =
-* Submenu Name Change|Addition:
-* BPS Main Menu > UI|UX Submenu name has been changed to:
-* UI|UX|Theme Skin
-* Processing Spinner
-* WP Toolbar|SLF
-* Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF)
-* RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.
-* SLF Mod|Description:
-* In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.
-* Bonus Custom Code Dismiss Notice Enhancement|Improvement:
-* An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.
+= .52.2 =
+* Setup Wizard Automation Enhancement|Improvement:
+* The Setup Wizard Pre-Installation Checks automatically detects php/php.ini handler htaccess code in an existing root htaccess file and creates/saves that php/php.ini handler code in BPS Custom Code and the new root htaccess file that is automatically created by the Wizard.
+* HUD Check Enhancement|Improvement: php/php.ini handler htaccess code check:
+* The php/php.ini handler htaccess code HUD check now displays a link to the Setup Wizard page. Clicking the link and visiting the Setup Wizard page automatically creates/saves that php/php.ini handler code in BPS Custom Code.
+* New Feature: Custom Code Export|Import|Delete Tools:
+* Export Tool: The Custom Code Export tool exports (copies) all of your Root and wp-admin custom htaccess code into the cc-master.zip file, which you can then download to your computer.
+* Import Tool: The Custom Code Import tool imports all of your Root and wp-admin Custom Code from the cc-master.zip file on your computer into the Custom Code text boxes and saves your imported custom htaccess code to your WordPress Database. You can unzip the cc-master.zip file on your computer to extract the cc-master.txt file for editing to add/change any custom htaccess code in the cc-master.txt file.
+* Delete Tool: The Custom Code Delete tool deletes all of your Root and wp-admin Custom Code from all of the Custom Code text boxes and your WordPress Database. The Delete tool can be used for troubleshooting possible invalid/bad custom htaccess code issues/problems or simply just to delete all custom htaccess code in all of the Custom Code text boxes.
+* New Option: Setup Wizard Options: Network|Multisite Sitewide Login Security Settings:
+* Network|Multisite Sitewide Login Security Settings: This option is for Network|Multisite sites ONLY. This is an independent option Form that creates and saves Login Security DB option settings for all Network sites when you click the Save Network LSM Options Sitewide button.
 * BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:
-* Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.
+* Displayed message text correction for W3TC and WP Super Cache htaccess code error check.
+* General Help and info section added to Whats New page.
+* BPS Plugin Uninstall Options on WordPress Plugins page - Uninstaller CSS class name added for modal display problem.
+* htaccess Core tab page structure/order change.
+* Dev Core: WP Plugins page BPS plugin description changes.
+* DB Backup: Additional help info regarding Export|Import of Backup Jobs DB Table.
+* readme.txt: Requires at least: 3.0 changed to Requires at least: 3.7
 
 == Help Info ==
 
