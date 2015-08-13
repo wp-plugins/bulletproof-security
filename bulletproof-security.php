@@ -5,7 +5,7 @@ Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: <strong>Feature Highlights:</strong> Setup Wizard &bull; .htaccess Website Security Protection (Firewalls) &bull; Security Logging|HTTP Error Logging &bull; DB Backup &bull; DB Table Prefix Changer &bull; Login Security & Monitoring &bull; Idle Session Logout (ISL) &bull; Auth Cookie Expiration (ACE) &bull; UI Theme Skin Changer &bull; System Info: Extensive System, Server and Security Status Information &bull; FrontEnd|BackEnd Maintenance Mode
-Version: .52.2
+Version: .52.3
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,9 +28,9 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.52.2' );
-$bps_last_version = '.52.1';
-$bps_version = '.52.2';
+define( 'BULLETPROOF_VERSION', '.52.3' );
+$bps_last_version = '.52.2';
+$bps_version = '.52.3';
 $bps_readme_install_ver = '2';
 $aitpro_bullet = '<img src="'.plugins_url('/bulletproof-security/admin/images/aitpro-bullet.png').'" style="padding:0px 3px 0px 3px;" />';
 

@@ -13,7 +13,21 @@ if ( ! current_user_can('manage_options') ) {
 
 ?>
 
-<div class="wrap" style="margin-top:45px;">
+<div class="wrap" style="margin-top:45px;background-image:url('magic.png');background-repeat:no-repeat;background-size:contain;">
+
+<?php if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || @$_GET['settings-updated'] == true ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($){
+	$('html, body').animate({ scrollTop: $('.wrap').offset().top }, 0 );
+	$('html, body').animate({ scrollTop: 0 }, 500 );
+	return false;
+});
+/* ]]> */
+</script>
+
+<?php } ?>
 
 <?php
 if ( function_exists('get_transient') ) {
@@ -945,6 +959,75 @@ $search = '';
 	}
 }
 
+// Setup Wizard: pre-save Custom Code DB options for Custom Code Export|Import features if they do not exist
+function bpsSetupWizardCustomCodePresave() {
+				
+	$bps_Root_CC_Options = 'bulletproof_security_options_customcode';
+
+	if ( ! is_multisite() ) {
+
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> '', 
+		'bps_customcode_server_signature' 	=> '', 
+		'bps_customcode_directory_index' 	=> '', 
+		'bps_customcode_server_protocol' 	=> '', 
+		'bps_customcode_error_logging' 		=> '', 
+		'bps_customcode_deny_dot_folders' 	=> '', 
+		'bps_customcode_admin_includes' 	=> '', 
+		'bps_customcode_wp_rewrite_start' 	=> '', 
+		'bps_customcode_request_methods' 	=> '', 
+		'bps_customcode_two' 				=> '', 
+		'bps_customcode_timthumb_misc' 		=> '', 
+		'bps_customcode_bpsqse' 			=> '', 
+		'bps_customcode_deny_files' 		=> '', 
+		'bps_customcode_three' 				=> ''
+		);
+				
+	} else {
+					
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> '', 
+		'bps_customcode_server_signature' 	=> '', 
+		'bps_customcode_directory_index' 	=> '', 
+		'bps_customcode_server_protocol' 	=> '', 
+		'bps_customcode_error_logging' 		=> '', 
+		'bps_customcode_deny_dot_folders' 	=> '', 
+		'bps_customcode_admin_includes' 	=> '', 
+		'bps_customcode_wp_rewrite_start' 	=> '', 
+		'bps_customcode_request_methods' 	=> '', 
+		'bps_customcode_two' 				=> '', 
+		'bps_customcode_timthumb_misc' 		=> '', 
+		'bps_customcode_bpsqse' 			=> '', 
+		'bps_customcode_wp_rewrite_end' 	=> '', 
+		'bps_customcode_deny_files' 		=> '', 
+		'bps_customcode_three' 				=> ''
+		);					
+	}
+
+	if ( ! get_option( $bps_Root_CC_Options ) ) {			
+
+		foreach( $Root_CC_Options as $key => $value ) {
+			update_option('bulletproof_security_options_customcode', $Root_CC_Options);
+		}
+	}
+
+	$bps_wpadmin_CC_Options = 'bulletproof_security_options_customcode_WPA';			
+
+	$wpadmin_CC_Options = array(
+	'bps_customcode_deny_files_wpa' => '', 
+	'bps_customcode_one_wpa' 		=> '', 
+	'bps_customcode_two_wpa' 		=> '', 
+	'bps_customcode_bpsqse_wpa' 	=> ''
+	);
+			
+	if ( ! get_option( $bps_wpadmin_CC_Options ) ) {			
+		
+		foreach( $wpadmin_CC_Options as $key => $value ) {
+			update_option('bulletproof_security_options_customcode_WPA', $wpadmin_CC_Options);
+		}
+	}
+}
+
 /**************************************************/
 // BEGIN BPS Setup Wizard Pre-Installation Checks
 /**************************************************/
@@ -1408,6 +1491,9 @@ $failTextEnd = '</strong></font><br>';
 		}
 	}	
 	
+	// Custom Code - no echo/output: pre-save CC DB options for Custom Code Export|Import features ONLY if DB options do not exist
+	bpsSetupWizardCustomCodePresave();
+
 	echo '</p></div>';	
 	
 	echo '</span>';

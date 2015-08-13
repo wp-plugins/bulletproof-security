@@ -281,6 +281,7 @@ global $wpdb;
 
 // Update/Add/Save any new DB options/features during the BPS upgrade
 // BPS .51.8: new Login Security option: Attempts Remaining
+// BPS .52.3: Pre-save Custom Code db options for Export|Import tools if they do not exist
 function bpsPro_new_feature_autoupdate() {
 $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 	
@@ -301,6 +302,71 @@ $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 
 		foreach( $BPS_Options_lsm as $key => $value ) {
 			update_option('bulletproof_security_options_login_security', $BPS_Options_lsm);
+		}
+	}
+
+	$bps_Root_CC_Options = 'bulletproof_security_options_customcode';
+
+	if ( ! is_multisite() ) {
+
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> '', 
+		'bps_customcode_server_signature' 	=> '', 
+		'bps_customcode_directory_index' 	=> '', 
+		'bps_customcode_server_protocol' 	=> '', 
+		'bps_customcode_error_logging' 		=> '', 
+		'bps_customcode_deny_dot_folders' 	=> '', 
+		'bps_customcode_admin_includes' 	=> '', 
+		'bps_customcode_wp_rewrite_start' 	=> '', 
+		'bps_customcode_request_methods' 	=> '', 
+		'bps_customcode_two' 				=> '', 
+		'bps_customcode_timthumb_misc' 		=> '', 
+		'bps_customcode_bpsqse' 			=> '', 
+		'bps_customcode_deny_files' 		=> '', 
+		'bps_customcode_three' 				=> ''
+		);
+				
+	} else {
+					
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> '', 
+		'bps_customcode_server_signature' 	=> '', 
+		'bps_customcode_directory_index' 	=> '', 
+		'bps_customcode_server_protocol' 	=> '', 
+		'bps_customcode_error_logging' 		=> '', 
+		'bps_customcode_deny_dot_folders' 	=> '', 
+		'bps_customcode_admin_includes' 	=> '', 
+		'bps_customcode_wp_rewrite_start' 	=> '', 
+		'bps_customcode_request_methods' 	=> '', 
+		'bps_customcode_two' 				=> '', 
+		'bps_customcode_timthumb_misc' 		=> '', 
+		'bps_customcode_bpsqse' 			=> '', 
+		'bps_customcode_wp_rewrite_end' 	=> '', 
+		'bps_customcode_deny_files' 		=> '', 
+		'bps_customcode_three' 				=> ''
+		);					
+	}
+
+	if ( ! get_option( $bps_Root_CC_Options ) ) {			
+
+		foreach( $Root_CC_Options as $key => $value ) {
+			update_option('bulletproof_security_options_customcode', $Root_CC_Options);
+		}
+	}
+
+	$bps_wpadmin_CC_Options = 'bulletproof_security_options_customcode_WPA';			
+
+	$wpadmin_CC_Options = array(
+	'bps_customcode_deny_files_wpa' => '', 
+	'bps_customcode_one_wpa' 		=> '', 
+	'bps_customcode_two_wpa' 		=> '', 
+	'bps_customcode_bpsqse_wpa' 	=> ''
+	);
+			
+	if ( ! get_option( $bps_wpadmin_CC_Options ) ) {			
+		
+		foreach( $wpadmin_CC_Options as $key => $value ) {
+			update_option('bulletproof_security_options_customcode_WPA', $wpadmin_CC_Options);
 		}
 	}
 }

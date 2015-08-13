@@ -7,7 +7,21 @@ if ( ! current_user_can('manage_options') ) {
 }
 ?>
 
-<div class="wrap" style="margin-top:45px;">
+<div class="wrap" style="margin-top:45px;background-image:url('magic.png');background-repeat:no-repeat;background-size:contain;">
+
+<?php if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-SecLog-Search'] ) || @$_GET['settings-updated'] == true ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($){
+	$('html, body').animate({ scrollTop: $('.wrap').offset().top }, 0 );
+	$('html, body').animate({ scrollTop: 0 }, 500 );
+	return false;
+});
+/* ]]> */
+</script>	
+	
+<?php } ?>
 
 <?php
 if ( function_exists('get_transient') ) {
@@ -132,7 +146,7 @@ $bps_get_wp_root_secure = bps_wp_get_root_folder();
 			}	
 
 			echo $bps_topDiv;
-			$text = '<p><font color="green"><strong>'.__('Logging has been turned Off', 'bulletproof-security').'</strong></font></p>';
+			$text = '<font color="green"><strong>'.__('Logging has been turned Off', 'bulletproof-security').'</strong></font>';
 			echo $text;		
 			echo $bps_bottomDiv;
 		}
@@ -455,6 +469,8 @@ $search = '';
 </div>
 <br />
 
+<div id="SecLogRemove-Allow"></div>
+
 <div id="bpsUserAgent1" style="margin:0px 0px 0px 0px;">
 <form action="admin.php?page=bulletproof-security/admin/security-log/security-log.php" method="post">
 <?php wp_nonce_field('bulletproof_security_useragent_ignore'); ?>
@@ -472,7 +488,7 @@ $search = '';
 /**************************************/
 
 	// Initial User Agent|Bot Search Form - hands off to Dynamic Radio Button Form
-	echo '<form name="bpsDB-UA-Search" action="admin.php?page=bulletproof-security/admin/security-log/security-log.php" method="post">';
+	echo '<form name="bpsDB-UA-Search" action="admin.php?page=bulletproof-security/admin/security-log/security-log.php#SecLogRemove-Allow" method="post">';
 	wp_nonce_field('bulletproof_security_seclog_db_search');
 	echo '<strong>'.__('Remove User Agents|Bots to Allow|Log', 'bulletproof-security').'</strong><br>';
 	echo '<input type="text" name="userAgentSearchRemove" class="regular-text" style="width:320px;" value="" />';
@@ -730,7 +746,13 @@ $write_test = "";
 		fwrite($handle, $newcontentSecLog);
 	$text = '<font color="green" style="font-size:12px;"><strong>'.__('Success! Your Security Log file has been updated.', 'bulletproof-security').'</strong></font><br>';
 	echo $text;	
-    fclose($handle);
+    
+	echo $bps_topDiv;
+	$text = '<font color="green"><strong>'.__('Success! Your Security Log file has been updated.', 'bulletproof-security').'</strong></font>';
+	echo $text;	
+	echo $bps_bottomDiv;	
+	
+	fclose($handle);
 	}
 }
 $scrolltoSecLog = isset($_REQUEST['scrolltoSecLog']) ? (int) $_REQUEST['scrolltoSecLog'] : 0;

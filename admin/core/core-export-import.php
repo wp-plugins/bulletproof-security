@@ -110,7 +110,7 @@ global $bps_topDiv, $bps_bottomDiv;
 			if ( bps_Zip_CC_Master_File() == true ) {
 			
 				unlink($CC_Master);
-		
+	
 				echo $bps_topDiv;
 				$text = '<font color="green"><strong>'.__('Custom Code was exported successfully. Click the Download Zip Export button to download the Custom Code cc-master.zip file.', 'bulletproof-security').'</strong></font><br><div style="width:140px;font-size:1em;text-align:center;margin:10px 0px 0px 0px;padding:4px 6px 4px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.plugins_url( '/bulletproof-security/admin/core/cc-master.zip' ).'" style="font-size:1em;font-weight:bold;text-decoration:none;">'.__('Download Zip Export', 'bulletproof-security').'</a></div>';
 				echo $text;
@@ -191,7 +191,7 @@ global $bps_topDiv, $bps_bottomDiv;
 				
 						// Update the BPS CC DB options from the extracted cc-master.txt file and delete it.
 						if ( bpsPro_CC_DB_Update() == true ) {
-						
+					
 							$text = '<strong><font color="green">'.__('Root Custom Code Import Successful.', 'bulletproof-security').'<br>'.__('wp-admin Custom Code Import Successful.', 'bulletproof-security').'</font><br><br>'.__('Either run the Wizards again or do these steps below to add/create your Imported Custom Code in your htaccess files.', 'bulletproof-security').'<br>'.__('1. Go to the Security Modes page and click the Create secure.htaccess File AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Select the Activate Root Folder BulletProof Mode Radio button and click the Activate|Deactivate button.', 'bulletproof-security').'<br>'.__('3. Select the Activate wp-admin Folder BulletProof Mode Radio button and click the Activate|Deactivate button.', 'bulletproof-security').'</strong>';
 							echo $text;
 							
@@ -661,7 +661,7 @@ global $bps_topDiv, $bps_bottomDiv;
 				update_option('bulletproof_security_options_customcode_WPA', $wpadmin_CC_Options);
 			}
 		}
-		
+	
 		echo $bps_topDiv;		
 		$text = '<strong><font color="green">'.__('Your Root and wp-admin Custom Code has been deleted successfully.', 'bulletproof-security').'</font></strong>';
 		echo $text;

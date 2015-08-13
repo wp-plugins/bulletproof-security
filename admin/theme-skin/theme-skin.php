@@ -12,7 +12,21 @@ if ( ! current_user_can('manage_options') ) {
 }
 ?>
 
-<div class="wrap" style="margin-top:45px;">
+<div class="wrap" style="margin-top:45px;background-image:url('magic.png');background-repeat:no-repeat;background-size:contain;">
+
+<?php if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || @$_GET['settings-updated'] == true ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($){
+	$('html, body').animate({ scrollTop: $('.wrap').offset().top }, 0 );
+	$('html, body').animate({ scrollTop: 0 }, 500 );
+	return false;
+});
+/* ]]> */
+</script>
+
+<?php } ?>
 
 <?php
 if ( function_exists('get_transient') ) {

@@ -7,7 +7,21 @@ if ( ! current_user_can('manage_options') ) {
 }
 ?>
 
-<div class="wrap" style="margin-top:45px;">
+<div class="wrap" style="margin-top:45px;background-image:url('magic.png');background-repeat:no-repeat;background-size:contain;">
+
+<?php if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($){
+	$('html, body').animate({ scrollTop: $('.wrap').offset().top }, 0 );
+	$('html, body').animate({ scrollTop: 0 }, 500 );
+	return false;
+});
+/* ]]> */
+</script>
+
+<?php } ?>
 
 <?php
 if ( function_exists('get_transient') ) {
@@ -68,6 +82,8 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
 // Replace ABSPATH = wp-content/uploads
 $wp_upload_dir = wp_upload_dir();
 $bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
+$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:70px;"><p>';
+$bps_bottomDiv = '</p></div>';
 
 ?>
 </div>
@@ -105,9 +121,9 @@ $bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
 </div>
 
 <?php 
-if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); 
+if ( ! current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); 
 } else { 
-if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
+if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') && ! isset( $_POST['Submit-Headers-Check-Get'] ) && ! isset( $_POST['Submit-Headers-Check-Head'] ) ) {
 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-system_info_table">
@@ -733,7 +749,7 @@ function bps_get_proxy_real_ip_address() {
 <div id="bps-tabs-2" class="bps-tab-page">
 <h2><?php _e('Website Headers Check Tool ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Check your website Headers or another website\'s Headers by making a GET or HEAD Request', 'bulletproof-security'); ?></span></h2>
 
-<?php if ( !current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
+<?php if ( ! current_user_can('manage_options') ) { _e('Permission Denied', 'bulletproof-security'); } else { ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
@@ -749,6 +765,7 @@ function bps_get_proxy_real_ip_address() {
 // Form - wp_remote_get Headers check - GET Request Method
 // Note: htmlspecialchars displays the sanitized esc_html output
 function bps_sysinfo_get_headers_get() {
+global $bps_topDiv, $bps_bottomDiv;
 	
 	if ( isset( $_POST['Submit-Headers-Check-Get'] ) && current_user_can('manage_options') ) {
 		check_admin_referer( 'bpsHeaderCheckGet' );
@@ -757,8 +774,9 @@ function bps_sysinfo_get_headers_get() {
 	$url = esc_html($url);
 	$response = wp_remote_get( $url );
 
-	if ( !is_wp_error( $response ) ) {	
+	if ( ! is_wp_error( $response ) ) {	
 
+	echo $bps_topDiv;
 	echo '<strong>'.__('GET Request Headers: ', 'bulletproof-security').'</strong>'.htmlspecialchars($url).'<br>';
 	echo '<pre>';
 	echo 'HTTP Status Code: ';
@@ -769,17 +787,20 @@ function bps_sysinfo_get_headers_get() {
 	echo 'Headers: ';
 	print_r($response['headers']);
 	echo '</pre>';	
-
+	echo $bps_bottomDiv;
+	
 	} else {
 		
+		echo $bps_topDiv;		
 		$text = '<font color="red"><strong>'.__('Error: The WordPress wp_remote_get function is not available or is blocked on your website/server.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
+		echo $bps_bottomDiv;
 	}
 	}
 }
 ?>
 
-<form name="bpsHeadersGet" action="admin.php?page=bulletproof-security/admin/system-info/system-info.php" method="post">
+<form name="bpsHeadersGet" action="admin.php?page=bulletproof-security/admin/system-info/system-info.php#bps-tabs-2" method="post">
 <?php wp_nonce_field('bpsHeaderCheckGet'); ?>
 <div><label for="bpsHeaders"><strong><?php _e('Enter a Website URL - Example: http://www.ait-pro.com/', 'bulletproof-security'); ?></strong></label><br />
     <input type="text" name="bpsURLGET" value="" size="50" /> <br />
@@ -795,7 +816,8 @@ _e('Check your website Headers or another website\'s Headers by making a HEAD Re
 // Form - cURL Headers check - HEAD Request Method
 // Note: htmlspecialchars displays the sanitized esc_html output
 function bps_sysinfo_get_headers_head() {
-
+global $bps_topDiv, $bps_bottomDiv;
+	
 	if ( isset( $_POST['Submit-Headers-Check-Head'] ) && current_user_can('manage_options') ) {
 		check_admin_referer( 'bpsHeaderCheckHead' );
 
@@ -820,21 +842,25 @@ function bps_sysinfo_get_headers_head() {
 		$ce = curl_exec($ch);
 		curl_close($ch);
 
+		echo $bps_topDiv;
 		echo '<strong>'.__('HEAD Request Headers: ', 'bulletproof-security').'</strong>'.htmlspecialchars($url).'<br>';
 		echo '<pre>';
 		print_r($ce);
 		echo '</pre>';
+		echo $bps_bottomDiv;
 	
 	} else {
 		
+		echo $bps_topDiv;
 		$text = '<font color="red"><strong>'.__('Error: The cURL Headers Check does not work on your website. Either the cURL Extension is not loaded or one of these functions is disabled in your php.ini file: curl_init, curl_exec and/or curl_setopt.', 'bulletproof-security').'</strong></font><br>';
 		echo $text;
+		echo $bps_bottomDiv;
 	}
 	}
 }
 ?>
 
-<form name="bpsHeadersHead" action="admin.php?page=bulletproof-security/admin/system-info/system-info.php" method="post">
+<form name="bpsHeadersHead" action="admin.php?page=bulletproof-security/admin/system-info/system-info.php#bps-tabs-2" method="post">
 <?php wp_nonce_field('bpsHeaderCheckHead'); ?>
 <div><label for="bpsHeaders"><strong><?php _e('Enter a Website URL - Example: http://www.ait-pro.com/', 'bulletproof-security'); ?></strong></label><br />
     <input type="text" name="bpsURL" value="" size="50" /> <br />
