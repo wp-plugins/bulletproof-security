@@ -12,21 +12,19 @@ if ( ! current_user_can('manage_options') ) {
 }
 ?>
 
-<div class="wrap" style="margin-top:45px;background-image:url('magic.png');background-repeat:no-repeat;background-size:contain;">
+<div id="bps-container" class="wrap" style="margin:45px 20px 5px 0px;">
 
-<?php if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-DB-Prefix-Table-Refresh'] ) || @$_GET['settings-updated'] == true ) { ?>
+<?php 
+$ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-<script type="text/javascript">
-/* <![CDATA[ */
-jQuery(document).ready(function($){
-	$('html, body').animate({ scrollTop: $('.wrap').offset().top }, 0 );
-	$('html, body').animate({ scrollTop: 0 }, 500 );
-	return false;
-});
-/* ]]> */
-</script>	
+if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
-<?php } ?>
+	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-DB-Prefix-Table-Refresh'] ) || @$_GET['settings-updated'] == true ) {
+
+		bpsPro_Browser_UA_scroll_animation();
+	}
+}
+?>
 
 <?php
 if ( function_exists('get_transient') ) {
@@ -53,7 +51,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 			echo number_format_i18n( $value ) .' '. str_replace( 'downloaded', "Downloads", $key );
 		}
 		
-		echo '<div class="bps-star-link"><a href="http://wordpress.org/support/view/plugin-reviews/bulletproof-security" target="_blank" title="Add your own BPS Plugin Review">'.__('Add a Review', 'bulletproof-security').'</a><br><a href="http://affiliates.ait-pro.com/po/" target="_blank" title="Upgrade to BulletProof Security Pro">Upgrade to Pro</a></div>';
+		echo '<div class="bps-star-link" style="font-size:13px;font-weight:bold;"><a href="http://wordpress.org/support/view/plugin-reviews/bulletproof-security" target="_blank" title="Add your own BPS Plugin Review">'.__('Add a Review', 'bulletproof-security').'</a><br><a href="http://affiliates.ait-pro.com/po/" target="_blank" title="Upgrade to BulletProof Security Pro">Upgrade to Pro</a></div>';
 		echo '</div>';
 		echo '</div>';
 }
@@ -145,8 +143,7 @@ bpsPro_DBBackup_deny_all();
 </div>
 
 <!-- jQuery UI Tab Menu -->
-<div id="bps-container">
-	<div id="bps-tabs" class="bps-menu">
+<div id="bps-tabs" class="bps-menu">
     <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" />
     
 <style>
@@ -1606,7 +1603,7 @@ global $wpdb;
     <td colspan="2" class="bps-table_title">&nbsp;</td>
   </tr>
   <tr>
-    <td class="bps-table_cell_help_links"><a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-10" target="_blank"><?php _e('Whats New in ', 'bulletproof-security'); echo BULLETPROOF_VERSION; ?></a></td>
+    <td class="bps-table_cell_help_links"><a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-10" target="_blank"><?php _e('Whats New in ', 'bulletproof-security'); echo BULLETPROOF_VERSION; ?></a></td>
     <td class="bps-table_cell_help_links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank"><?php _e('BPS Pro Features & Version Release Dates', 'bulletproof-security'); ?></a></td>
   </tr>
   <tr>
@@ -1628,7 +1625,6 @@ global $wpdb;
 </div>
             
 <div id="AITpro-link">BulletProof Security Pro <?php echo BULLETPROOF_VERSION; ?> Plugin by <a href="http://forum.ait-pro.com/" target="_blank" title="AITpro Website Security">AITpro Website Security</a>
-</div>
 </div>
 </div>
 <style>

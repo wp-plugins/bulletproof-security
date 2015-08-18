@@ -1,15 +1,16 @@
 /** BPS Container / Top Level / Theme-wide Stuff **/
 li#toplevel_page_bulletproof-security-admin-options .wp-menu-image, li#toplevel_page_bulletproof-security-admin-login-login .wp-menu-image {position:relative;top:-2px;left:-2px;}
-#bps-container {margin:20px 0 5px 0;font-size:12px;}
+#bps-container {margin:45px 20px 5px 0px;font-size:12px;}
 div.bps-white-background {background-color:#fff;}
 #bps-container div div {font-size:1em;}
 /** WordPress Default & Default CSS **/
+.wrap {}
 .tog {}
 .submit {padding:10px 0px 10px 15px;}
 .url-path {font-weight:700;font-size:8px;}
 .update-nag {background-color:#ffffe0;}
-/** PayPal and AITpro Link **/
-#bpspaypal {float:right;position:relative;top:5px;right:15px;}
+/** AITpro Link & Star Rating **/
+.bps-star-link {font-size:13px;font-weight:bold;}
 #AITpro-link {padding:5px 0px 0px 10px;}
 /* Forms Theme-wide / Misc */
 #bps-container td label {font-size:13px;font-weight:bold;}

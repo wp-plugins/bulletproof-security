@@ -1,18 +1,19 @@
 /* px to em: 12-.75 * 14-.88 * 16-1 * 18-1.13 * 20-1.25 * 22-1.38 * 24-1.5 * 26-1.63 * 28-1.75 * 30-1.88 * 32-2 * 34-2.13 * 36-2.25 * 38-2.38 */
 /* BPS Container / Top Level / Theme-wide Stuff */
 li#toplevel_page_bulletproof-security-admin-options .wp-menu-image, li#toplevel_page_bulletproof-security-admin-login-login .wp-menu-image {position:relative;top:-2px;left:-2px;}
-#bps-container {margin:20px 0 5px 0;font-size:12px;}
+#bps-container {margin:45px 20px 5px 0px;font-size:12px;}
 div.bps-white-background {background-color:#fff;}
 #bps-container table th {width:200px;background:#fff;}
 #bps-container div div {font-size:1em;}
 /** WordPress Default & Default CSS **/
+.wrap {}
 .tog {}
 .submit {padding:10px 0px 10px 15px;}
 .url-path {font-weight:700;}
 .update-nag {background-color:#ffffe0;}
-/** PayPal and AITpro Link **/
-#bpspaypal {float:right;position:relative;top:5px;right:15px;}
-#AITpro-link {padding:5px 0px 0px 10px;}
+/** AITpro Link & Star Rating **/
+.bps-star-link {font-size:13px;font-weight:bold;}
+#AITpro-link {padding:5px 0px 0px 10px;background-color:#f1f1f1;}
 /* Forms Theme-wide / Misc */
 #bps-container td label {font-size:13px;font-weight:bold;}
 #bps-container .log-date {width:200px;padding-left:4px;font-size:13px;font-weight:bold;border:none;background:none;outline:none;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:none;transition:none;}
@@ -156,7 +157,7 @@ pre {position:relative;z-index:50;background:#fff url(../images/pre_bg.png) top 
 .bps-menu ul li a:active {color:#fff;background-image:url(../images/menu-btn-hover.png);background-repeat:none;}
 /** BPS jQuery UI Tabs - page background color **/
 .bps-tab-page {}
-#bps-tabs-1, #bps-tabs-2, #bps-tabs-3, #bps-tabs-4, #bps-tabs-5, #bps-tabs-6, #bps-tabs-7, #bps-tabs-8, #bps-tabs-9, #bps-tabs-10, #bps-tabs-11, #bps-tabs-12, #bps-tabs-13, #bps-tabs-14, #bps-tabs-15, #bps-tabs-16, #bps-tabs-17, #bps-tabs-18, #bps-tabs-19, #bps-tabs-20 {border:1px solid #999999;padding:0px 10px 5px 10px;}
+#bps-tabs-1, #bps-tabs-2, #bps-tabs-3, #bps-tabs-4, #bps-tabs-5, #bps-tabs-6, #bps-tabs-7, #bps-tabs-8, #bps-tabs-9, #bps-tabs-10, #bps-tabs-11, #bps-tabs-12, #bps-tabs-13, #bps-tabs-14, #bps-tabs-15, #bps-tabs-16, #bps-tabs-17, #bps-tabs-18, #bps-tabs-19, #bps-tabs-20 {border:1px solid #999999;padding:0px 10px 5px 10px;background-color:#f1f1f1;}
 /* Links */
 .bps-table_cell_help_links a:link {font-size:1.13em;font-weight:bold;}
 .bps-table_cell_help_links a:active {font-size:1.13em;font-weight:bold;}

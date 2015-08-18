@@ -6,6 +6,95 @@ if ( ! function_exists ('add_action') ) {
 		exit();
 }
 
+// jQuery ScrollTop Animation based on Browser User Agent
+// Opera uses the Chromium Rendering engine & the UA is Chrome
+function bpsPro_Browser_UA_scroll_animation() {
+	
+	$user_agent = esc_html($_SERVER['HTTP_USER_AGENT']);
+
+	if ( preg_match( '/Chrome/i', $user_agent, $matches ) ) { ?>
+		
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function($){
+	
+			$("html, body").animate({ scrollTop: "50px" }, 400, function(){
+ 				$("html, body").animate({ scrollTop: "0px" });
+				// essential for the jQuery UI Tabs framework hash anchors
+				$( this ).css( "background", "url('') no-repeat left top" );
+    		});
+			return false;
+		});
+		/* ]]> */
+		</script>
+
+<?php } elseif ( preg_match( '/Firefox/i', $user_agent, $matches ) ) { ?>
+
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function($){
+	
+			$("html, body").animate({ scrollTop: "50px" }, 600, function(){
+ 				$("html, body").animate({ scrollTop: "0px" });
+				// essential for the jQuery UI Tabs framework hash anchors
+				$( this ).css( "background", "url('') no-repeat left top" );
+			});
+			return false;
+		});
+		/* ]]> */
+		</script>
+
+<?php } elseif ( preg_match( '/Safari/i', $user_agent, $matches ) ) { ?>
+
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function($){
+	
+			$("html, body").animate({ scrollTop: "100px" }, 600, function(){
+ 				$("html, body").animate({ scrollTop: "0px" });
+				// essential for the jQuery UI Tabs framework hash anchors
+				$( this ).css( "background", "url('') no-repeat left top" );
+			});
+			return false;
+		});
+		/* ]]> */
+		</script>
+
+<?php } elseif ( preg_match( '/MSIE/i', $user_agent, $matches ) || preg_match( '/Trident/i', $user_agent, $matches ) ) { ?>
+
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function($){
+	
+			$("html, body").animate({ scrollTop: "350px" }, 400, function(){
+ 				$("html, body").animate({ scrollTop: "0px" });
+				// essential for the jQuery UI Tabs framework hash anchors
+				$( this ).css( "background", "url('') no-repeat left top" );
+			});
+			return false;
+		});
+		/* ]]> */
+		</script>
+
+<?php } else { ?>
+
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function($){
+	
+			$("html, body").animate({ scrollTop: "50px" }, 400, function(){
+ 				$("html, body").animate({ scrollTop: "0px" });
+				// essential for the jQuery UI Tabs framework hash anchors
+				$( this ).css( "background", "url('') no-repeat left top" );
+    		});
+			return false;
+		});
+		/* ]]> */
+		</script>
+<?php
+	}
+}
+
 // Displays Initial, Peak and Total Memory usage
 function bpsPro_memory_resource_usage() {
 	
@@ -490,7 +579,7 @@ function bps_root_htaccess_status_dashboard() {
 
 		} else {
 		
-			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your WordPress root folder', 'bulletproof-security').'</font><br>'.__('If you have deleted the root htaccess file for troubleshooting purposes you can disregard this Alert.', 'bulletproof-security').'<br>'.__('After you are done troubleshooting ', 'bulletproof-security').'</font><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you deleted the root htaccess file due to bad/invalid Root Custom Code causing a problem then ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, delete the bad/invalid Root Custom Code and click the Save Root Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your WordPress root folder', 'bulletproof-security').'</font><br>'.__('If you have deleted the root htaccess file for troubleshooting purposes you can disregard this Alert.', 'bulletproof-security').'<br>'.__('After you are done troubleshooting ', 'bulletproof-security').'</font><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you deleted the root htaccess file due to bad/invalid Root Custom Code causing a problem then ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, delete the bad/invalid Root Custom Code and click the Save Root Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 	
@@ -514,7 +603,7 @@ switch ( $bps_version ) {
 		
 		} else {
 
-			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your site may not be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('The BPS version: BULLETPROOF .xx.x >>>>>>> SECURE .HTACCESS line of code was not found at the top of your Root htaccess file.', 'bulletproof-security').'<br>'.__('The BPS version line of code MUST be at the very top of your Root htaccess file.', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you manually added other htaccess code above the BPS version line of code in your root htaccess file, you can copy that code to BPS Root Custom Code so that your code is saved in the correct place in the BPS root htaccess file. ', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, add your Root custom htaccess code in an appropriate Root Custom Code text box and click the Save Root Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your site may not be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('The BPS version: BULLETPROOF .xx.x >>>>>>> SECURE .HTACCESS line of code was not found at the top of your Root htaccess file.', 'bulletproof-security').'<br>'.__('The BPS version line of code MUST be at the very top of your Root htaccess file.', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you manually added other htaccess code above the BPS version line of code in your root htaccess file, you can copy that code to BPS Root Custom Code so that your code is saved in the correct place in the BPS root htaccess file. ', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, add your Root custom htaccess code in an appropriate Root Custom Code text box and click the Save Root Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 
@@ -652,10 +741,10 @@ switch ( $bps_version ) {
 					
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
-				$RBM = $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/core/options.php" title="Root Folder BulletProof Mode" style="text-decoration:none;">'.__('RBM', 'bulletproof-security').'</a>: <font color="green"><strong>'.__('On', 'bulletproof-security').'</strong></font>';
+				$RBM = $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/core/core.php" title="Root Folder BulletProof Mode" style="text-decoration:none;">'.__('RBM', 'bulletproof-security').'</a>: <font color="green"><strong>'.__('On', 'bulletproof-security').'</strong></font>';
 				$RBM_str = str_replace( "BULLETPROOF $bps_version >>>>>>> SECURE .HTACCESS", "BPS $bps_version $RBM", $section );
 			
-				echo '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px 0px 0px 5px;">'.$RBM_str.'</div>';		
+				echo '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px 0px 0px 5px;">'.$RBM_str.'</div>';		
 			}
 		}
 		break;
@@ -663,7 +752,7 @@ switch ( $bps_version ) {
 		
 		if ( $bps_root_upgrade != 'upgrade' ) {		
 		
-			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your site does not appear to be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('Go to the ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php">'.__('Security Modes page', 'bulletproof-security').'</a>'.__(' and click the Create secure.htaccess File AutoMagic button and Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('If your site is in Default Mode then it is NOT protected by BulletProof Security. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your site does not appear to be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('Go to the ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/core.php">'.__('Security Modes page', 'bulletproof-security').'</a>'.__(' and click the Create secure.htaccess File AutoMagic button and Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('If your site is in Default Mode then it is NOT protected by BulletProof Security. Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 	}
@@ -710,7 +799,7 @@ function bps_wpadmin_htaccess_status_dashboard() {
 		// display nothing. Notice is already displayed in the root htaccess function.
 		} else {
 		
-			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your WordPress wp-admin folder', 'bulletproof-security').'</font><br>'.__('If you have deleted the wp-admin htaccess file for troubleshooting purposes you can disregard this Alert.', 'bulletproof-security').'<br>'.__('After you are done troubleshooting ', 'bulletproof-security').'</font><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you deleted the wp-admin htaccess file due to bad/invalid Custom Code causing a problem then ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, delete the bad/invalid wp-admin Custom Code and click the Save wp-admin Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! An htaccess file was NOT found in your WordPress wp-admin folder', 'bulletproof-security').'</font><br>'.__('If you have deleted the wp-admin htaccess file for troubleshooting purposes you can disregard this Alert.', 'bulletproof-security').'<br>'.__('After you are done troubleshooting ', 'bulletproof-security').'</font><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you deleted the wp-admin htaccess file due to bad/invalid Custom Code causing a problem then ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, delete the bad/invalid wp-admin Custom Code and click the Save wp-admin Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
 			echo $text;
 		}	
 	
@@ -732,7 +821,7 @@ switch ( $bps_version ) {
 		
 		} else {
 
-			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your wp-admin folder may not be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('he BPS version: BULLETPROOF .xx.x WP-ADMIN SECURE .HTACCESS line of code was not found at the top of your wp-admin htaccess file.', 'bulletproof-security').'<br>'.__('The BPS version line of code MUST be at the very top of your wp-admin htaccess file.', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you manually added other htaccess code above the BPS version line of code in your wp-admin htaccess file, you can copy that code to BPS wp-admin Custom Code so that your code is saved in the correct place in the BPS wp-admin htaccess file. ', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, add your wp-admin custom htaccess code in an appropriate wp-admin Custom Code text box and click the Save wp-admin Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
+			$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! Your wp-admin folder may not be protected by BulletProof Security', 'bulletproof-security').'</font><br>'.__('he BPS version: BULLETPROOF .xx.x WP-ADMIN SECURE .HTACCESS line of code was not found at the top of your wp-admin htaccess file.', 'bulletproof-security').'<br>'.__('The BPS version line of code MUST be at the very top of your wp-admin htaccess file.', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/wizard/wizard.php">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Setup Wizard page and click the Setup Wizard button to setup the BPS plugin again.', 'bulletproof-security').'<br>'.__('Important Note: If you manually added other htaccess code above the BPS version line of code in your wp-admin htaccess file, you can copy that code to BPS wp-admin Custom Code so that your code is saved in the correct place in the BPS wp-admin htaccess file. ', 'bulletproof-security').'<br><a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Custom Code page, add your wp-admin custom htaccess code in an appropriate wp-admin Custom Code text box and click the Save wp-admin Custom Code button before running the Setup Wizard again.', 'bulletproof-security').'</div>';
 			echo $text;
 		}
 
@@ -777,10 +866,10 @@ switch ( $bps_version ) {
 
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
-				$WBM = $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/core/options.php#WBM-Link" title="wp-admin Folder BulletProof Mode" style="text-decoration:none;">'.__('WBM', 'bulletproof-security').'</a>: <font color="green"><strong>'.__('On', 'bulletproof-security').'</strong></font>';
+				$WBM = $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/core/core.php#WBM-Link" title="wp-admin Folder BulletProof Mode" style="text-decoration:none;">'.__('WBM', 'bulletproof-security').'</a>: <font color="green"><strong>'.__('On', 'bulletproof-security').'</strong></font>';
 				$WBM_str = str_replace( "BULLETPROOF $bps_version WP-ADMIN SECURE .HTACCESS", "$WBM", $section );			
 			
-				echo '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">'.$WBM_str.'</div>';
+				echo '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">'.$WBM_str.'</div>';
 			}
 		}
 		break;
@@ -788,7 +877,7 @@ switch ( $bps_version ) {
 		
 		if ( $bps_wpadmin_upgrade != 'upgrade' ) {		
 		
-		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder', 'bulletproof-security').'</font><br>'.__('BulletProof Mode for the wp-admin folder should also be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'<br>'.__('Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</div>';
+		$text = '<div class="update-nag" style="background-color:#ffffe0;font-size:1em;font-weight:bold;padding:2px 5px;margin-top:2px;"><font color="red">'.__('BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder', 'bulletproof-security').'</font><br>'.__('BulletProof Mode for the wp-admin folder should also be activated when you have BulletProof Mode activated for the Root folder.', 'bulletproof-security').'<br>'.__('Check the BPS ', 'bulletproof-security').'<a href="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-2">'.__('Security Status page', 'bulletproof-security').'</a>'.__(' to view your BPS Security Status information.', 'bulletproof-security').'</div>';
 		echo $text;
 		}
 	}
@@ -824,12 +913,12 @@ global $aitpro_bullet;
 			$BPSoptions = get_option('bulletproof_security_options_login_security');	
 
 			if ( $BPSoptions['bps_login_security_OnOff'] == 'On' ) {
-				$text = '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/login/login.php" title="Login Security & Monitoring" style="text-decoration:none;">'.__('LSM', 'bulletproof-security').'</a>: <font color="green">'.__('On', 'bulletproof-security').'</font></div>';
+				$text = '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/login/login.php" title="Login Security & Monitoring" style="text-decoration:none;">'.__('LSM', 'bulletproof-security').'</a>: <font color="green">'.__('On', 'bulletproof-security').'</font></div>';
 				echo $text;
 			}
 
 			if ( ! $BPSoptions['bps_login_security_OnOff'] || $BPSoptions['bps_login_security_OnOff'] == 'Off' || $BPSoptions['bps_login_security_OnOff'] == '' || $BPSoptions['bps_login_security_OnOff'] == 'pwreset' ) {
-				$text = '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/login/login.php" title="Login Security & Monitoring" style="text-decoration:none;">'.__('LSM', 'bulletproof-security').'</a>: <font color="red">'.__('Off', 'bulletproof-security').'</font></div>';
+				$text = '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/login/login.php" title="Login Security & Monitoring" style="text-decoration:none;">'.__('LSM', 'bulletproof-security').'</a>: <font color="red">'.__('Off', 'bulletproof-security').'</font></div>';
 				echo $text;
 			}
 		}
@@ -868,17 +957,17 @@ function bpsProDBBStatus() {
 	
 			if ( $DBBoptions['bps_db_backup_status_display'] == 'No DB Backups' ) {
 		
-				$text = '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="blue"><strong>'.__('No DB Backups', 'bulletproof-security').'</strong></font></div><div style="clear:right;"></div>';
+				$text = '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="blue"><strong>'.__('No DB Backups', 'bulletproof-security').'</strong></font></div><div style="clear:right;"></div>';
 				echo $text;
 	
 			} elseif ( $DBBoptions['bps_db_backup_status_display'] == 'Backup Job Created' ) {
 		
-				$text = '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="blue"><strong>'.__('Backup Job Created', 'bulletproof-security').'</strong></font></div><div style="clear:right;"></div>';
+				$text = '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="blue"><strong>'.__('Backup Job Created', 'bulletproof-security').'</strong></font></div><div style="clear:right;"></div>';
 				echo $text;		
 	
 			} else {
 		
-				$text = '<div id="bps-status-display" style="background-color:#eeeeee;font-weight:bold;float:left;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="green"><strong>'.$DBBoptions['bps_db_backup_status_display'].'</strong></font></div><div style="clear:right;"></div>';
+				$text = '<div id="bps-status-display" style="float:left;font-weight:bold;margin:0px;">' . $aitpro_bullet . '<a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php" title="Database Backup" style="text-decoration:none;">'.__('DBB', 'bulletproof-security').'</a>: <font color="green"><strong>'.$DBBoptions['bps_db_backup_status_display'].'</strong></font></div><div style="clear:right;"></div>';
 				echo $text;
 			}
 		}
@@ -2333,7 +2422,7 @@ function bpsPro_htaccess_manual_update_notice() {
 				file_put_contents($filename, $stringReplace);
 			}				
 		
-			if ( 'plugins.php' == $pagenow || preg_match( '/page=bulletproof-security\/admin\/core\/options\.php/', $_SERVER['REQUEST_URI'], $matches ) ) {
+			if ( 'plugins.php' == $pagenow || preg_match( '/page=bulletproof-security\/admin\/core\/core\.php/', $_SERVER['REQUEST_URI'], $matches ) ) {
 
 				$pos = strpos( $check_string, 'IMPORTANT!!! DO NOT DELETE!!! - B E G I N Wordpress' );
 			
@@ -2344,7 +2433,7 @@ function bpsPro_htaccess_manual_update_notice() {
 				} else {
     		
 					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
-					$text = '<strong><font color="blue">'.__('BPS Notice: One-time Update Steps Required', 'bulletproof-security').'</font><br>'.__('Significant changes were made to the root and wp-admin htaccess files that require doing the one-time Update Steps below.', 'bulletproof-security').'<br>'.__('All future BPS upgrades will not require these one-time Update Steps to be performed.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/root-and-wp-admin-htaccess-file-significant-changes/" target="_blank" title="Link opens in a new Browser window" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' If you would like to know what changes were made to the root and wp-admin htaccess files.', 'bulletproof-security').'<br>'.__('This Notice will go away automatically after doing all of the steps below.', 'bulletproof-security').'<br><br><a href="admin.php?page=bulletproof-security/admin/core/options.php" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Security Modes page.', 'bulletproof-security').'<br>'.__('1. Click the "Create secure.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('3. Activate wp-admin Folder BulletProof Mode.', 'bulletproof-security').'</strong>';
+					$text = '<strong><font color="blue">'.__('BPS Notice: One-time Update Steps Required', 'bulletproof-security').'</font><br>'.__('Significant changes were made to the root and wp-admin htaccess files that require doing the one-time Update Steps below.', 'bulletproof-security').'<br>'.__('All future BPS upgrades will not require these one-time Update Steps to be performed.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/root-and-wp-admin-htaccess-file-significant-changes/" target="_blank" title="Link opens in a new Browser window" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' If you would like to know what changes were made to the root and wp-admin htaccess files.', 'bulletproof-security').'<br>'.__('This Notice will go away automatically after doing all of the steps below.', 'bulletproof-security').'<br><br><a href="admin.php?page=bulletproof-security/admin/core/core.php" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Security Modes page.', 'bulletproof-security').'<br>'.__('1. Click the "Create secure.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('3. Activate wp-admin Folder BulletProof Mode.', 'bulletproof-security').'</strong>';
 					echo $text;
 					echo '</p></div>';	
 				}

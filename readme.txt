@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, malware, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, viruses, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.7 
 Tested up to: 4.3
-Stable tag: .52.3
+Stable tag: .52.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -466,6 +466,20 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .52.4 =
+* <strong>Submenu Name Change|Addition:</strong> UI|UX Submenu name has been changed to: UI|UX|Theme Skin Spinner|ScrollTop WP Toolbar|SLF
+
+* <strong>Feature Improvement|Enhancement: jQuery ScrollTop Animation:</strong> The jQuery ScrollTop Animation code now performs a conditional Browser User Agent|Rendering Engine check and uses customized jQuery ScrollTop Animation code for each Browser individually for best visual animation/appearance in each Browser. New jQuery ScrollTop animation code has been created that has much better/smoother animation overall.
+
+* <strong>New Option: Turn On|Off jQuery ScrollTop Animation:</strong> jQuery ScrollTop Animation can be turned On or Off on the UI|UX menu/page. The jQuery ScrollTop Animation is the scrolling animation that you see after submitting BPS Forms, which automatically scrolls to the top of BPS plugin pages to display success or error messages. The jQuery ScrollTop animation code is conditional based on your Browser User Agent|Rendering Engine.
+
+* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
+* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: Mike Harrison for reporting this bug.
+
+* <strong>Dev Note:</strong> Structural Core options.php file renamed to core.php and all related URI's are now pointing to this new page.
+
+* <strong>Dev Note:</strong> HTML Structural and related CSS changes to Core pages: bps-container div and WP wrap class moved and combined.
+
 = .52.3 =
 * <strong>New Feature: Login Security & Monitoring Export|Download Login Security Table Tool:</strong> The Export|Download Login Security Table tool exports (copies) the Login Security Table into the lsm-master.zip file, which you can then download to your computer. The lsm-master.zip file contains the lsm-master.csv file. The CSV (Comma Separated Values) file format can be opened with Microsoft Excel or other applications that can open/use CSV files.
 
@@ -772,7 +786,7 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 == Upgrade Notice ==
 
 = .52.3 =
-* 1 New Feature - 2 Important BugFixes - Several Improvements and Enhancements - See the BPS plugin Whats New page for details.
+* 1 Feature Improvement - 1 New Option - 1 BugFix - See the BPS plugin Whats New page for details.
 
 == Help Info ==
 

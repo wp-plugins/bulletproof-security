@@ -150,7 +150,7 @@ global $bps_topDiv, $bps_bottomDiv;
     
     <td class="bps-table_cell_help_custom_code">
     
-<form name="bpsCustomCodeForm" action="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7" method="post">
+<form name="bpsCustomCodeForm" action="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7" method="post">
 <?php  
 	wp_nonce_field('bulletproof_security_CC_Root'); 
 	bpsPro_CC_Root_values_form();
@@ -330,7 +330,7 @@ jQuery(document).ready(function($){
   <tr>
     <td class="bps-table_cell_help_custom_code">
     
-<form name="bpsCustomCodeFormWPA" action="admin.php?page=bulletproof-security/admin/core/options.php#bps-tabs-7" method="post">
+<form name="bpsCustomCodeFormWPA" action="admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-7" method="post">
 <?php 
 	wp_nonce_field('bulletproof_security_CC_WPA'); 
 	bpsPro_CC_WPA_values_form();

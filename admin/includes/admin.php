@@ -120,6 +120,7 @@ global $wpdb, $wp_version, $blog_id;
 	register_setting('bulletproof_security_options_auth_cookie', 'bulletproof_security_options_auth_cookie', 'bulletproof_security_options_validate_auth_cookie');	
 	register_setting('bulletproof_security_options_maint_mode', 'bulletproof_security_options_maint_mode', 'bulletproof_security_options_validate_maint_mode');
 	register_setting('bulletproof_security_options_theme_skin', 'bulletproof_security_options_theme_skin', 'bulletproof_security_options_validate_theme_skin');
+	register_setting('bulletproof_security_options_scrolltop', 'bulletproof_security_options_scrolltop', 'bulletproof_security_options_validate_scrolltop');
 	register_setting('bulletproof_security_options_spinner', 'bulletproof_security_options_spinner', 'bulletproof_security_options_validate_spinner');
 	register_setting('bulletproof_security_options_mynotes', 'bulletproof_security_options_mynotes', 'bulletproof_security_options_validate_mynotes');
 	register_setting('bulletproof_security_options_email', 'bulletproof_security_options_email', 'bulletproof_security_options_validate_email');			
@@ -224,27 +225,27 @@ global $blog_id;
 	}
 	
 	add_submenu_page('bulletproof-security/admin/login/login.php', __('System Info', 'bulletproof-security'), __('System Info', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/system-info/system-info.php' );
-	add_submenu_page('bulletproof-security/admin/login/login.php', __('UI|UX|Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'), __('UI|UX|Theme Skin<br>Processing Spinner<br>WP Toolbar|SLF', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/theme-skin/theme-skin.php' );
+	add_submenu_page('bulletproof-security/admin/login/login.php', __('UI|UX|Theme Skin|Processing Spinner|ScrollTop Animation|WP Toolbar|SLF', 'bulletproof-security'), __('UI|UX|Theme Skin<br>Spinner|ScrollTop<br>WP Toolbar|SLF', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/theme-skin/theme-skin.php' );
 	
 	} else {
 
-	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/core/options.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('htaccess Core', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/core/options.php' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('Login Security ~ ISL ~ ACE', 'bulletproof-security'), __('Login Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('Login Security ~ ISL ~ ACE', 'bulletproof-security'), __('Idle Session Logout<br>Cookie Expiration', 'bulletproof-security'), 'manage_options', 'admin.php?page=bulletproof-security/admin/login/login.php#bps-tabs-2' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('DB Backup & Security', 'bulletproof-security'), __('DB Backup', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/db-backup-security/db-backup-security.php' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('Security Log', 'bulletproof-security'), __('Security Log', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/security-log/security-log.php' );
+	add_menu_page(__('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('BPS Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/core/core.php', '', plugins_url('bulletproof-security/admin/images/bps-icon-small.png'));
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('BulletProof Security ~ htaccess Core', 'bulletproof-security'), __('htaccess Core', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/core/core.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('Login Security ~ ISL ~ ACE', 'bulletproof-security'), __('Login Security', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/login/login.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('Login Security ~ ISL ~ ACE', 'bulletproof-security'), __('Idle Session Logout<br>Cookie Expiration', 'bulletproof-security'), 'manage_options', 'admin.php?page=bulletproof-security/admin/login/login.php#bps-tabs-2' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('DB Backup & Security', 'bulletproof-security'), __('DB Backup', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/db-backup-security/db-backup-security.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('Security Log', 'bulletproof-security'), __('Security Log', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/security-log/security-log.php' );
 	
 	// Do not display the Maintenance Mode menu for GDMW hosted sites
 	$BPS_wpadmin_Options = get_option('bulletproof_security_options_htaccess_res');
 	$GDMW_options = get_option('bulletproof_security_options_GDMW');
 	if ( $BPS_wpadmin_Options['bps_wpadmin_restriction'] != 'disabled' || $GDMW_options['bps_gdmw_hosting'] != 'yes' ) {	
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('Maintenance Mode', 'bulletproof-security'), __('Maintenance Mode', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/maintenance/maintenance.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('Maintenance Mode', 'bulletproof-security'), __('Maintenance Mode', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/maintenance/maintenance.php' );
 	}
 	
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('System Info', 'bulletproof-security'), __('System Info', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/system-info/system-info.php' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('UI|UX|Theme Skin|Processing Spinner|WP Toolbar|SLF', 'bulletproof-security'), __('UI|UX|Theme Skin<br>Processing Spinner<br>WP Toolbar|SLF', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/theme-skin/theme-skin.php' );
-	add_submenu_page('bulletproof-security/admin/core/options.php', __('Setup Wizard', 'bulletproof-security'), __('Setup Wizard', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/wizard/wizard.php' );	
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('System Info', 'bulletproof-security'), __('System Info', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/system-info/system-info.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('UI|UX|Theme Skin|Processing Spinner|ScrollTop Animation|WP Toolbar|SLF', 'bulletproof-security'), __('UI|UX|Theme Skin<br>Spinner|ScrollTop<br>WP Toolbar|SLF', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/theme-skin/theme-skin.php' );
+	add_submenu_page('bulletproof-security/admin/core/core.php', __('Setup Wizard', 'bulletproof-security'), __('Setup Wizard', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/wizard/wizard.php' );	
 	
 	// Do not display a submenu|link: jQuery UI Dialog Pop up Form Uninstaller Options for BPS free
 	add_submenu_page( null, __('BPS Plugin Uninstall Options', 'bulletproof-security'), __('BPS Plugin Uninstall Options', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/includes/uninstall.php' );
@@ -593,6 +594,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 	delete_option('bulletproof_security_options_idle_session'); 	
 	delete_option('bulletproof_security_options_auth_cookie'); 
 	delete_option('bulletproof_security_options_SLF');
+	delete_option('bulletproof_security_options_scrolltop');
 	// will be adding this new upgrade notice option later
 	// delete_option('bulletproof_security_options_upgrade_notice');	
 	
@@ -845,6 +847,14 @@ function bulletproof_security_options_validate_GDMW($input) {
 function bulletproof_security_options_validate_spinner($input) {  
 	$options = get_option('bulletproof_security_options_spinner');  
 	$options['bps_spinner'] = wp_filter_nohtml_kses($input['bps_spinner']);
+	
+	return $options;  
+}
+
+// jQuery ScrollTop Animation On/Off
+function bulletproof_security_options_validate_scrolltop($input) {  
+	$options = get_option('bulletproof_security_options_scrolltop');  
+	$options['bps_scrolltop'] = wp_filter_nohtml_kses($input['bps_scrolltop']);
 	
 	return $options;  
 }

@@ -7,8 +7,8 @@ li#toplevel_page_bulletproof-security-admin-options .wp-menu-image, li#toplevel_
 .tog {}
 .submit {padding:10px 0px 10px 15px;}
 .url-path {font-weight:700;}
-/** PayPal and AITpro Link **/
-#bpspaypal {float:right;position:relative;top:5px;right:15px;}
+/** AITpro Link & Star Rating **/
+.bps-star-link {font-size:13px;font-weight:bold;}
 #AITpro-link {padding:5px 0px 0px 10px;}
 /* Forms Theme-wide / Misc */
 #bps-container td label {font-size:13px;font-weight:bold;}
