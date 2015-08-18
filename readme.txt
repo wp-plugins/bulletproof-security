@@ -474,7 +474,7 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 * <strong>New Option: Turn On|Off jQuery ScrollTop Animation:</strong> jQuery ScrollTop Animation can be turned On or Off on the UI|UX menu/page. The jQuery ScrollTop Animation is the scrolling animation that you see after submitting BPS Forms, which automatically scrolls to the top of BPS plugin pages to display success or error messages. The jQuery ScrollTop animation code is conditional based on your Browser User Agent|Rendering Engine.
 
 * <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: Mike Harrison for reporting this bug.
+* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
 
 * <strong>Dev Note:</strong> Structural Core options.php file renamed to core.php and all related URI's are now pointing to this new page.
 
