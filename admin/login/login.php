@@ -76,7 +76,17 @@ function bpsPro_Core_LSM_deny_all() {
 
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		
-		$denyall_content = "Order Deny,Allow\nDeny from all\nAllow from " . bpsPro_get_real_ip_address_lsm();
+		$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');
+		
+		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
+	
+			$denyall_content = "# BPS mod_authz_core IfModule BC\n<IfModule mod_authz_core.c>\nRequire ip ". bpsPro_get_real_ip_address_lsm()."\n</IfModule>\n\n<IfModule !mod_authz_core.c>\n<IfModule mod_access_compat.c>\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_lsm()."\n</FilesMatch>\n</IfModule>\n</IfModule>";
+	
+		} else {
+		
+			$denyall_content = "# BPS mod_access_compat\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_lsm()."\n</FilesMatch>";		
+		}		
+		
 		$create_denyall_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/login/.htaccess';
 		$check_string = @file_get_contents($create_denyall_htaccess_file);
 		

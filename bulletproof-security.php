@@ -5,7 +5,7 @@ Plugin URI: http://forum.ait-pro.com/read-me-first/
 Text Domain: bulletproof-security
 Domain Path: /languages/
 Description: <strong>Feature Highlights:</strong> Setup Wizard &bull; .htaccess Website Security Protection (Firewalls) &bull; Security Logging|HTTP Error Logging &bull; DB Backup &bull; DB Table Prefix Changer &bull; Login Security & Monitoring &bull; Idle Session Logout (ISL) &bull; Auth Cookie Expiration (ACE) &bull; UI Theme Skin Changer &bull; System Info: Extensive System, Server and Security Status Information &bull; FrontEnd|BackEnd Maintenance Mode
-Version: .52.4
+Version: .52.5
 Author: AITpro | Edward Alexander
 Author URI: http://forum.ait-pro.com/read-me-first/
 */
@@ -28,9 +28,9 @@ Author URI: http://forum.ait-pro.com/read-me-first/
 */
 
 // BPS variables
-define( 'BULLETPROOF_VERSION', '.52.4' );
-$bps_last_version = '.52.3';
-$bps_version = '.52.4';
+define( 'BULLETPROOF_VERSION', '.52.5' );
+$bps_last_version = '.52.4';
+$bps_version = '.52.5';
 $bps_readme_install_ver = '2';
 $aitpro_bullet = '<img src="'.plugins_url('/bulletproof-security/admin/images/aitpro-bullet.png').'" style="padding:0px 3px 0px 3px;" />';
 
@@ -44,9 +44,11 @@ function bulletproof_security_load_plugin_textdomain() {
 	load_plugin_textdomain('bulletproof-security', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
 }
 
-// Load BPS functions.php
+// BPS upgrade functions
 require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/functions.php' );
 	remove_action('wp_head', 'wp_generator');
+// General functions
+require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/general-functions.php' );
 // BPS Login Security
 require_once( WP_PLUGIN_DIR . '/bulletproof-security/includes/login-security.php' );
 // BPS DB Backup

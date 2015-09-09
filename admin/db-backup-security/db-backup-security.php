@@ -115,7 +115,17 @@ function bpsPro_DBBackup_deny_all() {
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		
 		$DBBoptions = get_option('bulletproof_security_options_db_backup');
-		$denyall_content = "Order Deny,Allow\nDeny from all\nAllow from " . bpsPro_get_real_ip_address();
+		$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');
+		
+		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
+	
+			$denyall_content = "# BPS mod_authz_core IfModule BC\n<IfModule mod_authz_core.c>\nRequire ip ". bpsPro_get_real_ip_address()."\n</IfModule>\n\n<IfModule !mod_authz_core.c>\n<IfModule mod_access_compat.c>\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address()."\n</FilesMatch>\n</IfModule>\n</IfModule>";
+	
+		} else {
+		
+			$denyall_content = "# BPS mod_access_compat\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address()."\n</FilesMatch>";		
+		}		
+		
 		$create_denyall_htaccess_file = $DBBoptions['bps_db_backup_folder'] .'/.htaccess';
 		$check_string = @file_get_contents($create_denyall_htaccess_file);
 		
@@ -130,7 +140,7 @@ function bpsPro_DBBackup_deny_all() {
     		fclose( $handle );
 		}			
 		
-		if ( file_exists($create_denyall_htaccess_file) && !strpos( $check_string, bpsPro_get_real_ip_address() ) ) { 
+		if ( file_exists($create_denyall_htaccess_file) && ! strpos( $check_string, bpsPro_get_real_ip_address() ) ) { 
 			$handle = fopen( $create_denyall_htaccess_file, 'w+b' );
     		fwrite( $handle, $denyall_content );
     		fclose( $handle );
@@ -1333,7 +1343,19 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 
 	$time_start = microtime( true );
 
-	$DBTablePrefix = $_POST['DBTablePrefix'];
+	if ( preg_match( '|[^a-z0-9_]|', $_POST['DBTablePrefix'] ) ) {
+		
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+		$text = '<strong><font color="red">'.__('ERROR: The DB Table Prefix name can only contain numbers, lowercase letters, and underscores.', 'bulletproof-security').'</font></strong>';
+		echo $text;
+		echo '</p></div>';	
+	return;
+	
+	} else {
+	
+		$DBTablePrefix = $_POST['DBTablePrefix'];
+	}	
+	
 	$wpconfig_file = ABSPATH . 'wp-config.php';
 	
 	if ( ! file_exists($wpconfig_file) ) {

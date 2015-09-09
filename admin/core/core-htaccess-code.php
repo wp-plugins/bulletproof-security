@@ -49,6 +49,7 @@ function bpsPro_get_clean_basedomain() {
 	}
 
 $BPSCustomCodeOptions = get_option('bulletproof_security_options_customcode');
+$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');
 $bps_auto_write_default_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/default.htaccess';
 
 $bpsSuccessMessageDef = '<font color="green"><strong>'.__('Success! Your Default Mode Master htaccess file was created successfully!', 'bulletproof-security').'</strong></font><br><font color="red"><strong>'.__('CAUTION: Default Mode should only be activated for testing or troubleshooting purposes. Default Mode does not protect your website with any security protection.', 'bulletproof-security').'</strong></font><br><font color="black"><strong>'.__('To activate Default Mode for troubleshooting, select the Default Mode radio button and click the Activate button to put your website in Default Mode.', 'bulletproof-security').'</strong></font>';
@@ -355,19 +356,50 @@ RewriteRule . " . $bps_get_wp_root_secure . "index.php [L]
 # WP REWRITE LOOP END\n";
 
 if ( $BPSCustomCodeOptions['bps_customcode_deny_files'] != '' ) {        
-$bps_secure_deny_browser_access = "# CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES\n" . htmlspecialchars_decode( $BPSCustomCodeOptions['bps_customcode_deny_files'], ENT_QUOTES ) . "\n\n";
+$bps_secure_deny_browser_access = "\n# CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES\n" . htmlspecialchars_decode( $BPSCustomCodeOptions['bps_customcode_deny_files'], ENT_QUOTES ) . "\n\n";
+
 } else {
-$bps_secure_deny_browser_access = "\n# DENY BROWSER ACCESS TO THESE FILES 
+
+	if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
+	
+		$bps_secure_deny_browser_access = "\n# DENY BROWSER ACCESS TO THESE FILES 
 # Use BPS Custom Code to modify/edit/change this code and to save it permanently.
 # wp-config.php, bb-config.php, php.ini, php5.ini, readme.html
-# Replace 88.77.66.55 with your current IP address and remove the  
-# pound sign # in front of the Allow from line of code below to be able to access
-# any of these files directly from your Browser.\n
-<FilesMatch ".'"'."^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)".'"'.">
+# To be able to view these files from a Browser, replace 127.0.0.1 with your actual 
+# current IP address. Comment out: #Require all denied and Uncomment: Require ip 127.0.0.1
+# Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1 
+# Note: The BPS System Info page displays which modules are loaded on your server. 
+
+<FilesMatch \"^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)\">
+<IfModule mod_authz_core.c>
+Require all denied
+#Require ip 127.0.0.1
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+<IfModule mod_access_compat.c>
 Order Allow,Deny
 Deny from all
-#Allow from 88.77.66.55
+#Allow from 127.0.0.1
+</IfModule>
+</IfModule>
 </FilesMatch>\n\n";
+	
+	} else {
+		
+		$bps_secure_deny_browser_access = "\n# DENY BROWSER ACCESS TO THESE FILES 
+# Use BPS Custom Code to modify/edit/change this code and to save it permanently.
+# wp-config.php, bb-config.php, php.ini, php5.ini, readme.html
+# To be able to view these files from a Browser, replace 127.0.0.1 with your actual 
+# current IP address. Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1 
+# Note: The BPS System Info page displays which modules are loaded on your server. 
+
+<FilesMatch \"^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)\">
+Order Allow,Deny
+Deny from all
+#Allow from 127.0.0.1
+</FilesMatch>\n\n";		
+	}
 }
 
 // AutoMagic - CUSTOM CODE BOTTOM

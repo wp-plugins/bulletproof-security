@@ -1,4 +1,4 @@
-#   BULLETPROOF .52.4 WP-ADMIN SECURE .HTACCESS     
+#   BULLETPROOF .52.5 WP-ADMIN SECURE .HTACCESS     
 
 # DO NOT ADD URL REWRITING IN THIS FILE OR WORDPRESS WILL BREAK
 # RewriteRule ^(.*)$ - [F] works in /wp-admin without breaking WordPress
@@ -6,16 +6,26 @@
 
 # WPADMIN DENY BROWSER ACCESS TO FILES
 # Deny Browser access to /wp-admin/install.php
-# Use BPS wp-admin Custom Code to modify/edit/change this code and to save it permanently.
-# Replace 88.77.66.55 with your current IP address and remove the  
-# pound sign # in front of the Allow from line of code below to be able to access
-# the /wp-admin/install.php file directly from your Browser.
+# Use BPS Custom Code to modify/edit/change this code and to save it permanently.
+# To be able to view the install.php file from a Browser, replace 127.0.0.1 with your actual 
+# current IP address. Comment out: #Require all denied and Uncomment: Require ip 127.0.0.1
+# Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1 
+# Note: The BPS System Info page displays which modules are loaded on your server. 
 
 # BEGIN BPS WPADMIN DENY ACCESS TO FILES
 <FilesMatch "^(install\.php)">
+<IfModule mod_authz_core.c>
+Require all denied
+#Require ip 127.0.0.1
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+<IfModule mod_access_compat.c>
 Order Allow,Deny
 Deny from all
-#Allow from 88.77.66.55
+#Allow from 127.0.0.1
+</IfModule>
+</IfModule>
 </FilesMatch>
 # END BPS WPADMIN DENY ACCESS TO FILES
 

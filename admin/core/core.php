@@ -83,7 +83,18 @@ function bpsPro_Core_CC_deny_all() {
 
 	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
 		
-		$denyall_content = "Order Deny,Allow\nDeny from all\nAllow from " . bpsPro_get_real_ip_address_cc();
+		//$DBBoptions = get_option('bulletproof_security_options_db_backup');
+		$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');
+		
+		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
+	
+			$denyall_content = "# BPS mod_authz_core IfModule BC\n<IfModule mod_authz_core.c>\nRequire ip ". bpsPro_get_real_ip_address_cc()."\n</IfModule>\n\n<IfModule !mod_authz_core.c>\n<IfModule mod_access_compat.c>\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_cc()."\n</FilesMatch>\n</IfModule>\n</IfModule>";
+	
+		} else {
+		
+			$denyall_content = "# BPS mod_access_compat\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_cc()."\n</FilesMatch>";		
+		}		
+		
 		$create_denyall_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/core/.htaccess';
 		$check_string = @file_get_contents($create_denyall_htaccess_file);
 		
@@ -120,6 +131,9 @@ echo bps_check_safemode();
 echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
 bps_delete_language_files();
+// Apache IfModule htaccess file code check & creation: run on page load with 15 minute time restriction.
+// System Info page: performs check in real-time without a 15 minute time restriction, but does not create htaccess files.
+bpsPro_apache_mod_directive_check();
 
 // default.htaccess, secure.htaccess, fwrite content for all WP site types
 $bps_get_domain_root = bpsGetDomainRoot();
@@ -1318,6 +1332,38 @@ jQuery(document).ready(function($){
   </tr>
   <tr>
     <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Core Enhancement: Apache Module Forward|Backward Compatibility:', 'bulletproof-security').'</strong></h3>'.__('BPS automatically checks which Apache Modules are loaded on your server: mod_access_compat, mod_authz_core and mod_authz_host and checks availability|forward|backward compatibility and also IfModule conditions support to automatically create the correct htaccess code and files for your website|server. All BPS htaccess writing|updating|upgrading|new installations|creation|ip whitelisting, etc. htaccess code is automatically created based on Live BPS Apache Module and IfModule tests that are performed in BPS during BPS plugin upgrades and new installations to determine and create the correct htaccess code for each individual server|website. A new System Info feature has been added that performs Live tests with results and also includes a Visual Test - see <strong>New Feature: System Info page:</strong> for details. Dev Note: Live Apache Module check and automation performed in-page on htaccess Core page.', 'bulletproof-security'); echo $text; ?></td>
+  </tr>  
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Apache Module Compatibility List of Features|Files|htaccess Code Affected:', 'bulletproof-security').'</strong></h3>'.__('htaccess Core: Root and wp-admin htaccess code|files creation. Custom Code in-page automated IP whitelisting.<br>Core: BPS plugin directory self-protection htaccess files.<br>Login Security: in-page automated IP whitelisting.<br>DB Backup: in-page automated IP whitelisting.<br>Maintenance Mode: in-page automated IP whitelisting, BackEnd MMode IP whitelisting.<br>Setup Wizard: automated htaccess code|files creation.', 'bulletproof-security'); echo $text; ?></td>
+  </tr>  
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: System Info page: Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test', 'bulletproof-security').'</strong></h3>'.__('The System Info Apache Modules|Directives check checks mod_access_compat, mod_authz_core and mod_authz_host availability|forward|backward compatibility and also IfModule conditions support. A visual test page (Click the View Visual Test link) has also been created to see the Apache Module|htaccess code and checks visually for troubleshooting purposes. BPS automatically detects which Apache Modules are loaded|available on your host server and creates the correct htaccess code for you particular website|server throughout all BPS htaccess files.', 'bulletproof-security'); echo $text; ?>
+    <br /><br />
+    Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test<br />
+	mod_access_compat is Loaded|Order, Allow, Deny directives are supported|IfModule: Yes<br />
+	mod_authz_core is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes<br />
+	mod_authz_host is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes
+    </td>
+  </tr>  
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; BugFix: Network/Multisite Rewrite Loop End Custom Code Form name field correction.<br>&bull; BugFix|Correction: DB Table Prefix Changer: Only allow entering numbers, lowercase letters and underscores in the Randomly Generated DB Table Prefix Form text box. Special thanks to Sathish from <a href="http://cybersecurityworks.com/" title="Cyber Security Works Pvt Ltd" target="_blank">'.__('Cyber Security Works Pvt Ltd', 'bulletproof-security').'</a>'.__(' for reporting a bug/security vulnerability in the DB Table Prefix Changer tool Form. Notes: You MUST be an Administrator and logged into the site as an Administrator in order to enter/test XSS html testing code in the Randomly Generated DB Table Prefix Form text box. Please do NOT actually try this test if you are using a version of BPS that is below .52.5.  BPS .52.5 and above versions will only allow entering numbers, lowercase letters, and underscores for the DB Table Prefix name.  If you have a BPS version below .52.5 then entering an invalid DB Table Prefix name will crash your website.', 'bulletproof-security').'<br>&bull; Dev Note: New condition added for Apache Module /mod-test/ folder in 403.php logging template to prevent 403 errors from being logged when Live Apache Module tests are performed|processed.<br>&bull; Dev Note: admin.php obsolete code removal for deny all htaccess file creation for BPS Backup and Master Backups folders.', 'bulletproof-security'); echo $text; ?>
+     </td>
+  </tr> 
+   <tr>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+    <td class="bps-table_cell_no_border">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
+    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .52.4', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
+	</td>
+  </tr> 
+  <tr>
+    <td class="bps-table_cell_no_border">&bull;</td>
     <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Submenu Name Change|Addition:', 'bulletproof-security').'</strong></h3>'.__('UI|UX Submenu name has been changed to:', 'bulletproof-security').'<br>UI|UX|Theme Skin<br>Spinner|ScrollTop<br>WP Toolbar|SLF'; echo $text; ?></td>
   </tr>
   <tr>
@@ -1387,70 +1433,6 @@ jQuery(document).ready(function($){
      </td>
   </tr> 
    <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .52.1', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
-	</td>
-  </tr> 
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Submenu Name Change|Addition:', 'bulletproof-security').'</strong></h3>'.__('BPS Main Menu > UI|UX Submenu name has been changed to:', 'bulletproof-security').'<br>UI|UX|Theme Skin<br>Processing Spinner<br>WP Toolbar|SLF'; echo $text; ?></td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF)', 'bulletproof-security').'</strong></h3>'.__('RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>  
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('SLF Mod|Description:', 'bulletproof-security').'</strong></h3>'.__('In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.', 'bulletproof-security'); echo $text; ?></td>
-  </tr> 
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('Bonus Custom Code Dismiss Notice Enhancement|Improvement:', 'bulletproof-security').'</strong></h3>'.__('An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.', 'bulletproof-security'); echo $text; ?></td>
-  </tr> 
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.', 'bulletproof-security'); echo $text; ?>
-     </td>
-  </tr> 
-   <tr>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-    <td class="bps-table_cell_no_border">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h2><strong>'.__('Whats New in BPS .52', 'bulletproof-security').'</strong></h2>'; echo $text; ?>
-	</td>
-  </tr> 
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Menu|Page: Idle Session Logout|Auth Cookie Expiration', 'bulletproof-security').'</strong></h3>'.__('BPS Security Main Menu > Idle Session Logout Cookie Expiration', 'bulletproof-security'); echo $text; ?></td>
-  </tr>
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: Idle Session Logout (ISL)', 'bulletproof-security').'</strong></h3><strong><a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" target="_blank" title="ISL|ACE Forum Topic">'.__('ISL|ACE Forum Topic', 'bulletproof-security').'</a></strong>: '.__('Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>  
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature: Auth Cookie Expiration (ACE)', 'bulletproof-security').'</strong></h3><strong><a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" target="_blank" title="ISL|ACE Forum Topic">'.__('ISL|ACE Forum Topic', 'bulletproof-security').'</a></strong>: '.__('Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>  
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file', 'bulletproof-security').'</strong></h3><strong><a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" target="_blank" title="410 Gone Usage Info">'.__('410 Gone Usage Info', 'bulletproof-security').'</a></strong>: '.__('A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>  
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('New Core Enhancement|Improvement: Rogue Script Killer', 'bulletproof-security').'</strong></h3><strong><a href="http://forum.ait-pro.com/forums/topic/remove-plugin-scripts-from-loading-in-other-plugin-pages/" target="_blank" title="Roque Script Killer">'.__('Roque Script Killer Info', 'bulletproof-security').'</a></strong>: '.__('Additional filters added to kill/null Roque scripts and styles in other plugins and themes from loading in BPS plugin pages and breaking BPS plugin js and css scripts. Nulls/Kills Rogue Scripts from loading in BPS plugin pages. Nulls/Kills Rogue Styles from loading in BPS plugin pages. Note: If you are seeing 404 errors in your Security log like this: jquery-ui.piklist.css-roque-script-nulled then see the link above for how to prevent these 404 errors from being logged in your Security Log.', 'bulletproof-security'); echo $text; ?></td>
-  </tr>  
-  <tr>
-    <td class="bps-table_cell_no_border">&bull;</td>
-    <td class="bps-table_cell_no_border"><?php $text = '<h3><strong>'.__('BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:', 'bulletproof-security').'</strong></h3>'.__('&bull; jQuery Custom Classes added to all BPS jQuery code.<br>&bull; CSS and js file name changes: -ui- used in naming convention.<br>&bull; jQuery UI Dialog Read Me Help button hide effect changed from explode to blind.', 'bulletproof-security'); echo $text; ?>
-     </td>
-  </tr> 
-  <tr>
     <td class="bps-table_cell_no_border">&nbsp;</td>
     <td class="bps-table_cell_no_border">&nbsp;</td>
   </tr>
@@ -1533,6 +1515,7 @@ for hacker and spammer protection', 'bulletproof-security').'</strong></h4>'; ec
 <div id="bpsProVersions" style="padding-left:5px;">
 <div class="pro-links"><a href="http://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a></div><br />
 
+<div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5190/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-11/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 11', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5183/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-9/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.9', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5181/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-8/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.8', 'bulletproof-security'); ?></a></div>
 <div class="pro-links"><a href="http://www.ait-pro.com/aitpro-blog/5177/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-10-7/" target="_blank" title="Link Opens in New Browser Window"><?php _e('Whats New in BPS Pro 10.7', 'bulletproof-security'); ?></a></div>

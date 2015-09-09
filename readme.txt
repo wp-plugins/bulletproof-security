@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, malware, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, viruses, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.7 
 Tested up to: 4.3
-Stable tag: .52.4
+Stable tag: .52.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -466,6 +466,30 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
+= .52.5 =
+* <strong>Core Enhancement: Apache Module Forward|Backward Compatibility:</strong> BPS automatically checks which Apache Modules are loaded on your server: mod_access_compat, mod_authz_core and mod_authz_host and checks availability|forward|backward compatibility and also IfModule conditions support to automatically create the correct htaccess code and files for your website|server. All BPS htaccess writing|updating|upgrading|new installations|creation|ip whitelisting, etc. htaccess code is automatically created based on Live BPS Apache Module and IfModule tests that are performed in BPS during BPS plugin upgrades and new installations to determine and create the correct htaccess code for each individual server|website. A new System Info feature has been added that performs Live tests with results and also includes a Visual Test - see New Feature: System Info page: for details. Dev Note: Live Apache Module check and automation performed in-page on htaccess Core page.
+
+* <strong>Apache Module Compatibility List of Features|Files|htaccess Code Affected:</strong>
+* <strong>htaccess Core:</strong> Root and wp-admin htaccess code|files creation. Custom Code in-page automated IP whitelisting.
+* <strong>Core:</strong> BPS plugin directory self-protection htaccess files.
+* <strong>Login Security:</strong> in-page automated IP whitelisting.
+* <strong>DB Backup:</strong> in-page automated IP whitelisting.
+* <strong>Maintenance Mode:</strong> in-page automated IP whitelisting, BackEnd MMode IP whitelisting.
+* <strong>Setup Wizard:</strong> automated htaccess code|files creation.
+
+* <strong>New Feature: System Info page: Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test</strong> The System Info Apache Modules|Directives check checks mod_access_compat, mod_authz_core and mod_authz_host availability|forward|backward compatibility and also IfModule conditions support. A visual test page (Click the View Visual Test link) has also been created to see the Apache Module|htaccess code and checks visually for troubleshooting purposes. BPS automatically detects which Apache Modules are loaded|available on your host server and creates the correct htaccess code for you particular website|server throughout all BPS htaccess files. 
+
+* Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test
+* mod_access_compat is Loaded|Order, Allow, Deny directives are supported|IfModule: Yes
+* mod_authz_core is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes
+* mod_authz_host is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes
+
+* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
+* <strong>BugFix:</strong> Network/Multisite Rewrite Loop End Custom Code Form name field correction.
+* <strong>BugFix|Correction:</strong> DB Table Prefix Changer: Only allow entering numbers, lowercase letters and underscores in the Randomly Generated DB Table Prefix Form text box. Special thanks to Sathish from: <a href="http://cybersecurityworks.com/" title="Cyber Security Works Pvt Ltd" rel="nofollow" target="_blank">Cyber Security Works Pvt Ltd</a> for reporting a bug/security vulnerability in the DB Table Prefix Changer tool Form. Notes: You MUST be an Administrator and logged into the site as an Administrator in order to enter/test XSS html testing code in the Randomly Generated DB Table Prefix Form text box. Please do NOT actually try this test if you are using a version of BPS that is below .52.5. BPS .52.5 and above versions will only allow entering numbers, lowercase letters, and underscores for the DB Table Prefix name. If you have a BPS version below .52.5 then entering an invalid DB Table Prefix name will crash your website.
+* <strong>Dev Note:</strong> New condition added for Apache Module /mod-test/ folder in 403.php logging template to prevent 403 errors from being logged when Live Apache Module tests are performed|processed.
+* <strong>Dev Note:</strong> admin.php obsolete code removal for deny all htaccess file creation for BPS Backup and Master Backups folders.
+
 = .52.4 =
 * <strong>Submenu Name Change|Addition:</strong> UI|UX Submenu name has been changed to: UI|UX|Theme Skin Spinner|ScrollTop WP Toolbar|SLF
 
@@ -474,7 +498,7 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 * <strong>New Option: Turn On|Off jQuery ScrollTop Animation:</strong> jQuery ScrollTop Animation can be turned On or Off on the UI|UX menu/page. The jQuery ScrollTop Animation is the scrolling animation that you see after submitting BPS Forms, which automatically scrolls to the top of BPS plugin pages to display success or error messages. The jQuery ScrollTop animation code is conditional based on your Browser User Agent|Rendering Engine.
 
 * <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
+* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: Mike Harrison for reporting this bug.
 
 * <strong>Dev Note:</strong> Structural Core options.php file renamed to core.php and all related URI's are now pointing to this new page.
 
@@ -785,8 +809,8 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Upgrade Notice ==
 
-= .52.3 =
-* 1 Feature Improvement - 1 New Option - 1 BugFix - See the BPS plugin Whats New page for details.
+= .52.5 =
+* Apache Module Forward|Backward Compatibility - 2 BugFixes - See the BPS plugin Whats New page for details.
 
 == Help Info ==
 

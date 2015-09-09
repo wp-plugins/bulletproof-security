@@ -136,6 +136,8 @@ global $bps_topDiv, $bps_bottomDiv;
 	
 	}
 }
+
+	$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');
 ?>
         
 <div id="bps-accordion-2" class="bps-accordion-main-2">
@@ -258,7 +260,7 @@ global $bps_topDiv, $bps_bottomDiv;
     <td class="bps-table_cell_help_custom_code">
     <strong><label for="bps-CCode"><?php _e('CUSTOM CODE WP REWRITE LOOP END: Add WP Rewrite Loop End code here', 'bulletproof-security'); ?> </label></strong><br />
  <strong><?php $text = '<font color="#2ea2cc">'.__('This is a Special Custom Code text box that should only be used if the correct WP REWRITE LOOP END code is not being created in your root .htaccess file by AutoMagic. See the Read Me help button for more information.', 'bulletproof-security').'</font>'; echo $text; ?></strong><br />
-    <textarea class="bps-text-area-custom-code" name="bbps_customcode_wp_rewrite_end" tabindex="13"><?php echo $CC_Options_root['bps_customcode_wp_rewrite_end']; ?></textarea>
+    <textarea class="bps-text-area-custom-code" name="bps_customcode_wp_rewrite_end" tabindex="13"><?php echo $CC_Options_root['bps_customcode_wp_rewrite_end']; ?></textarea>
 
 </td>
     <td class="bps-table_cell_help_custom_code" style="padding-top:75px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: The actual WP REWRITE LOOP END code for your website may be different. This example code is a visual reference to show you which root htaccess file code goes in the CUSTOM CODE WP REWRITE LOOP END text box. Go to the htaccess File Editor tab page and copy your actual WP REWRITE LOOP END root htaccess file code and paste it into the CUSTOM CODE WP REWRITE LOOP END text box to the left.</span><br /><pre># END BPSQSE BPS QUERY STRING EXPLOITS<br /><div style="background-color:#FFFF00;padding:3px;">RewriteCond %{REQUEST_FILENAME} -f [OR]<br />RewriteCond %{REQUEST_FILENAME} -d<br />RewriteRule ^ - [L]<br />RewriteRule ^[_0-9a-zA-Z-]+/(wp-(content|admin|includes).*) $1 [L]<br />RewriteRule ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]<br />RewriteRule . index.php [L]<br /># WP REWRITE LOOP END</div></pre>
@@ -273,7 +275,19 @@ global $bps_topDiv, $bps_bottomDiv;
  <strong><?php $text = '<font color="#2ea2cc">'.__('You MUST copy and paste the entire DENY BROWSER ACCESS section of code from your root .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes.', 'bulletproof-security').'</font>'; echo $text; ?></strong><br />
     <textarea class="bps-text-area-custom-code" name="bps_customcode_deny_files" tabindex="14"><?php echo $CC_Options_root['bps_customcode_deny_files']; ?></textarea>
     </td>
-    <td class="bps-table_cell_help_custom_code" style="padding-top:75px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for Custom Code Setup Steps. This example code is a visual reference to show you which root htaccess file code goes in the CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES text box. Go to the htaccess File Editor tab page and copy your actual DENY BROWSER ACCESS TO THESE FILES root htaccess file code and paste it into the CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES text box to the left.</span><pre style="max-height:145px;"># DENY BROWSER ACCESS TO THESE FILES<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># wp-config.php, bb-config.php, php.ini, php5.ini, readme.html<br /># Replace 88.77.66.55 with your current IP address and remove the<br />.....<br />.....<br />&lt;FilesMatch &quot;^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)&quot;&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 88.77.66.55<br />&lt;/FilesMatch&gt;</pre></td>
+    <td class="bps-table_cell_help_custom_code" style="padding-top:75px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for Custom Code Setup Steps. This example code is a visual reference to show you which root htaccess file code goes in the CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES text box. Go to the htaccess File Editor tab page and copy your actual DENY BROWSER ACCESS TO THESE FILES root htaccess file code and paste it into the CUSTOM CODE DENY BROWSER ACCESS TO THESE FILES text box to the left.</span>
+    
+<?php if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) { ?>   
+    
+<pre style="max-height:145px;"># DENY BROWSER ACCESS TO THESE FILES<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># wp-config.php, bb-config.php, php.ini, php5.ini, readme.html<br /># To be able to view these files from a Browser, replace 127.0.0.1 with your actual<br /># current IP address. Comment out: #Require all denied and Uncomment: Require ip 127.0.0.1<br /># Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1<br /># Note: The BPS System Info page displays which modules are loaded on your server.<br /><br />&lt;FilesMatch &quot;^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)&quot;&gt;<br />&lt;IfModule mod_authz_core.c&gt;<br />Require all denied<br />#Require ip 127.0.0.1<br />&lt;/IfModule&gt;<br /><br />&lt;IfModule !mod_authz_core.c&gt;<br />&lt;IfModule mod_access_compat.c&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 127.0.0.1<br />&lt;/IfModule&gt;<br />&lt;/IfModule&gt;<br />&lt;/FilesMatch&gt;</pre>
+    
+<?php } elseif ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'No' ) { ?>
+
+<pre style="max-height:145px;"># DENY BROWSER ACCESS TO THESE FILES<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># wp-config.php, bb-config.php, php.ini, php5.ini, readme.html<br /># To be able to view these files from a Browser, replace 127.0.0.1 with your actual<br /># current IP address. Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1<br /># Note: The BPS System Info page displays which modules are loaded on your server.<br /><br />&lt;FilesMatch &quot;^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)&quot;&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 127.0.0.1<br />&lt;/FilesMatch&gt;</pre>
+
+<?php } ?>  
+    
+    </td>
   </tr>
   <tr>
     <td class="bps-table_cell_help_custom_code">
@@ -341,7 +355,20 @@ jQuery(document).ready(function($){
 <strong><?php $text = '<font color="#2ea2cc">'.__('You MUST copy and paste the entire WPADMIN DENY BROWSER ACCESS TO FILES section of code from your wp-admin .htaccess file into this text box first. You can then edit and modify the code in this text window and save your changes. Add one pound sign # below to prevent the WPADMIN DENY BROWSER ACCESS TO FILES section of code from being created in your wp-admin .htaccess file', 'bulletproof-security').'</font>'; echo $text; ?></strong><br />
     <textarea class="bps-text-area-custom-code" name="bps_customcode_deny_files_wpa" tabindex="1"><?php echo $CC_Options_wpadmin['bps_customcode_deny_files_wpa']; ?></textarea>    
     </td>
-    <td class="bps-table_cell_help_custom_code" style="padding-top:105px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for wp-admin Custom Code Setup Steps. This example code is a visual reference to show you which wp-admin htaccess file code goes in the CUSTOM CODE WPADMIN DENY BROWSER ACCESS TO FILES text box. Go to the htaccess File Editor tab page and copy your actual WPADMIN DENY BROWSER ACCESS TO FILES wp-admin htaccess file code and paste it into the CUSTOM CODE text box to the left.</span><pre style="max-height:145px;"># WPADMIN DENY BROWSER ACCESS TO FILES<br /># Deny Browser access to /wp-admin/install.php<br /># Use BPS wp-admin Custom Code to modify/edit/change this code and to save it permanently.<br />...<br />...<br /># BEGIN BPS WPADMIN DENY ACCESS TO FILES<br />&lt;FilesMatch &quot;^(install\.php)&quot;&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 88.77.66.55<br />&lt;/FilesMatch&gt;<br /># END BPS WPADMIN DENY ACCESS TO FILES</pre></td>
+    <td class="bps-table_cell_help_custom_code" style="padding-top:105px;"><span style="color:#2ea2cc;font-weight:bold;">Example Code: Click the Read Me help button for wp-admin Custom Code Setup Steps. This example code is a visual reference to show you which wp-admin htaccess file code goes in the CUSTOM CODE WPADMIN DENY BROWSER ACCESS TO FILES text box. Go to the htaccess File Editor tab page and copy your actual WPADMIN DENY BROWSER ACCESS TO FILES wp-admin htaccess file code and paste it into the CUSTOM CODE text box to the left.</span>
+    
+<?php if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) { ?>   
+    
+<pre style="max-height:145px;"># WPADMIN DENY BROWSER ACCESS TO FILES<br /># Deny Browser access to /wp-admin/install.php<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># To be able to view the install.php file from a Browser, replace 127.0.0.1 with your actual<br /># current IP address. Comment out: #Require all denied and Uncomment: Require ip 127.0.0.1<br /># Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1<br /># Note: The BPS System Info page displays which modules are loaded on your server.<br /><br /># BEGIN BPS WPADMIN DENY ACCESS TO FILES<br />&lt;FilesMatch &quot;^(install\.php)&quot;&gt;<br />&lt;IfModule mod_authz_core.c&gt;<br />Require all denied<br />#Require ip 127.0.0.1<br />&lt;/IfModule&gt;<br />&lt;IfModule !mod_authz_core.c&gt;<br />&lt;IfModule mod_access_compat.c&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 127.0.0.1<br />&lt;/IfModule&gt;<br />&lt;/IfModule&gt;<br />&lt;/FilesMatch&gt;<br /># END BPS WPADMIN DENY ACCESS TO FILES</pre>
+    
+<?php } elseif ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'No' ) { ?>
+
+<pre style="max-height:145px;"># WPADMIN DENY BROWSER ACCESS TO FILES<br /># Deny Browser access to /wp-admin/install.php<br /># Use BPS Custom Code to modify/edit/change this code and to save it permanently.<br /># To be able to view the install.php file from a Browser, replace 127.0.0.1 with your actual<br /># current IP address. Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1<br /># Note: The BPS System Info page displays which modules are loaded on your server.<br /><br /># BEGIN BPS WPADMIN DENY ACCESS TO FILES
+&lt;FilesMatch &quot;^(install\.php)&quot;&gt;<br />Order Allow,Deny<br />Deny from all<br />#Allow from 127.0.0.1<br />&lt;/FilesMatch&gt;<br /># END BPS WPADMIN DENY ACCESS TO FILES</pre>
+
+<?php } ?> 
+    
+    </td>
   </tr>
   <tr>
     <td class="bps-table_cell_help_custom_code">

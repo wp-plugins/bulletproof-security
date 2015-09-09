@@ -113,6 +113,7 @@ global $wpdb, $wp_version, $blog_id;
 	register_setting('bulletproof_security_options_wizard_free', 'bulletproof_security_options_wizard_free', 'bulletproof_security_options_validate_wizard_free');	
 	register_setting('bulletproof_security_options_pop_uninstall', 'bulletproof_security_options_pop_uninstall', 'bulletproof_security_options_validate_pop_uninstall');
 	register_setting('bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_customcode_WPA', 'bulletproof_security_options_validate_customcode_WPA');
+	register_setting('bulletproof_security_options_apache_modules', 'bulletproof_security_options_apache_modules', 'bulletproof_security_options_validate_apache_modules');
 	register_setting('bulletproof_security_options_status_display', 'bulletproof_security_options_status_display', 'bulletproof_security_options_validate_status_display');
 	register_setting('bulletproof_security_options_login_security', 'bulletproof_security_options_login_security', 'bulletproof_security_options_validate_login_security');
 	register_setting('bulletproof_security_options_idle_session', 'bulletproof_security_options_idle_session', 'bulletproof_security_options_validate_idle_session');
@@ -138,47 +139,6 @@ global $wpdb, $wp_version, $blog_id;
 		@chmod( WP_CONTENT_DIR . '/bps-backup/master-backups/', 0755 );
 	}
 
-	// Create Deny all .htaccess files - /bps-backup htaccess file is recursive and will protect all subfolders
-	$bps_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
-	$bps_denyall_htaccess_renamed = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
-	$security_log_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/security-log/.htaccess';
-	$system_info_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/system-info/.htaccess';
-	$login_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/login/.htaccess';
-	$MMode_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/maintenance/.htaccess';
-	$DBB_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/db-backup-security/.htaccess';
-	$core_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/core/.htaccess';
-	$wizard_denyall_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/.htaccess';	
-	$bps_ARHtaccess = WP_CONTENT_DIR . '/bps-backup/.htaccess';
-	
-	// put the files in an array and create a foreach for these at some point
-	if ( ! file_exists($bps_ARHtaccess) ) {
-		@copy($bps_denyall_htaccess, $bps_ARHtaccess);
-	}
-	if ( ! file_exists($bps_denyall_htaccess_renamed) ) {
-		@copy($bps_denyall_htaccess, $bps_denyall_htaccess_renamed);	
-	}
-	if ( ! file_exists($security_log_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $security_log_denyall_htaccess);	
-	}
-	if ( ! file_exists($system_info_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $system_info_denyall_htaccess);
-	}
-	if ( ! file_exists($login_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $login_denyall_htaccess);
-	}
-	if ( ! file_exists($MMode_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $MMode_denyall_htaccess);			
-	}
-	if ( ! file_exists($DBB_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $DBB_denyall_htaccess);
-	}
-	if ( ! file_exists($core_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $core_denyall_htaccess);
-	}
-	if ( ! file_exists($wizard_denyall_htaccess) ) {
-		@copy($bps_denyall_htaccess, $wizard_denyall_htaccess);
-	}
-	
 	// Create logs folder
 	if( ! is_dir( WP_CONTENT_DIR . '/bps-backup/logs' ) ) {
 		@mkdir( WP_CONTENT_DIR . '/bps-backup/logs', 0755, true );
@@ -595,6 +555,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 	delete_option('bulletproof_security_options_auth_cookie'); 
 	delete_option('bulletproof_security_options_SLF');
 	delete_option('bulletproof_security_options_scrolltop');
+	delete_option('bulletproof_security_options_apache_modules');
 	// will be adding this new upgrade notice option later
 	// delete_option('bulletproof_security_options_upgrade_notice');	
 	
@@ -895,6 +856,15 @@ function bulletproof_security_options_validate_wizard_free($input) {
 function bulletproof_security_options_validate_SLF($input) {  
 	$options = get_option('bulletproof_security_options_SLF');  
 	$options['bps_slf_filter'] = wp_filter_nohtml_kses($input['bps_slf_filter']);
+
+	return $options;  
+}
+
+// Apache Modules IfModule condition: create IfModule conditions or just Order, Deny, Allow htaccess code
+function bulletproof_security_options_validate_apache_modules($input) {  
+	$options = get_option('bulletproof_security_options_apache_modules');  
+	$options['bps_apache_mod_ifmodule'] = wp_filter_nohtml_kses($input['bps_apache_mod_ifmodule']);
+	$options['bps_apache_mod_time'] = wp_filter_nohtml_kses($input['bps_apache_mod_time']);
 
 	return $options;  
 }

@@ -270,6 +270,8 @@ function bps_get_proxy_real_ip_address() {
 	}
 	echo '</strong><br>';
 	
+	bpsPro_apache_mod_directive_check();
+
 	echo __('cURL', 'bulletproof-security').': <strong>';
 	if ( extension_loaded('curl') ) {
 		_e('cURL Extension is Loaded', 'bulletproof-security');
@@ -774,7 +776,7 @@ global $bps_topDiv, $bps_bottomDiv;
 	if ( ! is_wp_error( $response ) ) {	
 
 	echo $bps_topDiv;
-	echo '<strong>'.__('GET Request Headers: ', 'bulletproof-security').'</strong>'.htmlspecialchars($url).'<br>';
+	echo '<strong>'.__('GET Request Headers: ', 'bulletproof-security').'</strong>'. htmlspecialchars($url) .'<br>';
 	echo '<pre>';
 	echo 'HTTP Status Code: ';
 	print_r($response['response']['code']);

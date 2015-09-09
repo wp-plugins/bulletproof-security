@@ -61,6 +61,9 @@ $gmt_offset = get_option( 'gmt_offset' ) * 3600;
 		$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' - ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
 	}
 
+	// BPS .52.5: Do not log test 403 errors for /mod-test/ Apache Module testing
+	if ( ! preg_match('/wp-content\/plugins\/bulletproof-security\/admin\/mod-test/', $_SERVER['REQUEST_URI'] ) ) {
+
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	if ( preg_match_all('/(.*)\/plugins\/(.*)\.js|(.*)\/plugins\/(.*)\.php|(.*)\/plugins\/(.*)\.swf/', $_SERVER['REQUEST_URI'], $matches ) ) {
@@ -123,6 +126,7 @@ if ( !preg_match('/BPSUserAgentPlaceHolder/', $_SERVER['HTTP_USER_AGENT']) ) {
     }
 
     fclose($handle);
+	}
 	}
 	}
 	}
