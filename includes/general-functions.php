@@ -1522,64 +1522,6 @@ if ( current_user_can('manage_options') ) {
 
 add_action('admin_notices', 'bpsPro_mmode_dashboard_alert');
 
-// Deletes unused po and mo Language files
-function bps_delete_language_files() {
-$base_path = WP_PLUGIN_DIR . '/bulletproof-security/languages/';
-$lang_fileLTMO = $base_path.'bulletproof-security-lt_LT.mo';
-$lang_fileLTPO = $base_path.'bulletproof-security-lt_LT.po';
-$lang_fileRUMO = $base_path.'bulletproof-security-ru_RU.mo';
-$lang_fileRUPO = $base_path.'bulletproof-security-ru_RU.po';
-$lang_fileTLMO = $base_path.'bulletproof-security-tl_TL.mo';
-$lang_fileTLPO = $base_path.'bulletproof-security-tl_TL.po';
-
-	if ( defined('WPLANG') ) {
-
-		if ( WPLANG == '' || WPLANG == 'en_US' ) {
-
-		$delete_files = array($lang_fileLTMO, $lang_fileLTPO, $lang_fileRUMO, $lang_fileRUPO, $lang_fileTLMO, $lang_fileTLPO);
-	
-		foreach ( $delete_files as $file ) {
-			if ( file_exists($file) ) {
-				@unlink($file);	
-			}
-		}
-		}
-	
-		if ( WPLANG == 'lt_LT' ) {
-
-		$delete_files = array($lang_fileRUMO, $lang_fileRUPO, $lang_fileTLMO, $lang_fileTLPO);
-	
-		foreach ( $delete_files as $file ) {
-			if ( file_exists($file) ) {
-				@unlink($file);	
-			}
-		}
-		}	
-
-		if ( WPLANG == 'ru_RU' ) {
-
-		$delete_files = array($lang_fileLTMO, $lang_fileLTPO, $lang_fileTLMO, $lang_fileTLPO);
-	
-		foreach ( $delete_files as $file ) {
-			if ( file_exists($file) ) {
-				@unlink($file);	
-			}
-		}
-		}
-
-		if ( WPLANG == 'tl_TL' ) {
-
-		$delete_files = array($lang_fileLTMO, $lang_fileLTPO, $lang_fileRUMO, $lang_fileRUPO);
-	
-		foreach ( $delete_files as $file ) {
-			if ( file_exists($file) ) {
-				@unlink($file);	
-			}
-		}
-		}
-	}
-}
-
 // Login Security Disable Password Reset notice: Displays a message that backend password reset has been disabled
 function bpsPro_login_security_password_reset_disabled_notice() {
 
@@ -1630,7 +1572,7 @@ function bpsPro_htaccess_manual_update_notice() {
 			
 				} else {
     		
-					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 					$text = '<strong><font color="blue">'.__('BPS Notice: One-time Update Steps Required', 'bulletproof-security').'</font><br>'.__('Significant changes were made to the root and wp-admin htaccess files that require doing the one-time Update Steps below.', 'bulletproof-security').'<br>'.__('All future BPS upgrades will not require these one-time Update Steps to be performed.', 'bulletproof-security').'<br><a href="http://forum.ait-pro.com/forums/topic/root-and-wp-admin-htaccess-file-significant-changes/" target="_blank" title="Link opens in a new Browser window" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' If you would like to know what changes were made to the root and wp-admin htaccess files.', 'bulletproof-security').'<br>'.__('This Notice will go away automatically after doing all of the steps below.', 'bulletproof-security').'<br><br><a href="admin.php?page=bulletproof-security/admin/core/core.php" style="text-decoration:underline;">'.__('Click Here', 'bulletproof-security').'</a>'.__(' to go to the BPS Security Modes page.', 'bulletproof-security').'<br>'.__('1. Click the "Create secure.htaccess File" AutoMagic button.', 'bulletproof-security').'<br>'.__('2. Activate Root Folder BulletProof Mode.', 'bulletproof-security').'<br>'.__('3. Activate wp-admin Folder BulletProof Mode.', 'bulletproof-security').'</strong>';
 					echo $text;
 					echo '</p></div>';	
@@ -1641,5 +1583,18 @@ function bpsPro_htaccess_manual_update_notice() {
 }
 
 add_action('admin_notices', 'bpsPro_htaccess_manual_update_notice');
+
+function bpsPro_presave_ui_theme_skin_options() {
+	
+	$ui_theme_skin_options = 'bulletproof_security_options_theme_skin';	
+	$bps_ui_theme_skin = array( 'bps_ui_theme_skin' => 'blue' );
+			
+	if ( ! get_option( $ui_theme_skin_options ) ) {			
+		
+		foreach( $bps_ui_theme_skin as $key => $value ) {
+			update_option('bulletproof_security_options_theme_skin', $bps_ui_theme_skin);
+		}
+	}	
+}
 
 ?>

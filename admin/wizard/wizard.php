@@ -58,7 +58,7 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 }
 ?>
 
-<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#000;">
+<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#000;">
 
 <?php
 
@@ -1113,6 +1113,9 @@ switch ( $memoryLimit ) {
  	}
 	}
 
+	// BPS .52.6: Pre-save UI Theme Skin with Blue Theme if DB option does not exist
+	bpsPro_presave_ui_theme_skin_options();
+
 	// PHP/php.ini htaccess code pre-check - Check if root .htaccess file has php.ini handler code and if that code has been added to BPS Custom Code
 	bpsSetupWizardPhpiniHandlerCheck();
 	
@@ -1531,7 +1534,7 @@ $failTextEnd = '</strong></font><br>';
 	
 	echo '</span>';
 
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	$text = '<strong><font color="green">'.__('The Setup Wizard has completed BPS Setup.', 'bulletproof-security').'<br>'.__('Check the "BPS Setup Verification & Error Checks" section below for any errors in Red Font.', 'bulletproof-security').'</font></strong><br>';
 	echo $text;
 	echo '</p></div>';
@@ -1540,7 +1543,7 @@ $failTextEnd = '</strong></font><br>';
 	$wizard_run_time = $time_end - $time_start;
 	$wizard_time_display = '<strong>'.__('Setup Wizard Completion Time: ', 'bulletproof-security').'</strong>'. round( $wizard_run_time, 2 ) . ' Seconds';	
 	
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	echo bpsPro_memory_resource_usage();
 	echo $wizard_time_display;
 	echo '</p></div>';
@@ -1555,11 +1558,11 @@ $failTextEnd = '</strong></font><br>';
 
 </div>
 
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ Setup Wizard', 'bulletproof-security'); ?></h2>
+<h2 style="margin-left:220px;"><?php _e('BulletProof Security ~ Setup Wizard', 'bulletproof-security'); ?></h2>
 
 <!-- jQuery UI Tab Menu -->
 <div id="bps-tabs" class="bps-menu">
-    <div id="bpsHead" style="position:relative;top:0px;left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left;padding:0px 8px 0px 0px;margin:-72px 0px 0px 0px;" />
+    <div id="bpsHead" style="position:relative;top:0px;left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.gif'); ?>" style="float:left;padding:0px 8px 0px 0px;margin:-72px 0px 0px 0px;" />
     
 <style>
 <!--
@@ -1735,7 +1738,7 @@ if ( isset( $_POST['Submit-Net-LSM'] ) && current_user_can('manage_options') ) {
 	if ( is_multisite() ) {
 	
 		if ( wp_is_large_network() ) {
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 			$text = '<font color="red"><strong>'.__('Error: Your Network site exceeds the default WP criteria for a large network site. Either you have more than 10,000 users or more than 10,000 sites. Please post a new forum thread in the BPS plugin support forum on wordpress.org for assistance.', 'bulletproof-security').'</strong></font>';
 			echo $text;
 			echo '</p></div>';

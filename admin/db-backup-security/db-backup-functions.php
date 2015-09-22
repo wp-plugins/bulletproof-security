@@ -25,14 +25,14 @@ function bpsPro_reset_db_backup_folder() {
 				
 				if ( ! rename( WP_CONTENT_DIR . '/bps-backup/' . $matches[0], WP_CONTENT_DIR . '/bps-backup/' . $new_db_backup_folder ) ) {
 					
-					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 					$text = '<strong><font color="red">'.__('Error: Unable to rename the DB Backup folder.', 'bulletproof-security').'</font><br>'.__('Did you enter a valid DB Backup folder name? Valid folder naming characters are: Letters A to Z upper or lowercase. Numbers 0 to 9. A dash "-" or an underscore "_". Did you manually change the old DB Backup folder name using FTP?', 'bulletproof-security').'</strong>';
 					echo $text;
 					echo '</p></div>';
 				
 				} else {
 		
-					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 					$text = '<font color="green"><strong>'.__('The DB Backup folder name has been renamed to: ', 'bulletproof-security').$new_db_backup_folder.'</strong></font><br>';
 					
 				
@@ -77,14 +77,14 @@ function bpsPro_reset_db_backup_folder() {
 
 				if ( ! @mkdir( WP_CONTENT_DIR . '/bps-backup/' . $new_db_backup_folder, 0755, true ) ) {
 				
-					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 					$text = '<strong><font color="red">'.__('Error: Unable to create the DB Backup folder.', 'bulletproof-security').'</font><br>'.__('Go to the BPS System Info page File|Folder Permissions & UID checks table. Check the /wp-content/bps-backup/ folder permissions. The folder permissions should be 755 or 705. The Script Owner ID and File Owner ID should be the same matching ID. All of your other WordPress folders should also have the same matching ID\'s.', 'bulletproof-security').'</strong>';
 					echo $text;
 					echo '</p></div>';
 				
 				} else {
 				
-					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+					echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 					$text = '<font color="green"><strong>'.__('The DB Backup folder: ', 'bulletproof-security').$new_db_backup_folder.__(' was created successfully.', 'bulletproof-security').'</strong></font>';
 					echo $text;
 					echo '<div class="bps-message-button" style="width:90px;"><a href="admin.php?page=bulletproof-security/admin/db-backup-security/db-backup-security.php">'.__('Refresh Status', 'bulletproof-security').'</a></div>';	

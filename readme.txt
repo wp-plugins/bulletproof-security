@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, malware, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, viruses, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.7 
 Tested up to: 4.3
-Stable tag: .52.5
+Stable tag: .52.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,11 +110,8 @@ WordPress is already very secure, but every website, no matter what type of plat
  
 = Translations =
 
-* Lithuanian by <a href="http://www.Host1Free.com" title="Lithuanian Language Translation by Vincent G from Host1Free.com" target="_blank">Vincent G from Host1Free.com</a>
-* Filipino/Tagalog by <a href="http://pointen.dk/" title="Filipino/Tagalog Language Translation by pointen.dk" target="_blank">pointen.dk</a>
-* Russian by EyeFinity
-* If you would like to translate the BulletProof Security plugin to your language see this <a href="http://www.ait-pro.com/aitpro-blog/4074/wordpress-tips-tricks-fixes/wordpress-plugin-language-translation-tutorial-translating-a-wordpress-plugin-using-poedit/" title="BulletProof Security Plugin Language Translation Tutorial" rel="nofollow" target="_blank">BulletProof Security Plugin Language Translation Tutorial</a>. Please include a link to your website so that we can add it here. Thank you.
-* Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
+* Language Packs: For more information see: <a href="https://make.wordpress.org/polyglots/handbook/" title="Translator's Handbook">Translator's Handbook</a>
+* Bonus Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
 
 = BulletProof Security Bonus Custom Code =
 
@@ -451,13 +448,13 @@ The BulletProof Security WordPress plugin is a one-click security solution that 
 = Does BulletProof Security work with Git distributed version control system? =
 
 Yes. BulletProof Security works with Git, but does require some additional set up steps. Please see this thread for the setup steps
- <a href="http://wordpress.org/support/topic/plugin-bulletproof-security-bps-and-folder-locations?replies=15#post-2979555" title="BPS Plugin Language Translation Tutorial" rel="nofollow" target="_blank">Git distributed version control system setup steps</a>
+ <a href="http://wordpress.org/support/topic/plugin-bulletproof-security-bps-and-folder-locations?replies=15#post-2979555" title="Git distributed version control system setup steps" rel="nofollow" target="_blank">Git distributed version control system setup steps</a>
 
 == Screenshots ==
 
 1. BulletProof Security - Setup Wizard page
 2. BulletProof Security - Security Modes page
-3. BulletProof Security - htaccess File Editor page
+3. BulletProof Security - System Info page
 4. BulletProof Security - Login Security and Monitoring page
 5. BulletProof Security - Idle Session Logout (ISL)|Auth Cookie Expiration (ACE) page
 6. BulletProof Security - DB Backup page
@@ -466,351 +463,12 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
-= .52.5 =
-* <strong>Core Enhancement: Apache Module Forward|Backward Compatibility:</strong> BPS automatically checks which Apache Modules are loaded on your server: mod_access_compat, mod_authz_core and mod_authz_host and checks availability|forward|backward compatibility and also IfModule conditions support to automatically create the correct htaccess code and files for your website|server. All BPS htaccess writing|updating|upgrading|new installations|creation|ip whitelisting, etc. htaccess code is automatically created based on Live BPS Apache Module and IfModule tests that are performed in BPS during BPS plugin upgrades and new installations to determine and create the correct htaccess code for each individual server|website. A new System Info feature has been added that performs Live tests with results and also includes a Visual Test - see New Feature: System Info page: for details. Dev Note: Live Apache Module check and automation performed in-page on htaccess Core page.
-
-* <strong>Apache Module Compatibility List of Features|Files|htaccess Code Affected:</strong>
-* <strong>htaccess Core:</strong> Root and wp-admin htaccess code|files creation. Custom Code in-page automated IP whitelisting.
-* <strong>Core:</strong> BPS plugin directory self-protection htaccess files.
-* <strong>Login Security:</strong> in-page automated IP whitelisting.
-* <strong>DB Backup:</strong> in-page automated IP whitelisting.
-* <strong>Maintenance Mode:</strong> in-page automated IP whitelisting, BackEnd MMode IP whitelisting.
-* <strong>Setup Wizard:</strong> automated htaccess code|files creation.
-
-* <strong>New Feature: System Info page: Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test</strong> The System Info Apache Modules|Directives check checks mod_access_compat, mod_authz_core and mod_authz_host availability|forward|backward compatibility and also IfModule conditions support. A visual test page (Click the View Visual Test link) has also been created to see the Apache Module|htaccess code and checks visually for troubleshooting purposes. BPS automatically detects which Apache Modules are loaded|available on your host server and creates the correct htaccess code for you particular website|server throughout all BPS htaccess files. 
-
-* Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No): View Visual Test
-* mod_access_compat is Loaded|Order, Allow, Deny directives are supported|IfModule: Yes
-* mod_authz_core is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes
-* mod_authz_host is Loaded|Order, Allow, Deny directives are supported|BC: Yes|IfModule: Yes
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* <strong>BugFix:</strong> Network/Multisite Rewrite Loop End Custom Code Form name field correction.
-* <strong>BugFix|Correction:</strong> DB Table Prefix Changer: Only allow entering numbers, lowercase letters and underscores in the Randomly Generated DB Table Prefix Form text box. Special thanks to Sathish from: <a href="http://cybersecurityworks.com/" title="Cyber Security Works Pvt Ltd" rel="nofollow" target="_blank">Cyber Security Works Pvt Ltd</a> for reporting a bug/security vulnerability in the DB Table Prefix Changer tool Form. Notes: You MUST be an Administrator and logged into the site as an Administrator in order to enter/test XSS html testing code in the Randomly Generated DB Table Prefix Form text box. Please do NOT actually try this test if you are using a version of BPS that is below .52.5. BPS .52.5 and above versions will only allow entering numbers, lowercase letters, and underscores for the DB Table Prefix name. If you have a BPS version below .52.5 then entering an invalid DB Table Prefix name will crash your website.
-* <strong>Dev Note:</strong> New condition added for Apache Module /mod-test/ folder in 403.php logging template to prevent 403 errors from being logged when Live Apache Module tests are performed|processed.
-* <strong>Dev Note:</strong> admin.php obsolete code removal for deny all htaccess file creation for BPS Backup and Master Backups folders.
-
-= .52.4 =
-* <strong>Submenu Name Change|Addition:</strong> UI|UX Submenu name has been changed to: UI|UX|Theme Skin Spinner|ScrollTop WP Toolbar|SLF
-
-* <strong>Feature Improvement|Enhancement: jQuery ScrollTop Animation:</strong> The jQuery ScrollTop Animation code now performs a conditional Browser User Agent|Rendering Engine check and uses customized jQuery ScrollTop Animation code for each Browser individually for best visual animation/appearance in each Browser. New jQuery ScrollTop animation code has been created that has much better/smoother animation overall.
-
-* <strong>New Option: Turn On|Off jQuery ScrollTop Animation:</strong> jQuery ScrollTop Animation can be turned On or Off on the UI|UX menu/page. The jQuery ScrollTop Animation is the scrolling animation that you see after submitting BPS Forms, which automatically scrolls to the top of BPS plugin pages to display success or error messages. The jQuery ScrollTop animation code is conditional based on your Browser User Agent|Rendering Engine.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* <strong>BugFix:</strong> jQuery ScrollTop Animation 404 image error correction. Special Thanks to: Mike Harrison for reporting this bug.
-
-* <strong>Dev Note:</strong> Structural Core options.php file renamed to core.php and all related URI's are now pointing to this new page.
-
-* <strong>Dev Note:</strong> HTML Structural and related CSS changes to Core pages: bps-container div and WP wrap class moved and combined.
-
-= .52.3 =
-* <strong>New Feature: Login Security & Monitoring Export|Download Login Security Table Tool:</strong> The Export|Download Login Security Table tool exports (copies) the Login Security Table into the lsm-master.zip file, which you can then download to your computer. The lsm-master.zip file contains the lsm-master.csv file. The CSV (Comma Separated Values) file format can be opened with Microsoft Excel or other applications that can open/use CSV files.
-
-* <strong>Core Enhancement|Improvement: jQuery ScrollTop animation:</strong> jQuery ScrollTop animation has been added to all BPS plugin pages to animate scrolling pages to top 0 after Forms are submitted so that all displayed success/error messages are visible/viewable with the exception of Forms that should display data and/or messages inpage. All major Browsers tested working fine. IE Issue: IE ScrollTop animation is not fluid/smooth.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* <strong>BugFix:</strong> Pre-save Custom Code DB options (if they do not exist) for use in the Custom Code Export|Import Tools. New Installations: Pre-saved in Setup Wizard. Upgrades: Pre-saved in the BPS upgrade function.
-
-* <strong>BugFix:</strong> Login Security Search Form button unclickable due to div problem.
-
-* <strong>Improvement:</strong> Descriptive success/error message created for all Log File Logging Form code, My Notes Form, Custom Code Forms and other various Forms where a descriptive message is important vs using a general/standard WP "Settings Saved" message.
-
-* <strong>Improvement: BPS Changelog:</strong> Special Thanks to: <a href="http://sukcesstrony.pl/" title="Krzysztof Trynkiewicz - Sukces Strony" rel="nofollow" target="_blank">Krzysztof Trynkiewicz - Sukces Strony</a> for improvements to the BPS Changelog format for better readability.
-
-* <strong>Enhancement:</strong> System Info - Website Headers Check Tool display Headers result at top of page instead of inpage.
-
-* <strong>Enhancement:</strong> System Info - System checks are not performed when Website Headers Check Tool Forms are submitted.
-
-* <strong>Dev Note:</strong> Custom Code Forms now using standard Form processing code instead of WP options.php Form code.
-
-* <strong>Dev Note:</strong> New Core File: core-forms.php. New LSM Files: lsm-export.php, lsm-help-text.php.
-
-= .52.2 =
-* <strong>Setup Wizard Automation Enhancement|Improvement:</strong> The Setup Wizard Pre-Installation Checks automatically detects php/php.ini handler htaccess code in an existing root htaccess file and creates/saves that php/php.ini handler code in BPS Custom Code and the new root htaccess file that is automatically created by the Wizard. Prior to BPS .52.2, php/php.ini handler htaccess code required additional manual steps to complete this task.
-
-* <strong>HUD Check Enhancement|Improvement: php/php.ini handler htaccess code check:</strong> The php/php.ini handler htaccess code HUD check now displays a link to the Setup Wizard page. Clicking the link and visiting the Setup Wizard page automatically creates/saves that php/php.ini handler code in BPS Custom Code.
-
-* <strong>New Feature: Custom Code Export|Import|Delete Tools:</strong>
-* <strong>Export Tool:</strong> The Custom Code Export tool exports (copies) all of your Root and wp-admin custom htaccess code into the cc-master.zip file, which you can then download to your computer.
-
-* <strong>Import Tool:</strong> The Custom Code Import tool imports all of your Root and wp-admin Custom Code from the cc-master.zip file on your computer into the Custom Code text boxes and saves your imported custom htaccess code to your WordPress Database. You can unzip the cc-master.zip file on your computer to extract the cc-master.txt file for editing to add/change any custom htaccess code in the cc-master.txt file.
-
-* <strong>Delete Tool:</strong> The Custom Code Delete tool deletes all of your Root and wp-admin Custom Code from all of the Custom Code text boxes and your WordPress Database. The Delete tool can be used for troubleshooting possible invalid/bad custom htaccess code issues/problems or simply just to delete all custom htaccess code in all of the Custom Code text boxes.
-
-* <strong>New Option: Setup Wizard Options: Network|Multisite Sitewide Login Security Settings:</strong> Network|Multisite Sitewide Login Security Settings: This option is for Network|Multisite sites ONLY. This is an independent option Form that creates and saves Login Security DB option settings for all Network sites when you click the Save Network LSM Options Sitewide button. If Login Security option settings have already been setup and saved for any Network site then those Login Security option settings will NOT be changed. If Login Security options settings have NOT already been setup and saved for any Network site then those Login Security option settings will be created and saved with default settings.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:<strong>
-* Displayed message text correction for W3TC and WP Super Cache htaccess code error check.
-* General Help and info section added to Whats New page.
-* BPS Plugin Uninstall Options on WordPress Plugins page - Uninstaller CSS class name added for modal display problem.
-* htaccess Core tab page structure/order change.
-* Dev Core: WP Plugins page BPS plugin description changes.
-* DB Backup: Additional help info regarding Export|Import of Backup Jobs DB Table.
-* readme.txt: Requires at least: 3.0 changed to Requires at least: 3.7
-
-= .52.1 =
-* <strong>Submenu Name Change|Addition:</strong> BPS Main Menu > UI|UX Submenu name has been changed to: UI|UX|Theme Skin Processing Spinner WP Toolbar|SLF
-
-* <strong>Feature Name Change: RSK naming convention changed to Script|Style Loader Filter (SLF):</strong> RSK is a bit too aggressive and is a somewhat offensive naming convention. Cool, but not cool at the same time. Script|Style Loader Filter (SLF) is a logical naming convention and is non-offensive. See the SLF Mod|Description below for additional info.
-
-* <strong>SLF Mod|Description:</strong> In some cases, filtering other plugin and theme scripts from loading in BPS plugin pages causes the BPS plugin pages to hang severely, which means that a new issue/problem is created that is worse than the original issue/problem that SLF was designed to fix/solve. Original problem: BPS plugin pages not displaying visually correct due to other plugin or theme scripts loading in BPS plugin pages. SLF is set to Off by default. SLF has an On|Off setting under the UI|UX menu/page. See the UI Theme Skin|Processing Spinner|WP Toolbar|SLF Read Me help button for additional information.
-
-* <strong>Bonus Custom Code Dismiss Notice Enhancement|Improvement:</strong> An additional Dismiss All Notices link|feature has been added to dismiss all Bonus Custom Code notices at the same time. Displayed message: Click the links below to get Bonus Custom Code or click the Dismiss Notice links or click this Dismiss All Notices link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Security Status page.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* Cosmetic: Undefined index PHP error suppressed for ISL and ACE User Role checkboxes when WP_DEBUG is turned On.
-
-= .52 =
-* <strong>New Menu|Page:</strong> Idle Session Logout|Auth Cookie Expiration
-
-* <strong>New Feature: Idle Session Logout (ISL)</strong> <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Automatically logout idle/inactive Users. ISL uses javascript Event Listeners to monitor Users activity for these ISL events: keyboard key is pressed, mouse button is pressed, mouse is moved, mouse wheel is rolled up or down, finger is placed on the touch surface/screen and finger already placed on the screen is moved across the screen. Option Settings: Turn On|Off, Idle Session Logout Time in Minutes, Idle Session Logout Page URL, User Account Exceptions, Enable|Disable Idle Session Logouts For These User Roles: Administrator, Editor, Author, Contributor, Subscriber and Enable|Disable Idle Session Logouts For TinyMCE Editors. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
-
-* <strong>New Feature: Auth Cookie Expiration (ACE)</strong> <a href="http://forum.ait-pro.com/forums/topic/idle-session-logout-isl-and-authentication-cookie-expiration-ace/" title="ISL|ACE Forum Topic" rel="nofollow" target="_blank">ISL|ACE Forum Topic</a>: Change the WordPress Authentication Cookie Expiration time. The default WordPress Authentication Cookie Expiration time is 2880 Minutes/2 Days and 20160 Minutes/14 Days if a User checks the Remember Me checkbox when they login. You can change the WordPress Authentication Cookie Expiration time to whatever expiration time setting that you choose. Option Settings: Turn On|Off, Auth Cookie Expiration Time in Minutes, Remember Me Auth Cookie Expiration Time in Minutes, User Account Exceptions, Enable|Disable Auth Cookie Expiration Time For These User Roles: Administrator, Editor, Author, Contributor, Subscriber. Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for full details.
-
-* <strong>New Feature & Root htaccess File Addition: 410 ErrorDocument root htaccess code and template logging file</strong> <a href="http://forum.ait-pro.com/forums/topic/410-htaccess-redirect-redirect-html-files-redirect-query-strings-redirect-posts-or-categories/" title="410 Gone Usage Info" rel="nofollow" target="_blank">410 Gone Usage Info:</a> A 410.php template logging file has been created to handle 410 Gone Requests. 410 Gone Requests are logged in the BPS Security Log file. See the 410 Gone Usage Info link above for full details on usage.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* jQuery Custom Classes added to all BPS jQuery code.
-* CSS and js file name changes: -ui- used in naming convention.
-* jQuery UI Dialog Read Me Help button hide effect changed from explode to blind.
-
-= .51.9 =
-* <strong>Login Security & Monitoring Automated Email Alert Enhancement|Improvement:</strong> Special Thanks to: <a href="https://wordpress.org/support/profile/mewkazoid" title="mewkazoid WordPress Member">mewkazoid</a> for pointing out this useful improvement to BPS Login Security & Monitoring automated email alerts. The Login Security & Monitoring Automated Email Alert now contains additional help information about what to do if your User Account is being repeatedly locked.
-
-* <strong>Brute Force Attack General Info:</strong> Automated Brute Force Login attacks by spambots and hackerbots are a regular and ongoing type of website attack. The volume and frequency of Brute Force Login attacks are steadily increasing and will continue to increase. Brute Force attacks make up somewhere in the neighborhood of 85 percent (probably more like 90 percent to 95 percent) of the total of all types of ongoing website attacks these days. BPS Login Security & Monitoring protects the WordPress Login page from Brute Force attacks, but if your username is publicly known/displayed or can be harvested by automated bots then your user account may get locked very frequently. Check the BPS plugin Whats New page for some additional things you can do to prevent your user account from being locked repeatedly.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* BugFix: File Permissions cache issue: Root htaccess file not being re-locked when AutoLock is turned On. Special Thanks to: <a href="http://mike-harrison.com/" title="Mike Harrison" rel="nofollow" target="_blank">Mike Harrison</a> for reporting this bug.
-
-= .51.8 =
-* <strong>Summary Only:</strong> See the BPS plugin Whats New tab page for full descriptions and details
-
-* <strong>New Feature: Setup Wizard:</strong> The BPS plugin can be setup with literally only 1 click now on the new Setup Wizard page. Setup Wizard Pre-Installation Checks are automatically performed and displayed on the Setup Wizard page. You can re-run the Setup Wizard again at any time.
-
-* <strong>New Feature: jQuery UI Dialog Form BPS Uninstall Options:</strong> An Uninstall Options link has been created on the WordPress Plugins page under the BulletProof Security plugin. Clicking the Uninstall Options link loads a jQuery UI Dialog Form with 2 uninstall options: BPS Pro Upgrade Uninstall option - If you are upgrading to BPS Pro, select the BPS Pro Upgrade Uninstall option and click the Save Option button or just click the Close button below and do a normal plugin uninstall. Complete BPS Plugin Uninstall option - If you want to completely delete the BPS plugin, all files, Custom Code and BPS database settings, select the Complete BPS Plugin Uninstall option and click the Save Option button.
-
-* <strong>New Option: Login Security Attempts Remaining option and Core Functionality Improvements:</strong> New Option Attempts Remaining: You can choose to display a "Login Attempts Remaining X" message when an incorrect password is entered. This new option is enabled by default during BPS upgrades and new installations. Core Functionality Improvements: When a User Account is locked out and previous User Account logins were logged|stored in the DB, those previously logged logins and data for those DB Rows is not changed|updated and instead a new DB Row is inserted. This allows for better chronological login tracking and monitoring. Affects both Logging Options - Log All Account Logins and Log Only Account Lockouts options and allows for switching between these Logging Options without affecting functionality or causing issues/problems.
-
-* <strong>New Bonus Custom Code|Bonus Custom Code Dismiss Notice function Consolidation:</strong> Bonus Custom Code Dismiss Notice Consolidation: Combined|consolidated all Bonus Custom Code Notices into 1 Bonus Custom Code Notice function with 1 displayed Notice message instead of having several different displayed Notices. Each Bonus Custom Code contains a link to the Bonus Custom Code and a Dismiss Notice link. Referer Spammers|Phishing Protection, Mime Sniffing, Data Sniffing, Content Sniffing, Drive-by Download Attack Protection, External iFrame and Clickjacking Protection.
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* New BPS Setup & Overview Video tutorial created: BPS Setup & Overview Video Tutorial - link added on the Setup Wizard page and htaccess Core Security Modes page.
-* WP 4.2 Bug Reported|Ticket created with POC (Proof Of Concept) and solution provided: WP 4.2 hash anchor Bug Hash anchors were being stripped of URI's. Solution provided to WP folks. Solution implemented by WP folks. No other issues or problems found with WP 4.2 and BPS Pro versions.
-* WP flush_rewrite_rules function added to BPS complete plugin uninstall function. Creates new default generic WP root htaccess file on BPS complete plugin uninstall.
-* Dismiss Notice link correction when basename == wp-admin on first Dashboard login.
-* Custom Code inpage check for default WordPress Rewrite code added in Custom Code text boxes.
-
-= .51.7 =
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* Setup & Overview Video Tutorial Created|Added: Link to video tutorial is posted on BPS plugin Description page and htaccess Core Security Modes page.
-* DB Backup: Backup Files Download|Delete Form scrollable table added and additional Read Me help information added.
-* Inpage Status Display: Condition added to only load the Inpage Status Display on BPS plugin pages.
-* WP Toolbar Functionality In BPS Plugin Pages: Default Network/Multisite menu items (nodes) added.
-* Security Status: Inpage Status Display Turn On|Off Form action link correction to #bps-tabs-2 tab page.
-
-= .51.6 =
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* Inpage Status Display Turn On|Off code correction.
-* System Info page conditional check added for: gc_enabled & gc_collect_cycles functions.
-* Read Me help text added for: Inpage Status Display and Reset|Recheck Dismiss Notices options.
-* Link to Security Modes page added to wp-admin htaccess file alert.
-
-= .51.5 =
-* <strong>Summary Only:</strong> See the BPS plugin Whats New tab page for full descriptions and details
-* <strong>New Feature|Visual Enhancement:</strong> Inpage Status Display
-
-* <strong>New Features|Options|Visual Enhancements:</strong> UI|UX|Theme Skin | Processing Spinner | WP Toolbar
-
-* <strong>New Feature|Option:</strong> Turn On|Off The Processing Spinner
-
-* <strong>New Feature|Option:</strong> WP Toolbar Functionality In BPS Plugin Pages
-
-* <strong>New Feature:</strong> Memory Usage and Script Completion Time Check|Display
-
-* <strong>New Features|Options|Visual Enhancements:</strong> DB Backup & Security
-
-* <strong>New Feature|Option:</strong> Create Backup Jobs: Rename|Create|Reset Tool
-
-* <strong>System Info:</strong> New Check Added | Changes
-
-* <strong>htaccess Core:</strong> Security Status Page Changes
-
-* <strong>BPS Submenu Name Change:</strong> UI Theme Skin submenu name has been changed to: UI|UX|Theme Skin | Processing Spinner | WP Toolbar
-
-* <strong>BugFixes|Code Corrections|Enhancements|Misc|CSS|Visual|Other:</strong>
-* Dismiss Notices button/link reload current page based on Request URI or Query String.
-* Optimization|Performance: All BPS pages and functions.
-* Obsolete functions/code removed/deleted.
-* BPS plugin register scripts|styles | Enqueue scripts|styles | Dequeue plugin|theme scripts|styles loading in BPS plugin pages combined into one function. Additionally eliminated bloated individual load settings page code.
-* Additional variable check for conflicting|contradictory Automatic Update message/alert issue.
-* WordPress Plugins page|BulletProof Security plugin "Settings" link name change to "Setup Steps".
-* Maintenance Mode menu page will not be displayed if wp-admin BulletProof Mode has been disabled.
-
-= .51.4 =
-* <strong>Maintenance Mode Network/Multisite Subdomain Completion:</strong> Maintenance Mode coding work has been completed for Network/Multisite subdomain site types. Maintenance Mode now works for every/all WordPress site types, BuddyPress and bbPress site types.
-
-* <strong>BugFixes/Code Corrections/Misc/CSS/Visual/Other:</strong>
-* master-backups folder creation fix for unusual scenarios.
-* Automatic correction during upgrade for any existing timthumb RFI filter duplicate Referer lines.
-
-= .51.3 =
-* <strong>WordPress 4.1 jQuery UI Compatibility Code Correction:</strong> Bug: BPS jQuery UI Dialog Read Me help window position not centered in WordPress 4.1. Fix: Corrected the BPS jQuery UI Dialog Position Method code by adding the appropriate "my" and "at" options. Note: For anyone else experiencing this issue see this Forum Topic for the solution: <a href="http://forum.ait-pro.com/forums/topic/wordpress-4-1-jquery-ui-dialog-window-position-not-centered/" rel="nofollow" title="jQuery UI Dialog window position not centered" target="_blank">jQuery UI Dialog window position not centered</a>
-
-* <strong>Help Link Corrections:</strong> Special thanks to WordPress Member: <a href="https://wordpress.org/support/profile/mrppp" rel="nofollow" title="WordPress Member mrppp" target="_blank">mrppp</a> for finding and reporting invalid help links in BPS.
-
-= .51.2 =
-* <strong>Significant Root and wp-admin htaccess File Changes:</strong> See the BPS plugin Whats New page for more details.
-
-* <strong>Root htaccess File/Code Fix:</strong> Removal of additional instances of "BEGIN WordPress" and "END WordPress" text from the root htaccess file which caused multiple instances of the default wp htaccess code to be created in the root htaccess file when the WP flush_rewrite_rules function was executed by other plugins and themes.
-* <strong>htaccess Help Text Improvement Overall:</strong> The help text throughout both the root and wp-admin htaccess files was very dated and was in need of updating. Better/clearer examples have been created in the help text. Overall the htaccess files are more streamlined and less cluttered looking visually.
-
-* <strong>Structure/Order Code Changes:</strong> Several blocks of htaccess code has been structured differently as far as the general order/sequence of code goes in the root htaccess file and more importantly what code will remain in the root htaccess file in the event that the WP flush_rewrite_rules function is executed by another plugin or theme. There are several technical reasons for making these structure/order changes, which I will not bore you with. Basically things are structured/ordered much better for any/every possible scenario that may occur.
-
-* <strong>Note: This is a one-time BPS Update that requires manual steps to be performed.</strong> All future versions of BPS will do the normal/typical automatic update of the BPS htaccess files. Overall we felt that creating a Notice about these significant changes vs just doing a normal automatic update was the best route to take for the primary reasons stated above and some additional reasons not stated here.
-
-* <strong>New Custom Code Text Boxes Added:</strong> CUSTOM CODE TURN OFF YOUR SERVER SIGNATURE and CUSTOM CODE DENY ACCESS TO PROTECTED SERVER FILES AND FOLDERS.
-
-* <strong>BugFixes/Code Corrections/Misc/CSS/Visual/Other:</strong>
-* Custom Code accordion is now using tables vs CSS divs for cross Browser visual compatibility and obsolete CSS code has been removed for the CSS divs.
-* Overall inpage Custom Code help text information/example improvements.
-* Network/Multisite Net Correction code/check removed. No longer needed and is now obsolete.
-* Remote Address IP check added in the 403.php Security logging template. Will display current IP address for troubleshooting purposes.
-
-= .51.1 =
-* <strong>Obsolete File Deletion:</strong> Special thanks to Pietro Oliva for finding and reporting Form code sanitization issues in the stand-alone bpsunlock.php file/Form code. The bpsunlock.php stand-alone Login Security user account unlock file/Form has been removed/deleted from BPS. After review of the usefulness of this Form it was decided that instead of spending the time to sanitize the Form code the bpsunlock.php file/Form has instead been removed/deleted from BPS.
-
-= .51 =
-* <strong>BugFix/Code Correction:</strong>
-* System Info page HTTP_HOST variable fallback for SERVER_ADDR IP address retrieval code correction. Missing gethostbyname function has been added to the HTTP_HOST variable IP address fallback and is now returning an IP address correctly.
-* Code Correction/Sanitization:
-* System Info page Check Headers Tool Form code sanitization. Special thanks to Benjamin Kunz Mejri for finding and reporting this Form code sanitization issue that needed to be corrected.
-
-= .50.9 =
-* <strong>System Info Enhancements/Improvements/Additions:</strong> DNS Name Server checking code performance improvement and conditional checking added based on domain labels. Network/Multisite subdirectory/subdomain site type check added and changes to existing conditional checks. output_buffering directive variable check changed and text correction. Additional conditional checks for PHP Actual Configuration Memory Limit. Will display color coded recommendations and/or memory limits. Various naming/text changes.
-
-* <strong>htaccess Core Structural Core Changes:</strong> Reduction in size of large Options Core file by creating additional conditional supporting files with require. Deny All htaccess file is created in the new /core/ folder on init to protect the options.php core file. Other internal Core stuff.
-
-* <strong>Security Log Design/Visual/Enhancement Changes:</strong> Auto-Locking added to Security Log Turn On/Off Forms. The root .htaccess file is automatically locked again if it was locked. Cross Browser compatibility visual display issues/problems with Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-
-* <strong>Login Security Visual/Design Change:</strong> Cross Browser compatibility visual display issues/problems with Option/Settings & Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-
-* <strong>DB Backup Log Visual/Design Change:</strong> Cross Browser compatibility visual display issues/problems with Email Alerts and Log files Form. Forms are now using tables instead of individual CSS properties.
-
-* <strong>Custom Code Network/Multisite Additional Text Box:</strong> CUSTOM CODE WP REWRITE LOOP END: Add WP Rewrite Loop End code here. This is a Special Network/Multisite Custom Code text box that should ONLY be used if the correct WP REWRITE LOOP END code is not being created in your root .htaccess file by AutoMagic. This Custom Code text box and Read Me help text is ONLY displayed if you have a Network/Multisite website.
-
-* <strong>BugFixes/Code Corrections/Misc/CSS/Visual/Other:</strong>
-* Backend Maintenance Mode causing crashes due to newline not being generated in some cases. Additional newline added to wp-admin backend MMode htaccess writing code base
-* Removal/Deletion of obsolete usage of bps_DNS_NS() function.
-
-= .50.8 =
-* <strong>Quickie BugFix Release - released 1 hour after release of .50.7:</strong> Network/Multisite BPS plugin Network Activation correction: Conditional wrap added for blog_id 1
-
-= .50.7 =
-* <strong>UX Change: htaccess Core Security Modes AutoMagic Buttons:</strong> BPS automatically detects your site type and displays the correct AutoMagic buttons for your site type. Other site type AutoMagic buttons are no longer displayed on the Security Modes page. 
-
-* <strong>Network/Multisite One Time Code Correction:</strong> If you have a Network/Multisite website/installation of WordPress you will see a one time htaccess code correction Notice message displayed to you with steps to perform the one time code correction when you upgrade BPS.
-
-* <strong>Go Daddy Managed WordPress Hosting:</strong> If you have Go Daddy Managed WordPress Hosting see the BPS Whats New tab page within the BPS plugin.
-
-* <strong>BugFixes/Code Corrections/Misc/CSS/Visual/Other:</strong>
-* Maintenance Mode countdown timer email website link correction for subdirectory websites.
-* Maintenance Mode CSS visual improvements/changes/corrections.
-* WordPress 4.0 RC1 final testing completed - no issues or problems.
-* Delete old BPS bulletproof-security_info transient content on upgrade.
-
-= .50.6 =
-* <strong>New Option: Login Security & Monitoring Sort DB Rows:</strong> The Ascending Show Oldest Login First option displays logins from the oldest logins to your site to the newest logins to your site. The Descending Show Newest Login First option displays logins from the newest logins to your site to the oldest logins to your site. Example usage: Enter 50 for the Max DB Rows To Show option, which will show a maximum of 50 database rows/logins to your site and set Sort DB Rows option to Descending Show Newest Login First. You will see the last 50 most current/newest logins to your site in descending order.
-
-* <strong>Enhancements: Login Security & Monitoring:</strong> CSS max-height changed from 1000px to 600px for the scrollable Dynamic DB table. 600px is a much better/more manageable viewing area. Lock, Unlock and Delete labels for individual checkboxes in Dynamic DB search form and standard form. DB Query improvement for the Dynamic DB standard form.
-
-* <strong>New Option: htaccess Core wp-admin BulletProof Mode Enable/Disable wp-admin BulletProof Mode:</strong> This option is ONLY for Hosts that do not allow .htaccess files in the wp-admin folder. Go Daddy Managed WordPress Hosting (not standard Go Daddy Hosting) is the only known hosting account type where this option should be set to: Disable wp-admin BulletProof Mode. For everyone else you do not need to use this option. The default setting is already set to: Enable wp-admin BulletProof Mode.
-
-* <strong>Improvement: htaccess Core root domain label retrieval/writing:</strong> Improvement to htaccess Core code when retrieving & writing domain labels. Impact: Folks with 3+ domain label naming conventions such as: www.label1.label2.label3.
-
-= .50.5 =
-* <strong>Login Security Password Reset BugFix & New Option:</strong> BugFix: The Lost your password link was not being displayed when Login Security was turned Off. New Option: Turn Off Login Security/Use Password Reset Option ONLY.
-
-= .50.4 =
-* <strong>BugFixes/Code Corrections/Misc/CSS/Visual/Other:</strong>
-* DB Backup: backticks added to DB Backup Query to allow for hyphenated or other special characters in DB naming conventions.
-* DB Backup dynamic DB table: max-height CSS change
-* Login Security CSS auto-scroll: max-height CSS change
-* DB Table Prefix Changer: Additional check for writable files for DSO server types.
-* Root and wp-admin filter change
-* Log timestamps synchronized to GMT: All log timestamps are now synchronized to GMT time.
-
-= .50.3 =
-* <strong>Correction/BugFix/Improvement:<strong>
-* root and wp-admin .htaccess filters/rules change/correction/improvement. See the BPS Whats New tab page for more details.
-* Thanks goes to aselektor for spotting and reporting this.
-
-= .50.2 =
-* <strong>New Feature: DB Backup:</strong> Manual or scheduled (Hourly, Daily, Weekly and Monthly) database backups. Send DB Backups via email etc.
-* <strong>New Feature: DB Backup Log:</strong> The Backup Job Completion Time, Zip Backup File Name, timestamp. etc. is logged. Backup Job Settings are logged.
-* <strong>New Feature: DB Table Prefix Changer<strong>
-* <strong>New Feature: UI Theme Skin:</strong> 3 UI Theme Skins: Blue Gel Classic UI Theme, Light Grey jQuery UI Theme, Dark Black WP UI Theme.
-* <strong>Root .htaccess Security Filter Changes:</strong> See the BPS Whats New tab page for more details.
-* <strong>Login Security New Option/Option Change & Misc:</strong> Disable Password Reset Frontend Only, Disable Password Reset Frontend & Backend.
-* <strong>System Info page:</strong> added MySQL Extension, MySQLi Extension check.
-* <strong>Change:</strong> Login Security email message text change when user account is locked.
-* <strong>Change:</strong> Whitelist the Debug Bar plugin debug-bar css and js scripts.
-
-= .50.1 =
-* <strong>Security Logging major changes/improvements to logging template files/code:</strong> The Security Logging code has been significantly improved in BPS .50.1. Logging is more streamlined, performance optimized & faster than in previous BPS versions, even with the new general conditional pattern checking code added.
-
-* <strong>Security Logging Change:</strong> As of BPS .50.1 two new Security Log Fields have been added to Security Logging: Event Code and Solution. In Phase 1 of Security Log Solution Targeting the primary focus is on detecting possible Plugin Skip/Bypass rules & wp-admin Skip/Bypass Rules issues that need/require a one-time solution. Since 99.99% of the Security Log entries are blocked/forbidden hackers, spammers, scrapers, harvesters, miners, bad bots, etc. then the Security Log checking conditions can and should be streamlined/performance optimized by only looking at pattern matches in a broad scope.
-
-* <strong>New Feature and Corrections: Maintenance Mode Accordion:</strong> Maintenance Mode Accordion created for better functionality/usability. Code correction: Maintenance Mode website name not displayed in the reminder email. Code correction: Maintenance Mode Apostrophes/single quote code character displayed with an escape backslash.
-
-* <strong>New Bonus Custom Code/Dismiss Notice: WordPress XML-RPC DDoS Protection:</strong> Special Thanks goes to Gary Gordon for reporting the recent WordPress XML-RPC exploits/attacks. The XML-RPC DDoS PROTECTION Bonus Custom Code .htaccess code completely turns off/disables IXR-RPC Client/Server capabilities on a website by protecting the WordPress xmlrpc.php file from being publicly accessible, which prevents the IXR XML-RPC Client/Server connection. Using this Bonus Custom Code will turn off/disable remote posting capability from Weblog Clients (A Weblog Client is software you run on your local machine (desktop) that lets you post to your blog via XML-RPC), unless you add (whitelist) your IP address in the XML-RPC DDoS PROTECTION Bonus Code.
-
-* <strong>New Dismiss Notice Added: WordPress Firewall 2 plugin check:</strong> The WordPress Firewall 2 plugin contains a coding mistake and has not been updated in over 3 years. The wp-admin area is supposed to be whitelisted by default, but that code is not working correctly, which breaks several things in the BPS plugin. The Dismiss Notice will alert users to this existing problem.
-
-* <strong>New/Updated Help & FAQ Help Links:</strong> Help & FAQ tab pages have updated links, old/outdated links removed, etc.
-
-= .50 =
-* <strong>Bugfix/Code Correction:</strong>
-* Maintenance Mode str_replace has been changed to dirname for GWIOD site types to get the site root index.php file path
-* Special Thanks go to Eddy Estevez for reporting this bug.
-
-= .49.9 =
-* <strong>New Feature: Maintenance Mode - FrontEnd/BackEnd Maintenance Mode:</strong> The previous Maintenance Mode feature in BPS has been completely removed/replaced with the new Maintenance Mode feature in BPS .49.9. This is a completely new BPS feature. The new BPS Maintenance Mode design includes 20 background images, 15 center images (text box image), allows you to embed image files and YouTube videos, FrontEnd Maintenance Mode, BackEnd Maintenance Mode or both FrontEnd & BackEnd Maintenance Modes and most importantly is fast and simple to use so that you can switch in and out of Maintenance mode quickly and easily. Background image files/options and Center images (text box image) are independent of each other so that you can mix and match different background images with different Center images (text box image).
-
-* <strong>New Headers check tool added to the System Info page:</strong> Check your website Headers or another website's Headers by making a GET Request. Both GET and HEAD Headers checking is now available on the System Info page.
-
-* <strong>New System Info checks:</strong> Standard/GWIOD Site Type, BuddyPress and bbPress. If GWIOD site type display WordPress Address (URL) and Site Address (URL).
-
-* <strong>BPS Plugin/Theme Script Dequeue function added:</strong> Dequeue any/all other plugin or theme scripts that attempt to load in BPS plugin pages: A new BPS function has been added that Dequeues any/all other plugin or theme scripts on/in BPS plugin pages ONLY, which causes a wide variety of problems for BPS, such as broken plugin functionality, broken menus and pages not displaying visually correct. This new BPS Dequeue function only runs on/in BPS plugin pages and does not run anywhere else or affect anything else on a website. The BPS Dequeue function is only designed to prevent any other plugins or themes from loading their scripts in BPS plugin pages and does not do or affect anything else on a website.
-
-* <strong>Security Log Code Correction/Enhancement:</strong> Security Log User Agent/Bot filter auto-updated during BPS upgrade: The BPS 403.php Security Log template file is replaced during BPS plugin updates/upgrades, which is normal WordPress plugin update/upgrade procedure. The BPS 403.php Security Logging template is now auto-updated during BPS plugin upgrades/updates and automatically adds any previously added/saved User Agent/Bot filters to the new 403.php template file if any User Agents/Bots to Ignore/Not Log were previously added/saved.
-
-* <strong>W3TC and WPSC Error checking/messages modified to reflect current version error checking:</strong> Several things have changed in BPS .49.9 relating to W3TC and WPSC and related error messages.
-
-* <strong>DB Table datatype Issue/problem affects SQL Server (not MySQL) only:</strong> CREATE TABLE Query id column datatype has been changed from mediumint(9) to bigint(20).
-
-* <strong>Backup & Restore page/other misc pages:</strong> Master File backups and checks are obsolete and have been removed from BPS .49.9.
-
-* <strong>htaccess Core Security Modes page:</strong> Descriptive titles added to Radio buttons for BulletProof Modes: Root Folder BulletProof Mode, wp-admin Folder BulletProof Mode, Master htaccess BulletProof Mode and BPS Backup BulletProof Mode.
-
-* <strong>Feature Request by Daedalon:</strong> Unused po & mo Language files automatically deleted: Unused po & mo Language files are automatically deleted on page access for these BPS pages: htaccess Core, Login Security, Security Log and Maintenance Mode.
-
-= .49.8 =
-* <strong>Custom Code Code Correction:</strong> ENT_QUOTES flag added to Custom Code AutoMagic variables to convert Single Quote HTML entities stored in the DB back to characters during AutoMagic File writing.
-
-= .49.7 =
-* <strong>Network/Multisite Plugin Network Activation or Single subsite Plugin Activation:</strong> As of BulletProof Security .49.7, the BPS plugin can be Network Activated or you can allow the BPS plugin to be activated individually on each Network/Multisite subsite or of course you can choose not to Network Activate BPS or allow the BPS plugin on subsites.
-
-* <strong>New AutoMagic WP 3.5+ Network/Multisite .htaccess code:</strong> BPS AutoMagic buttons automatically write the correct Network/Multisite root .htaccess code for your site based on your WordPress version.
-
-* <strong>Network/Multisite New Feature Notice:</strong> BPS can now be Network Activated on Multisite: This Network / Multisite New Feature Dismiss Notice displays on Network/Multisite only to alert Network/Multisite site owners about the new Network Activation capability in BPS.
-
-* <strong>CSS Visual Style Changes for WP 3.8+ MP6 & Pre 3.8 WP Versions:</strong> WordPress 3.8 is using the new MP6 GUI. A BPS 3.8 CSS stylesheet has been created to visually display things correctly in WordPress 3.8. BPS will automatically load the correct CSS stylesheet for your WordPress version. CSS visual enhancements were also created for pre WordPress 3.8 versions. See the BPS Whats New page for more details
+<a href="http://forum.ait-pro.com/forums/topic/bps-changelog/" title="BPS Changelog" rel="nofollow" target="_blank">BPS Changelog</a>
 
 == Upgrade Notice ==
 
-= .52.5 =
-* Apache Module Forward|Backward Compatibility - 2 BugFixes - See the BPS plugin Whats New page for details.
+= .52.6 =
+* WordPress Language Packs Prep - Visual Enhancements - 1 BugFix
 
 == Help Info ==
 

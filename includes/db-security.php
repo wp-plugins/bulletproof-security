@@ -315,7 +315,7 @@ $time_start = microtime( true );
 	$backup_time_display = '<strong>Backup Job Completion Time: </strong>'. round( $backup_time, 2 ) . ' Seconds';
 	$bpsDBBLog = WP_CONTENT_DIR . '/bps-backup/logs/db_backup_log.txt';
 	
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	echo bpsPro_memory_resource_usage();
 	echo $backup_time_display;
 	echo '</p></div>';

@@ -57,8 +57,8 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 }
 ?>
 
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ DB Backup & Security', 'bulletproof-security'); ?></h2>
-<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#000;">
+<h2 style="margin-left:220px;"><?php _e('BulletProof Security ~ DB Backup & Security', 'bulletproof-security'); ?></h2>
+<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#000;">
 
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
@@ -67,7 +67,6 @@ echo bps_hud_check_bpsbackup();
 echo bps_check_safemode();
 echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
-bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
 if ( current_user_can('manage_options') && wp_script_is( 'bps-accordion', $list = 'queue' ) ) {
@@ -86,8 +85,9 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR );
 // Replace ABSPATH = wp-content
 $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR );
 // Top div echo & bottom div echo
-$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:70px;"><p>';
+$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:220px;"><p>';
 $bps_bottomDiv = '</p></div>';
+$UIoptions = get_option('bulletproof_security_options_theme_skin');
 
 // Get Real IP address - USE EXTREME CAUTION!!!
 function bpsPro_get_real_ip_address() {
@@ -154,7 +154,7 @@ bpsPro_DBBackup_deny_all();
 
 <!-- jQuery UI Tab Menu -->
 <div id="bps-tabs" class="bps-menu">
-    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" />
+    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.gif'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" />
     
 <style>
 <!--
@@ -376,6 +376,19 @@ function bpsSpinnerTableRefresh() {
 	} // end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...
 ?>
 
+<?php
+if ( $UIoptions['bps_ui_theme_skin'] == 'blue' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$( "#DBBJobscheckall tr:odd" ).css( "background-color", "#f9f9f9" );
+});
+/* ]]> */
+</script>
+
+<?php } ?>
+
 <script type="text/javascript">
 /* <![CDATA[ */
 jQuery(document).ready(function($){
@@ -424,7 +437,7 @@ $DBBoptions = get_option('bulletproof_security_options_db_backup');
 			
 		if ( !empty( $delete_jobs ) ) {
 			
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 
 			foreach ( $delete_jobs as $delete_job ) {
 				
@@ -449,7 +462,7 @@ $DBBoptions = get_option('bulletproof_security_options_db_backup');
 			
 			$db_backup = $DBBoptions['bps_db_backup_folder'] . '/' . DB_NAME . '.sql';
 				
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';			
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';			
 
 			foreach ( $run_jobs as $run_job ) {
 				
@@ -564,6 +577,19 @@ bpsPro_dbbackup_form_processing();
 	} // end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...
 ?>  
 
+<?php
+if ( $UIoptions['bps_ui_theme_skin'] == 'blue' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$( "#DBBFilescheckall tr:odd" ).css( "background-color", "#f9f9f9" );
+});
+/* ]]> */
+</script>
+
+<?php } ?>
+
 <script type="text/javascript">
 /* <![CDATA[ */
 jQuery(document).ready(function($){
@@ -601,7 +627,7 @@ if ( isset( $_POST['Submit-DBB-Files'] ) && current_user_can('manage_options') )
 			
 		if ( !empty( $delete_files ) ) {
 			
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 
 			foreach ( $delete_files as $delete_file ) {
 				
@@ -854,6 +880,19 @@ bpsPro_reset_db_backup_folder();
 
 ?>
 
+<?php
+if ( $UIoptions['bps_ui_theme_skin'] == 'blue' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$( "#DBBcheckall tr:odd" ).css( "background-color", "#f9f9f9" );
+});
+/* ]]> */
+</script>
+
+<?php } ?>
+
 <script type="text/javascript">
 /* <![CDATA[ */
 jQuery(document).ready(function($){
@@ -941,7 +980,7 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
 	$log_title = "\r\n" . '[Create Backup Job Settings Logged: ' . $timestamp . ']' . "\r\n" . 'Description|Backup Job Name: ' . $_POST['DBBDescription'] . "\r\n" . 'DB Backup Folder Location: ' . $_POST['DBBFolder'] . "\r\n" . 'DB Backup File Download Link|URL: ' . $_POST['DBBDownloadLink'] . "\r\n" . 'Backup Job Type: ' . $_POST['dbb_backup_job_type'] . "\r\n" . 'Frequency: ' . $_POST['dbb_backup_job_frequency'] . "\r\n" . 'Time When Scheduled Backup is Run: ' . $bps_next_job . "\r\n" . 'Send Scheduled Backup Zip Files Via Email: ' . $bps_email_zip_log . "\r\n" . 'Automatically Delete Old Backup Files Older Than: ' . $_POST['dbb_backup_delete'] .' day(s) old'. "\r\n" . 'Scheduled Backups (override): ' . $_POST['dbb_backup_on_off'] . "\r\n";
 	
 	if ( empty( $DBB_Create_Job ) ) {
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';	
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';	
 		echo '<strong><font color="red">'.__('Error: You did not select any DB Tables to backup. Backup Job was not created.', 'bulletproof-security').'</font></strong><br>';
 		echo '</p></div>';
 	}
@@ -958,7 +997,7 @@ if ( isset($_POST['Submit-DBB-Create-Job']) && current_user_can('manage_options'
     	fclose($handle);
 		}
 
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 		
 		$Table_array = array();
 		
@@ -1345,7 +1384,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 
 	if ( preg_match( '|[^a-z0-9_]|', $_POST['DBTablePrefix'] ) ) {
 		
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 		$text = '<strong><font color="red">'.__('ERROR: The DB Table Prefix name can only contain numbers, lowercase letters, and underscores.', 'bulletproof-security').'</font></strong>';
 		echo $text;
 		echo '</p></div>';	
@@ -1359,7 +1398,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 	$wpconfig_file = ABSPATH . 'wp-config.php';
 	
 	if ( ! file_exists($wpconfig_file) ) {
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 		$text = '<strong><font color="red">'.__('A wp-config.php file was NOT found in your website root folder.', 'bulletproof-security').'</font><br>'.__('Your DB Table Prefix was not changed. If you have moved your wp-config.php file to a another Server folder then you can use this tool to change your DB Table Prefix, but first you will need to temporarily move your wp-config.php file back to the default location: your WordPress website root folder.', 'bulletproof-security').'</strong>';
 		echo $text;
 		echo '</p></div>';
@@ -1379,7 +1418,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 		}
 
 	if ( !is_writable($wpconfig_file) ) {
-		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+		echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 		$text = '<strong><font color="red">'.__('Error: The wp-config.php file is not writable. Unable to write to the wp-config.php file.', 'bulletproof-security').'</font><br>'.__('Your DB Table Prefix was not changed. You will need to make the wp-config.php file writable first by changing either the file permissions or Ownership of the wp-config.php file (if you have a DSO Server) before you can use the DB Table Prefix Changer tool to change your DB Table Prefix.', 'bulletproof-security').'</strong>';
 		echo $text;
 		echo '</p></div>';
@@ -1447,7 +1486,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 		//@copy($wpconfig_file, $wpconfigARQ);	
 		}
 			
-			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+			echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 			$text = '<font color="green"><strong>'.__('DB Table Prefix Name change completed. Click the Load|Refresh Table button to load/refresh the DB Table Names & Character Length Table.', 'bulletproof-security').'</strong></font>';
 			
 			echo $text;
@@ -1459,7 +1498,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 	$run_time = $time_end - $time_start;
 	$time_display = '<strong>DB Table Prefix Changer Completion Time: </strong>'. round( $run_time, 2 ) . ' Seconds';
 
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	echo bpsPro_memory_resource_usage();
 	echo $time_display;
 	echo '</p></div>';
@@ -1587,7 +1626,7 @@ global $wpdb;
 	$run_time = $time_end - $time_start;
 	$time_display = '<strong>DB Table Names Tool Completion Time: </strong>'. round( $run_time, 2 ) . ' Seconds';
 
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	echo bpsPro_memory_resource_usage();
 	echo $time_display;
 	echo '</p></div>';	
@@ -1608,6 +1647,32 @@ global $wpdb;
 }// end if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' )...	
 
 ?>
+
+<?php
+if ( $UIoptions['bps_ui_theme_skin'] == 'blue' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$( "#DBPrefixStatus1 tr:odd" ).css( "background-color", "#f9f9f9" );
+});
+/* ]]> */
+</script>
+
+<?php } ?>
+
+<?php
+if ( $UIoptions['bps_ui_theme_skin'] == 'blue' ) { ?>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$( "#DBPrefixStatus2 tr:odd" ).css( "background-color", "#f9f9f9" );
+});
+/* ]]> */
+</script>
+
+<?php } ?>
 
     </td>
   </tr>

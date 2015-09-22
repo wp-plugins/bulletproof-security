@@ -268,6 +268,9 @@ $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 			update_option('bulletproof_security_options_customcode_WPA', $wpadmin_CC_Options);
 		}
 	}
+	
+	// BPS .52.6: Pre-save UI Theme Skin with Blue Theme if DB option does not exist
+	bpsPro_presave_ui_theme_skin_options();
 }
 
 // BPS Update/Upgrade Status Alert in WP Dashboard|Status Display BPS pages only
@@ -821,6 +824,7 @@ add_action('admin_notices', 'bpsProDBBStatus');
 // htaccess Core updates/creates the DB option and creates htaccess files if needed inpage on page load based on timestamp: once per 15 minute time restriction.
 // BPS plugin upgrades & Pre-Installation Wizard checks: new htaccess files created if needed.
 // bpsPro_apache_mod_create_htaccess_files() executed in this function which creates new htaccess files if needed.
+// BPS 52.6: fallback to mod_access_compat for everything else under the sun 
 function bpsPro_apache_mod_directive_check() {
 	
 	if ( current_user_can('manage_options') ) {
@@ -878,7 +882,7 @@ function bpsPro_apache_mod_directive_check() {
 		
 		} else {
 		
-			$text = '<font color="red"><strong>'.__('ERROR: wp_remote_get() function is blocked', 'bulletproof-security').'</strong></font><br>';
+			$text = '<font color="red"><strong>'.__('ERROR: wp_remote_get() function is blocked or unable to get the URL path', 'bulletproof-security').'</strong></font><br>';
 			echo $text;;
 		}
 	}
@@ -898,9 +902,11 @@ function bpsPro_apache_mod_directive_check() {
 		$text = '<strong>'.$status_code2.': '.__('mod_access_compat is Loaded|Order, Allow, Deny directives are supported|IfModule: No', 'bulletproof-security').'</strong><br>';
 		echo $text;				
 			
-	} else {
+	} else { // BPS 52.6: for everything else under the sun use mod_access_compat code as a fallback
 				
-		$text = '<strong>'.__('mod_access_compat is NOT Loaded|Order, Allow, Deny directives are NOT supported', 'bulletproof-security').'</strong><br>';
+		$apache_ifmodule = 'No';
+
+		$text = '<strong>'.$status_code8.': '.__('mod_access_compat is NOT Loaded|Order, Allow, Deny directives are NOT supported', 'bulletproof-security').'</strong><br>';
 		echo $text;
 
 	}
@@ -959,7 +965,7 @@ function bpsPro_apache_mod_directive_check() {
 			update_option('bulletproof_security_options_apache_modules', $apache_modules_Options);
 		}	
 
-	} else { // inpage BPS check & create db options and new htaccess files during BPS upgrade
+	} else { // inpage BPS check & create db options and new htaccess files during BPS upgrade & Pre-Installation Wizard checks
 
 		// 2: 403: mod_access_compat Module IS loaded. "Deny from all". Allows "Order, Deny, Allow" directives
 		$url2 = plugins_url( '/bulletproof-security/admin/mod-test/mod_access_compat-od-denied.png' );
@@ -994,11 +1000,12 @@ function bpsPro_apache_mod_directive_check() {
 			}
 			
 			// mod_access_compat loaded, IfModule condition working, Order, Allow, Deny directives are supported
+			// BPS 52.6: for everything else under the sun use mod_access_compat code as a fallback 
 			if ( 403 == $status_code2 && 403 == $status_code8 ) {
 
 				$apache_ifmodule = 'Yes';
 			
-			} elseif ( 403 != $status_code2 && 403 == $status_code8 ) {
+			} else { 
 		
 				$apache_ifmodule = 'No';
 			}

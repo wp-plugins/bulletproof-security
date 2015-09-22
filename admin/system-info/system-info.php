@@ -52,8 +52,8 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 }
 ?>
 
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ System Information', 'bulletproof-security'); ?></h2>
-<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;background-color: #000;">
+<h2 style="margin-left:220px;"><?php _e('BulletProof Security ~ System Information', 'bulletproof-security'); ?></h2>
+<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px;background-color: #000;">
 
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
@@ -80,7 +80,7 @@ $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
 // Replace ABSPATH = wp-content/uploads
 $wp_upload_dir = wp_upload_dir();
 $bps_uploads_dir = str_replace( ABSPATH, '', $wp_upload_dir['basedir'] );
-$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:70px;"><p>';
+$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:220px;"><p>';
 $bps_bottomDiv = '</p></div>';
 
 ?>
@@ -88,7 +88,7 @@ $bps_bottomDiv = '</p></div>';
 
 <!-- jQuery UI Tab Menu -->
 <div id="bps-tabs" class="bps-menu">
-    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
+    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.gif'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
 		<ul>
 			<li><a href="#bps-tabs-1"><?php _e('System Info', 'bulletproof-security'); ?></a></li>
             <li><a href="#bps-tabs-2"><?php _e('Website Headers Check Tool', 'bulletproof-security'); ?></a></li>			
@@ -721,7 +721,7 @@ function bps_get_proxy_real_ip_address() {
 	$run_time = $time_end - $time_start;
 	$time_display = '<strong>'.__('System Info Processing Completion Time: ', 'bulletproof-security').'</strong>'. round( $run_time, 2 ) . ' Seconds';	
 	
-	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:70px;background-color:#ffffe0;"><p>';
+	echo '<div id="message" class="updated" style="border:1px solid #999999;margin-left:220px;background-color:#ffffe0;"><p>';
 	echo bpsPro_memory_resource_usage();
 	echo $time_display;
 	echo '</p></div>';

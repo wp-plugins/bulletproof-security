@@ -176,20 +176,40 @@ if ( isset( $_POST['Submit-Master-Folder'] ) && current_user_can('manage_options
 	check_admin_referer( 'bulletproof_security_denyall_master' );
 	
 	$bps_rename_htaccess = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
+	$deny_all_ifmodule = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all-ifmodule.htaccess';
 	$bps_rename_htaccess_renamed = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
 	
+	$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');	
+
 	if ( $_POST['bpssecuremaster'] == 'bulletproof' ) { 
 
-		if ( ! copy($bps_rename_htaccess, $bps_rename_htaccess_renamed) ) {
-			echo $bps_topDiv;
-			$text = '<font color="red"><strong>'.__('Failed to Activate Master htaccess BulletProof Mode. Your BPS Master htaccess folder is NOT Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
-			echo $text;
-   			echo $bps_bottomDiv;
+		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {
+			
+			if ( ! copy($deny_all_ifmodule, $bps_rename_htaccess_renamed) ) {
+				echo $bps_topDiv;
+				$text = '<font color="red"><strong>'.__('Failed to Activate Master htaccess BulletProof Mode. Your BPS Master htaccess folder is NOT Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+   				echo $bps_bottomDiv;
+			} else {
+				echo $bps_topDiv;
+				$text = '<font color="green"><strong>'.__('Master htaccess BulletProof Mode Activated. Your BPS Master htaccess folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+				echo $bps_bottomDiv;
+			}			
+		
 		} else {
-			echo $bps_topDiv;
-			$text = '<font color="green"><strong>'.__('Master htaccess BulletProof Mode Activated. Your BPS Master htaccess folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
-			echo $text;
-			echo $bps_bottomDiv;
+			
+			if ( ! copy($bps_rename_htaccess, $bps_rename_htaccess_renamed) ) {
+				echo $bps_topDiv;
+				$text = '<font color="red"><strong>'.__('Failed to Activate Master htaccess BulletProof Mode. Your BPS Master htaccess folder is NOT Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+   				echo $bps_bottomDiv;
+			} else {
+				echo $bps_topDiv;
+				$text = '<font color="green"><strong>'.__('Master htaccess BulletProof Mode Activated. Your BPS Master htaccess folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+				echo $bps_bottomDiv;
+			}			
 		}
 	}
 }
@@ -199,20 +219,40 @@ if ( isset( $_POST['Submit-Backup-Folder'] ) && current_user_can('manage_options
 	check_admin_referer( 'bulletproof_security_denyall_bpsbackup' );
 	
 	$bps_rename_htaccess_backup = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all.htaccess';
+	$deny_all_ifmodule = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/deny-all-ifmodule.htaccess';
 	$bps_rename_htaccess_backup_online = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 	
+	$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');	
+
 	if ( $_POST['bpssecurebackup'] == 'bulletproof' ) { 
 		
-		if ( ! copy($bps_rename_htaccess_backup, $bps_rename_htaccess_backup_online) ) {
-			echo $bps_topDiv;
-			$text = '<font color="red"><strong>'.__('Failed to Activate BPS Backup BulletProof Mode. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is NOT Protected with Deny All htaccess folder protection!', 'bulletproof-security').'</strong></font>';
-			echo $text;
-   			echo $bps_bottomDiv;
+		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {
+			
+			if ( ! copy($deny_all_ifmodule, $bps_rename_htaccess_backup_online) ) {
+				echo $bps_topDiv;
+				$text = '<font color="red"><strong>'.__('Failed to Activate BPS Backup BulletProof Mode. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is NOT Protected with Deny All htaccess folder protection!', 'bulletproof-security').'</strong></font>';
+				echo $text;
+   				echo $bps_bottomDiv;
+			} else {
+				echo $bps_topDiv;
+				$text = '<font color="green"><strong>'.__('BPS Backup BulletProof Mode Activated. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+				echo $bps_bottomDiv;
+			}			
+		
 		} else {
-			echo $bps_topDiv;
-			$text = '<font color="green"><strong>'.__('BPS Backup BulletProof Mode Activated. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
-			echo $text;
-			echo $bps_bottomDiv;
+			
+			if ( ! copy($bps_rename_htaccess_backup, $bps_rename_htaccess_backup_online) ) {
+				echo $bps_topDiv;
+				$text = '<font color="red"><strong>'.__('Failed to Activate BPS Backup BulletProof Mode. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is NOT Protected with Deny All htaccess folder protection!', 'bulletproof-security').'</strong></font>';
+				echo $text;
+   				echo $bps_bottomDiv;
+			} else {
+				echo $bps_topDiv;
+				$text = '<font color="green"><strong>'.__('BPS Backup BulletProof Mode Activated. Your BPS /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup folder is Now Protected with Deny All htaccess folder protection.', 'bulletproof-security').'</strong></font>';
+				echo $text;
+				echo $bps_bottomDiv;
+			}			
 		}
 	}
 }

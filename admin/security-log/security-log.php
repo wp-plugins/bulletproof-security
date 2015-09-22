@@ -52,8 +52,8 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 }
 ?>
 
-<h2 style="margin-left:70px;"><?php _e('BulletProof Security ~ Security Log', 'bulletproof-security'); ?></h2>
-<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;background-color: #000;">
+<h2 style="margin-left:220px;"><?php _e('BulletProof Security ~ Security Log', 'bulletproof-security'); ?></h2>
+<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px;background-color: #000;">
 
 <?php
 // HUD - Heads Up Display - Warnings and Error messages
@@ -62,7 +62,6 @@ echo bps_hud_check_bpsbackup();
 echo bps_check_safemode();
 echo @bps_w3tc_htaccess_check($plugin_var);
 echo @bps_wpsc_htaccess_check($plugin_var);
-bps_delete_language_files();
 
 // General all purpose "Settings Saved." message for forms
 if ( current_user_can('manage_options') && wp_script_is( 'bps-accordion', $list = 'queue' ) ) {
@@ -80,7 +79,7 @@ $bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR);
 $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR);
 
 // Top div echo & bottom div echo
-$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:70px;"><p>';
+$bps_topDiv = '<div id="message" class="updated" style="background-color:#ffffe0;font-size:1em;font-weight:bold;border:1px solid #999999; margin-left:220px;"><p>';
 $bps_bottomDiv = '</p></div>';
 
 // Form - Security Log page - Turn Error Logging Off
@@ -226,7 +225,7 @@ $htaccessARQ = WP_CONTENT_DIR . '/bps-backup/autorestore/root-files/auto_.htacce
 
 <!-- jQuery UI Tab Menu -->
 <div id="bps-tabs" class="bps-menu">
-    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.png'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
+    <div id="bpsHead" style="position:relative; top:0px; left:0px;"><img src="<?php echo plugins_url('/bulletproof-security/admin/images/bps-security-shield.gif'); ?>" style="float:left; padding:0px 8px 0px 0px; margin:-72px 0px 0px 0px;" /></div>
 		<ul>
 			<li><a href="#bps-tabs-1"><?php _e('Security Log', 'bulletproof-security'); ?></a></li>
 			<li><a href="#bps-tabs-2"><?php _e('Help &amp; FAQ', 'bulletproof-security'); ?></a></li>
@@ -641,7 +640,7 @@ $searchALLD = '';
 }
 
 if ( ! empty($textSecLogRemove) ) { 
-echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:70px;background-color:#ffffe0;"><p>'.$textSecLogRemove.'</p></div>'; 
+echo '<div id="message" class="updated" style="border:1px solid #999999; margin-left:220px;background-color:#ffffe0;"><p>'.$textSecLogRemove.'</p></div>'; 
 }
 ?>
 
