@@ -80,31 +80,49 @@ if ( @$_GET['settings-updated'] == true ) {
 	}
 }
 
-// Preview - write a new denyall htaccess file with the user's current IP address
+// Get Real IP address - USE EXTREME CAUTION!!!
+function bpsPro_get_real_ip_address_mmode() {
+	
+	if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_user_can('manage_options') ) {
+	
+		if ( isset($_SERVER['HTTP_CLIENT_IP'] ) ) {
+			$ip = esc_html($_SERVER['HTTP_CLIENT_IP']);
+			
+		} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+			$ip = esc_html($_SERVER['HTTP_X_FORWARDED_FOR']);
+			
+		} elseif ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
+			$ip = esc_html($_SERVER['REMOTE_ADDR']);
+			
+		}
+	return $ip;
+	}
+}
+
+// Preview - write a new denyall htaccess file with the user's current IP address in the /admin/htaccess/ folder
 // on Network sites if 2 users with 2 different ips are using mmode this will be a problem 
 // see what happens and then beef this function up if needed
 function bpsPro_maintenance_mode_preview_ip() {
 
 	if ( current_user_can('manage_options') ) {
 	
-	$ip = $_SERVER['REMOTE_ADDR'];
-	$denyall_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
+		$denyall_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
 	
-	if ( file_exists($denyall_htaccess_file) ) {
-	
-		$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');		
+		if ( file_exists($denyall_htaccess_file) ) {	
 		
-		if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
-	
-			$bps_denyall_content = "# BPS mod_authz_core IfModule BC\n<IfModule mod_authz_core.c>\nRequire ip $ip\n</IfModule>\n\n<IfModule !mod_authz_core.c>\n<IfModule mod_access_compat.c>\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from $ip\n</FilesMatch>\n</IfModule>\n</IfModule>";
-	
-		} else {
+			$Apache_Mod_options = get_option('bulletproof_security_options_apache_modules');		
 		
-			$bps_denyall_content = "# BPS mod_access_compat\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from $ip\n</FilesMatch>";		
-		}		
+			if ( $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'Yes' ) {	
+	
+				$bps_denyall_content = "# BPS mod_authz_core IfModule BC\n<IfModule mod_authz_core.c>\nRequire ip ". bpsPro_get_real_ip_address_mmode()."\n</IfModule>\n\n<IfModule !mod_authz_core.c>\n<IfModule mod_access_compat.c>\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_mmode()."\n</FilesMatch>\n</IfModule>\n</IfModule>";
+	
+			} else {
 		
-		file_put_contents( $denyall_htaccess_file, $bps_denyall_content );
-	}
+				$bps_denyall_content = "# BPS mod_access_compat\n<FilesMatch \"(.*)\$\">\nOrder Allow,Deny\nAllow from ". bpsPro_get_real_ip_address_mmode()."\n</FilesMatch>";		
+			}		
+		
+			file_put_contents( $denyall_htaccess_file, $bps_denyall_content );
+		}
 	}
 }
 bpsPro_maintenance_mode_preview_ip();

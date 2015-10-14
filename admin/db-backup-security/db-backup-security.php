@@ -129,10 +129,6 @@ function bpsPro_DBBackup_deny_all() {
 		$create_denyall_htaccess_file = $DBBoptions['bps_db_backup_folder'] .'/.htaccess';
 		$check_string = @file_get_contents($create_denyall_htaccess_file);
 		
-		if ( file_exists($create_denyall_htaccess_file) && strpos( $check_string, bpsPro_get_real_ip_address() ) ) {
-			return;
-		}
-
 		if ( ! file_exists($create_denyall_htaccess_file) ) { 
 
 			$handle = fopen( $create_denyall_htaccess_file, 'w+b' );

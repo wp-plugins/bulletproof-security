@@ -982,7 +982,7 @@ $search = '';
 	$UserAgentRulesT = file_get_contents($userAgentMaster);
 	$stringReplace = file_get_contents($bps403File);
 
-	$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( !preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
+	$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( @!preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
 		
 	file_put_contents($bps403File, $stringReplace);
 		
@@ -1405,6 +1405,19 @@ $failTextEnd = '</strong></font><br>';
 	echo '<div style="color:black;font-size:1.13em;font-weight:bold;margin-bottom:15px;">'.__('BulletProof Security Security Log User Agent Filter Setup', 'bulletproof-security').'</div>';
 	echo '<div id="SLuserAgentFilter" style="border-top:3px solid #999999;margin-top:-10px;"><p>';
 	bpsSetupWizard_autoupdate_useragent_filters();
+	
+	// .52.7: Set Security Log Limit POST Request Body Data option to checked/limited by default
+	$bps_seclog_post_limit_Options = 'bulletproof_security_options_sec_log_post_limit';			
+
+	$seclog_post_limit_Options = array( 'bps_security_log_post_limit' => '1' );
+			
+	if ( ! get_option( $bps_seclog_post_limit_Options ) ) {			
+		
+		foreach( $seclog_post_limit_Options as $key => $value ) {
+			update_option('bulletproof_security_options_sec_log_post_limit', $seclog_post_limit_Options);
+		}
+	}		
+	
 	echo '</p></div>';
 	
 	echo '<div style="color:black;font-size:1.13em;font-weight:bold;margin-bottom:15px;">'.__('BulletProof Security Email Alerting & Log File Options Setup', 'bulletproof-security').'</div>';

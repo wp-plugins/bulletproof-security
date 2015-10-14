@@ -172,7 +172,7 @@ global $wpdb;
 	$UserAgentRulesT = file_get_contents($userAgentMaster);
 	$stringReplace = file_get_contents($bps403File);
 
-	$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( !preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
+	$stringReplace = preg_replace('/# BEGIN USERAGENT FILTER(.*)# END USERAGENT FILTER/s', "# BEGIN USERAGENT FILTER\nif ( @!preg_match('/".trim($UserAgentRulesT, "|")."/', \$_SERVER['HTTP_USER_AGENT']) ) {\n# END USERAGENT FILTER", $stringReplace);
 		
 	file_put_contents($bps403File, $stringReplace);
 	}
@@ -181,6 +181,7 @@ global $wpdb;
 // Update/Add/Save any new DB options/features during the BPS upgrade
 // BPS .51.8: new Login Security option: Attempts Remaining
 // BPS .52.3: Pre-save Custom Code db options for Export|Import tools if they do not exist
+// BPS .52.7: Set Security Log Limit POST Request Body Data option to checked/limited by default
 function bpsPro_new_feature_autoupdate() {
 $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 	
@@ -271,6 +272,18 @@ $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 	
 	// BPS .52.6: Pre-save UI Theme Skin with Blue Theme if DB option does not exist
 	bpsPro_presave_ui_theme_skin_options();
+
+	// .52.7: Set Security Log Limit POST Request Body Data option to checked/limited by default
+	$bps_seclog_post_limit_Options = 'bulletproof_security_options_sec_log_post_limit';			
+
+	$seclog_post_limit_Options = array( 'bps_security_log_post_limit' => '1' );
+			
+	if ( ! get_option( $bps_seclog_post_limit_Options ) ) {			
+		
+		foreach( $seclog_post_limit_Options as $key => $value ) {
+			update_option('bulletproof_security_options_sec_log_post_limit', $seclog_post_limit_Options);
+		}
+	}
 }
 
 // BPS Update/Upgrade Status Alert in WP Dashboard|Status Display BPS pages only

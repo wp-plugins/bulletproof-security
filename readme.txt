@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, malware, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, viruses, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.7 
 Tested up to: 4.3
-Stable tag: .52.6
+Stable tag: .52.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,7 +110,7 @@ WordPress is already very secure, but every website, no matter what type of plat
  
 = Translations =
 
-* Language Packs: For more information see: <a href="https://make.wordpress.org/polyglots/handbook/" title="Translator's Handbook">Translator's Handbook</a>
+* Language Packs: <a href="https://translate.wordpress.org/projects/wp-plugins/bulletproof-security" title="Translate BulletProof Security">Translate BulletProof Security</a>
 * Bonus Tip: If you use the Google Chrome Browser you can right mouse click in plugin pages and then click on Translate to... To translate plugin text into your Language.
 
 = BulletProof Security Bonus Custom Code =
@@ -463,12 +463,12 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Changelog ==
 
-<a href="http://forum.ait-pro.com/forums/topic/bps-changelog/" title="BPS Changelog" rel="nofollow" target="_blank">BPS Changelog</a>
+<a href="http://forum.ait-pro.com/forums/topic/bps-changelog/" title="BPS Changelog" rel="nofollow" target="_blank">View BPS Changelog - Version History - Whats New</a>
 
 == Upgrade Notice ==
 
-= .52.6 =
-* WordPress Language Packs Prep - Visual Enhancements - 1 BugFix
+= .52.7 =
+* New Option - New Bonus Custom Code - Enhancements
 
 == Help Info ==
 

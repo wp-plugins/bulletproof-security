@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulletproof-security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-21 13:16-0700\n"
+"POT-Creation-Date: 2015-10-13 15:55-0700\n"
 "PO-Revision-Date: 2015-06-20 19:13-0800\n"
 "Last-Translator: Ed Alexander <edward@ait-pro.com>\n"
 "Language-Team: AITpro <info@ait-pro.com>\n"
@@ -621,7 +621,7 @@ msgid ""
 "WordPress installation site types."
 msgstr ""
 
-#: admin/core/core-help-text.php:10 admin/core/core.php:278
+#: admin/core/core-help-text.php:10 admin/core/core.php:274
 msgid "Activate|Deactivate Root Folder BulletProof Mode (RBM)"
 msgstr ""
 
@@ -638,7 +638,7 @@ msgid ""
 "testing or troubleshooting purposes."
 msgstr ""
 
-#: admin/core/core-help-text.php:10 admin/core/core.php:299
+#: admin/core/core-help-text.php:10 admin/core/core.php:295
 msgid "Activate|Deactivate wp-admin Folder BulletProof Mode (WBM)"
 msgstr ""
 
@@ -716,7 +716,7 @@ msgid ""
 msgstr ""
 
 #: admin/core/core-help-text.php:10
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid "NOTES: "
 msgstr ""
 
@@ -798,21 +798,21 @@ msgid "BPS Video Tutorial links can be found in the Help & FAQ pages."
 msgstr ""
 
 #: admin/core/core-help-text.php:13 admin/core/core-help-text.php:16
-#: admin/core/core-help-text.php:19 admin/core/core.php:213
-#: admin/core/core.php:1135 admin/db-backup-security/db-backup-help-text.php:12
+#: admin/core/core-help-text.php:19 admin/core/core.php:209
+#: admin/core/core.php:1141 admin/db-backup-security/db-backup-help-text.php:12
 #: admin/db-backup-security/db-backup-help-text.php:15
-#: admin/db-backup-security/db-backup-security.php:271
-#: admin/login/login.php:193 admin/login/login.php:890
-#: admin/maintenance/maintenance.php:164
+#: admin/db-backup-security/db-backup-security.php:267
+#: admin/login/login.php:189 admin/login/login.php:886
+#: admin/maintenance/maintenance.php:182
 #: admin/security-log/security-log.php:249
 #: admin/system-info/system-info.php:108 admin/theme-skin/theme-skin.php:115
-#: admin/wizard/wizard.php:1637 admin/wizard/wizard.php:1697
+#: admin/wizard/wizard.php:1650 admin/wizard/wizard.php:1710
 msgid ""
 "This Read Me Help window is draggable (top) and resizable (bottom right "
 "corner)"
 msgstr ""
 
-#: admin/core/core-help-text.php:13 admin/core/core.php:354
+#: admin/core/core-help-text.php:13 admin/core/core.php:350
 msgid "Activate Master htaccess BulletProof Mode"
 msgstr ""
 
@@ -827,7 +827,7 @@ msgid ""
 "accessing and viewing the BPS Master htaccess files folder."
 msgstr ""
 
-#: admin/core/core-help-text.php:13 admin/core/core.php:364
+#: admin/core/core-help-text.php:13 admin/core/core.php:360
 msgid "Activate BPS Backup BulletProof Mode"
 msgstr ""
 
@@ -855,6 +855,38 @@ msgid ""
 "that you can quickly restore them. It is not necessary to create backups of "
 "the root and wp-admin htaccess files. These tools should just be used as "
 "stated above."
+msgstr ""
+
+#: admin/core/core-help-text.php:19
+msgid ""
+"The File Editor is designed to open all of your htaccess files "
+"simultaneously and allow you to copy and paste from one window (file) to "
+"another window (file), BUT you can ONLY save your edits for one file at a "
+"time. Whichever file you currently have opened (the tab that you are "
+"currently viewing) when you click the Update File button is the file that "
+"will be updated/saved."
+msgstr ""
+
+#: admin/core/core-help-text.php:19
+msgid "Important Notes: "
+msgstr ""
+
+#: admin/core/core-help-text.php:19
+msgid ""
+"You can edit all of your htaccess files directly using the htaccess File "
+"Editor, but to save your edits permanently for the \"Your Current Root "
+"htaccess File\" tab, which is your Root htaccess file and the \"Your Current "
+"wp-admin htaccess File\" tab, which is your wp-admin folder htaccess file, "
+"use the BPS Custom Code feature."
+msgstr ""
+
+#: admin/core/core-help-text.php:19
+msgid ""
+"The secure.htaccess (Root htaccess Master htaccess file), default.htaccess "
+"(Default Mode Master htaccess file) and wpadmin-secure.htaccess (wp-admin "
+"folder Master htaccess file) tabs are Master htaccess files that will be "
+"replaced when you upgrade BPS. You can edit these files directly, but these "
+"files will not be saved permanently."
 msgstr ""
 
 #: admin/core/core-help-text.php:19
@@ -898,16 +930,6 @@ msgid ""
 "Host ONLY allows 644 file permissions for your root .htaccess file then "
 "click the Turn Off AutoLock button. This turns Off AutoLocking for all BPS "
 "actions, tasks, functions and also for BPS upgrades."
-msgstr ""
-
-#: admin/core/core-help-text.php:19
-msgid ""
-"The File Editor is designed to open all of your htaccess files "
-"simultaneously and allow you to copy and paste from one window (file) to "
-"another window (file), BUT you can ONLY save your edits for one file at a "
-"time. Whichever file you currently have opened (the tab that you are "
-"currently viewing) when you click the Update File button is the file that "
-"will be updated/saved."
 msgstr ""
 
 #: admin/core/core-help-text.php:19
@@ -1234,12 +1256,12 @@ msgid ""
 msgstr ""
 
 #: admin/core/core-htaccess-code.php:57 admin/core/core-htaccess-code.php:122
-#: admin/maintenance/maintenance.php:351 admin/maintenance/maintenance.php:371
+#: admin/maintenance/maintenance.php:369 admin/maintenance/maintenance.php:389
 msgid "The file "
 msgstr ""
 
 #: admin/core/core-htaccess-code.php:57 admin/core/core-htaccess-code.php:122
-#: admin/maintenance/maintenance.php:351 admin/maintenance/maintenance.php:371
+#: admin/maintenance/maintenance.php:369 admin/maintenance/maintenance.php:389
 msgid " is not writable or does not exist."
 msgstr ""
 
@@ -1285,636 +1307,635 @@ msgstr ""
 msgid "Add a Review"
 msgstr ""
 
-#: admin/core/core.php:123 admin/includes/admin.php:192
-#: admin/includes/admin.php:193
+#: admin/core/core.php:119 admin/includes/admin.php:193
+#: admin/includes/admin.php:194
 msgid "BulletProof Security ~ htaccess Core"
 msgstr ""
 
-#: admin/core/core.php:154 admin/db-backup-security/db-backup-security.php:74
-#: admin/login/login.php:129 admin/maintenance/maintenance.php:78
+#: admin/core/core.php:150 admin/db-backup-security/db-backup-security.php:74
+#: admin/login/login.php:125 admin/maintenance/maintenance.php:78
 #: admin/security-log/security-log.php:69 admin/system-info/system-info.php:69
 #: admin/theme-skin/theme-skin.php:74 admin/wizard/wizard.php:942
 msgid "Settings Saved"
 msgstr ""
 
-#: admin/core/core.php:186
+#: admin/core/core.php:182
 msgid "Security Modes"
 msgstr ""
 
-#: admin/core/core.php:187
+#: admin/core/core.php:183
 msgid "Security Status"
 msgstr ""
 
-#: admin/core/core.php:188
+#: admin/core/core.php:184
 msgid "Backup &amp; Restore"
 msgstr ""
 
-#: admin/core/core.php:189
+#: admin/core/core.php:185
 msgid "htaccess File Editor"
 msgstr ""
 
-#: admin/core/core.php:190 admin/core/core.php:1132
+#: admin/core/core.php:186 admin/core/core.php:1138
 msgid "Custom Code"
 msgstr ""
 
-#: admin/core/core.php:191
+#: admin/core/core.php:187
 msgid "My Notes"
 msgstr ""
 
-#: admin/core/core.php:192
+#: admin/core/core.php:188
 msgid "Whats New"
 msgstr ""
 
-#: admin/core/core.php:193
+#: admin/core/core.php:189
 msgid "BPS Pro Features"
 msgstr ""
 
-#: admin/core/core.php:194 admin/db-backup-security/db-backup-security.php:245
-#: admin/db-backup-security/db-backup-security.php:1687
-#: admin/login/login.php:166 admin/maintenance/maintenance.php:129
+#: admin/core/core.php:190 admin/db-backup-security/db-backup-security.php:241
+#: admin/db-backup-security/db-backup-security.php:1683
+#: admin/login/login.php:162 admin/maintenance/maintenance.php:147
 #: admin/security-log/security-log.php:231 admin/system-info/system-info.php:95
 #: admin/theme-skin/theme-skin.php:97 admin/theme-skin/theme-skin.php:201
 msgid "Help &amp; FAQ"
 msgstr ""
 
-#: admin/core/core.php:198
+#: admin/core/core.php:194
 msgid "htaccess File Security Modes ~ "
 msgstr ""
 
-#: admin/core/core.php:198
+#: admin/core/core.php:194
 msgid "Root Folder BulletProof Mode & wp-admin Folder BulletProof Mode"
 msgstr ""
 
-#: admin/core/core.php:207
+#: admin/core/core.php:203
 msgid "AutoMagic Buttons ~ "
 msgstr ""
 
-#: admin/core/core.php:207
+#: admin/core/core.php:203
 msgid "Click the"
 msgstr ""
 
-#: admin/core/core.php:207
+#: admin/core/core.php:203
 msgid " AutoMagic, Setup Steps & Other Help Info"
 msgstr ""
 
-#: admin/core/core.php:207
+#: admin/core/core.php:203
 msgid " Read Me help button below for setup steps"
 msgstr ""
 
-#: admin/core/core.php:209
+#: admin/core/core.php:205
 msgid "AutoMagic, Setup Steps & Other Help Info"
 msgstr ""
 
-#: admin/core/core.php:209 admin/core/core.php:340 admin/core/core.php:592
-#: admin/core/core.php:638 admin/core/core.php:1130
-#: admin/db-backup-security/db-backup-security.php:266
-#: admin/db-backup-security/db-backup-security.php:1129
-#: admin/db-backup-security/db-backup-security.php:1365
-#: admin/login/login.php:188 admin/login/login.php:881
-#: admin/maintenance/maintenance.php:159
+#: admin/core/core.php:205 admin/core/core.php:336 admin/core/core.php:598
+#: admin/core/core.php:644 admin/core/core.php:1136
+#: admin/db-backup-security/db-backup-security.php:262
+#: admin/db-backup-security/db-backup-security.php:1125
+#: admin/db-backup-security/db-backup-security.php:1361
+#: admin/login/login.php:184 admin/login/login.php:877
+#: admin/maintenance/maintenance.php:177
 #: admin/security-log/security-log.php:244
 #: admin/system-info/system-info.php:103 admin/theme-skin/theme-skin.php:112
-#: admin/wizard/wizard.php:1629 admin/wizard/wizard.php:1690
+#: admin/wizard/wizard.php:1642 admin/wizard/wizard.php:1703
 msgid "Read Me"
 msgstr ""
 
-#: admin/core/core.php:211
+#: admin/core/core.php:207
 msgid "Setup Steps & AutoMagic"
 msgstr ""
 
-#: admin/core/core.php:216 admin/core/core.php:1138
-#: admin/db-backup-security/db-backup-security.php:274
-#: admin/login/login.php:893 admin/maintenance/maintenance.php:167
-#: admin/security-log/security-log.php:252
+#: admin/core/core.php:212 admin/core/core.php:1144
+#: admin/db-backup-security/db-backup-security.php:270
+#: admin/login/login.php:889 admin/maintenance/maintenance.php:185
 #: admin/system-info/system-info.php:111
 msgid "Forum Help Links: "
 msgstr ""
 
-#: admin/core/core.php:219 admin/security-log/security-log.php:255
+#: admin/core/core.php:215 admin/security-log/security-log.php:255
 msgid "BPS Troubleshooting Steps"
 msgstr ""
 
-#: admin/core/core.php:224
+#: admin/core/core.php:220
 msgid "Setup & Overview Video Tutorial"
 msgstr ""
 
-#: admin/core/core.php:226 admin/core/core.php:274 admin/core/core.php:383
-#: admin/core/core.php:583 admin/core/core.php:644 admin/core/core.php:1159
-#: admin/core/core.php:1209 admin/core/core.php:1230 admin/login/login.php:145
-#: admin/login/login.php:200 admin/login/login.php:911
+#: admin/core/core.php:222 admin/core/core.php:270 admin/core/core.php:379
+#: admin/core/core.php:589 admin/core/core.php:650 admin/core/core.php:1165
+#: admin/core/core.php:1215 admin/core/core.php:1236 admin/login/login.php:141
+#: admin/login/login.php:196 admin/login/login.php:907
 #: admin/system-info/system-info.php:121 admin/system-info/system-info.php:751
 msgid "Permission Denied"
 msgstr ""
 
-#: admin/core/core.php:236 admin/core/core.php:255
+#: admin/core/core.php:232 admin/core/core.php:251
 msgid "Create default.htaccess File"
 msgstr ""
 
-#: admin/core/core.php:237
+#: admin/core/core.php:233
 msgid ""
 "Clicking OK will create a new customized default.htaccess Master file for "
 "your website."
 msgstr ""
 
-#: admin/core/core.php:237 admin/core/core.php:245 admin/core/core.php:255
-#: admin/core/core.php:263
+#: admin/core/core.php:233 admin/core/core.php:241 admin/core/core.php:251
+#: admin/core/core.php:259
 msgid ""
 "This is only creating a Master file and NOT activating it. To activate "
 "Master files go to the Activate Security Modes section below."
 msgstr ""
 
-#: admin/core/core.php:237 admin/core/core.php:255
+#: admin/core/core.php:233 admin/core/core.php:251
 msgid ""
 "NOTE: Default Mode should ONLY be activated for Testing and Troubleshooting."
 msgstr ""
 
-#: admin/core/core.php:237 admin/core/core.php:255
+#: admin/core/core.php:233 admin/core/core.php:251
 msgid ""
 "Click OK to Create your new default.htaccess Master file or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:245 admin/core/core.php:263
+#: admin/core/core.php:241 admin/core/core.php:259
 msgid "Create secure.htaccess File"
 msgstr ""
 
-#: admin/core/core.php:245
+#: admin/core/core.php:241
 msgid ""
 "Clicking OK will create a new customized secure.htaccess Master file for "
 "your website."
 msgstr ""
 
-#: admin/core/core.php:245 admin/core/core.php:263
+#: admin/core/core.php:241 admin/core/core.php:259
 msgid ""
 "Click OK to Create your new secure.htaccess Master file or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:255
+#: admin/core/core.php:251
 msgid ""
 "Clicking OK will create a new customized default.htaccess Master file for "
 "your Network/Multisite website."
 msgstr ""
 
-#: admin/core/core.php:263
+#: admin/core/core.php:259
 msgid ""
 "Clicking OK will create a new customized secure.htaccess Master file for "
 "your Network/Multisite website."
 msgstr ""
 
-#: admin/core/core.php:276
+#: admin/core/core.php:272
 msgid "Activate|Deactivate Security Modes"
 msgstr ""
 
-#: admin/core/core.php:290
+#: admin/core/core.php:286
 msgid "Activate Root Folder BulletProof Mode"
 msgstr ""
 
-#: admin/core/core.php:293
+#: admin/core/core.php:289
 msgid "Deactivate Root Folder BulletProof Mode (Default Mode) CAUTION: "
 msgstr ""
 
-#: admin/core/core.php:293
+#: admin/core/core.php:289
 msgid "Use Default Mode for Testing, Troubleshooting or BPS removal."
 msgstr ""
 
-#: admin/core/core.php:294 admin/core/core.php:315
+#: admin/core/core.php:290 admin/core/core.php:311
 msgid "Reminders:"
 msgstr ""
 
-#: admin/core/core.php:294
+#: admin/core/core.php:290
 msgid "Did you create your Master htaccess files using the AutoMagic buttons?"
 msgstr ""
 
-#: admin/core/core.php:294 admin/core/core.php:315
+#: admin/core/core.php:290 admin/core/core.php:311
 msgid "Did you backup your existing htaccess files?"
 msgstr ""
 
-#: admin/core/core.php:294
+#: admin/core/core.php:290
 msgid ""
 "Do you have any custom htaccess code in your Root htaccess file that you "
 "want to save before Activating BulletProof Mode?"
 msgstr ""
 
-#: admin/core/core.php:294
+#: admin/core/core.php:290
 msgid "Clicking OK will overwrite your existing Root htaccess file."
 msgstr ""
 
-#: admin/core/core.php:294
+#: admin/core/core.php:290
 msgid ""
 "Click OK to Activate BulletProof Mode for your Root folder or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:311
+#: admin/core/core.php:307
 msgid "Activate wp-admin Folder BulletProof Mode"
 msgstr ""
 
-#: admin/core/core.php:314
+#: admin/core/core.php:310
 msgid "Deactivate wp-admin Folder BulletProof Mode CAUTION: "
 msgstr ""
 
-#: admin/core/core.php:314
+#: admin/core/core.php:310
 msgid "Deactivate for Testing, Troubleshooting or BPS removal."
 msgstr ""
 
-#: admin/core/core.php:315
+#: admin/core/core.php:311
 msgid ""
 "Do you have any custom htaccess code in your wp-admin htaccess file that you "
 "want to save before Activating BulletProof Mode?"
 msgstr ""
 
-#: admin/core/core.php:315
+#: admin/core/core.php:311
 msgid "Clicking OK will overwrite your existing wp-admin htaccess file."
 msgstr ""
 
-#: admin/core/core.php:315
+#: admin/core/core.php:311
 msgid ""
 "Click OK to Activate BulletProof Mode for your wp-admin folder or click "
 "Cancel."
 msgstr ""
 
-#: admin/core/core.php:321
+#: admin/core/core.php:317
 msgid "Enable|Disable wp-admin BulletProof Mode (GDMW Hosting):"
 msgstr ""
 
-#: admin/core/core.php:322
+#: admin/core/core.php:318
 msgid ""
 "This is a custom option (not required). Click the Read Me help button above."
 msgstr ""
 
-#: admin/core/core.php:324
+#: admin/core/core.php:320
 msgid "Enable wp-admin BulletProof Mode"
 msgstr ""
 
-#: admin/core/core.php:325
+#: admin/core/core.php:321
 msgid "Disable wp-admin BulletProof Mode"
 msgstr ""
 
-#: admin/core/core.php:332
+#: admin/core/core.php:328
 msgid "Additional (Automated) BulletProof Modes ~ Manual Controls"
 msgstr ""
 
-#: admin/core/core.php:334
+#: admin/core/core.php:330
 msgid ""
 "These additional automated BulletProof Modes are activated automatically."
 msgstr ""
 
-#: admin/core/core.php:334
+#: admin/core/core.php:330
 msgid ""
 "Use these manual controls if your Server type does not allow these files to "
 "be created automatically."
 msgstr ""
 
-#: admin/core/core.php:334
+#: admin/core/core.php:330
 msgid "Click the Read Me help button below for additional help information."
 msgstr ""
 
-#: admin/core/core.php:340 admin/core/core.php:342
+#: admin/core/core.php:336 admin/core/core.php:338
 msgid "Additional (Automated) BulletProof Modes"
 msgstr ""
 
-#: admin/core/core.php:381
+#: admin/core/core.php:377
 msgid "htaccess Files Security Status ~ "
 msgstr ""
 
-#: admin/core/core.php:381
+#: admin/core/core.php:377
 msgid ""
 "Reset|Recheck Dismiss Notices, Turn On|Off Inpage Status Display, Additional "
 "Website Security Measures"
 msgstr ""
 
-#: admin/core/core.php:387
+#: admin/core/core.php:383
 msgid "Activated BulletProof Security htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:389
+#: admin/core/core.php:385
 msgid "Additional Website Security Measures|Dismiss Notices|Status Display"
 msgstr ""
 
-#: admin/core/core.php:418
+#: admin/core/core.php:414
 msgid "The Windows IIS Dismiss Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:421
+#: admin/core/core.php:417
 msgid "Success! The Windows IIS check is reset."
 msgstr ""
 
-#: admin/core/core.php:421 admin/core/core.php:429 admin/core/core.php:437
-#: admin/core/core.php:445 admin/core/core.php:453 admin/core/core.php:461
-#: admin/core/core.php:469 admin/core/core.php:477 admin/core/core.php:485
-#: admin/core/core.php:493 admin/core/core.php:501 admin/core/core.php:509
-#: admin/core/core.php:517 admin/core/core.php:525
+#: admin/core/core.php:417 admin/core/core.php:425 admin/core/core.php:433
+#: admin/core/core.php:441 admin/core/core.php:449 admin/core/core.php:457
+#: admin/core/core.php:475 admin/core/core.php:483 admin/core/core.php:491
+#: admin/core/core.php:499 admin/core/core.php:507 admin/core/core.php:515
+#: admin/core/core.php:523 admin/core/core.php:531
 #: admin/db-backup-security/db-backup-functions.php:40
 #: admin/db-backup-security/db-backup-functions.php:90
-#: admin/db-backup-security/db-backup-security.php:457
-#: admin/db-backup-security/db-backup-security.php:491
-#: admin/db-backup-security/db-backup-security.php:639
-#: admin/db-backup-security/db-backup-security.php:1093
-#: admin/login/login.php:719 admin/login/login.php:739
-#: admin/login/login.php:760 admin/login/login.php:809
-#: admin/login/login.php:829 admin/login/login.php:850
+#: admin/db-backup-security/db-backup-security.php:453
+#: admin/db-backup-security/db-backup-security.php:487
+#: admin/db-backup-security/db-backup-security.php:635
+#: admin/db-backup-security/db-backup-security.php:1089
+#: admin/login/login.php:715 admin/login/login.php:735
+#: admin/login/login.php:756 admin/login/login.php:805
+#: admin/login/login.php:825 admin/login/login.php:846
 msgid "Refresh Status"
 msgstr ""
 
-#: admin/core/core.php:426
+#: admin/core/core.php:422
 msgid "The Bonus Custom Code: Dismiss All Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:429
+#: admin/core/core.php:425
 msgid "Success! The Bonus Custom Code: Dismiss All Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:434
+#: admin/core/core.php:430
 msgid ""
 "The Bonus Custom Code: Brute Force Login Protection Dismiss Notice is NOT "
 "set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:437
+#: admin/core/core.php:433
 msgid ""
 "Success! The Bonus Custom Code: Brute Force Login Protection Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:442
+#: admin/core/core.php:438
 msgid ""
 "The Bonus Custom Code: Speed Boost Cache Code Dismiss Notice is NOT set. "
 "Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:445
+#: admin/core/core.php:441
 msgid "Success! The Bonus Custom Code: Speed Boost Cache Code Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:450
+#: admin/core/core.php:446
 msgid ""
 "The Bonus Custom Code: Author Enumeration BOT Probe Code Dismiss Notice is "
 "NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:453
+#: admin/core/core.php:449
 msgid ""
 "Success! The Bonus Custom Code: Author Enumeration BOT Probe Code Notice is "
 "reset."
 msgstr ""
 
-#: admin/core/core.php:458
+#: admin/core/core.php:454
 msgid ""
 "The Bonus Custom Code: XML-RPC DDoS Protection Code Dismiss Notice is NOT "
 "set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:461
+#: admin/core/core.php:457
 msgid ""
 "Success! The Bonus Custom Code: XML-RPC DDoS Protection Code Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:466
+#: admin/core/core.php:472
 msgid ""
-"The Bonus Custom Code: Referer Spam|Phishing Protection Code Dismiss Notice "
-"is NOT set. Nothing to reset."
+"The Bonus Custom Code: POST Request Attack Protection Code Dismiss Notice is "
+"NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:469
+#: admin/core/core.php:475
 msgid ""
-"Success! The Bonus Custom Code: Referer Spam|Phishing Protection Code Notice "
+"Success! The Bonus Custom Code: POST Request Attack Protection Code Notice "
 "is reset."
 msgstr ""
 
-#: admin/core/core.php:474
+#: admin/core/core.php:480
 msgid ""
 "The Bonus Custom Code: Mime Sniffing|Drive-by Download Attack Protection "
 "Code Dismiss Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:477
+#: admin/core/core.php:483
 msgid ""
 "Success! The Bonus Custom Code: Mime Sniffing|Drive-by Download Attack "
 "Protection Code Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:482
+#: admin/core/core.php:488
 msgid ""
 "The Bonus Custom Code: External iFrame|Clickjacking Protection Code Dismiss "
 "Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:485
+#: admin/core/core.php:491
 msgid ""
 "Success! The Bonus Custom Code: External iFrame|Clickjacking Protection Code "
 "Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:490
+#: admin/core/core.php:496
 msgid ""
 "The PHP/php.ini handler htaccess code check Dismiss Notice is NOT set. "
 "Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:493
+#: admin/core/core.php:499
 msgid "Success! The PHP/php.ini handler htaccess code check Notice is reset."
 msgstr ""
 
-#: admin/core/core.php:498
+#: admin/core/core.php:504
 msgid ""
 "The Custom Permalinks HUD Check Dismiss Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:501
+#: admin/core/core.php:507
 msgid "Success! The Custom Permalinks HUD Check is reset."
 msgstr ""
 
-#: admin/core/core.php:506
+#: admin/core/core.php:512
 msgid ""
 "The Sucuri 1-click Hardening wp-content HUD Check Dismiss Notice is NOT set. "
 "Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:509
+#: admin/core/core.php:515
 msgid "Success! The Sucuri 1-click Hardening wp-content HUD Check is reset."
 msgstr ""
 
-#: admin/core/core.php:514
+#: admin/core/core.php:520
 msgid ""
 "The WordPress Firewall 2 Plugin Dismiss Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:517
+#: admin/core/core.php:523
 msgid "Success! The WordPress Firewall 2 Plugin check is reset."
 msgstr ""
 
-#: admin/core/core.php:522
+#: admin/core/core.php:528
 msgid ""
 "The Broken Link Checker plugin HEAD Request Method filter HUD Check Dismiss "
 "Notice is NOT set. Nothing to reset."
 msgstr ""
 
-#: admin/core/core.php:525
+#: admin/core/core.php:531
 msgid ""
 "Success! The Broken Link Checker plugin HEAD Request Method filter HUD Check "
 "is reset."
 msgstr ""
 
-#: admin/core/core.php:546
+#: admin/core/core.php:552
 msgid "Reset|Recheck Dismiss Notices: "
 msgstr ""
 
-#: admin/core/core.php:559
+#: admin/core/core.php:565
 msgid "Turn On|Off The Inpage Status Display:"
 msgstr ""
 
-#: admin/core/core.php:561
+#: admin/core/core.php:567
 msgid "Turn On Status Display"
 msgstr ""
 
-#: admin/core/core.php:562
+#: admin/core/core.php:568
 msgid "Turn Off Status Display"
 msgstr ""
 
-#: admin/core/core.php:581
+#: admin/core/core.php:587
 msgid "htaccess File Backup & Restore ~ "
 msgstr ""
 
-#: admin/core/core.php:581
+#: admin/core/core.php:587
 msgid "Backup htaccess Files & Restore htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:592 admin/core/core.php:594
+#: admin/core/core.php:598 admin/core/core.php:600
 msgid "Backup & Restore htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:604
+#: admin/core/core.php:610
 msgid "Backup htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:614
+#: admin/core/core.php:620
 msgid "Restore htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:629
+#: admin/core/core.php:635
 msgid "htaccess File Editor ~ "
 msgstr ""
 
-#: admin/core/core.php:629
+#: admin/core/core.php:635
 msgid "Edit BPS Master htaccess Files & Currently Active htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:638 admin/core/core.php:640
+#: admin/core/core.php:644 admin/core/core.php:646
 msgid "htaccess File Editing"
 msgstr ""
 
-#: admin/core/core.php:670
+#: admin/core/core.php:676
 msgid ""
 "File Open and Write test successful! The secure.htaccess Master file is "
 "writable."
 msgstr ""
 
-#: admin/core/core.php:675 admin/core/core.php:710 admin/core/core.php:753
-#: admin/core/core.php:792 admin/core/core.php:840
+#: admin/core/core.php:681 admin/core/core.php:716 admin/core/core.php:759
+#: admin/core/core.php:798 admin/core/core.php:846
 msgid "Cannot write to file: "
 msgstr ""
 
-#: admin/core/core.php:688
+#: admin/core/core.php:694
 msgid "Success! The secure.htaccess Master file has been updated."
 msgstr ""
 
-#: admin/core/core.php:705
+#: admin/core/core.php:711
 msgid ""
 "File Open and Write test successful! The default.htaccess Master file is "
 "writable."
 msgstr ""
 
-#: admin/core/core.php:723
+#: admin/core/core.php:729
 msgid "Success! The default.htaccess Master file has been updated."
 msgstr ""
 
-#: admin/core/core.php:736
+#: admin/core/core.php:742
 msgid "wpadmin-secure.htaccess file writing is disabled."
 msgstr ""
 
-#: admin/core/core.php:748
+#: admin/core/core.php:754
 msgid ""
 "File Open and Write test successful! The wpadmin-secure.htaccess Master file "
 "is writable."
 msgstr ""
 
-#: admin/core/core.php:767
+#: admin/core/core.php:773
 msgid "Success! The wpadmin-secure.htaccess Master file has been updated."
 msgstr ""
 
-#: admin/core/core.php:784
+#: admin/core/core.php:790
 msgid ""
 "File Open and Write test successful! Your currently active root .htaccess "
 "file is writable."
 msgstr ""
 
-#: admin/core/core.php:789
+#: admin/core/core.php:795
 msgid "Your root .htaccess file is Locked with Read Only Permissions."
 msgstr ""
 
-#: admin/core/core.php:789
+#: admin/core/core.php:795
 msgid ""
 "Use the Lock and Unlock buttons below to Lock or Unlock your root .htaccess "
 "file for editing."
 msgstr ""
 
-#: admin/core/core.php:803
+#: admin/core/core.php:809
 msgid ""
 "Error: Unable to write to the Root .htaccess file. If your Root .htaccess "
 "file is locked you must unlock first."
 msgstr ""
 
-#: admin/core/core.php:810
+#: admin/core/core.php:816
 msgid "Success! Your currently active root .htaccess file has been updated."
 msgstr ""
 
-#: admin/core/core.php:823
+#: admin/core/core.php:829
 msgid "wp-admin active htaccess file writing is disabled."
 msgstr ""
 
-#: admin/core/core.php:835
+#: admin/core/core.php:841
 msgid ""
 "File Open and Write test successful! Your currently active wp-admin ."
 "htaccess file is writable."
 msgstr ""
 
-#: admin/core/core.php:854
+#: admin/core/core.php:860
 msgid ""
 "Success! Your currently active wp-admin .htaccess file has been updated."
 msgstr ""
 
-#: admin/core/core.php:867
+#: admin/core/core.php:873
 msgid "Your Root .htaccess file has been Locked."
 msgstr ""
 
-#: admin/core/core.php:870
+#: admin/core/core.php:876
 msgid "Unable to Lock your Root .htaccess file."
 msgstr ""
 
-#: admin/core/core.php:881
+#: admin/core/core.php:887
 msgid "Your Root .htaccess file has been Unlocked."
 msgstr ""
 
-#: admin/core/core.php:884
+#: admin/core/core.php:890
 msgid "Unable to Unlock your Root .htaccess file."
 msgstr ""
 
-#: admin/core/core.php:904
+#: admin/core/core.php:910
 msgid "Lock htaccess File"
 msgstr ""
 
-#: admin/core/core.php:904
+#: admin/core/core.php:910
 msgid "Click OK to Lock your Root htaccess file or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:904
+#: admin/core/core.php:910
 msgid ""
 "Note: The File Open and Write Test window will still display the last status "
 "of the file as Unlocked. To see the current status refresh your browser."
 msgstr ""
 
-#: admin/core/core.php:912
+#: admin/core/core.php:918
 msgid "Turn On AutoLock"
 msgstr ""
 
-#: admin/core/core.php:912
+#: admin/core/core.php:918
 msgid ""
 "Turning AutoLock On will allow BPS Pro to automatically lock your Root ."
 "htaccess file. For some folks this causes a problem because their Web Hosts "
@@ -1922,39 +1943,39 @@ msgid ""
 "BPS Pro to AutoLock the Root .htaccess file works fine."
 msgstr ""
 
-#: admin/core/core.php:912
+#: admin/core/core.php:918
 msgid "Click OK to Turn AutoLock On or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:915 admin/system-info/system-info.php:524
+#: admin/core/core.php:921 admin/system-info/system-info.php:524
 #: admin/system-info/system-info.php:532 admin/system-info/system-info.php:540
 #: admin/system-info/system-info.php:548 admin/system-info/system-info.php:556
 #: admin/system-info/system-info.php:564 admin/system-info/system-info.php:572
 #: admin/system-info/system-info.php:580 admin/system-info/system-info.php:599
-#: includes/functions.php:570 includes/functions.php:711
-#: includes/functions.php:758
+#: includes/functions.php:583 includes/functions.php:724
+#: includes/functions.php:771
 msgid "On"
 msgstr ""
 
-#: admin/core/core.php:934
+#: admin/core/core.php:940
 msgid "Unlock htaccess File"
 msgstr ""
 
-#: admin/core/core.php:934
+#: admin/core/core.php:940
 msgid "Click OK to Unlock your Root htaccess file or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:934
+#: admin/core/core.php:940
 msgid ""
 "Note: The File Open and Write Test window will still display the last status "
 "of the file as Locked. To see the current status refresh your browser."
 msgstr ""
 
-#: admin/core/core.php:942
+#: admin/core/core.php:948
 msgid "Turn Off AutoLock"
 msgstr ""
 
-#: admin/core/core.php:942
+#: admin/core/core.php:948
 msgid ""
 "Turning AutoLock Off will prevent BPS Pro from automatically locking your "
 "Root .htaccess file. For some folks this is necessary because their Web "
@@ -1962,49 +1983,49 @@ msgid ""
 "allowing BPS Pro to AutoLock the Root .htaccess file works fine."
 msgstr ""
 
-#: admin/core/core.php:942
+#: admin/core/core.php:948
 msgid "Click OK to Turn AutoLock Off or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:945 admin/system-info/system-info.php:407
+#: admin/core/core.php:951 admin/system-info/system-info.php:407
 #: admin/system-info/system-info.php:527 admin/system-info/system-info.php:535
 #: admin/system-info/system-info.php:543 admin/system-info/system-info.php:551
 #: admin/system-info/system-info.php:559 admin/system-info/system-info.php:567
 #: admin/system-info/system-info.php:575 admin/system-info/system-info.php:583
 #: admin/system-info/system-info.php:591 admin/system-info/system-info.php:602
-#: includes/functions.php:763 includes/general-functions.php:734
+#: includes/functions.php:776 includes/general-functions.php:734
 msgid "Off"
 msgstr ""
 
-#: admin/core/core.php:960
+#: admin/core/core.php:966
 msgid "secure.htaccess"
 msgstr ""
 
-#: admin/core/core.php:961
+#: admin/core/core.php:967
 msgid "default.htaccess"
 msgstr ""
 
-#: admin/core/core.php:962
+#: admin/core/core.php:968
 msgid "wpadmin-secure.htaccess"
 msgstr ""
 
-#: admin/core/core.php:963
+#: admin/core/core.php:969
 msgid "Your Current Root htaccess File"
 msgstr ""
 
-#: admin/core/core.php:964
+#: admin/core/core.php:970
 msgid "Your Current wp-admin htaccess File"
 msgstr ""
 
-#: admin/core/core.php:1066
+#: admin/core/core.php:1072
 msgid "YOUR ROOT HTACCESS FILE IS LOCKED."
 msgstr ""
 
-#: admin/core/core.php:1066
+#: admin/core/core.php:1072
 msgid "YOUR FILE EDITS|CHANGES CANNOT BE SAVED."
 msgstr ""
 
-#: admin/core/core.php:1066
+#: admin/core/core.php:1072
 msgid ""
 "Click Cancel, copy the file editing changes you made to save them and then "
 "click the Unlock .htaccess File button to unlock your Root .htaccess file. "
@@ -2013,36 +2034,36 @@ msgid ""
 "to save your file edits/changes."
 msgstr ""
 
-#: admin/core/core.php:1121
+#: admin/core/core.php:1127
 msgid "htaccess File Custom Code ~ "
 msgstr ""
 
-#: admin/core/core.php:1121
+#: admin/core/core.php:1127
 msgid "Save Custom htaccess Code for your Root and wp-admin htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:1121
+#: admin/core/core.php:1127
 msgid "* Click the Read Me help button for Custom Code Setup Steps"
 msgstr ""
 
-#: admin/core/core.php:1130
+#: admin/core/core.php:1136
 msgid "Add Custom htaccess Code For Your Root and wp-admin htaccess Files"
 msgstr ""
 
-#: admin/core/core.php:1141
+#: admin/core/core.php:1147
 msgid "Brute Force Login Page Protection code"
 msgstr ""
 
-#: admin/core/core.php:1151 admin/core/core.php:1503
-#: admin/wizard/wizard.php:1640
+#: admin/core/core.php:1157 admin/core/core.php:1510
+#: admin/wizard/wizard.php:1653
 msgid "Custom Code Video Tutorial"
 msgstr ""
 
-#: admin/core/core.php:1152
+#: admin/core/core.php:1158
 msgid "BulletProof Security Forum"
 msgstr ""
 
-#: admin/core/core.php:1174
+#: admin/core/core.php:1180
 msgid ""
 "Clicking OK will Export (copy) all of your Root and wp-admin Custom Code "
 "into the cc-master.zip file, which you can then download to your computer by "
@@ -2050,87 +2071,87 @@ msgid ""
 "success message."
 msgstr ""
 
-#: admin/core/core.php:1174
+#: admin/core/core.php:1180
 msgid "Click OK to Export Custom Code or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:1185
+#: admin/core/core.php:1191
 msgid ""
 "Clicking OK will Import all of your Root and wp-admin Custom Code from the "
 "cc-master.zip file on your computer."
 msgstr ""
 
-#: admin/core/core.php:1185
+#: admin/core/core.php:1191
 msgid "Click OK to Import Custom Code or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:1195
+#: admin/core/core.php:1201
 msgid ""
 "Clicking OK will delete all of your Root and wp-admin Custom Code from all "
 "of the Custom Code text boxes."
 msgstr ""
 
-#: admin/core/core.php:1195
+#: admin/core/core.php:1201
 msgid "Click OK to Delete Custom Code or click Cancel."
 msgstr ""
 
-#: admin/core/core.php:1228
+#: admin/core/core.php:1234
 msgid "My Notes ~ "
 msgstr ""
 
-#: admin/core/core.php:1228
+#: admin/core/core.php:1234
 msgid "Save Personal Notes and htaccess Code Notes to your WordPress Database"
 msgstr ""
 
-#: admin/core/core.php:1246
+#: admin/core/core.php:1252
 msgid ""
 "Your My Notes Personal Notes and/or htaccess Code Notes saved successfully "
 "to your WordPress Database."
 msgstr ""
 
-#: admin/core/core.php:1297
-#: admin/db-backup-security/db-backup-security.php:1693
+#: admin/core/core.php:1303
+#: admin/db-backup-security/db-backup-security.php:1689
 #: admin/theme-skin/theme-skin.php:207
 msgid "Whats New in "
 msgstr ""
 
-#: admin/core/core.php:1297
+#: admin/core/core.php:1303
 msgid " and General Help Info & Tips"
 msgstr ""
 
-#: admin/core/core.php:1298
+#: admin/core/core.php:1304
 msgid ""
 "The Whats New page lists new changes made in each new version release of "
 "BulletProof Security"
 msgstr ""
 
-#: admin/core/core.php:1307
+#: admin/core/core.php:1313
 msgid "General Help Info & Tips:"
 msgstr ""
 
-#: admin/core/core.php:1311
+#: admin/core/core.php:1317
 msgid "If BPS plugin pages are not displaying visually correct you can "
 msgstr ""
 
-#: admin/core/core.php:1311
+#: admin/core/core.php:1317
 msgid "Turn On the BPS SLF filter"
 msgstr ""
 
-#: admin/core/core.php:1315
+#: admin/core/core.php:1321
 msgid "BPS Video Tutorials|Setup Wizard: "
 msgstr ""
 
-#: admin/core/core.php:1323
+#: admin/core/core.php:1329
 msgid "Troubleshooting Steps & The BPS Security Log: "
 msgstr ""
 
-#: admin/core/core.php:1323
+#: admin/core/core.php:1329
 msgid ""
 "All BPS plugin features can be turned Off/On individually to confirm, "
 "eliminate or isolate a problem or issue that may or may not be caused by BPS."
 msgstr ""
 
-#: admin/core/core.php:1323
+#: admin/core/core.php:1329
 msgid ""
 "The BPS Security Log is a primary troubleshooting tool. If BPS is blocking "
 "something legitimate in another plugin or theme then a Security Log entry "
@@ -2139,21 +2160,21 @@ msgid ""
 "being blocked."
 msgstr ""
 
-#: admin/core/core.php:1323
+#: admin/core/core.php:1329
 msgid ""
 "Search the Forum site to see if a known issue or problem is already posted "
 "with a solution/whitelist rule in the Forum."
 msgstr ""
 
-#: admin/core/core.php:1331
+#: admin/core/core.php:1337
 msgid "The BPS Changelog|Whats New page have been moved to the "
 msgstr ""
 
-#: admin/core/core.php:1331
+#: admin/core/core.php:1337
 msgid "Reasons for this Changelog|Whats New page change: "
 msgstr ""
 
-#: admin/core/core.php:1331
+#: admin/core/core.php:1337
 msgid ""
 "The BPS Changelog|Whats New page will not have to be translated by the "
 "WordPress PolyGlots Language Packs Team for each new version release of BPS, "
@@ -2162,44 +2183,44 @@ msgid ""
 "BPS version changes through the years and other beneficial reasons."
 msgstr ""
 
-#: admin/core/core.php:1345
+#: admin/core/core.php:1351
 msgid "BulletProof Security Pro Feature Highlights"
 msgstr ""
 
-#: admin/core/core.php:1359
+#: admin/core/core.php:1365
 msgid "The Ultimate Security Protection"
 msgstr ""
 
-#: admin/core/core.php:1362
+#: admin/core/core.php:1368
 msgid "BPS Pro One-Click Setup Wizard & Demo Video Tutorial"
 msgstr ""
 
-#: admin/core/core.php:1363
+#: admin/core/core.php:1369
 msgid "View All BPS Pro Features"
 msgstr ""
 
-#: admin/core/core.php:1369
+#: admin/core/core.php:1375
 msgid ""
 "BulletProof Security Pro Website Security Suite is the complete website "
 "security package\n"
 "for hacker and spammer protection"
 msgstr ""
 
-#: admin/core/core.php:1372
+#: admin/core/core.php:1378
 msgid "One-Click Setup Wizard|Unlimited Installations: "
 msgstr ""
 
-#: admin/core/core.php:1372
+#: admin/core/core.php:1378
 msgid ""
 "All BPS Pro security features are setup by the one-click BPS Pro Setup "
 "Wizard in less than 1 minute."
 msgstr ""
 
-#: admin/core/core.php:1374
+#: admin/core/core.php:1380
 msgid "One-Click Upgrades|Unlimited Upgrades: "
 msgstr ""
 
-#: admin/core/core.php:1374
+#: admin/core/core.php:1380
 msgid ""
 "BPS Pro Plugin upgrade notifications are displayed in your WordPress "
 "Dashboard exactly the same way as all other WordPress plugins. All BPS Pro "
@@ -2210,12 +2231,12 @@ msgid ""
 "additional setup or configuration by you."
 msgstr ""
 
-#: admin/core/core.php:1376
+#: admin/core/core.php:1382
 msgid ""
 "AutoRestore|Quarantine Intrusion Detection and Prevention System (IDPS): "
 msgstr ""
 
-#: admin/core/core.php:1376
+#: admin/core/core.php:1382
 msgid ""
 "ARQ is a real-time file monitor that automatically AutoRestores and/or "
 "Quarantines files. ARQ utilizes countermeasure website security that has the "
@@ -2229,11 +2250,11 @@ msgid ""
 "installations."
 msgstr ""
 
-#: admin/core/core.php:1378
+#: admin/core/core.php:1384
 msgid "DB Monitor Intrusion Detection System (IDS): "
 msgstr ""
 
-#: admin/core/core.php:1378
+#: admin/core/core.php:1384
 msgid ""
 "The DB Monitor (DBM) is an Intrusion Detection System (IDS) that alerts you "
 "via email anytime a change/modification occurs in your WordPress database or "
@@ -2250,11 +2271,11 @@ msgid ""
 "files or your WordPress database have been tampered with."
 msgstr ""
 
-#: admin/core/core.php:1380
+#: admin/core/core.php:1386
 msgid "DB Diff Tool: "
 msgstr ""
 
-#: admin/core/core.php:1380
+#: admin/core/core.php:1386
 msgid ""
 "The DB Diff Tool compares old database tables from DB backups to current "
 "database tables and displays any differences in the data/content of those 2 "
@@ -2263,11 +2284,11 @@ msgid ""
 "database table name change/modification."
 msgstr ""
 
-#: admin/core/core.php:1382
+#: admin/core/core.php:1388
 msgid "Plugin Firewall|Plugin Firewall AutoPilot Mode: "
 msgstr ""
 
-#: admin/core/core.php:1382
+#: admin/core/core.php:1388
 msgid ""
 "The Plugin Firewall|Plugins BulletProof Mode prevents/blocks/forbids Remote "
 "Access to the plugins folder from external sources (remote script execution, "
@@ -2278,11 +2299,11 @@ msgid ""
 "Mode automatically creates plugin whitelist rules in real-time."
 msgstr ""
 
-#: admin/core/core.php:1384
+#: admin/core/core.php:1390
 msgid "Uploads Folder Anti-Exploit Guard (UAEG): "
 msgstr ""
 
-#: admin/core/core.php:1384
+#: admin/core/core.php:1390
 msgid ""
 "The Uploads Folder Anti-Exploit Guard|Uploads Folder BulletProof Mode allows "
 "ONLY safe image files with valid image file extensions such as jpg, gif, "
@@ -2291,11 +2312,11 @@ msgid ""
 "from being accessed, opened, viewed, processed or executed."
 msgstr ""
 
-#: admin/core/core.php:1386
+#: admin/core/core.php:1392
 msgid "JTC Anti-Spam|Anti-Hacker: "
 msgstr ""
 
-#: admin/core/core.php:1386
+#: admin/core/core.php:1392
 msgid ""
 "Hacker Protection|Spammer Protection|DoS/DDoS Attack Protection|Brute Force "
 "Login Attack Protection|SpamBot Trap. JTC Anti-Spam|Anti-Hacker provides "
@@ -2308,11 +2329,11 @@ msgid ""
 "Login Form with a user friendly & customizable jQuery ToolTip CAPTCHA."
 msgstr ""
 
-#: admin/core/core.php:1388
+#: admin/core/core.php:1394
 msgid "S-Monitor Displayed Alerts, Email Alerting & Log File Options: "
 msgstr ""
 
-#: admin/core/core.php:1388
+#: admin/core/core.php:1394
 msgid ""
 "S-Monitor displayed alerting options allow you to choose how you want real-"
 "time alerts displayed to you: WP Dashboard, BPS Pro pages only or turned "
@@ -2323,21 +2344,21 @@ msgid ""
 "option that you choose."
 msgstr ""
 
-#: admin/core/core.php:1390
+#: admin/core/core.php:1396
 msgid "F-Lock: "
 msgstr ""
 
-#: admin/core/core.php:1390
+#: admin/core/core.php:1396
 msgid ""
 "Lock and Unlock WordPress Mission Critical files from within your WordPress "
 "Dashboard."
 msgstr ""
 
-#: admin/core/core.php:1392
+#: admin/core/core.php:1398
 msgid "Custom php.ini|ini_set Options: "
 msgstr ""
 
-#: admin/core/core.php:1392
+#: admin/core/core.php:1398
 msgid ""
 "Quickly create a custom php.ini file for your website or use ini_set Options "
 "to increase security and performance with just a few clicks. Additional P-"
@@ -2345,11 +2366,11 @@ msgid ""
 "Protected PHP Error Log, PHP Error Alerts, Secure phpinfo Viewer..."
 msgstr ""
 
-#: admin/core/core.php:1394
+#: admin/core/core.php:1400
 msgid "Advanced Real-Time Alerting & Heads Up Dashboard Status Display: "
 msgstr ""
 
-#: admin/core/core.php:1394
+#: admin/core/core.php:1400
 msgid ""
 "BPS Pro checks and displays error, warning, notifications and alert messages "
 "in real time. You can choose how you want these messages displayed to you "
@@ -2357,11 +2378,11 @@ msgid ""
 "Dashboard, BPS Pro pages only, Turned off, Email Alerts, Logging..."
 msgstr ""
 
-#: admin/core/core.php:1398
+#: admin/core/core.php:1404
 msgid "Pro-Tools: "
 msgstr ""
 
-#: admin/core/core.php:1398
+#: admin/core/core.php:1404
 msgid ""
 "Pro-Tools is a set of versatile 16 website tools (16 mini-plugins): Online "
 "Base64 Decoder, Offline Base64 Decode|Encode, Mcrypt Decrypt|Encrypt, Crypt "
@@ -2371,248 +2392,252 @@ msgid ""
 "Exploit Checker"
 msgstr ""
 
-#: admin/core/core.php:1413
+#: admin/core/core.php:1419
 msgid "BPS Pro Version Release Dates"
 msgstr ""
 
-#: admin/core/core.php:1415
-msgid "Whats New in BPS Pro 11.1"
-msgstr ""
-
-#: admin/core/core.php:1416
-msgid "Whats New in BPS Pro 11"
-msgstr ""
-
-#: admin/core/core.php:1417
-msgid "Whats New in BPS Pro 10.9"
-msgstr ""
-
-#: admin/core/core.php:1418
-msgid "Whats New in BPS Pro 10.8"
-msgstr ""
-
-#: admin/core/core.php:1419
-msgid "Whats New in BPS Pro 10.7"
-msgstr ""
-
 #: admin/core/core.php:1421
-msgid "Whats New in BPS Pro 10.6"
+msgid "Whats New in BPS Pro 11.2"
 msgstr ""
 
 #: admin/core/core.php:1422
-msgid "Whats New in BPS Pro 10.4/10.5"
+msgid "Whats New in BPS Pro 11.1"
 msgstr ""
 
 #: admin/core/core.php:1423
-msgid "Whats New in BPS Pro 10.3"
+msgid "Whats New in BPS Pro 11"
 msgstr ""
 
 #: admin/core/core.php:1424
-msgid "Whats New in BPS Pro 10.2"
+msgid "Whats New in BPS Pro 10.9"
 msgstr ""
 
 #: admin/core/core.php:1425
-msgid "Whats New in BPS Pro 10.1"
+msgid "Whats New in BPS Pro 10.8"
 msgstr ""
 
 #: admin/core/core.php:1426
-msgid "Whats New in BPS Pro 10"
-msgstr ""
-
-#: admin/core/core.php:1427
-msgid "Whats New in BPS Pro 9.9.1"
+msgid "Whats New in BPS Pro 10.7"
 msgstr ""
 
 #: admin/core/core.php:1428
-msgid "Whats New in BPS Pro 9.9"
+msgid "Whats New in BPS Pro 10.6"
 msgstr ""
 
 #: admin/core/core.php:1429
-msgid "Whats New in BPS Pro 9.8"
+msgid "Whats New in BPS Pro 10.4/10.5"
 msgstr ""
 
 #: admin/core/core.php:1430
-msgid "Whats New in BPS Pro 9.7"
+msgid "Whats New in BPS Pro 10.3"
 msgstr ""
 
 #: admin/core/core.php:1431
-msgid "Whats New in BPS Pro 9.6"
+msgid "Whats New in BPS Pro 10.2"
 msgstr ""
 
 #: admin/core/core.php:1432
-msgid "Whats New in BPS Pro 9.5"
+msgid "Whats New in BPS Pro 10.1"
 msgstr ""
 
 #: admin/core/core.php:1433
-msgid "Whats New in BPS Pro 9.3/9.4"
+msgid "Whats New in BPS Pro 10"
 msgstr ""
 
 #: admin/core/core.php:1434
-msgid "Whats New in BPS Pro 9.2"
+msgid "Whats New in BPS Pro 9.9.1"
+msgstr ""
+
+#: admin/core/core.php:1435
+msgid "Whats New in BPS Pro 9.9"
 msgstr ""
 
 #: admin/core/core.php:1436
-msgid "Whats New in BPS Pro 9.1"
+msgid "Whats New in BPS Pro 9.8"
 msgstr ""
 
 #: admin/core/core.php:1437
-msgid "Whats New in BPS Pro 9.0"
+msgid "Whats New in BPS Pro 9.7"
 msgstr ""
 
 #: admin/core/core.php:1438
-msgid "Whats New in BPS Pro 8.3"
+msgid "Whats New in BPS Pro 9.6"
 msgstr ""
 
 #: admin/core/core.php:1439
-msgid "Whats New in BPS Pro 8.2"
+msgid "Whats New in BPS Pro 9.5"
 msgstr ""
 
 #: admin/core/core.php:1440
-msgid "Whats New in BPS Pro 8.1"
+msgid "Whats New in BPS Pro 9.3/9.4"
 msgstr ""
 
 #: admin/core/core.php:1441
-msgid "Whats New in BPS Pro 8.0"
-msgstr ""
-
-#: admin/core/core.php:1442
-msgid "Whats New in BPS Pro 7.9"
+msgid "Whats New in BPS Pro 9.2"
 msgstr ""
 
 #: admin/core/core.php:1443
-msgid "Whats New in BPS Pro 7.8"
+msgid "Whats New in BPS Pro 9.1"
 msgstr ""
 
 #: admin/core/core.php:1444
-msgid "Whats New in BPS Pro 7.7"
+msgid "Whats New in BPS Pro 9.0"
 msgstr ""
 
 #: admin/core/core.php:1445
-msgid "Whats New in BPS Pro 7.6"
+msgid "Whats New in BPS Pro 8.3"
 msgstr ""
 
 #: admin/core/core.php:1446
-msgid "Whats New in BPS Pro 7.5"
+msgid "Whats New in BPS Pro 8.2"
 msgstr ""
 
 #: admin/core/core.php:1447
-msgid "Whats New in BPS Pro 7.0"
+msgid "Whats New in BPS Pro 8.1"
 msgstr ""
 
 #: admin/core/core.php:1448
-msgid "Whats New in BPS Pro 6.5"
+msgid "Whats New in BPS Pro 8.0"
+msgstr ""
+
+#: admin/core/core.php:1449
+msgid "Whats New in BPS Pro 7.9"
 msgstr ""
 
 #: admin/core/core.php:1450
-msgid "Whats New in BPS Pro 6.0"
+msgid "Whats New in BPS Pro 7.8"
 msgstr ""
 
 #: admin/core/core.php:1451
-msgid "Whats New in BPS Pro 5.9"
+msgid "Whats New in BPS Pro 7.7"
 msgstr ""
 
 #: admin/core/core.php:1452
-msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgid "Whats New in BPS Pro 7.6"
 msgstr ""
 
 #: admin/core/core.php:1453
-msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
+msgid "Whats New in BPS Pro 7.5"
 msgstr ""
 
 #: admin/core/core.php:1454
-msgid "Whats New in BPS Pro 5.6/5.6.1"
+msgid "Whats New in BPS Pro 7.0"
 msgstr ""
 
 #: admin/core/core.php:1455
-msgid "Whats New in BPS Pro 5.5"
-msgstr ""
-
-#: admin/core/core.php:1456
-msgid "Whats New in BPS Pro 5.4/5.4.1"
+msgid "Whats New in BPS Pro 6.5"
 msgstr ""
 
 #: admin/core/core.php:1457
-msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
+msgid "Whats New in BPS Pro 6.0"
 msgstr ""
 
 #: admin/core/core.php:1458
-msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
+msgid "Whats New in BPS Pro 5.9"
 msgstr ""
 
 #: admin/core/core.php:1459
-msgid "Whats New in BPS Pro 5.1.9"
+msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
+msgstr ""
+
+#: admin/core/core.php:1460
+msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
 msgstr ""
 
 #: admin/core/core.php:1461
-msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
+msgid "Whats New in BPS Pro 5.6/5.6.1"
 msgstr ""
 
 #: admin/core/core.php:1462
-msgid "Whats New in BPS Pro 5.1.7"
+msgid "Whats New in BPS Pro 5.5"
 msgstr ""
 
 #: admin/core/core.php:1463
-msgid "Whats New in BPS Pro 5.1.6"
+msgid "Whats New in BPS Pro 5.4/5.4.1"
 msgstr ""
 
 #: admin/core/core.php:1464
-msgid "Whats New in BPS Pro 5.1.5"
+msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
 msgstr ""
 
 #: admin/core/core.php:1465
-msgid "Whats New in BPS Pro 5.1.4"
+msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
 msgstr ""
 
 #: admin/core/core.php:1466
-msgid "Whats New in BPS Pro 5.1.3"
-msgstr ""
-
-#: admin/core/core.php:1467
-msgid "Whats New in BPS Pro 5.1.2"
+msgid "Whats New in BPS Pro 5.1.9"
 msgstr ""
 
 #: admin/core/core.php:1468
-msgid "Whats New in BPS Pro 5.1.1"
+msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
 msgstr ""
 
 #: admin/core/core.php:1469
-msgid "Whats New in BPS Pro 5.1"
+msgid "Whats New in BPS Pro 5.1.7"
 msgstr ""
 
 #: admin/core/core.php:1470
+msgid "Whats New in BPS Pro 5.1.6"
+msgstr ""
+
+#: admin/core/core.php:1471
+msgid "Whats New in BPS Pro 5.1.5"
+msgstr ""
+
+#: admin/core/core.php:1472
+msgid "Whats New in BPS Pro 5.1.4"
+msgstr ""
+
+#: admin/core/core.php:1473
+msgid "Whats New in BPS Pro 5.1.3"
+msgstr ""
+
+#: admin/core/core.php:1474
+msgid "Whats New in BPS Pro 5.1.2"
+msgstr ""
+
+#: admin/core/core.php:1475
+msgid "Whats New in BPS Pro 5.1.1"
+msgstr ""
+
+#: admin/core/core.php:1476
+msgid "Whats New in BPS Pro 5.1"
+msgstr ""
+
+#: admin/core/core.php:1477
 msgid "Whats New in BPS Pro 5.0"
 msgstr ""
 
-#: admin/core/core.php:1487 admin/maintenance/maintenance.php:1985
+#: admin/core/core.php:1494 admin/maintenance/maintenance.php:2003
 msgid "Help & FAQ"
 msgstr ""
 
-#: admin/core/core.php:1494 admin/login/login.php:1056
-#: admin/maintenance/maintenance.php:1992
-#: admin/security-log/security-log.php:795
+#: admin/core/core.php:1501 admin/login/login.php:1052
+#: admin/maintenance/maintenance.php:2010
+#: admin/security-log/security-log.php:815
 #: admin/system-info/system-info.php:889
 msgid "Contributors Page"
 msgstr ""
 
-#: admin/core/core.php:1495
+#: admin/core/core.php:1502
 msgid "WP Permalinks - Custom Permalink Structure Help Info"
 msgstr ""
 
-#: admin/core/core.php:1498 admin/login/login.php:1055
-#: admin/maintenance/maintenance.php:1995
-#: admin/security-log/security-log.php:794
+#: admin/core/core.php:1505 admin/login/login.php:1051
+#: admin/maintenance/maintenance.php:2013
+#: admin/security-log/security-log.php:814
 #: admin/system-info/system-info.php:888
 msgid "Security Log Event Codes"
 msgstr ""
 
-#: admin/core/core.php:1499
+#: admin/core/core.php:1506
 msgid "Adding a Custom 403 Forbidden Page For Your Website"
 msgstr ""
 
-#: admin/core/core.php:1502
-#: admin/db-backup-security/db-backup-security.php:1701
-#: admin/login/login.php:1059 admin/maintenance/maintenance.php:1996
-#: admin/security-log/security-log.php:798
+#: admin/core/core.php:1509
+#: admin/db-backup-security/db-backup-security.php:1697
+#: admin/login/login.php:1055 admin/maintenance/maintenance.php:2014
+#: admin/security-log/security-log.php:818
 #: admin/system-info/system-info.php:892 admin/theme-skin/theme-skin.php:215
 msgid "Forum: Search, Troubleshooting Steps & Post Questions For Assistance"
 msgstr ""
@@ -2893,7 +2918,7 @@ msgid ""
 msgstr ""
 
 #: admin/db-backup-security/db-backup-help-text.php:9
-#: admin/db-backup-security/db-backup-security.php:670
+#: admin/db-backup-security/db-backup-security.php:666
 msgid "Rename|Create|Reset Tool"
 msgstr ""
 
@@ -3243,636 +3268,636 @@ msgstr ""
 msgid "BulletProof Security ~ DB Backup & Security"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:242
-#: admin/db-backup-security/db-backup-security.php:266
-#: admin/db-backup-security/db-backup-security.php:268
-#: admin/includes/admin.php:196
+#: admin/db-backup-security/db-backup-security.php:238
+#: admin/db-backup-security/db-backup-security.php:262
+#: admin/db-backup-security/db-backup-security.php:264
+#: admin/includes/admin.php:197
 msgid "DB Backup"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:243
-#: admin/db-backup-security/db-backup-security.php:1129
-#: admin/db-backup-security/db-backup-security.php:1131
+#: admin/db-backup-security/db-backup-security.php:239
+#: admin/db-backup-security/db-backup-security.php:1125
+#: admin/db-backup-security/db-backup-security.php:1127
 msgid "DB Backup Log"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:244
-#: admin/db-backup-security/db-backup-security.php:1365
-#: admin/db-backup-security/db-backup-security.php:1367
+#: admin/db-backup-security/db-backup-security.php:240
+#: admin/db-backup-security/db-backup-security.php:1361
+#: admin/db-backup-security/db-backup-security.php:1363
 msgid "DB Table Prefix Changer"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:250
+#: admin/db-backup-security/db-backup-security.php:246
 msgid "DB Backup ~ "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:250
+#: admin/db-backup-security/db-backup-security.php:246
 msgid ""
 "Full & Partial DB Backups, Manual & Scheduled DB Backups, Email Zip Backups, "
 "Automatically Delete Old Backups"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:254
+#: admin/db-backup-security/db-backup-security.php:250
 msgid "DB Backup Job Completion Time Estimates: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:254
+#: admin/db-backup-security/db-backup-security.php:250
 msgid "10MB DB: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:254
+#: admin/db-backup-security/db-backup-security.php:250
 msgid "3 Seconds"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:254
+#: admin/db-backup-security/db-backup-security.php:250
 msgid "100MB DB: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:254
+#: admin/db-backup-security/db-backup-security.php:250
 msgid "30 Seconds"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:277
+#: admin/db-backup-security/db-backup-security.php:273
 msgid "DB Backup & Security Guide"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:284
+#: admin/db-backup-security/db-backup-security.php:280
 msgid "Backup Jobs ~ Manual|Scheduled"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:309
+#: admin/db-backup-security/db-backup-security.php:305
 msgid "Description|Job Name"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:310
-#: admin/db-backup-security/db-backup-security.php:525
-#: admin/login/login.php:455 admin/login/login.php:484
-#: admin/login/login.php:556 admin/login/login.php:585
+#: admin/db-backup-security/db-backup-security.php:306
+#: admin/db-backup-security/db-backup-security.php:521
+#: admin/login/login.php:451 admin/login/login.php:480
+#: admin/login/login.php:552 admin/login/login.php:581
 msgid "Delete"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:311
+#: admin/db-backup-security/db-backup-security.php:307
 msgid "Run"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:312
+#: admin/db-backup-security/db-backup-security.php:308
 msgid "Job Type"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:313
+#: admin/db-backup-security/db-backup-security.php:309
 msgid "Frequency"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:314
+#: admin/db-backup-security/db-backup-security.php:310
 msgid "Last Backup"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:315
+#: admin/db-backup-security/db-backup-security.php:311
 msgid "Next Backup"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:316
+#: admin/db-backup-security/db-backup-security.php:312
 msgid "Email Backup"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:317
+#: admin/db-backup-security/db-backup-security.php:313
 msgid "Job Created"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:324
+#: admin/db-backup-security/db-backup-security.php:320
 msgid "No Backup Jobs have been created yet."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:359
+#: admin/db-backup-security/db-backup-security.php:355
 msgid "Yes & Delete"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:361
+#: admin/db-backup-security/db-backup-security.php:357
 msgid "Send Email Only"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:374
-#: admin/db-backup-security/db-backup-security.php:420
+#: admin/db-backup-security/db-backup-security.php:370
+#: admin/db-backup-security/db-backup-security.php:416
 msgid "Run Job|Delete Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:452
-#: admin/db-backup-security/db-backup-security.php:486
+#: admin/db-backup-security/db-backup-security.php:448
+#: admin/db-backup-security/db-backup-security.php:482
 msgid "Backup Job: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:452
-#: admin/db-backup-security/db-backup-security.php:635
+#: admin/db-backup-security/db-backup-security.php:448
+#: admin/db-backup-security/db-backup-security.php:631
 msgid " has been deleted successfully."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:486
+#: admin/db-backup-security/db-backup-security.php:482
 msgid " has completed."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:486
+#: admin/db-backup-security/db-backup-security.php:482
 msgid ""
 "Your DB Backup Log contains the Backup Job Completion Time, Total Memory "
 "Used and other information about this Backup."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:486
+#: admin/db-backup-security/db-backup-security.php:482
 msgid ""
 "Click the Refresh Status button below to refresh the DB Backup Timestamp."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:503
+#: admin/db-backup-security/db-backup-security.php:499
 msgid "Backup Files ~ Download|Delete"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:524
+#: admin/db-backup-security/db-backup-security.php:520
 msgid "Backup Filename"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:526
-#: admin/db-backup-security/db-backup-security.php:544
+#: admin/db-backup-security/db-backup-security.php:522
+#: admin/db-backup-security/db-backup-security.php:540
 msgid "Download"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:527
+#: admin/db-backup-security/db-backup-security.php:523
 msgid "Backup Folder"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:528
+#: admin/db-backup-security/db-backup-security.php:524
 msgid "Size"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:529
+#: admin/db-backup-security/db-backup-security.php:525
 msgid "Date|Time"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:559
+#: admin/db-backup-security/db-backup-security.php:555
 msgid "No Backup Jobs have been Run yet. No Files in Backup."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:575
-#: admin/db-backup-security/db-backup-security.php:612
+#: admin/db-backup-security/db-backup-security.php:571
+#: admin/db-backup-security/db-backup-security.php:608
 msgid "Delete Files"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:575
+#: admin/db-backup-security/db-backup-security.php:571
 msgid "Click OK to Delete Backup File(s) or click Cancel"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:635
+#: admin/db-backup-security/db-backup-security.php:631
 msgid "Backup File: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:649
+#: admin/db-backup-security/db-backup-security.php:645
 msgid "Create Backup Jobs"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:668
+#: admin/db-backup-security/db-backup-security.php:664
 msgid "Database Tables "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:669
+#: admin/db-backup-security/db-backup-security.php:665
 msgid "Backup Job Settings|Independent Options"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:682
+#: admin/db-backup-security/db-backup-security.php:678
 msgid "All"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:683
-#: admin/db-backup-security/db-backup-security.php:1546
+#: admin/db-backup-security/db-backup-security.php:679
+#: admin/db-backup-security/db-backup-security.php:1542
 msgid "DB Table Name"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:710
+#: admin/db-backup-security/db-backup-security.php:706
 msgid "Description|Backup Job Name:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:713
+#: admin/db-backup-security/db-backup-security.php:709
 msgid "DB Backup Folder Location:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:714
+#: admin/db-backup-security/db-backup-security.php:710
 msgid "Recommended: Use The Default Obfuscated & Secure BPS Backup Folder"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:717
+#: admin/db-backup-security/db-backup-security.php:713
 msgid "DB Backup File Download Link|URL:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:718
+#: admin/db-backup-security/db-backup-security.php:714
 msgid ""
 "Note: If you see 404 errors when trying to download zip files or if you have"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:719
+#: admin/db-backup-security/db-backup-security.php:715
 msgid ""
 "changed the DB Backup Folder Location above, click the Read Me help button."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:722
+#: admin/db-backup-security/db-backup-security.php:718
 msgid "Backup Job Type: Manual or Scheduled"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:724
+#: admin/db-backup-security/db-backup-security.php:720
 msgid "Manual DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:725
+#: admin/db-backup-security/db-backup-security.php:721
 msgid "Scheduled DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:728
+#: admin/db-backup-security/db-backup-security.php:724
 msgid "Frequency of Scheduled Backup Job (recurring)"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:730
-#: admin/db-backup-security/db-backup-security.php:739
-#: admin/db-backup-security/db-backup-security.php:768
-#: admin/db-backup-security/db-backup-security.php:780
+#: admin/db-backup-security/db-backup-security.php:726
+#: admin/db-backup-security/db-backup-security.php:735
+#: admin/db-backup-security/db-backup-security.php:764
+#: admin/db-backup-security/db-backup-security.php:776
 msgid "N/A"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:731
+#: admin/db-backup-security/db-backup-security.php:727
 msgid "Hourly Scheduled DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:732
+#: admin/db-backup-security/db-backup-security.php:728
 msgid "Daily Scheduled DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:733
+#: admin/db-backup-security/db-backup-security.php:729
 msgid "Weekly Scheduled DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:734
+#: admin/db-backup-security/db-backup-security.php:730
 msgid "Monthly Scheduled DB Backup Job"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:737
+#: admin/db-backup-security/db-backup-security.php:733
 msgid "Hour When Scheduled Backup is Run (recurring)"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:740
+#: admin/db-backup-security/db-backup-security.php:736
 msgid "12AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:741
+#: admin/db-backup-security/db-backup-security.php:737
 msgid "1AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:742
+#: admin/db-backup-security/db-backup-security.php:738
 msgid "2AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:743
+#: admin/db-backup-security/db-backup-security.php:739
 msgid "3AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:744
+#: admin/db-backup-security/db-backup-security.php:740
 msgid "4AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:745
+#: admin/db-backup-security/db-backup-security.php:741
 msgid "5AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:746
+#: admin/db-backup-security/db-backup-security.php:742
 msgid "6AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:747
+#: admin/db-backup-security/db-backup-security.php:743
 msgid "7AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:748
+#: admin/db-backup-security/db-backup-security.php:744
 msgid "8AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:749
+#: admin/db-backup-security/db-backup-security.php:745
 msgid "9AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:750
+#: admin/db-backup-security/db-backup-security.php:746
 msgid "10AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:751
+#: admin/db-backup-security/db-backup-security.php:747
 msgid "11AM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:752
+#: admin/db-backup-security/db-backup-security.php:748
 msgid "12PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:753
+#: admin/db-backup-security/db-backup-security.php:749
 msgid "1PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:754
+#: admin/db-backup-security/db-backup-security.php:750
 msgid "2PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:755
+#: admin/db-backup-security/db-backup-security.php:751
 msgid "3PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:756
+#: admin/db-backup-security/db-backup-security.php:752
 msgid "4PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:757
+#: admin/db-backup-security/db-backup-security.php:753
 msgid "5PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:758
+#: admin/db-backup-security/db-backup-security.php:754
 msgid "6PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:759
+#: admin/db-backup-security/db-backup-security.php:755
 msgid "7PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:760
+#: admin/db-backup-security/db-backup-security.php:756
 msgid "8PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:761
+#: admin/db-backup-security/db-backup-security.php:757
 msgid "9PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:762
+#: admin/db-backup-security/db-backup-security.php:758
 msgid "10PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:763
+#: admin/db-backup-security/db-backup-security.php:759
 msgid "11PM"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:766
+#: admin/db-backup-security/db-backup-security.php:762
 msgid "Day of Week When Scheduled Backup is Run (recurring)"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:769
+#: admin/db-backup-security/db-backup-security.php:765
 msgid "Sunday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:770
+#: admin/db-backup-security/db-backup-security.php:766
 msgid "Monday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:771
+#: admin/db-backup-security/db-backup-security.php:767
 msgid "Tuesday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:772
+#: admin/db-backup-security/db-backup-security.php:768
 msgid "Wednesday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:773
+#: admin/db-backup-security/db-backup-security.php:769
 msgid "Thursday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:774
+#: admin/db-backup-security/db-backup-security.php:770
 msgid "Friday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:775
+#: admin/db-backup-security/db-backup-security.php:771
 msgid "Saturday"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:778
+#: admin/db-backup-security/db-backup-security.php:774
 msgid "Day of Month When Scheduled Backup is Run (recurring)"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:781
+#: admin/db-backup-security/db-backup-security.php:777
 msgid "1st"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:782
+#: admin/db-backup-security/db-backup-security.php:778
 msgid "2nd"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:783
+#: admin/db-backup-security/db-backup-security.php:779
 msgid "3rd"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:784
+#: admin/db-backup-security/db-backup-security.php:780
 msgid "4th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:785
+#: admin/db-backup-security/db-backup-security.php:781
 msgid "5th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:786
+#: admin/db-backup-security/db-backup-security.php:782
 msgid "6th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:787
+#: admin/db-backup-security/db-backup-security.php:783
 msgid "7th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:788
+#: admin/db-backup-security/db-backup-security.php:784
 msgid "8th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:789
+#: admin/db-backup-security/db-backup-security.php:785
 msgid "9th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:790
+#: admin/db-backup-security/db-backup-security.php:786
 msgid "10th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:791
+#: admin/db-backup-security/db-backup-security.php:787
 msgid "11th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:792
+#: admin/db-backup-security/db-backup-security.php:788
 msgid "12th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:793
+#: admin/db-backup-security/db-backup-security.php:789
 msgid "13th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:794
+#: admin/db-backup-security/db-backup-security.php:790
 msgid "14th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:795
+#: admin/db-backup-security/db-backup-security.php:791
 msgid "15th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:796
+#: admin/db-backup-security/db-backup-security.php:792
 msgid "16th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:797
+#: admin/db-backup-security/db-backup-security.php:793
 msgid "17th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:798
+#: admin/db-backup-security/db-backup-security.php:794
 msgid "18th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:799
+#: admin/db-backup-security/db-backup-security.php:795
 msgid "19th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:800
+#: admin/db-backup-security/db-backup-security.php:796
 msgid "20th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:801
+#: admin/db-backup-security/db-backup-security.php:797
 msgid "21st"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:802
+#: admin/db-backup-security/db-backup-security.php:798
 msgid "22nd"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:803
+#: admin/db-backup-security/db-backup-security.php:799
 msgid "23rd"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:804
+#: admin/db-backup-security/db-backup-security.php:800
 msgid "24th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:805
+#: admin/db-backup-security/db-backup-security.php:801
 msgid "25th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:806
+#: admin/db-backup-security/db-backup-security.php:802
 msgid "26th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:807
+#: admin/db-backup-security/db-backup-security.php:803
 msgid "27th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:808
+#: admin/db-backup-security/db-backup-security.php:804
 msgid "28th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:809
+#: admin/db-backup-security/db-backup-security.php:805
 msgid "29th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:810
+#: admin/db-backup-security/db-backup-security.php:806
 msgid "30th"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:813
+#: admin/db-backup-security/db-backup-security.php:809
 msgid "Send Scheduled Backup Zip File Via Email or Just Email Only:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:814
+#: admin/db-backup-security/db-backup-security.php:810
 msgid ""
 "Note: Check with your email provider for the maximum<br>file attachment size "
 "limit that is allowed by your Mail Server"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:816
+#: admin/db-backup-security/db-backup-security.php:812
 msgid "Do Not Email Zip Backup File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:817
+#: admin/db-backup-security/db-backup-security.php:813
 msgid "Email & Delete Zip Backup File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:818
+#: admin/db-backup-security/db-backup-security.php:814
 msgid "Email Zip Backup File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:819
+#: admin/db-backup-security/db-backup-security.php:815
 msgid "Send Email Only & Not Zip Backup File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:822
+#: admin/db-backup-security/db-backup-security.php:818
 msgid "Automatically Delete Old Backup Files:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:823
-#: admin/db-backup-security/db-backup-security.php:837
+#: admin/db-backup-security/db-backup-security.php:819
+#: admin/db-backup-security/db-backup-security.php:833
 msgid "Independent Option:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:825
+#: admin/db-backup-security/db-backup-security.php:821
 msgid "Never Delete Old Backup Files"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:826
+#: admin/db-backup-security/db-backup-security.php:822
 msgid "Delete Backup Files Older Than 1 Day"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:827
+#: admin/db-backup-security/db-backup-security.php:823
 msgid "Delete Backup Files Older Than 5 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:828
+#: admin/db-backup-security/db-backup-security.php:824
 msgid "Delete Backup Files Older Than 10 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:829
+#: admin/db-backup-security/db-backup-security.php:825
 msgid "Delete Backup Files Older Than 15 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:830
+#: admin/db-backup-security/db-backup-security.php:826
 msgid "Delete Backup Files Older Than 30 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:831
+#: admin/db-backup-security/db-backup-security.php:827
 msgid "Delete Backup Files Older Than 60 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:832
+#: admin/db-backup-security/db-backup-security.php:828
 msgid "Delete Backup Files Older Than 90 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:833
+#: admin/db-backup-security/db-backup-security.php:829
 msgid "Delete Backup Files Older Than 180 Days"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:836
+#: admin/db-backup-security/db-backup-security.php:832
 msgid "Turn On|Off All Scheduled Backups (Override):"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:839
+#: admin/db-backup-security/db-backup-security.php:835
 msgid "Turn On All Scheduled Backups"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:840
+#: admin/db-backup-security/db-backup-security.php:836
 msgid "Turn Off All Scheduled Backups"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:843
+#: admin/db-backup-security/db-backup-security.php:839
 msgid "Create Backup Job|Save Settings"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:843
+#: admin/db-backup-security/db-backup-security.php:839
 msgid "Click OK to Create this Backup Job or click Cancel"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:860
+#: admin/db-backup-security/db-backup-security.php:856
 msgid "Rename|Create|Reset DB Backup Folder Name:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:861
+#: admin/db-backup-security/db-backup-security.php:857
 msgid "Randomly Generated New DB Backup Folder Name."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:862
+#: admin/db-backup-security/db-backup-security.php:858
 msgid "Valid Folder Naming Characters: a-z A-Z 0-9 - _"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:865
+#: admin/db-backup-security/db-backup-security.php:861
 msgid "Rename|Create|Reset"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:865
+#: admin/db-backup-security/db-backup-security.php:861
 msgid ""
 "The Rename|Create|Reset Tool renames the DB Backup folder if it already "
 "exists or creates a new DB Backup folder if it does not already exist.\\n"
@@ -3884,240 +3909,240 @@ msgid ""
 "OK to proceed or click Cancel"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:984
+#: admin/db-backup-security/db-backup-security.php:980
 msgid ""
 "Error: You did not select any DB Tables to backup. Backup Job was not "
 "created."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1090
+#: admin/db-backup-security/db-backup-security.php:1086
 msgid "Backup Job "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1090
+#: admin/db-backup-security/db-backup-security.php:1086
 msgid " Created Successfully."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1092
+#: admin/db-backup-security/db-backup-security.php:1088
 msgid "Backup Job Settings Logged successfully in the DB Backup Log"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1120
+#: admin/db-backup-security/db-backup-security.php:1116
 msgid "DB Backup Log ~ "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1120
+#: admin/db-backup-security/db-backup-security.php:1116
 msgid ""
 "Logs Backup Job Settings, Completion Time, Memory Usage, Zip Backup File "
 "Name, Timestamp..."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1145
-#: admin/db-backup-security/db-backup-security.php:1148
+#: admin/db-backup-security/db-backup-security.php:1141
+#: admin/db-backup-security/db-backup-security.php:1144
 msgid "DB Backup Log File Size: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1148
+#: admin/db-backup-security/db-backup-security.php:1144
 msgid "The Email Logging options will only send log files up to 2MB in size."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1148
+#: admin/db-backup-security/db-backup-security.php:1144
 msgid ""
 "Copy and paste the DB Backup Log file contents into a Notepad text file on "
 "your computer and save it."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1148
+#: admin/db-backup-security/db-backup-security.php:1144
 msgid ""
 "Then click the Delete Log button to delete the contents of this Log file."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1163
+#: admin/db-backup-security/db-backup-security.php:1159
 msgid "DB Backup Log Last Modified Time: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1179
-#: admin/login/login.php:321 admin/security-log/security-log.php:401
+#: admin/db-backup-security/db-backup-security.php:1175
+#: admin/login/login.php:317 admin/security-log/security-log.php:401
 msgid "Send Email Alerts & Log Files To:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1183
-#: admin/login/login.php:325 admin/security-log/security-log.php:405
+#: admin/db-backup-security/db-backup-security.php:1179
+#: admin/login/login.php:321 admin/security-log/security-log.php:405
 msgid "Send Email Alerts & Log Files From:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1187
-#: admin/login/login.php:329 admin/security-log/security-log.php:409
+#: admin/db-backup-security/db-backup-security.php:1183
+#: admin/login/login.php:325 admin/security-log/security-log.php:409
 msgid "Send Email Alerts & Log Files Cc:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1191
-#: admin/login/login.php:333 admin/security-log/security-log.php:413
+#: admin/db-backup-security/db-backup-security.php:1187
+#: admin/login/login.php:329 admin/security-log/security-log.php:413
 msgid "Send Email Alerts & Log Files Bcc:"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1199
-#: admin/login/login.php:341 admin/security-log/security-log.php:421
+#: admin/db-backup-security/db-backup-security.php:1195
+#: admin/login/login.php:337 admin/security-log/security-log.php:421
 msgid "Login Security: Send Login Security Email Alert When..."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1201
-#: admin/login/login.php:343 admin/security-log/security-log.php:423
+#: admin/db-backup-security/db-backup-security.php:1197
+#: admin/login/login.php:339 admin/security-log/security-log.php:423
 msgid "A User Account Is Locked Out"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1202
-#: admin/login/login.php:344 admin/security-log/security-log.php:424
+#: admin/db-backup-security/db-backup-security.php:1198
+#: admin/login/login.php:340 admin/security-log/security-log.php:424
 msgid "An Administrator Logs In"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1203
-#: admin/login/login.php:345 admin/security-log/security-log.php:425
+#: admin/db-backup-security/db-backup-security.php:1199
+#: admin/login/login.php:341 admin/security-log/security-log.php:425
 msgid "An Administrator Logs In & A User Account is Locked Out"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1204
-#: admin/login/login.php:346 admin/security-log/security-log.php:426
+#: admin/db-backup-security/db-backup-security.php:1200
+#: admin/login/login.php:342 admin/security-log/security-log.php:426
 msgid "Any User Logs In & A User Account is Locked Out"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1205
-#: admin/login/login.php:347 admin/security-log/security-log.php:427
+#: admin/db-backup-security/db-backup-security.php:1201
+#: admin/login/login.php:343 admin/security-log/security-log.php:427
 msgid "Do Not Send Email Alerts"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1209
-#: admin/login/login.php:351 admin/security-log/security-log.php:431
+#: admin/db-backup-security/db-backup-security.php:1205
+#: admin/login/login.php:347 admin/security-log/security-log.php:431
 msgid "Security Log: Email|Delete Security Log File When..."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1211
-#: admin/db-backup-security/db-backup-security.php:1223
-#: admin/login/login.php:353 admin/login/login.php:365
+#: admin/db-backup-security/db-backup-security.php:1207
+#: admin/db-backup-security/db-backup-security.php:1219
+#: admin/login/login.php:349 admin/login/login.php:361
 #: admin/security-log/security-log.php:433
 #: admin/security-log/security-log.php:445
 msgid "500KB"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1212
-#: admin/db-backup-security/db-backup-security.php:1224
-#: admin/login/login.php:354 admin/login/login.php:366
+#: admin/db-backup-security/db-backup-security.php:1208
+#: admin/db-backup-security/db-backup-security.php:1220
+#: admin/login/login.php:350 admin/login/login.php:362
 #: admin/security-log/security-log.php:434
 #: admin/security-log/security-log.php:446
 msgid "256KB"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1213
-#: admin/db-backup-security/db-backup-security.php:1225
-#: admin/login/login.php:355 admin/login/login.php:367
+#: admin/db-backup-security/db-backup-security.php:1209
+#: admin/db-backup-security/db-backup-security.php:1221
+#: admin/login/login.php:351 admin/login/login.php:363
 #: admin/security-log/security-log.php:435
 #: admin/security-log/security-log.php:447
 msgid "1MB"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1216
-#: admin/db-backup-security/db-backup-security.php:1228
-#: admin/login/login.php:358 admin/login/login.php:370
+#: admin/db-backup-security/db-backup-security.php:1212
+#: admin/db-backup-security/db-backup-security.php:1224
+#: admin/login/login.php:354 admin/login/login.php:366
 #: admin/security-log/security-log.php:438
 #: admin/security-log/security-log.php:450
 msgid "Email Log & Then Delete Log File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1217
-#: admin/db-backup-security/db-backup-security.php:1229
-#: admin/login/login.php:359 admin/login/login.php:371
+#: admin/db-backup-security/db-backup-security.php:1213
+#: admin/db-backup-security/db-backup-security.php:1225
+#: admin/login/login.php:355 admin/login/login.php:367
 #: admin/security-log/security-log.php:439
 #: admin/security-log/security-log.php:451
 msgid "Delete Log File"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1221
-#: admin/login/login.php:363 admin/security-log/security-log.php:443
+#: admin/db-backup-security/db-backup-security.php:1217
+#: admin/login/login.php:359 admin/security-log/security-log.php:443
 msgid "DB Backup Log: Email|Delete DB Backup Log File When..."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1254
+#: admin/db-backup-security/db-backup-security.php:1250
 msgid ""
 "Success! Your DB Backup Log file has been deleted and replaced with a new "
 "blank DB Backup Log file."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1263
+#: admin/db-backup-security/db-backup-security.php:1259
 msgid "Clicking OK will delete the contents of your DB Backup Log file."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1263
-#: admin/security-log/security-log.php:515
+#: admin/db-backup-security/db-backup-security.php:1259
+#: admin/security-log/security-log.php:525
 msgid "Click OK to Delete the Log file contents or click Cancel."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1283
+#: admin/db-backup-security/db-backup-security.php:1279
 msgid ""
 "The DB Backup Log File Was Not Found! Check that the file really exists here "
 "- /"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1283
+#: admin/db-backup-security/db-backup-security.php:1279
 msgid "/bps-backup/logs/db_backup_log.txt and is named correctly."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1302
+#: admin/db-backup-security/db-backup-security.php:1298
 msgid ""
 "File Open and Write test successful! Your DB Backup Log file is writable."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1314
+#: admin/db-backup-security/db-backup-security.php:1310
 msgid "Success! Your DB Backup Log file has been updated."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1356
+#: admin/db-backup-security/db-backup-security.php:1352
 msgid "DB Table Prefix Changer ~ "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1356
+#: admin/db-backup-security/db-backup-security.php:1352
 msgid "Tools to change & check your WordPress Database Table Prefix"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid "Your current WordPress Database Table Prefix is: "
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid ""
 "1. It is recommended that you backup your database before using this tool."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid ""
 "2. If you want to create your own DB Table Prefix name or add additional "
 "characters to the randomly generated DB Table Prefix name below then ONLY "
 "use lowercase letters, numbers and underscores in your DB Table Prefix name."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid ""
 "3. The maximum length limitation of a DB Table name, including the table "
 "prefix is 64 characters. See the DB Table Names & Character Length Table to "
 "the right."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1375
+#: admin/db-backup-security/db-backup-security.php:1371
 msgid ""
 "4. To change your DB Table Prefix name back to the WordPress default DB "
 "Table Prefix name, enter wp_ for the DB Table Prefix name."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1388
+#: admin/db-backup-security/db-backup-security.php:1384
 msgid ""
 "ERROR: The DB Table Prefix name can only contain numbers, lowercase letters, "
 "and underscores."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1402
+#: admin/db-backup-security/db-backup-security.php:1398
 msgid "A wp-config.php file was NOT found in your website root folder."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1402
+#: admin/db-backup-security/db-backup-security.php:1398
 msgid ""
 "Your DB Table Prefix was not changed. If you have moved your wp-config.php "
 "file to a another Server folder then you can use this tool to change your DB "
@@ -4125,13 +4150,13 @@ msgid ""
 "file back to the default location: your WordPress website root folder."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1422
+#: admin/db-backup-security/db-backup-security.php:1418
 msgid ""
 "Error: The wp-config.php file is not writable. Unable to write to the wp-"
 "config.php file."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1422
+#: admin/db-backup-security/db-backup-security.php:1418
 msgid ""
 "Your DB Table Prefix was not changed. You will need to make the wp-config."
 "php file writable first by changing either the file permissions or Ownership "
@@ -4139,115 +4164,115 @@ msgid ""
 "DB Table Prefix Changer tool to change your DB Table Prefix."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1490
+#: admin/db-backup-security/db-backup-security.php:1486
 msgid ""
 "DB Table Prefix Name change completed. Click the Load|Refresh Table button "
 "to load/refresh the DB Table Names & Character Length Table."
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1516
+#: admin/db-backup-security/db-backup-security.php:1512
 msgid "Randomly Generated DB Table Prefix"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1547
+#: admin/db-backup-security/db-backup-security.php:1543
 msgid "Length"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1571
+#: admin/db-backup-security/db-backup-security.php:1567
 msgid "DB Table Name|Column"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1572
+#: admin/db-backup-security/db-backup-security.php:1568
 msgid "Other Prefix Changes"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1638
+#: admin/db-backup-security/db-backup-security.php:1634
 msgid "DB Table Names & Character Length Table"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1639
+#: admin/db-backup-security/db-backup-security.php:1635
 msgid ""
 "Displays your Current DB Table Names & Length Including The DB Table Prefix"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1642
+#: admin/db-backup-security/db-backup-security.php:1638
 msgid "Load|Refresh Table"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1694
+#: admin/db-backup-security/db-backup-security.php:1690
 #: admin/theme-skin/theme-skin.php:208
 msgid "BPS Pro Features & Version Release Dates"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1697
+#: admin/db-backup-security/db-backup-security.php:1693
 #: admin/theme-skin/theme-skin.php:211
 msgid "Video Tutorials"
 msgstr ""
 
-#: admin/db-backup-security/db-backup-security.php:1698
+#: admin/db-backup-security/db-backup-security.php:1694
 msgid "DB Backup & Security Guide & Troubleshooting"
 msgstr ""
 
-#: admin/includes/admin.php:177
+#: admin/includes/admin.php:178
 msgid "BulletProof Security Settings"
 msgstr ""
 
-#: admin/includes/admin.php:177 admin/includes/admin.php:192
+#: admin/includes/admin.php:178 admin/includes/admin.php:193
 msgid "BPS Security"
 msgstr ""
 
-#: admin/includes/admin.php:178 admin/includes/admin.php:194
+#: admin/includes/admin.php:179 admin/includes/admin.php:195
 msgid "Login Security"
 msgstr ""
 
-#: admin/includes/admin.php:184 admin/includes/admin.php:203
-#: admin/maintenance/maintenance.php:128 admin/maintenance/maintenance.php:159
-#: admin/maintenance/maintenance.php:161
+#: admin/includes/admin.php:185 admin/includes/admin.php:204
+#: admin/maintenance/maintenance.php:146 admin/maintenance/maintenance.php:177
+#: admin/maintenance/maintenance.php:179
 msgid "Maintenance Mode"
 msgstr ""
 
-#: admin/includes/admin.php:187 admin/includes/admin.php:206
+#: admin/includes/admin.php:188 admin/includes/admin.php:207
 #: admin/system-info/system-info.php:93
 msgid "System Info"
 msgstr ""
 
-#: admin/includes/admin.php:188 admin/includes/admin.php:207
+#: admin/includes/admin.php:189 admin/includes/admin.php:208
 msgid "UI|UX|Theme Skin|Processing Spinner|ScrollTop Animation|WP Toolbar|SLF"
 msgstr ""
 
-#: admin/includes/admin.php:188 admin/includes/admin.php:207
+#: admin/includes/admin.php:189 admin/includes/admin.php:208
 msgid "UI|UX|Theme Skin<br>Spinner|ScrollTop<br>WP Toolbar|SLF"
 msgstr ""
 
-#: admin/includes/admin.php:193
+#: admin/includes/admin.php:194
 msgid "htaccess Core"
 msgstr ""
 
-#: admin/includes/admin.php:194 admin/includes/admin.php:195
+#: admin/includes/admin.php:195 admin/includes/admin.php:196
 msgid "Login Security ~ ISL ~ ACE"
 msgstr ""
 
-#: admin/includes/admin.php:195
+#: admin/includes/admin.php:196
 msgid "Idle Session Logout<br>Cookie Expiration"
 msgstr ""
 
-#: admin/includes/admin.php:196
+#: admin/includes/admin.php:197
 msgid "DB Backup & Security"
 msgstr ""
 
-#: admin/includes/admin.php:197 admin/security-log/security-log.php:230
+#: admin/includes/admin.php:198 admin/security-log/security-log.php:230
 #: admin/security-log/security-log.php:244
 #: admin/security-log/security-log.php:246
 msgid "Security Log"
 msgstr ""
 
-#: admin/includes/admin.php:208 admin/wizard/wizard.php:1614
-#: admin/wizard/wizard.php:1629 admin/wizard/wizard.php:1631
+#: admin/includes/admin.php:209 admin/wizard/wizard.php:1627
+#: admin/wizard/wizard.php:1642 admin/wizard/wizard.php:1644
 #: bulletproof-security.php:81
 msgid "Setup Wizard"
 msgstr ""
 
-#: admin/includes/admin.php:211 admin/includes/uninstall.php:44
+#: admin/includes/admin.php:212 admin/includes/uninstall.php:44
 msgid "BPS Plugin Uninstall Options"
 msgstr ""
 
@@ -4283,156 +4308,156 @@ msgstr ""
 msgid "Complete BPS Plugin Uninstall"
 msgstr ""
 
-#: admin/login/login.php:115
+#: admin/login/login.php:111
 msgid "BulletProof Security ~ Login Security & Monitoring"
 msgstr ""
 
-#: admin/login/login.php:160 admin/login/login.php:188
-#: admin/login/login.php:190
+#: admin/login/login.php:156 admin/login/login.php:184
+#: admin/login/login.php:186
 msgid "Login Security & Monitoring"
 msgstr ""
 
-#: admin/login/login.php:164 admin/login/login.php:881
-#: admin/login/login.php:883
+#: admin/login/login.php:160 admin/login/login.php:877
+#: admin/login/login.php:879
 msgid "Idle Session Logout|Auth Cookie Expiration"
 msgstr ""
 
-#: admin/login/login.php:170
+#: admin/login/login.php:166
 msgid "Login Security & Monitoring (LSM) ~ "
 msgstr ""
 
-#: admin/login/login.php:170
+#: admin/login/login.php:166
 msgid ""
 "Log All Account Logins or Log Only Account Lockouts ~ Brute Force Login "
 "Protection"
 msgstr ""
 
-#: admin/login/login.php:176 admin/maintenance/maintenance.php:147
+#: admin/login/login.php:172 admin/maintenance/maintenance.php:165
 msgid "Notice: "
 msgstr ""
 
-#: admin/login/login.php:176 admin/maintenance/maintenance.php:147
+#: admin/login/login.php:172 admin/maintenance/maintenance.php:165
 msgid "You have disabled wp-admin BulletProof Mode on the Security Modes page."
 msgstr ""
 
-#: admin/login/login.php:176 admin/maintenance/maintenance.php:147
+#: admin/login/login.php:172 admin/maintenance/maintenance.php:165
 msgid "If you have Go Daddy \"Managed WordPress Hosting\" click this link: "
 msgstr ""
 
-#: admin/login/login.php:176 admin/maintenance/maintenance.php:147
+#: admin/login/login.php:172 admin/maintenance/maintenance.php:165
 msgid "Go Daddy Managed WordPress Hosting"
 msgstr ""
 
-#: admin/login/login.php:227
+#: admin/login/login.php:223
 msgid "Max Login Attempts:"
 msgstr ""
 
-#: admin/login/login.php:232
+#: admin/login/login.php:228
 msgid "Automatic Lockout Time:"
 msgstr ""
 
-#: admin/login/login.php:234 admin/login/login.php:239
+#: admin/login/login.php:230 admin/login/login.php:235
 msgid "Minutes"
 msgstr ""
 
-#: admin/login/login.php:237
+#: admin/login/login.php:233
 msgid "Manual Lockout Time:"
 msgstr ""
 
-#: admin/login/login.php:242
+#: admin/login/login.php:238
 msgid "Max DB Rows To Show:"
 msgstr ""
 
-#: admin/login/login.php:244
+#: admin/login/login.php:240
 msgid "Blank = Show All Rows"
 msgstr ""
 
-#: admin/login/login.php:251 admin/login/login.php:924
-#: admin/login/login.php:988 admin/login/lsm-help-text.php:13
+#: admin/login/login.php:247 admin/login/login.php:920
+#: admin/login/login.php:984 admin/login/lsm-help-text.php:13
 msgid "Turn On|Turn Off:"
 msgstr ""
 
-#: admin/login/login.php:253
+#: admin/login/login.php:249
 msgid "Turn On Login Security"
 msgstr ""
 
-#: admin/login/login.php:254
+#: admin/login/login.php:250
 msgid "Turn Off Login Security"
 msgstr ""
 
-#: admin/login/login.php:255
+#: admin/login/login.php:251
 msgid "Turn Off Login Security|Use Password Reset Option ONLY"
 msgstr ""
 
-#: admin/login/login.php:260
+#: admin/login/login.php:256
 msgid "Logging Options:"
 msgstr ""
 
-#: admin/login/login.php:262
+#: admin/login/login.php:258
 msgid "Log Only Account Lockouts"
 msgstr ""
 
-#: admin/login/login.php:263
+#: admin/login/login.php:259
 msgid "Log All Account Logins"
 msgstr ""
 
-#: admin/login/login.php:268
+#: admin/login/login.php:264
 msgid "Error Messages:"
 msgstr ""
 
-#: admin/login/login.php:270
+#: admin/login/login.php:266
 msgid "Standard WP Login Errors"
 msgstr ""
 
-#: admin/login/login.php:271
+#: admin/login/login.php:267
 msgid "User|Pass Invalid Entry Error"
 msgstr ""
 
-#: admin/login/login.php:272
+#: admin/login/login.php:268
 msgid "User|Pass|Lock Invalid Entry Error"
 msgstr ""
 
-#: admin/login/login.php:277
+#: admin/login/login.php:273
 msgid "Attempts Remaining:"
 msgstr ""
 
-#: admin/login/login.php:279
+#: admin/login/login.php:275
 msgid "Show Login Attempts Remaining"
 msgstr ""
 
-#: admin/login/login.php:280
+#: admin/login/login.php:276
 msgid "Do Not Show Login Attempts Remaining"
 msgstr ""
 
-#: admin/login/login.php:285
+#: admin/login/login.php:281
 msgid "Password Reset:"
 msgstr ""
 
-#: admin/login/login.php:287
+#: admin/login/login.php:283
 msgid "Enable Password Reset"
 msgstr ""
 
-#: admin/login/login.php:288
+#: admin/login/login.php:284
 msgid "Disable Password Reset Frontend Only"
 msgstr ""
 
-#: admin/login/login.php:289
+#: admin/login/login.php:285
 msgid "Disable Password Reset Frontend & Backend"
 msgstr ""
 
-#: admin/login/login.php:294
+#: admin/login/login.php:290
 msgid "Sort DB Rows:"
 msgstr ""
 
-#: admin/login/login.php:296
+#: admin/login/login.php:292
 msgid "Ascending - Show Oldest Login First"
 msgstr ""
 
-#: admin/login/login.php:297
+#: admin/login/login.php:293
 msgid "Descending - Show Newest Login First"
 msgstr ""
 
-#: admin/login/login.php:403
+#: admin/login/login.php:399
 msgid ""
 "Clicking OK will Export (copy) the Login Security Table into the lsm-master."
 "csv file, which you can then download to your computer by clicking the "
@@ -4440,90 +4465,90 @@ msgid ""
 "success message."
 msgstr ""
 
-#: admin/login/login.php:403
+#: admin/login/login.php:399
 msgid "Click OK to Export the Login Security Table or click Cancel."
 msgstr ""
 
-#: admin/login/login.php:423
+#: admin/login/login.php:419
 msgid " out of "
 msgstr ""
 
-#: admin/login/login.php:423
+#: admin/login/login.php:419
 msgid " Database Rows are currently being displayed"
 msgstr ""
 
-#: admin/login/login.php:426
+#: admin/login/login.php:422
 msgid "Total number of Database Rows is: "
 msgstr ""
 
-#: admin/login/login.php:452 admin/login/login.php:553
+#: admin/login/login.php:448 admin/login/login.php:549
 msgid "Login Status"
 msgstr ""
 
-#: admin/login/login.php:453 admin/login/login.php:482
-#: admin/login/login.php:554 admin/login/login.php:583
+#: admin/login/login.php:449 admin/login/login.php:478
+#: admin/login/login.php:550 admin/login/login.php:579
 msgid "Lock"
 msgstr ""
 
-#: admin/login/login.php:454 admin/login/login.php:483
-#: admin/login/login.php:555 admin/login/login.php:584
+#: admin/login/login.php:450 admin/login/login.php:479
+#: admin/login/login.php:551 admin/login/login.php:580
 msgid "Unlock"
 msgstr ""
 
-#: admin/login/login.php:456 admin/login/login.php:557
+#: admin/login/login.php:452 admin/login/login.php:553
 msgid "User ID"
 msgstr ""
 
-#: admin/login/login.php:457 admin/login/login.php:558
+#: admin/login/login.php:453 admin/login/login.php:554
 msgid "Username"
 msgstr ""
 
-#: admin/login/login.php:458 admin/login/login.php:559
+#: admin/login/login.php:454 admin/login/login.php:555
 msgid "Display Name"
 msgstr ""
 
-#: admin/login/login.php:459 admin/login/login.php:560
+#: admin/login/login.php:455 admin/login/login.php:556
 msgid "Email"
 msgstr ""
 
-#: admin/login/login.php:460 admin/login/login.php:561
+#: admin/login/login.php:456 admin/login/login.php:557
 msgid "Role"
 msgstr ""
 
-#: admin/login/login.php:461 admin/login/login.php:562
+#: admin/login/login.php:457 admin/login/login.php:558
 msgid "Login Time"
 msgstr ""
 
-#: admin/login/login.php:462 admin/login/login.php:563
+#: admin/login/login.php:458 admin/login/login.php:559
 msgid "Lockout Expires"
 msgstr ""
 
-#: admin/login/login.php:463 admin/login/login.php:564
+#: admin/login/login.php:459 admin/login/login.php:560
 msgid "IP Address"
 msgstr ""
 
-#: admin/login/login.php:464 admin/login/login.php:565
+#: admin/login/login.php:460 admin/login/login.php:561
 msgid "Hostname"
 msgstr ""
 
-#: admin/login/login.php:465 admin/login/login.php:566
+#: admin/login/login.php:461 admin/login/login.php:562
 msgid "Request URI"
 msgstr ""
 
-#: admin/login/login.php:493 admin/login/login.php:594
+#: admin/login/login.php:489 admin/login/login.php:590
 msgid "NA"
 msgstr ""
 
-#: admin/login/login.php:505 admin/login/login.php:606
+#: admin/login/login.php:501 admin/login/login.php:602
 msgid "No Logins|Locked"
 msgstr ""
 
-#: admin/login/login.php:522 admin/login/login.php:623
-#: admin/login/login.php:688 admin/login/login.php:778
+#: admin/login/login.php:518 admin/login/login.php:619
+#: admin/login/login.php:684 admin/login/login.php:774
 msgid "Submit"
 msgstr ""
 
-#: admin/login/login.php:522 admin/login/login.php:623
+#: admin/login/login.php:518 admin/login/login.php:619
 msgid ""
 "Locking and Unlocking a User is reversible, but Deleting a User is not.\\n"
 "\\n-------------------------------------------------------------\\n\\nWhen "
@@ -4536,163 +4561,164 @@ msgid ""
 "OK to proceed or click Cancel"
 msgstr ""
 
-#: admin/login/login.php:522 admin/login/login.php:623
+#: admin/login/login.php:518 admin/login/login.php:619
 msgid "Clear|Refresh"
 msgstr ""
 
-#: admin/login/login.php:719 admin/login/login.php:809
+#: admin/login/login.php:715 admin/login/login.php:805
 msgid " has been deleted from the Login Security Database Table."
 msgstr ""
 
-#: admin/login/login.php:739 admin/login/login.php:829
+#: admin/login/login.php:735 admin/login/login.php:825
 msgid " has been Unlocked."
 msgstr ""
 
-#: admin/login/login.php:760 admin/login/login.php:850
+#: admin/login/login.php:756 admin/login/login.php:846
 msgid " has been Locked."
 msgstr ""
 
-#: admin/login/login.php:872
+#: admin/login/login.php:868
 msgid "Idle Session Logout (ISL) ~ "
 msgstr ""
 
-#: admin/login/login.php:872
+#: admin/login/login.php:868
 msgid "Automatically Logout Idle/Inactive User Accounts"
 msgstr ""
 
-#: admin/login/login.php:872
+#: admin/login/login.php:868
 msgid "Auth Cookie Expiration (ACE) ~ "
 msgstr ""
 
-#: admin/login/login.php:872
+#: admin/login/login.php:868
 msgid "Change the WordPress Authentication Cookie Expiration Time"
 msgstr ""
 
-#: admin/login/login.php:897
+#: admin/login/login.php:893
 msgid "ISL and ACE Forum Topic"
 msgstr ""
 
-#: admin/login/login.php:901
+#: admin/login/login.php:897
 msgid "The Help & FAQ tab pages contain help links."
 msgstr ""
 
-#: admin/login/login.php:919
+#: admin/login/login.php:915
 msgid "Idle Session Logout (ISL) Settings"
 msgstr ""
 
-#: admin/login/login.php:926
+#: admin/login/login.php:922
 msgid "Turn On ISL"
 msgstr ""
 
-#: admin/login/login.php:927
+#: admin/login/login.php:923
 msgid "Turn Off ISL"
 msgstr ""
 
-#: admin/login/login.php:933 admin/login/lsm-help-text.php:13
+#: admin/login/login.php:929 admin/login/lsm-help-text.php:13
 msgid "Idle Session Logout Time in Minutes:"
 msgstr ""
 
-#: admin/login/login.php:939 admin/login/lsm-help-text.php:13
+#: admin/login/login.php:935 admin/login/lsm-help-text.php:13
 msgid "Idle Session Logout Page Login URL:"
 msgstr ""
 
-#: admin/login/login.php:945 admin/login/login.php:1011
+#: admin/login/login.php:941 admin/login/login.php:1007
 #: admin/login/lsm-help-text.php:13
 msgid "User Account Exceptions:"
 msgstr ""
 
-#: admin/login/login.php:946 admin/login/login.php:1012
+#: admin/login/login.php:942 admin/login/login.php:1008
 msgid ""
 "Enter User Account names separated by a comma and a space: johnDoe, janeDoe"
 msgstr ""
 
-#: admin/login/login.php:947
+#: admin/login/login.php:943
 msgid "Idle Session Logout Time Will Not Be Applied For These User Accounts."
 msgstr ""
 
-#: admin/login/login.php:953
+#: admin/login/login.php:949
 msgid "Enable|Disable Idle Session Logouts For These User Roles: "
 msgstr ""
 
-#: admin/login/login.php:954 admin/login/login.php:1020
+#: admin/login/login.php:950 admin/login/login.php:1016
 msgid ""
 "Check to Enable. Uncheck to Disable. See the Read Me help button for details."
 msgstr ""
 
-#: admin/login/login.php:955 admin/login/login.php:1021
+#: admin/login/login.php:951 admin/login/login.php:1017
 msgid " Administrator"
 msgstr ""
 
-#: admin/login/login.php:956 admin/login/login.php:1022
+#: admin/login/login.php:952 admin/login/login.php:1018
 msgid " Editor"
 msgstr ""
 
-#: admin/login/login.php:957 admin/login/login.php:1023
+#: admin/login/login.php:953 admin/login/login.php:1019
 msgid " Author"
 msgstr ""
 
-#: admin/login/login.php:958 admin/login/login.php:1024
+#: admin/login/login.php:954 admin/login/login.php:1020
 msgid " Contributor"
 msgstr ""
 
-#: admin/login/login.php:959 admin/login/login.php:1025
+#: admin/login/login.php:955 admin/login/login.php:1021
 msgid " Subscriber"
 msgstr ""
 
-#: admin/login/login.php:964
+#: admin/login/login.php:960
 msgid "Enable|Disable Idle Session Logouts For TinyMCE Editors: "
 msgstr ""
 
-#: admin/login/login.php:965
+#: admin/login/login.php:961
 msgid ""
 "Check to Disable. Uncheck to Enable. See the Read Me help button for details."
 msgstr ""
 
-#: admin/login/login.php:966
+#: admin/login/login.php:962
 msgid " Enable|Disable ISL For TinyMCE Editor"
 msgstr ""
 
-#: admin/login/login.php:968 admin/login/login.php:1027
+#: admin/login/login.php:964 admin/login/login.php:1023
+#: admin/security-log/security-log.php:474
 msgid "Click OK to Proceed or click Cancel."
 msgstr ""
 
-#: admin/login/login.php:978
+#: admin/login/login.php:974
 msgid "WordPress Authentication Cookie Expiration (ACE) Settings"
 msgstr ""
 
-#: admin/login/login.php:990
+#: admin/login/login.php:986
 msgid "Turn On ACE"
 msgstr ""
 
-#: admin/login/login.php:991
+#: admin/login/login.php:987
 msgid "Turn Off ACE"
 msgstr ""
 
-#: admin/login/login.php:997 admin/login/lsm-help-text.php:13
+#: admin/login/login.php:993 admin/login/lsm-help-text.php:13
 msgid "Auth Cookie Expiration Time in Minutes:"
 msgstr ""
 
-#: admin/login/login.php:998
+#: admin/login/login.php:994
 msgid "WP Default setting is 2880 Minutes/2 Days:"
 msgstr ""
 
-#: admin/login/login.php:1004 admin/login/lsm-help-text.php:13
+#: admin/login/login.php:1000 admin/login/lsm-help-text.php:13
 msgid "Remember Me Auth Cookie Expiration Time in Minutes:"
 msgstr ""
 
-#: admin/login/login.php:1005
+#: admin/login/login.php:1001
 msgid "WP Default setting is 20160 Minutes/14 Days:"
 msgstr ""
 
-#: admin/login/login.php:1013
+#: admin/login/login.php:1009
 msgid "Auth Cookie Expiration Time Will Not Be Applied To These User Accounts."
 msgstr ""
 
-#: admin/login/login.php:1019
+#: admin/login/login.php:1015
 msgid "Enable|Disable Auth Cookie Expiration Time For These User Roles: "
 msgstr ""
 
-#: admin/login/login.php:1049 admin/security-log/security-log.php:788
+#: admin/login/login.php:1045 admin/security-log/security-log.php:808
 #: admin/system-info/system-info.php:882
 msgid "BulletProof Security Help &amp; FAQ"
 msgstr ""
@@ -4848,7 +4874,7 @@ msgid ""
 "be displayed. "
 msgstr ""
 
-#: admin/login/lsm-help-text.php:10 admin/maintenance/maintenance.php:505
+#: admin/login/lsm-help-text.php:10 admin/maintenance/maintenance.php:523
 msgid "CAUTION: "
 msgstr ""
 
@@ -5204,22 +5230,22 @@ msgstr ""
 msgid "Maintenance Mode ~ FrontEnd ~ BackEnd"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:136
+#: admin/maintenance/maintenance.php:154
 msgid "Display FrontEnd Maintenance Mode Page"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:138
+#: admin/maintenance/maintenance.php:156
 msgid ""
 "FrontEnd ~ Display Maintenance Mode Page|BackEnd ~ Lock BackEnd with Deny "
 "All htaccess Protection"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:170 admin/maintenance/maintenance.php:175
-#: admin/maintenance/maintenance.php:1991
+#: admin/maintenance/maintenance.php:188 admin/maintenance/maintenance.php:193
+#: admin/maintenance/maintenance.php:2009
 msgid "Maintenance Mode Guide"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Create/add whatever messages, images, videos, etc. you want to display to "
 "website visitors with the MMode Editor, select your MMode options/settings, "
@@ -5228,20 +5254,20 @@ msgid ""
 "options/settings."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "For more extensive help info, CSS, HTML code examples, Image & Video "
 "embedding code examples to add in the MMode Editor see Forum Help Links at "
 "the top of this Read Me help window."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:467
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:485
 msgid ""
 "Maintenance Mode Text, CSS Style Code, Images, Videos Displayed To Website "
 "Visitors:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "This is a standard WordPress TinyMCE WYSIWYG editor that has a Visual Editor "
 "and a Text Editor for adding CSS or HTML code. Enter plain text, CSS, HTML "
@@ -5253,11 +5279,11 @@ msgid ""
 "Save Options button to save your edits."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Enable Countdown Timer:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to enable a javascript Countdown Timer that will be "
 "displayed to visitors. When the Countdown Timer reaches 0/has completed your "
@@ -5266,42 +5292,42 @@ msgid ""
 "off Maintenance Mode when the Countdown Timer reaches 0/has completed."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:483
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:501
 msgid "Countdown Timer Text Color:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Select the text color for the Countdown Timer."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:491
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:509
 msgid "Maintenance Mode Time (in Minutes):"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Enter the amount of time that you want to put your site into Maintenance "
 "Mode in minutes. Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours, "
 "4320 = 3 days."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:495
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:513
 msgid ""
 "Header Retry-After (enter the same time as Maintenance Mode Time above):"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "This is the amount of time that you are telling Search Engines to wait "
 "before visiting your website again. Enter the same time in minutes that you "
 "entered for Maintenance Mode Time."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Enable FrontEnd Maintenance Mode:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to enable FrontEnd Maintenance Mode. When you Turn On "
 "FrontEnd Maintenance Mode your website Maintenance Mode page will be "
@@ -5312,11 +5338,11 @@ msgid ""
 "be locked out of your WordPress Dashboard."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Enable BackEnd Maintenance Mode:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to enable BackEnd Maintenance Mode. Be sure to enter the "
 "Your IP address/the Recommended IP address in the Maintenance Mode IP "
@@ -5328,17 +5354,17 @@ msgid ""
 "your WordPress Dashboard."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:511
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:529
 msgid "Maintenance Mode IP Address Whitelist Text Box:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Enter The IP Address That Can View The Website Normally (not in Maintenance "
 "Mode):"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Enter Multiple IP addresses separated by a comma and a single space. "
 "Example: 100.99.88.77, 200.66.55.44, 44.33.22.1 It is recommended that you "
@@ -5350,72 +5376,72 @@ msgid ""
 "octets or your current IP address to whitelist your IP address."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:527
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:545
 msgid "Background Images:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Select a background image that you want to use. BPS includes 20 background "
 "images and 15 center images (text box images) that you can mix and match to "
 "your design/color scheme preference."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:552
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:570
 msgid "Center Images:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Select a center image that you want to use. BPS includes 20 background "
 "images and 15 center images (text box images) that you can mix and match to "
 "your design/color scheme preference."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:572
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:590
 msgid "Background Colors (If not using a Background Image):"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Select a background color that you want to use. If you do not want to use a "
 "background image then you can instead choose a background color."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Display Visitor IP Address:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Check this checkbox to display the website visitor's IP addresses."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172 admin/maintenance/maintenance.php:582
+#: admin/maintenance/maintenance.php:190 admin/maintenance/maintenance.php:600
 msgid "Display Admin|Login Link"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to display a Login link that points to your wp-admin "
 "folder/Login page."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Display Dashboard Reminder Message when site is in Maintenance Mode:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to display a WordPress Dashboard Reminder Notice that "
 "your website is in Maintenance Mode."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Send Email Reminder when Maintenance Mode Countdown Timer has completed:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to enable the javascript Countdown Timer to send you an "
 "email reminder when the Countdown Timer reaches 0/is completed. More "
@@ -5427,11 +5453,11 @@ msgid ""
 "the Countdown Timer reaches 0/has completed."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Testing the Countdown Timer Send Email Option:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "There is a 1 minute buffer so that when the Maintenance Mode page is created "
 "an email will not be sent immediately. To test the Send Email option use 2 "
@@ -5442,21 +5468,21 @@ msgid ""
 "how fast your Mail Server sends the email to you."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Send Countdown Timer Email:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Enter the email addresses that you would like the Countdown Timer reminder "
 "email sent to, from, cc or bcc."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Network/Multisite Primary Site Options ONLY:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "These options/settings are for Network/Multisite ONLY and are ONLY displayed "
 "on the Primary Network/Multisite site. Checking these options on a Single/"
@@ -5464,11 +5490,11 @@ msgid ""
 "for Network/Multisite WordPress installations."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Steps to use these special Network/Multisite options:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "To turn On either of these special options, check the checkbox, click the "
 "Save Options button and click the Turn On button. To turn Off either of "
@@ -5480,29 +5506,29 @@ msgid ""
 "special option settings in that template file."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Put The Primary Site And All Subsites In Maintenance Mode:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Check this checkbox to put all of the sites into Maintenance Mode."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Put All Subsites In Maintenance Mode, But Not The Primary Site:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Check this checkbox to put all of the subsites into Maintenance Mode except "
 "for the Primary site."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Save Options Button"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Clicking the Save Options button does 2 things: Saves all your options/"
 "settings to your Database and creates all necessary Maintenance Mode files/"
@@ -5510,11 +5536,11 @@ msgid ""
 "Click the Turn On button after clicking the Save Options button."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Preview Button"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Clicking the Preview button allows you to preview the Maintenance Mode files/"
 "Forms that were created when you clicked the Save Options button. Preview "
@@ -5524,11 +5550,11 @@ msgid ""
 "On button."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Turn On Button"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Clicking the Turn On button turns On Maintenance Mode. Turn On is "
 "conditional and allows you to make changes to your Maintenance Mode page "
@@ -5538,11 +5564,11 @@ msgid ""
 "on your Maintenance Mode page."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "Turn Off Button"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid ""
 "Clicking the Turn Off button turns Off Maintenance Mode. Turn Off is non-"
 "conditional and works like a Form Reset, but does not remove any of your "
@@ -5552,23 +5578,23 @@ msgid ""
 "remain in your website root folder, but Maintenance Mode will be turned Off."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:172
+#: admin/maintenance/maintenance.php:190
 msgid "BPS help links can be found in the Help & FAQ pages."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:208
+#: admin/maintenance/maintenance.php:226
 msgid ""
 "Error: You did not enter anything in the Maintenance Mode Time Text Box."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:216 admin/maintenance/maintenance.php:710
-#: admin/maintenance/maintenance.php:903
+#: admin/maintenance/maintenance.php:234 admin/maintenance/maintenance.php:728
+#: admin/maintenance/maintenance.php:921
 msgid ""
 "Error: You did not enter an IP Address in the Maintenance Mode IP Address "
 "Whitelist Text Box."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:344 admin/maintenance/maintenance.php:364
+#: admin/maintenance/maintenance.php:362 admin/maintenance/maintenance.php:382
 msgid ""
 "Success! Your Options have been saved and your Maintenance Mode Form has "
 "been created successfully! Click the Preview button to preview your Website "
@@ -5576,325 +5602,325 @@ msgid ""
 "button."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:351
+#: admin/maintenance/maintenance.php:369
 msgid ""
 "Check that the file exists in the /bulletproof-security/admin/htaccess/ "
 "master folder. If this is not the problem "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:351 admin/maintenance/maintenance.php:371
-#: includes/functions.php:390 includes/functions.php:395
-#: includes/functions.php:414 includes/functions.php:419
-#: includes/functions.php:630 includes/functions.php:652
-#: includes/general-functions.php:1006 includes/general-functions.php:1051
-#: includes/general-functions.php:1576
+#: admin/maintenance/maintenance.php:369 admin/maintenance/maintenance.php:389
+#: includes/functions.php:403 includes/functions.php:408
+#: includes/functions.php:427 includes/functions.php:432
+#: includes/functions.php:643 includes/functions.php:665
+#: includes/general-functions.php:1031 includes/general-functions.php:1076
+#: includes/general-functions.php:1601
 msgid "Click Here"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:351 admin/maintenance/maintenance.php:371
+#: admin/maintenance/maintenance.php:369 admin/maintenance/maintenance.php:389
 msgid " for assistance."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:371
+#: admin/maintenance/maintenance.php:389
 msgid ""
 "Check that the bps-maintenance-values.php file exists in the /bulletproof-"
 "security/admin/htaccess/ master folder. If this is not the problem "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:432 admin/maintenance/maintenance.php:439
-#: admin/maintenance/maintenance.php:446
+#: admin/maintenance/maintenance.php:450 admin/maintenance/maintenance.php:457
+#: admin/maintenance/maintenance.php:464
 msgid "Your Current IP Address: "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:432 admin/maintenance/maintenance.php:439
-#: admin/maintenance/maintenance.php:446
+#: admin/maintenance/maintenance.php:450 admin/maintenance/maintenance.php:457
+#: admin/maintenance/maintenance.php:464
 msgid "Recommended IP Address: "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:464
+#: admin/maintenance/maintenance.php:482
 msgid "MMode Editor"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:468
+#: admin/maintenance/maintenance.php:486
 msgid ""
 "Click the Maintenance Mode Guide link above for CSS Code, Image & Video "
 "Embed examples."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:478
+#: admin/maintenance/maintenance.php:496
 msgid "MMode Option Settings"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:481
+#: admin/maintenance/maintenance.php:499
 msgid "Enable Countdown Timer"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:485
+#: admin/maintenance/maintenance.php:503
 msgid "LCD|Lime Green"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:486 admin/maintenance/maintenance.php:575
+#: admin/maintenance/maintenance.php:504 admin/maintenance/maintenance.php:593
 msgid "White"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:487
+#: admin/maintenance/maintenance.php:505
 msgid "Silver"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:488 admin/maintenance/maintenance.php:577
+#: admin/maintenance/maintenance.php:506 admin/maintenance/maintenance.php:595
 msgid "Gray"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:492 admin/maintenance/maintenance.php:496
+#: admin/maintenance/maintenance.php:510 admin/maintenance/maintenance.php:514
 msgid "Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:499
+#: admin/maintenance/maintenance.php:517
 msgid "Enable FrontEnd Maintenance Mode"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:505
+#: admin/maintenance/maintenance.php:523
 msgid "You MUST enter Your Current IP Address or the"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:505
+#: admin/maintenance/maintenance.php:523
 msgid "Recommended IP Address if you Enable BackEnd Maintenance Mode"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:505
+#: admin/maintenance/maintenance.php:523
 msgid "or you will be locked out of your WordPress Dashboard."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:506
+#: admin/maintenance/maintenance.php:524
 msgid "Enable BackEnd Maintenance Mode "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:514
+#: admin/maintenance/maintenance.php:532
 msgid ""
 "Enter The IP Address That Can View The Website Normally (not in Maintenance "
 "Mode)."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:515
+#: admin/maintenance/maintenance.php:533
 msgid "Enter Multiple IP addresses separated by a comma and a single space."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:516
+#: admin/maintenance/maintenance.php:534
 msgid "Example IPv4 IP Addresses: 100.99.88.77, 200.66.55.44, 44.33.22.1"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:517
+#: admin/maintenance/maintenance.php:535
 msgid ""
 "Example IPv6 IP Addresses: 0:0:0:0:0:ffff:6463:584d, 0:0:0:0:0:ffff:c842:372c"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:529
+#: admin/maintenance/maintenance.php:547
 msgid "No Background Image"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:530
+#: admin/maintenance/maintenance.php:548
 msgid "Black Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:531
+#: admin/maintenance/maintenance.php:549
 msgid "Black Honeycomb Large Grey Line"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:532
+#: admin/maintenance/maintenance.php:550
 msgid "Black Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:533
+#: admin/maintenance/maintenance.php:551
 msgid "Black Mesh Small Grey Line"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:534
+#: admin/maintenance/maintenance.php:552
 msgid "Blue Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:535
+#: admin/maintenance/maintenance.php:553
 msgid "Blue Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:536
+#: admin/maintenance/maintenance.php:554
 msgid "Brown Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:537
+#: admin/maintenance/maintenance.php:555
 msgid "Brown Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:538
+#: admin/maintenance/maintenance.php:556
 msgid "Green Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:539
+#: admin/maintenance/maintenance.php:557
 msgid "Green Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:540
+#: admin/maintenance/maintenance.php:558
 msgid "Gray Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:541
+#: admin/maintenance/maintenance.php:559
 msgid "Gray Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:542
+#: admin/maintenance/maintenance.php:560
 msgid "Orange Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:543
+#: admin/maintenance/maintenance.php:561
 msgid "Orange Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:544
+#: admin/maintenance/maintenance.php:562
 msgid "Purple Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:545
+#: admin/maintenance/maintenance.php:563
 msgid "Purple Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:546
+#: admin/maintenance/maintenance.php:564
 msgid "Red|Burgundy Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:547
+#: admin/maintenance/maintenance.php:565
 msgid "Red|Burgundy Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:548
+#: admin/maintenance/maintenance.php:566
 msgid "Yellow Honeycomb Large"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:549
+#: admin/maintenance/maintenance.php:567
 msgid "Yellow Mesh Small"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:554
+#: admin/maintenance/maintenance.php:572
 msgid "No Center Image"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:555
+#: admin/maintenance/maintenance.php:573
 msgid "Basic Black"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:556
+#: admin/maintenance/maintenance.php:574
 msgid "Black Veins"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:557
+#: admin/maintenance/maintenance.php:575
 msgid "Blue Glass"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:558
+#: admin/maintenance/maintenance.php:576
 msgid "Brushed Metal Stamped"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:559
+#: admin/maintenance/maintenance.php:577
 msgid "Chrome"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:560
+#: admin/maintenance/maintenance.php:578
 msgid "Chrome Slick"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:561
+#: admin/maintenance/maintenance.php:579
 msgid "Fire"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:562
+#: admin/maintenance/maintenance.php:580
 msgid "Gun Metal"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:563
+#: admin/maintenance/maintenance.php:581
 msgid "Mercury"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:564
+#: admin/maintenance/maintenance.php:582
 msgid "Smoke"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:565
+#: admin/maintenance/maintenance.php:583
 msgid "Striped Cone"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:566
+#: admin/maintenance/maintenance.php:584
 msgid "Swamp Bevel"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:567
+#: admin/maintenance/maintenance.php:585
 msgid "Toy"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:568
+#: admin/maintenance/maintenance.php:586
 msgid "Water Reflection"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:569
+#: admin/maintenance/maintenance.php:587
 msgid "Wood Grain"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:574
+#: admin/maintenance/maintenance.php:592
 msgid "No Background Color"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:576
+#: admin/maintenance/maintenance.php:594
 msgid "Black"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:580
+#: admin/maintenance/maintenance.php:598
 msgid "Display Visitor IP Address"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:584
+#: admin/maintenance/maintenance.php:602
 msgid "Display Dashboard Reminder Message when site is in Maintenance Mode"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:586
+#: admin/maintenance/maintenance.php:604
 msgid "Send Email Reminder when Maintenance Mode Countdown Timer has completed"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:588
+#: admin/maintenance/maintenance.php:606
 msgid "Send Countdown Timer Email To:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:590
+#: admin/maintenance/maintenance.php:608
 msgid "Send Countdown Timer Email From:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:592
+#: admin/maintenance/maintenance.php:610
 msgid "Send Countdown Timer Email Cc:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:594
+#: admin/maintenance/maintenance.php:612
 msgid "Send Countdown Timer Email Bcc:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:599
+#: admin/maintenance/maintenance.php:617
 msgid "MMode Network|Multisite Options"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:602
+#: admin/maintenance/maintenance.php:620
 msgid "Network|Multisite Primary Site Options ONLY"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:606
+#: admin/maintenance/maintenance.php:624
 msgid ""
 "Click the Maintenance Mode Read Me help button for the steps to use these "
 "special options:"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:607
+#: admin/maintenance/maintenance.php:625
 msgid "Put The Primary Site And All Subsites In Maintenance Mode"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:609
+#: admin/maintenance/maintenance.php:627
 msgid "Put All Subsites In Maintenance Mode, But Not The Primary Site"
 msgstr ""
 
-#: admin/maintenance/maintenance.php:617
+#: admin/maintenance/maintenance.php:635
 msgid ""
 "Clicking OK Saves your Options/Settings to your Database and also creates "
 "your Maintenance Mode page. Click the Preview button to preview your "
@@ -5902,92 +5928,92 @@ msgid ""
 "Turn On button to enable Maintenance Mode on your website."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:617
-#: admin/security-log/security-log.php:476
-#: admin/security-log/security-log.php:491
-#: admin/security-log/security-log.php:694
+#: admin/maintenance/maintenance.php:635
+#: admin/security-log/security-log.php:486
+#: admin/security-log/security-log.php:501
+#: admin/security-log/security-log.php:704
 #: admin/system-info/system-info.php:807 admin/system-info/system-info.php:867
 msgid "Click OK to proceed or click Cancel."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:721 admin/maintenance/maintenance.php:914
+#: admin/maintenance/maintenance.php:739 admin/maintenance/maintenance.php:932
 msgid ""
 "IP Address Format Error: You have entered multiple IP Addresses using an "
 "incorrect Format."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:721 admin/maintenance/maintenance.php:914
+#: admin/maintenance/maintenance.php:739 admin/maintenance/maintenance.php:932
 msgid ""
 "The correct IP Address Format is: IP Address comma single space. Example: "
 "100.99.88.77, 200.66.55.44, 44.33.22.1 or 100.99.88., 200.66.55., 44.33.22. "
 "if you are using the recommended 3 octet IP addresses."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:721 admin/maintenance/maintenance.php:914
+#: admin/maintenance/maintenance.php:739 admin/maintenance/maintenance.php:932
 msgid ""
 "Correct the IP Address Format and click the Save Options button again. If "
 "you have an IPv6 IP address use the same general format as an IPv4 IP "
 "address - comma single space."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:772 admin/maintenance/maintenance.php:965
-#: admin/maintenance/maintenance.php:1068
+#: admin/maintenance/maintenance.php:790 admin/maintenance/maintenance.php:983
+#: admin/maintenance/maintenance.php:1086
 msgid "FrontEnd Maintenance Mode has been Turned On."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:854 admin/maintenance/maintenance.php:1158
+#: admin/maintenance/maintenance.php:872 admin/maintenance/maintenance.php:1176
 msgid "BackEnd Maintenance Mode has been Turned On."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1173
-#: admin/maintenance/maintenance.php:1920
+#: admin/maintenance/maintenance.php:1191
+#: admin/maintenance/maintenance.php:1938
 msgid ""
 "Error: You have not saved your option settings yet. Click the Save Options "
 "button."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1249
+#: admin/maintenance/maintenance.php:1267
 msgid ""
 "Error: Unable to get/find the site root index.php file for this GWIOD - "
 "Giving WordPress Its Own Directory - website."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1249
+#: admin/maintenance/maintenance.php:1267
 msgid "GWIOD Site Root index.php File Path Checked: "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1249
+#: admin/maintenance/maintenance.php:1267
 msgid ""
 "BPS Maintenance Mode will not work correctly with your WordPress GWIOD "
 "setup. Try another WordPress Maintenance Mode plugin."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1315
+#: admin/maintenance/maintenance.php:1333
 msgid ""
 "Error: Unable to get/find the site root index.php file for this Network "
 "GWIOD - Giving WordPress Its Own Directory - website."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1315
+#: admin/maintenance/maintenance.php:1333
 msgid "Network GWIOD Site Root index.php File Path Checked: "
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1315
+#: admin/maintenance/maintenance.php:1333
 msgid ""
 "Please copy this error message and send it in an email to info@ait-pro.com "
 "for assistance."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1400
-#: admin/maintenance/maintenance.php:1523
-#: admin/maintenance/maintenance.php:1667
-#: admin/maintenance/maintenance.php:1832
+#: admin/maintenance/maintenance.php:1418
+#: admin/maintenance/maintenance.php:1541
+#: admin/maintenance/maintenance.php:1685
+#: admin/maintenance/maintenance.php:1850
 msgid "FrontEnd Maintenance Mode has been Turned Off."
 msgstr ""
 
-#: admin/maintenance/maintenance.php:1615
-#: admin/maintenance/maintenance.php:1729
-#: admin/maintenance/maintenance.php:1905
+#: admin/maintenance/maintenance.php:1633
+#: admin/maintenance/maintenance.php:1747
+#: admin/maintenance/maintenance.php:1923
 msgid "BackEnd Maintenance Mode has been Turned Off."
 msgstr ""
 
@@ -6029,6 +6055,14 @@ msgstr ""
 msgid ""
 "Logs Blocked Hackers, Spammers, Scrapers, Bots, etc ~ HTTP 400, 403 & 404 "
 "Logging ~ Troubleshooting Tool"
+msgstr ""
+
+#: admin/security-log/security-log.php:252
+msgid "Forum Help Links & Bonus Custom Code: "
+msgstr ""
+
+#: admin/security-log/security-log.php:256
+msgid "POST Request Attack Protection"
 msgstr ""
 
 #: admin/security-log/security-log.php:258
@@ -6144,6 +6178,51 @@ msgid ""
 msgstr ""
 
 #: admin/security-log/security-log.php:258
+msgid "Limit POST Request Body Data"
+msgstr ""
+
+#: admin/security-log/security-log.php:258
+msgid ""
+"The maximum Security Log Request Body Data capture/log limit is 250000 "
+"maximum characters, which is roughly about 250KB in size. The Limit POST "
+"Request Body Data checkbox option limits the maximum number of Request Body "
+"Data characters captured/logged in the Request Body logging field to 500 "
+"characters, which is roughly 5KB in size. The Limit POST Request Body Data "
+"checkbox is checked by default. You can capture/log entire hacking scripts "
+"if you uncheck the Limit POST Request Body Data checkbox "
+msgstr ""
+
+#: admin/security-log/security-log.php:258
+msgid "(See Note below)"
+msgstr ""
+
+#: admin/security-log/security-log.php:258
+msgid ""
+", but that means your log file size could increase dramatically and you "
+"could receive more automated Security Log zip file emails. If you are using "
+"email security protection on your computer then your zipped Security Log "
+"files may be seen as containing a virus (hacker script/code) and they could "
+"be automatically deleted by your email protection application on your "
+"computer. Your computer security protection software may also see the "
+"Security Log file as malicious and block it. If you do not want to capture/"
+"log entire hacker scripts/files/code in the Request Body logging field then "
+"keep the Limit POST Request Body Data checkbox checked. "
+msgstr ""
+
+#: admin/security-log/security-log.php:258
+msgid "Note: "
+msgstr ""
+
+#: admin/security-log/security-log.php:258
+msgid ""
+"To capture/log all POST Request Attacks against your website you will need "
+"to add the POST Request Attack Protection Bonus Custom Code. A link to that "
+"Bonus Custom Code is at the top of this Read Me help window. If you do not "
+"want to add the Bonus Custom Code then some, but not all POST Request "
+"Attacks will be captured/logged in the Security Log."
+msgstr ""
+
+#: admin/security-log/security-log.php:258
 msgid ""
 "Ignoring|Not Logging User Agents|Bots - Allowing|Logging User Agents|Bots"
 msgstr ""
@@ -6177,7 +6256,7 @@ msgid ""
 msgstr ""
 
 #: admin/security-log/security-log.php:258
-#: admin/security-log/security-log.php:473
+#: admin/security-log/security-log.php:483
 msgid "Add User Agents|Bots to Ignore|Not Log"
 msgstr ""
 
@@ -6267,26 +6346,26 @@ msgid ""
 msgstr ""
 
 #: admin/security-log/security-log.php:353
-#: admin/security-log/security-log.php:538 admin/wizard/wizard.php:1137
+#: admin/security-log/security-log.php:548 admin/wizard/wizard.php:1137
 #: admin/wizard/wizard.php:1143 admin/wizard/wizard.php:1149
 #: admin/wizard/wizard.php:1155 admin/wizard/wizard.php:1161
 msgid "Error: The "
 msgstr ""
 
 #: admin/security-log/security-log.php:353
-#: admin/security-log/security-log.php:538
+#: admin/security-log/security-log.php:548
 msgid " does not exist."
 msgstr ""
 
 #: admin/security-log/security-log.php:379
-#: admin/security-log/security-log.php:551
-#: admin/security-log/security-log.php:613
+#: admin/security-log/security-log.php:561
+#: admin/security-log/security-log.php:623
 msgid "Error: Unable to write to file "
 msgstr ""
 
 #: admin/security-log/security-log.php:379
-#: admin/security-log/security-log.php:551
-#: admin/security-log/security-log.php:613
+#: admin/security-log/security-log.php:561
+#: admin/security-log/security-log.php:623
 msgid ""
 ". Check that file permissions allow writing to this file. If you have a DSO "
 "Server check file and folder Ownership."
@@ -6298,135 +6377,139 @@ msgid ""
 "This User Agent|Bot will be no longer be logged in your Security Log."
 msgstr ""
 
-#: admin/security-log/security-log.php:474
+#: admin/security-log/security-log.php:473
+msgid " Limit POST Request Body Data"
+msgstr ""
+
+#: admin/security-log/security-log.php:484
 msgid "Click the Read Me Help button for examples"
 msgstr ""
 
-#: admin/security-log/security-log.php:476
+#: admin/security-log/security-log.php:486
 msgid ""
 "Clicking OK will Add the User Agent|Bot name you have entered to your DB and "
 "the 403.php Security Logging template."
 msgstr ""
 
-#: admin/security-log/security-log.php:476
+#: admin/security-log/security-log.php:486
 msgid ""
 "Security logging checks are done by the 403.php Security Logging file and "
 "not by DB Queries."
 msgstr ""
 
-#: admin/security-log/security-log.php:476
+#: admin/security-log/security-log.php:486
 msgid ""
 "To remove User Agents|Bots from being ignored/not logged use the Remove|"
 "Allow tool."
 msgstr ""
 
-#: admin/security-log/security-log.php:489
+#: admin/security-log/security-log.php:499
 msgid "Remove User Agents|Bots to Allow|Log"
 msgstr ""
 
-#: admin/security-log/security-log.php:491
+#: admin/security-log/security-log.php:501
 msgid ""
 "Clicking OK will search your database and display User Agent|Bot DB search "
 "results in a Dynamic Radio button Form."
 msgstr ""
 
-#: admin/security-log/security-log.php:491
+#: admin/security-log/security-log.php:501
 msgid ""
 "To search for ALL User Agents|Bots to remove/delete from your database leave "
 "the text box blank and click the Remove|Allow button."
 msgstr ""
 
-#: admin/security-log/security-log.php:503
+#: admin/security-log/security-log.php:513
 msgid "Click OK to Turn Off Error Logging or click Cancel."
 msgstr ""
 
-#: admin/security-log/security-log.php:509
+#: admin/security-log/security-log.php:519
 msgid "Click OK to Turn On Logging or click Cancel."
 msgstr ""
 
-#: admin/security-log/security-log.php:515
+#: admin/security-log/security-log.php:525
 msgid "Clicking OK will delete the contents of your Security Log file."
 msgstr ""
 
-#: admin/security-log/security-log.php:571
-#: admin/security-log/security-log.php:664
-#: admin/security-log/security-log.php:694
+#: admin/security-log/security-log.php:581
+#: admin/security-log/security-log.php:674
+#: admin/security-log/security-log.php:704
 msgid "Remove"
 msgstr ""
 
-#: admin/security-log/security-log.php:591
+#: admin/security-log/security-log.php:601
 #, php-format
 msgid "%s unable to delete row from your DB."
 msgstr ""
 
-#: admin/security-log/security-log.php:593
+#: admin/security-log/security-log.php:603
 #, php-format
 msgid "%s has been deleted from your DB."
 msgstr ""
 
-#: admin/security-log/security-log.php:628
+#: admin/security-log/security-log.php:638
 msgid ""
 "Success! The BPS 403.php Security Logging template file has been updated. "
 "This User Agent|Bot will be logged again in your Security Log."
 msgstr ""
 
-#: admin/security-log/security-log.php:659
+#: admin/security-log/security-log.php:669
 msgid "Search Results For User Agents|Bots To Remove"
 msgstr ""
 
-#: admin/security-log/security-log.php:663
+#: admin/security-log/security-log.php:673
 msgid "User Agents|Bots in DB"
 msgstr ""
 
-#: admin/security-log/security-log.php:665
+#: admin/security-log/security-log.php:675
 msgid "Do Not<br>Remove"
 msgstr ""
 
-#: admin/security-log/security-log.php:666
+#: admin/security-log/security-log.php:676
 msgid "Time Added<br>To DB"
 msgstr ""
 
-#: admin/security-log/security-log.php:684
+#: admin/security-log/security-log.php:694
 msgid ""
 "Your DB Search Results For User Agents|Bots To Remove are displayed below "
 "the Remove|Allow Search tool."
 msgstr ""
 
-#: admin/security-log/security-log.php:688
+#: admin/security-log/security-log.php:698
 msgid ""
 "You do not have any User Agents|Bots in your DB To Remove. An empty/blank "
 "dynamic radio button form is displayed below the Remove|Allow Search tool "
 "since you do not have any User Agents|Bot to remove."
 msgstr ""
 
-#: admin/security-log/security-log.php:694
+#: admin/security-log/security-log.php:704
 msgid ""
 "Clicking OK will Remove the User Agent|Bot DB entries for any Remove Radio "
 "button selections you have made. User Agents|Bots will also be removed from "
 "the 403.php Security Logging template."
 msgstr ""
 
-#: admin/security-log/security-log.php:694
+#: admin/security-log/security-log.php:704
 msgid "To add a User Agent|Bot, use the Add|Ignore tool."
 msgstr ""
 
-#: admin/security-log/security-log.php:715
+#: admin/security-log/security-log.php:734
 msgid ""
 "The Security Log File Was Not Found! Check that the file really exists here "
 "- /"
 msgstr ""
 
-#: admin/security-log/security-log.php:715
+#: admin/security-log/security-log.php:734
 msgid "/bps-backup/logs/http_error_log.txt and is named correctly."
 msgstr ""
 
-#: admin/security-log/security-log.php:732
+#: admin/security-log/security-log.php:752
 msgid ""
 "File Open and Write test successful! Your Security Log file is writable."
 msgstr ""
 
-#: admin/security-log/security-log.php:743
-#: admin/security-log/security-log.php:747
+#: admin/security-log/security-log.php:763
+#: admin/security-log/security-log.php:767
 msgid "Success! Your Security Log file has been updated."
 msgstr ""
 
@@ -7379,7 +7462,7 @@ msgstr ""
 
 #: admin/wizard/wizard.php:611 admin/wizard/wizard.php:620
 #: admin/wizard/wizard.php:862 admin/wizard/wizard.php:1389
-#: admin/wizard/wizard.php:1414 admin/wizard/wizard.php:1473
+#: admin/wizard/wizard.php:1427 admin/wizard/wizard.php:1486
 msgid " DB Option created or updated Successfully!"
 msgstr ""
 
@@ -7638,66 +7721,66 @@ msgstr ""
 msgid "BulletProof Security Security Log User Agent Filter Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1410
+#: admin/wizard/wizard.php:1423
 msgid "BulletProof Security Email Alerting & Log File Options Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1470
+#: admin/wizard/wizard.php:1483
 msgid "BulletProof Security Login Security & Monitoring Options Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1538
+#: admin/wizard/wizard.php:1551
 msgid "The Setup Wizard has completed BPS Setup."
 msgstr ""
 
-#: admin/wizard/wizard.php:1538
+#: admin/wizard/wizard.php:1551
 msgid ""
 "Check the \"BPS Setup Verification & Error Checks\" section below for any "
 "errors in Red Font."
 msgstr ""
 
-#: admin/wizard/wizard.php:1544
+#: admin/wizard/wizard.php:1557
 msgid "Setup Wizard Completion Time: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1561
+#: admin/wizard/wizard.php:1574
 msgid "BulletProof Security ~ Setup Wizard"
 msgstr ""
 
-#: admin/wizard/wizard.php:1615 admin/wizard/wizard.php:1690
-#: admin/wizard/wizard.php:1692
+#: admin/wizard/wizard.php:1628 admin/wizard/wizard.php:1703
+#: admin/wizard/wizard.php:1705
 msgid "Setup Wizard Options"
 msgstr ""
 
-#: admin/wizard/wizard.php:1620
+#: admin/wizard/wizard.php:1633
 msgid "Setup Wizard ~ "
 msgstr ""
 
-#: admin/wizard/wizard.php:1620
+#: admin/wizard/wizard.php:1633
 msgid "One-Click Complete Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1637
+#: admin/wizard/wizard.php:1650
 msgid "Setup Wizard Steps: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1637
+#: admin/wizard/wizard.php:1650
 msgid "1. Click the Setup Wizard button."
 msgstr ""
 
-#: admin/wizard/wizard.php:1637
+#: admin/wizard/wizard.php:1650
 msgid "Recommended Video Tutorials: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1641
+#: admin/wizard/wizard.php:1654
 msgid "Security Log Video Tutorial"
 msgstr ""
 
-#: admin/wizard/wizard.php:1643
+#: admin/wizard/wizard.php:1656
 msgid "Notes: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1643
+#: admin/wizard/wizard.php:1656
 msgid ""
 "Setup Wizard Pre-Installation Checks are automatically performed and "
 "displayed on the Setup Wizard page. Green font messages mean everything is "
@@ -7708,63 +7791,63 @@ msgid ""
 "to be fixed before running the Setup Wizard."
 msgstr ""
 
-#: admin/wizard/wizard.php:1643
+#: admin/wizard/wizard.php:1656
 msgid ""
 "You can re-run the Setup Wizard again at any time. Your existing settings "
 "will NOT be overwritten and will be re-saved. Any new or additional settings "
 "that the Setup Wizard finds on your website will be saved/setup."
 msgstr ""
 
-#: admin/wizard/wizard.php:1643
+#: admin/wizard/wizard.php:1656
 msgid ""
 "When the Setup Wizard has completed you will see \"The Setup Wizard has "
 "completed BPS Setup.\""
 msgstr ""
 
-#: admin/wizard/wizard.php:1643
+#: admin/wizard/wizard.php:1656
 msgid ""
 "Your existing Root and wp-admin htaccess files are backed up before new Root "
 "and wp-admin htaccess files are created by the Setup Wizard. The BPS backup "
 "folder is here: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1646
+#: admin/wizard/wizard.php:1659
 msgid ""
 " and the backed up htaccess file names are: root.htaccess and wpadmin."
 "htaccess."
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1669
 msgid "Setup Wizard & Overview Video Tutorial"
 msgstr ""
 
-#: admin/wizard/wizard.php:1681
+#: admin/wizard/wizard.php:1694
 msgid "Setup Wizard Options ~ "
 msgstr ""
 
-#: admin/wizard/wizard.php:1681
+#: admin/wizard/wizard.php:1694
 msgid "GoDaddy Managed WordPress Hosting (GDMW)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1697
+#: admin/wizard/wizard.php:1710
 msgid ""
 "There is only one Setup Wizard Option setting at this point. More Option "
 "settings may be added in a later version of BPS."
 msgstr ""
 
-#: admin/wizard/wizard.php:1699
+#: admin/wizard/wizard.php:1712
 msgid "Forum Help Links:"
 msgstr ""
 
-#: admin/wizard/wizard.php:1702
+#: admin/wizard/wizard.php:1715
 msgid "Go Daddy Managed WordPress Hosting (GDMW)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1704 admin/wizard/wizard.php:1717
+#: admin/wizard/wizard.php:1717 admin/wizard/wizard.php:1730
 msgid "Go Daddy Managed WordPress Hosting (GDMW):"
 msgstr ""
 
-#: admin/wizard/wizard.php:1704
+#: admin/wizard/wizard.php:1717
 msgid ""
 "This option is ONLY for a special type of Go Daddy Hosting account called "
 "\"Managed WordPress Hosting\" and is NOT for regular/standard Go Daddy "
@@ -7773,11 +7856,11 @@ msgid ""
 "section above for more information."
 msgstr ""
 
-#: admin/wizard/wizard.php:1704 admin/wizard/wizard.php:1728
+#: admin/wizard/wizard.php:1717 admin/wizard/wizard.php:1741
 msgid "Network|Multisite Sitewide Login Security Settings"
 msgstr ""
 
-#: admin/wizard/wizard.php:1704
+#: admin/wizard/wizard.php:1717
 msgid ""
 "This option is for Network|Multisite sites ONLY. This is an independent "
 "option Form that creates and saves Login Security DB option settings for all "
@@ -7794,15 +7877,15 @@ msgid ""
 "Reset, Sort DB Rows: Ascending - Show Oldest Login First."
 msgstr ""
 
-#: admin/wizard/wizard.php:1719
+#: admin/wizard/wizard.php:1732
 msgid "No (default setting)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1720
+#: admin/wizard/wizard.php:1733
 msgid "Yes (ONLY if you have Managed WordPress Hosting)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1742
+#: admin/wizard/wizard.php:1755
 msgid ""
 "Error: Your Network site exceeds the default WP criteria for a large network "
 "site. Either you have more than 10,000 users or more than 10,000 sites. "
@@ -7810,7 +7893,7 @@ msgid ""
 "org for assistance."
 msgstr ""
 
-#: admin/wizard/wizard.php:1749
+#: admin/wizard/wizard.php:1762
 msgid " LSM DB Options created or updated Successfully!"
 msgstr ""
 
@@ -7834,75 +7917,75 @@ msgstr ""
 msgid "Hourly"
 msgstr ""
 
-#: includes/functions.php:297
+#: includes/functions.php:310
 msgid "Reload BPS Status Display"
 msgstr ""
 
-#: includes/functions.php:341
+#: includes/functions.php:354
 msgid "The BPS Status Display is set to Off by default on the System Info page"
 msgstr ""
 
-#: includes/functions.php:390 includes/functions.php:414
+#: includes/functions.php:403 includes/functions.php:427
 msgid "BPS Setup Wizard Notification"
 msgstr ""
 
-#: includes/functions.php:390 includes/functions.php:414
+#: includes/functions.php:403 includes/functions.php:427
 msgid ""
 " to go to the BPS Setup Wizard page and click the Setup Wizard button to "
 "setup the BPS plugin."
 msgstr ""
 
-#: includes/functions.php:395
+#: includes/functions.php:408
 msgid "BPS Alert! An htaccess file was NOT found in your WordPress root folder"
 msgstr ""
 
-#: includes/functions.php:395
+#: includes/functions.php:408
 msgid ""
 "If you have deleted the root htaccess file for troubleshooting purposes you "
 "can disregard this Alert."
 msgstr ""
 
-#: includes/functions.php:395 includes/functions.php:630
+#: includes/functions.php:408 includes/functions.php:643
 msgid "After you are done troubleshooting "
 msgstr ""
 
-#: includes/functions.php:395 includes/functions.php:419
-#: includes/functions.php:630 includes/functions.php:652
+#: includes/functions.php:408 includes/functions.php:432
+#: includes/functions.php:643 includes/functions.php:665
 msgid ""
 " to go to the BPS Setup Wizard page and click the Setup Wizard button to "
 "setup the BPS plugin again."
 msgstr ""
 
-#: includes/functions.php:395
+#: includes/functions.php:408
 msgid ""
 "Important Note: If you deleted the root htaccess file due to bad/invalid "
 "Root Custom Code causing a problem then "
 msgstr ""
 
-#: includes/functions.php:395
+#: includes/functions.php:408
 msgid ""
 " to go to the BPS Custom Code page, delete the bad/invalid Root Custom Code "
 "and click the Save Root Custom Code button before running the Setup Wizard "
 "again."
 msgstr ""
 
-#: includes/functions.php:419
+#: includes/functions.php:432
 msgid "BPS Alert! Your site may not be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:419
+#: includes/functions.php:432
 msgid ""
 "The BPS version: BULLETPROOF .xx.x >>>>>>> SECURE .HTACCESS line of code was "
 "not found at the top of your Root htaccess file."
 msgstr ""
 
-#: includes/functions.php:419
+#: includes/functions.php:432
 msgid ""
 "The BPS version line of code MUST be at the very top of your Root htaccess "
 "file."
 msgstr ""
 
-#: includes/functions.php:419
+#: includes/functions.php:432
 msgid ""
 "Important Note: If you manually added other htaccess code above the BPS "
 "version line of code in your root htaccess file, you can copy that code to "
@@ -7910,96 +7993,96 @@ msgid ""
 "BPS root htaccess file. "
 msgstr ""
 
-#: includes/functions.php:419
+#: includes/functions.php:432
 msgid ""
 " to go to the BPS Custom Code page, add your Root custom htaccess code in an "
 "appropriate Root Custom Code text box and click the Save Root Custom Code "
 "button before running the Setup Wizard again."
 msgstr ""
 
-#: includes/functions.php:557
+#: includes/functions.php:570
 msgid "The BPS Automatic htaccess File Update Completed Successfully!"
 msgstr ""
 
-#: includes/functions.php:570
+#: includes/functions.php:583
 msgid "RBM"
 msgstr ""
 
-#: includes/functions.php:581
+#: includes/functions.php:594
 msgid ""
 "BPS Alert! Your site does not appear to be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:581
+#: includes/functions.php:594
 msgid "Go to the "
 msgstr ""
 
-#: includes/functions.php:581
+#: includes/functions.php:594
 msgid "Security Modes page"
 msgstr ""
 
-#: includes/functions.php:581
+#: includes/functions.php:594
 msgid ""
 " and click the Create secure.htaccess File AutoMagic button and Activate "
 "Root Folder BulletProof Mode."
 msgstr ""
 
-#: includes/functions.php:581
+#: includes/functions.php:594
 msgid ""
 "If your site is in Default Mode then it is NOT protected by BulletProof "
 "Security. Check the BPS "
 msgstr ""
 
-#: includes/functions.php:581 includes/functions.php:722
+#: includes/functions.php:594 includes/functions.php:735
 msgid "Security Status page"
 msgstr ""
 
-#: includes/functions.php:581 includes/functions.php:722
+#: includes/functions.php:594 includes/functions.php:735
 msgid " to view your BPS Security Status information."
 msgstr ""
 
-#: includes/functions.php:630
+#: includes/functions.php:643
 msgid ""
 "BPS Alert! An htaccess file was NOT found in your WordPress wp-admin folder"
 msgstr ""
 
-#: includes/functions.php:630
+#: includes/functions.php:643
 msgid ""
 "If you have deleted the wp-admin htaccess file for troubleshooting purposes "
 "you can disregard this Alert."
 msgstr ""
 
-#: includes/functions.php:630
+#: includes/functions.php:643
 msgid ""
 "Important Note: If you deleted the wp-admin htaccess file due to bad/invalid "
 "Custom Code causing a problem then "
 msgstr ""
 
-#: includes/functions.php:630
+#: includes/functions.php:643
 msgid ""
 " to go to the BPS Custom Code page, delete the bad/invalid wp-admin Custom "
 "Code and click the Save wp-admin Custom Code button before running the Setup "
 "Wizard again."
 msgstr ""
 
-#: includes/functions.php:652
+#: includes/functions.php:665
 msgid ""
 "BPS Alert! Your wp-admin folder may not be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:652
+#: includes/functions.php:665
 msgid ""
 "he BPS version: BULLETPROOF .xx.x WP-ADMIN SECURE .HTACCESS line of code was "
 "not found at the top of your wp-admin htaccess file."
 msgstr ""
 
-#: includes/functions.php:652
+#: includes/functions.php:665
 msgid ""
 "The BPS version line of code MUST be at the very top of your wp-admin "
 "htaccess file."
 msgstr ""
 
-#: includes/functions.php:652
+#: includes/functions.php:665
 msgid ""
 "Important Note: If you manually added other htaccess code above the BPS "
 "version line of code in your wp-admin htaccess file, you can copy that code "
@@ -8007,118 +8090,118 @@ msgid ""
 "in the BPS wp-admin htaccess file. "
 msgstr ""
 
-#: includes/functions.php:652
+#: includes/functions.php:665
 msgid ""
 " to go to the BPS Custom Code page, add your wp-admin custom htaccess code "
 "in an appropriate wp-admin Custom Code text box and click the Save wp-admin "
 "Custom Code button before running the Setup Wizard again."
 msgstr ""
 
-#: includes/functions.php:711
+#: includes/functions.php:724
 msgid "WBM"
 msgstr ""
 
-#: includes/functions.php:722
+#: includes/functions.php:735
 msgid ""
 "BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder"
 msgstr ""
 
-#: includes/functions.php:722 includes/general-functions.php:242
+#: includes/functions.php:735 includes/general-functions.php:242
 msgid ""
 "BulletProof Mode for the wp-admin folder should also be activated when you "
 "have BulletProof Mode activated for the Root folder."
 msgstr ""
 
-#: includes/functions.php:722
+#: includes/functions.php:735
 msgid "Check the BPS "
 msgstr ""
 
-#: includes/functions.php:758 includes/functions.php:763
+#: includes/functions.php:771 includes/functions.php:776
 msgid "LSM"
 msgstr ""
 
-#: includes/functions.php:802 includes/functions.php:807
-#: includes/functions.php:812
+#: includes/functions.php:815 includes/functions.php:820
+#: includes/functions.php:825
 msgid "DBB"
 msgstr ""
 
-#: includes/functions.php:802
+#: includes/functions.php:815
 msgid "No DB Backups"
 msgstr ""
 
-#: includes/functions.php:807
+#: includes/functions.php:820
 msgid "Backup Job Created"
 msgstr ""
 
-#: includes/functions.php:851
+#: includes/functions.php:864
 msgid ""
 "Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No)"
 msgstr ""
 
-#: includes/functions.php:885
+#: includes/functions.php:898
 msgid ""
 "ERROR: wp_remote_get() function is blocked or unable to get the URL path"
 msgstr ""
 
-#: includes/functions.php:895
+#: includes/functions.php:908
 msgid ""
 "mod_access_compat is Loaded|Order, Allow, Deny directives are supported|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:902 includes/functions.php:1073
+#: includes/functions.php:915 includes/functions.php:1086
 msgid ""
 "mod_access_compat is Loaded|Order, Allow, Deny directives are supported|"
 "IfModule: No"
 msgstr ""
 
-#: includes/functions.php:909
+#: includes/functions.php:922
 msgid ""
 "mod_access_compat is NOT Loaded|Order, Allow, Deny directives are NOT "
 "supported"
 msgstr ""
 
-#: includes/functions.php:917 includes/functions.php:1069
+#: includes/functions.php:930 includes/functions.php:1082
 msgid ""
 "mod_authz_core is Loaded|Order, Allow, Deny directives are supported|BC: Yes|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:922
+#: includes/functions.php:935
 msgid ""
 "mod_authz_core is Loaded|Order, Allow, Deny directives are NOT supported|BC: "
 "No|IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:927
+#: includes/functions.php:940
 msgid ""
 "mod_authz_core Inconclusive: IfModule condition is not allowed/processed by "
 "Host Server"
 msgstr ""
 
-#: includes/functions.php:932
+#: includes/functions.php:945
 msgid "mod_authz_core is NOT Loaded"
 msgstr ""
 
-#: includes/functions.php:940
+#: includes/functions.php:953
 msgid ""
 "mod_authz_host is Loaded|Order, Allow, Deny directives are supported|BC: Yes|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:945
+#: includes/functions.php:958
 msgid ""
 "mod_authz_host is Loaded|Order, Allow, Deny directives are NOT supported|BC: "
 "No|IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:950
+#: includes/functions.php:963
 msgid ""
 "mod_authz_host Inconclusive: IfModule condition is not allowed/processed by "
 "Host Server"
 msgstr ""
 
-#: includes/functions.php:955
+#: includes/functions.php:968
 msgid "mod_authz_host is NOT Loaded"
 msgstr ""
 
@@ -8369,8 +8452,8 @@ msgid "How to setup Custom Permalinks"
 msgstr ""
 
 #: includes/general-functions.php:391 includes/general-functions.php:426
-#: includes/general-functions.php:916 includes/general-functions.php:963
-#: includes/general-functions.php:1006 includes/general-functions.php:1051
+#: includes/general-functions.php:941 includes/general-functions.php:988
+#: includes/general-functions.php:1031 includes/general-functions.php:1076
 msgid ""
 "To Dismiss this Notice click the Dismiss Notice button below. To Reset "
 "Dismiss Notices click the Reset|Recheck Dismiss Notices button on the "
@@ -8378,12 +8461,12 @@ msgid ""
 msgstr ""
 
 #: includes/general-functions.php:391 includes/general-functions.php:426
-#: includes/general-functions.php:802 includes/general-functions.php:808
-#: includes/general-functions.php:814 includes/general-functions.php:820
-#: includes/general-functions.php:826 includes/general-functions.php:832
-#: includes/general-functions.php:837 includes/general-functions.php:916
-#: includes/general-functions.php:963 includes/general-functions.php:1006
-#: includes/general-functions.php:1051
+#: includes/general-functions.php:798 includes/general-functions.php:813
+#: includes/general-functions.php:819 includes/general-functions.php:825
+#: includes/general-functions.php:831 includes/general-functions.php:845
+#: includes/general-functions.php:851 includes/general-functions.php:856
+#: includes/general-functions.php:941 includes/general-functions.php:988
+#: includes/general-functions.php:1031 includes/general-functions.php:1076
 msgid "Dismiss Notice"
 msgstr ""
 
@@ -8693,237 +8776,237 @@ msgstr ""
 msgid "WordPress Version Is Not Displayed|Not Shown"
 msgstr ""
 
-#: includes/general-functions.php:796
+#: includes/general-functions.php:795 includes/general-functions.php:807
 msgid "Bonus Custom Code:"
 msgstr ""
 
-#: includes/general-functions.php:796
+#: includes/general-functions.php:795 includes/general-functions.php:807
 msgid ""
 "Click the links below to get Bonus Custom Code or click the Dismiss Notice "
 "links or click this "
 msgstr ""
 
-#: includes/general-functions.php:796
+#: includes/general-functions.php:795 includes/general-functions.php:807
 msgid "Dismiss All Notices"
 msgstr ""
 
-#: includes/general-functions.php:796
+#: includes/general-functions.php:795 includes/general-functions.php:807
 msgid ""
 " link. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices "
 "button on the Security Status page."
 msgstr ""
 
-#: includes/general-functions.php:802 includes/general-functions.php:808
-#: includes/general-functions.php:814 includes/general-functions.php:820
-#: includes/general-functions.php:826 includes/general-functions.php:832
-#: includes/general-functions.php:837
+#: includes/general-functions.php:798 includes/general-functions.php:813
+#: includes/general-functions.php:819 includes/general-functions.php:825
+#: includes/general-functions.php:831 includes/general-functions.php:845
+#: includes/general-functions.php:851 includes/general-functions.php:856
 msgid "Get "
 msgstr ""
 
-#: includes/general-functions.php:802
-msgid "Brute Force Login Protection Code"
+#: includes/general-functions.php:798 includes/general-functions.php:845
+msgid "POST Request Attack Protection Code"
 msgstr ""
 
-#: includes/general-functions.php:802 includes/general-functions.php:808
-#: includes/general-functions.php:814 includes/general-functions.php:820
-#: includes/general-functions.php:826 includes/general-functions.php:832
-#: includes/general-functions.php:837
+#: includes/general-functions.php:798 includes/general-functions.php:813
+#: includes/general-functions.php:819 includes/general-functions.php:825
+#: includes/general-functions.php:831 includes/general-functions.php:845
+#: includes/general-functions.php:851 includes/general-functions.php:856
 msgid " or "
 msgstr ""
 
-#: includes/general-functions.php:808
+#: includes/general-functions.php:813
+msgid "Brute Force Login Protection Code"
+msgstr ""
+
+#: includes/general-functions.php:819
 msgid "Speed Boost Cache Code"
 msgstr ""
 
-#: includes/general-functions.php:814
+#: includes/general-functions.php:825
 msgid "Author Enumeration BOT Probe Code"
 msgstr ""
 
-#: includes/general-functions.php:820
+#: includes/general-functions.php:831
 msgid "XML-RPC DDoS Protection Code"
 msgstr ""
 
-#: includes/general-functions.php:826
-msgid "Referer Spam|Phishing Protection Code"
-msgstr ""
-
-#: includes/general-functions.php:832
+#: includes/general-functions.php:851
 msgid "Mime Sniffing|Drive-by Download Attack Protection Code"
 msgstr ""
 
-#: includes/general-functions.php:837
+#: includes/general-functions.php:856
 msgid "External iFrame|Clickjacking Protection Code"
 msgstr ""
 
-#: includes/general-functions.php:916
+#: includes/general-functions.php:941
 msgid "HUD Check: PHP/php.ini handler htaccess code check"
 msgstr ""
 
-#: includes/general-functions.php:916
+#: includes/general-functions.php:941
 msgid ""
 "PHP/php.ini handler htaccess code was found in your root .htaccess file, but "
 "was NOT found in BPS Custom Code."
 msgstr ""
 
-#: includes/general-functions.php:916
+#: includes/general-functions.php:941
 msgid "To automatically fix this click here: "
 msgstr ""
 
-#: includes/general-functions.php:916
+#: includes/general-functions.php:941
 msgid "Setup Wizard Pre-Installation Checks"
 msgstr ""
 
-#: includes/general-functions.php:916
+#: includes/general-functions.php:941
 msgid ""
 "The Setup Wizard Pre-Installation Checks feature will automatically fix this "
 "just by visiting the Setup Wizard page."
 msgstr ""
 
-#: includes/general-functions.php:963
+#: includes/general-functions.php:988
 msgid "Sucuri 1-click Hardening wp-content .htaccess file problem detected"
 msgstr ""
 
-#: includes/general-functions.php:963
+#: includes/general-functions.php:988
 msgid ""
 "Using the Sucuri 1-click Hardening wp-content .htaccess file will cause "
 "several BPS Pro features not to work correctly."
 msgstr ""
 
-#: includes/general-functions.php:963
+#: includes/general-functions.php:988
 msgid ""
 "To fix this issue delete the Sucuri .htaccess file in your wp-content folder."
 msgstr ""
 
-#: includes/general-functions.php:1006
+#: includes/general-functions.php:1031
 msgid "The WordPress Firewall 2 plugin is installed and activated"
 msgstr ""
 
-#: includes/general-functions.php:1006
+#: includes/general-functions.php:1031
 msgid "It is recommended that you delete the WordPress Firewall 2 plugin."
 msgstr ""
 
-#: includes/general-functions.php:1006
+#: includes/general-functions.php:1031
 msgid " for more information."
 msgstr ""
 
-#: includes/general-functions.php:1051
+#: includes/general-functions.php:1076
 msgid "Broken Link Checker plugin HEAD Request Method filter problem detected."
 msgstr ""
 
-#: includes/general-functions.php:1051
+#: includes/general-functions.php:1076
 msgid "To fix this problem "
 msgstr ""
 
-#: includes/general-functions.php:1157
+#: includes/general-functions.php:1182
 msgid "Once Hourly"
 msgstr ""
 
-#: includes/general-functions.php:1408
+#: includes/general-functions.php:1433
 msgid "Notice: BPS Query String Exploits Code Changes"
 msgstr ""
 
-#: includes/general-functions.php:1408
+#: includes/general-functions.php:1433
 msgid ""
 "Older BPS Query String Exploits code was found in BPS Custom Code. Several "
 "Query String Exploits rules were changed/added/modified in the root ."
 "htaccess file in BPS .49.6, .50.2 & .50.3."
 msgstr ""
 
-#: includes/general-functions.php:1408
+#: includes/general-functions.php:1433
 msgid ""
 "Copy the new Query String Exploits section of code from your root .htaccess "
 "file and paste it into this BPS Custom Code text box: CUSTOM CODE BPSQSE BPS "
 "QUERY STRING EXPLOITS and click the Save Root Custom Code button."
 msgstr ""
 
-#: includes/general-functions.php:1408
+#: includes/general-functions.php:1433
 msgid ""
 "This Notice will go away once you have copied the new Query String Exploits "
 "code to BPS Custom Code and clicked the Save Root Custom Code button."
 msgstr ""
 
-#: includes/general-functions.php:1434 includes/general-functions.php:1470
-#: includes/general-functions.php:1508
+#: includes/general-functions.php:1459 includes/general-functions.php:1495
+#: includes/general-functions.php:1533
 msgid "Reminder: Frontend Maintenance Mode is Turned On."
 msgstr ""
 
-#: includes/general-functions.php:1437 includes/general-functions.php:1473
-#: includes/general-functions.php:1511
+#: includes/general-functions.php:1462 includes/general-functions.php:1498
+#: includes/general-functions.php:1536
 msgid "Reminder: Backend Maintenance Mode is Turned On."
 msgstr ""
 
-#: includes/general-functions.php:1440 includes/general-functions.php:1476
-#: includes/general-functions.php:1514
+#: includes/general-functions.php:1465 includes/general-functions.php:1501
+#: includes/general-functions.php:1539
 msgid "Reminder: Frontend & Backend Maintenance Modes are Turned On."
 msgstr ""
 
-#: includes/general-functions.php:1458 includes/general-functions.php:1496
+#: includes/general-functions.php:1483 includes/general-functions.php:1521
 msgid ""
 "Reminder: Frontend Maintenance Mode is Turned On for The Primary Site and "
 "All Subsites."
 msgstr ""
 
-#: includes/general-functions.php:1463 includes/general-functions.php:1501
+#: includes/general-functions.php:1488 includes/general-functions.php:1526
 msgid ""
 "Reminder: Frontend Maintenance Mode is Turned On for All Subsites, but Not "
 "The Primary Site."
 msgstr ""
 
-#: includes/general-functions.php:1537
+#: includes/general-functions.php:1562
 msgid ""
 "BPS Login Security Disable Password Reset Frontend & Backend is turned On."
 msgstr ""
 
-#: includes/general-functions.php:1537
+#: includes/general-functions.php:1562
 msgid ""
 "Backend Password Reset has been disabled. To enable Backend Password Reset "
 "click "
 msgstr ""
 
-#: includes/general-functions.php:1537
+#: includes/general-functions.php:1562
 msgid "here"
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid "BPS Notice: One-time Update Steps Required"
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid ""
 "Significant changes were made to the root and wp-admin htaccess files that "
 "require doing the one-time Update Steps below."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid ""
 "All future BPS upgrades will not require these one-time Update Steps to be "
 "performed."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid ""
 " If you would like to know what changes were made to the root and wp-admin "
 "htaccess files."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid ""
 "This Notice will go away automatically after doing all of the steps below."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid " to go to the BPS Security Modes page."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid "1. Click the \"Create secure.htaccess File\" AutoMagic button."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid "2. Activate Root Folder BulletProof Mode."
 msgstr ""
 
-#: includes/general-functions.php:1576
+#: includes/general-functions.php:1601
 msgid "3. Activate wp-admin Folder BulletProof Mode."
 msgstr ""
 

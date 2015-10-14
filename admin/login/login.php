@@ -90,10 +90,6 @@ function bpsPro_Core_LSM_deny_all() {
 		$create_denyall_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/login/.htaccess';
 		$check_string = @file_get_contents($create_denyall_htaccess_file);
 		
-		if ( file_exists($create_denyall_htaccess_file) && strpos( $check_string, bpsPro_get_real_ip_address_lsm() ) ) {
-			return;
-		}
-
 		if ( ! file_exists($create_denyall_htaccess_file) ) { 
 
 			$handle = fopen( $create_denyall_htaccess_file, 'w+b' );
