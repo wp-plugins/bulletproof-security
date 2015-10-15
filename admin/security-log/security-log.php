@@ -724,8 +724,7 @@ if ( current_user_can('manage_options') ) {
 
 	if ( file_exists($bps_sec_log) ) {
 		$get_sec_log_contents = file_get_contents($bps_sec_log);
-		$sec_log_clean = remove_accents( $get_sec_log_contents );
-		$sec_log_clean .= preg_replace( '/[^\x01-\x7F]/', "", $get_sec_log_contents );
+		$sec_log_clean = preg_replace( '/[^\x01-\x7F]/', "", remove_accents( $get_sec_log_contents ) );
 
 		return esc_html($sec_log_clean);
 	
