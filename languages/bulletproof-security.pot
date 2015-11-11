@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulletproof-security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 15:55-0700\n"
+"POT-Creation-Date: 2015-11-10 14:45-0800\n"
 "PO-Revision-Date: 2015-06-20 19:13-0800\n"
 "Last-Translator: Ed Alexander <edward@ait-pro.com>\n"
 "Language-Team: AITpro <info@ait-pro.com>\n"
@@ -806,7 +806,7 @@ msgstr ""
 #: admin/maintenance/maintenance.php:182
 #: admin/security-log/security-log.php:249
 #: admin/system-info/system-info.php:108 admin/theme-skin/theme-skin.php:115
-#: admin/wizard/wizard.php:1650 admin/wizard/wizard.php:1710
+#: admin/wizard/wizard.php:1654 admin/wizard/wizard.php:1714
 msgid ""
 "This Read Me Help window is draggable (top) and resizable (bottom right "
 "corner)"
@@ -1315,7 +1315,7 @@ msgstr ""
 #: admin/core/core.php:150 admin/db-backup-security/db-backup-security.php:74
 #: admin/login/login.php:125 admin/maintenance/maintenance.php:78
 #: admin/security-log/security-log.php:69 admin/system-info/system-info.php:69
-#: admin/theme-skin/theme-skin.php:74 admin/wizard/wizard.php:942
+#: admin/theme-skin/theme-skin.php:74 admin/wizard/wizard.php:946
 msgid "Settings Saved"
 msgstr ""
 
@@ -1396,7 +1396,7 @@ msgstr ""
 #: admin/maintenance/maintenance.php:177
 #: admin/security-log/security-log.php:244
 #: admin/system-info/system-info.php:103 admin/theme-skin/theme-skin.php:112
-#: admin/wizard/wizard.php:1642 admin/wizard/wizard.php:1703
+#: admin/wizard/wizard.php:1646 admin/wizard/wizard.php:1707
 msgid "Read Me"
 msgstr ""
 
@@ -1952,8 +1952,8 @@ msgstr ""
 #: admin/system-info/system-info.php:548 admin/system-info/system-info.php:556
 #: admin/system-info/system-info.php:564 admin/system-info/system-info.php:572
 #: admin/system-info/system-info.php:580 admin/system-info/system-info.php:599
-#: includes/functions.php:583 includes/functions.php:724
-#: includes/functions.php:771
+#: includes/functions.php:594 includes/functions.php:735
+#: includes/functions.php:782
 msgid "On"
 msgstr ""
 
@@ -1993,7 +1993,7 @@ msgstr ""
 #: admin/system-info/system-info.php:559 admin/system-info/system-info.php:567
 #: admin/system-info/system-info.php:575 admin/system-info/system-info.php:583
 #: admin/system-info/system-info.php:591 admin/system-info/system-info.php:602
-#: includes/functions.php:776 includes/general-functions.php:734
+#: includes/functions.php:787 includes/general-functions.php:734
 msgid "Off"
 msgstr ""
 
@@ -2054,8 +2054,8 @@ msgstr ""
 msgid "Brute Force Login Page Protection code"
 msgstr ""
 
-#: admin/core/core.php:1157 admin/core/core.php:1510
-#: admin/wizard/wizard.php:1653
+#: admin/core/core.php:1157 admin/core/core.php:1511
+#: admin/wizard/wizard.php:1657
 msgid "Custom Code Video Tutorial"
 msgstr ""
 
@@ -2397,247 +2397,251 @@ msgid "BPS Pro Version Release Dates"
 msgstr ""
 
 #: admin/core/core.php:1421
-msgid "Whats New in BPS Pro 11.2"
+msgid "Whats New in BPS Pro 11.4"
 msgstr ""
 
 #: admin/core/core.php:1422
-msgid "Whats New in BPS Pro 11.1"
+msgid "Whats New in BPS Pro 11.2/11.3"
 msgstr ""
 
 #: admin/core/core.php:1423
-msgid "Whats New in BPS Pro 11"
+msgid "Whats New in BPS Pro 11.1"
 msgstr ""
 
 #: admin/core/core.php:1424
-msgid "Whats New in BPS Pro 10.9"
+msgid "Whats New in BPS Pro 11"
 msgstr ""
 
 #: admin/core/core.php:1425
-msgid "Whats New in BPS Pro 10.8"
+msgid "Whats New in BPS Pro 10.9"
 msgstr ""
 
 #: admin/core/core.php:1426
+msgid "Whats New in BPS Pro 10.8"
+msgstr ""
+
+#: admin/core/core.php:1427
 msgid "Whats New in BPS Pro 10.7"
 msgstr ""
 
-#: admin/core/core.php:1428
+#: admin/core/core.php:1429
 msgid "Whats New in BPS Pro 10.6"
 msgstr ""
 
-#: admin/core/core.php:1429
+#: admin/core/core.php:1430
 msgid "Whats New in BPS Pro 10.4/10.5"
 msgstr ""
 
-#: admin/core/core.php:1430
+#: admin/core/core.php:1431
 msgid "Whats New in BPS Pro 10.3"
 msgstr ""
 
-#: admin/core/core.php:1431
+#: admin/core/core.php:1432
 msgid "Whats New in BPS Pro 10.2"
 msgstr ""
 
-#: admin/core/core.php:1432
+#: admin/core/core.php:1433
 msgid "Whats New in BPS Pro 10.1"
 msgstr ""
 
-#: admin/core/core.php:1433
+#: admin/core/core.php:1434
 msgid "Whats New in BPS Pro 10"
 msgstr ""
 
-#: admin/core/core.php:1434
+#: admin/core/core.php:1435
 msgid "Whats New in BPS Pro 9.9.1"
 msgstr ""
 
-#: admin/core/core.php:1435
+#: admin/core/core.php:1436
 msgid "Whats New in BPS Pro 9.9"
 msgstr ""
 
-#: admin/core/core.php:1436
+#: admin/core/core.php:1437
 msgid "Whats New in BPS Pro 9.8"
 msgstr ""
 
-#: admin/core/core.php:1437
+#: admin/core/core.php:1438
 msgid "Whats New in BPS Pro 9.7"
 msgstr ""
 
-#: admin/core/core.php:1438
+#: admin/core/core.php:1439
 msgid "Whats New in BPS Pro 9.6"
 msgstr ""
 
-#: admin/core/core.php:1439
+#: admin/core/core.php:1440
 msgid "Whats New in BPS Pro 9.5"
 msgstr ""
 
-#: admin/core/core.php:1440
+#: admin/core/core.php:1441
 msgid "Whats New in BPS Pro 9.3/9.4"
 msgstr ""
 
-#: admin/core/core.php:1441
+#: admin/core/core.php:1442
 msgid "Whats New in BPS Pro 9.2"
 msgstr ""
 
-#: admin/core/core.php:1443
+#: admin/core/core.php:1444
 msgid "Whats New in BPS Pro 9.1"
 msgstr ""
 
-#: admin/core/core.php:1444
+#: admin/core/core.php:1445
 msgid "Whats New in BPS Pro 9.0"
 msgstr ""
 
-#: admin/core/core.php:1445
+#: admin/core/core.php:1446
 msgid "Whats New in BPS Pro 8.3"
 msgstr ""
 
-#: admin/core/core.php:1446
+#: admin/core/core.php:1447
 msgid "Whats New in BPS Pro 8.2"
 msgstr ""
 
-#: admin/core/core.php:1447
+#: admin/core/core.php:1448
 msgid "Whats New in BPS Pro 8.1"
 msgstr ""
 
-#: admin/core/core.php:1448
+#: admin/core/core.php:1449
 msgid "Whats New in BPS Pro 8.0"
 msgstr ""
 
-#: admin/core/core.php:1449
+#: admin/core/core.php:1450
 msgid "Whats New in BPS Pro 7.9"
 msgstr ""
 
-#: admin/core/core.php:1450
+#: admin/core/core.php:1451
 msgid "Whats New in BPS Pro 7.8"
 msgstr ""
 
-#: admin/core/core.php:1451
+#: admin/core/core.php:1452
 msgid "Whats New in BPS Pro 7.7"
 msgstr ""
 
-#: admin/core/core.php:1452
+#: admin/core/core.php:1453
 msgid "Whats New in BPS Pro 7.6"
 msgstr ""
 
-#: admin/core/core.php:1453
+#: admin/core/core.php:1454
 msgid "Whats New in BPS Pro 7.5"
 msgstr ""
 
-#: admin/core/core.php:1454
+#: admin/core/core.php:1455
 msgid "Whats New in BPS Pro 7.0"
 msgstr ""
 
-#: admin/core/core.php:1455
+#: admin/core/core.php:1456
 msgid "Whats New in BPS Pro 6.5"
 msgstr ""
 
-#: admin/core/core.php:1457
+#: admin/core/core.php:1458
 msgid "Whats New in BPS Pro 6.0"
 msgstr ""
 
-#: admin/core/core.php:1458
+#: admin/core/core.php:1459
 msgid "Whats New in BPS Pro 5.9"
 msgstr ""
 
-#: admin/core/core.php:1459
+#: admin/core/core.php:1460
 msgid "Whats New in BPS Pro 5.8/5.8.1/5.8.2"
 msgstr ""
 
-#: admin/core/core.php:1460
+#: admin/core/core.php:1461
 msgid "Whats New in BPS Pro 5.7/5.7.1/5.7.2"
 msgstr ""
 
-#: admin/core/core.php:1461
+#: admin/core/core.php:1462
 msgid "Whats New in BPS Pro 5.6/5.6.1"
 msgstr ""
 
-#: admin/core/core.php:1462
+#: admin/core/core.php:1463
 msgid "Whats New in BPS Pro 5.5"
 msgstr ""
 
-#: admin/core/core.php:1463
+#: admin/core/core.php:1464
 msgid "Whats New in BPS Pro 5.4/5.4.1"
 msgstr ""
 
-#: admin/core/core.php:1464
+#: admin/core/core.php:1465
 msgid "Whats New in BPS Pro 5.3/5.3.1/5.3.2/5.3.3"
 msgstr ""
 
-#: admin/core/core.php:1465
+#: admin/core/core.php:1466
 msgid "Whats New in BPS Pro 5.2/5.2.1/5.2.2"
 msgstr ""
 
-#: admin/core/core.php:1466
+#: admin/core/core.php:1467
 msgid "Whats New in BPS Pro 5.1.9"
 msgstr ""
 
-#: admin/core/core.php:1468
+#: admin/core/core.php:1469
 msgid "Whats New in BPS Pro 5.1.8/5.1.8.1/5.1.8.2/5.1.8.3/5.1.8.4"
 msgstr ""
 
-#: admin/core/core.php:1469
+#: admin/core/core.php:1470
 msgid "Whats New in BPS Pro 5.1.7"
 msgstr ""
 
-#: admin/core/core.php:1470
+#: admin/core/core.php:1471
 msgid "Whats New in BPS Pro 5.1.6"
 msgstr ""
 
-#: admin/core/core.php:1471
+#: admin/core/core.php:1472
 msgid "Whats New in BPS Pro 5.1.5"
 msgstr ""
 
-#: admin/core/core.php:1472
+#: admin/core/core.php:1473
 msgid "Whats New in BPS Pro 5.1.4"
 msgstr ""
 
-#: admin/core/core.php:1473
+#: admin/core/core.php:1474
 msgid "Whats New in BPS Pro 5.1.3"
 msgstr ""
 
-#: admin/core/core.php:1474
+#: admin/core/core.php:1475
 msgid "Whats New in BPS Pro 5.1.2"
 msgstr ""
 
-#: admin/core/core.php:1475
+#: admin/core/core.php:1476
 msgid "Whats New in BPS Pro 5.1.1"
 msgstr ""
 
-#: admin/core/core.php:1476
+#: admin/core/core.php:1477
 msgid "Whats New in BPS Pro 5.1"
 msgstr ""
 
-#: admin/core/core.php:1477
+#: admin/core/core.php:1478
 msgid "Whats New in BPS Pro 5.0"
 msgstr ""
 
-#: admin/core/core.php:1494 admin/maintenance/maintenance.php:2003
+#: admin/core/core.php:1495 admin/maintenance/maintenance.php:2003
 msgid "Help & FAQ"
 msgstr ""
 
-#: admin/core/core.php:1501 admin/login/login.php:1052
+#: admin/core/core.php:1502 admin/login/login.php:1052
 #: admin/maintenance/maintenance.php:2010
-#: admin/security-log/security-log.php:815
+#: admin/security-log/security-log.php:814
 #: admin/system-info/system-info.php:889
 msgid "Contributors Page"
 msgstr ""
 
-#: admin/core/core.php:1502
+#: admin/core/core.php:1503
 msgid "WP Permalinks - Custom Permalink Structure Help Info"
 msgstr ""
 
-#: admin/core/core.php:1505 admin/login/login.php:1051
+#: admin/core/core.php:1506 admin/login/login.php:1051
 #: admin/maintenance/maintenance.php:2013
-#: admin/security-log/security-log.php:814
+#: admin/security-log/security-log.php:813
 #: admin/system-info/system-info.php:888
 msgid "Security Log Event Codes"
 msgstr ""
 
-#: admin/core/core.php:1506
+#: admin/core/core.php:1507
 msgid "Adding a Custom 403 Forbidden Page For Your Website"
 msgstr ""
 
-#: admin/core/core.php:1509
+#: admin/core/core.php:1510
 #: admin/db-backup-security/db-backup-security.php:1697
 #: admin/login/login.php:1055 admin/maintenance/maintenance.php:2014
-#: admin/security-log/security-log.php:818
+#: admin/security-log/security-log.php:817
 #: admin/system-info/system-info.php:892 admin/theme-skin/theme-skin.php:215
 msgid "Forum: Search, Troubleshooting Steps & Post Questions For Assistance"
 msgstr ""
@@ -4266,8 +4270,8 @@ msgstr ""
 msgid "Security Log"
 msgstr ""
 
-#: admin/includes/admin.php:209 admin/wizard/wizard.php:1627
-#: admin/wizard/wizard.php:1642 admin/wizard/wizard.php:1644
+#: admin/includes/admin.php:209 admin/wizard/wizard.php:1631
+#: admin/wizard/wizard.php:1646 admin/wizard/wizard.php:1648
 #: bulletproof-security.php:81
 msgid "Setup Wizard"
 msgstr ""
@@ -4718,7 +4722,7 @@ msgstr ""
 msgid "Enable|Disable Auth Cookie Expiration Time For These User Roles: "
 msgstr ""
 
-#: admin/login/login.php:1045 admin/security-log/security-log.php:808
+#: admin/login/login.php:1045 admin/security-log/security-log.php:807
 #: admin/system-info/system-info.php:882
 msgid "BulletProof Security Help &amp; FAQ"
 msgstr ""
@@ -5609,11 +5613,11 @@ msgid ""
 msgstr ""
 
 #: admin/maintenance/maintenance.php:369 admin/maintenance/maintenance.php:389
-#: includes/functions.php:403 includes/functions.php:408
-#: includes/functions.php:427 includes/functions.php:432
-#: includes/functions.php:643 includes/functions.php:665
+#: includes/functions.php:409 includes/functions.php:414
+#: includes/functions.php:433 includes/functions.php:438
+#: includes/functions.php:654 includes/functions.php:676
 #: includes/general-functions.php:1031 includes/general-functions.php:1076
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid "Click Here"
 msgstr ""
 
@@ -6346,9 +6350,9 @@ msgid ""
 msgstr ""
 
 #: admin/security-log/security-log.php:353
-#: admin/security-log/security-log.php:548 admin/wizard/wizard.php:1137
-#: admin/wizard/wizard.php:1143 admin/wizard/wizard.php:1149
-#: admin/wizard/wizard.php:1155 admin/wizard/wizard.php:1161
+#: admin/security-log/security-log.php:548 admin/wizard/wizard.php:1141
+#: admin/wizard/wizard.php:1147 admin/wizard/wizard.php:1153
+#: admin/wizard/wizard.php:1159 admin/wizard/wizard.php:1165
 msgid "Error: The "
 msgstr ""
 
@@ -6493,23 +6497,23 @@ msgstr ""
 msgid "To add a User Agent|Bot, use the Add|Ignore tool."
 msgstr ""
 
-#: admin/security-log/security-log.php:734
+#: admin/security-log/security-log.php:733
 msgid ""
 "The Security Log File Was Not Found! Check that the file really exists here "
 "- /"
 msgstr ""
 
-#: admin/security-log/security-log.php:734
+#: admin/security-log/security-log.php:733
 msgid "/bps-backup/logs/http_error_log.txt and is named correctly."
 msgstr ""
 
-#: admin/security-log/security-log.php:752
+#: admin/security-log/security-log.php:751
 msgid ""
 "File Open and Write test successful! Your Security Log file is writable."
 msgstr ""
 
-#: admin/security-log/security-log.php:763
-#: admin/security-log/security-log.php:767
+#: admin/security-log/security-log.php:762
+#: admin/security-log/security-log.php:766
 msgid "Success! Your Security Log file has been updated."
 msgstr ""
 
@@ -7394,45 +7398,70 @@ msgstr ""
 msgid "Turn On SLF"
 msgstr ""
 
-#: admin/wizard/wizard.php:127
+#: admin/wizard/wizard-backup.php:141 admin/wizard/wizard-backup.php:175
+msgid ""
+"Custom additional htaccess code was found in your current root htaccess "
+"file. Your root htaccess file has been backed up and zipped in this zip "
+"file: /bulletproof-security/admin/wizard/root-htaccess-file.zip. Click the "
+"Download Root htaccess File button to download your root-htaccess-file.zip "
+"file to your computer."
+msgstr ""
+
+#: admin/wizard/wizard-backup.php:141 admin/wizard/wizard-backup.php:175
+msgid "Click this forum link: "
+msgstr ""
+
+#: admin/wizard/wizard-backup.php:141 admin/wizard/wizard-backup.php:175
+msgid "Setup Wizard Root htaccess File Backup"
+msgstr ""
+
+#: admin/wizard/wizard-backup.php:141 admin/wizard/wizard-backup.php:175
+msgid " for help information about what this means and what to do."
+msgstr ""
+
+#: admin/wizard/wizard-backup.php:141 admin/wizard/wizard-backup.php:175
+msgid "Download Root htaccess File"
+msgstr ""
+
+#: admin/wizard/wizard.php:131
 msgid "The secure.htaccess Root Master htaccess file was created successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:127
+#: admin/wizard/wizard.php:131
 msgid "Root Folder BulletProof Mode activated successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:129
+#: admin/wizard/wizard.php:133
 msgid ""
 "Error: The secure.htaccess Root Master htaccess file and root .htaccess file "
 "cannot be created. Root Folder BulletProof Mode has NOT been activated."
 msgstr ""
 
-#: admin/wizard/wizard.php:129 admin/wizard/wizard.php:632
-#: admin/wizard/wizard.php:725
+#: admin/wizard/wizard.php:133 admin/wizard/wizard.php:636
+#: admin/wizard/wizard.php:729
 msgid ""
 "If your Server configuration is DSO you must first make some one-time manual "
 "changes to your website before running the Setup Wizard. Please click this "
 "Forum Link for instructions: "
 msgstr ""
 
-#: admin/wizard/wizard.php:129 admin/wizard/wizard.php:632
-#: admin/wizard/wizard.php:725 admin/wizard/wizard.php:1092
-#: admin/wizard/wizard.php:1137 admin/wizard/wizard.php:1143
-#: admin/wizard/wizard.php:1149 admin/wizard/wizard.php:1155
-#: admin/wizard/wizard.php:1161
+#: admin/wizard/wizard.php:133 admin/wizard/wizard.php:636
+#: admin/wizard/wizard.php:729 admin/wizard/wizard.php:1096
+#: admin/wizard/wizard.php:1141 admin/wizard/wizard.php:1147
+#: admin/wizard/wizard.php:1153 admin/wizard/wizard.php:1159
+#: admin/wizard/wizard.php:1165
 msgid "DSO Setup Steps"
 msgstr ""
 
-#: admin/wizard/wizard.php:511
+#: admin/wizard/wizard.php:515
 msgid " Root .htaccess File backup Successful!"
 msgstr ""
 
-#: admin/wizard/wizard.php:521
+#: admin/wizard/wizard.php:525
 msgid "Error: PHP/php.ini handler htaccess code check"
 msgstr ""
 
-#: admin/wizard/wizard.php:521
+#: admin/wizard/wizard.php:525
 msgid ""
 "PHP/php.ini handler htaccess code was found in your root .htaccess file, but "
 "was NOT found in BPS Custom Code. A new root .htaccess file was NOT created "
@@ -7440,151 +7469,151 @@ msgid ""
 "Link "
 msgstr ""
 
-#: admin/wizard/wizard.php:521
+#: admin/wizard/wizard.php:525
 msgid "Add PHP/php.ini handler htaccess code to BPS Custom Code"
 msgstr ""
 
-#: admin/wizard/wizard.php:521
+#: admin/wizard/wizard.php:525
 msgid ""
 " for instructions on how to copy your PHP/php.ini handler htaccess code to "
 "BPS Custom Code."
 msgstr ""
 
-#: admin/wizard/wizard.php:560 admin/wizard/wizard.php:589
+#: admin/wizard/wizard.php:564 admin/wizard/wizard.php:593
 msgid ""
 "Root .htaccess File writing completed. File Locked with 404 file permissions."
 msgstr ""
 
-#: admin/wizard/wizard.php:564 admin/wizard/wizard.php:593
+#: admin/wizard/wizard.php:568 admin/wizard/wizard.php:597
 msgid ""
 "Root .htaccess File writing completed. File Locked with 444 file permissions."
 msgstr ""
 
-#: admin/wizard/wizard.php:611 admin/wizard/wizard.php:620
-#: admin/wizard/wizard.php:862 admin/wizard/wizard.php:1389
-#: admin/wizard/wizard.php:1427 admin/wizard/wizard.php:1486
+#: admin/wizard/wizard.php:615 admin/wizard/wizard.php:624
+#: admin/wizard/wizard.php:866 admin/wizard/wizard.php:1393
+#: admin/wizard/wizard.php:1431 admin/wizard/wizard.php:1490
 msgid " DB Option created or updated Successfully!"
 msgstr ""
 
-#: admin/wizard/wizard.php:630
+#: admin/wizard/wizard.php:634
 msgid ""
 "The wpadmin-secure.htaccess wp-admin Master htaccess file was created "
 "successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:630
+#: admin/wizard/wizard.php:634
 msgid "wp-admin Folder BulletProof Mode activated successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:632
+#: admin/wizard/wizard.php:636
 msgid ""
 "Error: The wpadmin-secure.htaccess wp-admin Master htaccess file and wp-"
 "admin .htaccess file cannot be created. wp-admin Folder BulletProof Mode has "
 "NOT been activated."
 msgstr ""
 
-#: admin/wizard/wizard.php:638
+#: admin/wizard/wizard.php:642
 msgid ""
 "Go Daddy Managed WordPress Hosting option is set to Yes or wp-admin "
 "BulletProof Mode is disabled on the Security Modes page. GDMW hosting does "
 "not allow wp-admin htaccess files."
 msgstr ""
 
-#: admin/wizard/wizard.php:662
+#: admin/wizard/wizard.php:666
 msgid " wp-admin .htaccess File backup Successful!"
 msgstr ""
 
-#: admin/wizard/wizard.php:723
+#: admin/wizard/wizard.php:727
 msgid ""
 "The default.htaccess Default Mode Master htaccess file was created "
 "successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:725
+#: admin/wizard/wizard.php:729
 msgid ""
 "Error: The default.htaccess Default Mode Master htaccess file cannot be "
 "created."
 msgstr ""
 
-#: admin/wizard/wizard.php:832
+#: admin/wizard/wizard.php:836
 msgid ""
 "Pass! PHP/php.ini handler htaccess code check: Not in use, required or "
 "needed for your website/Server"
 msgstr ""
 
-#: admin/wizard/wizard.php:837
+#: admin/wizard/wizard.php:841
 msgid ""
 "Pass! PHP/php.ini handler htaccess code was found in your root .htaccess "
 "file AND in BPS Pro Custom Code"
 msgstr ""
 
-#: admin/wizard/wizard.php:852
+#: admin/wizard/wizard.php:856
 msgid ""
 "Pass! PHP/php.ini handler root htaccess code added/created in BPS Pro Custom "
 "Code"
 msgstr ""
 
-#: admin/wizard/wizard.php:863 admin/wizard/wizard.php:1247
+#: admin/wizard/wizard.php:867 admin/wizard/wizard.php:1251
 msgid " Folder created Successfully!"
 msgstr ""
 
-#: admin/wizard/wizard.php:968
+#: admin/wizard/wizard.php:972
 msgid ""
 "Security Log User Agent Filter Check Successful! 0 User Agent Filters to "
 "update."
 msgstr ""
 
-#: admin/wizard/wizard.php:978
+#: admin/wizard/wizard.php:982
 msgid "Security Log User Agent Filter "
 msgstr ""
 
-#: admin/wizard/wizard.php:978
+#: admin/wizard/wizard.php:982
 msgid " created or updated Successfully!"
 msgstr ""
 
-#: admin/wizard/wizard.php:1068 admin/wizard/wizard.php:1191
+#: admin/wizard/wizard.php:1072 admin/wizard/wizard.php:1195
 msgid " DB Table created Successfully!"
 msgstr ""
 
-#: admin/wizard/wizard.php:1071 admin/wizard/wizard.php:1194
+#: admin/wizard/wizard.php:1075 admin/wizard/wizard.php:1198
 msgid "Error: Unable to create DB Table "
 msgstr ""
 
-#: admin/wizard/wizard.php:1075
+#: admin/wizard/wizard.php:1079
 msgid "Setup Wizard Pre-Installation Checks:"
 msgstr ""
 
-#: admin/wizard/wizard.php:1076
+#: admin/wizard/wizard.php:1080
 msgid ""
 "If you see any Red font or Blue font messages displayed below, click the "
 "Read Me help button above and read the \"Notes\" help section before "
 "clicking the Setup Wizard button."
 msgstr ""
 
-#: admin/wizard/wizard.php:1083
+#: admin/wizard/wizard.php:1087
 msgid ""
 "Pass! Compatible Server Configuration: Server API: CGI | WP Filesystem API "
 "Method: direct."
 msgstr ""
 
-#: admin/wizard/wizard.php:1086
+#: admin/wizard/wizard.php:1090
 msgid ""
 "Pass! Compatible Server Configuration: Server Type Apache: XAMPP, WAMP, MAMP "
 "or LAMP | WP Filesystem API Method: direct."
 msgstr ""
 
-#: admin/wizard/wizard.php:1089
+#: admin/wizard/wizard.php:1093
 msgid ""
 "Pass! Compatible Server Configuration: Server API: DSO | WP Filesystem API "
 "Method: direct."
 msgstr ""
 
-#: admin/wizard/wizard.php:1092
+#: admin/wizard/wizard.php:1096
 msgid ""
 "Server API: Apache DSO Server Configuration | WP Filesystem API Method: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1092
+#: admin/wizard/wizard.php:1096
 msgid ""
 "Your Server type is DSO and the WP Filesystem API Method is NOT \"direct\". "
 "You can use the Setup Wizard, but you must first make some one-time manual "
@@ -7592,7 +7621,7 @@ msgid ""
 "Forum Link for instructions: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1099
+#: admin/wizard/wizard.php:1103
 msgid ""
 "Unable to get the PHP Configuration Memory Limit value from the Server. It "
 "is recommended that your PHP Configuration Memory Limit is set to at least "
@@ -7600,39 +7629,39 @@ msgid ""
 "Limit is for your website."
 msgstr ""
 
-#: admin/wizard/wizard.php:1105 admin/wizard/wizard.php:1108
+#: admin/wizard/wizard.php:1109 admin/wizard/wizard.php:1112
 msgid "Pass! PHP Configuration Memory Limit is set to: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1108
+#: admin/wizard/wizard.php:1112
 msgid ""
 "It is recommended that you increase your memory limit to at least 128M. "
 "Contact your Web Host and ask them to increase your memory limit to the "
 "maximum memory limit setting allowed by your Host."
 msgstr ""
 
-#: admin/wizard/wizard.php:1111
+#: admin/wizard/wizard.php:1115
 msgid "Error: Your PHP Configuration Memory Limit is set to: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1111
+#: admin/wizard/wizard.php:1115
 msgid ""
 "WordPress needs a bare minimum Memory Limit setting of 64M to perform well. "
 "Contact your Web Host and ask them to increase your memory limit to the "
 "maximum memory limit setting allowed by your Host."
 msgstr ""
 
-#: admin/wizard/wizard.php:1135 admin/wizard/wizard.php:1141
-#: admin/wizard/wizard.php:1147 admin/wizard/wizard.php:1153
-#: admin/wizard/wizard.php:1159
+#: admin/wizard/wizard.php:1139 admin/wizard/wizard.php:1145
+#: admin/wizard/wizard.php:1151 admin/wizard/wizard.php:1157
+#: admin/wizard/wizard.php:1163
 msgid "Pass! The "
 msgstr ""
 
-#: admin/wizard/wizard.php:1135 admin/wizard/wizard.php:1141
+#: admin/wizard/wizard.php:1139 admin/wizard/wizard.php:1145
 msgid " Folder is writable."
 msgstr ""
 
-#: admin/wizard/wizard.php:1137 admin/wizard/wizard.php:1143
+#: admin/wizard/wizard.php:1141 admin/wizard/wizard.php:1147
 msgid ""
 " Folder is NOT writable. If your Server type is DSO and the WP Filesystem "
 "API Method is NOT \"direct\" you can use the Setup Wizard, but you must "
@@ -7640,19 +7669,19 @@ msgid ""
 "Setup Wizard. Please click this Forum Link for instructions: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1137 admin/wizard/wizard.php:1143
+#: admin/wizard/wizard.php:1141 admin/wizard/wizard.php:1147
 msgid ""
 " If your Server type is CGI check the folder permissions. Folder permissions "
 "should be either 755 or 705."
 msgstr ""
 
-#: admin/wizard/wizard.php:1147 admin/wizard/wizard.php:1153
-#: admin/wizard/wizard.php:1159
+#: admin/wizard/wizard.php:1151 admin/wizard/wizard.php:1157
+#: admin/wizard/wizard.php:1163
 msgid " File is writable."
 msgstr ""
 
-#: admin/wizard/wizard.php:1149 admin/wizard/wizard.php:1155
-#: admin/wizard/wizard.php:1161
+#: admin/wizard/wizard.php:1153 admin/wizard/wizard.php:1159
+#: admin/wizard/wizard.php:1165
 msgid ""
 " File is NOT writable. If your Server type is DSO and the WP Filesystem API "
 "Method is NOT \"direct\" you can use the Setup Wizard, but you must first "
@@ -7660,127 +7689,127 @@ msgid ""
 "Wizard. Please click this Forum Link for instructions: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1149 admin/wizard/wizard.php:1155
-#: admin/wizard/wizard.php:1161
+#: admin/wizard/wizard.php:1153 admin/wizard/wizard.php:1159
+#: admin/wizard/wizard.php:1165
 msgid ""
 " If your Server type is CGI check the file permissions. File permissions "
 "should be either 644 or 604."
 msgstr ""
 
-#: admin/wizard/wizard.php:1213
+#: admin/wizard/wizard.php:1217
 msgid "BPS Setup Verification & Error Checks"
 msgstr ""
 
-#: admin/wizard/wizard.php:1215
+#: admin/wizard/wizard.php:1219
 msgid ""
 "If you see all Green font messages displayed below, the Setup Wizard setup "
 "completed successfully."
 msgstr ""
 
-#: admin/wizard/wizard.php:1215
+#: admin/wizard/wizard.php:1219
 msgid ""
 "If you see any Red font or Blue font messages displayed below, click the "
 "Read Me help button above and read the \"Notes\" help section."
 msgstr ""
 
-#: admin/wizard/wizard.php:1215
+#: admin/wizard/wizard.php:1219
 msgid ""
 "Click the Read Me help button above for a list of recommended BPS Video "
 "Tutorials to watch."
 msgstr ""
 
-#: admin/wizard/wizard.php:1221
+#: admin/wizard/wizard.php:1225
 msgid "BulletProof Security Database Tables Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1244
+#: admin/wizard/wizard.php:1248
 msgid "BulletProof Security Core Folders Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1248
+#: admin/wizard/wizard.php:1252
 msgid "Error: Unable to create Folder "
 msgstr ""
 
-#: admin/wizard/wizard.php:1270
+#: admin/wizard/wizard.php:1274
 msgid "BulletProof Security Core Files Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1273
+#: admin/wizard/wizard.php:1277
 msgid " File created or updated Successfully!"
 msgstr ""
 
-#: admin/wizard/wizard.php:1274
+#: admin/wizard/wizard.php:1278
 msgid "Error: Unable to create or update File "
 msgstr ""
 
-#: admin/wizard/wizard.php:1384
+#: admin/wizard/wizard.php:1388
 msgid "BulletProof Security DB Backup Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1405
+#: admin/wizard/wizard.php:1409
 msgid "BulletProof Security Security Log User Agent Filter Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1423
+#: admin/wizard/wizard.php:1427
 msgid "BulletProof Security Email Alerting & Log File Options Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1483
+#: admin/wizard/wizard.php:1487
 msgid "BulletProof Security Login Security & Monitoring Options Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1551
+#: admin/wizard/wizard.php:1555
 msgid "The Setup Wizard has completed BPS Setup."
 msgstr ""
 
-#: admin/wizard/wizard.php:1551
+#: admin/wizard/wizard.php:1555
 msgid ""
 "Check the \"BPS Setup Verification & Error Checks\" section below for any "
 "errors in Red Font."
 msgstr ""
 
-#: admin/wizard/wizard.php:1557
+#: admin/wizard/wizard.php:1561
 msgid "Setup Wizard Completion Time: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1574
+#: admin/wizard/wizard.php:1578
 msgid "BulletProof Security ~ Setup Wizard"
 msgstr ""
 
-#: admin/wizard/wizard.php:1628 admin/wizard/wizard.php:1703
-#: admin/wizard/wizard.php:1705
+#: admin/wizard/wizard.php:1632 admin/wizard/wizard.php:1707
+#: admin/wizard/wizard.php:1709
 msgid "Setup Wizard Options"
 msgstr ""
 
-#: admin/wizard/wizard.php:1633
+#: admin/wizard/wizard.php:1637
 msgid "Setup Wizard ~ "
 msgstr ""
 
-#: admin/wizard/wizard.php:1633
+#: admin/wizard/wizard.php:1637
 msgid "One-Click Complete Setup"
 msgstr ""
 
-#: admin/wizard/wizard.php:1650
+#: admin/wizard/wizard.php:1654
 msgid "Setup Wizard Steps: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1650
+#: admin/wizard/wizard.php:1654
 msgid "1. Click the Setup Wizard button."
 msgstr ""
 
-#: admin/wizard/wizard.php:1650
+#: admin/wizard/wizard.php:1654
 msgid "Recommended Video Tutorials: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1654
+#: admin/wizard/wizard.php:1658
 msgid "Security Log Video Tutorial"
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1660
 msgid "Notes: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1660
 msgid ""
 "Setup Wizard Pre-Installation Checks are automatically performed and "
 "displayed on the Setup Wizard page. Green font messages mean everything is "
@@ -7791,63 +7820,63 @@ msgid ""
 "to be fixed before running the Setup Wizard."
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1660
 msgid ""
 "You can re-run the Setup Wizard again at any time. Your existing settings "
 "will NOT be overwritten and will be re-saved. Any new or additional settings "
 "that the Setup Wizard finds on your website will be saved/setup."
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1660
 msgid ""
 "When the Setup Wizard has completed you will see \"The Setup Wizard has "
 "completed BPS Setup.\""
 msgstr ""
 
-#: admin/wizard/wizard.php:1656
+#: admin/wizard/wizard.php:1660
 msgid ""
 "Your existing Root and wp-admin htaccess files are backed up before new Root "
 "and wp-admin htaccess files are created by the Setup Wizard. The BPS backup "
 "folder is here: "
 msgstr ""
 
-#: admin/wizard/wizard.php:1659
+#: admin/wizard/wizard.php:1663
 msgid ""
 " and the backed up htaccess file names are: root.htaccess and wpadmin."
 "htaccess."
 msgstr ""
 
-#: admin/wizard/wizard.php:1669
+#: admin/wizard/wizard.php:1673
 msgid "Setup Wizard & Overview Video Tutorial"
 msgstr ""
 
-#: admin/wizard/wizard.php:1694
+#: admin/wizard/wizard.php:1698
 msgid "Setup Wizard Options ~ "
 msgstr ""
 
-#: admin/wizard/wizard.php:1694
+#: admin/wizard/wizard.php:1698
 msgid "GoDaddy Managed WordPress Hosting (GDMW)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1710
+#: admin/wizard/wizard.php:1714
 msgid ""
 "There is only one Setup Wizard Option setting at this point. More Option "
 "settings may be added in a later version of BPS."
 msgstr ""
 
-#: admin/wizard/wizard.php:1712
+#: admin/wizard/wizard.php:1716
 msgid "Forum Help Links:"
 msgstr ""
 
-#: admin/wizard/wizard.php:1715
+#: admin/wizard/wizard.php:1719
 msgid "Go Daddy Managed WordPress Hosting (GDMW)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1717 admin/wizard/wizard.php:1730
+#: admin/wizard/wizard.php:1721 admin/wizard/wizard.php:1734
 msgid "Go Daddy Managed WordPress Hosting (GDMW):"
 msgstr ""
 
-#: admin/wizard/wizard.php:1717
+#: admin/wizard/wizard.php:1721
 msgid ""
 "This option is ONLY for a special type of Go Daddy Hosting account called "
 "\"Managed WordPress Hosting\" and is NOT for regular/standard Go Daddy "
@@ -7856,11 +7885,11 @@ msgid ""
 "section above for more information."
 msgstr ""
 
-#: admin/wizard/wizard.php:1717 admin/wizard/wizard.php:1741
+#: admin/wizard/wizard.php:1721 admin/wizard/wizard.php:1745
 msgid "Network|Multisite Sitewide Login Security Settings"
 msgstr ""
 
-#: admin/wizard/wizard.php:1717
+#: admin/wizard/wizard.php:1721
 msgid ""
 "This option is for Network|Multisite sites ONLY. This is an independent "
 "option Form that creates and saves Login Security DB option settings for all "
@@ -7877,15 +7906,15 @@ msgid ""
 "Reset, Sort DB Rows: Ascending - Show Oldest Login First."
 msgstr ""
 
-#: admin/wizard/wizard.php:1732
+#: admin/wizard/wizard.php:1736
 msgid "No (default setting)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1733
+#: admin/wizard/wizard.php:1737
 msgid "Yes (ONLY if you have Managed WordPress Hosting)"
 msgstr ""
 
-#: admin/wizard/wizard.php:1755
+#: admin/wizard/wizard.php:1759
 msgid ""
 "Error: Your Network site exceeds the default WP criteria for a large network "
 "site. Either you have more than 10,000 users or more than 10,000 sites. "
@@ -7893,7 +7922,7 @@ msgid ""
 "org for assistance."
 msgstr ""
 
-#: admin/wizard/wizard.php:1762
+#: admin/wizard/wizard.php:1766
 msgid " LSM DB Options created or updated Successfully!"
 msgstr ""
 
@@ -7917,75 +7946,75 @@ msgstr ""
 msgid "Hourly"
 msgstr ""
 
-#: includes/functions.php:310
+#: includes/functions.php:314
 msgid "Reload BPS Status Display"
 msgstr ""
 
-#: includes/functions.php:354
+#: includes/functions.php:358
 msgid "The BPS Status Display is set to Off by default on the System Info page"
 msgstr ""
 
-#: includes/functions.php:403 includes/functions.php:427
+#: includes/functions.php:409 includes/functions.php:433
 msgid "BPS Setup Wizard Notification"
 msgstr ""
 
-#: includes/functions.php:403 includes/functions.php:427
+#: includes/functions.php:409 includes/functions.php:433
 msgid ""
 " to go to the BPS Setup Wizard page and click the Setup Wizard button to "
 "setup the BPS plugin."
 msgstr ""
 
-#: includes/functions.php:408
+#: includes/functions.php:414
 msgid "BPS Alert! An htaccess file was NOT found in your WordPress root folder"
 msgstr ""
 
-#: includes/functions.php:408
+#: includes/functions.php:414
 msgid ""
 "If you have deleted the root htaccess file for troubleshooting purposes you "
 "can disregard this Alert."
 msgstr ""
 
-#: includes/functions.php:408 includes/functions.php:643
+#: includes/functions.php:414 includes/functions.php:654
 msgid "After you are done troubleshooting "
 msgstr ""
 
-#: includes/functions.php:408 includes/functions.php:432
-#: includes/functions.php:643 includes/functions.php:665
+#: includes/functions.php:414 includes/functions.php:438
+#: includes/functions.php:654 includes/functions.php:676
 msgid ""
 " to go to the BPS Setup Wizard page and click the Setup Wizard button to "
 "setup the BPS plugin again."
 msgstr ""
 
-#: includes/functions.php:408
+#: includes/functions.php:414
 msgid ""
 "Important Note: If you deleted the root htaccess file due to bad/invalid "
 "Root Custom Code causing a problem then "
 msgstr ""
 
-#: includes/functions.php:408
+#: includes/functions.php:414
 msgid ""
 " to go to the BPS Custom Code page, delete the bad/invalid Root Custom Code "
 "and click the Save Root Custom Code button before running the Setup Wizard "
 "again."
 msgstr ""
 
-#: includes/functions.php:432
+#: includes/functions.php:438
 msgid "BPS Alert! Your site may not be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:432
+#: includes/functions.php:438
 msgid ""
 "The BPS version: BULLETPROOF .xx.x >>>>>>> SECURE .HTACCESS line of code was "
 "not found at the top of your Root htaccess file."
 msgstr ""
 
-#: includes/functions.php:432
+#: includes/functions.php:438
 msgid ""
 "The BPS version line of code MUST be at the very top of your Root htaccess "
 "file."
 msgstr ""
 
-#: includes/functions.php:432
+#: includes/functions.php:438
 msgid ""
 "Important Note: If you manually added other htaccess code above the BPS "
 "version line of code in your root htaccess file, you can copy that code to "
@@ -7993,96 +8022,96 @@ msgid ""
 "BPS root htaccess file. "
 msgstr ""
 
-#: includes/functions.php:432
+#: includes/functions.php:438
 msgid ""
 " to go to the BPS Custom Code page, add your Root custom htaccess code in an "
 "appropriate Root Custom Code text box and click the Save Root Custom Code "
 "button before running the Setup Wizard again."
 msgstr ""
 
-#: includes/functions.php:570
+#: includes/functions.php:581
 msgid "The BPS Automatic htaccess File Update Completed Successfully!"
 msgstr ""
 
-#: includes/functions.php:583
+#: includes/functions.php:594
 msgid "RBM"
 msgstr ""
 
-#: includes/functions.php:594
+#: includes/functions.php:605
 msgid ""
 "BPS Alert! Your site does not appear to be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:594
+#: includes/functions.php:605
 msgid "Go to the "
 msgstr ""
 
-#: includes/functions.php:594
+#: includes/functions.php:605
 msgid "Security Modes page"
 msgstr ""
 
-#: includes/functions.php:594
+#: includes/functions.php:605
 msgid ""
 " and click the Create secure.htaccess File AutoMagic button and Activate "
 "Root Folder BulletProof Mode."
 msgstr ""
 
-#: includes/functions.php:594
+#: includes/functions.php:605
 msgid ""
 "If your site is in Default Mode then it is NOT protected by BulletProof "
 "Security. Check the BPS "
 msgstr ""
 
-#: includes/functions.php:594 includes/functions.php:735
+#: includes/functions.php:605 includes/functions.php:746
 msgid "Security Status page"
 msgstr ""
 
-#: includes/functions.php:594 includes/functions.php:735
+#: includes/functions.php:605 includes/functions.php:746
 msgid " to view your BPS Security Status information."
 msgstr ""
 
-#: includes/functions.php:643
+#: includes/functions.php:654
 msgid ""
 "BPS Alert! An htaccess file was NOT found in your WordPress wp-admin folder"
 msgstr ""
 
-#: includes/functions.php:643
+#: includes/functions.php:654
 msgid ""
 "If you have deleted the wp-admin htaccess file for troubleshooting purposes "
 "you can disregard this Alert."
 msgstr ""
 
-#: includes/functions.php:643
+#: includes/functions.php:654
 msgid ""
 "Important Note: If you deleted the wp-admin htaccess file due to bad/invalid "
 "Custom Code causing a problem then "
 msgstr ""
 
-#: includes/functions.php:643
+#: includes/functions.php:654
 msgid ""
 " to go to the BPS Custom Code page, delete the bad/invalid wp-admin Custom "
 "Code and click the Save wp-admin Custom Code button before running the Setup "
 "Wizard again."
 msgstr ""
 
-#: includes/functions.php:665
+#: includes/functions.php:676
 msgid ""
 "BPS Alert! Your wp-admin folder may not be protected by BulletProof Security"
 msgstr ""
 
-#: includes/functions.php:665
+#: includes/functions.php:676
 msgid ""
 "he BPS version: BULLETPROOF .xx.x WP-ADMIN SECURE .HTACCESS line of code was "
 "not found at the top of your wp-admin htaccess file."
 msgstr ""
 
-#: includes/functions.php:665
+#: includes/functions.php:676
 msgid ""
 "The BPS version line of code MUST be at the very top of your wp-admin "
 "htaccess file."
 msgstr ""
 
-#: includes/functions.php:665
+#: includes/functions.php:676
 msgid ""
 "Important Note: If you manually added other htaccess code above the BPS "
 "version line of code in your wp-admin htaccess file, you can copy that code "
@@ -8090,118 +8119,118 @@ msgid ""
 "in the BPS wp-admin htaccess file. "
 msgstr ""
 
-#: includes/functions.php:665
+#: includes/functions.php:676
 msgid ""
 " to go to the BPS Custom Code page, add your wp-admin custom htaccess code "
 "in an appropriate wp-admin Custom Code text box and click the Save wp-admin "
 "Custom Code button before running the Setup Wizard again."
 msgstr ""
 
-#: includes/functions.php:724
+#: includes/functions.php:735
 msgid "WBM"
 msgstr ""
 
-#: includes/functions.php:735
+#: includes/functions.php:746
 msgid ""
 "BPS Alert! A valid BPS htaccess file was NOT found in your wp-admin folder"
 msgstr ""
 
-#: includes/functions.php:735 includes/general-functions.php:242
+#: includes/functions.php:746 includes/general-functions.php:242
 msgid ""
 "BulletProof Mode for the wp-admin folder should also be activated when you "
 "have BulletProof Mode activated for the Root folder."
 msgstr ""
 
-#: includes/functions.php:735
+#: includes/functions.php:746
 msgid "Check the BPS "
 msgstr ""
 
-#: includes/functions.php:771 includes/functions.php:776
+#: includes/functions.php:782 includes/functions.php:787
 msgid "LSM"
 msgstr ""
 
-#: includes/functions.php:815 includes/functions.php:820
-#: includes/functions.php:825
+#: includes/functions.php:826 includes/functions.php:831
+#: includes/functions.php:836
 msgid "DBB"
 msgstr ""
 
-#: includes/functions.php:815
+#: includes/functions.php:826
 msgid "No DB Backups"
 msgstr ""
 
-#: includes/functions.php:820
+#: includes/functions.php:831
 msgid "Backup Job Created"
 msgstr ""
 
-#: includes/functions.php:864
+#: includes/functions.php:875
 msgid ""
 "Apache Modules|Directives|Backward Compatibility(Yes|No)|IfModule(Yes|No)"
 msgstr ""
 
-#: includes/functions.php:898
+#: includes/functions.php:909
 msgid ""
 "ERROR: wp_remote_get() function is blocked or unable to get the URL path"
 msgstr ""
 
-#: includes/functions.php:908
+#: includes/functions.php:919
 msgid ""
 "mod_access_compat is Loaded|Order, Allow, Deny directives are supported|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:915 includes/functions.php:1086
+#: includes/functions.php:926 includes/functions.php:1097
 msgid ""
 "mod_access_compat is Loaded|Order, Allow, Deny directives are supported|"
 "IfModule: No"
 msgstr ""
 
-#: includes/functions.php:922
+#: includes/functions.php:933
 msgid ""
 "mod_access_compat is NOT Loaded|Order, Allow, Deny directives are NOT "
 "supported"
 msgstr ""
 
-#: includes/functions.php:930 includes/functions.php:1082
+#: includes/functions.php:941 includes/functions.php:1093
 msgid ""
 "mod_authz_core is Loaded|Order, Allow, Deny directives are supported|BC: Yes|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:935
+#: includes/functions.php:946
 msgid ""
 "mod_authz_core is Loaded|Order, Allow, Deny directives are NOT supported|BC: "
 "No|IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:940
+#: includes/functions.php:951
 msgid ""
 "mod_authz_core Inconclusive: IfModule condition is not allowed/processed by "
 "Host Server"
 msgstr ""
 
-#: includes/functions.php:945
+#: includes/functions.php:956
 msgid "mod_authz_core is NOT Loaded"
 msgstr ""
 
-#: includes/functions.php:953
+#: includes/functions.php:964
 msgid ""
 "mod_authz_host is Loaded|Order, Allow, Deny directives are supported|BC: Yes|"
 "IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:958
+#: includes/functions.php:969
 msgid ""
 "mod_authz_host is Loaded|Order, Allow, Deny directives are NOT supported|BC: "
 "No|IfModule: Yes"
 msgstr ""
 
-#: includes/functions.php:963
+#: includes/functions.php:974
 msgid ""
 "mod_authz_host Inconclusive: IfModule condition is not allowed/processed by "
 "Host Server"
 msgstr ""
 
-#: includes/functions.php:968
+#: includes/functions.php:979
 msgid "mod_authz_host is NOT Loaded"
 msgstr ""
 
@@ -8967,46 +8996,46 @@ msgstr ""
 msgid "here"
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid "BPS Notice: One-time Update Steps Required"
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid ""
 "Significant changes were made to the root and wp-admin htaccess files that "
 "require doing the one-time Update Steps below."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid ""
 "All future BPS upgrades will not require these one-time Update Steps to be "
 "performed."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid ""
 " If you would like to know what changes were made to the root and wp-admin "
 "htaccess files."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid ""
 "This Notice will go away automatically after doing all of the steps below."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid " to go to the BPS Security Modes page."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid "1. Click the \"Create secure.htaccess File\" AutoMagic button."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid "2. Activate Root Folder BulletProof Mode."
 msgstr ""
 
-#: includes/general-functions.php:1601
+#: includes/general-functions.php:1602
 msgid "3. Activate wp-admin Folder BulletProof Mode."
 msgstr ""
 

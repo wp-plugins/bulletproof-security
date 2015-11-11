@@ -4,7 +4,7 @@ Donate link: http://www.ait-pro.com/aitpro-blog/331/bulletproof-security-plugin-
 Tags: 400, 401, 403, 404, 410, 503, antivirus, attack, auth cookie, authenticate, authentication, authentication cookie, author, author id, auto-logout, automatic, back up, backups, ban, banned, base64, block, blocked, Bot, brute force, bruteforce, bulletproof, chmod, code, coming soon, cookie, cookie expiration, crack, cracking, CRLF, CSRF, database backup, database table prefix, DB backup, DB table backup, DB table prefix, developer, development, directory traversal, DoS, DDoS, dump, encode, enumeration, error log, event listener, expire, exploit, exploitation, file inclusion, firewall, hack, hackers, htaccess, HTTP log, idle, idle logout, idle time, idle user, idle session, inactive, inactive logout, inactive time, inactive user, inactive session, infect, infected, infection, injection, LFI, lock, log, log off, logging, login alerts, login security, login, maintenance mode, maintenance, malicious, malware, multisite, mysql, mysql backup, offline, optimize, optimization, path traversal, performance, permissions, pingback, plugin, prevent, prevention, privacy, private, protection, remember me, RFI, safe, safety, schedule backup, script, secure, security log, security, session, signout, spam, spammers, speed increase, speed boost, SQL injection, timeout, trackback, unavailable, under construction, user id, user account, user role, username, users, virus, viruses, vulnerable, vulnerability, website backup, wordpress backup, website security, WordPress security, xmlrpc, xml-rpc, XSS
 Requires at least: 3.7 
 Tested up to: 4.3
-Stable tag: .52.8
+Stable tag: .52.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,7 @@ WordPress is already very secure, but every website, no matter what type of plat
 * <a href="http://forum.ait-pro.com/forums/topic/block-referer-spammers-semalt-kambasoft-ranksonic-buttons-for-website/" title="Referer Spammers|Phishing Protection .htaccess Code" rel="nofollow" target="_blank">Referer Spammers|Phishing Protection .htaccess Code</a>
 * <a href="http://forum.ait-pro.com/forums/topic/mime-sniffing-data-sniffing-content-sniffing-drive-by-download-attack-protection/" title="Mime Sniffing|Drive-by Download Attack Protection .htaccess Code" rel="nofollow" target="_blank">Mime Sniffing|Drive-by Download Attack Protection .htaccess Code</a>
 * <a href="http://forum.ait-pro.com/forums/topic/rssing-com-good-or-bad/" title="External iFrame and Clickjacking Protection .htaccess Code" rel="nofollow" target="_blank">External iFrame and Clickjacking Protection .htaccess Code</a>
+* <a href="http://forum.ait-pro.com/forums/topic/post-request-protection-post-attack-protection-post-request-blocker/" title="POST Request Attack Protection .htaccess Code" rel="nofollow" target="_blank">POST Request Attack Protection .htaccess Code</a>
 
 = BulletProof Security htaccess Core (Firewalls, etc.) Features =
 
@@ -467,8 +468,8 @@ Yes. BulletProof Security works with Git, but does require some additional set u
 
 == Upgrade Notice ==
 
-= .52.7 =
-* New Option - New Bonus Custom Code - Enhancements
+= .52.9 =
+* 2 BugFixes - 1 Enhancement
 
 == Help Info ==
 

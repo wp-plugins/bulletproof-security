@@ -33,7 +33,7 @@ $BPS_ISL_options = get_option('bulletproof_security_options_idle_session');
 	get_currentuserinfo();
 	$user_info = get_userdata($current_user->ID);
 
-	if ( ! preg_match( '/'.$user_info->user_login.'/i', $BPS_ISL_options['bps_isl_user_account_exceptions'], $matches ) ) {
+	if ( @! preg_match( '/'.$user_info->user_login.'/i', $BPS_ISL_options['bps_isl_user_account_exceptions'], $matches ) ) {
 
 	if ( $user_info->user_level == 10 && $BPS_ISL_options['bps_isl_administrator'] == '1' || $user_info->user_level == 7 && $BPS_ISL_options['bps_isl_editor'] == '1' || $user_info->user_level == 2 && $BPS_ISL_options['bps_isl_author'] == '1' || $user_info->user_level == 1 && $BPS_ISL_options['bps_isl_contributor'] == '1' || $user_info->user_level == 0 && $BPS_ISL_options['bps_isl_subscriber'] == '1' ) {
 

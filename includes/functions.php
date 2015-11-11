@@ -182,6 +182,7 @@ global $wpdb;
 // BPS .51.8: new Login Security option: Attempts Remaining
 // BPS .52.3: Pre-save Custom Code db options for Export|Import tools if they do not exist
 // BPS .52.7: Set Security Log Limit POST Request Body Data option to checked/limited by default
+// BPS .52.9: POST Request Attack Protection code correction|addition
 function bpsPro_new_feature_autoupdate() {
 $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 	
@@ -284,6 +285,9 @@ $BPS_LSM_Options = get_option('bulletproof_security_options_login_security');
 			update_option('bulletproof_security_options_sec_log_post_limit', $seclog_post_limit_Options);
 		}
 	}
+	
+	// .52.9: POST Request Attack Protection code correction|addition
+	bpsPro_post_request_protection_check();
 }
 
 // BPS Update/Upgrade Status Alert in WP Dashboard|Status Display BPS pages only
@@ -387,6 +391,8 @@ function bps_root_htaccess_status_dashboard() {
 	$pattern13 = '/RewriteCond\s%\{QUERY_STRING\}\s\(\\\.\\\.\/\|\\\.\\\.\)\s\[OR\]/';
 	$pattern14 = '/RewriteCond\s%{QUERY_STRING}\s\(\\\.\/\|\\\.\.\/\|\\\.\.\.\/\)\+\(motd\|etc\|bin\)\s\[NC,OR\]/';
 	$pattern_amod = '/#\sDENY\sBROWSER\sACCESS\sTO\sTHESE\sFILES(.*\s*){6,8}<FilesMatch(.*)wp-config(.*\s*){4,6}<\/FilesMatch>/';
+	$pattern15 = '/BPS\sPOST\sRequest\sAttack\sProtection/';
+	$pattern16 = '/#\sNEVER\sCOMMENT\sOUT\sTHIS\sLINE\sOF\sCODE\sBELOW\sFOR\sANY\sREASON(\s*){1}RewriteCond\s%\{REQUEST_URI\}\s\!\^\.\*\/wp-admin\/\s\[NC\]/';
 
 	$BPSVpattern = '/BULLETPROOF\s\.[\d](.*)[\>]/';
 	$BPSVreplace = "BULLETPROOF $bps_version >>>>>>>";
@@ -542,6 +548,11 @@ switch ( $bps_version ) {
 		} elseif ( preg_match( $pattern_amod, $stringReplace, $matches ) && $BPSCustomCodeOptions['bps_customcode_deny_files'] == '' && $Apache_Mod_options['bps_apache_mod_ifmodule'] == 'No' ) {
 			
 			$stringReplace = preg_replace( $pattern_amod, "# DENY BROWSER ACCESS TO THESE FILES\n# Use BPS Custom Code to modify/edit/change this code and to save it permanently.\n# wp-config.php, bb-config.php, php.ini, php5.ini, readme.html\n# To be able to view these files from a Browser, replace 127.0.0.1 with your actual\n# current IP address. Comment out: #Deny from all and Uncomment: Allow from 127.0.0.1\n# Note: The BPS System Info page displays which modules are loaded on your server.\n\n<FilesMatch \"^(wp-config\.php|php\.ini|php5\.ini|readme\.html|bb-config\.php)\">\nOrder Allow,Deny\nDeny from all\n#Allow from 127.0.0.1\n</FilesMatch>", $stringReplace);	
+		}
+
+		// .52.9: POST Request Attack Protection code correction|addition
+		if ( preg_match( $pattern15, $stringReplace, $matches ) && ! preg_match( $pattern16, $stringReplace, $matches ) ) {
+			$stringReplace = preg_replace('/RewriteCond\s%\{REQUEST_METHOD\}\sPOST\s\[NC\]/s', "RewriteCond %{REQUEST_METHOD} POST [NC]\n# NEVER COMMENT OUT THIS LINE OF CODE BELOW FOR ANY REASON\nRewriteCond %{REQUEST_URI} !^.*/wp-admin/ [NC]\n# Whitelist the WordPress Theme Customizer\nRewriteCond %{HTTP_REFERER} !^.*/wp-admin/customize.php", $stringReplace);
 		}
 
 		// Clean up - replace 3 and 4 multiple newlines with 1 newline

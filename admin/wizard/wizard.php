@@ -65,6 +65,10 @@ require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 $bps_wpcontent_dir = str_replace( ABSPATH, '', WP_CONTENT_DIR );
 $bpsSpacePop = '-------------------------------------------------------------';
 
+require_once( WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/wizard-backup.php' );
+
+bpsPro_root_precheck_download();
+
 function bpsPro_network_domain_check_wizard() {
 	global $wpdb;
 	if ( $wpdb->get_var( "SHOW TABLES LIKE '$wpdb->site'" ) )

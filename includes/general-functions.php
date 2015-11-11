@@ -1570,6 +1570,7 @@ add_action('admin_notices', 'bpsPro_login_security_password_reset_disabled_notic
 // One time manual htaccess code update added in BPS Pro .51.2
 // NOTE: Instead of automating this, this needs to be done manually by users
 // "Always On" flush_rewrite_rules code correction: Unfortunately this needs to be an "Always On" check in order for it to be 100% effective
+// .52.9: added additional check for the BULLETPROOF string in the root htaccess file, otherwise on a new install the WP standard rewrite code will be deleted.
 function bpsPro_htaccess_manual_update_notice() {
 	
 	if ( current_user_can('manage_options') ) {
@@ -1582,7 +1583,7 @@ function bpsPro_htaccess_manual_update_notice() {
 			$check_string = @file_get_contents($filename);
 			$pattern = '/#\sBEGIN\sWordPress\s*<IfModule\smod_rewrite\.c>\s*RewriteEngine\sOn\s*RewriteBase(.*)\s*RewriteRule(.*)\s*RewriteCond((.*)\s*){2}RewriteRule(.*)\s*<\/IfModule>\s*#\sEND\sWordPress/';
 
-			if ( preg_match( $pattern, $check_string, $flush_matches ) ) {
+			if ( strpos( $check_string, "BULLETPROOF" ) && preg_match( $pattern, $check_string, $flush_matches ) ) {
 				$stringReplace = preg_replace('/\n#\sBEGIN\sWordPress\s*<IfModule\smod_rewrite\.c>\s*RewriteEngine\sOn\s*RewriteBase(.*)\s*RewriteRule(.*)\s*RewriteCond((.*)\s*){2}RewriteRule(.*)\s*<\/IfModule>\s*#\sEND\sWordPress\n/s', "", $check_string);
 				file_put_contents($filename, $stringReplace);
 			}				
@@ -1621,5 +1622,64 @@ function bpsPro_presave_ui_theme_skin_options() {
 		}
 	}	
 }
+
+// .52.9: POST Request Attack Protection code correction|addition
+function bpsPro_post_request_protection_check() {
+
+	$pattern1 = '/BPS\sPOST\sRequest\sAttack\sProtection/';
+	$pattern2 = '/#\sNEVER\sCOMMENT\sOUT\sTHIS\sLINE\sOF\sCODE\sBELOW\sFOR\sANY\sREASON(\s*){1}RewriteCond\s%\{REQUEST_URI\}\s\!\^\.\*\/wp-admin\/\s\[NC\]/';
+
+	$CC_options = get_option('bulletproof_security_options_customcode');
+	
+	if ( preg_match( $pattern1, htmlspecialchars_decode( $CC_options['bps_customcode_three'], ENT_QUOTES ), $matches ) && ! preg_match( $pattern2, htmlspecialchars_decode( $CC_options['bps_customcode_three'], ENT_QUOTES ), $matches ) ) {
+		
+		$bps_customcode_three = preg_replace('/RewriteCond\s%\{REQUEST_METHOD\}\sPOST\s\[NC\]/s', "RewriteCond %{REQUEST_METHOD} POST [NC]\n# NEVER COMMENT OUT THIS LINE OF CODE BELOW FOR ANY REASON\nRewriteCond %{REQUEST_URI} !^.*/wp-admin/ [NC]\n# Whitelist the WordPress Theme Customizer\nRewriteCond %{HTTP_REFERER} !^.*/wp-admin/customize.php", htmlspecialchars_decode( $CC_options['bps_customcode_three'], ENT_QUOTES ) );
+
+	if ( ! is_multisite() ) {
+
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> $CC_options['bps_customcode_one'], 
+		'bps_customcode_server_signature' 	=> $CC_options['bps_customcode_server_signature'], 
+		'bps_customcode_directory_index' 	=> $CC_options['bps_customcode_directory_index'], 
+		'bps_customcode_server_protocol' 	=> $CC_options['bps_customcode_server_protocol'], 
+		'bps_customcode_error_logging' 		=> $CC_options['bps_customcode_error_logging'], 
+		'bps_customcode_deny_dot_folders' 	=> $CC_options['bps_customcode_deny_dot_folders'], 
+		'bps_customcode_admin_includes' 	=> $CC_options['bps_customcode_admin_includes'], 
+		'bps_customcode_wp_rewrite_start' 	=> $CC_options['bps_customcode_wp_rewrite_start'], 
+		'bps_customcode_request_methods' 	=> $CC_options['bps_customcode_request_methods'], 
+		'bps_customcode_two' 				=> $CC_options['bps_customcode_two'], 
+		'bps_customcode_timthumb_misc' 		=> $CC_options['bps_customcode_timthumb_misc'], 
+		'bps_customcode_bpsqse' 			=> $CC_options['bps_customcode_bpsqse'], 
+		'bps_customcode_deny_files' 		=> $CC_options['bps_customcode_deny_files'], 
+		'bps_customcode_three' 				=> $bps_customcode_three 
+		);
+				
+	} else {
+					
+		$Root_CC_Options = array(
+		'bps_customcode_one' 				=> $CC_options['bps_customcode_one'], 
+		'bps_customcode_server_signature' 	=> $CC_options['bps_customcode_server_signature'], 
+		'bps_customcode_directory_index' 	=> $CC_options['bps_customcode_directory_index'], 
+		'bps_customcode_server_protocol' 	=> $CC_options['bps_customcode_server_protocol'], 
+		'bps_customcode_error_logging' 		=> $CC_options['bps_customcode_error_logging'], 
+		'bps_customcode_deny_dot_folders' 	=> $CC_options['bps_customcode_deny_dot_folders'], 
+		'bps_customcode_admin_includes' 	=> $CC_options['bps_customcode_admin_includes'], 
+		'bps_customcode_wp_rewrite_start' 	=> $CC_options['bps_customcode_wp_rewrite_start'], 
+		'bps_customcode_request_methods' 	=> $CC_options['bps_customcode_request_methods'], 
+		'bps_customcode_two' 				=> $CC_options['bps_customcode_two'], 
+		'bps_customcode_timthumb_misc' 		=> $CC_options['bps_customcode_timthumb_misc'], 
+		'bps_customcode_bpsqse' 			=> $CC_options['bps_customcode_bpsqse'], 
+		'bps_customcode_wp_rewrite_end' 	=> $CC_options['bps_customcode_wp_rewrite_end'], 
+		'bps_customcode_deny_files' 		=> $CC_options['bps_customcode_deny_files'], 
+		'bps_customcode_three' 				=> $bps_customcode_three 
+		);					
+	}
+
+		foreach( $Root_CC_Options as $key => $value ) {
+			update_option('bulletproof_security_options_customcode', $Root_CC_Options);
+		}
+	}
+}
+
 
 ?>

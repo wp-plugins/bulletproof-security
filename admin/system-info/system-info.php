@@ -451,7 +451,7 @@ function bps_get_proxy_real_ip_address() {
 	echo bps_check_permalinks().'<br>';
 	echo bps_check_php_version().'<br>';
 	
-	echo __('Browser Compression Supported', 'bulletproof-security').': <strong>' . esc_html( $_SERVER['HTTP_ACCEPT_ENCODING'] ).'</strong>';
+	echo __('Browser Compression Supported', 'bulletproof-security').': <strong>' . esc_html( @$_SERVER['HTTP_ACCEPT_ENCODING'] ).'</strong>';
 	
 	echo '</span>';
 	?>
